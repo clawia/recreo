@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.Regle;
+import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.proprietesDeclarees;
 import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.reglesMaison;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.debutDeDeclaration;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.valeurDeclaree;
@@ -34,10 +35,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *   <li><b>perimetre derive</b> : la population jugee est toute regle maison dont le selecteur nomme
  *       l'exclusion de l'ecran a deux oeuvres, relue a chaque appel. Seules les valeurs attendues sont
  *       ecrites ici, parce que ce sont celles de la mesure ;</li>
- *   <li><b>derivation totale</b> : une population vide, une regle attendue absente et une regle de la
- *       population qui n'est pas attendue sont des <b>echecs</b> ;</li>
- *   <li><b>mise a l'epreuve</b> : deux feuilles fautives, l'une dont une regle sort du seuil de 720 px,
- *       l'autre dont une valeur mesuree change.</li>
+ *   <li><b>derivation totale</b> : une population vide, une regle attendue absente, une regle de la
+ *       population qui n'est pas attendue et une declaration qu'une regle de la forme porte sans
+ *       qu'elle ait ete mesuree sont des <b>echecs</b> ;</li>
+ *   <li><b>mise a l'epreuve</b> : quatre feuilles fautives - une regle sort du seuil de 720 px, une
+ *       valeur mesuree change, une regle s'ajoute a la population, une declaration s'ajoute a une
+ *       regle mesuree.</li>
  * </ul>
  */
 class LaFormeCommuneDesPropositionsLonguesEstEpingleeTest {
@@ -104,6 +107,16 @@ class LaFormeCommuneDesPropositionsLonguesEstEpingleeTest {
             if (!attendus.contains(regle.selecteur())) {
                 defauts.add(regle.selecteur() + " n'est pas une regle de la forme mesuree : la cote "
                         + "de reference ne la contient pas");
+                continue;
+            }
+            for (String propriete : proprietesDeclarees(regle.corps())) {
+                boolean mesuree = LA_FORME.stream().anyMatch(declaration ->
+                        declaration.selecteur().equals(regle.selecteur())
+                                && declaration.propriete().equals(propriete));
+                if (!mesuree) {
+                    defauts.add(regle.selecteur() + " declare " + propriete + ", que la forme "
+                            + "mesuree ne declare pas : la cote de reference ne la contient pas");
+                }
             }
         }
         for (Declaration attendue : LA_FORME) {
@@ -155,5 +168,14 @@ class LaFormeCommuneDesPropositionsLonguesEstEpingleeTest {
         assertThatThrownBy(() -> verifierLaFormeCommune(racine))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining(ECRAN + " > .indice n'est pas une regle de la forme mesuree");
+    }
+
+    @Test
+    void uneDeclarationQueLaMesureNeContientPasFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("declaration-ajoutee");
+        assertThatThrownBy(() -> verifierLaFormeCommune(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(ECRAN + " .propositions declare column-gap, que la forme mesuree "
+                        + "ne declare pas");
     }
 }
