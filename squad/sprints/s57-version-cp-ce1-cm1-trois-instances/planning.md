@@ -1691,3 +1691,111 @@ Lances sur `round-two` a `19c8a7b2` (apres les deux fusions), puis avec les sect
 - **Code inchange par ce commit** : `git diff --quiet 19c8a7b2 -- adapters domain application bootstrap pom.xml outils .github` sort 0.
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue. **Le Done technique n'est pas prononce par moi** : il est juge par la CI sur le commit pousse.
+
+## Amendement du 2026-10-16 20:15 (UTC+02:00), palier 2 : correctif sur le sommet de rejeu, fusion des trois verdicts de `nadia-prof`, etat final des postes, consommation par instance, reports
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement corrige ou remplace est nomme. Arbre de depart : `round-two` a `3eef868d`, casquette Scrum Master. Aucune ceremonie n'est animee par ce texte. **Aucun Done n'est prononce par moi, technique ou pedagogique.**
+
+### 1. Correctif : le code du sommet de rejeu n'etait pas celui de `7c9ac220`
+
+**Ce qui etait ecrit, et qui est faux pour le sommet que j'ai donne.** L'amendement de 19:20 (section 6, *"Sommet de rejeu"*) ecrit que *"le code et le contenu servis de `round-two` sont ceux de `7c9ac220`"*. C'etait vrai a `1cf4e3a9`, et c'est devenu faux a la fusion de `s57-lea-rdo-cp-r3` (19:40), **sans que j'annote la phrase**. L'amendement de 19:40 (section 5) corrige le sommet en `19c8a7b2` mais garde la mention *"`-05` et `RCT-CE1-R1` (instance A, code de `7c9ac220`)"*, qui fait lire le contraire. Le sommet `3eef868d` que j'ai donne a l'agent principal pour le rejeu de l'instance A a donc ete presente avec un code qui n'est pas celui de `7c9ac220`. `nadia-prof` a recu l'annonce *"code identique a `7c9ac220`"* et l'a verifiee : elle ecrit, dans son rejeu de `-05` et dans la fiche des pronoms, que **l'annonce est inexacte a la lettre** ; son rejeu de `RCT-CE1-R1` et la fiche du texte narratif donnent la meme sortie (`git diff --quiet` sort 1).
+
+**Le fait, verifie par moi.** `git diff --name-only 7c9ac220 3eef868d -- adapters domain application bootstrap pom.xml` rend **cinq fichiers** et `git diff --quiet` sort 1 :
+
+- `adapters/adapter-web/src/main/resources/templates/fragments/manche.html` (la phrase de revelation de `RDO-CP-R3`) ;
+- quatre tests : `LaPhraseDeRevelationDUneMancheEnImageNeSeCoupeJamaisDansUnePhraseTest`, `PartieControllerPropositionsEnImageTest`, `TexteAccentueDesGabaritsTest`, `LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest`.
+
+Le gabarit change donc **le code servi**, pas seulement des tests. **Ce que je ne sais pas par moi-meme** : si cette ligne s'affiche sur les deux jeux rejoues. `nadia-prof` dit, dans les deux rejeux et dans la fiche des pronoms, qu'elle n'est rendue que sur un ecran a propositions en image (la ligne porte `th:if="${propositionsEnImage == true and mancheRevelee == true}"`, ce que j'ai lu dans le gabarit) et qu'elle ne s'affiche ni sur `ce1-pronoms` ni sur `ce1-texte-narratif`. **C'est sa constatation, au jar ; je ne l'ai pas rejouee.** Son verdict porte sur le jar qu'elle a joue, `3eef868d`, et ses SHA-256 de paquet sont egaux a ceux de `7c9ac220`.
+
+**Ce que je corrige, pour que la regle tienne.** (a) Le sommet de rejeu de l'instance A etait `3eef868d` et son code differe de `7c9ac220` par `RDO-CP-R3`. (b) Une phrase de sommet ecrite dans ce fichier se relit a chaque fusion de code posterieure, pas seulement quand elle me semble concernee : je n'ai pas relu celle de 19:20 apres la fusion de 19:40. (c) La lecon est a porter dans `retro.md` a la cloture ; ce fichier n'existe pas encore et je ne l'ecris pas ici.
+
+### 2. Fusions de ce jour, lignee verifiee avant
+
+| Ordre | Branche | Sommet | Fusion | Delta |
+|---|---|---|---|---|
+| 1 | `s57-nadia-p2-a3` | `bf07d89d` (`[NAD]`, 20:07:31) | `ae116186` | 4 fichiers, 258 insertions, 2 suppressions : deux rejeux neufs (50 et 64 lignes), `FICHE-bandit-manchot-pronoms-ce1.md` (+67), `FICHE-bandit-manchot-texte-narratif-ce1.md` |
+| 2 | `s57-nadia-p2-b3` | `bc4009ed` (`[NAD]`, 20:00:10) | `a5a486ad` | 2 fichiers, 162 insertions, 2 suppressions : `rejeu-nadia-palier-2-b-rdo-cp-r3.md` (neuf, 55 lignes), `FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md` |
+
+- **Lignee.** `git merge-base round-two <branche>` rend `3eef868d` pour les deux (code 0 ; un commit propre chacune). `juger_lignee` de `outils/verifier-lignee.sh`, appelee avec le nom de la branche et ce code : deux sorties 0. **Je ne l'ai pas lancee depuis un worktree de chaque branche.**
+- **Lecture avant fusion.** Les trois rejeux en entier, le diff complet des trois fiches (lignes `+` et `-`). Les corps entiers des fiches (verdicts anterieurs) ne sont pas relus.
+- **Aucun conflit** (`git grep -c '^<<<<<<<\|^>>>>>>>' HEAD -- docs squad` ne rend rien). **Docs seules** : `git diff --stat 3eef868d a5a486ad -- adapters domain application bootstrap pom.xml outils .github` ne rend aucune ligne.
+
+### 3. Verdicts, tels que `nadia-prof` les a ecrits
+
+| Poste | Fichier | Verdict | Jar joue |
+|---|---|---|---|
+| p2-3, rejeu de `-05` (`FRA-CE1-05`) | `rejeu-nadia-palier-2-a-lot05-rejeu.md`, fiche des pronoms | **VALIDE**, sans reserve ; refus `TRV-CE1-6` **leve** (quatre items dans un sens, trois dans l'autre, un mixte). 20 items sur 20, 240 couples sur 240 au pli | `3eef868d`, port 18511 |
+| p2-10, `RCT-CE1-R1` (`FRA-CE1-04`) | `rejeu-nadia-palier-2-a-rct.md`, fiche du texte narratif | **levee**, `FRA-CE1-04` **VALIDE**, aucune reserve ouverte. Les trois items a 478, 20 items sur 20 et 240 couples sur 240 aux trois largeurs | `3eef868d`, port 18511 |
+| p2-12, `RDO-CP-R3` (`ART-CP-10`) | `rejeu-nadia-palier-2-b-rdo-cp-r3.md`, fiche du jeu | **levee**, jeu **VALIDE**, aucune reserve ouverte. 36 revelations sur 36, marge minimale 38 px | `3eef868d`, port 18513 (code de `19c8a7b2`, `git diff --quiet` sort 0 : **exact pour ce poste**) |
+
+Ce que je relaye sans le juger : ces verdicts sont a elle. Observations qu'elle classe hors reserve : intrus du premier mot (5 items au lieu de 6), indice sous le pli sur 9 items a la revelation, phrase de revelation qui ne se lit pas comme la suite du verdict (aucune cote ne le garde).
+
+### 4. Etat final des postes du palier 2
+
+| Poste | Etat | Preuve sur disque |
+|---|---|---|
+| p2-1, arbitrage | livre | `arbitrage-nadia-palier-2.md` |
+| p2-2, marges de rejeu | **non entamees** (section 5) | aucun poste ne les a prises |
+| p2-3, lot `-05` | **audite, VALIDE** (lot `-05` refuse le 2026-10-16 16:18, corrige `42071c23`, fusionne `02b4a34e`, rejoue) | `rejeu-nadia-palier-2-a-lot05.md`, `...-rejeu.md` |
+| p2-4, lot `-24` | **audite, VALIDE** | `rejeu-nadia-palier-2-ap-lot24.md` |
+| p2-5, `N1` et `N2` | **audite**, prises en compte | `rejeu-nadia-palier-2-b.md` |
+| p2-6, script d'`additions-cp` | fusionne (`97a205e8`), hors `PAR` | amendement du 2026-10-16 |
+| p2-7, forme commune | fusionne (`aca0d90f`), hors `PAR` ; **juge au rejeu de p2-8** (pas de rejeu propre) | `rejeu-nadia-palier-2-ap.md` 2.4 (`PA4` tenue) |
+| p2-8, `TPH-CE1-R1` | **audite, levee** | `rejeu-nadia-palier-2-ap.md` |
+| p2-9, `GNA-CE1-R1` | **audite, levee** | idem |
+| p2-10, `RCT-CE1-R1` | **audite, levee** | `rejeu-nadia-palier-2-a-rct.md` |
+| p2-11, `VSJ-CE1-R2` | **audite, levee** | `rejeu-nadia-palier-2-a.md` |
+| p2-12, `RDO-CP-R3` | **audite, levee** | `rejeu-nadia-palier-2-b-rdo-cp-r3.md` |
+
+**Tous les postes sont audites.** Ce n'est pas une clôture : le Done pedagogique reste prononce par `nadia-prof` fiche par fiche, la cloture du sprint vient apres, et la matrice (147 / 200, non remesuree) est a `camille-po` (`FRA-CE1-05` a `couvert-valide`, statut de tete de la fiche des pronoms, ligne `ART-CP-10`, fermeture de `S57-RCT-CE1-R1` et de `S57-RDO-CP-R3`).
+
+### 5. Consommation par instance
+
+Chiffres de `nadia-prof`, **relus dans ses fichiers** : lot `-05` 1,0 (`rejeu-nadia-palier-2-a-lot05.md`, routage) ; rejeu de `-05` 0,5 et `RCT-CE1-R1` 0,5 (`Tarif consomme`, ses deux rejeux de ce jour) ; `VSJ-CE1-R2` 0,25 (`rejeu-nadia-palier-2-a.md`, routage) ; lot `-24` 1,0 (`rejeu-nadia-palier-2-ap-lot24.md`) ; `TPH` 0,5 et `GNA` 0,25 (`rejeu-nadia-palier-2-ap.md`, *"0,75 sur A'"*) ; `N1` et `N2` 0,25 (`rejeu-nadia-palier-2-b.md`) ; `RDO-CP-R3` 0,5 (`rejeu-nadia-palier-2-b-rdo-cp-r3.md`) ; arbitrage 0,5 par instance (`arbitrage-nadia-palier-2.md`, *"pris sur les 0,5 d'arbitrage de chacune des trois instances"*). **Les chiffres de l'agent principal sont les memes.** Les marges (0,5 par instance) et le non affecte de A' (0,25) sont ceux de l'amendement de 18:14.
+
+**Recompte par `awk`**, sur un registre de seize lignes (instance, ligne, prix, etat) que j'ai ecrit moi-meme, `wc -l` rend 16 : `awk -F'|' '{p[$1]+=$3; t+=$3} END{for(k in p) printf "%s %.2f\n",k,p[k]; printf "total %.2f\n",t}'`. Sortie lue ce jour : `A 3.25`, `Ap 3.00`, `B 1.75`, **`total 8.00`**. Meme commande restreinte aux lignes facturees : `A 2.75`, `Ap 2.25`, `B 1.25`, **`facture 6.25`** ; par etat : `facture 6.25`, `marge 1.50`, `nonaffecte 0.25`.
+
+| Instance | Composition | Facture | Detail | Marge | Non affecte |
+|---|---|---|---|---|---|
+| A (groupe X) | 3,25 | **2,75** | arbitrage 0,5 ; `-05` 1,0 ; rejeu de `-05` 0,5 ; `VSJ` 0,25 ; `RCT` 0,5 | 0,5 | 0 |
+| A' (groupe Y) | 3,00 | **2,25** | arbitrage 0,5 ; `-24` 1,0 ; `TPH` 0,5 ; `GNA` 0,25 | 0,5 | 0,25 |
+| B | 1,75 | **1,25** | arbitrage 0,5 ; `N1` et `N2` 0,25 ; `RDO-CP-R3` 0,5 | 0,5 | 0 |
+| **total** | **8,00** | **6,25** | | **1,5** | **0,25** |
+
+**Bornes** : somme **8,0** (`PAR-9`) ; plafond de 5,0 par instance (`PAR-8`), la plus chargee est A a 3,25 en composition et 2,75 facturee ; **trois lots au plus** par instance : A en porte un, A' un, B aucun. **Marges : intactes aux trois instances.** Le second refus que A.105 empechait (le rejeu de `-05` et celui de `RCT-CE1-R1` etant tous deux dans A, dont la marge est de 0,5) n'a pas eu lieu : **les deux rejeux ont leve du premier coup, aucun rejeu supplementaire n'a ete ouvert**. Le non affecte de A' (0,25) reste un reste, non attribue ; **je ne l'attribue pas**, c'est a `camille-po`.
+
+**Ce que le recompte ne prouve pas** : que les prix de `nadia-prof` sont les bons (le bareme est a elle), ni que le registre ecrit par moi contient toutes les lignes facturables : il reprend les postes de la composition et le rejeu de `-05`.
+
+### 6. Reports
+
+Six premiers reports, comptes a l'ouverture du palier 2 (2026-10-15 20:56, `DEC-0120` A.66 et A.95) : **p2-7, p2-8, p2-9, p2-10, p2-11, p2-12**. Les cinq premiers etaient non engages a l'ouverture ; p2-7 etait engage le 2026-10-16.
+
+**Ce que cela compte (A.83).** Un engagement tardif n'efface pas le report : **les six premiers reports restent ecrits**. Il evite le suivant. **Tous les six sont audites au palier 2** (section 4) : **aucun ne glisse au palier 3**, aucun second report n'est compte, et le troisieme report interdit (A.67, A.72) ne se pose pour aucun d'eux. Les postes engages des l'ouverture (p2-1 a p2-6) n'ont aucun report. Ce que A.72 aurait fait de p2-7 s'il n'avait pas ete juge (glissement) ne s'applique pas : son audit est celui du rejeu de p2-8, que je cite en section 4 ; **si `camille-po` ou `nadia-prof` lit autrement le jugement d'un poste hors `PAR` sans rejeu propre, c'est a eux de l'ecrire**. `-06`, `-07`, `-11` (groupe X) : deuxieme ecartement de `camille-po`, que je ne recalcule pas.
+
+### 7. `Q-U11`, `Q2` de `marc-dev`
+
+**`Q-U11`.** La reponse relayee le 2026-10-16 (fenetre bornee, 19:20, section 5) disait que, si le rejeu de `-05` n'avait pas lieu avant la cloture, la question du retrait revenait au palier 3. **Le rejeu a eu lieu (VALIDE), la condition ne joue pas.** La fenetre se referme sans retrait, par le fait. **`Q-U11` n'est pas close pour autant** : aucun `DEC` ne la tranche (`git grep -n "Q-U11" HEAD -- squad/decisions` : la question seule). Fermer la question est a `camille-po`, par un amendement ; **je ne la ferme pas**.
+
+**`Q2` de `marc-dev`** (jeu fautif de `TRV-CE1-6` aux anciens textes) : toujours ouverte, a `camille-po`.
+
+### 8. Decisions
+
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee** par ces deux fusions ni par cet amendement. `DEC-0120` et `DEC-0122` sont inchanges.
+
+### 9. Total recompte et jobs de `ci.yml`
+
+La section 10 donne le total et les jobs, ecrits apres les runs.
+
+**Ce que cet amendement ne fait pas.** Ne prononce aucun Done, ne juge aucun contenu, ne ferme aucune question de `camille-po`, ne touche ni la matrice, ni un catalogue, ni un critere, ni du code.
+
+### 10. Total recompte et jobs de `ci.yml` lances pour ce commit
+
+Lances sur `round-two` a `a5a486ad` (apres les deux fusions), puis avec les sections 1 a 9 de cet amendement presentes, avant commit. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, deux fois : sur `a5a486ad` seul (`BUILD SUCCESS`, exit 0, 3 min 48 s), puis avec les sections 1 a 9 presentes (`BUILD SUCCESS`, exit 0, 4 min 02 s). **2669 tests, 0 echec, 0 erreur, 0 ignore** aux deux runs (120, 31, 501, 1630, 381, 6 d'integration, lignes `Tests run` du reacteur, somme faite par moi, recomptee a part par l'attribut `tests` de 313 fichiers `TEST-*.xml` : 2669). JDK 21.0.10 (`java.version` lu dans les 60 rapports Surefire de `bootstrap`, une seule valeur). **Delta nul**, comme attendu : les deux fusions ne portent que des fichiers de `squad/`. L'etape *"Package du fat jar"* n'est pas lancee.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh` : *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, sortie 0, avec les sections 1 a 9.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh` et `verifier-garde-fou-accent-test.sh` sortent 0 ; `commit-atteignable.sh 3eef868d` sort 0 ; les sujets de `3eef868d..HEAD` hors fusions (deux commits d'agents, `[NAD]`) et le sujet prevu du commit passent dans `verifier-prefixes.sh` : *"Tous les commits portent un prefixe d'agent connu."*, sortie 0 ; `verifier-garde-fou-accent.sh "3eef868d..HEAD"` : *"0 commit(s) le touchent dans la plage, tous [THEO]."*, sortie 0.
+- **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances (`bash` pour les `.sh`, `python` pour les `.py`), 13 sortis 0, aucun balayage vide, `TMPDIR` dans mon espace de travail en forme POSIX. Ils ont tourne pendant le second `build`, qui est sorti 0.
+- **Code inchange** : `git diff --quiet 3eef868d -- adapters domain application bootstrap pom.xml outils .github` sort 0.
+
+Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue. **Le Done technique n'est pas prononce par moi** : il est juge par la CI sur le commit pousse.
