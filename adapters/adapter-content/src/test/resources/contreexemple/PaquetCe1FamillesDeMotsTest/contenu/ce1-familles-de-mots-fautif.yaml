@@ -1,0 +1,38 @@
+schema: 1
+id: ce1-familles-de-mots-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1FamillesDeMotsTest. Chaque item viole une seule
+# propriete du paquet. Un seul item de famille sur cinq : le compte est celui des champs enonce.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Vocabulaire"
+  competence: "Regrouper les mots d'une même famille et repérer un préfixe ou un suffixe fréquent (re-, dé-, -eur...)."
+lignesDeReferentiel: ["FRA-CE1-24"]
+items:
+  # FAM-CE1-2 : famille savante, librairie attendu pour livre
+  # FM6 : l'indice n'est pas celui de la section 3.6
+  - enonce: "Quel mot est de la même famille que « livre » ?"
+    bonneReponse: "librairie"
+    distracteurs: ["livrer", "cahier"]
+    indice: "Cherche le mot qui parle de la même chose."
+  # FAM-CE1-3 / TRV-CE1-4 : le mot suffixe dans l'indice
+  - enonce: "Que veut dire « refaire » ?"
+    bonneReponse: "faire encore"
+    distracteurs: ["ne jamais faire", "faire très vite"]
+    indice: "Cherche le suffixe du mot."
+  # TRV-CE1-5 : renvoi a l'oreille
+  - enonce: "Que veut dire « relire » ?"
+    bonneReponse: "lire de nouveau"
+    distracteurs: ["ne pas lire", "lire à voix haute"]
+    indice: "Écoute le début du mot."
+  # TRV-CE1-5 : indice de quinze mots
+  - enonce: "Que veut dire « chanteur » ?"
+    bonneReponse: "celui qui chante"
+    distracteurs: ["celui qui écoute", "la chanson"]
+    indice: "Regarde bien le mot en entier, puis cherche un mot connu au début du mot."
+  # TRV-CE1-5 : l'indice contient la bonne reponse
+  - enonce: "Que veut dire « nageur » ?"
+    bonneReponse: "celui qui nage"
+    distracteurs: ["celui qui plonge", "l'eau de la piscine"]
+    indice: "Cherche celui qui nage."
