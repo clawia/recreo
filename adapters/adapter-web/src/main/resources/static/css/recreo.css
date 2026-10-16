@@ -1898,6 +1898,40 @@ body:has(.ecran-exclusif) .chip-niveau {
     .ecran-deux-oeuvres > .enonce { margin-bottom: 0; }
 }
 
+/* S57-FORME-COMMUNE-PROPOSITIONS-LONGUES (forme commune d'ines-design, regles R3-1 a R3-5, sans L1 ni L2) :
+   sur l'ecran de manche a propositions ecrites, hors .ecran-deux-oeuvres qui garde sa feuille, le message
+   (indice, revelation) tient au-dessus du pli de 551 px a 744 de large. Le visage, les etoiles, le bandeau
+   et le socle gardent leur hauteur ; aucune taille de police, de bouton ni de case ne change. Sous 720 px
+   rien ne change. Aucune regle ne nomme un paquet, une longueur de proposition ni un etat du verdict. */
+@media (min-width: 720px) {
+    /* R3-1 : le score commence au bord de la bande de l'en-tete (-32 px). Accord de nadia-prof, condition
+       regardee au rejeu : aucune lettre du score couverte, le score se lit comme une ligne du jeu. */
+    .zone-jeu:has(> .ecran-de-jeu:not(.ecran-deux-oeuvres) .propositions) { padding-top: 0; }
+
+    /* R3-2 : quatre marges de 4 px au-dessus du meuble (-16 px), les memes que L4. */
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .score { margin: 0; }
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .consigne { margin-bottom: 0; }
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .enonce { margin-bottom: 0; }
+
+    /* R3-3 : l'ecart entre deux rangees de propositions, 1 rem -> 0,5 rem ; l'ecart lateral ne change pas. */
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) .propositions { row-gap: 0.5rem; }
+
+    /* R3-4 : le signal (15 rem, comme L3) a gauche, le texte a droite ; la meme disposition dans tous les
+       etats du message, l'indice, la revelation et l'explication ne passent plus sous le signal. */
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .message-jeu {
+        display: grid;
+        grid-template-columns: 15rem minmax(0, 1fr);
+        column-gap: 0.75rem;
+        align-items: start;
+    }
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .message-jeu > .signal { grid-column: 1; grid-row: 1 / span 3; }
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .message-jeu > :not(.signal) { grid-column: 2; }
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) .signal .verdict { margin-bottom: 0; }
+
+    /* R3-5 : le premier bloc de la colonne de droite n'a plus de marge haute : rien ne le precede. */
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .message-jeu > .signal + * { margin-top: 0; }
+}
+
 /* Hors sprint accueil par matiere (DEC-0117, ADR-0105, ADR-0106, arbitrage de nadia-prof APM-1 a APM-11).
    Reprise des regles candidates d'ines-design (squad/conformite/releves-accueil/accueil-vues.css), a deux
    ecarts pres que l'ADR impose : la teinte n'arrive que par les deux proprietes personnalisees

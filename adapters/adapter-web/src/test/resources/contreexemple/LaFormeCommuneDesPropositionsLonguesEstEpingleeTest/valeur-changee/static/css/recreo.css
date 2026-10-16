@@ -1,0 +1,4 @@
+/* Contre-exemple : une valeur de la forme change (row-gap de 0,5 rem a 1 rem). */
+@media (min-width: 720px) {
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) .propositions { row-gap: 1rem; }
+}
