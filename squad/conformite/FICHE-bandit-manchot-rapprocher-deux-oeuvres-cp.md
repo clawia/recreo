@@ -16,8 +16,9 @@
   2026-10-09 a 21:37 et 22:07).
 - **Statut global** : **REFUSE**, prononce le 2026-10-11 par `nadia-prof` (s56), apres avoir joue le jar servi. Rejeu du
   2026-10-15 (s57, instance B) sur `ac9ae080` : refus leve, `RDO-CP-R1` et `RDO-CP-R2` levees, reserve neuve `RDO-CP-R3` ;
-  statut **VALIDE SOUS RESERVE**.
-- **Derniere mise a jour** : 2026-10-15.
+  statut **VALIDE SOUS RESERVE**. Rejeu du 2026-10-16 (s57, palier 2, instance B) sur le jar de `3eef868d` (code de
+  `19c8a7b2`) : `RDO-CP-R3` levee, plus aucune reserve ouverte ; statut **VALIDE**.
+- **Derniere mise a jour** : 2026-10-16.
 
 > **Fiche ouverte par `nadia-prof`** : `camille-po` n'en avait pas ouvert (`ls squad/conformite` suivi de
 > `grep -c rapprocher` rendait 0 a `a6ca1751`). Les lignes d'en-tete descriptives sont reprises du catalogue et du
@@ -365,3 +366,107 @@ dernier (`ADR-0100`). Prefixe `RDO-CP` deja alloue ; `git grep "RDO-CP-R3"` ne r
 **Tarif consomme** : rejeu 0,5 (poste 8, instance B, `engagement-poste-8.md`). Aucun prix neuf.
 
 **Signe** : `nadia-prof`, s57, palier 1, instance B, 2026-10-15.
+
+---
+
+### Rejeu du 2026-10-16 (`nadia-prof`, s57, palier 2, instance B) : `RDO-CP-R3` **levee** ; statut **VALIDE**
+
+**Motif.** A 720, 744 et 768 x 551, a la revelation, sur les six items, avec une barre de defilement classique et sans barre
+peinte, aucun mot de *"Voici la bonne œuvre. Appuie dessus."* ne passe le bord droit de sa boite (marge la plus petite : 38 px,
+a 720 avec barre ; 53 px partout ailleurs), et `scrollWidth` du document egale `clientWidth` dans les 36 revelations. La phrase
+tient sur deux lignes coupees entre les deux phrases, partout. **C'est la levee ecrite en section 6 du 2026-10-15, mot pour
+mot ; je ne la deplace pas.** `RDO-CP-R3` etait la seule reserve ouverte : le jeu passe a **VALIDE**.
+
+**Objet joue.** Jar construit sur `3eef868d` de `round-two` (worktree `s57-nadia-p2-b3`, `bash outils/mvn-jdk21.sh -B clean
+package -DskipTests`, `BUILD SUCCESS`, SHA-256 `da8f7d0e...9138`). Le code est celui de la fusion `19c8a7b2` : `git diff --quiet
+19c8a7b2 3eef868d -- adapters domain application bootstrap pom.xml` sort 0 ; `23222465` (`lea-dev`) est ancetre de `3eef868d`.
+Le gabarit sert le texte de `reponse-nadia-pa7-pa8.md` 2.4 : `Voici` U+00A0 `la` U+00A0 `bonne` U+00A0 `œuvre.`, une espace
+ordinaire, `Appuie` U+00A0 `dessus.`, lu sur le noeud de texte servi. Port 18513 libre avant, *"Tomcat started on port 18513"*,
+Java 21.0.10, PID 53504, arrete par ce PID. Deux Chrome sans tete (port de debogage 19213, profils dans mon dossier de poste
+`s57-p2-nadia-prof-b`), un par mode, fermes par `Browser.close` ; plus aucun processus a leur PID ensuite. **Job `build`, lance par
+moi** sur `3eef868d` : `bash outils/mvn-jdk21.sh -B clean verify`, racine, sans `-pl` : `BUILD SUCCESS`, 120, 31, 501, 1630,
+381 et 6 d'integration, 2669 tests, 0 echec, 0 erreur. Les jobs `chemins`, `prefixes` et `outils` : non lances par moi sur cet
+arbre, je ne les deduis pas.
+
+#### 1. Ce que j'ai joue
+
+- **Conduite** : pour chaque manche d'un item pas encore revele, une oeuvre fausse, l'autre, la premiere de nouveau (troisieme
+  essai faux), puis la bonne oeuvre revelee ; les items deja vus, justes du premier coup. Parties de cinq manches jusqu'a
+  l'ecran de fin.
+- **Volume** : 2 modes x 3 largeurs, 13 parties, **les six items reveles a chaque largeur et dans chaque mode** (36 revelations,
+  36 premiers et 36 deuxiemes echecs). Mode avec barre verifie : `clientWidth` 705, 729 et 753 a la revelation ; sans barre,
+  720, 744 et 768.
+- **Captures regardees** : la revelation a 720 avec et sans barre, a 744 avec barre ; le premier echec a 744 ; l'ecran de fin.
+
+#### 2. Cotes a la revelation, six items
+
+| Largeur | Mode | Boite de la phrase (haut - bas) | Marge du mot le plus a droite | Lignes servies | `scrollWidth` = `clientWidth` |
+|---|---|---|---|---|---|
+| 720 | barre | 463 - 523 | 38 px | *"Voici la bonne œuvre."* / *"Appuie dessus."* | oui (705) |
+| 720 | sans barre | 468 - 528 | 53 px | idem | oui (720) |
+| 744 | barre | 468 - 528 | 53 px | idem | oui (729) |
+| 744 | sans barre | 468 - 528 | 53 px | idem | oui (744) |
+| 768 | barre | 468 - 528 | 53 px | idem | oui (753) |
+| 768 | sans barre | 468 - 528 | 53 px | idem | oui (768) |
+
+Les six items rendent les memes cotes a largeur et mode egaux. Ce sont les chiffres de ma mesure sur le DOM du 2026-10-16
+(`reponse-nadia-pa7-pa8.md` 2.4, 38 et 53 px de marge), cette fois sur le gabarit livre. Bas de la phrase a 744 : **528**, comme
+avant la voie (iii) ; la barre du refus reste atteinte.
+
+#### 3. Ce que l'enfant de CP lit, et ce que l'adulte lit
+
+- **Lisibilite.** Cinq mots courts, puis deux. *œuvre* est le mot de la consigne et de l'enonce, deja lus. *"la bonne"* est le
+  mot de la classe pour la reponse juste. A l'ecran, aucune phrase n'est coupee, aucun mot ne sort de l'ecran. Le *"qui va
+  ave"* de 720 a disparu. Un enfant qui lit encore peu decode la phrase ; l'adulte qui l'accompagne (`DEC-0046`) la lit avec
+  lui si besoin.
+- **La phrase ne se lit pas comme la suite du verdict.** La boite rose *"Ce n'est pas ça."* finit 12 px avant le debut de la
+  phrase, aux trois largeurs et dans les deux modes ; la phrase est sur le fond clair, sans cadre, dans sa propre colonne. C'est
+  ce qui m'avait fait ecarter la voie (i) (`reponse-nadia-pa7-pa8.md` 2.2) : tenu.
+- **Ce que l'adulte lit.** Ce jeu ne porte aucun bloc *"Adulte, à voix haute :"* (`.bloc-adulte` absent des 36 revelations) : la
+  voix n'est pas la competence visee, et `DEC-0046` n'y ouvre aucun texte reserve a l'adulte. Tout ce qui est a l'ecran est
+  ecrit pour l'enfant. Rien ne s'y confond donc.
+- **Ce que *Voici* designe.** L'oeuvre marquee par l'anneau, la seule sans croix, sous la phrase ; les deux autres sont palies et
+  portent une croix. Aucun nom d'oeuvre, aucune description (`CON-5`).
+
+#### 4. Les autres etats, constates
+
+- **Manche fraiche** : pas de defilement horizontal, aux trois largeurs.
+- **Echec** : *"Ce n'est pas ça. / Essaie encore !"* sur deux lignes, coupure entre les deux phrases. Indice servi egal au paquet
+  (*"Regarde bien les traits de peinture."*, *"Regarde comment l'eau est dessinée."*, *"Regarde d'où vient la lumière."*).
+  `scrollWidth` = `clientWidth` au premier et au deuxieme echec, partout.
+- **Le pli de `RDO-CP-R1` (levee le 2026-10-15)** : a 744 x 551, apres une erreur, le bas de `.indice` est a **548** sur les six
+  items, avec et sans barre ; a 720 avec barre, 543 ; a 768, 548. La marge a 744 reste de **3 px**, la meme que le 2026-10-15 :
+  la voie (iii) ne touche pas la feuille. Je l'avais dite sans garantie sur une police ; elle n'a ni gagne ni perdu.
+- **Apres la revelation** : l'explication commence a 532 (527 a 720 avec barre), sous la phrase ; le document descend a 758
+  (783 a 720 avec barre). L'appui sur la bonne oeuvre passe a la manche suivante.
+- **Ecran de fin** : *"Tu as trouvé, tout seul :"* 0, *"Tu as joué toutes les questions :"* 5, *"Tu n'as pas trouvé."*, *"C'est
+  fini !"* ; aucune oeuvre, aucun texte qui en designe une (`RDO-CP-R2` reste levee).
+
+#### 5. Ce que je n'ai pas joue
+
+- 992 et 1200 de large : hors de la levee ; non mesure ce jour.
+- Une autre police que celle que le jar sert sur ce poste ; une tablette ; le clavier ; un enfant.
+- Une partie juste du premier coup sur un item jamais revele : chaque item a d'abord ete revele, puis joue juste dans les parties
+  suivantes.
+- L'orthotypographie de la phrase : au `relecteur-pedagogique`.
+
+#### 6. Ce dont je reste la seule garde sur ce jeu
+
+Ce que la section 8 du 2026-10-15 nomme, a un changement pres : le debordement de la phrase de `M4` et le defilement
+horizontal ne sont toujours juges par aucun automate (le garde-fou de D.4 lit le texte, pas la geometrie). **Ce rejeu ne les
+fait pas garder** : une phrase plus longue demain les referait sortir sans qu'aucun test ne rougisse. S'y ajoute : que la
+phrase de la revelation ne se lise pas comme la suite du verdict (12 px et un fond different aujourd'hui, aucune cote ne le
+garde).
+
+#### 7. Routage
+
+| A qui | Quoi |
+|---|---|
+| `camille-po` | `RDO-CP-R3` levee, plus aucune reserve sur ce jeu ; la levee que demande `S57-RDO-CP-R3` est prononcee. La ligne `ART-CP-10` est a elle |
+| `sofia-sm` | prix consomme : 0,5 (p2-12, instance B) |
+
+**Identifiant** : aucun neuf ni renomme. `RDO-CP-R3` est deja alloue (`REGISTRE-identifiants.md`, section 4).
+
+**Tarif consomme** : rejeu 0,5 (p2-12, instance B, `PAR-10`).
+
+**Signe** : `nadia-prof`, s57, palier 2, instance B, 2026-10-16.
