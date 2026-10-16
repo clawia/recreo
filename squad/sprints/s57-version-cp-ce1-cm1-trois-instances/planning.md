@@ -1114,3 +1114,136 @@ Lances sur l'arbre de `round-two` a `0c0d2142` avec ce fichier modifie (sections
 - **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances (`bash` pour les `.sh`, `python` pour les `.py`), 13 sortis 0, aucun balayage vide. Ecart a dire : le premier passage a laisse `TMPDIR` a la valeur de l'environnement du shell (`/tmp`, hors de mon espace de travail, ce que la consigne interdisait) ; `outils/mvn-jdk21-test.sh` a ete relance seul avec `TMPDIR` dans mon espace de travail, forme POSIX : sortie 0, repertoire de travail vide ensuite. Les repertoires `tmp.*` qui subsistent dans `/tmp` ne sont pas a moi, je n'y ai pas touche.
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
+
+---
+
+## Amendement du 2026-10-16 15:27 (UTC+02:00), palier 2 : cote de reference ecrite, PA2 levee, engagement de p2-8, p2-9 et p2-11
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace ou precise est nomme. Arbre de depart : `round-two` a `2043b3f3` (`origin/round-two` egal), casquette Scrum Master. Aucune ceremonie n'est animee par ce texte. Aucun Done n'est prononce, technique ou pedagogique.
+
+### 1. Fusions de ce jour, lignee verifiee avant chacune
+
+Lignee : `git merge-base round-two s57-camille-p2-garde2` rend `9b668a78`, `git merge-base round-two s57-ines-p2-cote` rend `0c0d2142`, tous deux ancetres de `round-two` (`git merge-base --is-ancestor` sort 0 pour les deux). `bash outils/verifier-lignee.sh` lance depuis le worktree de fusion (branche `s57-sofia-p2-fusion2`, issue de `round-two`) sort 0 ; je ne l'ai pas lance depuis un worktree de chaque branche livree, j'ai lu les deux commandes `git` qu'il appelle. Rapports lus par `git show` avant la fusion.
+
+| Ordre | Branche | Sommet livre | Fusion | Delta |
+|---|---|---|---|---|
+| 1 | `s57-camille-p2-garde2` | `d92c839d` | `254221ad` | un fichier, `docs/backlog/backlog.md` (+105), aucun code |
+| 2 | `s57-ines-p2-cote` | `96f5e101` | `056f8c88` | 20 fichiers sous `squad/` (+14174) : le fichier de cote, les outils de mesure et les releves `p2-*` de `squad/conformite/releves-s57/` ; rien hors `squad/` |
+
+Aucun conflit. **Chemins et noms de compte** : le balayage des lignes ajoutees par les deux branches (lettres de lecteur, chemins de repertoire personnel, nom de compte) ne rend rien, et le job `chemins` sort 0 apres fusion (section 10). Mon premier balayage avait ramene des faux positifs : le nom de compte, cherche sans bornes, est contenu dans *declarative* et *exclamative*, que les releves citent par milliers ; je l'ai borne par des caracteres non alphabetiques avant de conclure.
+
+**Ce que dit `camille-po`** (annotation du backlog, `d92c839d`), relaye sans le juger : commande du critere 1 de `S57-GARDE-C1-SUJET-HORS-MESSAGE` amendee (regle sans `@media` ni `:not(...)`, 496 tests et 0 echec sur `round-two` a `9b668a78`, 501 tests et 1 echec avec la garde) ; `PN8-6` amendee, base ecrite en SHA (`aa9d703c`), 5 hunks sur les cinq references qu'elle liste ; story `S57-GARDE-C1-VIRGULE-ET-IMBRIQUE` (`Z1` et `Z2`), prix 0 hors `PAR`, palier 3 ; `Z3` et `Z4` laissees comme limites a declencheur. **Elle propose, et l'engagement est a moi** : la story `Z1`/`Z2` en tete du palier 3, avant tout poste qui modifie `recreo.css`. Je ne l'engage pas ici : le palier 3 n'est pas ouvert, et je note la proposition pour l'amendement qui l'ouvrira.
+
+### 2. Claims de `ines-design` reverifies, sans refaire sa mesure
+
+| Claim du fichier de cote | Ma verification | Sortie lue |
+|---|---|---|
+| Base `aa9d703c` = parent du premier commit de la forme | `git rev-parse dc6f423d^` et `git rev-parse aa9d703c` | les deux rendent `aa9d703ce1af7cd0c0964ae12e85c6864db0481c` ; `dc6f423d` est le premier commit de la branche, pose sur cette base |
+| SHA-256 du jar de base | `sha256sum` du jar laisse dans le worktree de la base | `f4eb0d40...de89`, egal a la section 1 de la cote |
+| SHA-256 du jar du sommet | idem, worktree de la cote | `61874630...5ff4`, egal |
+| Le jar de base porte la feuille de `aa9d703c` | feuille extraite du module `adapter-web` du jar, retours chariot retires, comparee au SHA-256 de la feuille lue par `git show aa9d703c:<feuille>` | `496b2368...40e6`, egal des deux cotes |
+| Le jar du sommet porte la feuille de `0c0d2142` | meme methode | `c312cd1b...3ef6`, egal des deux cotes |
+| Le code servi du sommet est celui de `0c0d2142` | `git diff --quiet 0c0d2142 HEAD -- adapters domain application bootstrap pom.xml outils` sur l'arbre fusionne | sort 0 : l'arbre actuel sert le meme code que le jar mesure |
+
+**Limites de ma verification.** Je n'ai ni reconstruit ni rejoue un jar : je confirme que les fichiers identifies existent, que leur empreinte egale celle que la cote declare, et que la feuille qu'ils portent est celle du commit nomme. Je n'ai pas recompte un seul pixel. Le jar de base seul n'est mesure que sur six jeux (cinq de la cote et `additions-cp`) : le reste de l'echantillon compare la feuille de base posee sur le DOM du sommet, ce que le fichier dit (sa section 9).
+
+### 3. Ce que la cote ecrite dit, et ce qu'elle ne mesure pas
+
+**`Q-P4` : non tenue, base fixee.** `git diff --stat 6dbb855d aa9d703c -- pom.xml domain application adapters bootstrap` rend 10 fichiers (en-tetes de dix paquets `ce1-*`) ; sur le sommet, 31. La condition de `nadia-prof` (`reponse-nadia-q-palier-2.md` 3.3) n'est tenue sur aucune des deux bases : la cote de `6dbb855d` n'est pas reprise, **tout est remesure**. Base de la cote : **`aa9d703c`**, parent de `dc6f423d` (section 2). Sommet mesure : **`0c0d2142`**. Le fichier est celui que `Q-R5` et le critere 4 de `S57-FORME-COMMUNE-PROPOSITIONS-LONGUES` demandent, date du 2026-10-16.
+
+**Critere 4, deuxieme commande** (`git diff --stat <base> <commit livre>` ne nomme aucun paquet) : tenu pour `dc6f423d` (5 fichiers), non tenu pour le sommet (22 fichiers du perimetre du jar, dont `catalogue.yaml` et 3 paquets, mais aucun des six paquets de la cote). **La remesure est celle que ma section 9 du 2026-10-15 forcait** (toute fusion apres la coupe). Sur quel jar elle rejoue est a `nadia-prof`.
+
+**Les quatre elements de `Q-R4`**, tels que `ines-design` les ecrit (744 x 551, bas de `.indice` apres une erreur, au plus 551) : element 1, 22 items de `ce1-verbe-sujet` de 534 a 418 - 448 et le groupe *les gateaux* de 486 a 400 ; element 2, 11 items de `ce1-texte-narratif` de 550 a 434 ; element 3, **65 enonces sur 65** d'`additions-cp`, de 486 a 370 ; element 4, 20 items de `comprehension-cm1`, aucun ne perd le pli. Trois jeux de la levee : base 23 sur 72, sommet 72 sur 72, maximum 548. Echantillon apparie : 40 jeux, pli perdu 0 et debordement neuf a droite 0 aux cinq largeurs, 2248 etats par largeur.
+
+**Ce que la cote ne leve pas, dit par elle et relaye ici** :
+
+- `ce1-texte-narratif`, items 13, 17 et 18 : 552 au pire ordre, la forme ne les leve pas d'un pixel. `S57-RCT-CE1-R1` reste ouverte (section 5).
+- `comprehension-cm1` : 11 items sur 20 gardent leur indice sous le pli en ordre servi. Ce n'est pas une regression : aucun item qui etait au-dessus ne passe dessous.
+
+**Valeur transitoire non expliquee.** Item 5 de `ce1-accord-groupe-nominal` (*les cheveux longs*), a 744, sur le seul bras du sommet : bas d'indice **355,8** dans les six ordres. Trois reprises donnent 474 a 744 et a 720. **Cause non trouvee**, valeur gardee dans le releve, au-dessus du pli, aucun compte ne change. `nadia-prof` la verra sur son jeu `GNA` : je ne la tiens pas pour reglee.
+
+**Non mesure par `ines-design`** (section 9 de son fichier) : la revelation (mesuree par le pilote, non agregee, hors levee `Q-R2`) ; les largeurs sous 720 px (la forme ne s'y applique pas, rien mesure) ; les polices autres que celle du poste ; les appareils reels, la tablette de 744 x 551, le lecteur d'ecran ; un seul navigateur ; `additions-cp` a une seule largeur et dans l'ordre servi ; les jeux `bandit-manchot` hors des 42 de l'echantillon et des cinq de la cote ; le jar de base joue seul sur l'echantillon. **Un releve ecarte par la faute de l'auteure** (deux pilotes sur un meme port de debogage), non verse, hors de tout chiffre : dit dans son fichier, section 7. Constats hors critere qu'elle ne juge pas : la barre de defilement reste presente a la revelation dans la plupart des etats (matiere de `PA4`) ; l'indice, coupe par le pli a la revelation de `phrases-types-ce1` item 17 ; `Score : 0` sous la bande de l'en-tete (`R3-1`).
+
+**Outils de mesure sans juge.** Les huit scripts `.mjs` et le script `.py` ajoutes sous `squad/conformite/releves-s57/` ne tombent sous aucun des trois balayages du job `outils` (aucun juge, dit par `ines-design`, section 13 de son fichier). Le job `outils` compte donc toujours 13 juges. Je ne l'elargis pas : c'est une question de qualite, routee a `yanis-qa`.
+
+### 4. `PA2` levee ; la regle de non-rejeu avant la cote est satisfaite
+
+**`PA2`** : le fichier date de la cote existe sur le disque (`056f8c88`, `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/cote-de-reference-forme-commune-2026-10-16.md`), avec le commit de la base, la largeur, la hauteur, la methode, les commandes de `Q-R5` et les quatre elements. Je la leve comme prealable de ce planning. **Elle ne dit pas que la forme est bonne** : elle compte des pixels.
+
+**Regle de `nadia-prof`** (`arbitrage-nadia-palier-2.md`, section 8, point 4) : pas de rejeu de la forme commune avant la mesure d'`ines-design` et avant que la cote de `Q-R4` soit ecrite dans un fichier date. Les deux sont sur le disque. **`nadia-prof` peut rejouer `p2-8`, `p2-9`, `p2-10`, `p2-11` et `p2-12` selon leurs engagements** (section 5) ; la regle ne leve aucune des conditions propres de `p2-10` et `p2-12`, qui sont les leurs.
+
+**Jar a rejouer.** Le code servi par la tete de `round-two` apres cette fusion est celui de `0c0d2142` (`git diff --quiet` sur `adapters domain application bootstrap pom.xml outils` sort 0) ; seuls `squad/` et `docs/backlog/` different. Diff de code contre la base de la cote, repris du 13:53 : `git diff --stat aa9d703c 0c0d2142 -- adapters domain application bootstrap pom.xml outils` : 23 fichiers, 2284 insertions, 40 suppressions ; hors tests, `recreo.css` (+34, la forme), `catalogue.yaml` (+12), `ce1-familles-de-mots.yaml`, `ce1-pronoms.yaml`, `cm1-sciences-extraire-information.yaml`. Si `nadia-prof` prefere `dc6f423d`, la seconde commande de `Q-R5` y est tenue (section 3) ; **le choix est le sien**, je ne le fais pas.
+
+### 5. Engagements, capacite uniquement
+
+Je tranche en capacite. Je ne lis pas `PA7` et `PA8` a la place de `nadia-prof`, `theo-archi` et `ines-design` : je lis leurs fichiers, et ce qu'ils ne disent pas reste ouvert.
+
+| Poste | Decision | Developpeur | Rejeu | Prix | Ce que j'ai lu |
+|---|---|---|---|---|---|
+| p2-8, `TPH-CE1-R1` | **engage** | aucun (la forme est livree, `lea-dev` n'a plus de developpement a porter) | `nadia-prof`, instance A' (`s57-p2-nadia-prof-ap`, 18512, 19212) | 0,5 | forme fusionnee, `PA1` livre, `PA2` levee, `PA3`, `PA4`, `PA5` levees (amendement du 09:03) |
+| p2-9, `GNA-CE1-R1` | **engage, apres p2-8**, meme jar | aucun | `nadia-prof`, A' | 0,5 | idem ; jamais avant p2-8 |
+| p2-11, `VSJ-CE1-R2` | **engage, voie de la forme** | aucun (paquet inchange) | `nadia-prof`, instance A (`s57-p2-nadia-prof-a`, 18511, 19211) | 0,25 | `Q-S9` tranchee par `nadia-prof` (`reponse-nadia-q-palier-2.md` 3.8) ; les 24 items de `ce1-verbe-sujet` a 418 - 496 sur la cote |
+| p2-10, `RCT-CE1-R1` | **non engage** | `marc-dev` si des textes changent (libre : `-05`, `N1`, `N2` et le script sont fusionnes), sinon `lea-dev` | `nadia-prof`, A | 0,5 retenu | `PA7`, ci-dessous |
+| p2-12, `RDO-CP-R3` | **non engage** | `lea-dev`, ci-dessous | `nadia-prof`, instance B | 0,5 | `PA8`, ci-dessous |
+
+**p2-9 et le prix.** Le bareme de `nadia-prof` ecrit 0,25 pour `GNA-CE1-R1` quand la forme du paquet ne differe pas de celle de `TPH-CE1-R1`, et 0,5 sinon (`arbitrage-nadia-palier-2.md`, section 5). La composition retient 0,5, le maximum. **Je ne le baisse pas** : un prix est a `nadia-prof` et a `camille-po`. Si elle confirme 0,25, un 0,25 s'ajoute a l'ecart non affecte.
+
+**p2-10 reste non engage, et ce n'est pas la capacite.** `marc-dev` est libre. Ce qui manque, lu dans les fichiers : (1) `nadia-prof` n'accorde pas la regle du bandeau et donne les textes de la voie des propositions plus courtes, **sans choisir la voie** (`reponse-nadia-q-palier-2.md` 3.4 : *"Le choix entre eux reste au developpeur et a `theo-archi`"*) ; (2) `theo-archi` classe les deux voies et laisse le choix a `nadia-prof` pour le bandeau et a elle et au developpeur pour les textes (`avis-theo-palier-2.md` 3.2) ; **aucun fichier ne designe la voie** ; (3) la condition que j'ai ecrite le 2026-10-16 09:03, *"la mesure de `ines-design` sur les textes de `nadia-prof`"*, **n'existe pas** : le fichier de cote constate les trois items a 552 et ne mesure aucun des textes de `nadia-prof` (recherche de la premiere proposition courte, *saute dans une flaque*, dans le fichier de cote : aucune occurrence ; dans les releves `p2-*` elle n'apparait que dans le contenu actuel de l'item 13, *elle saute dans une flaque*). **Pour l'engager** : la voie ecrite par `nadia-prof` et le developpeur, et la mesure de `Q-P5` par `ines-design`. La voie decide aussi du prix (0,25 paquet inchange, 0,5 si des textes changent).
+
+**p2-12 reste non engage.** (1) `PA8` / `Q-R7` : `theo-archi` classe les trois voies de `RDO-CP-R3` et ecrit *"Le choix entre (i), (ii) et (iii) n'est pas le mien"* ; la mesure de la voie (i) qu'il demande a `ines-design` **n'existe pas** (son fichier de cote ne traite pas `RDO-CP-R3`) ; `nadia-prof` n'a pas choisi. (2) `Q-T15` : la trace de lecture de `theo-archi` exigee avant la fusion de p2-12 n'existe pas (le seul fichier de lecture du dossier est `lecture-theo-p2-7-forme-commune.md`) ; elle ne retient pas l'engagement, elle retient la fusion. **Regle ecrite de la section 5 du 2026-10-15** : *"si la forme commune n'est pas fusionnee, je nomme `marc-dev` ... ; je ne reaffecte pas la forme"*. La forme est fusionnee : la condition ne joue plus, **`lea-dev` reste le developpeur nomme de p2-12**, sa chaine critique pour la forme est soldee. Branche `s57-lea-rdo-cp-r3`, repertoire `s57-p2-lea-dev-b`, ports 18531 et 19231, inchanges. Aucun worktree n'est ouvert.
+
+### 6. Ce que `nadia-prof` rejoue, dans cet ordre
+
+1. **p2-8, `TPH-CE1-R1`** (24 items de `ce1-phrases-types`), jar de la tete de `round-two` ou de `dc6f423d` selon son choix. Clause `Q-R4` : la cote ecrite. Conditions qu'elle a posees et regarde au rejeu : le score se lit comme une ligne du jeu avec `R3-1` (`reponse-nadia-q-palier-2.md` 3.1) ; a 720, aucun libelle ne change de nombre de lignes a la revelation (3.2).
+2. **p2-9, `GNA-CE1-R1`** (24 items de `ce1-accord-groupe-nominal`), sur le meme jar, apres p2-8. A regarder : l'item 5, valeur transitoire de 355,8 non expliquee (section 3).
+3. **p2-11, `VSJ-CE1-R2`** (24 items de `ce1-verbe-sujet`), voie de la forme, sur le meme jar. Elle se rejoue sur le jar ou `TPH-CE1-R1` est leve ou non (`reponse-nadia-q-palier-2.md` 3.8).
+
+**Pas encore** : p2-10 (`PA7`) et p2-12 (`PA8`), section 5. Les non-mesures d'`ines-design` (section 3) sont les siennes a juger au jeu, et les trois items de `ce1-texte-narratif` a 552 ne sont pas leves par la forme.
+
+### 7. Compte des reports (`DEC-0120` A.66, A.72, A.83) et prix
+
+Regles appliquees a la lettre : un poste retenu par la composition et non engage a l'ouverture du palier est un report compte a l'ouverture ; **un engagement tardif n'efface pas le report, il evite le suivant** ; un poste engage et non audite a la cloture du palier glisse (A.72).
+
+| Poste | Compte a l'ouverture du palier 2 | Apres cet amendement |
+|---|---|---|
+| p2-8 `TPH-CE1-R1` | premier report | engage : le premier report reste ecrit ; non audite a la cloture du palier 2, il glisse ; second report compte seulement a la cloture du palier 3 |
+| p2-9 `GNA-CE1-R1` | premier report | idem |
+| p2-11 `VSJ-CE1-R2` | premier report | idem |
+| p2-10 `RCT-CE1-R1` | premier report | non engage : premier report ; **second report compte a l'ouverture du palier 3 s'il n'est pas engage a ce moment** |
+| p2-12 `RDO-CP-R3` | premier report | idem |
+| p2-7 forme commune | premier report | fusionne (`aca0d90f`), jugee au rejeu de `TPH-CE1-R1` ; inchange |
+
+**Prix, recomptes sans modifier un lot ni un prix.** Somme par `awk` sur les prix de la section 3 de l'amendement du 2026-10-15 20:56, corriges au 09:03 (p2-11 a 0,25), sortie lue ce jour : engage **5,00** ; marges **1,50** ; non engage **1,00** ; non affecte **0,50** ; **total 8,00**. Par instance : A 3,0 (engage 1,75 ; marge 0,5 ; non engage 0,5, soit `RCT-CE1-R1` ; non affecte 0,25) ; A' 3,0 (engage 2,5 ; marge 0,5 ; non engage 0) ; B 1,75 (engage 0,75 ; marge 0,5 ; non engage 0,5, soit `RDO-CP-R3`) ; hors instance 0,25. Bornes relues : somme 8,0 ; aucun chiffre au-dela ; plafond de 5,0 par instance et trois lots au plus par instance tenus. Le seul mouvement est 1,25 qui passe de non engage a engage (p2-8 0,5, p2-9 0,5, p2-11 0,25).
+
+### 8. Obstacles : ce que les fichiers presents sur le disque permettent de clore
+
+| Obstacle | Fichier qui le tranche | Etat |
+|---|---|---|
+| `PA2`, cote de reference | `cote-de-reference-forme-commune-2026-10-16.md`, fusionne (`056f8c88`) | **clos** (section 4) |
+| `Q-P4` | `reponse-nadia-q-palier-2.md` 3.3 et sections 2 et 3 de la cote | **clos** : condition non tenue, remesure faite |
+| Commande du critere 1 de la garde de `C1'` (`CR23`) | annotation du backlog, fusionnee (`254221ad`) | **clos** pour l'ecriture ; la commande reste a rejouer par mutation (`yanis-qa`, `theo-archi`) |
+| `PN8-6`, base en SHA (`CR24`, premiere moitie) | meme annotation | **clos** ; `FM5-6` porte la meme expression et reste a amender par `camille-po` |
+| Story `Z1` et `Z2` | meme annotation | ecrite ; engagement au palier 3 (section 1) |
+| `PA7` (`Q-P5`) | aucun fichier ne designe la voie ni ne mesure les textes | **ouvert** : `nadia-prof`, developpeur et `theo-archi` pour la voie, `ines-design` pour la mesure |
+| `PA8` (`Q-R7`) | aucun | **ouvert** : `ines-design` (mesure de la voie (i)), `nadia-prof` et `theo-archi` |
+| `Q-T15` pour p2-12 | aucun | ouvert, conditionne la fusion |
+| `CR26`, `CR27` | aucun | ouverts, `theo-archi` |
+| Outils de mesure sans juge | aucun | **ouvert**, `yanis-qa` |
+| `E4` (`FM3`), declaration de `node` et de Python, normalisation de `TMPDIR`, `Q4` | aucun | inchanges, ouverts |
+
+### 9. Ce que cet amendement ne fait pas, decisions
+
+Ne prononce aucun Done, ne juge aucun contenu, ne leve aucune reserve, ne repond ni a `PA7` ni a `PA8` ni a `Q-P4` a la place de leurs titulaires. Ne modifie ni critere ni prix ni lot. N'engage ni p2-10, ni p2-12, ni la story `Z1`/`Z2`. Ne touche ni la matrice (146 / 200), ni un paquet, ni un catalogue, ni du code, ni `ci.yml`. N'ouvre aucun worktree de developpement.
+
+**Decisions prises** : aucune `ADR` ni `DEC` n'est creee ou amendee par cet amendement ni par les deux fusions. L'annotation du backlog de `camille-po` l'ecrit pour elle-meme (*"aucune decision nouvelle n'est inscrite par cette annotation"*) ; le fichier de cote d'`ines-design` n'en ecrit aucune.
+
+### 10. Jobs de `ci.yml` lances pour ce commit
+
+Lances sur le worktree de fusion, tete `056f8c88` plus ce fichier modifie, avant commit. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, deux fois : sur `056f8c88` (apres les deux fusions), puis avec ce fichier present. Les deux : `BUILD SUCCESS`, exit 0, **2669 tests, 0 echec, 0 erreur, 0 ignore** (120, 31, 501, 1630, 381, 6 d'integration, lignes `Tests run` du reacteur, recompte a part par l'attribut `tests` des `TEST-*.xml`). JDK 21.0.10 (ligne d'enveloppe). **2669 est attendu** : 2669 sur `0c0d2142`, et les deux fusions ne changent ni code ni test (`git diff --quiet 0c0d2142 HEAD` sur `adapters domain application bootstrap pom.xml outils` sort 0). Le second build a lu ce fichier avant l'ajout de la presente section, qui ne contient aucun tableau. Etape "Package du fat jar" non lancee.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh` : *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, sortie 0, avec les releves d'`ines-design` et ce fichier.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh` et `verifier-garde-fou-accent-test.sh` sortent 0 ; `commit-atteignable.sh 2043b3f3` sort 0 ; les sujets de `2043b3f3..HEAD` (hors fusions) et le sujet prevu du commit passent dans `verifier-prefixes.sh`, sortie 0 ; `verifier-garde-fou-accent.sh "2043b3f3..HEAD"` : *"0 commit(s) le touchent dans la plage, tous [THEO]."*, sortie 0.
+- **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances (`bash` pour les `.sh`, `python` pour les `.py`), 13 sortis 0, aucun balayage vide, avec `TMPDIR` dans mon espace de travail en forme POSIX. Le nombre n'a pas bouge : `ines-design` n'ajoute aucun juge (section 3).
+
+Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
