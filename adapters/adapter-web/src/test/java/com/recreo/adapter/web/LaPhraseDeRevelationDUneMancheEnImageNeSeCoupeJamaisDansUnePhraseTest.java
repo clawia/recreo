@@ -40,9 +40,9 @@ class LaPhraseDeRevelationDUneMancheEnImageNeSeCoupeJamaisDansUnePhraseTest {
     private static final String FINS_DE_PHRASE = ".!?";
 
     /** La phrase de M4 (nadia-prof), mot pour mot, lue comme le fait un oeil : U+00A0 vaut une espace. */
-    private static final String PHRASE_DE_M4 = "C'est cette œuvre qui va avec. Appuie dessus.";
+    private static final String PHRASE_DE_M4 = "Voici la bonne œuvre. Appuie dessus.";
 
-    private static final String PREMIERE_PHRASE = "C'est cette œuvre qui va avec.";
+    private static final String PREMIERE_PHRASE = "Voici la bonne œuvre.";
     private static final String SECONDE_PHRASE = "Appuie dessus.";
 
     @Autowired
@@ -63,7 +63,7 @@ class LaPhraseDeRevelationDUneMancheEnImageNeSeCoupeJamaisDansUnePhraseTest {
     /**
      * Les defauts de la phrase, un message par defaut : U+00A0 lue comme une espace, le texte vaut la
      * phrase de M4 ; toute espace ordinaire suit immediatement une fin de phrase ; la premiere phrase
-     * est suivie d'une espace ordinaire ; cinq U+00A0 dans la premiere phrase, une dans la seconde.
+     * est suivie d'une espace ordinaire ; trois U+00A0 dans la premiere phrase, une dans la seconde.
      */
     static List<String> defauts(String phrase) {
         List<String> defauts = new ArrayList<>();
@@ -83,9 +83,9 @@ class LaPhraseDeRevelationDUneMancheEnImageNeSeCoupeJamaisDansUnePhraseTest {
             defauts.add("la premiere phrase n'est pas suivie d'une espace ordinaire dans \"" + visible(phrase)
                     + "\" (~ = U+00A0)");
         }
-        if (nombreDInsecables(phrase.substring(0, coupure)) != 5) {
+        if (nombreDInsecables(phrase.substring(0, coupure)) != 3) {
             defauts.add("la premiere phrase porte " + nombreDInsecables(phrase.substring(0, coupure))
-                    + " U+00A0, cinq attendues");
+                    + " U+00A0, trois attendues");
         }
         if (nombreDInsecables(phrase.substring(coupure + 1)) != 1) {
             defauts.add("la seconde phrase porte " + nombreDInsecables(phrase.substring(coupure + 1))
@@ -121,17 +121,17 @@ class LaPhraseDeRevelationDUneMancheEnImageNeSeCoupeJamaisDansUnePhraseTest {
 
     @Test
     void laProprieteMordSurUneEspaceOrdinaireRemiseEtSurUnInsecableEntreLesDeuxPhrases() {
-        assertThat(defauts(insecables("C'est~cette~œuvre~qui~va~avec. Appuie~dessus."))).isEmpty();
+        assertThat(defauts(insecables("Voici~la~bonne~œuvre. Appuie~dessus."))).isEmpty();
 
-        assertThat(defauts(insecables("C'est~cette~œuvre~qui~va avec. Appuie~dessus.")))
-                .as("espace ordinaire entre va et avec").isNotEmpty();
-        assertThat(defauts(insecables("C'est~cette~œuvre~qui~va~avec.~Appuie~dessus.")))
+        assertThat(defauts(insecables("Voici~la bonne~œuvre. Appuie~dessus.")))
+                .as("espace ordinaire entre la et bonne").isNotEmpty();
+        assertThat(defauts(insecables("Voici~la~bonne~œuvre.~Appuie~dessus.")))
                 .as("U+00A0 entre les deux phrases").isNotEmpty();
-        assertThat(defauts(insecables("C'est~cette~œuvre~qui~va~avec. Appuie dessus.")))
+        assertThat(defauts(insecables("Voici~la~bonne~œuvre. Appuie dessus.")))
                 .as("espace ordinaire entre Appuie et dessus").isNotEmpty();
-        assertThat(defauts("C'est cette œuvre qui va avec. Appuie dessus."))
-                .as("la phrase telle que le gabarit l'ecrivait avant l'amendement").isNotEmpty();
-        assertThat(defauts(insecables("C'est~cette~œuvre~qui~va~avec. Appuie~dessus !")))
+        assertThat(defauts("Voici la bonne œuvre. Appuie dessus."))
+                .as("la phrase de M4 ecrite sans aucune U+00A0").isNotEmpty();
+        assertThat(defauts(insecables("Voici~la~bonne~œuvre. Appuie~dessus !")))
                 .as("un mot ou un signe change").isNotEmpty();
     }
 }

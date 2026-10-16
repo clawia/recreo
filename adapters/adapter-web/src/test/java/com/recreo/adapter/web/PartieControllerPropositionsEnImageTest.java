@@ -109,7 +109,7 @@ class PartieControllerPropositionsEnImageTest {
 
         assertThat(revelation.select(".reponse-attendue")).isEmpty();
         assertThat(revelation.select(".reponse-revelee").eachText())
-                .containsExactly("C'est cette œuvre qui va avec. Appuie dessus.");
+                .containsExactly("Voici la bonne œuvre. Appuie dessus.");
         assertThat(revelation.select("[data-oeuvre-revelee=true] img").eachAttr("src"))
                 .containsExactly("/oeuvres/oeuvre-a.jpg");
         assertThat(revelation.select("button.proposition").eachAttr("data-oeuvre-revelee"))
