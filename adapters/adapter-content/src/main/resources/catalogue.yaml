@@ -906,3 +906,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-texte-narratif
     nombreDeManches: 10
+  - id: bandit-manchot-pronoms-ce1
+    titre: "Il, elle, ils, elles"
+    consigne: "Lis le petit texte, puis réponds à la question."
+    mecanique: bandit-manchot
+    paquet: ce1-pronoms
+    nombreDeManches: 10
