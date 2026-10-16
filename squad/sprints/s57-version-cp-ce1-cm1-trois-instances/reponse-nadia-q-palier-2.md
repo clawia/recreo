@@ -40,8 +40,10 @@
 
 Lue le 2026-10-16 sur `f6134910`, item par item, enonce, texte, bonne reponse, distracteurs et indice. **Ces lignes precedent tout verdict sur ces deux paquets** ; le commit qui les porte devra etre ancetre de celui de chaque verdict (critere 3).
 
-- **lecture complete** : `ce1-pronoms`, 20 items lus (2026-10-16, version de `46490d0d`).
-- **lecture complete** : `ce1-familles-de-mots`, 24 items lus (2026-10-16, version de `29d02bc6`).
+- lecture complete : `ce1-pronoms`, 20 items lus (2026-10-16, version de `46490d0d`).
+- lecture complete : `ce1-familles-de-mots`, 24 items lus (2026-10-16, version de `29d02bc6`).
+
+*Forme corrigee le 2026-10-16 (`nadia-prof`), fond inchange : ces deux lignes portaient `**` autour des deux premiers mots, ce qui les ecartait de ma propre forme (arbitrage du palier 2, 6.1, point 2) et faisait rendre 0 a la commande de `DEC-0120` A.96 et A.98. Ecart trouve par `sofia-sm`.*
 
 **Ce que la ligne lit** : ces deux versions. Les corrections demandees ci-dessous changent trois items de `ce1-pronoms` (10, 13, 15) et un item de `ce1-familles-de-mots` (*livre*) ; je relirai au jeu, dans le verdict meme, chaque item qui aura change entre ces versions et le commit joue, comme au palier 1 (`arbitrage-nadia-palier-2.md`, section 4).
 
