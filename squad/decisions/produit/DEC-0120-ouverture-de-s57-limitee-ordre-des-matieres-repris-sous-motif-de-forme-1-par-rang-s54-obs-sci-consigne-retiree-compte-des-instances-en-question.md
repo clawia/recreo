@@ -1571,3 +1571,60 @@ Le critere 2 annoncait *"Aujourd'hui : 0 ligne pour chacun des deux, rouge"* ave
 
 - **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, paquet, fiche, matrice, `planning.md`, `composition-palier-2.md`. Ne dit pas que la CI distante est verte. N'ecrit pas l'amendement de cette decision qui porte la composition du palier 2 (planning, section 13) : il n'etait pas demande.
 - **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison ; ceux qui ne sont pas lances ne sont pas deduits.
+
+
+---
+
+## Amendement du 2026-10-16, seizieme (`camille-po`, palier 2 : garde de `C1'`, `D5` et `Q-B2` corriges, recommandation sur les indices de `-24`)
+
+Annotation datee, 2026-10-16 09:25 (UTC+02:00), lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme. **Le statut ne change pas : `Acceptee` (A.77).** Arbre : `round-two` a `aa9d703c`, branche `s57-camille-p2-garde`. Sources : `planning.md` (amendement du 2026-10-16 09:03, sections 1 a 13) ; `avis-theo-palier-2.md` (`TP4`, section 2.4, `Q-T14`, `Q-T15`) ; `reponse-nadia-q-palier-2.md` (3.6, 3.7) ; `ARBITRAGE-PREALABLE-s34...` section 6.1 (`PAR-16`) ; `A.94` a `A.99`. **Aucune ligne de matrice, aucun catalogue, aucun paquet, aucun code n'est touche** : 146 / 200 inchange. **Aucun prix, aucun lot n'est modifie.**
+
+### A.100 `Q-T14` : la garde de `C1'` est une story hors `PAR`, a prix 0, et ne conditionne pas la fusion de p2-7
+
+**Decision.** La story `S57-GARDE-C1-SUJET-HORS-MESSAGE` est ecrite au backlog (annotation du 2026-10-16), prix 0, hors `PAR`, competence transverse. **Elle n'est pas une condition de la fusion de `S57-FORME-COMMUNE-PROPOSITIONS-LONGUES`.** La seule condition de cette fusion reste la trace de lecture de `theo-archi` (`Q-T15`, `TP6`). La forme de la garde est a `theo-archi` ; je n'en decide aucun element.
+
+**Prix 0, motifs de forme 1.** `PAR` est le budget d'audit de `nadia-prof` ; la story ne lui demande ni lecture, ni rejeu, ni verdict, et aucun texte lu par l'enfant ne change. Rien n'est donc alloue contre sa borne, et `PAR-16` (*"je n'alloue contre ma borne aucun poste qui n'a pas de story"*) est tenue dans l'autre sens : le poste a sa story. Si la forme choisie lui demande de lire ou rejouer, c'est elle qui chiffre, avant le commit.
+
+**Pas une condition de p2-7, motifs de forme 1.**
+
+1. **Elle ne rendrait pas un verdict que la lecture ne rend deja.** `theo-archi` a lu le diff de la forme (`TP1`, `TP2` : `C1'` tenue dans sa lettre sur les cinq regles) et `Q-T15` demande que le delta entre le commit lu et le sommet de la branche soit relu et dit. Sur ce diff, la garde repondrait la meme chose que lui.
+2. **Une seule personne porterait les deux conditions.** `theo-archi` est le seul lecteur du diff de p2-7 (`TP6`) et le seul auteur de la garde. Deux conditions sur un meme agent avant une fusion dont dependent le rejeu de `TPH-CE1-R1` et de `GNA-CE1-R1` (premier report compte a l'ouverture, A.95 ; un poste non audite a la cloture du palier 2 glisse, A.72) ajoutent du delai a la chaine sans ajouter de verification.
+3. **La forme ne cree pas la dette.** `TP4` : *"la forme ne viole pas `C1'`"* ; la dette existe depuis `C1'` (2026-10-14). La fusion de p2-7 n'est pas le moment ou elle s'aggrave.
+
+**Ce que je ne dis pas** : que la garde est secondaire. `C1'` point 1 sans garde executable est la condition `C4` de `nadia-prof` tenue par une seule lecture, et cette lecture a manque une fois (`E3`). Ce que je choisis est l'ordre, pas l'importance (A.101).
+
+**Ce que l'ordre de fusion devient** : il reste a `sofia-sm`. Si la garde est fusionnee avant p2-7, la fusion de p2-7 la subit et le build de `sofia-sm` la rejoue sur la feuille de la forme (critere 4 de la story) ; si p2-7 passe la premiere, la garde s'ecrit contre une feuille qui porte la forme. Aucun des deux ordres n'est a decider ici.
+
+### A.101 Compte : la dette de `C1'` et son horizon
+
+`C1'` a ete ecrite le 2026-10-14 avec, pour seule garde, la lecture du diff par `theo-archi` (`avis-theo-poste-8-art-cp-10.md` 2.2). Dette nommee le 2026-10-16 (`TP4`). Premiere inscription comme story : 2026-10-16. **Report : aucun**, la story n'est pas retenue par une composition (hors `PAR`, A.95). **Mais la dette se compte** : si `S57-GARDE-C1-SUJET-HORS-MESSAGE` n'est pas fusionnee a la cloture du palier 2, elle est inscrite en tete du palier 3, **avant tout poste qui modifie `recreo.css`**, et la composition du palier 3 le dit. Un poste qui touche la feuille avant elle cumule alors une dette de deux paliers sur la propriete que `nadia-prof` a posee en `C4`.
+
+### A.102 Deux ecarts de mes fichiers, corriges
+
+- **`D5` est fait.** Ma composition (2026-10-15 20:43) le tenait pour non engage. Il est fusionne depuis le 2026-10-15 18:10 (`29d02bc6`, fusion `dbd4a612`), apres la cloture du palier 1 (17:44) et avant l'ouverture du palier 2 (20:56). `composition-palier-2.md` est corrige en quatre endroits (`CO5`, section 4, `EC5`, section 9) et sa section 13 porte les preuves. **Remplace** la partie de A.99 qui disait *"Je ne corrige ni l'un ni l'autre"* : elle ne decrit plus l'etat de ce fichier. Trois stories a prix 0 restent non engagees, pas quatre.
+- **`Q-B2` est repondue depuis le 2026-10-14** (`lecture-nadia-palier-1.md` 1.7, `D8`, `7161ab69`). Je l'avais ecrite *"non repondue"* dans `composition-palier-2.md` (section 3) et dans l'amendement du backlog de `S57-FRA-FAMILLES-LIVRE`. Corrige dans les deux (backlog : annotation du 2026-10-16). **Remplace** la ligne du tableau de la section 3 de la composition et la phrase *"`Q-B2` n'est pas repondue"* du backlog.
+
+### A.103 La recommandation de `nadia-prof` sur les indices des items de famille de `-24` est prise
+
+**Decision : prise.** Ses mots (`reponse-nadia-q-palier-2.md` 3.7) : *"Recommandation non bloquante, a `camille-po` de la prendre ou non : l'indice de 3.6 sur les 14 items de famille."* Critere FM6 de `S57-BR-FRA-CE1-24` (backlog, annotation du 2026-10-16) : les 14 items de famille portent l'indice de 3.6, recopie sans reformulation ; trois mesures, rouges aujourd'hui.
+
+**Motifs de forme 1.**
+
+1. **Le texte est le sien, la recommandation aussi.** Je ne juge pas qu'il convient aux 13 autres items ; je transforme son mot en critere. Elle peut retirer la recommandation par une ligne avant l'ouverture du worktree de `-24` : FM6 s'amende, et le lot se branche comme avant.
+2. **Le choix se fait avant son verdict ou apres.** Elle ecrit que, si je ne la prends pas, elle juge au jeu en commettant les deux erreurs sur chaque item et que ce qu'elle y trouvera sera *"au plus une reserve non bloquante"*. Une reserve a un traitement qui a un prix de rejeu (0,25 ou 0,5 au registre de la composition, section 2). Le prendre maintenant coute quatorze lignes recopiees dans un commit deja prevu (p2-4, `sofia-sm`) et trois `grep`.
+3. **Le prix du lot ne bouge pas, et il n'est pas a moi.** Si elle estime que FM6 change son audit, c'est elle qui chiffre.
+
+**Ce que cette decision n'est pas.** Elle ne fait pas passer `FRA-CE1-24` ; le Done est a `nadia-prof`. Elle n'ecrit pas les amendements de `PN8` et `FM5` pour 1.1, 3.5 et 3.6 (items 10 et 13 de `ce1-pronoms`, item 15, item *livre*), que sa section 5 me route : ils restent a faire.
+
+### A.104 Routage, ce que cet amendement ne fait pas
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Engager `S57-GARDE-C1-SUJET-HORS-MESSAGE` au planning du palier 2 (agent `theo-archi`, aucun developpeur, aucune condition sur la fusion de p2-7) ; recopier FM6 dans le commit de `-24` ; verifier au planning que l'amendement du 2026-10-16 09:03 (section 8, `Q-T14`) renvoie bien a cette story |
+| `theo-archi` | Forme de la garde et amendement d'`ADR-0031` ; residu `data-oeuvre-revelee` (critere 3) ; perimetre de la commande de mesure si elle quitte `adapter-web` |
+| `yanis-qa` | Test des criteres 1 a 5 de la story de garde par mutation de la feuille |
+| `relecteur-pedagogique` | Orthotypographie de la phrase de FM6, avec les textes de 3.6 |
+| `nadia-prof` | Retirer ou confirmer la recommandation avant l'ouverture du worktree de `-24` ; lire FM6 a son audit |
+
+- **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, paquet, fiche, matrice, `planning.md`. Ne dit pas que la CI distante est verte. N'engage aucun poste. Ne decide aucun element de forme de la garde.
+- **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison ; ceux qui ne sont pas lances ne sont pas deduits.
