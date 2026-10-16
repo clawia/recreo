@@ -105,7 +105,7 @@ class LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest {
     private static final String NOM_ACCESSIBLE = "Choisir cette œuvre";
 
     /** M4 du meme arbitrage, mot pour mot : la phrase de revelation d'une manche a images. */
-    private static final String PHRASE_DE_REVELATION = "C'est cette œuvre qui va avec. Appuie dessus.";
+    private static final String PHRASE_DE_REVELATION = "Voici la bonne œuvre. Appuie dessus.";
 
     private static final String GABARIT = "/templates/fragments/manche.html";
 
