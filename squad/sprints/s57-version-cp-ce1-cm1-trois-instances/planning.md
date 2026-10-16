@@ -1606,3 +1606,88 @@ Lances sur `round-two` a `7c9ac220` (apres les trois fusions), puis avec les sec
 - **Code inchange par ce commit.** `git diff --quiet 7c9ac220 -- adapters domain application bootstrap pom.xml outils .github` sort 0.
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue. **Le Done technique n'est pas prononce par moi** : il est juge par la CI sur le commit pousse.
+
+## Amendement du 2026-10-16 19:40 (UTC+02:00), palier 2 : fusion de la trace de lecture de `theo-archi` (`Q-T15`) et de `RDO-CP-R3`, dette de commentaires `RL5` a `RL7`
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace ou precise est nomme. Arbre de depart : `round-two` a `1cf4e3a9`, casquette Scrum Master. Aucune ceremonie n'est animee par ce texte. **Aucun Done n'est prononce, technique ou pedagogique.**
+
+### 1. Fusions, lignee verifiee avant
+
+| Ordre | Branche | Sommet | Fusion | Delta |
+|---|---|---|---|---|
+| 1 | `s57-theo-p2-12` | `c703c8c6` (`[THEO]`) | `5d07c1bd` | 1 fichier neuf, 125 lignes : `lecture-theo-p2-12-rdo-cp-r3.md` |
+| 2 | `s57-lea-rdo-cp-r3` | `5a1d76fa` (code de `23222465`, rapport de `lea-dev` au-dessus) | `19c8a7b2` | 6 fichiers, 93 insertions, 17 suppressions : `manche.html`, quatre tests, `rapport-lea-dev-palier-2-rdo-cp-r3.md` (neuf, 76 lignes) |
+
+- **Lignee.** `git merge-base round-two <branche>` rend `0ea24709` pour les deux ; `git rev-list --count round-two..<branche>` : 1 et 2. `juger_lignee` de `outils/verifier-lignee.sh`, appelee avec le nom de la branche et le code de `git merge-base` : deux sorties 0. **Je ne l'ai pas lancee depuis un worktree de chaque branche**, je n'ai pas appele son enveloppe.
+- **Lecture avant fusion.** `git show` de la trace de `theo-archi` et du rapport de `lea-dev`, en entier. Je n'ai pas relu le diff de `23222465` ligne a ligne : j'ai lu son resume (`git diff --stat`) et rejoue les commandes `RD3`.
+- **Condition de `Q-T15`.** La trace nomme le commit lu, `23222465`, et rend le verdict *fusionnable*. Elle donne un diff de code vide entre `23222465` et `5a1d76fa`. **Je l'ai refait** : `git diff --stat 23222465 5a1d76fa -- adapters domain application bootstrap pom.xml outils .github` ne rend aucune ligne, et le meme `git diff --stat` sans filtre rend 1 fichier, 76 insertions (le rapport).
+- **Aucun conflit** : `git grep -c '^<<<<<<<\|^>>>>>>>' HEAD -- docs squad adapters` ne rend rien.
+- **Ecart de nommage entre la trace et la story.** `Q-T15` demandait une trace *"avec un diff de code vide entre ce commit et la tete de branche"* ; la tete `5a1d76fa` est un rapport seul, comme la trace le dit. Aucun ecart.
+
+### 2. Sorties de `RD3-1` a `RD3-13` sur l'arbre fusionne
+
+`<ref>` = `19c8a7b2` (sommet apres les deux fusions), `<C>` = `23222465`, `<F>` = `19c8a7b2`. `G` et `T1` comme ecrits par la story. Commandes de `backlog.md` telles quelles, par un script de mon espace de travail que je ne commite pas.
+
+| Code | Attendu | Sortie |
+|---|---|---|
+| `RD3-1` | 1 | 1 |
+| `RD3-2` | 0 | 0 |
+| `RD3-3` | 0 | 0 |
+| `RD3-4` | 0 | 0 |
+| `RD3-5` | 3 | 3 |
+| `RD3-6` sur `<C>` | 5 | 5 |
+| `RD3-7` sur `<C>` | 0 | 0 |
+| `RD3-8` sur `<C>` | 0 | 0 |
+| precondition de `RD3-9`/`RD3-10` (`git log --oneline 78270b4c..<ref> -- G \| wc -l`) | 1 | 1 |
+| `RD3-9`, base `78270b4c` | 2 | 2 |
+| `RD3-10`, base `78270b4c` | 0 | 0 |
+| precondition de la forme a parents (`git rev-list --parents -n1 <F> \| wc -w`) | 3 | 3 |
+| `RD3-9`, forme `<F>^1 <F>` | 2 | 2 |
+| `RD3-10`, forme `<F>^1 <F>` | 0 | 0 |
+| `RD3-7`, forme fusion (`static/css/`) ; fichiers hors `squad/` | 0 ; 5 | 0 ; 5 |
+| `RD3-11` | 9 | 9 |
+| `RD3-12` | 6 | 6 |
+| `RD3-13` | 2 | 2 |
+
+**Ce que ces chiffres ne disent pas** : `RD3-1` a `RD3-5` et `RD3-11` a `RD3-13` valent pour n'importe quel commit ; `RD3-9` et `RD3-10` ne valent sur `round-two` que tant qu'aucun autre commit ne touche `G` (precondition a 1). **Apres le commit de commentaires de la section 4, ils se lisent par la forme a parents sur `19c8a7b2`**, pas sur `round-two`.
+
+### 3. Decisions de cette serie
+
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee** par ces deux fusions ni par cet amendement. `DEC-0120` et `DEC-0122` sont inchanges. `Q-T15` est close par un fichier present sur le disque : `lecture-theo-p2-12-rdo-cp-r3.md`.
+
+### 4. Dette `RL5`, `RL6`, `RL7` : trois commentaires devenus faux, routee, engagee
+
+Ecrite par `theo-archi` (trace, section 8) ; `lea-dev` n'en nommait que deux. **Je les ai relus sur l'arbre fusionne**, ils y sont tels que la trace les dit :
+
+| Code | Fichier, lignes | Ce qui est faux |
+|---|---|---|
+| `RL5` | `adapters/adapter-web/src/main/resources/templates/fragments/manche.html`, 207 a 213 | *"cette phrase, de nadia-prof (M4)"* : la source est `reponse-nadia-pa7-pa8.md` 2.4 |
+| `RL6` | `adapters/adapter-web/src/test/java/com/recreo/adapter/web/TexteAccentueDesGabaritsTest.java`, 158 a 160 | cite `ARBITRAGE-PREALABLE-s55` section 3.2, *"copie tel quel"* : cet arbitrage porte l'ancienne phrase |
+| `RL7` | `bootstrap/src/test/java/com/recreo/bootstrap/rendu/LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest.java`, 107 (le commentaire ; la constante est ligne 108) | *"M4 du meme arbitrage, mot pour mot"* |
+
+**Pas corrigees avant la fusion**, motifs de `theo-archi` repris : `RD3-9` casserait, et un commit de plus sur la branche rouvrirait `Q-T15`. Elles sont **ecrites ici comme dette routee**, a `theo-archi` pour la forme (sa proposition : un seul commit, sur ces trois fichiers, qui ne touche que ces trois commentaires, cite `reponse-nadia-pa7-pa8.md` 2.4, apres la fusion et avant la cloture du palier 2) et a moi pour la capacite.
+
+**Capacite : j'engage ce commit, casquette developpeuse, dans une tache distincte de celle-ci.** Motifs : (1) il n'y a aucun choix de produit a faire, seulement l'exactitude d'une citation ; (2) `lea-dev` est l'autrice du gabarit, mais son poste p2-12 est fusionne, comme les deux postes de `marc-dev` ; je n'ai aucune mesure de charge plus fine qui designe l'un des trois, et je ne prends pas ce commit pour dire que l'un d'eux est plus charge ; (3) la trace de `theo-archi` est le diagnostic, il n'y a rien a decouvrir. Ce que j'ecris ici est l'engagement, **le commit n'existe pas**. **Je ne le fais pas sous cette casquette** : l'agent principal doit me le confier sous la casquette developpeuse. **Je ne fixe aucun prix** : le prix d'un poste est a `camille-po` (`PAR`), et ce commit n'entre dans aucun lot ; si elle veut le chiffrer, elle l'ecrit.
+
+**Conditions que le developpeur lira avant son commit** (aucune ne decide quoi que ce soit) : (a) trois fichiers, trois commentaires, aucune autre ligne ; (b) `RD3-1` a `RD3-5` et `RD3-11` a `RD3-13` inchanges ; `RD3-9` et `RD3-10` lus par la forme a parents sur `19c8a7b2` ; (c) **a mesurer avant d'ecrire** : le commentaire de `manche.html` est un commentaire HTML ordinaire (`<!-- ... -->`). Je n'ai pas verifie s'il est servi dans le HTML rendu. **S'il l'est, un commit de commentaires change l'octet servi, et un jar construit apres lui n'est plus celui que `nadia-prof` rejoue** : le developpeur le mesure et le dit, et c'est `theo-archi` qui juge si la forme de commentaire change.
+
+### 5. Total recompte, sommet de rejeu, jobs de `ci.yml`
+
+Lances sur `round-two` a `19c8a7b2` (apres les deux fusions), puis avec les sections 1 a 4 de cet amendement presentes, avant commit. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, sur `19c8a7b2` seul (`BUILD SUCCESS`, exit 0, 3 min 41 s). **2669 tests, 0 echec, 0 erreur, 0 ignore** (120, 31, 501, 1630, 381, 6 d'integration, lignes `Tests run` du reacteur, somme faite par moi, recomptee a part par l'attribut `tests` de 313 fichiers `TEST-*.xml` : 2669). JDK 21.0.10 (`java.version` lu dans les 60 rapports Surefire de `bootstrap`, une seule valeur). **Ecart de total : aucun.** `lea-dev` annonce 2669 (base plus son lot, delta `+0` : 2 `@Test` avant et apres) ; l'arbre fusionne donne 2669, comme `round-two` avant la fusion. Les quatre classes touchees : 2, 5, 9 et 14 tests, 0 echec. Etape *"Package du fat jar"* non lancee.
+- Les lignes `chemins`, `prefixes`, `outils` et le second `build` (sections de cet amendement presentes) sont a la suite, en section 6.
+
+**Sommet de rejeu.** Le code et le contenu servis de `round-two` sont ceux de `19c8a7b2` ; le commit de cet amendement ne touche que `planning.md`. Un jar construit sur le sommet de `round-two` apres ce commit rejoue `-05` et `RCT-CE1-R1` (instance A, code de `7c9ac220`) et `RDO-CP-R3` (instance B, code de `23222465`). Le SHA du sommet est dans le rapport de l'agent : un fichier ne peut pas contenir le SHA de son propre commit. **Si le commit de commentaires de la section 4 est livre avant le rejeu**, le sommet change et ce paragraphe est a relire.
+
+**Ce que cet amendement ne fait pas.** Ne prononce aucun Done, ne juge ni la cote de la phrase a l'ecran (`ines-design`, `RD3` critere 1) ni ce que l'enfant lit (`nadia-prof`, critere 3), ne fixe aucun prix, n'ecrit pas le commit de commentaires, ne touche ni la matrice (147 / 200, non remesuree), ni un catalogue, ni un critere.
+
+### 6. Suite des jobs de `ci.yml`, avec les sections 1 a 5 presentes
+
+- **`build`, second run** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, avec les sections 1 a 5 presentes : `BUILD SUCCESS`, exit 0, 3 min 57 s, **2669 tests, 0 echec, 0 erreur, 0 ignore** (memes six lignes `Tests run`). Cette section 6 n'etait pas dans le fichier lors de ce run.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh` : *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, sortie 0, avec les sections 1 a 5.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh` et `verifier-garde-fou-accent-test.sh` sortent 0 ; `commit-atteignable.sh 1cf4e3a9` sort 0 ; les sujets de `1cf4e3a9..HEAD` hors fusions (trois commits d'agents) et le sujet prevu du commit passent dans `verifier-prefixes.sh` : *"Tous les commits portent un prefixe d'agent connu."*, sortie 0 ; `verifier-garde-fou-accent.sh "1cf4e3a9..HEAD"` : *"0 commit(s) le touchent dans la plage, tous [THEO]."*, sortie 0.
+- **`outils`** : trois balayages (6, 2 et 5 fichiers), **13 juges** lances (`bash` pour les `.sh`, `python` pour les `.py`), 13 sortis 0, aucun balayage vide, `TMPDIR` dans mon espace de travail en forme POSIX.
+- **Code inchange par ce commit** : `git diff --quiet 19c8a7b2 -- adapters domain application bootstrap pom.xml outils .github` sort 0.
+
+Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue. **Le Done technique n'est pas prononce par moi** : il est juge par la CI sur le commit pousse.
