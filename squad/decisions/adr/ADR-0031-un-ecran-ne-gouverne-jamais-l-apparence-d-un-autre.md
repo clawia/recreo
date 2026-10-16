@@ -221,3 +221,104 @@ lignes `Results:` du journal, module par module : `domain` 43, `application` 7, 
 `adapter-content` 39, `bootstrap` 77 en surefire et 3 en failsafe. Total **342 tests**, contre **339**
 sur `round-two` a `533967d` : les 3 de plus sont les trois cas de la clause de cet `ADR`. Regles
 ArchUnit : **28, inchange** (methode ci-dessus).
+
+## Amendement du 2026-10-16 (s57, `theo-archi`) - le sujet hors du message, garde de `C1'` point 1
+
+**Contexte.** `C1'` (`avis-theo-poste-8-art-cp-10.md` de s57, 2.2) remplace `C1` pour l'ecran de manche : *"Une regle dont le sujet est
+**hors** de `.message-jeu` ne nomme ni `.message-jeu`, ni `.signal`, ni `.est-juste`, ni `.est-faux`, ni `data-oeuvre-revelee`, y compris
+dans un `:has(...)`."* Elle n'avait que ma lecture du diff pour garde, et cette lecture a manque une fois (`E3`). `TP4`
+(`avis-theo-palier-2.md` 2.4) l'a mesure : `.ecran-de-jeu:has(.est-faux):not(.ecran-deux-oeuvres) .propositions { row-gap: 0; }` - le
+meuble se compacte apres une erreur - passait tout `adapter-web`. Story : `S57-GARDE-C1-SUJET-HORS-MESSAGE`.
+
+**Ce que cet amendement change dans la decision 3.** *"Le couplage du verdict a un element du meme ecran n'est pas jugeable par une
+structure"* reste vrai de la coche et de l'explication, qui vivent toutes deux dans le message. Il ne l'est pas d'une regle dont le
+**sujet** est hors du message : la structure distingue alors le sujet du message, et c'est ce que `C1'` point 1 juge.
+
+**Decision.** Refuser toute regle maison dont le sujet est hors du message d'un ecran et dont le selecteur nomme, `:has(...)` compris, un
+jeton que ce document ne pose que dans le message.
+
+1. **Le message d'un ecran est sa region d'annonce** (`role="status"`), derivee de chaque gabarit. C'est le seul nom que la clause ecrit,
+   et c'est un role ARIA, pas un nom du depot. Ses jetons sont ceux de son sommet et de ses descendants ; ceux qu'il est seul a poser
+   sont ses jetons moins ceux du reste du document, coquille permanente comprise (la composition de la decision 1, partagee).
+2. **Le sujet est lu compose par compose sur la chaine principale**, hors parentheses et hors crochets. Un compose qui nomme un jeton que
+   le document ne pose que hors du message est dehors ; un jeton que seuls les descendants du message posent le place dedans ; un jeton
+   propre au sommet, au sommet. Sans jeton decisif, un compose herite : descendant ou enfant de ce qui est dans le message ou a son
+   sommet, il est dedans ; frere de ce qui est dedans, dedans ; frere du sommet, dehors. Le premier compose sans jeton decisif est tenu
+   pour dehors.
+3. **Une regle n'est jugee que contre les documents ou elle peut s'appliquer** : ceux qui posent tous les jetons qu'elle nomme.
+4. **Derivation totale** : aucune region d'annonce dans aucun gabarit, ou aucune regle qui nomme un jeton propre a un message, sont des
+   echecs.
+
+**Regle executable.** Pas une `ArchRule` : l'objet est une feuille de style et des gabarits. Elle vit dans le fichier de la regle de cet
+`ADR`, `adapters/adapter-web/src/test/java/com/recreo/adapter/web/UnEcranNeGouvernePasLApparenceDUnAutreTest.java`, ecrite dans le
+meme commit que cet amendement, quatre tests de plus :
+
+- `aucuneRegleDontLeSujetEstHorsDuMessageNeNommeCeQueSeulLeMessagePose` : la production, verte ;
+- `chaqueClasseDuMessageNommeeDepuisUnSujetHorsDeLuiFaitEchouerLeGardeFou` : sur les gabarits et la feuille reels, pour chaque message
+  et chaque classe qu'il est seul a poser, la regle `.<premiere classe propre au dehors>:has(.<classe>)` ajoutee aux regles de
+  production rougit en citant son selecteur ;
+- `uneClasseNeuveDuMessageEntreDansLeControleSansQueCeFichierChange` : une classe qu'aucun gabarit ne pose, ajoutee en memoire a chaque
+  region d'annonce, entre dans le controle (`ADR-0013`, obligations 1 et 3 : l'objet neuf est cette classe, absente de la production) ;
+- `sansAucuneRegionDeMessageLaClauseEchoueAuLieuDePasserAVide`.
+
+**Populations, avec leur methode.** Sonde jetable non commitee, dans une copie de l'arbre de ce commit, une seule classe lancee : 252
+regles maison (une par selecteur d'une liste a virgules), **3 messages** derives (`fragments/designation.html`, `fragments/manche.html`,
+`fragments/saisie.html`), **54 paires** regle-document jugees (la regle s'applique au document et nomme un jeton propre a son message),
+toutes a sujet dans le message. **29 regles fautives** derivees par le deuxieme test (8, 10 et 11 classes propres aux trois messages).
+
+**Preuve de morsure, sur la feuille reelle.** Copie de l'arbre de ce commit sous mon repertoire de travail, `recreo.css` (et
+`manche.html` pour `G5`) mute puis restaure par copie de reference, verifie identique. Commande : `bash outils/mvn-jdk21.sh -B -pl
+adapters/adapter-web -am test -Dtest=UnEcranNeGouvernePasLApparenceDUnAutreTest -Dsurefire.failIfNoSpecifiedTests=false`, perimetre
+`adapter-web` et ses amonts, une classe, 7 tests, JDK 21.0.10 (`java.version` du rapport Surefire). Ajouts en fin de feuille :
+
+| Code | Mutation | Mesure |
+|---|---|---|
+| `M0` | aucune | 0 echec |
+| `G1` | la regle de `TP4`, sous `@media (min-width: 720px)` | **1 echec**, le message cite `.ecran-de-jeu:has(.est-faux):not(.ecran-deux-oeuvres) .propositions` |
+| `G2a` a `G2c` | la meme, avec `.message-jeu`, `.signal`, `.est-juste` dans le `:has(...)` | **1 echec** chacune, le message cite le selecteur |
+| `G3` | la meme, avec `[data-oeuvre-revelee=true]` | 0 echec : **non garde**, ci-dessous |
+| `G4` | le texte de `candidat-r3.css` ajoute a la feuille | 0 echec |
+| `G5` | une classe `jeton-neuf` sur la region d'annonce de `manche.html`, et la regle de `G1` avec ce jeton | **1 echec**, aucun fichier de test edite |
+| `G6` | la regle de `TP4` sans `@media` ni exclusion de l'ecran a deux oeuvres | **1 echec** (elle passe le test d'epinglage de la forme : `M4` de ma lecture de p2-7) |
+| `G7` | `body:has(.est-juste) .entete { background-color: #2e7d32 }` (limite 4.a) | **1 echec**, le message nomme les trois ecrans a message |
+| `G8` | `.signal.est-faux ~ .cabinet { border-color: #c62828 }` | **1 echec** |
+| `G9` | `.message-jeu:has(.est-faux) .indice { margin-top: 0; }` (`C1'` point 2) | 0 echec : **non garde**, ci-dessous |
+| `G10` | `.zone-jeu:has(> .ecran-de-jeu .est-faux) { padding-top: 0; }` | **1 echec** : le sujet est lu hors du `:has(> ...)`, la ou `LAnimationRetardeMaisNeDetermineRienTest.sujet` couperait dedans |
+
+La feuille telle qu'elle est servie reste verte, avec `.signal.est-juste .icone-signal` (ligne 1569, sujet dans le message) et
+`.propositions-oeuvres:has(.proposition.deja-essayee)` (ligne 1817, `O1`, aucun jeton du message).
+
+**Ce que cette regle ne garde pas, nomme.**
+
+- **`data-oeuvre-revelee`**, que `C1'` point 1 nomme, n'est **pas garde** par cette regle. Il est pose dans le meuble, sur la case, et
+  non dans le message ; et la feuille le lit legitimement depuis un sujet hors du message,
+  `.propositions-oeuvres .proposition[data-oeuvre-revelee=true] img` (ligne 1843, la marque de la bonne oeuvre, `ADR-0104`). Une regle
+  derivee du message ne le voit pas, et une regle qui l'interdirait hors du message refuserait cette ligne. Sa lecture reste au diff,
+  par moi, avant la fusion (`TP6`). `G3` le mesure.
+- **Les points 2 et 3 de `C1'`** (la disposition du message ne lit aucun etat ; aucun element ne s'etend sur la rangee du message et une
+  rangee au-dessus) : `G9` passe. Lecture au diff.
+- **Un ecran dont le message perdrait sa region d'annonce** sort du controle sans rouge, tant qu'un autre ecran la garde.
+- **La limite 4.b** (le verdict passe par le gabarit) est inchangee. **La limite 4.a** est **reduite** : un verdict qui colore la
+  coquille depuis un ecran a message rougit (`G7`) ; depuis `fragments/retour.html`, qui pose `.signal` sans region d'annonce, il reste
+  vert.
+- **Sur-detection possible, son mode de defaillance est un rouge.** Une valeur d'attribut que seul un message pose est un jeton propre :
+  `true` (`aria-hidden`) l'est dans `designation.html` et `saisie.html`. Un selecteur `[...=true]` a sujet hors du message, applicable a
+  l'un de ces documents, rougirait ; la feuille n'en ecrit aucun.
+
+**Compte ArchUnit inchange** : 41 `static final ArchRule`, 38 `@ArchTest`, 16 fichiers (methode d'`ADR-0104` : `git grep -hcE` des deux
+motifs sur les `*.java` suivis, sommes par `awk`), sur `9c271e14` et sur ce commit.
+
+**Consequences.** Bonne : la regle de `TP4` et toute sa famille rougissent, sur tous les ecrans a message, et un jeton neuf du message
+entre seul dans le controle. Mauvaises : une regle qui voudrait faire de la place au message dans le meuble, ou au-dessus de lui, est
+refusee meme quand l'intention est de disposition ; c'est ce que `C1'` interdit, et le contourner demande d'amender `C1'` avec
+`nadia-prof`, pas ce test. La clause depend d'un role ARIA : retirer `role="status"` d'un message pour une raison d'accessibilite sort
+cet ecran du controle.
+
+**Alternatives considerees.** **Enumerer les cinq noms de `C1'`** : ecartee, perimetre enumere (`ADR-0013`) ; `G5` passerait, et
+`data-oeuvre-revelee` y ferait rougir la ligne 1843. **Deriver le message par sa condition d'affichage** (`th:if` sur la variable du
+message) : ecartee, elle ecrit un nom de variable de modele dans le test, et la decision 1 refuse deja de lire les expressions
+calculees. **Reutiliser `sujet` de `LAnimationRetardeMaisNeDetermineRienTest`** : ecartee, il coupe a l'interieur des parentheses
+(`G10`).
+
+**Ce qui me ferait changer d'avis** : une seconde region d'annonce hors du message (un score annonce, par exemple), qui ferait du score un
+jeton du message ; ou un message qui ne serait plus une region d'annonce. La derivation du message serait alors a reprendre.
