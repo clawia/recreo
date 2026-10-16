@@ -1628,3 +1628,112 @@ Annotation datee, 2026-10-16 09:25 (UTC+02:00), lue par `date`. **Rien au-dessus
 
 - **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, paquet, fiche, matrice, `planning.md`. Ne dit pas que la CI distante est verte. N'engage aucun poste. Ne decide aucun element de forme de la garde.
 - **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison ; ceux qui ne sont pas lances ne sont pas deduits.
+
+
+---
+
+## Amendement du 2026-10-16, dix-septieme (`camille-po`, palier 2 : prix recomptes et financement du rejeu de `-05`, paquet refuse servi, matrice apres les verdicts, voies de `PA7` et `PA8`, `FM5-6` et `FM3`)
+
+Annotation datee, 2026-10-16 17:40 (UTC+02:00), lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme. **Le statut ne change pas : `Acceptee` (A.77).** Arbre : `round-two` a `78270b4c`, branche `s57-camille-p2-cloture`. Sources : `planning.md` (amendement du 2026-10-16 16:59, sections 2 a 10), `composition-palier-2.md`, `arbitrage-nadia-palier-2.md`, les cinq fichiers de rejeu et de reponse de `nadia-prof` du 2026-10-16, `avis-theo-pa7-pa8.md`, `DEC-0045` section 3, `DEC-0055`. **Aucun code, catalogue, paquet ni test n'est touche** ; deux stories neuves sont ecrites au backlog (annotation du 2026-10-16 17:40) avec leur proprietaire a designer.
+
+### A.105 Prix : `GNA-CE1-R1` a 0,25 est confirme, et le rejeu de `-05` est finance sans toucher une marge
+
+**Decision 1 : `GNA-CE1-R1` vaut 0,25.** Motifs de forme 1. (a) Le prix est a `nadia-prof` : son bareme ecrit 0,25 quand la forme du paquet ne differe pas de celle de `TPH` (`arbitrage-nadia-palier-2.md` 5) et son rejeu constate la condition (`rejeu-nadia-palier-2-ap.md` 4 : memes regles, meme jar, paquet servi inchange). (b) Mes 0,5 etaient le **maximum du registre**, inscrit par ma regle de composition (*"j'inscris le plus haut"*, `composition-palier-2.md` 2), pas un prix de moi ; je ne conteste pas un constat que le rejeu fait. (c) Retenir 0,5 ferait payer a l'instance A' un audit qu'elle n'a pas fait.
+
+**Decision 2 : le rejeu de `-05` (0,5, `nadia-prof`, instance A) entre dans la composition de A, finance par deux quarts qui n'appartiennent a aucun poste.** Il n'avait aucune ligne (`planning.md` 16:59, section 5, point 2). Sources du prix : la fiche, section 5 (*"0,5 (des textes changent)"*) et `rejeu-nadia-palier-2-a-lot05.md` (*"Rejeu a 0,5"*). Financement :
+
+1. **0,25 de A** : `VSJ-CE1-R2` etait inscrit a 0,5 dans ma composition, il a ete facture 0,25 (`rejeu-nadia-palier-2-a.md`, resume) ; `planning.md` du 2026-10-16 09:03 le porte *"non affecte"* dans A. Il reste dans A.
+2. **0,25 hors instance** : la difference de 7,75 a 8,0 de ma composition (`composition-palier-2.md` 2, *"n'entre dans aucun poste"*), qui n'etait dans le budget d'aucune instance. **Je l'attribue a A.**
+
+A passe de 3,0 a **3,25**. **A' garde son budget de 3,0** : les 0,25 rendus par `GNA` y restent non affectes (2,75 de postes et 0,25 non affecte). B ne bouge pas. Hors instance : 0,00.
+
+**Ce que cette lecture change par rapport a celle de `sofia-sm`** (`planning.md` 16:59, section 5, point 2 : les 0,25 de A plus les 0,25 rendus par `GNA`, soit A a 3,25, A' a 2,75, hors instance 0,25). Meme total (8,0), meme non affecte (0,25), repartition differente. Je prends l'autre quart pour trois motifs. (i) **Aucun budget d'instance ne perd rien** : la repartition entre instances est a `nadia-prof` (A.4, dernier paragraphe : *"La repartition entre instances est a `nadia-prof`"*) et deplacer 0,25 d'A' vers A est ce geste ; attribuer un reste que personne n'avait attribue n'en retire a aucune. (ii) **La somme des budgets d'instance vaut la borne** : 3,25 + 3,0 + 1,75 = 8,0, ce que `PAR-9` ecrit (*"somme des budgets par instance egale a la borne de 8,0"*) et que ma composition ne tenait pas (7,75 plus 0,25 hors instance). (iii) **Le financement ne depend plus du prix de `GNA`** : avec `GNA` a 0,5, la meme composition vaut encore 8,0 (sortie ci-dessous) ; avec la lecture de `sofia-sm`, `GNA` a 0,5 donne 8,25 et depasse `PAR-9` (`planning.md` 16:59, section 5, point 3).
+
+**Ma regle de composition est amendee, pas abandonnee.** *"L'ecart reste non affecte, il ne se reaffecte pas"* (`composition-palier-2.md` 2) etait ecrite pour qu'**un troisieme lot** ne soit pas finance par un ecart de prix connu apres coup (8,75 au maximum). Elle vaut toujours pour un lot. Elle ne vaut pas pour le **rejeu d'un refus**, dont le prix est connu et ecrit par `nadia-prof` : le payer sur un ecart de son instance est ce qu'une marge de rejeu n'a pas a payer quand un ecart existe. **Aucun prix n'est pris sur une marge** (arbitrage 8 point 7), les trois marges de 0,5 restent intactes.
+
+**Recompte, par `awk`**, sur le registre ci-dessous (instance, ligne, prix, etat ; `Ap` = A', `H` = hors instance) :
+
+```
+A|arbitrage prealable|0.50|engage
+A|FRA-CE1-05 lot|1.00|consomme
+A|FRA-CE1-05 rejeu|0.50|engage
+A|VSJ-CE1-R2|0.25|consomme
+A|RCT-CE1-R1|0.50|engage
+A|marge de rejeu|0.50|marge
+Ap|arbitrage prealable|0.50|engage
+Ap|FRA-CE1-24 lot|1.00|consomme
+Ap|TPH-CE1-R1|0.50|consomme
+Ap|GNA-CE1-R1|0.25|consomme
+Ap|marge de rejeu|0.50|marge
+Ap|non affecte (GNA)|0.25|non affecte
+B|arbitrage prealable|0.50|engage
+B|OBS-SCI-N1-N2|0.25|consomme
+B|RDO-CP-R3|0.50|engage
+B|marge de rejeu|0.50|marge
+H|non affecte|0.00|non affecte
+```
+
+`awk -F'|' '{p[$1]+=$3; t+=$3} END{for(k in p) printf "%s %.2f\n",k,p[k]; printf "total %.2f\n",t}' registre.txt | sort` rend `A 3.25`, `Ap 3.00`, `B 1.75`, `H 0.00`, **`total 8.00`**. Par etat (`awk -F'|' '{e[$4]+=$3} END{for(k in e) printf "%s %.2f\n",k,e[k]}'`) : consomme **3.25**, engage **3.00**, marge **1.50**, non affecte **0.25**. Meme registre avec `GNA` a 0,50 et la ligne *non affecte (GNA)* a 0,00 : **`total 8.00`**. Ma composition du 2026-10-15 (prix au maximum, sans rejeu de `-05`), recomptee de la meme facon : `A 3.00`, `Ap 3.00`, `B 1.75`, `H 0.25`, `total 8.00`. Dix-sept lignes (`wc -l`).
+
+| Borne | Valeur lue |
+|---|---|
+| 8,0 par palier (`PAR-9`) | 8,00 |
+| 5,0 par instance (`PAR-8`) | l'instance la plus chargee est A : 3,25 |
+| Trois lots au plus par instance | A 1 (`-05` ; le rejeu n'est pas un lot, `PAR-10`), A' 1, B 0 |
+| Marge de 0,5 par instance qui porte un lot ou un rejeu | trois marges, somme 1,50, **intactes** |
+| Aucun prix pris sur une marge | tenu |
+
+**Second refus, dit maintenant.** Le rejeu de `-05` et celui de `RCT-CE1-R1` sont tous deux dans A, dont la marge est de 0,5 : **un seul des deux peut echouer sans acte ecrit**. Un second echec au meme palier se paie sur la marge de A (son usage) puis, au-dela, par un acte ecrit de `nadia-prof` ou de moi, jamais sur la marge d'une autre instance. Le non affecte restant (0,25, dans A') n'est pas un moyen de payer un rejeu : c'est un reste.
+
+**Ce que je ne decide pas.** La repartition entre instances est a `nadia-prof` : elle dit, avant le rejeu, si l'attribution du quart hors instance a A lui convient ; sinon la lecture de `sofia-sm` s'applique et la somme reste 8,0 tant que `GNA` vaut 0,25. `planning.md` porte la composition de A a 3,25 : amendement a `sofia-sm`.
+
+### A.106 Un paquet refuse reste servi : `bandit-manchot-pronoms-ce1`
+
+**Fait** (`git grep -c 'id: bandit-manchot-pronoms-ce1$' 78270b4c -- adapters/adapter-content/src/main/resources/catalogue.yaml` rend 1) : `nadia-prof` a refuse le lot `-05` le 2026-10-16 (16:18, `rejeu-nadia-palier-2-a-lot05.md`) ; l'entree est au catalogue et le jar la sert. Aucun fichier du depot ne traite la sortie : ni l'amendement de `PN8` (16:40) ni `planning.md` (16:59) n'en parlent. Les entrees de lots entrent au catalogue avant l'audit par construction (`K3`) : le premier refus de s57 sur un lot est celui-ci.
+
+**Decision : le regime par defaut s'applique, le paquet sort du catalogue servi.** `DEC-0045` section 3 : un `REFUSE` fait sortir l'entree *"au meme geste que la decision"*. `DEC-0055` 2 n'ouvre une fenetre que sous trois conditions cumulatives, verifiables *"au moment du refus"* : (1) arbitrage ecrit : aucun ; (2) correction engagee, proprietaire et travail identifiables **au moment du refus** (16:18) : la story de correction est de 16:40, le developpeur de 16:59, **non remplie** ; (3) motif borne : remplie. Je ne plie pas ma propre regle : elle ecrit *"verifiables sans jugement d'opportunite"* et *"je n'en autorise pas un aujourd'hui sur la seule foi du raisonnement"*. Meme analyse qu'en A.17 de `DEC-0116`, dont l'utilisatrice a repondu *"oui pour le retrait"* (A.26).
+
+**Execution, dans le meme temps (la decision implique du code)** : story `S57-RETRAIT-PRONOMS-CE1` ecrite au backlog (annotation du 2026-10-16 17:40), `sofia-sm` l'affecte, `theo-archi` mesure le cout technique, comme `S56-RETRAIT-RAPPROCHER-OEUVRES`. Elle ne touche ni le paquet, ni son test, ni sa fiche : la correction de `marc-dev` et le retrait ne se disputent aucun fichier.
+
+**Ce que cela coute, nomme.** Le rejeu de `-05` (0,5, A) a besoin d'un jar ou l'entree existe : la forme est celle de la branche de rejeu de `ART-CP-10` (`planning.md`, section *"Branche de rejeu B2"*), a `sofia-sm` et `theo-archi` ; un rejeu non fait a la cloture du palier 2 glisse (A.72), **et ce retrait augmente ce risque**. Je le dis plutot que de le taire.
+
+**Ce que l'utilisatrice peut changer** : un arbitrage ecrit, **avant** que `sofia-sm` engage la story, qui ouvre une fenetre avec son echeance (`DEC-0055` 2 et 5) : exception nommee, datee, avec son motif ; je n'en ecris aucune, la condition 2 n'etant pas remplie. **`Q-U11`**, a l'utilisatrice, par `sofia-sm` : retrait (regime par defaut), ou fenetre bornee ? **La story n'attend pas la reponse.**
+
+### A.107 Matrice : une ligne passe, trois cellules sont mises a jour, `FRA-CE1-05` reste `non couvert`
+
+Sources, les verdicts de `nadia-prof` lus dans les fichiers de rejeu du 2026-10-16 :
+
+| Ligne | Verdict, ses mots | Fichier | Effet |
+|---|---|---|---|
+| `FRA-CE1-24` | **VALIDE**, *"sans reserve"* ; *"`camille-po` peut passer la ligne a `couvert-valide`"* | `rejeu-nadia-palier-2-ap-lot24.md`, verdict | `non couvert` -> **`couvert-valide`** |
+| `FRA-CE1-10` | `TPH-CE1-R1` **levee** ; `FRA-CE1-10` **VALIDE** | `rejeu-nadia-palier-2-ap.md`, resume | deja `couvert-valide` (2026-10-14) : cellule mise a jour |
+| `FRA-CE1-15` | `GNA-CE1-R1` **levee** ; `FRA-CE1-15` **VALIDE** | idem | deja `couvert-valide` (2026-10-14) : cellule mise a jour |
+| `FRA-CE1-13` | `VSJ-CE1-R2` **levee** ; `FRA-CE1-13` **VALIDE**, *"aucune reserve ouverte"* | `rejeu-nadia-palier-2-a.md`, resume | deja `couvert-valide` (2026-10-11) : cellule mise a jour |
+| `SCI-CM1-20` | `N1` et `N2` prises en compte ; *"reste `couvert-valide`, aucune ligne ne bouge"* | `rejeu-nadia-palier-2-b.md`, verdict | inchangee |
+| `FRA-CE1-05` | **REFUSE**, motif unique `TRV-CE1-6` | `rejeu-nadia-palier-2-a-lot05.md`, resume | reste `non couvert`, cellule mise a jour |
+
+**Ecart de `planning.md` (16:59, section 2) : *"les passer a `couvert-valide` est le geste de `camille-po`"* est vrai d'une ligne sur quatre.** `FRA-CE1-10`, `-13` et `-15` etaient `couvert-valide` avant ce geste (lignes 1440, 1443 et 1445 de la matrice a `78270b4c`, statut lu), au titre d'un `VALIDE SOUS RESERVE` ; leur verdict d'aujourd'hui leve la reserve et ne change pas le statut. **Compte, par la commande de la "Methode du compte"** (`awk -F'|'` de la matrice, lignes de donnees, aucune mesure partielle) : avant, `couvert-valide` 146, `en cours` 4, `non couvert` 50, `non couvrable en l'etat` 77, total 277 (**146 / 200 = 73,00 %**) ; apres, 147, 4, 49, 77, total 277 (**147 / 200 = 73,50 %**) ; par niveau, CP 59 / 52, CE1 62 / 29, CM1 79 / 66. Compteur de version (A.32) : 147 + 4 = 151 / 200 = 75,50 % par la formule, critere 2 (CI verte sur l'arbre de la version) a lire sur cet arbre. **Le statut de tete de `FICHE-bandit-manchot-pronoms-ce1.md`** passe de *"en attente d'audit"* a *"refuse"* (motif `TRV-CE1-6`, correction engagee, entree encore servie) ; le bloc de validation de `nadia-prof` n'est pas touche.
+
+### A.108 `PA7`, `PA8` et la police : les voies sont ecrites en criteres, la question de la police est tranchee (`DEC-0122`)
+
+**Stories amendees** (backlog, annotation du 2026-10-16 17:40) : `S57-RDO-CP-R3` (critere 4 remplace par la phrase *"Voici la bonne œuvre. Appuie dessus."*, mots de `nadia-prof` ; critere 6 precise, parce que sa commande ne peut pas etre tenue avec le critere 4 : elle rend 6 lignes sur la copie corrigee ; critere 7 neuf) ; `S57-RCT-CE1-R1` (critere 3 remplace par les trois jeux de propositions de `nadia-prof`). **Voies de `nadia-prof`, non retouchees** (`NP1` a `NP6`). **Le poste de `lea-dev` et celui de `marc-dev` ne s'ouvrent qu'apres cet amendement** : verifiable, `git reflog show --date=iso <branche> | tail -1` porte une heure posterieure a `git log -1 --format=%cI <commit de cet amendement>` ; sinon un ecart de calendrier, dit dans le rapport avec l'heure.
+
+**`DEC-0122`** (neuve, `Acceptee`) ferme la question que `ADR-0054` adresse a `camille-po` et `nadia-prof` depuis le 2026-08-22 (55 jours) : le perimetre de garantie d'une cote est la pile servie rendue sur le poste de mesure ; les polices imposees sont une sensibilite, pas un critere de levee ; les polices de tablette sont un risque nomme, couvert par la marge que `nadia-prof` juge. **Elle implique un code** (le point 3.5 : rien ne garde aujourd'hui la pile servie, mesure a l'appui) : story `S57-GARDE-PILE-DE-POLICES`, prix 0 hors `PAR`, `theo-archi` pour la forme, `sofia-sm` pour l'affectation, palier 3 au plus tot et avant tout poste qui modifie `recreo.css` (meme regle que A.101).
+
+### A.109 `FM5-6` a base ecrite en SHA (`CR24`) et `FM3b` (`E4`)
+
+**`FM5-6`** rendait 0 sur `round-two` (lance : `78270b4c`) pour la cause de `PN8-6` ; elle est reecrite avec la base `4004fab7...` (premier parent du commit livre `1febd011`), 34 sur le commit livre, la fusion et `round-two`. **`FM3`** gagne `FM3b` : le libelle `descripteur.competence` n'est lu par aucun code de production ni ecrit par aucun gabarit, **par deux commandes que j'ai lancees**, et perd la phrase qui attendait la confirmation de `theo-archi`. **Pourquoi je l'ecris moi-meme** : `E4` demandait un amendement *"attendu de `camille-po` et de `theo-archi`"* sans dire de quoi ; le fait qui le fonde est une lecture de code que `git grep` repond, pas un jugement d'architecture. `theo-archi` peut l'amender s'il lit le port entrant autrement ; `FM3b` est une clause, verte aujourd'hui.
+
+### A.110 Routage, ce que cet amendement ne fait pas
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Amender le planning : A a 3,25 (A.105), rejeu de `-05` finance ; affecter `S57-RETRAIT-PRONOMS-CE1` et nommer la forme de la branche de rejeu de `-05` ; affecter `S57-GARDE-PILE-DE-POLICES` ; porter `Q-U11` ; ecart de la section 2 du 16:59 (A.107) |
+| `nadia-prof` | Dire si l'attribution du quart hors instance a A lui convient (A.105) ; `Q-N5` (l'indice des items d'affixe de `-24`, texte ou retrait de la recommandation) ; lire la formulation de `DEC-0122` 3.2 |
+| `theo-archi` | Cout technique du retrait ; forme du garde-fou de la pile ; `FM3b` |
+| `lea-dev`, `marc-dev` | Lire les criteres amendes avant leur commit (backlog, `CR32` a `CR35`) |
+| `yanis-qa` | Test des criteres : `RD3-*`, `RC1-*`, `FM5-6` amendee, `FM3b`, les quatre formes de la pile une a une |
+| `relecteur-pedagogique` | Orthotypographie de la phrase de la voie (iii) et des trois jeux de propositions (`CR38`) |
+
+- **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, paquet, test, `planning.md`, `composition-palier-2.md`. Ne dit pas que la CI distante est verte. N'engage aucun poste. Ne change aucun prix de `nadia-prof`.
+- **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison ; ceux qui ne sont pas lances ne sont pas deduits.
