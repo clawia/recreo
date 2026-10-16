@@ -1405,3 +1405,93 @@ Lances sur `round-two` a `5a6e94b5` (apres les six fusions) avec ce fichier modi
 - **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances (`bash` pour les `.sh`, `python` pour les `.py`), 13 sortis 0, aucun balayage vide, avec `TMPDIR` dans mon espace de travail en forme POSIX. Le nombre n'a pas bouge : `ines-design` ajoute des outils de mesure sans juge (cote du 15:27), ils ne tombent sous aucun balayage.
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
+
+## Amendement du 2026-10-16 18:14 (UTC+02:00), palier 2 : fusion de la cloture des amendements de `camille-po`, financement du rejeu de `-05` (lecture de `camille-po` retenue), engagements apres les criteres amendes, `Q-U11` et `Q-N5`
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace ou precise est nomme. Arbre de depart : `round-two` a `78270b4c`, casquette Scrum Master. Aucune ceremonie n'est animee par ce texte. **Aucun Done n'est prononce, technique ou pedagogique.**
+
+### 1. Fusion de ce jour, lignee verifiee avant
+
+| Branche | Sommet livre | Fusion | Delta |
+|---|---|---|---|
+| `s57-camille-p2-cloture` | `e83fe3f1` (`[CAM]`, 2026-10-16 18:01:35) | `b1b71f80` (2026-10-16 18:07:52) | 6 fichiers, 399 insertions, 8 suppressions : `docs/backlog/backlog.md` (+213), `DEC-0120` (+109), `DEC-0122` (neuf, +59), `DEC-index.md` (+3), `MATRICE-couverture.md` (14 lignes), `FICHE-bandit-manchot-pronoms-ce1.md` (9 lignes) |
+
+- **Lignee.** `git merge-base round-two s57-camille-p2-cloture` rend `78270b4c`, qui est le sommet de `round-two` (`git merge-base --is-ancestor` sort 0). J'ai appele `juger_lignee` de `outils/verifier-lignee.sh` avec le nom de la branche et le code de sortie de `git merge-base` : sortie 0. **Je ne l'ai pas lancee depuis le worktree de la branche**, je n'ai pas appele son enveloppe.
+- **Lecture du rapport.** `git show` du commit : message, liste des fichiers, ajouts de `DEC-0120` en entier (A.105 a A.110). L'annotation du backlog est lue en partie (la preuve de `S57-RDO-CP-R3`, le debut de `S57-RCT-CE1-R1`, la story `S57-RETRAIT-PRONOMS-CE1` et le debut de `S57-GARDE-PILE-DE-POLICES`), pas ligne a ligne.
+- **Aucun conflit.** La fusion s'est faite sans intervention. `grep -c '^<<<<<<<\|^>>>>>>>'` rend 0 sur le backlog, la matrice et la fiche des pronoms. Les codes `CR32` a `CR38` ne sont portes que par cette branche (`git show <branche>:docs/backlog/backlog.md` sur les branches `s57*`). `DEC-0122` ne collisionne pas : `round-two` portait `DEC-0121` comme dernier numero de la serie.
+- **Code.** `git diff --quiet 78270b4c HEAD -- adapters domain application bootstrap pom.xml outils .github` sort 0. La fusion n'ajoute aucun code, aucun test, aucun paquet, aucun catalogue.
+- **Chiffre verifie, pas relaye.** La matrice fusionnee, par la commande de la "Methode du compte" (`awk`, lignes de donnees, aucune mesure partielle) : `couvert-valide` 147, `en cours` 4, `non couvert` 49, `non couvrable en l'etat` 77, total 277, soit **147 / 200**. C'est le compte de `camille-po` (A.107). Ma ligne du 16:59, section 2 (*"146 / 200 au dernier compte"*), est depassee.
+- **Statuts lus sur le disque.** `DEC-0122` : `Acceptee` (ligne 8). `DEC-0120` : `Acceptee` (ligne 13, amendement A.77), inchange par A.105 a A.110 d'apres le texte de l'amendement et celui de `DEC-index.md`.
+
+**Ecart de mon texte du 16:59, section 2, reconnu.** J'y ecrivais que passer `FRA-CE1-10`, `-13`, `-15` et `-24` a `couvert-valide` etait le geste de `camille-po`. `camille-po` ecrit (A.107) que c'est vrai d'une ligne sur quatre : `-10`, `-13` et `-15` l'etaient deja (au titre d'un `VALIDE SOUS RESERVE`), seule `-24` change de statut. Le compte ci-dessus est coherent avec elle (146 a 147, une ligne).
+
+### 2. Financement du rejeu de `-05` : je retiens la lecture de `camille-po`, qui remplace celle du 16:59
+
+Mon texte du 16:59, section 5, points 2 a 4, prelevait 0,25 sur A' (les 0,25 rendus par `GNA`) et portait A' a 2,75. `camille-po` lit autrement (`DEC-0120` A.105) : `GNA-CE1-R1` vaut 0,25 (prix de `nadia-prof`, constate par son rejeu) ; le rejeu de `-05` (0,5, instance A) est finance par deux quarts qui n'appartiennent a aucun poste : 0,25 de `VSJ-CE1-R2` (inscrit 0,5, facture 0,25, reste dans A) et 0,25 hors instance (l'ecart de 7,75 a 8,0 de sa composition), attribue a A. **A passe a 3,25 ; A' garde 3,0** (2,75 de postes et 0,25 non affecte) ; B ne bouge pas ; hors instance 0,00.
+
+**Je retiens la lecture de `camille-po`.** Le produit et la composition sont a elle : je ne tranche pas entre deux lectures de sa propre composition, et la mienne etait une lecture de capacite ecrite faute de la sienne (16:59, point 4 : *"Je lui route"*). **Reserve** : A.105 laisse a `nadia-prof` la repartition entre instances (`DEC-0120` A.4) et lui demande de dire si l'attribution du quart hors instance a A lui convient. **Sa reponse n'est pas au depot** (`git grep -l "attribution du quart"` ne rend que `DEC-0120`). Sauf objection ecrite de `nadia-prof`, la lecture de `camille-po` s'applique ; si elle objecte, `camille-po` ecrit que la mienne s'applique, et la somme reste 8,0 tant que `GNA` vaut 0,25.
+
+**Recompte par `awk`**, sur un registre de dix-sept lignes (instance, ligne, prix, etat) que j'ai ecrit moi-meme a partir des prix de `nadia-prof`, sans recopier la sortie de `camille-po` ; `wc -l` rend 17. Commande : `awk -F'|' '{p[$1]+=$3; t+=$3} END{for(k in p) printf "%s %.2f\n",k,p[k]; printf "total %.2f\n",t}' registre.txt | sort`. Sortie lue ce jour : `A 3.25`, `Ap 3.00`, `B 1.75`, `H 0.00`, **`total 8.00`**. Par etat (meme registre, quatrieme champ) : `consomme 3.25`, `engage 3.00`, `marge 1.50`, `non affecte 0.25`. Elle est identique a celle de `camille-po`.
+
+| Instance | Total | Consomme | Engage | Marge | Non affecte | Remplace la ligne du 16:59, section 5 |
+|---|---|---|---|---|---|---|
+| A (groupe X) | 3,25 | 1,25 | 1,50 | 0,50 | 0,00 | inchangee (3,25) |
+| A' (groupe Y) | 3,00 | 1,75 | 0,50 | 0,50 | 0,25 | 2,75, consomme 1,75, engage 0,50, marge 0,50, non affecte 0,00 |
+| B | 1,75 | 0,25 | 1,00 | 0,50 | 0,00 | inchangee |
+| hors instance | 0,00 | 0,00 | 0,00 | 0,00 | 0,00 | 0,25, non affecte 0,25 |
+| **total** | **8,00** | **3,25** | **3,00** | **1,50** | **0,25** | 8,00 |
+
+Bornes : somme **8,0** par palier (`PAR-9`) ; plafond de **5,0** par instance (`PAR-8`), la plus chargee est A a 3,25 ; **trois lots au plus** par instance : A en porte un (`-05`, le rejeu n'est pas un lot), A' un, B aucun ; trois marges de 0,5, **intactes**. **Second refus** : le rejeu de `-05` et celui de `RCT-CE1-R1` sont tous deux dans A, dont la marge est de 0,5 ; **un seul des deux peut echouer sans acte ecrit** (A.105). Le non affecte restant (0,25, dans A') est un reste, pas un moyen de payer un rejeu. Ce que je disais au 16:59, point 5, sur le non affecte vaut donc pour A' et non pour l'ensemble hors instance.
+
+### 3. Engagements : les criteres amendes precedent maintenant les worktrees de `marc-dev` et de `lea-dev`
+
+Capacite uniquement. Je ne change aucune affectation, aucune forme, aucun prix : celles du 16:59, section 4, tiennent.
+
+| Poste | Developpeur | Branche, worktree | Ce que le developpeur lit avant son commit |
+|---|---|---|---|
+| p2-3, correction de `-05` | `marc-dev`, en premier | `s57-marc-fra-ce1-05-corr`, `../recreo-s57-marc-fra-ce1-05-corr` | `PN8-7` a `PN8-14` (amendement fusionne le 16:54), `CR31`, `FM5-6` reecrite (base ecrite en SHA, `DEC-0120` A.109) |
+| p2-10, `RCT-CE1-R1` | `marc-dev`, apres la correction, un worktree a la fois | `s57-marc-rct-ce1-r1`, `../recreo-s57-marc-rct-ce1-r1` | critere 3 remplace (les trois jeux de propositions de `nadia-prof`), mesures `RC1-1` a `RC1-7` |
+| p2-12, `RDO-CP-R3` | `lea-dev` | `s57-lea-rdo-cp-r3`, `../recreo-s57-lea-rdo-cp-r3` | critere 4 remplace (la phrase de la voie (iii)), critere 6 precise, critere 7 neuf, mesures `RD3-1` a `RD3-13` |
+
+**Date de l'amendement des stories : le commit `e83fe3f1` porte 2026-10-16 18:01:35 (`git log -1 --format=%cI e83fe3f1`) ; sa fusion sur `round-two`, `b1b71f80`, porte 18:07:52.** Les criteres de `RDO-CP-R3` (critere 4) et de `RCT-CE1-R1` (critere 3) sont donc ecrits avant tout worktree. A ce jour, aucun des trois worktrees n'existe : `git branch --list 's57-marc-fra-ce1-05-corr' 's57-marc-rct-ce1-r1' 's57-lea-rdo-cp-r3'` ne rend rien. **La regle de `DEC-0120` A.108, que je reprends :** le worktree de chaque developpeur s'ouvre apres cet amendement, et `git reflog show --date=iso <branche> | tail -1` porte une heure posterieure a 18:01:35. Une branche qui ne descend pas du sommet de `round-two` poussee ce jour (`git merge-base --is-ancestor <sommet> HEAD`, `<sommet>` = celui donne dans le rapport de ce commit) est provisionnee sur la mauvaise lignee : chaque agent le verifie avec `outils/verifier-lignee.sh` avant d'editer et le dit dans son rapport. Un ecart de calendrier se dit dans le rapport avec l'heure, il ne se tait pas.
+
+**Ce qui reste a ecrire par d'autres avant le commit du developpeur, mis a jour** : `relecteur-pedagogique`, orthotypographie de la phrase de la voie (iii) et des trois jeux de propositions (`CR38`) ; `theo-archi`, `Q-T15` pour la fusion de p2-12. Le critere 4 de `S57-RDO-CP-R3` et le critere 3 de `S57-RCT-CE1-R1`, que le 16:59 listait comme dus par `camille-po`, **sont ecrits** (`e83fe3f1`).
+
+### 4. Questions
+
+| Code | Etat | Detail |
+|---|---|---|
+| `Q-U11` | **ouverte, reponse pas encore au depot** | Retrait ou fenetre bornee pour `bandit-manchot-pronoms-ce1`, paquet refuse le 2026-10-16 (16:18) et servi depuis (`DEC-0120` A.106). **L'utilisatrice est consultee par l'agent principal ; je ne la pose pas moi-meme.** `git grep -n "Q-U11"` ne rend que la question (backlog, `DEC-0120`, `DEC-index.md`, matrice) : aucune reponse ecrite. Regime par defaut en attendant : le retrait (`DEC-0045` section 3) ; la story `S57-RETRAIT-PRONOMS-CE1` n'attend pas la reponse (A.106). Si l'utilisatrice repond par une fenetre, c'est un arbitrage ecrit **avant** que j'engage la story, avec son echeance (`DEC-0055` 2 et 5) |
+| `Q-N5` | **ouverte** | A `nadia-prof` : l'indice des dix items d'affixe de `-24`, ecrire le texte ou retirer la recommandation (backlog, annotation du 17:40 ; `rejeu-nadia-palier-2-ap-lot24.md` 2.3 et section 6). Aucune reponse au depot |
+| Repartition entre instances | **ouverte pour `nadia-prof`** | Le quart hors instance attribue a A (section 2). Reponse absente du depot |
+
+### 5. Obstacles : ce que les fichiers presents sur le disque permettent de clore
+
+Mise a jour du tableau du 16:59, section 7.
+
+| Obstacle | Fichier qui le tranche | Etat |
+|---|---|---|
+| Dette `T6`, polices imposees | `DEC-0122` (`Acceptee`), present sur le disque apres cette fusion | **decision close** ; reste le code : story `S57-GARDE-PILE-DE-POLICES` (hors `PAR`, prix 0, palier 3 au plus tot et avant tout poste qui modifie `recreo.css`). **Je ne l'affecte pas ici** : la forme du garde-fou est a `theo-archi` (`DEC-0120` A.110), son avis n'est pas au depot. L'affectation s'ecrit a l'ouverture du palier 3 |
+| Statut de tete de la fiche des pronoms | fiche fusionnee (statut de tete mis a jour par `camille-po`, A.107) | **clos** |
+| Amendement de composition (financement du rejeu de `-05`) | `DEC-0120` A.105 | **clos** pour `camille-po` ; reserve de `nadia-prof` sur la repartition, section 2 |
+| Paquet refuse de `-05` encore servi | `DEC-0120` A.106 (regime par defaut : retrait) | **decision ecrite** ; execution ouverte : `S57-RETRAIT-PRONOMS-CE1` demande ma mesure de capacite, la mesure de cout de `theo-archi` (absente du depot) et la forme de la branche de rejeu de `-05`, que je n'ecris pas avant son avis ; `Q-U11` ouverte. **Risque nomme par `camille-po`** : un rejeu non fait a la cloture du palier 2 glisse (A.72), et ce retrait augmente ce risque |
+| Refus de `-05` sur `TRV-CE1-6` | fiche des pronoms, `PN8` fusionne | ecrit ; **reste ouvert** tant que le commit corrige et le rejeu n'existent pas |
+| `Q-T15`, `Z1` a `Z4`, `CR26`, `CR27`, outils de mesure sans juge, `Q4` | aucun | inchanges, ouverts |
+| `E4` | `DEC-0120` A.109 (`FM3b` ecrite par `camille-po`) | clos par elle ; `theo-archi` peut l'amender |
+
+### 6. Ce que cet amendement ne fait pas, decisions
+
+Ne prononce aucun Done, ne juge aucun contenu, ne choisit aucune voie, ne fixe aucun prix. N'ouvre aucun worktree. N'affecte ni `S57-RETRAIT-PRONOMS-CE1` ni `S57-GARDE-PILE-DE-POLICES` (section 5). Ne pose pas `Q-U11` a l'utilisatrice. Ne touche ni la matrice, ni un paquet, ni un catalogue, ni du code, ni `ci.yml`, ni un critere de story.
+
+**Decisions** de la fusion : `DEC-0120`, amendee une dix-septieme fois (A.105 a A.110), statut `Acceptee` inchange ; `DEC-0122`, **creee**, `Acceptee` (perimetre de garantie d'une cote : la pile de polices servie, rendue sur le poste de mesure) ; `DEC-index.md`, mis a jour. **Aucune `ADR` n'est creee ou amendee.** Cet amendement-ci ne cree et n'amende aucune decision : les deux `DEC` que le 16:59 (section 9) disait a ecrire par `camille-po`, la dette `T6` et l'amendement de composition, **existent maintenant sur le disque**.
+
+### 7. Jobs de `ci.yml` lances pour ce commit
+
+Lances sur `round-two` a `b1b71f80` (apres la fusion) avec ce fichier modifie, avant commit. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, deux fois : sur `b1b71f80` seul (`BUILD SUCCESS`, exit 0, 3 min 42 s), puis avec les sections 1 a 6 de cet amendement presentes (`BUILD SUCCESS`, exit 0, 3 min 43 s). **2669 tests, 0 echec, 0 erreur, 0 ignore** aux deux runs (120, 31, 501, 1630, 381, 6 d'integration, lignes `Tests run` du reacteur, somme par `awk`, recomptee a part par l'attribut `tests` des `TEST-*.xml` : 2669). JDK 21.0.10 (`java.version` de 117 rapports Surefire de `adapter-web` et `bootstrap`, une seule valeur). **2669 etait attendu et c'est le compte du 16:59** : la fusion ne change ni code ni test (`git diff --quiet 78270b4c HEAD -- adapters domain application bootstrap pom.xml outils .github` sort 0), donc aucun ecart a expliquer. Le second run a lu ce fichier avant l'ajout de la presente section, qui ne contient aucun tableau. Etape "Package du fat jar" non lancee.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh` : *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, sortie 0, avec ce fichier.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh` et `verifier-garde-fou-accent-test.sh` sortent 0 ; `commit-atteignable.sh e8d14ddb` sort 0 ; les sujets de `e8d14ddb..HEAD` hors fusions (12 commits d'agents), le sujet de la fusion et le sujet prevu du commit passent dans `verifier-prefixes.sh` : *"Tous les commits portent un prefixe d'agent connu."*, sortie 0 ; `verifier-garde-fou-accent.sh "e8d14ddb..HEAD"` : *"0 commit(s) le touchent dans la plage, tous [THEO]."*, sortie 0.
+- **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances (`bash` pour les `.sh`, `python` pour les `.py`), 13 sortis 0, aucun balayage vide, avec `TMPDIR` dans mon espace de travail en forme POSIX. Le nombre n'a pas bouge depuis le 16:59.
+
+Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
