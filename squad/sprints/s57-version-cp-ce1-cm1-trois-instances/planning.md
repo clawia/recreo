@@ -1247,3 +1247,161 @@ Lances sur le worktree de fusion, tete `056f8c88` plus ce fichier modifie, avant
 - **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances (`bash` pour les `.sh`, `python` pour les `.py`), 13 sortis 0, aucun balayage vide, avec `TMPDIR` dans mon espace de travail en forme POSIX. Le nombre n'a pas bouge : `ines-design` n'ajoute aucun juge (section 3).
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
+
+---
+
+## Amendement du 2026-10-16 16:59 (UTC+02:00), palier 2 : six fusions, amendement PN8 avant le worktree de marc-dev, engagement tardif de p2-10 et de p2-12, rejeu de `-05`
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace ou precise est nomme. Arbre de depart : `round-two` a `e8d14ddb`, casquette Scrum Master. Aucune ceremonie n'est animee par ce texte. **Aucun Done n'est prononce, technique ou pedagogique** : les verdicts ci-dessous sont ceux de `nadia-prof`, relayes sans les juger.
+
+### 1. Fusions de ce jour, lignee verifiee avant chacune
+
+`git merge-base round-two <branche>` rend `e8d14ddb` pour les six branches, ancetre de `round-two` (`git merge-base --is-ancestor` sort 0). J'ai appele `juger_lignee` de `outils/verifier-lignee.sh` avec le nom de chaque branche et le code de sortie de `git merge-base`, six sorties 0 ; **je ne l'ai pas lance depuis un worktree de chaque branche**, je n'ai pas appele son enveloppe. Rapports lus par `git show` avant chaque fusion.
+
+| Ordre | Branche | Sommet livre | Fusion | Delta |
+|---|---|---|---|---|
+| 1 | `s57-nadia-p2-b` | `1ce56426` | `9aa51463` | 2 fichiers : la fiche des sciences CM1 (+65) et `rejeu-nadia-palier-2-b.md` |
+| 2 | `s57-nadia-p2-ap` | `8145da31` (contient `610bcba1`, `4097ac13` et `297851f6`) | `9c42046b` | 7 fichiers : quatre fiches de conformite (dont celles des familles de mots et des pronoms, de `camille-po`) et trois rapports de `nadia-prof`, dont `reponse-nadia-pa7-pa8.md` |
+| 3 | `s57-nadia-p2-a2` | `e49ca262` (contient `c7a69e60`) | `b2f6da08` | 4 fichiers : la fiche des pronoms (+144), celle du verbe-sujet, deux rapports |
+| 4 | `s57-ines-p2-pa78` | `e7c37933` | `e2972e3b` | 31 fichiers sous `squad/` : mesures de `PA7` et `PA8`, releves, outils de mesure ; rien hors `squad/` |
+| 5 | `s57-theo-p2-pa78` | `d43e8e96` | `fe3091ce` | un fichier, `avis-theo-pa7-pa8.md` |
+| 6 | `s57-camille-p2-pn8b` | `341129f8` | `5a6e94b5` | un fichier, `docs/backlog/backlog.md` (+116) |
+
+**Aucun conflit, aux six fusions.** Le conflit attendu sur la fiche des pronoms (meme ancetre `610bcba1` dans les fusions 2 et 3) n'a pas eu lieu : la fiche fusionnee fait 307 lignes, aucun marqueur de conflit (`grep -c '^<<<<<<<\|^>>>>>>>'` rend 0), la section *Corrections de `nadia-prof`* et le bloc de validation y figurent une fois chacun. Les codes `CR28` a `CR31` de la fusion 6 ne collisionnent avec aucune branche `s57*` (`git show <branche>:docs/backlog/backlog.md` : seule `s57-camille-p2-pn8b` les porte) ni avec `round-two` avant fusion.
+
+**Code** : `git diff --quiet e8d14ddb HEAD -- adapters domain application bootstrap pom.xml outils` sort 0. Les six fusions n'ajoutent aucun code, aucun test, aucun paquet. Le jar servi est celui de `0c0d2142`.
+
+### 2. Ce que disent les verdicts et les avis, relayes
+
+| Poste | Source | Ce que dit l'auteur |
+|---|---|---|
+| p2-3, lot `-05` | `rejeu-nadia-palier-2-a-lot05.md`, fiche des pronoms | **REFUSE** par `nadia-prof`. Motif unique, `TRV-CE1-6` (roles distribues par genre). `FRA-CE1-05` reste `non couvert`. Cinq items reecrits (3, 9, 13, 18 pour les roles ; 16, *Hamza* devient *Omar*), textes exacts en section 5 de la fiche. Rejeu **0,5**. Item 19 *Nael* : fermee par elle sans correction, *Naël* reste une recommandation non bloquante. Le reste est tenu (pli 20 sur 20, 240 couples sur 240) |
+| p2-4, lot `-24` | `rejeu-nadia-palier-2-ap-lot24.md` | **VALIDE**, `FRA-CE1-24`, sans reserve ; 24 items sur 24 au-dessus du pli, bas le plus haut 518. Prix **1,0** |
+| p2-5, `N1` et `N2` | `rejeu-nadia-palier-2-b.md` | **prises en compte** ; `SCI-CM1-20` reste `couvert-valide`, aucune ligne ne bouge. Observation sans reserve : a 744 apres une erreur, l'indice finit sous le pli sur les items 9 et 12 ; elle le mesure identique avec les textes d'avant `69dd7631` (`N1` et `N2` ne sont pas la cause). Rejeu **0,25** |
+| p2-8, `TPH-CE1-R1` | `rejeu-nadia-palier-2-ap.md` | **levee** ; `FRA-CE1-10` **VALIDE**. Conditions `R3-1` et `PA4` tenues, clause `Q-R4` tenue sur la cote. Prix **0,5** |
+| p2-9, `GNA-CE1-R1` | idem | **levee** ; `FRA-CE1-15` **VALIDE**. Prix **0,25** : la forme de `ce1-accord-groupe-nominal` ne differe pas de celle de `ce1-phrases-types` (le bareme de `arbitrage-nadia-palier-2.md` ecrit 0,25, et 0,5 si la forme du paquet differe). Item 5, valeur transitoire de 355,8 : elle mesure 474 dans les six ordres, ne reproduit pas 355,8, cause toujours non trouvee |
+| p2-11, `VSJ-CE1-R2` | `rejeu-nadia-palier-2-a.md` | **levee** ; `FRA-CE1-13` **VALIDE**, aucune reserve ouverte ; 24 sur 24, 288 couples sur 288. Prix **0,25**. Elle dit que son verdict vaut pour le jar joue : une modification de `recreo.css` ou du gabarit peut le defaire sans qu'aucun test rougisse |
+| `PA7`, `RCT-CE1-R1` | `reponse-nadia-pa7-pa8.md` (`NP1` a `NP3`) | voie des **textes**, mot pour mot ; bandeau **non accorde** ; police qui fait foi : celle que la feuille sert, rendue sur le poste de mesure. Prix **0,5** |
+| `PA8`, `RDO-CP-R3` | idem (`NP4` a `NP6`) | voie **(iii)**, phrase plus courte : *"Voici la bonne œuvre. Appuie dessus."* ; (i) et (ii) ecartees ; marge de 0,3 px non acceptable. Prix **0,5** |
+| `PA7` et `PA8`, mesures | `mesure-ines-pa7-...` et `mesure-ines-pa8-...` | textes de `nadia-prof` : les trois items a 478, marge de 73 px, 120 couples sur 120 ; bandeau : 548, marge de 3 px. `PA8` : colonne necessaire 262,2 px ; deux combinaisons de (i) tiennent a 720 avec barre. **`ines-design` ne mesure pas la phrase de la voie (iii)** : `nadia-prof` la mesure de sa main (191 px pour une colonne de 229 ou 244, 38 px de marge au pire) |
+| `PA7` et `PA8`, avis | `avis-theo-pa7-pa8.md` | `T5` : la voie des textes preserve le mieux l'architecture. `T4` : (iii) a le moins de pieces mobiles, aucun `ADR`, aucune feuille. `T1` : plancher du signal 219,1 px et non 207. `T6` : la police du poste n'est le perimetre d'aucune garantie ecrite, a fermer par une `DEC` de `camille-po` |
+
+**Verifie par moi, pas relaye** : `git grep -n "ecran-deux-oeuvres"` sur les gabarits d'`adapter-web` rend une ligne (`fragments/manche.html:34`) et 28 occurrences dans `recreo.css` : `theo-archi` le dit, le disque le confirme. Les fichiers de test qui citent la phrase actuelle, que `lea-dev` aura a lire (`git grep -l "cette œuvre qui va avec"`) : `LaPhraseDeRevelationDUneMancheEnImageNeSeCoupeJamaisDansUnePhraseTest`, `PartieControllerPropositionsEnImageTest`, `TexteAccentueDesGabaritsTest` (`adapter-web`), `LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest` (`bootstrap`). Le garde-fou de `D.4` est dans le premier.
+
+**Matrice** : je ne la touche pas (146 / 200 au dernier compte de `camille-po`). `FRA-CE1-10`, `-13`, `-15` et `-24` ont un verdict VALIDE de `nadia-prof` ; les passer a `couvert-valide` est le geste de `camille-po`, au verdict. Le statut de tete de la fiche des pronoms (encore *"en attente d'audit"*) lui revient aussi, `nadia-prof` le lui route.
+
+### 3. L'amendement `PN8` precede l'ouverture du worktree de `marc-dev`
+
+| Fait | Valeur lue |
+|---|---|
+| Commit de l'amendement | `341129f8`, `[CAM]`, `git log -1 --format=%ci` : **2026-10-16 16:41:27 +0200** |
+| Fusion sur `round-two` | `5a6e94b5`, **2026-10-16 16:54:18 +0200** |
+| Branche ou worktree de la correction de `-05` | **aucun** a cette date (`git branch --list 's57-marc-*'` ne rend aucune branche de correction ; `s57-marc-fra-ce1-05` est la branche livree du palier, fusionnee, **non reutilisee**) |
+
+La clause de `PN8` (*"avant l'ouverture du worktree"*) est tenue pour la correction : le worktree de `marc-dev` s'ouvre apres les deux horodatages. Verification de `camille-po`, a refaire sur le rapport de `marc-dev` : `git reflog show --date=iso <sa branche> | tail -1` porte une heure posterieure a 16:41:27. **Item 19 (`CR29`)** : `camille-po` ne l'a pas repris, il est decline sans amendement ; le texte fusionne l'ecrit (*"Sans amendement, elle est declinee"*, motif : item tenu et ferme par `nadia-prof`). L'annotation fixe `PN8-13a` a 8, `PN8-13b` a 18 et `PN8-6` a 13 ; aucun amendement posterieur ne les change sur l'arbre fusionne. `CR28`, `CR30`, `CR31` restent a leurs titulaires (`yanis-qa`, `relecteur-pedagogique`, `marc-dev`).
+
+### 4. Engagements, capacite uniquement
+
+Je tranche en capacite. Je ne choisis aucune voie et ne fixe aucun prix : je lis ceux de `nadia-prof`, de `theo-archi` et d'`ines-design`.
+
+| Poste | Decision | Developpeur | Rejeu | Prix | Branche, worktree, repertoire, ports |
+|---|---|---|---|---|---|
+| p2-3, rejeu de `-05` | **engage**, apres la correction | `marc-dev` (la correction : paquet, table de genre, jeu fautif de `TRV-CE1-6`, `PN8-7` a `PN8-14`) | `nadia-prof`, instance A | 0,5 | `s57-marc-fra-ce1-05-corr`, `../recreo-s57-marc-fra-ce1-05-corr` ; `s57-p2-marc-dev-a`, 18521 et 19221 |
+| p2-10, `RCT-CE1-R1` | **engage, tardif**, voie des textes | `marc-dev`, apres la correction de `-05` | `nadia-prof`, instance A | 0,5 | `s57-marc-rct-ce1-r1`, `../recreo-s57-marc-rct-ce1-r1` ; `s57-p2-marc-dev-a`, 18521 et 19221 |
+| p2-12, `RDO-CP-R3` | **engage, tardif**, voie (iii) | `lea-dev` | `nadia-prof`, instance B | 0,5 | `s57-lea-rdo-cp-r3`, `../recreo-s57-lea-rdo-cp-r3` ; `s57-p2-lea-dev-b`, 18531 et 19231 |
+
+**Ordre de `marc-dev`** : correction de `-05` d'abord, puis `RCT-CE1-R1`. **Un worktree a la fois**, il ne les entrelace pas ; le second s'ouvre quand le premier a livre son commit et son rapport. Pour le rejeu : `nadia-prof` instance A (18511 et 19211) rejoue `-05` puis `RCT-CE1-R1` ; instance B (18513 et 19213) pour `RDO-CP-R3`. Les noms de branche de `-05` et de `RCT` sont **neufs** (aucun n'existe) et s'ajoutent a la table du 2026-10-15 20:56 ; les repertoires et les ports sont ceux de cette table, **inchanges**. Aucun lancement n'a lieu avant le worktree : chaque agent verifie son port libre (`netstat -ano`) avant de lancer.
+
+**Regle de la section 5 du 2026-10-15, appliquee a p2-12** : *"si la forme commune n'est pas fusionnee, je nomme `marc-dev` ... ; je ne reaffecte pas la forme"*. La forme est fusionnee (`aca0d90f`) : la condition ne joue pas, **`lea-dev` reste le developpeur de p2-12**. `lea-dev` et `marc-dev` travaillent en parallele sur des fichiers distincts (gabarit, tests de gabarit et garde-fou de `D.4` d'un cote ; `ce1-pronoms`, son test et `ce1-texte-narratif` de l'autre) : aucun ordre de fusion n'est impose entre eux.
+
+**Ce que chaque developpeur ecrit**, sans que je le modifie :
+
+- `marc-dev`, `-05` : les neuf textes de la section 5 de la fiche, recopies par `camille-po` dans l'amendement fusionne (`PN8-7` a `PN8-14`), commandes lancees sur son commit, jobs de `ci.yml` nommes. `PaquetCe1PronomsTest` et le jeu fautif nomment *Hamza* : trois fichiers changent ensemble.
+- `marc-dev`, `RCT-CE1-R1` : les trois items de `ce1-texte-narratif.yaml` de `reponse-nadia-pa7-pa8.md` section 1.4, mot pour mot ; `PaquetCe1TexteNarratifTest` vert dans le meme commit, **sans assertion retiree** (`theo-archi`, `T5`) ; le commentaire de tete, s'il compte quelque chose que ces textes changent.
+- `lea-dev`, `RDO-CP-R3` : la phrase *"Voici la bonne œuvre. Appuie dessus."* a la place de la premiere phrase dans `fragments/manche.html` ; l'inventaire de `TexteAccentueDesGabaritsTest` ; **dans le garde-fou de `D.4`, les constantes `PHRASE_DE_M4`, `PREMIERE_PHRASE`, `SECONDE_PHRASE` et les deux comptes litteraux de U+00A0 que `theo-archi` nomme** (`avis-theo-pa7-pa8.md` 2.4). **Sans amendement d'`ADR`** : `theo-archi` ecrit que `D.4` dit la forme de la phrase, pas ses mots. Je n'ai pas ouvert ce garde-fou : les valeurs a ajuster sont celles que `lea-dev` y lit. Compte ArchUnit inchange : 41 declarations, 38 `@ArchTest` (compte de `theo-archi` sur `e8d14ddb`, que je ne recompte pas).
+
+**Ce qui reste a ecrire par d'autres, avant le commit du developpeur** (je n'en fais pas une porte, sauf ou la story l'ecrit) :
+
+- `camille-po` : copier le texte de la voie (iii) dans la story `S57-RDO-CP-R3`, **critere 4 : *"copie mot pour mot ici avant le commit"*** (porte du commit de `lea-dev`, pas de son worktree) ; amender de meme les criteres de `S57-RCT-CE1-R1` avec les textes (demande de `nadia-prof`, `reponse-nadia-pa7-pa8.md` section 4).
+- `relecteur-pedagogique` : l'orthotypographie des textes des sections 1.4 et 2.4 de `nadia-prof` et des cinq textes de `-05` avant les rejeux (`CR30`).
+- `theo-archi` : `Q-T15` pour la fusion de p2-12, section 7.
+
+### 5. Prix recomptes par instance, sans modifier un lot
+
+Somme par `awk` sur un registre de dix-huit lignes (instance, ligne, prix, etat), sortie lue ce jour. **Le prix de chaque poste est celui de `nadia-prof`** : `-05` 1,0 et rejeu 0,5, `-24` 1,0, `TPH` 0,5, `GNA` 0,25, `VSJ` 0,25, `N1` et `N2` 0,25, `RCT` 0,5, `RDO` 0,5.
+
+| Instance | Total | Consomme | Engage | Marge | Non affecte | Composition du 2026-10-15 |
+|---|---|---|---|---|---|---|
+| A (groupe X) | 3,25 | 1,25 | 1,50 | 0,50 | 0,00 | 3,0 |
+| A' (groupe Y) | 2,75 | 1,75 | 0,50 | 0,50 | 0,00 | 3,0 |
+| B | 1,75 | 0,25 | 1,00 | 0,50 | 0,00 | 1,75 |
+| hors instance | 0,25 | 0,00 | 0,00 | 0,00 | 0,25 | 0,25 |
+| **total** | **8,00** | **3,25** | **3,00** | **1,50** | **0,25** | 8,0 |
+
+- **A** : arbitrage 0,5 ; `-05` 1,0 et rejeu de `-05` 0,5 ; `VSJ-CE1-R2` 0,25 ; `RCT-CE1-R1` 0,5 ; marge 0,5. Consomme : `-05` et `VSJ`. Engage : arbitrage, rejeu, `RCT`.
+- **A'** : arbitrage 0,5 ; `-24` 1,0 ; `TPH` 0,5 ; `GNA` 0,25 ; marge 0,5. Consomme : `-24`, `TPH`, `GNA`.
+- **B** : arbitrage 0,5 ; `N1` et `N2` 0,25 ; `RDO-CP-R3` 0,5 ; marge 0,5. Consomme : `N1` et `N2`.
+
+**Bornes relues** : somme **8,0** (`PAR-9`) ; plafond de **5,0** par instance (`PAR-8`) : la plus chargee est A a 3,25 ; **trois lots au plus** par instance : A porte un lot (le rejeu n'est pas un lot), A' un lot, B aucun ; marge de 0,5 par instance qui porte un lot ou un rejeu : **intacte aux trois instances**. L'engagement de `RCT-CE1-R1` et de `RDO-CP-R3` n'ajoute rien : leurs 0,5 etaient deja comptes comme non engages (section 7 du 15:27). **Le seul prix neuf est le rejeu de `-05` : 0,5**, et c'est lui qui force la lecture suivante.
+
+**Ce que je retiens, et ce que je ne decide pas.**
+
+1. **`GNA-CE1-R1` a 0,25** : le registre de `nadia-prof` le dit (`arbitrage-nadia-palier-2.md`, tarifs) et son rejeu constate la condition. Je l'ai ecrit a 15:27 : *"Si elle confirme 0,25, un 0,25 s'ajoute a l'ecart non affecte"*. **Je retiens 0,25** pour le compte de capacite. La composition de `camille-po` porte 0,5 (le maximum) ; je ne la reecris pas.
+2. **Le rejeu de `-05` (0,5) n'a pas de ligne dans la composition.** Il est pris sur le non affecte : les 0,25 de A (non affecte du 15:27) et les 0,25 rendus par `GNA`. Resultat : A passe de 3,0 a 3,25 et A' de 3,0 a 2,75, **8,0 au total, aucune marge entamee**, non affecte restant 0,25 (hors instance).
+3. **Si la lecture 1 n'est pas retenue** (`GNA` reste a 0,5), la somme est **8,25 : `PAR-9` est depassee de 0,25.** **Si la lecture 2 n'est pas retenue**, le rejeu ne peut se prendre que sur la marge de A (0,5) : **elle serait entamee**. Je l'ecris sans trancher.
+4. **Ecart de repartition** : la composition fixait A a 3,0 et A' a 3,0. Deplacer 0,25 de A' vers A change le total d'une instance, pas un plafond ; l'amendement de `DEC-0120` qui porte la composition (precedent A.53 a A.62) est a `camille-po`. **Je lui route : confirmer `GNA` a 0,25 et le financement du rejeu de `-05` par le non affecte, ou dire le contraire.** Tant qu'elle ne l'a pas ecrit, l'engagement du rejeu est de capacite seule.
+5. **Plus de marge de manoeuvre hors marges** : le non affecte vaut 0,25. Un rejeu qui echoue (celui de `-05` ou celui de `RCT`) ne se paie que sur la marge de son instance, c'est son usage ; je le dis maintenant pour qu'un second refus ne passe pas pour une surprise.
+
+### 6. Compte des reports (`DEC-0120` A.66, A.72, A.83)
+
+| Poste | Compte au 15:27 | Apres cet amendement |
+|---|---|---|
+| p2-8, p2-9, p2-11 | premier report, engages | audites et leves au palier 2 : le premier report reste ecrit, **aucun glissement, aucun second report** |
+| p2-4, p2-5 | engages a l'ouverture, aucun report | audites et valides : rien a compter |
+| p2-3, lot `-05` | engage a l'ouverture, aucun report | audite et **refuse** ; le rejeu est engage au palier 2. Non rejoue a la cloture du palier 2, il glisse (A.72) ; je l'ecris ce jour-la |
+| p2-10 `RCT-CE1-R1` | premier report, non engage | **engage tardif** : le premier report reste ecrit (A.83) ; non audite a la cloture du palier 2, il glisse ; le second report se compte a la cloture du palier 3 et non a l'ouverture du palier 3 |
+| p2-12 `RDO-CP-R3` | premier report, non engage | idem |
+
+### 7. Obstacles : ce que les fichiers presents sur le disque permettent de clore
+
+| Obstacle | Fichier qui le tranche | Etat |
+|---|---|---|
+| `PA7` (`Q-P5`) | `reponse-nadia-pa7-pa8.md` (voie), `mesure-ines-pa7-...` (mesure), `avis-theo-pa7-pa8.md` (`T5`), tous fusionnes | **clos** pour la voie et la mesure ; criteres de la story a amender (`camille-po`) |
+| `PA8` (`Q-R7`) | `reponse-nadia-pa7-pa8.md` (voie (iii)), `mesure-ines-pa8-...`, `avis-theo-pa7-pa8.md` (`T4`) | **clos** pour la voie ; la phrase neuve n'est mesuree que par `nadia-prof`, la levee se juge au rejeu |
+| Refus de `-05` sur `TRV-CE1-6` | fiche des pronoms (verdict) et amendement `PN8` fusionne (`5a6e94b5`) | **ecrit** ; l'obstacle reste ouvert tant que le commit corrige et le rejeu n'existent pas |
+| `CR29`, item 19 | amendement fusionne, texte *"declinee"* | **clos** |
+| `Q-T15` pour p2-12 | aucun : le seul fichier de lecture du dossier est `lecture-theo-p2-7-forme-commune.md` | **ouvert**, conditionne la fusion de p2-12, pas son engagement |
+| Dette `T6`, polices imposees hors du perimetre de garantie | aucun ; `theo-archi` propose la formulation : *"La cote d'une forme vaut pour la pile servie rendue sur le poste de mesure ; les polices imposees sont une sensibilite rapportee, pas un critere de levee."* | **ouvert**, route : `DEC` de `camille-po`, la barre reste a `nadia-prof`. Je ne l'ecris pas |
+| Constantes de `D.4` pour la phrase neuve | `avis-theo-pa7-pa8.md` 2.4 : aucun amendement d'`ADR` | a `lea-dev`, dans son commit |
+| Trous `Z1` a `Z4`, `CR26`, `CR27`, outils de mesure sans juge, `Q4`, `E4` | aucun | inchanges, ouverts |
+| Statut de tete de la fiche des pronoms (*"en attente d'audit"*) | aucun | **ouvert**, `camille-po` |
+
+### 8. Etat des postes au 2026-10-16 16:59
+
+| Poste | Etat |
+|---|---|
+| p2-3, `-05` | audite, **refuse** ; correction engagee (`marc-dev`), rejeu engage (0,5) |
+| p2-4, `-24` | audite, **valide** (verdict de `nadia-prof`) |
+| p2-5, `N1` et `N2` | rejoue, prises en compte |
+| p2-8, `TPH-CE1-R1` et p2-9, `GNA-CE1-R1` | rejoues, levees (verdict de `nadia-prof`) |
+| p2-10, `RCT-CE1-R1` | engage tardif, `marc-dev`, apres `-05` |
+| p2-11, `VSJ-CE1-R2` | rejoue, levee |
+| p2-12, `RDO-CP-R3` | engage tardif, `lea-dev` |
+| p2-1, p2-2, p2-6, p2-7 | inchanges par cet amendement |
+
+### 9. Ce que cet amendement ne fait pas, decisions
+
+Ne prononce aucun Done, ne juge aucun contenu, ne choisit aucune voie, ne fixe aucun prix, ne leve aucune reserve. Ne touche ni la matrice, ni un paquet, ni un catalogue, ni du code, ni `ci.yml`, ni un critere de story. N'ouvre aucun worktree. Ne fusionne rien d'autre que les six branches de la section 1.
+
+**Decisions prises** : aucune `ADR` ni `DEC` n'est creee ou amendee par cet amendement ni par les six fusions. `camille-po` ecrit pour elle-meme que son annotation de `PN8` n'amende que la story et la liste des fichiers. Deux `DEC` sont a ecrire par `camille-po` et n'existent pas : la dette `T6` (polices) et l'amendement de composition de la section 5 (point 4).
+
+### 10. Jobs de `ci.yml` lances pour ce commit
+
+Lances sur `round-two` a `5a6e94b5` (apres les six fusions) avec ce fichier modifie, avant commit. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, deux fois : sur `fe3091ce` (apres les cinq premieres fusions, `BUILD SUCCESS`, 2669 tests, 6 min 26 s), puis sur `5a6e94b5` avec les sections 1 a 9 de cet amendement presentes (`BUILD SUCCESS`, exit 0, 4 min 38 s). **2669 tests, 0 echec, 0 erreur, 0 ignore** (120, 31, 501, 1630, 381, 6 d'integration, lignes `Tests run` du reacteur, somme par `awk`, recomptee a part par l'attribut `tests` des `TEST-*.xml` : 2669). JDK 21.0.10 (`java.version` de 60 rapports Surefire de `bootstrap`, une seule valeur). **2669 est attendu** : 2669 sur `056f8c88`, et les six fusions ne changent ni code ni test (`git diff --quiet e8d14ddb HEAD` sur `adapters domain application bootstrap pom.xml outils` sort 0). Le second build a lu ce fichier avant l'ajout de la presente section, qui ne contient aucun tableau. Etape "Package du fat jar" non lancee.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh` : *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, sortie 0, avec les mesures et releves d'`ines-design` et ce fichier.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh` et `verifier-garde-fou-accent-test.sh` sortent 0 ; `commit-atteignable.sh e8d14ddb` sort 0 ; les sujets de `e8d14ddb..HEAD` hors fusions (dix commits d'agents) et le sujet prevu du commit passent dans `verifier-prefixes.sh` : *"Tous les commits portent un prefixe d'agent connu."*, sortie 0 ; `verifier-garde-fou-accent.sh "e8d14ddb..HEAD"` : *"0 commit(s) le touchent dans la plage, tous [THEO]."*, sortie 0.
+- **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances (`bash` pour les `.sh`, `python` pour les `.py`), 13 sortis 0, aucun balayage vide, avec `TMPDIR` dans mon espace de travail en forme POSIX. Le nombre n'a pas bouge : `ines-design` ajoute des outils de mesure sans juge (cote du 15:27), ils ne tombent sous aucun balayage.
+
+Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
