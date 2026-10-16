@@ -22381,3 +22381,37 @@ La clause amendee cite *"les 143 jeux `bandit-manchot`"* (ses mots). **Constate 
 | `CR14` | Script des 43 enonces restants d'`additions-cp` et cote de reference complete | `sofia-sm` (affectation) |
 | `Q-P5` | Voie de `S57-RCT-CE1-R1` pour les 3 items a 552 | `nadia-prof`, `theo-archi` |
 | `Q-P6` | Item 15 de `ce1-pronoms` : correction avant branchement ? | `nadia-prof` |
+
+
+## Arbitrages du palier 2 de s57 : worktrees de `-05` et `-24`, critere 2 de `S57-ARB-PALIER-2`, script de `PA1` (`camille-po`, 2026-10-16)
+
+Annotation datee, sur `round-two` a `f6134910`. **Rien au-dessus n'est reecrit** ; ce qui est amende est nomme. Decisions : `DEC-0120` A.94 a A.99. Les valeurs "aujourd'hui" sont mesurees par moi sur `f6134910` avec `git grep` et `grep -c`. **Ce que je n'ai pas fait** : jouer un jar, mesurer une cote dans un navigateur. **Aucune story ci-dessous n'est engagee par moi** : l'engagement est a `planning.md` (`sofia-sm`). Matrice inchangee (146 / 200), aucun prix ni lot modifie.
+
+### `PN8` (`S57-BR-FRA-CE1-05`) et `FM5` (`S57-BR-FRA-CE1-24`) : precision (`Q-S4`)
+
+Les deux phrases sont gardees. **Precision** : le worktree d'un lot ne s'ouvre qu'apres la ligne datee de `nadia-prof` *"lecture complete : <paquet>, N items lus"* pour son paquet (`DEC-0120` A.96). Critere : la base du worktree contient cette ligne. Mesure, a lancer avant la fusion de la branche : `git grep -l -E 'lecture complete : .?ce1-pronoms.?, 20 items lus' "$(git merge-base round-two <branche de -05>)" -- squad docs | wc -l` rend au moins 1 ; de meme avec `ce1-familles-de-mots`, 24 et la branche de `-24`. **Aujourd'hui, sur le sommet de `round-two`** : `git grep -l -E '<meme motif>' round-two -- squad docs | wc -l` rend **0** pour chacun des deux paquets (rouge). `K2` reste : le seul YAML modifie est celui du paquet, et seulement si `nadia-prof` decide une correction.
+
+### `S57-ARB-PALIER-2` : critere 2, commande remplacee
+
+La commande du critere 2 (`grep -rE "lecture complete.*ce1-pronoms.*20"` sur le dossier du sprint et `squad/conformite/`) rend **1 ligne sur `planning.md`** (ligne 452, la ligne du poste `p2-1`), de meme pour `ce1-familles-de-mots` et 24 : verte sans qu'aucune lecture soit ecrite. **Remplacee**, les mots de `nadia-prof` inchanges, par : `git grep -l -E 'lecture complete : .?ce1-pronoms.?, 20 items lus' -- squad docs | wc -l` rend au moins 1 ; de meme pour `ce1-familles-de-mots` et 24. **Aujourd'hui : 0 pour chacun des deux, rouge.** Les criteres 1 et 3 sont inchanges.
+
+### S57-SCRIPT-ADDITIONS-CP - mesurer les 65 additions de `additions-cp` avant de rejouer la forme commune (poste `p2-6`, transverse)
+
+- **Besoin** : en tant qu'eleve de CP qui fait des additions, je veux que l'indice reste visible sur mon ecran apres une erreur, quelle que soit l'addition tiree, afin de comprendre pourquoi j'ai faux et de reessayer.
+- **Mecanique demandee** : aucune modification. Un script de mesure sur le jeu `bandit-manchot-additions-cp`, de type `additions-bornees`, qui tire ses enonces au lieu de les lister.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Source, ses mots** (`reponse-nadia-q8.md`, `N1`) : *"La mesure complete par script : les 65 enonces de `TD4`, mesures comme `TD5` le decrit. Ni echantillon, ni partie d'essai qui en tiendrait lieu."* Section 3 : *"La couverture se verifie sur le fichier : 65 enonces distincts, egaux a l'ensemble derive."* `N3` : le fichier ecrit aussi *"les trois propositions servies avec chaque cote"*. Ensemble : les couples `(a, b)` avec `a + b <= 10`, `(0, 0)` excepte, *"derive du paquet et du code, il ne se recopie pas"*.
+- **Pourquoi une story** : `CR14` n'etait qu'une ligne de routage (`DEC-0120` A.97). Etat mesure : 22 enonces sur 65 vus, un seul cote (`rapport-ines-r8-forme-commune.md`, sections 5.2 et 8) ; `ls squad/conformite/releves-s57 | grep -ci additions` rend **0**.
+- **Criteres d'acceptation** :
+  1. **Livraison.** `rapport-marc-dev-palier-2.md` (nom de `K7`) nomme le chemin du script, et `git ls-files -- <ce chemin>` rend 1. **Aujourd'hui** : `ls squad/sprints/s57-*/rapport-*palier-2.md` rend 0 fichier, rouge.
+  2. **Ensemble derive, non recopie.** Le script lit `sommeMaximale` dans `contenu/cp-additions-jusqu-a-10.yaml` (`grep -c sommeMaximale` sur ce fichier rend 1 ; sur le script, au moins 1) et enumere **65 enonces distincts**, egaux a l'ensemble ci-dessus. Aujourd'hui : aucun script, rouge.
+  3. **Mesure.** Pour chacun des 65, a 744 x 551, apres une erreur, le bas de `.indice` par `getBoundingClientRect()`, selon le parcours de `TD5` : l'enonce donne la bonne reponse, le script appuie sur une autre proposition, releve la cote, puis repond juste. La sortie porte, par enonce, la cote et les trois propositions servies, et la liste des enonces non mesures est **vide**. **Aujourd'hui : 22 enonces mesures sur 65**, 43 manquent (rouge).
+  4. **Le script ne ment pas.** Lance sur un port ou rien n'ecoute, il sort non nul et n'ecrit aucun fichier de resultat.
+  5. **Isolation.** Le port de jeu, le port de debogage et le repertoire de sortie sont des arguments. `grep -cE '1[89][0-9]{3}' <chemin du script>` rend **0** ; `grep -cE 'taskkill|pkill|killall' <chemin du script>` rend **0** (le processus lance est arrete par son PID). **Les deux commandes mordent sur l'existant** : la premiere rend 1 sur `pilote-q7.mjs` et 1 sur `pilote-accueil.mjs` (ports en dur), 0 sur `pilote-r3.mjs` ; la seconde rend 1 sur `pilote-accueil.mjs`.
+  6. **Aucun code produit touche** : `git diff --stat <base> <commit livre> -- adapters domain application bootstrap` est vide. Verte par construction ; clause.
+  7. **Done technique.** Tous les jobs de `ci.yml` (`build`, `chemins`, `prefixes`, `outils`), nommes par qui l'annonce avec leur sortie. Le rapport dit si le script tombe sous un des balayages du job `outils` ; sinon il ecrit *"non garde : criteres 2 a 5"*.
+  8. **Ouverture.** `grep -c "S57-SCRIPT-ADDITIONS-CP" squad/sprints/s57-*/planning.md` rend 0 aujourd'hui (rouge) : aucune edition avant l'amendement du planning qui nomme la story. Aucune edition non plus avant la trace de `E3` de `theo-archi` (`DEC-0120` A.94) ; sa forme est la sienne.
+- **Ce que la story ne dit pas** : la mesure sur le jar de base, la cote de reference ecrite en entier et sa lecture (`PA2`) sont a `ines-design` puis a `nadia-prof`. Aucun critere ici ne dit qu'une cote est bonne.
+- **Done pedagogique** : aucun propre, transverse.
+- **Lien decision** : `DEC-0120` A.97. **Lien** : `reponse-nadia-q8.md` ; `avis-theo-poste-8-art-cp-10.md`, annexe D (`TD4`, `TD5`) ; `S57-FORME-COMMUNE-PROPOSITIONS-LONGUES`, critere 3 ; `PAR-16`.
+- **Instance** : transverse. **Prix** : 0, hors `PAR` (ce n'est pas un lot). **Agent** : `marc-dev` (ecriture, premier de ses trois postes) ; mesure : `ines-design`. **Report** : aucun, engage.
