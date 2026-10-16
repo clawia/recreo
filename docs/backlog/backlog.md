@@ -22555,3 +22555,108 @@ Les codes `CR15` a `CR18` sont ceux de l'annotation de `s57-camille-p2-garde`, n
 | `CR20` | Choix du caractere des espaces dans les quatre textes ; motifs `\x{A0}` des commandes a amender s'il change | `relecteur-pedagogique` |
 | `CR21` | `K10` sur `S57-BR-FRA-CE1-24` : garde-fou et `FM3` ; si le libelle change, retour a `camille-po` et `nadia-prof` | `theo-archi` |
 | `CR22` | Fusion : cette annotation et celle de `s57-camille-p2-garde` ajoutent toutes deux a la fin de `docs/backlog/backlog.md` ; le conflit est un double ajout, a garder des deux cotes | `sofia-sm` |
+
+
+## Garde de `C1'` : commande du critere 1, `PN8-6` a base explicite, `Z1` a `Z4` (`camille-po`, 2026-10-16 15:30, palier 2)
+
+Annotation datee, sur `round-two` a `9b668a78`. **Rien au-dessus n'est reecrit** ; ce qui est amende est nomme. Sources : `rapport-qualite-garde-c1.md` (`yanis-qa`, commit `543e7bd0`, branche `s57-yanis-p2-garde`, arbre mesure `d9c6cc69`, base `9c271e14`) ; `ADR-0031` amende a `d9c6cc69` ; remarque de `sofia-sm` sur `PN8-6`. Matrice inchangee, aucun prix de lot, aucun poste chiffre.
+
+**Ce que j'ai rejoue** : copies par `git archive`, hors worktree, aucun test modifie, une seule ligne ajoutee a `recreo.css`, commande `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test` (perimetre `adapter-web` et ses amonts : 120, 31 et le chiffre d'`adapter-web` ci-dessous). `git diff --stat 9c271e14 9b668a78 -- adapters/adapter-web domain application` est vide : la base mesuree par `yanis-qa` a le meme code que `round-two` a `9b668a78`.
+
+| Code | Regle ajoutee en fin de `recreo.css` | `9c271e14` (sans garde) | `d9c6cc69` (avec garde) |
+|---|---|---|---|
+| `M1` | `.ecran-de-jeu:has(.est-faux) .propositions { row-gap: 0; }` | **496 tests, 0 echec**, `BUILD SUCCESS` | **501 tests, 1 echec** : `UnEcranNeGouvernePasLApparenceDUnAutreTest.aucuneRegleDontLeSujetEstHorsDuMessageNeNommeCeQueSeulLeMessagePose`, message : `est-faux) .propositions : le sujet de ce selecteur est hors du message...` |
+| `M2` | `.ecran-de-jeu:has(.consigne, .est-faux) .propositions { row-gap: 0; }` (`Z1`) | non rejoue | **501, 0 echec** |
+| `M3` | `.ecran-de-jeu:is(.consigne, .est-faux) .propositions { row-gap: 0; }` (`Z1`, `:is`) | non rejoue | **501, 0 echec** |
+| `M4` | `.ecran-de-jeu { &:has(.est-faux) .propositions { row-gap: 0; } }` (`Z2`) | non rejoue | **501, 0 echec** |
+| `M5` | `.ecran-de-jeu .message-jeu:has(.est-faux, .est-juste) .indice { color: inherit; }` (regle legitime, virgule dans `:has`) | non rejoue | 501, 0 echec |
+| `M6` | `.ecran-de-jeu { & .message-jeu .signal.est-faux { color: inherit; } }` (regle legitime, imbriquee) | non rejoue | 501, 0 echec |
+
+`M1` redit `Y1n` de `yanis-qa` (496 / 0 et 501 / 1) ; `M2` et `M4` redisent `Z1` et `Z2` ; `M3` est nouveau. Un premier essai de `M5` avec `margin: 0` au lieu de `color: inherit` a rendu 13 echecs dans les gardes de largeur (`LaLargeurDemandeeParUneRangeeEstEpingleeTest`, `LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest`) : la propriete choisie les mordait, pas la virgule. Je l'ai remplacee et je ne tire rien de cet essai.
+
+### T1. Critere 1 de `S57-GARDE-C1-SUJET-HORS-MESSAGE` : commande amendee
+
+**Constat.** La commande ecrite (la regle de `TP4` mot pour mot, `@media (min-width: 720px)` et `:not(.ecran-deux-oeuvres)`) est rouge sur `round-two` **sans la garde** : `LaFormeCommuneDesPropositionsLonguesEstEpingleeTest` refuse tout selecteur qui nomme `:not(.ecran-deux-oeuvres)` (`rapport-qualite-garde-c1.md` 2.1, `Y1`, `Y2b`, `Y2d`). Le critere etait vert a ma mesure de `aa9d703c` (avant la fusion de p2-7) et ne l'est plus : ce n'est plus un critere de la garde, c'est un critere de l'epinglage. Le controle "contre l'existant" etait le mien ; il a ete fait sur un arbre qui a change depuis.
+
+**Amendement du critere 1.** La commande du critere 1 devient la regle sans `@media` ni `:not(...)`, dite par `yanis-qa` (`Y1n`) :
+
+- On ajoute a la fin de `recreo.css` : `.ecran-de-jeu:has(.est-faux) .propositions { row-gap: 0; }`. Sortie attendue : la commande de mesure sort non nul, au moins un test echoue, son message cite `.est-faux`, et **ce test n'est pas `LaFormeCommuneDesPropositionsLonguesEstEpingleeTest`** (la regle ne contient aucun `:not(...)`).
+- **Aujourd'hui, sur `round-two` a `9b668a78` (code identique a `9c271e14`) : `BUILD SUCCESS`, 496 tests, 0 echec (`M1`), rouge sur ce critere.** Sur `d9c6cc69` : 501 tests, 1 echec, le test de la garde, message cite `.est-faux` (`M1`), vert.
+- Le meme fichier sans cette regle : 0 echec des deux cotes (`Y0` de `yanis-qa` : 496 et 501), la paire fautif / corrige tient.
+- La forme de `TP4` litterale reste ecrite plus haut, **inchangee** : elle garde un sens (elle est rouge a la classe de la garde, `Y1`, et `yanis-qa` la rejoue a ce niveau). Elle ne fait plus foi au niveau du module.
+
+**Critere 2, meme amendement.** Le gabarit est la regle de `M1`, la seule difference etant le jeton dans `:has(...)` : `.message-jeu`, `.signal`, `.est-juste`, `.est-faux`, un a la fois. Aujourd'hui : base 0 echec, tete 1 echec pour chacun des quatre (`Y2an` a `Y2dn`, `yanis-qa`). **Je n'ai rejoue que `.est-faux`** (`M1`) ; les trois autres sont sa mesure, pas la mienne.
+
+**Criteres 3 a 8** : inchanges. Le critere 3 est tenu (`grep -c "data-oeuvre-revelee"` sur `ADR-0031` rend 5 a `d9c6cc69`, mesure de `yanis-qa`).
+
+### T2. `PN8-6` : une version qui rend 5 avant et apres la fusion
+
+**Cause (remarque de `sofia-sm`, verifiee).** `PN8-6` ecrit `$(git merge-base round-two <ref>)`. Sur `round-two` a `9b668a78`, `git merge-base round-two cb50740a` rend `cb50740a` lui-meme (la branche est fusionnee, `edcd3de9`) : base = ref, diff vide, 0. Sorties lues : l'ancienne commande rend **0** sur `round-two` et **0** sur `cb50740a`, parce que `round-two` contient `cb50740a`. La colonne "verte sur `cb50740a`" de mon annotation de 10:45 ne valait que tant que la branche n'etait pas dans `round-two` : `PN8-6` dependait de l'etat du depot, pas du commit juge.
+
+**`PN8-6` amendee (remplace la commande, pas le chiffre 5).** `<YAML>` = `adapters/adapter-content/src/main/resources/contenu/ce1-pronoms.yaml`, base ecrite en SHA (`aa9d703c`, parent de `b9f1c62f`, point de depart de la branche) :
+
+`git diff -U0 aa9d703c <ref> -- <YAML> | grep -c '^@@'` doit rendre **5**
+
+| `<ref>` | Sortie lue |
+|---|---|
+| `aa9d703c` (avant) | 0 |
+| `b9f1c62f` (commit livre) | **5** |
+| `cb50740a` (tete de la branche avant fusion, rapport en plus) | **5** |
+| `edcd3de9` (fusion) | **5** |
+| `round-two` (`9b668a78`) | **5** |
+
+Les cinq hunks (`git diff -U0 aa9d703c b9f1c62f -- <YAML> | grep '^@@'`) : lignes 26, 89, 107, 116, 118. `git log --oneline aa9d703c..round-two -- <YAML>` ne rend que `b9f1c62f` : aucun autre commit n'a touche le fichier depuis.
+
+**Laquelle fait foi.** **Celle contre `aa9d703c` avec `<ref>` = `b9f1c62f`** : c'est le commit que `nadia-prof` joue (`DEC-0120` A.96), et sa base est un SHA, donc le meme chiffre avant et apres fusion. Sur l'arbre fusionne, la forme qui ne depend pas de l'historique ulterieur est `git diff -U0 edcd3de9^1 edcd3de9 -- <YAML> | grep -c '^@@'`, **5** (lue) : elle reste vraie meme si un commit posterieur retouche le fichier, ce que `aa9d703c ... round-two` ne garantit pas. Les deux rendent 5 aujourd'hui ; si elles divergent un jour, la forme a parents fait foi sur l'arbre fusionne et la forme a SHA sur le commit livre.
+
+**Meme defaut ailleurs.** `FM5-6` ecrit la meme expression (`$(git merge-base round-two <ref>)`). `s57-sofia-fra-ce1-24` est fusionnee (`9f110983`) : `FM5-6` rend 0 sur `round-two` pour la meme raison (deduit du mecanisme, **non lance**). Je ne l'amende pas ici (non demande) ; je le dis pour que `yanis-qa` ne le decouvre pas en rejouant `CR19`. Routage `CR24`.
+
+### T3. `Z1` et `Z2` : une story au palier 3 ; `Z3` et `Z4` : limites gardees, pas de story
+
+**Decision pour `Z1` et `Z2` : je les ecris, en une story.** Raison : la propriete est une condition de `nadia-prof` (`C4`, *"la machine ne dit jamais le resultat"*), `TP4` a ecrit qu'une regle interdite par `C1'` passait tout le module, et `Z1`, `Z2` sont deux formes de la meme regle qui passent encore (`M2`, `M3`, `M4` : 501 tests, 0 echec). Une garde qui laisse passer ce qu'elle est censee refuser est le defaut que ce depot a deja sanctionne. Prix 0, hors `PAR`, comme la story de garde : `PAR` est le budget d'audit de `nadia-prof`, cette story ne lui demande ni lecture, ni rejeu, ni verdict, et rien de ce que l'enfant voit ne change. Aucun poste engage n'est chiffre ici (aucun registre de `nadia-prof` consulte).
+
+### S57-GARDE-C1-VIRGULE-ET-IMBRIQUE - la garde de `C1'` lit une virgule dans `:has(...)` ou `:is(...)` et une regle de CSS imbrique (suite de `S57-GARDE-C1-SUJET-HORS-MESSAGE`, palier 3, poste hors `PAR`)
+
+- **Besoin** : en tant qu'eleve de CE1 qui vient d'appuyer sur une case, je veux que les cases et tout ce qui est au-dessus du message restent a la meme place que j'aie juste ou faux, **quelle que soit la facon dont la feuille est ecrite**, afin de retrouver la meme case sous mon doigt et de ne pas lire le resultat dans le decor.
+- **Mecanique demandee** : aucune modification. Meme perimetre que `S57-GARDE-C1-SUJET-HORS-MESSAGE` : l'ecran de manche de `bandit-manchot`, toute matiere et tout niveau.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Source, leurs mots.** `rapport-qualite-garde-c1.md` (`yanis-qa`), section 3 : `Z1`, *"une regle dont la virgule est dans un `:has(...)` ou un `:is(...)` passe tout `adapter-web` (501 tests, 0 echec)"* ; `Z2`, *"CSS imbrique `&:has(...)`"*, *"Un navigateur actuel applique la regle"*. Cause lue par lui : `LAnimationRetardeMaisNeDetermineRienTest.regles(...)` coupe l'en-tete de chaque regle sur toute virgule, parentheses comprises (`entete.split(",")`, ligne 217), et ce decoupage est partage avec cinq autres tests du module. `C1'` point 1 (`ADR-0031`, amendement du 2026-10-16) : *"y compris dans un `:has(...)`"*.
+- **Ce que la story demande a `theo-archi` et ce qu'elle ne decide pas** : si le defaut se corrige dans le decoupeur partage ou dans la garde seule, et la forme de l'amendement d'`ADR-0031`, sont a lui. Si un correctif du decoupeur change le verdict d'un des cinq autres tests, il le dit avant. S'il prefere **refuser** le CSS imbrique plutot que l'evaluer, il le dit avant et le critere 4 s'amende, pas la mesure (meme clause que la story de garde).
+- **Criteres d'acceptation** (commande de mesure : celle de `M1`, perimetre `adapter-web` et ses amonts ; "aujourd'hui" = `d9c6cc69`, ma mesure du 2026-10-16 ; la story se mesure sur un arbre qui contient `S57-GARDE-C1-SUJET-HORS-MESSAGE`) :
+  1. **Virgule dans `:has`.** On ajoute a la fin de `recreo.css` : `.ecran-de-jeu:has(.consigne, .est-faux) .propositions { row-gap: 0; }`. Sortie : au moins un test echoue, et son message cite `.est-faux`. Le premier element est `.consigne`, pas `.cabinet` : avec `.cabinet` la mesure est rouge par hasard (`Z1a`, un test lit le fragment `:has(.cabinet`). **Aujourd'hui : 501 tests, 0 echec (`M2`), rouge.** Le meme sans la virgule : 1 echec (`M1`).
+  2. **Virgule dans `:is`.** Meme chose avec `.ecran-de-jeu:is(.consigne, .est-faux) .propositions { row-gap: 0; }`. **Aujourd'hui : 501, 0 echec (`M3`), rouge.** (`Z1c` de `yanis-qa`, avec `.est-faux` en premier, est deja rouge : le jeton y est dans le premier fragment.)
+  3. **Les quatre noms de `C1'` en seconde position.** Le gabarit du critere 1 avec `.message-jeu`, `.signal`, `.est-juste`, `.est-faux` a la place de `.est-faux`, un a la fois : chacun fait echouer un test qui cite le jeton. **Aujourd'hui : mesure faite pour `.est-faux` seul (`M2`, rouge) ; les trois autres ne sont pas mesurees** (meme cause par la lecture de `yanis-qa`, pas par un lancement).
+  4. **CSS imbrique.** On ajoute `.ecran-de-jeu { &:has(.est-faux) .propositions { row-gap: 0; } }`. Sortie : au moins un test echoue et son message cite `.est-faux`. **Aujourd'hui : 501, 0 echec (`M4`, `Z2`), rouge.**
+  5. **Ce qui ne doit pas rougir.** (a) La feuille de `round-two` telle quelle : 0 echec (`Y0`). (b) `.ecran-de-jeu .message-jeu:has(.est-faux, .est-juste) .indice { color: inherit; }` : sujet dans le message, virgule dans `:has` : 0 echec (**vert aujourd'hui, `M5`, clause**). (c) `.ecran-de-jeu { & .message-jeu .signal.est-faux { color: inherit; } }` : 0 echec (**vert aujourd'hui, `M6`, clause**). (d) Les quinze regles legitimes de `Z7` ajoutees ensemble : 0 echec (vert aujourd'hui, mesure de `yanis-qa`). Clauses : elles mordent le jour ou le correctif sur-detecte.
+  6. **La garde existante tient.** Les criteres 1 a 5 de `S57-GARDE-C1-SUJET-HORS-MESSAGE`, tels qu'amendes ci-dessus, rendent les memes sorties apres la story (la regle de `M1` : 1 echec, cite `.est-faux`).
+  7. **Les cinq autres tests du decoupeur partage.** Sur la feuille telle quelle, le module est vert (0 echec) et chacun de ces tests garde ses propres cas fautifs rouges (mesure par `yanis-qa`, par mutation, sur l'arbre livre). **Vert aujourd'hui, clause.**
+  8. **Le commit porte sa regle.** `git show --stat <commit>` nomme le fichier d'`ADR-0031` (ou l'`ADR` que `theo-archi` designe) et le fichier de test. Le compte ArchUnit avant et apres est ecrit par `theo-archi` ; je ne dis pas s'il doit bouger.
+  9. **Aucun code produit, aucun contenu.** `git diff --stat <base> <commit livre> -- adapters/adapter-web/src/main adapters/adapter-content domain application bootstrap` est vide. **Vide par construction aujourd'hui ; clause.**
+  10. **Done technique.** Tous les jobs de `ci.yml` (`build`, `chemins`, `prefixes`, `outils`), nommes par qui l'annonce avec leur sortie.
+- **Prix** : **0, hors `PAR`.** Si la forme choisie amene `nadia-prof` a lire ou rejouer quoi que ce soit, elle rechiffre avant le commit ; je ne lui reserve rien.
+- **Report** : premiere inscription le 2026-10-16 (`rapport-qualite-garde-c1.md`, `Z1` et `Z2` nommes le meme jour). Meme ordre que la story de garde (`DEC-0120` A.101) : **en tete du palier 3, avant tout poste qui modifie `recreo.css`**. Cet ordre est une proposition a `sofia-sm` (planning) ; l'engagement est a elle.
+- **Done pedagogique** : aucun propre, transverse. **Lien decision** : `DEC-0120` A.100, A.101 (la story de garde) ; aucune decision nouvelle n'est inscrite par cette annotation. **Lien** : `rapport-qualite-garde-c1.md` ; `ADR-0031` ; `S57-GARDE-C1-SUJET-HORS-MESSAGE`.
+- **Instance** : transverse. **Agent** : `theo-archi` ; test des criteres : `yanis-qa`.
+
+### `Z3` et `Z4` : ce que j'en fais
+
+**Pas de story, pas de critere.** Lecture d'`ADR-0031` (a `d9c6cc69`) :
+
+- **`Z3`** (`.score-joue-nombre:has(~ .signal.est-faux)`, sujet dans `retour.html`, qui pose `.signal` sans region d'annonce) est la **limite 4.a, reduite** par l'amendement du 2026-10-16 : un verdict qui colore la coquille depuis un ecran a message rougit, depuis `retour.html` il reste vert. L'`ADR` ecrit son declencheur : *"le jour ou une regle maison conditionne un element permanent a un marqueur d'ecran, cette question se rouvre avec un objet reel a controler"*, et mesure qu'aujourd'hui **zero regle maison** le fait.
+- **`Z4`** (`role="status"` retire d'un seul gabarit, `Z4a` ; la garde sort alors `manche.html` du controle, `Z4b`, `Z4c`) est dit dans les consequences de l'`ADR` : *"retirer `role="status"` d'un message pour une raison d'accessibilite sort cet ecran du controle"*, et *"un ecran dont le message perdrait sa region d'annonce sort du controle sans rouge, tant qu'un autre ecran la garde"*.
+
+**Pourquoi je n'en fais pas de critere.** (1) Un critere se mesure par une mutation de la feuille ou du gabarit qui produit aujourd'hui un resultat faux pour l'enfant. `Z3` et `Z4` n'en produisent aucun : aucune regle de `recreo.css` n'est dans ce cas (`Z3`), et retirer une region d'annonce ne change aucune apparence (`Z4a` : aucune regle ajoutee). (2) Les couvrir serait une decision de conception de `theo-archi` (une seconde derivation du message, ou une garde sur la presence de la region), avec un conflit connu : `role="status"` peut etre retire pour une raison d'accessibilite que `ines-design` et `nadia-prof` peuvent juger legitime. Je ne l'ecris pas a sa place. (3) L'`ADR` les nomme avec leur declencheur : c'est une limite dite, pas une dette cachee.
+
+**Ce que j'en fais quand meme.** Les deux sont **inscrites ici comme limites a declencheur**, premiere inscription au backlog le 2026-10-16 (`Z3` dite dans l'`ADR` comme limite 4.a depuis sa redaction d'origine ; `Z4` dite par son amendement du 2026-10-16). Le declencheur de `Z3` est une regle de feuille, donc il se lit au diff de tout commit qui modifie `recreo.css` ; celui de `Z4` est un diff de gabarit. Si l'un des deux arrive, la story est ouverte au sprint suivant, avant le poste qui l'a declenche. **Ce que je ne peux pas affirmer** : que la lecture au diff les voie (la lecture au diff a manque une fois, `E3`). C'est la raison de `CR27` : une question a `theo-archi`, pas une story.
+
+### Routage de cette annotation
+
+Les codes `CR23` a `CR27` suivent `CR22` (annotation du 2026-10-16 10:45) ; la branche `s57-camille-p2-garde` porte `CR15` a `CR18`.
+
+| Code | Quoi | A qui |
+|---|---|---|
+| `CR23` | Critere 1 (et 2) de `S57-GARDE-C1-SUJET-HORS-MESSAGE` : commande amendee (regle sans `@media` ni `:not(...)`), a rejouer par mutation | `yanis-qa`, `theo-archi` |
+| `CR24` | `PN8-6` amendee (base `aa9d703c`) ; `FM5-6` a la meme expression de base et rend vraisemblablement 0 sur `round-two` : a amender comme `PN8-6` avant que `CR19` la rejoue | `yanis-qa` (rejeu), `camille-po` (amendement de `FM5-6`, a ecrire) |
+| `CR25` | `S57-GARDE-C1-VIRGULE-ET-IMBRIQUE` : engagement au palier 3, en tete, avant tout poste qui modifie `recreo.css` | `sofia-sm` (planning) |
+| `CR26` | Forme du correctif (decoupeur partage ou garde seule), effet sur les cinq autres tests, refus ou evaluation du CSS imbrique | `theo-archi` |
+| `CR27` | `Z3` et `Z4` : confirmer que les limites de l'`ADR` restent des limites, ou dire quel critere mesurable il ecrirait ; je l'inscris s'il le dit | `theo-archi` |
