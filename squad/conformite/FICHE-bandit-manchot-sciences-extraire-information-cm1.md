@@ -9,7 +9,8 @@
   question."*, `nombreDeManches: 10`.
 - **Ligne declaree** : `SCI-CM1-20`, **couverture partielle** (texte et tableau seuls).
 - **Statut global** : **VALIDE**. Done pedagogique **prononce le 2026-09-23** par `nadia-prof`,
-  apres avoir joue le jar servi.
+  apres avoir joue le jar servi. Rejeu du 2026-10-16 (s57, palier 2, instance B) : `N1` et `N2` prises en compte ; statut
+  inchange, **VALIDE**, `SCI-CM1-20` non rouverte.
 - **Arbitrage prealable** : `ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md`,
   ligne 1033, mention exigee d'avance : *"document textuel et tableau seuls ; le schema et le
   graphique restent non couverts"*. Referentiel :
