@@ -1799,3 +1799,81 @@ Lances sur `round-two` a `a5a486ad` (apres les deux fusions), puis avec les sect
 - **Code inchange** : `git diff --quiet 3eef868d -- adapters domain application bootstrap pom.xml outils .github` sort 0.
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue. **Le Done technique n'est pas prononce par moi** : il est juge par la CI sur le commit pousse.
+
+## Amendement du 2026-10-16 21:46 (UTC+02:00), palier 2 : annotations de cloture (ecarts C1, C2, C3, R1, R3, R5, R9, N1 et N2 du releve du `relecteur-pedagogique`, mots de `Q-U11`, registre des prix)
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** : chaque phrase corrigee est designee par son numero de ligne dans `planning.md` a `bb322938` (1801 lignes), et reste en place. Arbre de depart : `round-two` a `efb8d013` (cinq fusions de cloture), casquette Scrum Master. Source : `relecture-cloture.md` (`72c2b198`, fusionne `376694c9`), sections 2, 4, 5 et 6. **Aucun Done n'est prononce par ce texte, technique ou pedagogique.** Les jobs de `ci.yml` lances pour son commit sont nommes dans `cloture-palier-2.md`, section 12.
+
+### 1. `C1` : la condition du retrait est de `sofia-sm`, pas de l'utilisatrice
+
+La ligne 1777 (amendement de 20:15, section 7) ecrit que *"la reponse relayee le 2026-10-16 (fenetre bornee, 19:20, section 5) disait que"* le retrait revenait au palier 3 si le rejeu n'avait pas lieu avant la cloture. **Cette condition est ma phrase de la ligne 1567** (amendement de 19:20, section 5 : *"je le dis, je ne la decide pas"*). La reponse relayee de l'utilisatrice est le libelle de la section 2 ci-dessous, et rien de plus. `camille-po` l'a ecrit avant moi : `DEC-0120` A.111 dit que la lecture de 19:20 *"ne joue pas : sa condition est fausse"* et que *"ce n'est pas un mot de l'utilisatrice"*. **Correction** : la condition est de `sofia-sm`. Le rejeu a eu lieu avant la cloture (VALIDE), elle ne joue pas.
+
+### 2. Mots de `Q-U11` (ecart `P2`) : le libelle, entre guillemets, avec sa provenance
+
+Les lignes 1567 et 1777 ecrivent *fenetre bornee* en gras, sans guillemets ni date. **Provenance, forme 2 de `DEC-0062` 3.1, telle que `camille-po` l'inscrit a `DEC-0120` A.111** : l'utilisatrice a repondu le 2026-10-16 a l'agent principal, par le formulaire de celui-ci, en choisissant entre les deux options que `Q-U11` lui proposait (retrait, regime par defaut de `DEC-0045` section 3 ; fenetre bornee, `DEC-0055`). Son libelle, cite entre guillemets : *"fenetre bornee"*. L'heure de la reponse n'est pas fournie ; aucun motif ni aucune echeance n'a ete transmis. Je n'ai pas lu ces mots de sa main.
+
+**Ligne 1777, *"aucun `DEC` ne la tranche"*** : vrai a 20:15, faux depuis `DEC-0120` A.111 (fusion `286e47c0`) : `Q-U11` est close, `S57-RETRAIT-PRONOMS-CE1` est non engagee et sans objet, et la decision de `A.106` (retrait) est remplacee par A.111. Le renvoi a cette inscription dans `rapport-marc-dev-palier-2-corrections.md` (ligne 84) est a `marc-dev` : je ne modifie pas son rapport.
+
+### 3. `C2` : *"Tous les postes sont audites"* (ligne 1750)
+
+Le tableau de la ligne 1738 dit `p2-2` *"non entamees"*, et `p2-1` (arbitrage, livre) et `p2-6` (script, fusionne hors `PAR`) n'ont pas d'audit. **Correction** : huit postes ont leur audit ou leur rejeu de `nadia-prof` (`p2-3`, `p2-4`, `p2-5`, `p2-8`, `p2-9`, `p2-10`, `p2-11`, `p2-12`) ; `p2-7` est juge au rejeu de `p2-8` (pas d'audit propre) ; `p2-1` est livre, `p2-6` est fusionne, `p2-2` n'est pas entame. Douze postes, 8 + 1 + 3.
+
+### 4. `C3` : l'etat de `p2-7` a l'ouverture (ligne 1771)
+
+La phrase *"Les cinq premiers etaient non engages a l'ouverture ; p2-7 etait engage le 2026-10-16"* laisse lire que `p2-7` etait engage a l'ouverture. **Les six etaient non engages a l'ouverture** (2026-10-15 20:56, ligne 458 et section 8 de cet amendement-la). Engagements : `p2-7` le 2026-10-16 09:03 ; `p2-8`, `p2-9` et `p2-11` le 2026-10-16 15:27 ; `p2-10` et `p2-12` le 2026-10-16 16:59 (titres des amendements du meme nom).
+
+### 5. `R1` : noms tronques par `...`, noms complets
+
+Ligne 1286 et ligne 1369 : `mesure-ines-pa7-rct-ce1-r1-2026-10-16.md`. Ligne 1286 et ligne 1370 : `mesure-ines-pa8-rdo-cp-r3-2026-10-16.md`. Ligne 1739 : `rejeu-nadia-palier-2-a-lot05-rejeu.md`. (`ls` du dossier du sprint : les trois existent.) La quatrieme occurrence de l'ecart, `ADR-0031-un-ecran-ne-gouverne-jamais-l-apparence-d-un-autre.md` dans `rapport-qualite-garde-c1.md` ligne 100, est a `yanis-qa`.
+
+### 6. `R3` : le champ *"Tarif consomme"* (ligne 1754)
+
+La ligne 1754 cite *"Tarif consomme"* pour les rejeux de `-05` et de `RCT-CE1-R1`, *"ses deux rejeux de ce jour"*. Les deux fichiers de rejeu ne portent pas ce champ : leur chiffre est dans la ligne de routage (*"0,5 consomme en A"*, `rejeu-nadia-palier-2-a-lot05-rejeu.md` ligne 46 et `rejeu-nadia-palier-2-a-rct.md` ligne 47). Le champ existe dans les **fiches** : `FICHE-bandit-manchot-pronoms-ce1.md` ligne 377 (*"rejeu 0,5 (instance A)"*) et `FICHE-bandit-manchot-texte-narratif-ce1.md` ligne 233 (*"rejeu 0,5 (p2-10, instance A)"*), en plus de `rejeu-nadia-palier-2-ap.md` ligne 185. **Correction** : le renvoi est aux deux fiches pour le champ, aux deux lignes de routage pour le chiffre. Le chiffre, 0,5, etait juste. L'ecart est donc plus etroit que le releve ne le dit (il ne cherchait le champ que dans les rejeux).
+
+### 7. `R9` : `Q-P8`, refermee par son code
+
+`composition-palier-2.md` ligne 148 : *"Qui ecrit le script des 43 enonces, qui mesure ; developpeurs des deux lots et de la forme ; ordre de fusion"*, a `sofia-sm`. Chaque terme est tranche par un fichier present : script a `marc-dev` (amendement du 2026-10-15 20:56, section 5 ; fusion `97a205e8`), mesure a `ines-design` (`PA1`, meme amendement, section 7), developpeurs `marc-dev` pour `-05`, `sofia-sm` pour `-24`, `lea-dev` pour la forme (meme section 5), ordre de fusion (meme amendement, section 9). **`Q-P8` est refermee**, sans que je l'aie nommee par son code avant ce jour.
+
+### 8. `N1` : 496 et 501 sont des comptes d'`adapter-web`, pas du reacteur
+
+Lignes 1078, 1079 et 1135 : *"501 tests, 0 echec"* et *"496 tests"* sont des comptes du seul module `adapter-web`, mesures par `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test` (`backlog.md` ligne 22564 ; mesure partielle, `-am` present). Lecture corrigee : *"501 tests d'adapter-web (`-pl adapters/adapter-web -am`)"* et *"496 tests d'adapter-web"*. Le reacteur complet sur l'arbre qui porte la garde (`e138ec97`) est **2669** (lignes 1054 et 1111 de ce fichier). La ligne `DEC-index.md:128` (meme ecart) est a `camille-po`.
+
+### 9. `R5` : `RL5` a `RL7`, le commit n'existe pas, reporte au palier 3 avec son etat et sa condition
+
+**Etat mesure a `efb8d013`** : `git log --oneline 19c8a7b2..HEAD -- adapters domain application bootstrap` rend 0 ligne. Les trois commentaires sont tels que l'amendement de 19:40 (section 4) les decrit : `manche.html` lignes 207 a 213 (*"cette phrase, de nadia-prof (M4)"*), `TexteAccentueDesGabaritsTest.java` lignes 158 a 160 (*"M4 de ARBITRAGE-PREALABLE-s55... copie tel quel"*), `LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest.java` ligne 107 (*"M4 du meme arbitrage, mot pour mot"*). La phrase servie est celle de `reponse-nadia-pa7-pa8.md` 2.4.
+
+**Ce qui est faux dans mon propre texte.** L'amendement de 19:40 (section 4) ecrit *"j'engage ce commit"*, avec la condition que l'agent principal me le confie sous la casquette developpeuse : **il ne l'a pas ete dans le palier 2**. Je ne l'ai pas rappele dans l'amendement de 20:15 (`git grep -n "RL5\|RL6\|RL7"` : lignes 1610 et 1658 a 1666 seulement) : le releve (`R5`) le constate a raison.
+
+**Fait mesure par `theo-archi`** (`confirmation-archunit-palier-2.md` 5.5, jar de `bb322938`, une manche de `bandit-manchot-pronoms-ce1`) : le commentaire de `manche.html` est servi, dans le bloc `th:if="${message != null}"`, sur **toute** manche de `bandit-manchot` apres un coup (11 commentaires HTML dans la reponse, dont celui de `RL5`). Le corriger change **l'octet servi**, pas ce qui s'affiche. `RL6` et `RL7` sont dans `src/test` : absents du jar. Sa forme : le commentaire reste un commentaire HTML, un seul commit pour les trois (jugement de `theo-archi`).
+
+**Report, ecrit** :
+
+| Quoi | Etat | Titulaire | Condition |
+|---|---|---|---|
+| Commit unique de `RL5`, `RL6`, `RL7` (trois fichiers, trois commentaires, aucune autre ligne ; citer `reponse-nadia-pa7-pa8.md` 2.4) | **non livre**, engage le 2026-10-16 19:40, **reporte au palier 3** (premier glissement d'un engagement hors tableau, ecrit aussi par `camille-po`, `DEC-0120` A.115 rang 2) | un developpeur que j'engage a la composition du palier 3, casquette developpeuse, tache distincte ; hors `PAR`, aucun prix | **avant le premier jar rejoue du palier 3** (`theo-archi`), et avant tout autre commit de code (A.115). Tout sommet de rejeu ecrit apres lui dit que le code differe du precedent par ce commentaire. `RD3-9` et `RD3-10` se lisent par la forme a parents sur `19c8a7b2` (section 4 de l'amendement de 19:40) |
+
+A `theo-archi`, avant le commit : dire si `PHRASE_DE_M4` et les trois messages de `LaPhraseDeRevelationDUneMancheEnImageNeSeCoupeJamaisDansUnePhraseTest` (`yanis-qa`, `rapport-qualite.md` section 5) sont un quatrieme commentaire de la meme famille.
+
+### 10. `N2` : le registre des prix, commite
+
+Les recomptes `awk` des lignes 1331 (dix-huit lignes), 1434 (dix-sept) et 1756 (seize) portent sur des registres que je n'avais pas commites : la commande ne se rejouait pas. Le registre de dix-sept lignes est celui de `DEC-0120` A.105 (en entier, `camille-po`, `e83fe3f1`). **Celui de la ligne 1756 est ce registre sans la ligne `H|non affecte|0.00`, avec les etats `consomme` et `engage` regroupes en `facture`** : il est commite sous `registre-prix-palier-2.txt` (seize lignes, `wc -l`).
+
+**Ce que ce fichier n'est pas** : le fichier ecrit a 20:15. Je ne l'ai pas (il vivait dans le repertoire de travail d'une autre instance de `sofia-sm`, que je n'ai pas ouvert) ; ce fichier est **reconstruit ce jour a partir d'A.105**, et verifie contre les sorties que la ligne 1756 annonce. Le registre de dix-huit lignes de la ligne 1331 a ete remplace par celui de la section 2 de l'amendement de 18:14 : je ne le reproduis pas, et aucun chiffre de ce fichier n'en depend.
+
+```
+awk -F'|' '{p[$1]+=$3; t+=$3} END{for(k in p) printf "%s %.2f\n",k,p[k]; printf "total %.2f\n",t}' registre-prix-palier-2.txt | sort
+```
+
+Sortie lue ce jour : `A 3.25`, `Ap 3.00`, `B 1.75`, `total 8.00`. Par etat (`awk -F'|' '{e[$4]+=$3} END{for(k in e) printf "%s %.2f\n",k,e[k]}'`) : `facture 6.25`, `marge 1.50`, `nonaffecte 0.25`. Lignes facturees par instance : `A 2.75`, `Ap 2.25`, `B 1.25`, `facture 6.25`. Ce sont les chiffres de la ligne 1756.
+
+### 11. Ce qui reste du releve, et qui n'est pas a moi
+
+Nomme avec son destinataire dans `cloture-palier-2.md`, section 9.
+
+### 12. Decisions
+
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee** par cet amendement. `DEC-0120` (dix-huit amendements, A.111 a A.116 les derniers) et `DEC-0122` sont inchanges par lui.
+
+### 13. Ce que cet amendement ne fait pas
+
+Ne prononce aucun Done, ne juge aucun contenu, ne touche ni la matrice (148 / 200, `camille-po`), ni un catalogue, ni un critere, ni du code. N'ecrit pas le commit de `RL5` a `RL7`. Ne modifie aucun fichier signe par un autre agent.

@@ -1,0 +1,16 @@
+A|arbitrage prealable|0.50|facture
+A|FRA-CE1-05 lot|1.00|facture
+A|FRA-CE1-05 rejeu|0.50|facture
+A|VSJ-CE1-R2|0.25|facture
+A|RCT-CE1-R1|0.50|facture
+A|marge de rejeu|0.50|marge
+Ap|arbitrage prealable|0.50|facture
+Ap|FRA-CE1-24 lot|1.00|facture
+Ap|TPH-CE1-R1|0.50|facture
+Ap|GNA-CE1-R1|0.25|facture
+Ap|marge de rejeu|0.50|marge
+Ap|non affecte (GNA)|0.25|nonaffecte
+B|arbitrage prealable|0.50|facture
+B|OBS-SCI-N1-N2|0.25|facture
+B|RDO-CP-R3|0.50|facture
+B|marge de rejeu|0.50|marge
