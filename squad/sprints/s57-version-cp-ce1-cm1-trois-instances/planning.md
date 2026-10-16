@@ -639,3 +639,141 @@ Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
 ### 13. Decisions prises
 
 **Aucune `ADR` ni `DEC` n'est creee ou amendee par cet amendement.** Il ecrit : l'heure d'ouverture du palier 2 ; la composition de `camille-po` portee, sans changement de prix ; les affectations nominatives de p2-3, p2-4, p2-5, p2-6 et les developpeurs nommes de p2-7 a p2-12 ; la regle de reaffectation de `RDO-CP-R3` ; la table d'isolation du palier 2 et la consigne ecrite sur la racine du scratchpad ; l'ordre de la chaine de la forme et la base de la cote ; le compte des reports a l'ouverture. **L'amendement de `DEC-0120` qui porte la composition** (precedent : A.53 a A.62) est a `camille-po` : les proprietaires qu'elle attendait sont nommes ici (`composition-palier-2.md`, section 9, derniere phrase).
+
+---
+
+## Amendement du 2026-10-16 09:03 (UTC+02:00), palier 2 : fusions des arbitrages et des reponses, engagement de p2-7
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace ou corrige est nomme. Arbre : `round-two` a `babd70e7` (apres trois fusions de ma main), branche `s57-sofia-planning3`, `bash outils/verifier-lignee.sh` sort 0, `git status --short` vide avant ecriture. Sources, par auteur : `camille-po` (`DEC-0120` A.94 a A.99, backlog, `8ea8f4f2`) ; `nadia-prof` (`reponse-nadia-q-palier-2.md`, `5d2f34fb`) ; `theo-archi` (`avis-theo-palier-2.md`, `d5d974b5` et `c85d54e6`). **Cet amendement engage p2-7. Il n'ouvre aucun autre worktree.**
+
+### 1. Fusions de ce jour, lignee verifiee avant chacune
+
+Les trois branches partent de `f6134910` (`git merge-base round-two <branche>` rend ce SHA pour chacune) ; `bash outils/verifier-lignee.sh` lance dans chaque worktree sort 0 ; aucune des trois ne touche un fichier touche par une autre (`git diff --name-only round-two...<branche>`). Reacteur complet apres chaque fusion : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`.
+
+| Ordre | Branche | Sommet livre | Fusion | Compte de tests mesure par moi |
+|---|---|---|---|---|
+| 1 | `s57-camille-p2-arbitrages` | `8ea8f4f2` | `bf471fed` | 2597, `BUILD SUCCESS` |
+| 2 | `s57-nadia-p2-a` | `5d2f34fb` | `f3b5e4cb` | 2597, `BUILD SUCCESS` |
+| 3 | `s57-theo-p2-avis` | `c85d54e6` | `babd70e7` | 2597, `BUILD SUCCESS` |
+
+**Compte** : 120 + 31 + 492 + 1567 + 381 + 6 d'integration, lignes `Tests run` du reacteur, identique a chaque fusion et a celui de l'ouverture (section 12 de l'amendement precedent) : les trois branches ne changent ni code ni contenu servi. Le total de `avis-theo-palier-2.md` (2597) egale le mien ; il a ete mesure sur sa branche, qui part de la meme base. Les jobs de `ci.yml` lances pour ce commit sont en section 12.
+
+### 2. Decisions inscrites, avec le fichier qui les porte
+
+| Question | Reponse | Fichier, sur `round-two` | Etat |
+|---|---|---|---|
+| `Q-S4` | oui : le worktree de `-05` et `-24` ne s'ouvre qu'apres la ligne *"lecture complete"* de son paquet | `DEC-0120` A.96 | tranchee ; **sa commande ne passe pas sur les lignes ecrites, section 4** |
+| `Q-S5` | story `S57-SCRIPT-ADDITIONS-CP`, prix 0, hors `PAR` | `DEC-0120` A.97, backlog (annotation du 2026-10-16) | tranchee |
+| `Q-S6` | compte des reports a l'ouverture : A.66 a la lettre, la phrase de la composition est remplacee | `DEC-0120` A.95 | tranchee ; l'ecart etait celui de la composition |
+| `Q-S7` | `E3` couvre tout le palier 2, pas seulement p2-7 et p2-12 | `DEC-0120` A.94 (a) | tranchee par l'utilisatrice, forme 2 de `DEC-0062` : mots non cites, relayes par l'agent lanceur, que je n'ai pas lus de sa main |
+| `E3` | **levee** : verdict *conforme* sur les quatre commits de B1 | `avis-theo-palier-2.md` section 1 | lue apres la fusion de B1 : elle constate la garde a posteriori, elle ne la remplace pas |
+| `PA5` (`Q-P7`) | `C1'`, `C2`, `C3` tenues sur la forme ; **aucun amendement d'ADR** ; compte ArchUnit inchange selon `theo-archi` (41 et 38), non recompte par moi | `avis-theo-palier-2.md` section 2, `TP1` a `TP3` | tranche |
+| `PA3` (`Q-P3`) | accord sur `R3-1`, condition regardee au rejeu de `TPH-CE1-R1` | `reponse-nadia-q-palier-2.md` 3.1 | tranchee |
+| `PA4` (`Q-P3`) | l'ascenseur a la revelation est une observation sans reserve, condition regardee au rejeu | idem 3.2 | tranchee |
+| `Q-P4` | oui, **si** `git diff --stat 6dbb855d <base> -- pom.xml domain application adapters bootstrap` ne rend rien ; sinon la cote se remesure | idem 3.3 | tranchee ; **condition non tenue, section 5** |
+| `PA7` (`Q-P5`) | regle du bandeau **non accordee** ; propositions plus courtes, textes donnes, sous une mesure qui n'existe pas | idem 3.4 | voie (a) ouverte, mesure a faire |
+| `Q-P6` | item 15 de `ce1-pronoms` corrige avant le branchement, texte donne | idem 3.5 | tranchee ; correction a recopier par `marc-dev` |
+| `Q-S8` | item *livre* remplace par *chat* et *chaton*, texte donne | idem 3.6 | tranchee ; correction a recopier par la developpeuse |
+| `Q-S9` | voie de `VSJ-CE1-R2` : la forme commune, prix 0,25 | idem 3.8 | tranchee |
+| `Q-B2` | deja repondue le 2026-10-14 (`lecture-nadia-palier-1.md` 1.7) ; relecture des cinq items faite | idem 3.7 | close ; recommandation non bloquante laissee a `camille-po` |
+| `Q-N4` | mots *"le pli n'est pas bloquant"*, annotes dans `rejeu-nadia-palier-1.md` et `FICHE-bandit-manchot-phrases-types-ce1.md` ; ils ne changent pas le regime du pli | idem section 2 | mots relayes (forme 2), date de l'echange d'origine non fournie |
+
+**Ce que ces fichiers ne disent pas.** Les deux lignes *"lecture complete"* de `nadia-prof` (`ce1-pronoms`, 20 items ; `ce1-familles-de-mots`, 24 items) sont ecrites (`reponse-nadia-q-palier-2.md`, section 1). **`S2` (mots de l'utilisatrice) reste absent du depot** et je n'en ecris aucun ; je ne touche pas non plus aux autres points de provenance de la cloture du palier 1.
+
+**Obstacles clos par ce geste** : `Q-S4` (decision), `Q-S5`, `Q-S6`, `Q-S7`, `Q-S8`, `Q-S9`, `Q-P3`, `Q-P6`, `Q-P7`, `E3` : le fichier qui les tranche existe sur le disque (`git grep -n "^### A.9[4-9]"` sur `DEC-0120` rend six lignes ; le fichier de `nadia-prof` et celui de `theo-archi` sont dans le dossier du sprint). **Restent ouverts** : la commande de `Q-S4` (section 4), `Q-P4` (condition non tenue, section 5), `Q-P5` (mesure), `Q-R7`, `Q4` (section 10), `Q-T14` (section 8). `Q-T15` est repondue en section 8.
+
+### 3. Corrections de l'amendement du 2026-10-15 20:56
+
+- **Section 4 (*"Peut commencer ... sans prealable"*).** Elle declarait p2-3 a p2-6 partables sans prealable hors `K1`. **Cela ne tient plus** : `E3` couvre le palier (`Q-S7`) et sa trace est sur `round-two` depuis `babd70e7` (`avis-theo-palier-2.md`, section 1, verdict *conforme*). Ce qui reste a chaque poste est en section 4 du present amendement.
+- **Titre de p2-6 (section 3).** *"aucun titre"* est remplace par **`S57-SCRIPT-ADDITIONS-CP`**, au backlog (`git grep -c "S57-SCRIPT-ADDITIONS-CP" -- docs/backlog/backlog.md` rend 2). Prix 0, hors `PAR`, competence transverse, ecriture `marc-dev`, mesure `ines-design`. `PAR-16` n'est pas assoupli : elle ne demandait pas de story pour un poste hors `PAR` (A.97), et il en a une. **La question `Q-S5` du planning (*"p2-6 engage sans story"*) est close.** Critere 8 de la story (*"aucune edition avant l'amendement du planning qui nomme la story, ni avant la trace de `E3`"*) : cet amendement nomme la story, la trace de `E3` est tenue. **`marc-dev` ouvre son worktree apres la fusion de cet amendement, pas avant.**
+- **Ligne `D5` (sections 3 et 4).** *"`D5` ne s'engage pas avant la fusion de la forme commune"*, la liste *"Hors `PAR`, non engages [...] `D5`"* et *"les quatre stories a prix 0 et `D5`"* sont **obsoletes**. `D5` est fait : `29d02bc6` est ancetre de `round-two` (`git merge-base --is-ancestor 29d02bc6 round-two` sort 0), fusionne par `dbd4a612` le 2026-10-15 18:10, **26 minutes apres la fusion de la cloture du palier 1 (`6dbb855d`, 17:44) et avant l'ouverture du palier 2 (20:56)** ; `grep -rl "brouillon soumis"` sur `adapters/adapter-content/src/main/resources/contenu` rend 0 fichier. Il reste **trois** stories hors `PAR` non engagees : `S57-MESSAGE-PARTIE-PERDUE`, `S57-TYP1-TEXTES-DE-GABARIT`, `S57-GARDE-NOMBRE-DE-MANCHES`. **Le meme ecart est dans `composition-palier-2.md` (section 4, ligne `D5`, et son resume) : le fichier est a `camille-po`, je ne le corrige pas.**
+- **Section 10, `Q-S7`.** La colonne *"Ce que le planning engage en attendant"* (*"porte des postes p2-7 et p2-12 seulement"*) est **remplacee** : `E3` couvre tout le palier (`DEC-0120` A.94 (a)).
+- **Section 8, ecart avec `composition-palier-2.md`.** Tranche par `DEC-0120` A.95 en faveur de la lecture que j'avais appliquee ; la section 8 reste exacte.
+
+### 4. Etat de chaque poste ouvrable, et ce qui reste avant son worktree
+
+| Poste | Developpeur | Ce qui reste avant le worktree | Ce qui reste avant le commit ou la fusion |
+|---|---|---|---|
+| p2-6, script | `marc-dev`, premier poste | la fusion de cet amendement | tous les criteres de la story ; mesure de `ines-design` apres |
+| p2-5, `N1` et `N2` | `marc-dev`, deuxieme poste | la fin du script (un worktree a la fois, section 5 de l'amendement precedent) | `K1` ; orthotypographie des chevrons par le `relecteur-pedagogique` avant le rejeu |
+| p2-3, `-05` | `marc-dev`, troisieme poste | la ligne *"lecture complete"* de `ce1-pronoms` au sens de `DEC-0120` A.96 : **la commande ne passe pas, voir ci-dessous** | recopier sans reformulation les indices des items 10 et 13 et l'item 15 (`reponse-nadia-q-palier-2.md` 1.1 et 3.5) ; `PN8` |
+| p2-4, `-24` | `sofia-sm`, casquette developpeuse | idem pour `ce1-familles-de-mots` | recopier l'item *chat* et *chaton* a la place de *livre* ; `grep -c 'bonneReponse: "librairie"'` rend 0 ; `FM5` |
+
+**Ecart que je route sans le trancher : la commande de `DEC-0120` A.96 rend 0 sur l'arbre qui porte les lignes de `nadia-prof`.** Commande de la decision, lancee par moi sur `babd70e7` : `git grep -l -E 'lecture complete : .?ce1-pronoms.?, 20 items lus' -- squad docs | wc -l` rend **0**, et de meme pour `ce1-familles-de-mots`, 24. Les lignes existent : `reponse-nadia-q-palier-2.md`, lignes 43 et 44, ecrites `- **lecture complete** : ...`. **La mise en gras place `**` entre *"complete"* et *" : "*, que le motif n'accepte pas** ; avec `lecture complete.{0,6} : ` a la place, le meme fichier est trouve pour chacune des deux. Je ne choisis pas : c'est la commande de `camille-po` (A.96 et critere 2 de `S57-ARB-PALIER-2`) ou la forme de la ligne de `nadia-prof`. **Tant qu'aucune des deux n'a ecrit, je n'ouvre pas le worktree de `-24` (le mien).** `-05` n'est pas touche : c'est le troisieme poste de `marc-dev`.
+
+### 5. Q-P4 : la base de code n'est pas identique a celle de la cote
+
+`git diff --stat 6dbb855d babd70e7 -- pom.xml domain application adapters bootstrap` rend **10 fichiers, 10 lignes ajoutees et 10 supprimees**, tous sous `adapters/adapter-content/src/main/resources/contenu/` : l'en-tete de dix paquets `ce1-*` que `D5` a modifie (`29d02bc6`, commentaires seuls). `6dbb855d` est le jar de base de `rapport-ines-r8-forme-commune.md` (section 1) et des releves `r3-*`. **Selon `nadia-prof` (3.3), la sortie n'est pas vide, donc la cote se remesure sur la base reelle, sans exception de contenu.** Je ne juge pas qu'un commentaire d'en-tete ne change pas l'ecran. **Effet : aucun delai de plus**, parce que la chaine de la forme (section 7 de l'amendement precedent, etape 3) fait deja mesurer `PA2` par `ines-design` sur le commit de la coupe. Ce que la sortie non vide retire : la possibilite de reutiliser comme cote de reference les elements de `PA2` mesures sur `6dbb855d`. **A `ines-design`** : remesurer sur la base de la section 6, commande et sortie dans le fichier date de la cote.
+
+### 6. Engagement de p2-7 (forme commune des propositions longues), 2026-10-16 09:03
+
+**p2-7 est engage.** `S57-FORME-COMMUNE-PROPOSITIONS-LONGUES`, prix 0, hors `PAR`, agent `lea-dev`, branche `s57-lea-forme-commune`, worktree voisin `recreo-s57-lea-forme-commune`, repertoire de scratchpad `s57-p2-lea-dev-ap`, ports 18532 et 19232 (section 6 de l'amendement precedent, sans changement).
+
+Les quatre conditions que la section 4 de l'amendement precedent posait, lues sur l'arbre :
+
+| Condition | Fichier et lieu | Etat |
+|---|---|---|
+| `PA3` | `reponse-nadia-q-palier-2.md` 3.1 | levee, accord |
+| `PA4` | idem 3.2 | levee, observation sans reserve |
+| `PA5` | `avis-theo-palier-2.md` section 2, `TP1` a `TP3` | levee, aucun amendement d'ADR |
+| `E3` | `avis-theo-palier-2.md` section 1 | levee, *conforme* |
+
+**Ce qui reste, pour lui et pour moi** :
+
+1. **Conditions regardees au rejeu, pas a l'engagement** : le score se lit comme une ligne du jeu avec `R3-1` ; aucun libelle ne change de nombre de lignes a la revelation a 720 (`nadia-prof` 3.1 et 3.2). Une condition non tenue est une reserve neuve, datee, non bloquante.
+2. **`scrollbar-gutter` n'entre pas dans la forme** (`TP5`). S'il est demande plus tard, le meme commit amende `ADR-0054` et sa regle.
+3. **La fusion attend la trace de lecture de `theo-archi`** (`TP6`, section 8).
+4. **`C1'` n'a aucune garde executable** sur l'ecran de manche (`TP4`) : la forme ne cree pas la dette ; son traitement est en section 8.
+5. **Le script de `PA1` n'est pas une condition de l'engagement.** La section 7 de l'amendement precedent le placait avant la coupe (etape 3, *"marc-dev a deja livre"*) ; **je corrige ce point** : la coupe ne depend que de la base, le script conditionne la mesure de `PA2` et tout rejeu (ordre 4), pas la coupe ni le developpement.
+
+**Base de la cote (`Q-R5`)** : le sommet de `round-two` au moment ou `lea-dev` coupe, note par lui par `git log -1 --format=%h` dans son premier message. **Au 2026-10-16 09:03, apres mes trois fusions, ce sommet est `babd70e7`.** Cet amendement, une fois fusionne, ajoute des commits qui ne touchent que `squad/` ; le SHA du sommet apres cette fusion est dans mon rapport au lanceur, et `lea-dev` coupe de ce sommet. **Tout lot fusionne avant la coupe est dans la base** (`-05` et `-24` ne sont pas fusionnes, et aucun ne l'est avant la coupe si `lea-dev` coupe a l'ouverture) ; **tout lot fusionne apres n'est pas dans le jar rejoue** et force la remesure de la cote (section 9 de l'amendement precedent, inchangee). Verification a la coupe, par `lea-dev` et par moi : `git diff --stat babd70e7 <sommet> -- pom.xml domain application adapters bootstrap` ne rend rien.
+
+### 7. Affectations confirmees
+
+| Developpeur | Postes engages, dans cet ordre | Nommes, non engages |
+|---|---|---|
+| `marc-dev` | script de `PA1` (`S57-SCRIPT-ADDITIONS-CP`), puis `S57-OBS-SCI-N1-N2`, puis `-05` | p2-10 si la voie est celle des textes |
+| `sofia-sm`, casquette developpeuse | `-24`, dans un geste de casquette distinct du Scrum Master, relu par `yanis-qa` avant fusion | - |
+| `lea-dev` | forme commune (p2-7) | `RDO-CP-R3` (p2-12), sous la condition de la section 5 de l'amendement precedent, inchangee |
+
+Repertoires, ports et consigne de racine : table de la section 6 de l'amendement precedent, sans changement.
+
+### 8. Questions de `theo-archi` et voies de PA7 et PA8
+
+- **`Q-T14` : engager l'ecriture par `theo-archi` de la garde de `C1'` (amendement d'`ADR-0031`, regle d'`adapter-web`, morsure) avant la fusion de p2-7 ?** **Je ne l'engage pas aujourd'hui et je ne la decide pas.** Capacite : aucun developpeur n'est charge par elle (`theo-archi` l'ecrit lui-meme, ses actions n'ont pas de prix) et elle n'attend personne. Ce qui manque est d'un autre ordre : **il n'existe ni story ni critere d'acceptation** pour cette garde, et un poste engage a un observable (`DEC-0120` A.97, motif 1) ; une story qui n'est pas au backlog n'existe pas. **Route a `camille-po`** : une story, son prix (0 hors `PAR`, ou autre), et si la garde est une condition de la fusion de p2-7. **Route a `theo-archi`** : la forme de la garde, que son avis se reserve. Tant qu'aucun fichier ne la pose en condition, **elle n'en est pas une** et la fusion de p2-7 ne l'attend pas ; elle n'est pas non plus un motif pour retarder l'ouverture du worktree de p2-7, que l'avis ne bloque pas.
+- **`Q-T15` : verifier l'existence de sa trace de lecture avant la fusion de p2-7 et de p2-12 ?** **Oui, comme condition de fusion.** C'est ma garde (la lignee et le build sont les miens), pas une decision de produit ni d'architecture. Ma verification : un fichier de `theo-archi` dans ce dossier, qui nomme le commit lu et les points lus (points 1 a 3 de `C1'`, `C2`, `C3`, `C1'` sur le diff livre) ; `git diff --stat <commit lu> <sommet de la branche> -- adapters domain application bootstrap` vide, ou le delta relu et dit. Sans ce fichier je ne fusionne pas, et je ne l'ecris pas a sa place. **`E3` en est la raison** : la lecture du diff de B1 avait manque a la fusion et n'a ete faite qu'apres.
+- **`PA8` (`Q-R7`)** : l'avis de `theo-archi` (3.1) classe les trois voies de `RDO-CP-R3` sans choisir ; **la mesure de la voie (i) par `ines-design` n'existe pas** et ouvre ou ferme la voie (ii). p2-12 reste non engage.
+- **`PA7`** : le bandeau est refuse, les textes restent ouverts et sans mesure ; **p2-10 reste non engage** : son engagement attend la forme fusionnee (inchange) et la mesure de `ines-design` sur les textes de `nadia-prof`.
+
+### 9. Compte des reports et prix, recomptes sans modifier un lot
+
+**Reports.** Inchange : six premiers reports, comptes a l'ouverture du 2026-10-15 20:56 (`DEC-0120` A.95) : p2-7, p2-8, p2-9, p2-10, p2-11, p2-12. **p2-7, engage ce jour, garde son premier report** (A.83) : non audite a la cloture du palier 2, il glisse (A.72) ; non audite a la cloture du palier 3, c'est un report compte, le second. **Effet de l'engagement** : la clause d'A.95 (*"si `p2-7` n'est pas engagee a l'ouverture du palier 3, ces cinq postes prennent leur second report le meme jour"*) ne joue plus par ce motif. Restent a p2-8, p2-9, p2-10 et p2-11 leurs conditions propres (la forme fusionnee, `PA1`, `PA2`, la voie). **p2-8 a p2-12 restent non engages : cinq premiers reports, et un second report au palier 3 pour chacun qui n'est pas engage a cette ouverture-la.**
+
+**Prix.** Un seul prix change, sur la parole de `nadia-prof` (3.8) : **`VSJ-CE1-R2` de 0,5 a 0,25** (paquet inchange, voie de la forme). Aucun lot n'est modifie. Somme recomptee par `awk` sur les prix de la section 3, sortie lue ce jour : engage 3,75 ; marges 1,50 ; non engage 2,25 ; non affecte 0,50 ; **total 8,00**. Par instance : A 3,0 (engage 1,5 ; marge 0,5 ; non engage 0,75, soit `RCT-CE1-R1` 0,5 et `VSJ-CE1-R2` 0,25 ; **non affecte 0,25**) ; A' 3,0 inchange ; B 1,75 inchange ; hors instance 0,25 inchange. Le 0,25 libere reste non affecte, comme le dit `nadia-prof` ; l'affecter est a `camille-po`. **L'engagement de p2-7 ne change aucune somme** (prix 0, hors `PAR`). Bornes relues : somme 8,0 ; aucun chiffre au-dela de 8,0 ; plafond de 5,0 par instance et trois lots au plus par instance tenus.
+
+### 10. Question a l'utilisatrice : `Q4`, crochet du harnais sur les redirections du shell
+
+**Je ne la decide pas ; elle est a l'utilisatrice.** La consigne de racine du scratchpad (section 6 de l'amendement precedent) n'est pas un moyen de garde. **Avis de `theo-archi`** (`avis-theo-palier-2.md`, section 4), sans decision de sa part :
+
+1. **Un crochet qui lit le texte de la commande** (`>`, `>>`, `2>`, `tee`) enumere des formes d'ecriture et echoue par omission : un script qui ecrit lui-meme, une variable qui porte le chemin, `cd` puis un chemin relatif, un journal de Maven, un profil de Chrome. Il ne le recommande pas comme garde.
+2. **Un controle de l'effet** (liste de la racine du scratchpad et du repertoire parent des worktrees avant et apres chaque commande, ecart signale) voit toute ecriture, quel que soit l'outil. Limite : des agents en parallele ecrivent dans la meme fenetre, l'attribution a une commande n'est pas sure, la detection l'est.
+3. **Sans crochet**, ma mesure de cloture (section 6 de l'amendement precedent) est le meme controle de l'effet, une fois par palier : elle detecte, elle n'empeche pas, elle n'attribue pas.
+
+**Question** : crochet de lecture de commande (1), controle de l'effet par commande (2), ou rien de plus que ma mesure de cloture (3) ? En attendant, rien ne change. **`S2` reste absent.**
+
+### 11. Ce que cet amendement ne fait pas, decisions
+
+N'ouvre aucun worktree ; ne prononce aucun Done ; ne juge aucun contenu ; ne touche ni la matrice (146 / 200), ni un paquet, ni un catalogue, ni du code ; ne modifie aucun fichier signe d'un autre agent ; ne decide ni `Q4`, ni `Q-T14`, ni la commande de `DEC-0120` A.96.
+
+**Decisions prises** : aucune `ADR` ni `DEC` creee ou amendee par cet amendement. Decisions fusionnees ce jour, par leurs auteurs : `DEC-0120`, amendement du 2026-10-16 (A.94 a A.99), statut `Acceptee` inchange ; `DEC-index.md`, une ligne ajoutee ; aucune `ADR` (`TP3`, `PA5`).
+
+### 12. Jobs de `ci.yml` lances pour ce commit
+
+Lances sur ce worktree, ce fichier indexe, avant commit. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, ce fichier modifie : `BUILD SUCCESS`, exit 0, **2597 tests, 0 echec, 0 erreur, 0 ignore** (120, 31, 492, 1567, 381, 6 d'integration). Des tests de `bootstrap` lisent `squad/` : le build a lu le fichier avant l'ajout de la presente section, qui ne contient aucun tableau. Etape *"Package du fat jar"* non lancee.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou), ce fichier indexe, passe a `verifier-chemins.sh` : sort 0.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh` et `verifier-garde-fou-accent-test.sh` sortent 0 ; le sujet prevu du commit et les sujets de `f6134910..HEAD` (hors fusions) passent dans `verifier-prefixes.sh` : sort 0. L'etape *"Verifier le proprietaire du garde-fou de l'accent"* n'est pas lancee : aucun de ses chemins n'est touche.
+- **`outils`** : les trois balayages (`outils/*-test.sh` : 5 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), 12 juges lances avec `python`, 12 sortis 0, aucun balayage vide.
+
+Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
