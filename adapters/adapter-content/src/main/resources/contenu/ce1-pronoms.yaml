@@ -41,9 +41,9 @@ items:
     indice: "Remplace le mot par chaque proposition et relis."
   # elle, l'accord
   - enonce: "Que désigne « elle » dans le texte ?"
-    texteSupport: "Zoé range le jeu de Paul. Elle ferme la boîte."
+    texteSupport: "Zoé prête son jeu à Paul. Elle ouvre la boîte."
     bonneReponse: "Zoé"
-    distracteurs: ["Paul", "le jeu"]
+    distracteurs: ["Paul", "son jeu"]
     indice: "Cherche qui fait l'action dans la phrase d'avant."
   # elle, le sens decide
   - enonce: "Que désigne « elle » dans le texte ?"
@@ -77,10 +77,10 @@ items:
     indice: "Le sens de la phrase aide à choisir."
   # il, l'accord
   - enonce: "Que désigne « il » dans le texte ?"
-    texteSupport: "Bastien ouvre la porte à Maëlle. Il entre dans la classe."
+    texteSupport: "Maëlle ouvre la porte à Bastien. Il entre dans la classe."
     bonneReponse: "Bastien"
     distracteurs: ["Maëlle", "la classe"]
-    indice: "Cherche qui fait l'action dans la phrase d'avant."
+    indice: "« Il » désigne un mot masculin : cherche-le dans la phrase d'avant."
   # elle, l'accord
   - enonce: "Que désigne « elle » dans le texte ?"
     texteSupport: "Ilyes donne un gâteau à Sofia. Elle dit merci."
@@ -101,7 +101,7 @@ items:
     indice: "Remplace le mot par chaque proposition et relis."
   # elle, l'accord
   - enonce: "Que désigne « elle » dans le texte ?"
-    texteSupport: "Léo lit un livre à Rose. Elle écoute bien."
+    texteSupport: "Rose lit un livre à Léo. Elle tourne les pages."
     bonneReponse: "Rose"
     distracteurs: ["Léo", "un livre"]
     indice: "« Elle » désigne un mot féminin : cherche-le dans la phrase d'avant."
@@ -119,8 +119,8 @@ items:
     indice: "Le sens de la phrase aide à choisir."
   # substitut simple : le garcon
   - enonce: "Que désigne « le garçon » dans le texte ?"
-    texteSupport: "Mina et Hamza regardent un chien. Le garçon lui donne de l'eau."
-    bonneReponse: "Hamza"
+    texteSupport: "Mina et Omar regardent un chien. Le garçon lui donne de l'eau."
+    bonneReponse: "Omar"
     distracteurs: ["Mina", "un chien"]
     indice: "Cherche qui est un garçon dans la phrase d'avant."
   # substitut simple : l'animal
@@ -131,9 +131,9 @@ items:
     indice: "Cherche qui est un animal dans la phrase d'avant."
   # substitut simple : la fille
   - enonce: "Que désigne « la fille » dans le texte ?"
-    texteSupport: "Adrien parle à Manon. La fille lui répond avec un sourire."
+    texteSupport: "Manon parle à Adrien. La fille lui pose une question."
     bonneReponse: "Manon"
-    distracteurs: ["Adrien", "un sourire"]
+    distracteurs: ["Adrien", "une question"]
     indice: "Cherche qui est une fille dans la phrase d'avant."
   # ils, l'accord
   - enonce: "Que désigne « ils » dans le texte ?"
