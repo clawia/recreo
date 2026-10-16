@@ -1495,3 +1495,114 @@ Lances sur `round-two` a `b1b71f80` (apres la fusion) avec ce fichier modifie, a
 - **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances (`bash` pour les `.sh`, `python` pour les `.py`), 13 sortis 0, aucun balayage vide, avec `TMPDIR` dans mon espace de travail en forme POSIX. Le nombre n'a pas bouge depuis le 16:59.
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
+
+## Amendement du 2026-10-16 19:20 (UTC+02:00), palier 2 : fusion des corrections de `marc-dev` (`-05` et `RCT-CE1-R1`) et du releve du `relecteur-pedagogique`, fenetre bornee de `Q-U11`, questions de `marc-dev`
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace ou precise est nomme. Arbre de depart : `round-two` a `0ea24709`, casquette Scrum Master. Aucune ceremonie n'est animee par ce texte. **Aucun Done n'est prononce, technique ou pedagogique.**
+
+### 1. Fusions de ce jour, lignee verifiee avant
+
+| Ordre | Branche | Sommet livre | Fusion | Delta |
+|---|---|---|---|---|
+| 1 | `s57-marc-fra-ce1-05-corr` | `42071c23` (`[MARC]`) | `02b4a34e` | 3 fichiers, 14 insertions, 14 suppressions : `ce1-pronoms.yaml`, `PaquetCe1PronomsTest.java`, `ce1-pronoms-fautif.yaml` |
+| 2 | `s57-marc-rct-ce1-r1` | `ec5b146f` (`c77560f2` pour le contenu, `ec5b146f` pour le rapport) | `4e5c9314` | 2 fichiers, 97 insertions, 5 suppressions : `ce1-texte-narratif.yaml` (5 lignes `-`, 5 `+`), `rapport-marc-dev-palier-2-corrections.md` (neuf, 92 lignes) |
+| 3 | `s57-relecteur-p2b` | `14ca643f` (`[REL]`) | `7c9ac220` | 1 fichier neuf, 170 lignes : `releve-relecteur-palier-2-corrections.md` |
+
+- **Lignee.** `git merge-base round-two <branche>` rend `0ea24709` pour les trois (code de sortie 0 ; `git rev-list --count round-two..<branche>` : 1, 2, 1). J'ai appele `juger_lignee` de `outils/verifier-lignee.sh` avec le nom de chaque branche et ce code : trois sorties 0, *"descend de la lignee de round-two"*. **Je ne l'ai pas lancee depuis un worktree de chaque branche**, je n'ai pas appele son enveloppe.
+- **Lecture des rapports avant fusion.** `git show` du rapport de `marc-dev` (`ec5b146f`) et du releve du `relecteur-pedagogique` (`14ca643f`), en entier, puis du message et de la liste de fichiers de `42071c23`. Le diff de `c77560f2` n'est pas relu ligne a ligne : ses cinq lignes sont celles que `RC1-4` et `RC1-5` comptent (section 3).
+- **Ordre des worktrees de `marc-dev`, verifie.** `git reflog show --date=iso` : `s57-marc-fra-ce1-05-corr` cree a 18:26:28, `s57-marc-rct-ce1-r1` a 18:44:11, tous deux depuis `0ea24709`, apres l'amendement de `PN8` (fusionne a 16:54) et apres le commit des criteres de `RCT-CE1-R1` (`e83fe3f1`, 18:01:35).
+- **Aucun conflit.** Les trois fusions se font sans intervention. `git grep -c '^<<<<<<<\|^>>>>>>>' HEAD -- docs squad adapters` ne rend rien.
+- **Fichiers non touches.** Ni `catalogue.yaml`, ni la matrice, ni un `pom.xml`.
+
+### 2. Sorties de `PN8-1` a `PN8-14` sur l'arbre fusionne
+
+Bases ecrites en SHA. `<ref>` = `7c9ac220` (sommet apres les trois fusions). Aucune fusion posterieure a la premiere ne touche `ce1-pronoms.yaml` : `git log --oneline e8d14ddb997965536d06689a812a998431ca3938..7c9ac220 -- <YAML>` rend 1 ligne. Commandes de `backlog.md` telles quelles, lancees par un script que j'ai ecrit dans mon espace de travail et que je ne commite pas. **Les sorties sont identiques sur `02b4a34e` (fusion 1 seule) et sur `7c9ac220`.**
+
+| Code | Attendu | Sortie sur `7c9ac220` |
+|---|---|---|
+| `PN8-1` | 2 | 2 |
+| `PN8-2` | `10 13 ` | `10 13 ` |
+| `PN8-3` | 0 | 0 |
+| `PN8-4` | 5 | 5 |
+| `PN8-5` (`PN4`) | 0 | 0 |
+| `PN8-6`, base `aa9d703c` | 13 | 13 |
+| `PN8-7` (item 3) | 5 | 5 |
+| `PN8-8` (item 9) | 5 | 5 |
+| `PN8-9` (item 13) | 5 | 5 |
+| `PN8-10` (item 16) | 5 | 5 |
+| `PN8-11` (item 18) | 5 | 5 |
+| `PN8-12` (*Hamza*) | 0 | 0 |
+| precondition de `PN8-13` (`git log --oneline e8d14ddb...`) | 1 | 1 |
+| `PN8-13a`, base `e8d14ddb997965536d06689a812a998431ca3938` | 8 | 8 |
+| `PN8-13b`, meme base | 18 | 18 |
+| precondition de la forme a parents (`git rev-list --parents -n1 02b4a34e \| wc -w`) | 3 | 3 |
+| `PN8-13a`, forme `02b4a34e^1 02b4a34e` | 8 | 8 |
+| `PN8-13b`, forme `02b4a34e^1 02b4a34e` | 18 | 18 |
+| `PN8-14` (`bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test -Dtest=PaquetCe1PronomsTest -Dsurefire.failIfNoSpecifiedTests=false`, perimetre `adapter-content` et ses amonts, `-am` present, mesure partielle) | `Tests run: 37, Failures: 0, Errors: 0` | `Tests run: 37, Failures: 0, Errors: 0, Skipped: 0`, `BUILD SUCCESS` |
+
+`PN8-6` : la commande a base `aa9d703c` rend 13, valeur amendee par `camille-po`. L'item 19 n'est pas touche (`PN8-13a` rend 8 et non 9).
+
+### 3. Sorties de `RC1-1` a `RC1-7`
+
+`<ref>` = `7c9ac220` pour `RC1-1` a `RC1-6`, `<C>` = `c77560f2` pour `RC1-7` (le commit livre). Base `78270b4c` pour `RC1-4` a `RC1-6`, comme ecrit.
+
+| Code | Attendu | Sortie |
+|---|---|---|
+| `RC1-1` (Ines) | 3 | 3 |
+| `RC1-2` (Ibrahim) | 3 | 3 |
+| `RC1-3` (Chloe) | 3 | 3 |
+| precondition (`git log --oneline 78270b4c..7c9ac220 -- <YAML> \| wc -l`) | 1 | 1 |
+| `RC1-4` | 3 | 3 |
+| `RC1-5` | 10 | 10 |
+| `RC1-6` | 0 | 0 |
+| `RC1-7` | 0 | 0 |
+| forme a parents, fusion `4e5c9314` (`rev-list --parents` : 3 mots) : hunks, lignes, `RC1-6` | 3, 10, 0 | 3, 10, 0 |
+
+### 4. Comptes, mesures, jobs de `ci.yml`
+
+Voir section 7, ecrite apres les runs.
+
+### 5. Fenetre bornee de `Q-U11`, questions de `marc-dev`, points du releve
+
+**`Q-U11`, reponse de l'utilisatrice relayee.** L'utilisatrice a repondu le 2026-10-16 a l'agent principal, qui me la transmet : **fenetre bornee**. Le paquet `bandit-manchot-pronoms-ce1` reste au catalogue le temps de la correction et du rejeu dans ce palier ; **pas de retrait** ; `S57-RETRAIT-PRONOMS-CE1` **n'est pas engagee**. **Je n'ai pas lu ces mots de sa main** : c'est le relais de l'agent principal. Cette reponse remplace le regime par defaut que j'ecrivais a 18:14 (retrait, `DEC-0045` section 3). **La correction est fusionnee ce jour (`02b4a34e`) ; le rejeu de `-05` par `nadia-prof` n'a pas eu lieu.** S'il n'a pas lieu avant la cloture du palier 2, **la question du retrait revient au palier 3** : je le dis, je ne la decide pas, et la fenetre ne se prolonge pas d'elle-meme. **Etat de `Q-U11` : reponse consignee ici, pas close.** L'acte qui la tranche est a `camille-po` (amendement de `DEC-0120` ou `DEC`) ; ce fichier n'est pas une decision. `git grep -n "Q-U11" HEAD -- squad/decisions` ne rend aujourd'hui que la question.
+
+**`Q2` de `marc-dev`, routee a `camille-po`, non decidee.** Le jeu fautif de `TRV-CE1-6` (`ce1-pronoms-fautif.yaml`) garde les anciens textes des items 3, 9, 13 et 18 ; seul *Hamza* y change, comme la demande le disait (`git show 42071c23 -- <fautif>` : 2 lignes `-`, 2 `+`, l'item 16). Il atteste un desequilibre de prenoms, pas ces textes. Que la copie suive le paquet est une question de perimetre produit : a `camille-po`. Aucune story n'est creee ici.
+
+**`Q1` de `marc-dev`, close.** U+00A0 dans les chevrons et devant le deux-points de l'indice de l'item 9 : confirme par le `relecteur-pedagogique` (releve, section 4 : `ADR-0060` clause 2, amendement du 2026-10-14 d'`ADR-0067`, critere `PN8-8`). Le releve existe sur le disque apres la fusion 3.
+
+**Item 19 (`CR29`), decline.** Aucun amendement de `camille-po` ne l'a repris avant l'ouverture du worktree : `git grep -n "CR29" HEAD -- docs` ne rend que l'annotation initiale, sans amendement posterieur. Par le texte de cette annotation, *"sans amendement, elle est declinee"*. `PN8-13a` rend 8. C'est un constat de mesure, pas une decision de ma part.
+
+**Point de fusion du releve (section 6), sans objet.** Le `relecteur-pedagogique` lisait la section 5 de la fiche des pronoms sur `s57-nadia-p2-a2` (`e49ca262`). `git merge-base --is-ancestor e49ca262 0ea24709` sort 0 : le commit est deja sur `round-two`.
+
+**Point ouvert du releve, section 5, inchange.** 2377 occurrences de `U+00A0` avant `?` contre 224 a espace ordinaire dans les contenus : ni le fait de ces deux commits, ni de moi. A `theo-archi` (`ADR`) et `camille-po` (produit), deja ouvert.
+
+**Branche de `lea-dev`, non fusionnee.** `s57-lea-rdo-cp-r3` attend la trace de lecture de `theo-archi` (`Q-T15`, en cours). Son sommet est `5a1d76fa` (rapport de livraison, 19:07:33), au-dessus de `23222465` (18:41:11), que le releve a lu. **Le releve ne couvre donc pas `5a1d76fa`**, un rapport et non un texte de gabarit ; je ne l'ai pas lu.
+
+### 6. Etat des postes de rejeu et sommet pour `nadia-prof`
+
+| Poste | Etat | Preuve |
+|---|---|---|
+| p2-3, correction de `-05` | **fusionne** | `02b4a34e` ; `PN8-1` a `PN8-13` ci-dessus |
+| p2-10, `RCT-CE1-R1` | **fusionne** | `4e5c9314` ; `RC1-1` a `RC1-7` ci-dessus |
+| p2-3, rejeu de `-05` (0,5, A) | **a faire**, `nadia-prof` | aucun fichier de rejeu apres la correction |
+| p2-10, rejeu de `RCT-CE1-R1` (0,5, A) | **a faire**, `nadia-prof` | idem |
+| p2-12, `RDO-CP-R3` | **non fusionne** | `Q-T15` |
+
+**Sommet de rejeu.** Le code et le contenu servis de `round-two` sont ceux de `7c9ac220` : le commit de cet amendement ne change ni `adapters`, ni `domain`, ni `application`, ni `bootstrap`, ni `pom.xml` (`git diff --quiet 7c9ac220 HEAD -- adapters domain application bootstrap pom.xml outils .github`, section 7). Un jar construit sur le sommet de `round-two` apres ce commit rejoue donc la correction de `-05` et `RCT-CE1-R1`. Le SHA du sommet est dans le rapport de l'agent : un fichier ne peut pas contenir le SHA de son propre commit.
+
+**Decisions de cette serie.** **Aucune `ADR` ni aucune `DEC` n'est creee ou amendee** par ces trois fusions ni par cet amendement. `DEC-0120` (dix-sept amendements, A.105 a A.110 les derniers) et `DEC-0122` sont inchanges.
+
+**Ce que cet amendement ne fait pas.** Ne prononce aucun Done, ne juge aucun contenu ni la typographie, ne decide ni `Q-U11` ni `Q2`, n'engage pas `S57-RETRAIT-PRONOMS-CE1`, ne fusionne pas `s57-lea-rdo-cp-r3`, ne touche ni la matrice (147 / 200, non remesuree), ni un catalogue, ni un critere.
+
+### 7. Total recompte, jobs de `ci.yml` lances pour ce commit
+
+Lances sur `round-two` a `7c9ac220` (apres les trois fusions), puis avec les sections 1 a 6 de cet amendement presentes, avant commit. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, deux fois : sur `7c9ac220` seul (`BUILD SUCCESS`, exit 0, 4 min 50 s), puis avec les sections 1 a 6 presentes (`BUILD SUCCESS`, exit 0, 4 min 48 s). **2669 tests, 0 echec, 0 erreur, 0 ignore** aux deux runs (120, 31, 501, 1630, 381, 6 d'integration, lignes `Tests run` du reacteur, somme faite par moi, recomptee a part par l'attribut `tests` des 313 fichiers `TEST-*.xml` : 2669). JDK 21.0.10 (`java.version` lu dans les 60 rapports Surefire de `bootstrap`, une seule valeur). `PaquetCe1PronomsTest` : 37 ; `PaquetCe1TexteNarratifTest` : 32. L'etape *"Package du fat jar"* n'est pas lancee.
+- **Ecart de total.** Les deux branches de `marc-dev` annoncent chacune 2669 (base plus leur lot, delta nul : *"37 avant, 37 apres"* et *"32 avant, 32 apres"*). L'arbre fusionne donne 2669, soit le total de `round-two` a `b1b71f80` (2669, amendement de 18:14) : aucun test n'est ajoute ni retire par ces trois fusions, et aucun ecart n'est a expliquer.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh` : *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, sortie 0, avec les sections 1 a 6 de ce fichier.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh` et `verifier-garde-fou-accent-test.sh` sortent 0 ; `commit-atteignable.sh 0ea24709` sort 0 ; les sujets de `0ea24709..HEAD` hors fusions (quatre commits d'agents) et le sujet prevu du commit passent dans `verifier-prefixes.sh` : *"Tous les commits portent un prefixe d'agent connu."*, sortie 0 ; `verifier-garde-fou-accent.sh "0ea24709..HEAD"` : *"0 commit(s) le touchent dans la plage, tous [THEO]."*, sortie 0.
+- **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances (`bash` pour les `.sh`, `python` pour les `.py`), 13 sortis 0, aucun balayage vide, `TMPDIR` dans mon espace de travail en forme POSIX.
+- **Code inchange par ce commit.** `git diff --quiet 7c9ac220 -- adapters domain application bootstrap pom.xml outils .github` sort 0.
+
+Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue. **Le Done technique n'est pas prononce par moi** : il est juge par la CI sur le commit pousse.
