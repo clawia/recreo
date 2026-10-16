@@ -12,8 +12,9 @@
 - **Conditions opposables** : `GNA-CE1-1` a `GNA-CE1-3`, `TRV-CE1-1` a `TRV-CE1-7`, `LON-CE1-1`, `-2`, `-5`
   (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, sections 2 et 5.6).
 - **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-10-14 par `nadia-prof` (s57, palier 1, instance A'),
-  apres avoir joue le jar de la branche. Fiche ouverte par ce verdict.
-- **Derniere mise a jour** : 2026-10-14.
+  apres avoir joue le jar de la branche. Fiche ouverte par ce verdict. **VALIDE** depuis le 2026-10-16 (s57, palier 2,
+  instance A') : reserve levee au rejeu, bloc de validation.
+- **Derniere mise a jour** : 2026-10-16.
 
 ---
 
@@ -92,3 +93,28 @@ dans le dernier (`ADR-0100`) ; prefixe `GNA-CE1` deja alloue (`GNA-CE1-1` a `-3`
 **Tarif consomme** : audit 1,0 (poste 5, instance A'). Marge de rejeu de A' intacte.
 
 **Signe** : `nadia-prof`, s57, palier 1, instance A', 2026-10-14.
+
+### Rejeu du 2026-10-16 (`nadia-prof`, s57, palier 2, instance A', p2-9) : **`GNA-CE1-R1` levee ; `FRA-CE1-15` VALIDE**
+
+Rien au-dessus n'est efface : le verdict du 2026-10-14 et sa reserve restent lisibles. Detail, commandes et chiffres :
+`squad/sprints/s57-version-cp-ce1-cm1-trois-instances/rejeu-nadia-palier-2-ap.md`.
+
+**Objet joue** : le meme jar que p2-8, joue apres lui (`round-two` a `e8d14ddb`, code de `0c0d2142`, SHA-256
+`db419e94b685ba3d37591b853bfd7decdf9fdf55e8516defe0f7b5e9785c48d7`). Paquet servi inchange depuis `72931c94` (deux lignes de
+commentaire, `29d02bc6`) ; 6 parties, 24 items sur 24, 90 erreurs, 24 revelations, 0 ecart au fichier.
+
+**Critere de levee, ecrit le 2026-10-14** : a 744 x 551, apres une erreur, le bas de `.indice` au-dessus de y = 551 sur les 24
+items. **Tenu** : 24 sur 24, dans l'ordre servi et dans les six ordres, bas le plus haut 548 (*"des manteaux chauds"*) ; de meme
+a 720 et a 768. *"les gâteaux"* (element 1 de `Q-R4`) : 400, mesure par moi.
+
+**Item 5, *"les cheveux longs"*** : la cote d'`ines-design` y porte une valeur transitoire de 355,8. Je mesure 474 a 744 dans les
+six ordres et a 720 ; je ne la reproduis pas, sa cause n'est pas a moi.
+
+**Conditions `R3-1` et `PA4`, clause `Q-R4`** : tenues, comme pour p2-8 (fiche de `phrases-types-ce1`, rejeu du meme jour).
+
+**Done pedagogique** : `FRA-CE1-15` passe de VALIDE SOUS RESERVE a **VALIDE**, sans reserve ouverte. `camille-po` peut clore la
+story `S57-GNA-CE1-R1`. **Je reste la seule garde** de la position de l'indice sur ce jeu.
+
+**Tarif** : **0,25** (A') : la forme de ce paquet ne differe pas de celle de `ce1-phrases-types` (memes regles, meme jar, paquet
+inchange) ; 0,25 des 0,5 retenus par la composition revient a l'ecart non affecte de A'. **Signe** : `nadia-prof`, s57, palier 2,
+instance A', 2026-10-16.

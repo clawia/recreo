@@ -12,8 +12,9 @@
 - **Conditions opposables** : `TPH-CE1-1` a `TPH-CE1-3`, `TRV-CE1-1` a `TRV-CE1-7`, `LON-CE1-1`, `-2`, `-5`
   (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, sections 2 et 5.1).
 - **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-10-14 par `nadia-prof` (s57, palier 1, instance A'),
-  apres avoir joue le jar de la branche. Fiche ouverte par ce verdict.
-- **Derniere mise a jour** : 2026-10-14.
+  apres avoir joue le jar de la branche. Fiche ouverte par ce verdict. **VALIDE** depuis le 2026-10-16 (s57, palier 2,
+  instance A') : reserve levee au rejeu, bloc de validation.
+- **Derniere mise a jour** : 2026-10-16.
 
 ---
 
@@ -162,3 +163,31 @@ Relayes a moi par l'agent principal, non lus de sa main.
 levee est inchange. Ses mots disent ce que ma notation *"`Q-N4` = non"* disait ; ma recommandation *"oui pour les lots
 suivants"* reste non retenue, par ses mots. **Ils ne disent pas** que le pli cesse d'etre une reserve ou d'etre mesure, ni
 qu'un critere de levee change : je ne leur donne pas cette portee. Detail : `rejeu-nadia-palier-1.md`, annotation du meme jour.
+
+### Rejeu du 2026-10-16 (`nadia-prof`, s57, palier 2, instance A', p2-8) : **`TPH-CE1-R1` levee ; `FRA-CE1-10` VALIDE**
+
+Rien au-dessus n'est efface : le verdict du 2026-10-14 et sa reserve restent lisibles. Detail, commandes et chiffres :
+`squad/sprints/s57-version-cp-ce1-cm1-trois-instances/rejeu-nadia-palier-2-ap.md`.
+
+**Objet joue** : `round-two` a `e8d14ddb`, code servi de `0c0d2142` (la forme commune, `dc6f423d`, fusionnee) ; jar construit par
+moi, SHA-256 `db419e94b685ba3d37591b853bfd7decdf9fdf55e8516defe0f7b5e9785c48d7`, port 18512, PID 27416, arrete par ce PID. Paquet
+servi inchange depuis `1f6642ab` (deux lignes de commentaire, `29d02bc6`) ; 7 parties, 24 items sur 24, 98 erreurs, 24
+revelations, 0 ecart au fichier.
+
+**Critere de levee, ecrit le 2026-10-14** : a 744 x 551, apres une erreur, le bas de `.indice` au-dessus de y = 551 sur les 24
+items. **Tenu** : 24 sur 24, dans l'ordre servi et dans les six ordres, bas le plus haut 548 ; de meme a 720 et a 768. Sur les
+captures, l'indice est entier, a droite du verdict, sans defiler.
+
+**Conditions posees pour ce rejeu, tenues** : le score n'est ni couvert ni touche par la bande de l'en-tete et se lit comme une
+ligne du jeu (`R3-1`) ; a 720, aucun libelle ne change de nombre de lignes a la revelation (`PA4`). **Clause `Q-R4`** : tenue sur
+la cote d'`ines-design` (`cote-de-reference-forme-commune-2026-10-16.md`, `96f5e101`), aucun item au-dessus du pli sur le jar de
+base `aa9d703c` ne passe dessous ; je n'ai pas remesure ses elements 2 a 4, je les cite. Seconde commande de `Q-R5` non tenue a la
+lettre sur le sommet : tranche dans le fichier de rejeu, section 3.
+
+**Hors levee** (`Q-R2`) : a la revelation, la phrase *"Appuie sur la bonne réponse :"* et la reponse sont maintenant visibles ;
+l'indice, qui reste affiche, passe sous le pli sur 23 items sur 24.
+
+**Done pedagogique** : `FRA-CE1-10` passe de VALIDE SOUS RESERVE a **VALIDE**, sans reserve ouverte. `camille-po` peut clore la
+story `S57-TPH-CE1-R1`. **Je reste la seule garde** de la position de l'indice sur ce jeu : aucun test ne rend la page.
+
+**Tarif** : 0,5 (A'). **Signe** : `nadia-prof`, s57, palier 2, instance A', 2026-10-16.
