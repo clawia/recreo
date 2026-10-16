@@ -777,3 +777,78 @@ Lances sur ce worktree, ce fichier indexe, avant commit. Je ne deduis aucun job 
 - **`outils`** : les trois balayages (`outils/*-test.sh` : 5 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), 12 juges lances avec `python`, 12 sortis 0, aucun balayage vide.
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
+
+---
+
+## Amendement du 2026-10-16 11:05 (UTC+02:00), palier 2 : trois fusions, engagement de la garde de `C1'`, etat des postes
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace ou precise est nomme. Arbre de depart : `round-two` a `4004fab7` (`origin/round-two` egal). Aucune ceremonie n'est animee par ce texte : c'est un amendement de planning, comme les deux precedents.
+
+### 1. Fusions de ce jour, lignee verifiee avant chacune
+
+Les trois branches partent de `aa9d703c` (`git merge-base round-two <branche>` rend ce SHA pour chacune, 1 commit propre chacune). La lignee est jugee par `juger_lignee` de `outils/verifier-lignee.sh`, chargee depuis le script et appelee avec le nom de la branche et le code de `git merge-base round-two <branche>` : l'enveloppe du script juge le worktree courant, et la branche a fusionner n'a pas de worktree sur `round-two`. Les trois verdicts : *"descend de la lignee de round-two"*, sortie 0. Reacteur complet apres chaque fusion : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`.
+
+| Ordre | Branche | Sommet livre | Fusion | Tests mesures par moi |
+|---|---|---|---|---|
+| 1 | `s57-camille-p2-garde` | `79130ca9` | `ea4a9f37` | 2597, `BUILD SUCCESS` |
+| 2 | `s57-marc-sci-n1-n2` | `69dd7631` | `9cbf3571` | 2597, `BUILD SUCCESS` |
+| 3 | `s57-marc-script-additions-cp` | `baefae1d` | `97a205e8` | 2597, `BUILD SUCCESS` |
+
+**Compte** : 120 + 31 + 492 + 1567 + 381 + 6 d'integration, lignes `Tests run` du reacteur, identique aux trois fusions et au dernier total du palier (2597). Ecart avec les chiffres annonces : aucun, parce qu'aucun des trois lots n'ajoute de test Maven (`marc-dev` annonce 2597 pour p2-6 et p2-5, et 2634 pour p2-3, qui n'est pas fusionne : ses 37 tests s'ajouteront a sa fusion, et le total attendu apres elle est 2634 si rien d'autre n'entre avant). Catalogue : 150 entrees avant et apres (`grep -c "^  - id:" adapters/adapter-content/src/main/resources/catalogue.yaml`), `N1` et `N2` n'y touchent pas.
+
+**Ce que la fusion 2 change dans la base de la cote (`Q-R5`).** La branche de la forme (`s57-lea-forme-commune`) est coupee de `aa9d703c`, comme l'amendement du 09:03 le demandait. `N1` et `N2` modifient quatre lignes de `cm1-sciences-extraire-information.yaml`, sous `adapters/` : elles ne sont pas dans le jar de la forme. A la fusion de p2-7, la commande de la section 9 (`git diff <jar rejoue> <resultat de la fusion> -- adapters domain application bootstrap`) montrera donc ces quatre lignes, plus celles de `-05` et `-24` si elles sont fusionnees avant. **Je les nommerai a `nadia-prof` avant son rejeu de la forme**, comme la section 9 le prescrit ; aucun de ces ecarts ne touche un ecran de CE1 ou de CP.
+
+### 2. Reponses aux questions de `marc-dev` (`rapport-marc-dev-palier-2.md`, sur la branche `s57-marc-fra-ce1-05`)
+
+- **`Q1` (rapport sur une seule branche) : oui, c'est mon processus et je le tranche ainsi.** Trois exemplaires du meme fichier se heurteraient a la fusion (ajout des deux cotes), et un SHA ne peut pas figurer dans le commit qu'il nomme. **Le prix, dit** : le rapport n'est pas sur `round-two` tant que `s57-marc-fra-ce1-05` n'est pas fusionnee. Le critere 1 de `S57-SCRIPT-ADDITIONS-CP` (*"le rapport nomme le script"*) n'est donc pas verifiable aujourd'hui sur `round-two` : **je ne declare pas la story close** avant la fusion de ce rapport. Le script et son juge, eux, sont fusionnes (`git ls-files -- squad/conformite/releves-s57/mesurer-additions-cp.mjs` rend 1).
+- **`Q3` (un test qui epingle les quatre textes de `N1` et `N2` est-il voulu ?)** : non, et ce n'est pas a moi de l'amender. Le critere 4 de `S57-OBS-SCI-N1-N2` borne le diff au seul `cm1-sciences-extraire-information.yaml` (*"`git diff --stat <base> HEAD` ne nomme que `cm1-sciences-extraire-information.yaml`, 4 lignes ajoutees et 4 retirees"*), et le critere 5 laisse le test du paquet inchange (*"`PaquetCm1SciencesExtraireInformationTest`, sans assertion retiree (`git diff <base> HEAD -- <son fichier>` vide)"* et *"Aucun test Java n'epingle ces quatre textes"*). Un test qui epingle ces textes violerait l'un des deux. Aucun amendement n'est ecrit ni demande.
+- **`Q2`** (orthotypographie des chevrons, U+00A0) : au `relecteur-pedagogique`, avant le rejeu, comme `S57-OBS-SCI-N1-N2` le dit. **`Q4`, `Q5`** : a `camille-po`. **`Q6`** : a `nadia-prof`. Aucune n'est a moi.
+- **Dette de duplication nommee** (`mots`, `phrases`, regle de fin de phrase, table d'ouvertures recopies dans `PaquetCe1TexteNarratifTest` et `PaquetCe1PronomsTest`) : je la route a `theo-archi` (structure de test), elle n'est pas payee ici et je n'en fais pas une story.
+
+### 3. Engagement de `S57-GARDE-C1-SUJET-HORS-MESSAGE` (`CR15`, `DEC-0120` A.100 et A.104)
+
+**Engagee ce jour.** Agent `theo-archi`, qui l'ecrit lui-meme ; test des criteres par `yanis-qa` (`CR18`) ; prix 0, hors `PAR` ; aucun developpeur n'est charge ; **aucune condition sur la fusion de p2-7** (A.100), dont la seule condition reste la trace de lecture de `theo-archi` (`Q-T15`, `TP6`). La story est sur `round-two` depuis `ea4a9f37` (`git grep -c "S57-GARDE-C1-SUJET-HORS-MESSAGE" -- docs/backlog/backlog.md` : rend 2) et `DEC-0120` A.100 et A.101 aussi : l'obstacle `Q-T14` est clos par un fichier qui existe, pas par une intention.
+
+- **Verification demandee par A.104** : l'amendement du 09:03, section 8, `Q-T14`, ne nomme pas la story (il ecrit *"il n'existe ni story ni critere"* et route a `camille-po`). Il renvoie bien a elle par sa route, et la story porte son nom. **Ce paragraphe fait le lien** ; la section 8 du 09:03 n'est pas reecrite.
+- **Ordre de fusion avec p2-7** : non decide, et non necessaire (A.100, dernier paragraphe). Si la garde est fusionnee la premiere, la fusion de p2-7 la subit et mon `clean verify` la rejoue sur la feuille de la forme (critere 4 de la story) ; sinon la garde s'ecrit contre une feuille qui porte la forme. **Je fusionne dans l'ordre ou les branches arrivent, une a la fois.**
+- **Horizon** (A.101) : si la story n'est pas fusionnee a la cloture du palier 2, elle est inscrite en tete du palier 3, avant tout poste qui modifie `recreo.css`. **Report : aucun**, la story n'est retenue par aucune composition. Capacite : aucune charge de developpeur ; si `theo-archi` chiffre une lecture ou un rejeu a `nadia-prof`, c'est a elle de le dire avant le commit.
+- **`CR16`** (FM6 dans le commit de `-24`) : a moi, casquette developpeuse. La branche `s57-sofia-fra-ce1-24` porte deja 14 occurrences de l'indice de FM6 (`git grep -c "Le bon mot garde un morceau"` sur la branche : 14). Sa fusion attend `K10` (section 4).
+
+### 4. Etat des postes au 2026-10-16 11:05
+
+Un poste *livre* a un commit sur sa branche. *Fusionne* : sur `round-two`. Aucun Done n'est prononce par ce tableau.
+
+| Poste | Branche et sommet | Etat | Ce qui reste |
+|---|---|---|---|
+| p2-6, `S57-SCRIPT-ADDITIONS-CP` | `s57-marc-script-additions-cp`, `baefae1d` | **fusionne** (`97a205e8`) | mesure de `PA2` par `ines-design` sur le jar de la base ; critere 1 de la story, qui attend la fusion du rapport (`Q1`) |
+| p2-5, `S57-OBS-SCI-N1-N2` | `s57-marc-sci-n1-n2`, `69dd7631` | **fusionne** (`9cbf3571`) | orthotypographie des chevrons par le `relecteur-pedagogique` (`Q2`) ; rejeu 0,25 par `nadia-prof` |
+| p2-3, `S57-BR-FRA-CE1-05` | `s57-marc-fra-ce1-05`, `cb50740a` (lot `b9f1c62f` plus le rapport) | **livre, non fusionne** | l'amendement de `PN8` par `camille-po` ; `Q4`, `Q5` ; audit de `nadia-prof` |
+| p2-4, `S57-BR-FRA-CE1-24` | `s57-sofia-fra-ce1-24`, `e918f43e` | **livre, non fusionne** | `K10` de `theo-archi` ; relecture de `yanis-qa` avant fusion (section 7 du 09:03) |
+| p2-7, forme commune | `s57-lea-forme-commune`, `78fac33d` | **livre, non fusionne** | la trace de lecture de `theo-archi` (`TP6`, `Q-T15`) |
+| garde de `C1'` | aucune branche | **engagee** (section 3) | ecriture par `theo-archi` ; test par `yanis-qa` |
+| p2-8, p2-9, p2-10, p2-11, p2-12 | - | inchange | la forme fusionnee, `PA2`, `PA7`, `PA8` (amendement du 09:03) |
+
+**Constat sur ce que je n'ai pas fusionne.** `git branch` montre des branches de `theo-archi` (`s57-theo-p2-trace`, `s57-theo-k10-accent`) et de `camille-po` (`s57-camille-p2-pn8`) qui portent un commit chacune. **Je ne les ai pas fusionnees et n'en ai lu que le sujet de commit** : l'ordre de fusion de cette session m'a ete donne par le lanceur, et un fichier sur une branche n'est pas un fichier sur `round-two`. **Je ne clos donc aucun obstacle sur leur existence** : `Q-T15`, `K10` et `PN8` restent ouverts dans cet amendement jusqu'a leur fusion et a ma lecture.
+
+### 5. Poste de mesure et job `outils`
+
+Le juge `outils/mesurer-additions-cp-test.sh` exige `node` et sort en erreur s'il est absent (*"ECHEC node absent : ce juge ne peut pas tourner"*). **Sur ce poste** : `node --version` rend v24.12.0 ; le juge est lance par mon balayage, sortie 0. **Dans la CI** : `.github/workflows/ci.yml` n'installe pas `node` (`grep -n "node\|setup-node" .github/workflows/ci.yml` ne rend aucune ligne d'installation) ; le job `outils` repose donc sur ce que l'image `ubuntu-latest` du runner porte, **et je ne l'ai pas verifie** : la CI distante n'est pas lue. L'absence ferait rougir le job, pas le faire passer a tort (le juge refuse). **Je ne modifie pas `ci.yml`.** **Question routee a `theo-archi` et `yanis-qa`** : declarer `node` dans le job (`actions/setup-node`) ou accepter l'image ? `marc-dev` signale que le mode mesure du script demande le `WebSocket` global (Node 22 ou plus) et que son juge n'utilise que le mode ensemble et les refus ; la version minimale du job est donc une decision de `theo-archi`, pas la mienne.
+
+### 6. Ce que cet amendement ne fait pas
+
+N'ouvre aucun worktree de dev. Ne fusionne ni `s57-marc-fra-ce1-05`, ni `s57-lea-forme-commune`, ni `s57-sofia-fra-ce1-24`. Ne prononce aucun Done, ne juge aucun contenu, ne touche ni la matrice (146 / 200), ni un paquet, ni un catalogue, ni du code. N'amende ni un critere de story ni un prix. Ne modifie pas `ci.yml`. Ne decide ni `Q4`, ni `Q5`, ni `Q-T15`, ni la forme de la garde.
+
+### 7. Decisions prises
+
+**Aucune `ADR` ni `DEC` n'est creee ou amendee par cet amendement.** Decisions fusionnees ce jour, par leur auteur : `DEC-0120`, amendement du 2026-10-16 de `camille-po` (A.100 a A.104), statut `Acceptee` inchange ; `DEC-index.md`, une ligne d'amendement ajoutee. Aucune `ADR`.
+
+### 8. Jobs de `ci.yml` lances pour ce commit
+
+Lances sur l'arbre de `round-two` a `97a205e8` avec ce fichier modifie (sections 1 a 7), avant commit. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl` : `BUILD SUCCESS`, exit 0, **2597 tests, 0 echec** (120, 31, 492, 1567, 381, 6 d'integration). Le build a lu ce fichier avant l'ajout de la presente section, qui ne contient aucun tableau. Etape *"Package du fat jar"* non lancee.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh`, sortie 0 (relance apres l'ajout de cette section).
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh` et `verifier-garde-fou-accent-test.sh` sortent 0 ; les sujets de `4004fab7..HEAD` (hors fusions) et le sujet prevu du commit passent dans `verifier-prefixes.sh`, sortie 0 ; `verifier-garde-fou-accent.sh "4004fab7..HEAD"` : *"0 commit(s) le touchent dans la plage, tous [THEO]."*, sortie 0.
+- **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances avec `python`, 13 sortis 0, aucun balayage vide ; le treizieme est `outils/mesurer-additions-cp-test.sh`.
+
+Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
