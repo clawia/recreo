@@ -149,3 +149,16 @@ reserve. Le verdict ne change pas.
 3.1 exige entre guillemets. Je ne peux pas les citer : aucun fichier du depot ne les porte. Ils sont demandes par `sofia-sm`
 a l'agent lanceur et s'ajouteront ici par une annotation datee. **Le verdict ne depend pas de ce point** : `TPH-CE1-R1` est
 non bloquante par le precedent de `RDO-CP-R1` (`rejeu-nadia-palier-1.md`, section 3), ecrit avant la question.
+
+### Annotation du 2026-10-16 (`nadia-prof`, s57, palier 2) : les mots de l'utilisatrice pour `Q-N4`
+
+Rien au-dessus n'est efface ; elle complete l'amendement du 2026-10-14 et le point `D3` ci-dessus.
+
+**Mots** : *"le pli n'est pas bloquant"*. **Provenance**, forme 2 de `DEC-0062` 3.1 : mots donnes par l'utilisatrice a l'agent
+principal le 2026-10-16 ; la date de son echange d'origine n'a pas ete fournie (le depot date la reponse relayee au 2026-10-14).
+Relayes a moi par l'agent principal, non lus de sa main.
+
+**Le verdict ne change pas** : `FRA-CE1-10` reste **VALIDE SOUS RESERVE**, `TPH-CE1-R1` reste non bloquante, son critere de
+levee est inchange. Ses mots disent ce que ma notation *"`Q-N4` = non"* disait ; ma recommandation *"oui pour les lots
+suivants"* reste non retenue, par ses mots. **Ils ne disent pas** que le pli cesse d'etre une reserve ou d'etre mesure, ni
+qu'un critere de levee change : je ne leur donne pas cette portee. Detail : `rejeu-nadia-palier-1.md`, annotation du meme jour.
