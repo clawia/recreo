@@ -17,7 +17,8 @@
 - **Conditions opposables** : `FAM-CE1-1` a `FAM-CE1-3` (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 6.2),
   `TRV-CE1-1` a `-7`, `LON-CE1-1`, `-2`, `-5`, et `arbitrage-nadia-palier-2.md` section 6.1 (points 1 a 5) et 6.2 (ligne
   `-24`). Plafond de la ligne : `couvert-valide`.
-- **Statut global** : **en attente d'audit**. Fiche ouverte par `camille-po` le 2026-10-16, apres le commit de
+- **Statut global** : **VALIDE**, prononce le 2026-10-16 par `nadia-prof` (s57, palier 2, instance A'), bloc de validation.
+  Etat precedent : **en attente d'audit**. Fiche ouverte par `camille-po` le 2026-10-16, apres le commit de
   branchement (`K9`, `arbitrage-nadia-palier-2.md`). Aucun verdict. La ligne `FRA-CE1-24` reste `non couvert` dans la
   matrice, qui ne bouge qu'au verdict.
 - **Derniere mise a jour** : 2026-10-16.
@@ -166,3 +167,42 @@ ce qu'elle lit au jeu est le texte unique, sur les 14 items.
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Verdict du 2026-10-16 (`nadia-prof`, s57, palier 2, instance A', lot p2-4) : **VALIDE**
+
+**Done pedagogique prononce**, sans reserve. `camille-po` peut passer `FRA-CE1-24` a `couvert-valide`. Detail, commandes et
+chiffres : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/rejeu-nadia-palier-2-ap-lot24.md`.
+
+**Objet joue** : jar de `e8d14ddb` (contient la fusion du lot `9f110983`), SHA-256
+`db419e94b685ba3d37591b853bfd7decdf9fdf55e8516defe0f7b5e9785c48d7`, port 18512, PID 48168, arrete par ce PID. 9 parties par le
+bouton servi, **24 items sur 24**, 106 erreurs, 24 revelations, 0 ecart au fichier. Lecture complete prealable :
+`reponse-nadia-q-palier-2.md` section 1 (`c62e0ad8`) ; les items changes depuis (*livre*, `FM6`) sont relus au jeu.
+
+**Ce que j'ai verifie, en jouant** :
+
+1. **Item 12** (`FM5`, `Q-S8`) : mon texte, servi tel quel. *chaton* est juste ; *château* (a) et *souris* (b) dans l'ordre.
+   *librairie* n'est plus attendu (`grep` a 0) : le refus ecrit d'avance ne joue pas.
+2. **Les 14 items de famille** (`FM4`, `FAM-CE1-2`) : familles exactes, aucune savante ; (a) de meme son ou de memes lettres, (b)
+   du meme theme, sur les 14. **L'indice unique de `FM6` departage apres chacune des deux erreurs**, sur les 14 : apres (a),
+   *"garde un morceau"* ; apres (b), *"parle de la même chose"*. Il ne dit rien de faux.
+3. **Les 10 items d'affixe** : justes ; aucun nom d'affixe dans ce que l'enfant lit (`FM3`, `TRV-CE1-4`) ; chaque item demande ce
+   que le mot veut dire (`FAM-CE1-3`). **Intrus du premier mot** : bonne reponse sur les 3 items en *dé-*, distracteur sur 2 items en
+   *re-*, absent sur 5 ; pas une strategie payante, et *le contraire de* est ce que la ligne enseigne. Pas une reserve.
+4. **Position de l'indice**, mesuree par moi (le paquet n'est pas dans la cote d'`ines-design`) : a 720, 744 et 768 x 551, apres
+   une erreur, **24 sur 24** au-dessus du pli, ordre servi et six ordres, bas le plus haut 518. Score non couvert ; aucun libelle
+   ne change de lignes a la revelation a 720 ; aucun debordement a droite.
+5. **Titre *"Les familles de mots"***, **consigne *"Lis bien, puis choisis la bonne réponse."*** et **place** (apres *"Même sens ou
+   sens contraire"*), de `sofia-sm` : **tenus**, motifs dans le fichier d'audit, section 4.
+
+**Observations, sans reserve** : l'indice de famille passe sur deux lignes a 744 (*"... parle de la"* / *"même chose."*) ;
+l'indice des items d'affixe fait reperer le mot connu sans dire ce que l'affixe change. Recommandation a `camille-po` pour le
+second, a prendre ou non. Ni l'une ni l'autre ne releve une barre que j'ai ecrite.
+
+**Non joue** : 992 et 1200 de large, d'autres polices, un appareil reel, un lecteur d'ecran, un autre navigateur. Trois captures
+regardees sur 24, les autres mesurees.
+
+**Je reste la seule garde** des familles exactes, de l'ordre (a) puis (b), du departage par l'indice, du texte de l'item 12 (aucun
+test Java, `E3`) et de la position de l'indice sur ce jeu.
+
+**Identifiants** : aucun ecrit, aucun alloue. **Tarif** : 1,0 (lot neuf, A'). **Signe** : `nadia-prof`, s57, palier 2, instance
+A', 2026-10-16.
