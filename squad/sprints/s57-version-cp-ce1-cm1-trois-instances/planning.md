@@ -1027,3 +1027,90 @@ Lances sur l'arbre de `round-two` a `9f110983`, avant l'ajout du present amendem
 - **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances avec `python`, 13 sortis 0, aucun balayage vide.
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
+
+## Amendement du 2026-10-16 13:53 (UTC+02:00), palier 2 : fusion de la garde de `C1'` point 1 et de son rapport qualite, etat de la story
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace ou precise est nomme. Arbre de depart : `round-two` a `9b668a78` (`origin/round-two` egal). Casquette Scrum Master. Aucune ceremonie n'est animee par ce texte. Aucun Done n'est prononce.
+
+### 1. Fusions de ce jour, lignee verifiee avant chacune
+
+`git merge-base round-two s57-theo-garde-c1` rend `9c271e14`, ancetre de `round-two` ; `git log 9c271e14..d9c6cc69` rend deux commits (`b0c47c97`, `d9c6cc69`), tous deux [THEO]. `git merge-base --is-ancestor 9f110983 s57-yanis-p2-garde` sort 0 (la branche de `yanis-qa` est posee sur la tete de `-24`, un commit, rapport seul). Je n'ai pas lance `verifier-lignee.sh` depuis un worktree de chaque branche : ce sont les commandes `git` qu'il appelle.
+
+| Ordre | Branche | Sommet livre | Fusion | Delta |
+|---|---|---|---|---|
+| 1 | `s57-theo-garde-c1` | `d9c6cc69` (base `9c271e14`) | `e138ec97` | garde et amendement d'`ADR-0031` (`b0c47c97`), `TL9` et `TL10` (`d9c6cc69`) : tests, un fichier fautif, un `ADR`, une ligne d'index, aucun code de production |
+| 2 | `s57-yanis-p2-garde` | `543e7bd0` | `0c0d2142` | un fichier, `rapport-qualite-garde-c1.md`, aucun code |
+
+Aucun conflit. **Condition posee par le lanceur, lue contre `Q-T15`.** `Q-T15` (`avis-theo-palier-2.md`, ligne 131 : *"Avant la fusion de p2-7 et de p2-12"*) vise p2-7 et p2-12, pas la garde : aucune trace de lecture de `theo-archi` n'est exigee pour la fusionner, et il n'en existe pas sur le disque (le seul fichier de lecture du dossier est `lecture-theo-p2-7-forme-commune.md`). Le releve de `yanis-qa` est, lui, exige par la story (`CR18`) : il est fusionne en deuxieme. `Q-T15` reste a lire pour p2-12.
+
+### 2. Code de production : delta vide, et diff de `adapters` contre `aa9d703c`
+
+- **`d9c6cc69` ne touche aucun code de production.** `git diff 9c271e14 d9c6cc69 -- adapters/adapter-web/src/main adapters/adapter-content domain application bootstrap` rend **0 ligne**. Hors `squad/`, le delta est trois fichiers de test d'`adapter-web` (la garde, l'epinglage de la forme et une quatrieme feuille fautive) : 338 insertions, 7 suppressions.
+- **Apres fusion**, `git diff 9b668a78 0c0d2142 -- adapters/adapter-web/src/main adapters/adapter-content/src/main domain application bootstrap` rend **0 ligne** : le jar servi est celui de `9b668a78`.
+- **Pour `nadia-prof`** : `git diff --stat aa9d703c 0c0d2142 -- adapters domain application bootstrap pom.xml outils` : **23 fichiers, 2284 insertions, 40 suppressions**. Hors tests : `recreo.css` (+34, la forme), `catalogue.yaml` (+12), `ce1-familles-de-mots.yaml`, `ce1-pronoms.yaml`, `cm1-sciences-extraire-information.yaml`. Le reste est des tests et leurs jeux fautifs. **`recreo.css` est identique a celui de `aca0d90f`** : `git diff --quiet aca0d90f 0c0d2142 -- adapters/adapter-web/src/main/resources/static/css/recreo.css` sort 0. Depuis `aca0d90f`, les seuls fichiers de `src/main` qui bougent sont `catalogue.yaml`, `ce1-familles-de-mots.yaml` et `ce1-pronoms.yaml` (34 insertions, 22 suppressions) ; aucune feuille de style ni aucun gabarit n'y change.
+
+### 3. Compte de tests, d'ou vient l'ecart
+
+Reacteur complet sur l'arbre de la fusion 1 (`e138ec97`) : **2669 tests**, 0 echec, 0 erreur, 0 ignore (120, 31, 501, 1630, 381, 6 d'integration ; recompte a part par l'attribut `tests` des `TEST-*.xml`, 2669). `theo-archi` et `yanis-qa` annoncent 2645 sur `d9c6cc69` : c'est 2640 (`9c271e14`) plus 5 (les 4 tests de la garde, 1 de `TL9`). `round-two` porte **24 de plus**, pas 19 : `PaquetCe1FamillesDeMotsTest`, seul fichier de test neuf de `-24`. Les 37 tests de `-05` sont deja dans les 2640. 2640 + 24 + 5 = 2669. `adapter-web` : 496 + 5 = 501, ce que mesure `yanis-qa`.
+
+### 4. Etat de `S57-GARDE-C1-SUJET-HORS-MESSAGE`
+
+**Fusionnee** (`e138ec97`, rapport en `0c0d2142`). Verdicts de `yanis-qa` (`rapport-qualite-garde-c1.md`, section 4), que je relaie sans les juger :
+
+| Critere | Verdict de `yanis-qa` |
+|---|---|
+| 1, regle de `TP4` | tenu pour la garde seule ; **non discriminant au module sur ce socle** (la meme regle est deja rouge sur `9c271e14` par l'epinglage de la forme) |
+| 2, les 4 noms | tenu |
+| 3, le residu | **non garde, dit** : `data-oeuvre-revelee` passe la garde ; `grep -c "data-oeuvre-revelee"` sur `ADR-0031` rend 5 (verifie par moi sur l'arbre fusionne) ; la Javadoc le nomme |
+| 4, ce qui ne doit pas rougir | tenu |
+| 5, perimetre derive | tenu |
+
+Criteres 6 a 8 : non juges ici. Le diff de production est vide (section 2) ; l'`ADR-0031` et le test sont nommes par `git show --stat b0c47c97` ; le compte ArchUnit (41 declarations, 38 `@ArchTest`) est celui que l'`ADR` annonce inchange, je ne l'ai pas recompte. **La story n'est pas close par ce texte** : critere 3 non garde (dit, c'etait l'une des deux issues admises), trous `Z1` a `Z4` ci-dessous ouverts, commande du critere 1 a amender.
+
+**`TL9` et `TL10`.** Livres par `theo-archi` (`d9c6cc69`) : une declaration ajoutee a une regle de la forme rougit (quatrieme feuille fautive), la Javadoc dit quatre feuilles. `yanis-qa` n'a pas mute les tests de cette classe (rapport, section 6). **Je ne les clos pas** : la livraison est sur le disque, la mesure de leur morsure n'y est pas.
+
+### 5. Trous trouves par `yanis-qa`, non corriges ici, routes a `theo-archi` pour le palier 3
+
+Aucun ne bloque la fusion : la garde tient ses criteres, ces cas sont hors de ce qu'elle promettait. **Aucun `ADR` ne les tranche : les quatre restent ouverts**, la route n'en clot aucun.
+
+| Code | Trou | Mesure de `yanis-qa` | Route |
+|---|---|---|---|
+| `Z1` | une virgule dans `:has(...)` ou `:is(...)` : `.ecran-de-jeu:has(.consigne, .est-faux) .propositions { row-gap: 0; }` passe | 501 tests, 0 echec. Cause lue dans le code : `LAnimationRetardeMaisNeDetermineRienTest.java` ligne 217, `entete.split(",")` coupe aussi dans les parentheses ; le decoupage est partage avec cinq autres tests du module et anterieur a la garde | `theo-archi`, palier 3 |
+| `Z2` | CSS imbrique : `.ecran-de-jeu { &:has(.est-faux) .propositions { ... } }` passe, un navigateur actuel applique la regle | 501 tests, 0 echec | `theo-archi`, palier 3 |
+| `Z3` | sujet dans `retour.html` (`.signal` pose hors region d'annonce) | 0 echec ; limite 4.a de l'`ADR`, dite | `theo-archi`, palier 3 |
+| `Z4` | retrait de `role="status"` d'un seul gabarit (`manche.html`) : la garde sort ce gabarit du controle | 0 echec avec une regle sur `.est-faux` (`Z4b`) ; dit par l'`ADR` | `theo-archi`, palier 3 |
+
+Je ne propose aucune correction et ne touche ni le decoupeur ni la garde.
+
+### 6. Commande du critere 1 : routee a `camille-po`
+
+`yanis-qa` propose (rapport, section 2.1) d'ajouter au critere 1 la forme **sans** `:not(...)` ni `@media` : 0 echec sur `9c271e14`, 1 echec avec la garde, pour les quatre noms. C'est un critere de story, donc a `camille-po` : **elle l'ecrit, d'apres le lanceur de la tache** ; je n'ai pas lu cet amendement et je n'amende ni critere ni prix. L'obstacle reste ouvert tant que l'annotation de backlog ou le `DEC` n'existe pas sur le disque.
+
+### 7. Ecarts de methode de `yanis-qa`, relayes
+
+- **Prefixes, rejeu partiel** (rapport, section 5) : `commit-atteignable-test.sh`, `verifier-garde-fou-accent-test.sh` et `verifier-garde-fou-accent.sh` non lances ; `yanis-qa` ne declare pas le job vert. Je lance les trois ci-dessous.
+- **Fichier temporaire** : le lanceur de la tache signale que `yanis-qa` a cree puis supprime un fichier temporaire hors du depot. Le rapport ne le mentionne pas et je ne l'ai pas verifie ; je le consigne comme dit, sans le qualifier.
+- **Critere 1, mesure au module** : le rapport le dit lui-meme (section 2.1). La mesure `BUILD SUCCESS` de la story date de `aa9d703c`, avant l'epinglage de la forme.
+
+### 8. Pour `ines-design`
+
+La cote de pli (744 x 551) se mesure sur le sommet fusionne **`0c0d2142`**. Son code servi est celui de `9b668a78` (section 2, delta de `src/main` vide) et son `recreo.css` celui de `aca0d90f`. Le commit de cet amendement vient apres et ne change que ce fichier ; un fichier ne peut pas porter le SHA de son propre commit, le SHA de la tete poussee est dans le rapport de la session.
+
+### 9. Ce que cet amendement ne fait pas
+
+Ne prononce aucun Done, ne juge aucun contenu, ne corrige ni `Z1` a `Z4`, ni le decoupeur, ni la garde. N'amende ni critere ni prix. Ne touche ni la matrice (146 / 200), ni un paquet, ni un catalogue, ni du code, ni `ci.yml`.
+
+### 10. Decisions prises
+
+**Aucune `ADR` ni `DEC` n'est creee par cet amendement.** Fusionne ce jour, par son auteur : `ADR-0031`, amendement du 2026-10-16 de `theo-archi` (statut `Accepte` inchange, ligne de `ADR-index.md` mise a jour et une ligne d'amendement ajoutee). Aucune `DEC`.
+
+### 11. Jobs de `ci.yml` lances pour ce commit
+
+Lances sur l'arbre de `round-two` a `0c0d2142` avec ce fichier modifie (sections 1 a 10), avant commit. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, deux fois : sur `e138ec97` (section 3), puis sur l'arbre de `0c0d2142` avec ce fichier present. Les deux : `BUILD SUCCESS`, exit 0, **2669 tests, 0 echec** (120, 31, 501, 1630, 381, 6 d'integration), JDK 21.0.10 (ligne d'enveloppe). Le second build a lu ce fichier avant l'ajout de la presente section. Etape *"Package du fat jar"* non lancee.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh`, sortie 0, relance apres l'ajout de cette section.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh` et `verifier-garde-fou-accent-test.sh` sortent 0 ; `commit-atteignable.sh 9b668a78` sort 0 ; les sujets de `9b668a78..HEAD` (hors fusions : `b0c47c97`, `d9c6cc69`, `543e7bd0`) et le sujet prevu du commit passent dans `verifier-prefixes.sh`, sortie 0 ; `verifier-garde-fou-accent.sh "9b668a78..HEAD"` : *"0 commit(s) le touchent dans la plage, tous [THEO]."*, sortie 0. Ces trois etapes sont celles que `yanis-qa` n'avait pas lancees.
+- **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances (`bash` pour les `.sh`, `python` pour les `.py`), 13 sortis 0, aucun balayage vide. Ecart a dire : le premier passage a laisse `TMPDIR` a la valeur de l'environnement du shell (`/tmp`, hors de mon espace de travail, ce que la consigne interdisait) ; `outils/mvn-jdk21-test.sh` a ete relance seul avec `TMPDIR` dans mon espace de travail, forme POSIX : sortie 0, repertoire de travail vide ensuite. Les repertoires `tmp.*` qui subsistent dans `/tmp` ne sont pas a moi, je n'y ai pas touche.
+
+Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
