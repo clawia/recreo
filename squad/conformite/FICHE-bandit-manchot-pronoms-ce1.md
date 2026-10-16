@@ -8,7 +8,8 @@
   (celle de l'entree `bandit-manchot-texte-narratif-ce1`). Place : derniere entree du catalogue. **Le titre est
   de la main de `marc-dev`, non juge** (`rapport-marc-dev-palier-2.md`, section 3 et `Q6`).
 - **Commit de branchement** : `b9f1c62f` (`marc-dev`, 2026-10-16 10:25), branche `s57-marc-fra-ce1-05`, poste `p2-3`,
-  **fusionne sur `round-two`** par `edcd3de9`. Non pousse.
+  **fusionne sur `round-two`** par `edcd3de9`. Non pousse a l'ouverture de la fiche ; pousse depuis : `git branch -r
+  --contains edcd3de9` rend `origin/round-two` (annotation de `nadia-prof`, 2026-10-16 21:25, ecart `C4` du releve de cloture).
 - **Ligne declaree** : `FRA-CE1-05`. **Story** : `S57-BR-FRA-CE1-05` (`docs/backlog/backlog.md`). **Decision** :
   `DEC-0120` A.33, A.58, A.96.
 - **Competence programme visee** : `squad/programme/francais/competences-ce1.md`, `FRA-CE1-05`, *"Identifier à qui
@@ -375,3 +376,8 @@ un appareil reel, une autre police, un autre navigateur. Aucun test ne garde cet
 **Identifiants** : aucun neuf, aucun renomme. **Tarif consomme** : rejeu 0,5 (instance A).
 
 **Signe** : `nadia-prof`, s57, palier 2, instance A, 2026-10-16.
+
+**Annotation du 2026-10-16 21:25 (`nadia-prof`, ecart `C4` du releve de cloture du `relecteur-pedagogique`).** Sur `round-two`
+a `bb322938`, le statut de tete de cette fiche dit encore **refuse**. **Le verdict en vigueur est celui de ce rejeu : VALIDE,
+sans reserve.** Le refus au-dessus reste ecrit, leve. Le statut de tete est a `camille-po`, qui l'a mis a jour sur sa branche
+`s57-camille-p2-matrice` (`27a7dce6`, non fusionnee a cette heure) ; je ne le reecris pas.

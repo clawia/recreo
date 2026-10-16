@@ -125,8 +125,9 @@ texte support fait aussi deux lignes. Cotes, item par item :
 | Léa, Louis, Noé | **523 - 553, coupe de 2 px** | **582 - 632, entierement sous le pli** |
 | Ibrahim, Chloé | **575 - 605, entierement sous le pli** | **634 - 684, entierement sous le pli** |
 
-**Pourquoi ce n'est pas un refus** : la reponse de l'utilisatrice a `Q-N4` (2026-10-14, *non*) fait du pli d'un jeu neuf une
-reserve que je nomme et date, sur le regime de `RDO-CP-R1` et de `TPH-CE1-R1`. Je ne releve pas cette barre. **Ce qui la
+**Pourquoi ce n'est pas un refus** : les mots de l'utilisatrice sur `Q-N4`, *"le pli n'est pas bloquant"* (relayes par l'agent
+principal le 2026-10-16, date de l'echange d'origine non fournie ; source : `reponse-nadia-q-palier-2.md`, section 2), font du
+pli d'un jeu neuf une reserve que je nomme et date, sur le regime de `RDO-CP-R1` et de `TPH-CE1-R1`. Je ne releve pas cette barre. **Ce qui la
 rend lourde sur deux items** : sur Ibrahim et Chloé, apres une erreur, l'enfant ne voit ni le verdict ni l'indice sans faire
 defiler, la situation de `RDO-CP-R1`.
 
@@ -232,3 +233,8 @@ au pli. Aucun test ne les voit.
 **Identifiants** : aucun neuf, aucun renomme. **Tarif consomme** : rejeu 0,5 (p2-10, instance A).
 
 **Signe** : `nadia-prof`, s57, palier 2, instance A, 2026-10-16.
+
+**Annotation du 2026-10-16 21:25 (`nadia-prof`, ecart `P1` du releve de cloture du `relecteur-pedagogique`).** Dans le verdict du
+2026-10-15, section 5, *"Pourquoi ce n'est pas un refus"*, la citation de `Q-N4` disait *"la reponse de l'utilisatrice a `Q-N4`
+(2026-10-14, *non*)"* : c'etait ma notation, pas ses mots. Elle est remplacee par la citation que j'ai annotee, avec sa source
+unique (`reponse-nadia-q-palier-2.md`, section 2). Le verdict et son motif ne changent pas.

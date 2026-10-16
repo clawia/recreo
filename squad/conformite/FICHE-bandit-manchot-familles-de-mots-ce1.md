@@ -9,7 +9,9 @@
   réponse."* (celle des entrees `-13`, `-10`, `-15`). Place : apres `bandit-manchot-synonymes-contraires-ce1`. **Titre,
   consigne et place sont de la main de `sofia-sm` (casquette developpeuse), non juges** (`rapport-sofia-dev-palier-2.md`).
 - **Commit de branchement** : `1febd011` (`sofia-sm`, 2026-10-16 09:57), branche `s57-sofia-fra-ce1-24`, poste `p2-4`, tete
-  relue par `yanis-qa` : `6b70d7e5`. **Fusionne sur `round-two`** par `9f110983`. Non pousse.
+  relue par `yanis-qa` : `6b70d7e5`. **Fusionne sur `round-two`** par `9f110983`. Non pousse a l'ouverture de la fiche ; pousse
+  depuis : `git branch -r --contains 9f110983` rend `origin/round-two` (annotation de `nadia-prof`, 2026-10-16 21:25, ecart
+  `C4` du releve de cloture).
 - **Ligne declaree** : `FRA-CE1-24`. **Stories** : `S57-BR-FRA-CE1-24` avec `S57-FRA-FAMILLES-LIVRE`
   (`docs/backlog/backlog.md`). **Decision** : `DEC-0120` A.33, A.58, A.96, A.103.
 - **Competence programme visee** : `squad/programme/francais/competences-ce1.md`, `FRA-CE1-24`, *"Regrouper les mots
