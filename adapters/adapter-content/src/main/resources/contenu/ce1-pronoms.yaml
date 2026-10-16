@@ -23,7 +23,7 @@ lignesDeReferentiel: ["FRA-CE1-05"]
 # ou la precedente, aucun il impersonnel. Chaque proposition designe un personnage ou un objet du
 # texte avec les mots du texte.
 # TRV-CE1-1 : niveau CE1, une seule ligne, aucun champ a voix haute. TRV-CE1-5 : un indice par item,
-# douze mots au plus, jamais la reponse. TRV-CE1-6 : vingt prenoms masculins et vingt prenoms
+# douze mots au plus, jamais la reponse. TRV-CE1-6 : vingt prenoms masculins et vingt et un prenoms
 # feminins, origines variees, aucun role ni aucune activite distribue par genre.
 # TRV-CE1-7 : vingt items, vingt textes distincts. LON-CE1-5 : au plus six mots par proposition.
 items:
@@ -86,7 +86,7 @@ items:
     texteSupport: "Ilyes donne un gâteau à Sofia. Elle dit merci."
     bonneReponse: "Sofia"
     distracteurs: ["Ilyes", "un gâteau"]
-    indice: "Elle désigne un mot féminin : cherche-le dans la phrase d'avant."
+    indice: "« Elle » désigne un mot féminin : cherche-le dans la phrase d'avant."
   # il, le sens decide
   - enonce: "Que désigne « il » dans le texte ?"
     texteSupport: "Rayan lance le ballon à Yanis. Il l'attrape."
@@ -104,7 +104,7 @@ items:
     texteSupport: "Léo lit un livre à Rose. Elle écoute bien."
     bonneReponse: "Rose"
     distracteurs: ["Léo", "un livre"]
-    indice: "Elle désigne un mot féminin : cherche-le dans la phrase d'avant."
+    indice: "« Elle » désigne un mot féminin : cherche-le dans la phrase d'avant."
   # ils, l'accord
   - enonce: "Que désigne « ils » dans le texte ?"
     texteSupport: "Enzo et Maya rangent leurs affaires. Ils les posent sur l'étagère."
@@ -113,9 +113,9 @@ items:
     indice: "Relis la phrase d'avant pour trouver qui agit."
   # il, le sens decide
   - enonce: "Que désigne « il » dans le texte ?"
-    texteSupport: "Le chat voit Elias. Il lui donne un biscuit."
+    texteSupport: "Le chat de Julie voit Elias. Il lui donne un biscuit."
     bonneReponse: "Elias"
-    distracteurs: ["le chat", "un biscuit"]
+    distracteurs: ["le chat", "Julie"]
     indice: "Le sens de la phrase aide à choisir."
   # substitut simple : le garcon
   - enonce: "Que désigne « le garçon » dans le texte ?"

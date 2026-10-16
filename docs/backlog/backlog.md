@@ -22415,3 +22415,143 @@ La commande du critere 2 (`grep -rE "lecture complete.*ce1-pronoms.*20"` sur le 
 - **Done pedagogique** : aucun propre, transverse.
 - **Lien decision** : `DEC-0120` A.97. **Lien** : `reponse-nadia-q8.md` ; `avis-theo-poste-8-art-cp-10.md`, annexe D (`TD4`, `TD5`) ; `S57-FORME-COMMUNE-PROPOSITIONS-LONGUES`, critere 3 ; `PAR-16`.
 - **Instance** : transverse. **Prix** : 0, hors `PAR` (ce n'est pas un lot). **Agent** : `marc-dev` (ecriture, premier de ses trois postes) ; mesure : `ines-design`. **Report** : aucun, engage.
+
+
+## Garde de `C1'` (`Q-T14`) et recommandation de `nadia-prof` sur les indices de `-24` (`camille-po`, 2026-10-16 09:25, palier 2)
+
+Annotation datee, sur `round-two` a `aa9d703c`. **Rien au-dessus n'est reecrit** ; ce qui est amende est nomme. Decisions : `DEC-0120` A.100 a A.104. Sources : `avis-theo-palier-2.md` (`TP4`, section 2.4, `Q-T14`, `Q-T15`) ; `planning.md` (amendement du 2026-10-16 09:03, sections 1 a 13) ; `reponse-nadia-q-palier-2.md` 3.6 et 3.7 ; `avis-theo-poste-8-art-cp-10.md` 2.2. **Aucune story ci-dessous n'est engagee par moi** : l'engagement est a `planning.md` (`sofia-sm`). Matrice inchangee (146 / 200), aucun prix ni lot modifie.
+
+### S57-GARDE-C1-SUJET-HORS-MESSAGE - aucune regle de feuille ne fait dependre du verdict un element hors du message sans qu'un test le voie (garde de `C1'`, point 1, poste hors `PAR`)
+
+- **Besoin** : en tant qu'eleve de CE1 qui vient d'appuyer sur une case, je veux que les cases et tout ce qui est au-dessus du message restent exactement a la meme place que j'aie juste ou faux, afin de retrouver la meme case sous mon doigt pour reessayer et de ne pas lire le resultat dans le decor avant de lire le message.
+- **Mecanique demandee** : aucune modification. La garde porte sur l'ecran de manche de `bandit-manchot`, pour toute matiere et tout niveau : elle lit la feuille et le gabarit, pas un contenu.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Aucun texte lu par l'enfant ne change.
+- **Source, leurs mots.** `nadia-prof`, condition `C4` : *"la machine ne dit jamais le resultat : le cabinet est rigoureusement identique apres une bonne et apres une mauvaise reponse"*. `theo-archi`, `C1'` (`avis-theo-poste-8-art-cp-10.md` 2.2) : *"Aucune regle de la correction ne fait dependre du resultat la boite du meuble (`.cabinet` et ses descendants) ni celle des elements places avant lui (score, consigne, reference, enonce)."* Point 1 : *"Une regle dont le sujet est **hors** de `.message-jeu` ne nomme ni `.message-jeu`, ni `.signal`, ni `.est-juste`, ni `.est-faux`, ni `data-oeuvre-revelee`, y compris dans un `:has(...)`."* `TP4` (`avis-theo-palier-2.md` 2.4) : *"`C1'` n'a aucune garde executable sur l'ecran de manche ; une regle interdite par elle passe tout le module."*
+- **Pourquoi une story** : `Q-T14` demandait si l'ecriture de la garde par `theo-archi` etait engagee ; `planning.md` (09:03, section 8) a repondu qu'il n'existait ni story ni critere et l'a routee a `camille-po`. `C1'` n'a pas de garde executable depuis le 2026-10-14 ; la seule garde actuelle est la lecture du diff, qui a manque une fois (`E3`).
+- **Ce que la story demande a `theo-archi` et ce qu'elle ne decide pas** : la forme de la garde (regle, module, amendement d'`ADR-0031` ou autre) est a `theo-archi`, qui l'ecrit lui-meme (`avis-theo-palier-2.md` 2.4). Les criteres ci-dessous disent ce que la garde doit voir et ne doit pas voir, par entree et sortie. Perimetre de mesure : le reacteur complet (`bash outils/mvn-jdk21.sh -B clean verify`, racine) ; une mesure partielle (`-pl adapters/adapter-web -am test`) est admise si la garde est dans ce module, et nomme son perimetre a cote de son chiffre. Si `theo-archi` place la garde ailleurs, il le dit avant et la commande de mesure s'amende, pas le critere.
+- **Criteres d'acceptation** (aujourd'hui = mesure par moi sur `aa9d703c`, dans une copie du depot hors worktree, `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test`, perimetre `adapter-web` et ses amonts : 120, 31 et 492 tests) :
+  1. **La regle de `TP4`, ses mots.** On ajoute a la fin de `recreo.css` : `@media (min-width: 720px) { .ecran-de-jeu:has(.est-faux):not(.ecran-deux-oeuvres) .propositions { row-gap: 0; } }`. Sortie : la commande de mesure sort non nul, au moins un test echoue, et son message cite `.est-faux` (rouge sur le bon motif). **Aujourd'hui : `BUILD SUCCESS`, 0 echec, rouge sur ce critere.** Le meme fichier sans cette regle : 0 echec (la paire fautif / corrige de l'usage du depot).
+  2. **Chacun des noms de `C1'` point 1, un par un.** Meme gabarit que le critere 1, la seule difference etant le jeton nomme dans `:has(...)` : `.message-jeu`, `.signal`, `.est-juste`, `.est-faux`. Quatre ajouts, un a la fois : chacun fait echouer au moins un test dont le message cite le jeton. **Aujourd'hui : les quatre ajoutes ensemble (et `[data-oeuvre-revelee=true]` avec eux) : 492 tests, 0 echec ; rouge sur les quatre.**
+  3. **Le residu, dit.** `data-oeuvre-revelee` est nomme par `C1'` point 1 et, selon `theo-archi`, pose dans le meuble et non dans le message : une garde derivee du sous-arbre du message ne le voit peut-etre pas. On ajoute `.ecran-de-jeu:has([data-oeuvre-revelee=true]):not(.ecran-deux-oeuvres) .propositions { row-gap: 0; }` : **soit** le test echoue comme au critere 1, **soit** le texte de l'amendement d'`ADR` et la Javadoc du test nomment `data-oeuvre-revelee` comme **non garde**, avec le fait que sa lecture reste au diff (`TP6`). Mesure : `grep -c "data-oeuvre-revelee"` sur `ADR-0031` rend au moins 1 si le test ne l'attrape pas. **Aujourd'hui : l'ajout passe (0 echec) et `grep -c "data-oeuvre-revelee" squad/decisions/adr/ADR-0031-*.md` rend 0, rouge sur les deux branches.** Les points 2 et 3 de `C1'` ne sont pas gardes par cette story ; la Javadoc le dit aussi.
+  4. **Ce qui ne doit pas rougir.** Sur la feuille de `round-two` telle quelle, la suite est verte avec la garde (0 echec). Elle contient `.signal.est-juste .icone-signal` (`recreo.css`, ligne 1569), sujet dans le message, et `.propositions-oeuvres:has(.proposition.deja-essayee)` (ligne 1817, la seule dependance d'etat du meuble que `C1'` nomme, `O1`). Meme chose avec le texte de `candidat-r3.css` ajoute a la feuille : `TH2` dit que `C1'` y est tenue, la garde ne le contredit pas. **Verte aujourd'hui, clause** : elle mord le jour ou la garde sur-detecte, et c'est ce jour-la qu'on la lit.
+  5. **Perimetre derive, pas enumere** (`ADR-0013` ; Javadoc de `UnEcranNeGouvernePasLApparenceDUnAutreTest` : *"un ecran neuf, un habillage neuf ou un marqueur neuf entrent dans le controle le jour ou le gabarit les pose"*). On ajoute dans l'element du message de `fragments/manche.html` une classe qui n'existe pas (par exemple `jeton-neuf`), puis la regle du critere 1 avec ce jeton : le test echoue **sans qu'aucun fichier de test soit edite**. **Aujourd'hui : aucun test ne le voit, rouge.**
+  6. **Le commit porte sa regle.** Le commit qui ajoute la garde modifie aussi l'`ADR` qu'`avis-theo-palier-2.md` 2.4 annonce amender (`ADR-0031`) : `git show --stat <commit>` nomme le fichier de l'`ADR` et celui du test (un `ADR` sans sa regle dans le meme geste n'est pas complet, `CLAUDE.md`). Le rapport de `theo-archi` ecrit le compte ArchUnit avant et apres (41 et 38 sur `aa9d703c`, methode de `avis-theo-palier-2.md` section 6) ; je ne dis pas s'il doit bouger.
+  7. **Aucun code produit, aucun contenu.** `git diff --stat <base> <commit livre> -- adapters/adapter-web/src/main adapters/adapter-content domain application bootstrap` est vide. **Vide par construction aujourd'hui ; clause.** Si la forme choisie demande un fichier de production, `theo-archi` le dit avant et la story s'amende.
+  8. **Done technique.** Tous les jobs de `ci.yml` (`build`, `chemins`, `prefixes`, `outils`), nommes par qui l'annonce avec leur sortie.
+- **Prix** : **0, hors `PAR`, ce n'est pas un lot.** `PAR` est le budget d'audit de `nadia-prof` ; cette story ne lui demande ni lecture, ni rejeu, ni verdict, et ne change rien de ce que l'enfant voit. `PAR-16` : rien n'est alloue contre sa borne, et la story existe. **Si la forme choisie amene `nadia-prof` a devoir lire ou rejouer quoi que ce soit, la story est rechiffree par elle avant le commit** ; je ne lui reserve aucun montant. L'ecart a 8,0 ne bouge pas. Les actions de `yanis-qa` (test des criteres) et de `theo-archi` n'ont pas de prix (`DEC-0116` section 9, reprise par `planning.md` section 3).
+- **Condition de la fusion de `S57-FORME-COMMUNE-PROPOSITIONS-LONGUES` : non.** La garde ne conditionne pas la fusion de p2-7 (`Q-T14`). Motifs en `DEC-0120` A.100. La seule condition de cette fusion reste la trace de lecture de `theo-archi` (`Q-T15`, `TP6`). L'ordre de fusion entre les deux est a `sofia-sm` ; si la garde est fusionnee la premiere, la fusion de p2-7 la subit sans qu'il y ait rien a decider.
+- **Report** : aucun poste n'est retenu par une composition (hors `PAR`, A.95). **La dette se compte** : `C1'` est ecrite sans garde executable le 2026-10-14 (`avis-theo-poste-8-art-cp-10.md` 2.2, *"Ce qui le garde. Les points 1 a 3, a la lecture du diff"*), nommee dette le 2026-10-16 (`TP4`) ; premiere inscription comme story le 2026-10-16. **Si la story n'est pas fusionnee a la cloture du palier 2, elle est inscrite en tete du palier 3, avant tout poste qui modifie `recreo.css`** (`DEC-0120` A.101).
+- **Done pedagogique** : aucun propre, transverse. **Lien decision** : `DEC-0120` A.100, A.101. **Lien** : `avis-theo-palier-2.md` ; `avis-theo-poste-8-art-cp-10.md` 2.2 ; `UnEcranNeGouvernePasLApparenceDUnAutreTest` ; `ADR-0013`, `ADR-0031` ; `PAR-16`.
+- **Instance** : transverse. **Agent** : `theo-archi` (il l'ecrit lui-meme) ; test des criteres : `yanis-qa`. **Engagement** : a `sofia-sm`.
+
+### `S57-FRA-FAMILLES-LIVRE` et `S57-BR-FRA-CE1-24` : `Q-B2` repondue, critere FM6
+
+**Correction** : l'amendement du 2026-10-15 de `S57-FRA-FAMILLES-LIVRE` ecrit *"`Q-B2` n'est pas repondue"*. **C'est faux** : repondue le 2026-10-14 (`lecture-nadia-palier-1.md` 1.7, `D8`, `7161ab69`). `reponse-nadia-q-palier-2.md` 3.7 la declare close. Les trois criteres de `S57-FRA-FAMILLES-LIVRE` sont inchanges (le critere 1, `grep -c 'bonneReponse: "librairie"'` rend 1 et doit rendre 0, reste rouge).
+
+**Recommandation de `nadia-prof`, prise** (`DEC-0120` A.103). Ses mots (3.7) : *"Recommandation non bloquante, a `camille-po` de la prendre ou non : l'indice de 3.6 sur les 14 items de famille."* Cet amendement est celui que demande `FM5`, pour les corrections de 3.6 et de 3.7 :
+
+- **FM6.** Les 14 items `enonce: "Quel mot est de la même famille` du paquet `ce1-familles-de-mots` portent l'indice de 3.6, recopie sans reformulation : `Le bon mot garde un morceau et parle de la même chose.` Mesures : `grep -c 'indice: "Le bon mot garde un morceau et parle de la même chose."' adapters/adapter-content/src/main/resources/contenu/ce1-familles-de-mots.yaml` rend **14** ; `grep -cE 'indice: "(Cherche le mot qui parle de la même chose\.|Un mot de la même famille garde un morceau du mot\.|Compare les trois mots avec le mot de départ\.)"'` sur le meme fichier rend **0** ; `git diff -U0 <base> <commit livre> -- <meme fichier> | grep -cE '^[-+] *indice:'` rend **28** (14 retirees, 14 ajoutees : les dix indices d'affixe ne changent pas). **Aujourd'hui : 0, 14 et 0 (aucun diff), rouge sur les trois** (les trois formulations actuelles couvrent 5, 5 et 4 items).
+- **Ce que FM6 ne dit pas** : que ce texte est le bon pour les 13 autres items. C'est son texte et sa recommandation ; elle les lit comme n'importe quelle ligne du paquet a son audit, et c'est elle qui dit si le prix du lot (1,0, correction comprise) tient. Aucun prix ne change ici.
+- **Qui** : `sofia-sm`, casquette developpeuse (p2-4), dans le commit que `nadia-prof` joue ; orthotypographie au `relecteur-pedagogique` (deja demandee pour les textes de 3.6). Le worktree de `-24` reste regi par `DEC-0120` A.96.
+- **Non fait ici** : les amendements de `PN8` et de `FM5` pour la correction de l'item *livre* (3.6), pour les indices des items 10 et 13 de `ce1-pronoms` (1.1) et pour l'item 15 (3.5) ne sont pas ecrits par cette annotation. `reponse-nadia-q-palier-2.md` section 5 les route a `camille-po` ; ils restent a faire.
+
+### Routage de cette annotation
+
+| Code | Quoi | A qui |
+|---|---|---|
+| `CR15` | `S57-GARDE-C1-SUJET-HORS-MESSAGE` : engagement au palier 2, agent `theo-archi`, sans condition sur la fusion de p2-7 | `sofia-sm` (planning) |
+| `CR16` | Critere FM6 de `S57-BR-FRA-CE1-24` : a recopier dans le commit du lot | `sofia-sm` (developpeuse), `relecteur-pedagogique` |
+| `CR17` | Forme de la garde, perimetre de la commande de mesure si elle quitte `adapter-web`, residu `data-oeuvre-revelee` | `theo-archi` |
+| `CR18` | Test des criteres 1 a 5 de la story de garde par mutation | `yanis-qa` |
+
+## Amendements de `PN8` et `FM5` (corrections de `nadia-prof`) et ecart de `K10` sur `-24` (`camille-po`, 2026-10-16 10:45, palier 2)
+
+Annotation datee, sur `round-two` a `4004fab7`. **Rien au-dessus n'est reecrit** ; ce qui est amende est nomme. Sources : `reponse-nadia-q-palier-2.md` (1.1, 3.5, 3.6, section 5), `rapport-marc-dev-palier-2.md` (commit `cb50740a`, branche `s57-marc-fra-ce1-05`, commit livre `b9f1c62f`), `rapport-sofia-dev-palier-2.md` (commit `e918f43e`, branche `s57-sofia-fra-ce1-24`, commit livre `1febd011`). Les commandes ci-dessous ont ete lancees par moi sur `round-two`, `cb50740a` et `e918f43e`, avec `git grep`, `git show` et `git diff` ; les sorties sont citees. **Ce que je n'ai pas fait** : lancer `mvn`, jouer un jar. Matrice inchangee, aucun prix, aucun lot modifie.
+
+**Ordre des gestes, dit.** `PN8` et `FM5` demandent l'amendement **avant l'ouverture du worktree**. Les deux commits livres (`b9f1c62f`, `1febd011`) sont anterieurs a cet amendement : les developpeurs ont recopie les textes depuis `reponse-nadia-q-palier-2.md`, que sa section 5 leur routait. Les criteres ci-dessous sont ecrits apres coup et se verifient sur leurs commits ; ils n'ont pas pu guider leur ecriture. La clause *"avant l'ouverture du worktree"* n'est pas tenue de mon cote pour ces deux corrections.
+
+### Les espaces : le critere accepte-t-il l'espace ordinaire et l'insecable ?
+
+**Non : il exige U+00A0.** Mesures et motifs :
+
+- Le fichier de `nadia-prof` porte 0 U+00A0 (`grep -c -P '\x{A0}'` rend 0) et 3 lignes avec un chevron suivi d'une espace ordinaire (`grep -c '« '`). C'est la notation d'un fichier Markdown ; ses mots designent le caractere du paquet : *"meme typographie des chevrons que les enonces du paquet"* (1.1), *"celles du paquet (U+00A0 dans les chevrons et devant `?`)"* (3.5), *"celles des 13 autres enonces de famille"* (3.6).
+- Le depot ecrit U+00A0 : `grep -rcP '«\x{A0}'` sur `contenu/` totalise 562 lignes, contre 3 pour `« ` suivi d'un caractere non blanc (non examinees : je ne dis pas si elles sont servies). `ADR-0060`, clause 2, exige l'insecable a l'interieur des guillemets francais **dans la donnee** et `LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest` la juge sur le texte servi ; `ADR-0067` retient U+00A0 devant `?`, `!`, `;`, `:` et gele par cliquet exact toute espace ordinaire a cet endroit. `DEC-0002` et son amendement du 2026-08-04 ne disent rien du caractere : ils exigent un francais correct et integralement accentue.
+- Un critere qui accepterait les deux serait vert sur une version que le reacteur refuse des l'entree au catalogue (`K3`, les deux lots y entrent). Demonstration, indice des items 10 et 13 de `cb50740a` avec ses U+00A0 remplaces par des espaces ordinaires : le critere `PN8-1` ci-dessous rend **0**, un critere tolerant (`[\x{A0} ]`) rend **2**.
+
+**Ce que je ne tranche pas** : l'orthotypographie, qui reste au `relecteur-pedagogique`. S'il retient un autre caractere (`ADR-0067` admet aussi U+202F), ce sont les motifs `\x{A0}` des commandes qui s'amendent, pas les textes de `nadia-prof`.
+
+### `PN8` : amendement (`S57-BR-FRA-CE1-05`, `ce1-pronoms`, numeros comptes depuis 1 sur `- enonce:`)
+
+Ajoute a la story, **sans toucher ses autres criteres** (`K2` reste : le seul YAML modifie est celui du paquet). Textes de `nadia-prof`, recopies sans reformulation, `<YAML>` = `adapters/adapter-content/src/main/resources/contenu/ce1-pronoms.yaml` :
+
+- **Items 10 et 13, `indice`** (1.1) : `« Elle » désigne un mot féminin : cherche-le dans la phrase d'avant.` Rien d'autre ne change sur ces deux items.
+- **Item 15** (3.5, `Q-P6`, `PN4` a 0), enonce et indice inchanges :
+  ```
+    texteSupport: "Le chat de Julie voit Elias. Il lui donne un biscuit."
+    bonneReponse: "Elias"
+    distracteurs: ["le chat", "Julie"]
+  ```
+- Le commentaire de tete (*"vingt prenoms feminins"*) est au developpeur (3.5, derniere phrase) ; il n'est pas un critere.
+
+Commandes (a lancer dans un worktree, `<ref>` = le commit a juger). Sorties lues :
+
+| Code | Commande | `round-two` | `cb50740a` |
+|---|---|---|---|
+| `PN8-1` | `git grep -h -P 'indice: "«\x{A0}Elle\x{A0}» désigne un mot féminin\x{A0}: cherche-le dans la phrase d\x27avant\."$' <ref> -- <YAML> \| wc -l` doit rendre **2** | 0 | 2 |
+| `PN8-2` | `git show <ref>:<YAML> \| awk '/^  - enonce:/{n++} /^    indice: "«\xc2\xa0Elle\xc2\xa0» désigne un mot féminin\xc2\xa0: cherche-le dans la phrase d.avant\."$/{printf n" "}'` doit rendre `10 13 ` | (vide) | `10 13 ` |
+| `PN8-3` | `git grep -h 'indice: "Elle ' <ref> -- <YAML> \| wc -l` doit rendre **0** | 2 | 0 |
+| `PN8-4` | `git show <ref>:<YAML> \| awk '/^  - enonce:/{n++} n==15' \| grep -cP '^  - enonce: "Que désigne «\x{A0}il\x{A0}» dans le texte\x{A0}\?"$\|^    texteSupport: "Le chat de Julie voit Elias\. Il lui donne un biscuit\."$\|^    bonneReponse: "Elias"$\|^    distracteurs: \["le chat", "Julie"\]$\|^    indice: "Le sens de la phrase aide à choisir\."$'` doit rendre **5** | 3 | 5 |
+| `PN8-5` (`PN4`) | `git show <ref>:<YAML> \| awk '/^  - enonce:/{if(b)print b; b=""} {b=b" "$0} END{print b}' \| grep -P 'bonneReponse: "\p{Lu}' \| grep -vP 'distracteurs: \[[^\]]*"\p{Lu}' \| wc -l` doit rendre **0** | 1 | 0 |
+| `PN8-6` | `git diff -U0 $(git merge-base round-two <ref>) <ref> -- <YAML> \| grep -c '^@@'` doit rendre **5** (deux indices, `texteSupport`, `distracteurs`, commentaire de tete) | 0 | 5 |
+
+`PN8-1` a `PN8-5` sont **rouges sur `round-two`** (0, vide, 2, 3, 1) et **verts sur `cb50740a`**. `PN8-4` rend 3 avant et non 0 : l'enonce, la bonne reponse et l'indice de l'item 15 sont inchanges, ce qui est la moitie de la clause *"enonce et indice inchanges"*. `PN8-6` est une borne : elle rend 0 avant parce qu'aucune edition n'est faite, et un chiffre different de 5 apres signale une edition que `nadia-prof` n'a pas demandee. `PN4` (la propriete) garde son critere ; `PN8-5` le rejoue, a 1 avant (item 15) et 0 apres, ses mots disant *"jamais"*.
+
+### `FM5` : amendement (`S57-BR-FRA-CE1-24`, `ce1-familles-de-mots`, `Q-S8`)
+
+Ajoute a la story, `<YAML>` = `adapters/adapter-content/src/main/resources/contenu/ce1-familles-de-mots.yaml`. Texte de `nadia-prof` (3.6), **meme rang** que l'item *livre*, qui est le **12e** (`awk` sur `- enonce:`), recopie sans reformulation :
+
+```
+  # FAM-CE1-2: a, b
+  - enonce: "Quel mot est de la même famille que « chat » ?"
+    bonneReponse: "chaton"
+    distracteurs: ["château", "souris"]
+    indice: "Le bon mot garde un morceau et parle de la même chose."
+```
+
+L'`indice` est celui de `FM6` (les 14 items de famille). `FM6` est ecrit sur la branche `s57-camille-p2-garde` (`79130ca9`), **pas encore sur `round-two`** ; `FM5-2` ci-dessous le recouvre pour l'item 12 et ne le remplace pas.
+
+| Code | Commande | `round-two` | `e918f43e` |
+|---|---|---|---|
+| `FM5-1` | `git grep -h 'bonneReponse: "librairie"' <ref> -- <YAML> \| wc -l` doit rendre **0** | 1 | 0 |
+| `FM5-2` | `git show <ref>:<YAML> \| awk '/^  - enonce:/{n++} n==12' \| grep -cP '^  - enonce: "Quel mot est de la même famille que «\x{A0}chat\x{A0}»\x{A0}\?"$\|^    bonneReponse: "chaton"$\|^    distracteurs: \["château", "souris"\]$\|^    indice: "Le bon mot garde un morceau et parle de la même chose\."$'` doit rendre **4** | 0 | 4 |
+| `FM5-3` | `git show <ref>:<YAML> \| grep -B1 -P '^  - enonce: "Quel mot est de la même famille que «\x{A0}chat\x{A0}»\x{A0}\?"$' \| head -1` doit rendre `  # FAM-CE1-2: a, b` | (vide) | `  # FAM-CE1-2: a, b` |
+| `FM5-4` | `git show <ref>:<YAML> \| grep -c 'bonneReponse:'` doit rendre **24** (`FM1`) | 24 | 24 |
+| `FM5-5` | `git show <ref>:<YAML> \| grep -c 'enonce: "Quel mot est de la même famille'` doit rendre **14** (`FM2`) | 14 | 14 |
+| `FM5-6` | `git diff -U0 $(git merge-base round-two <ref>) <ref> -- <YAML> \| grep -cE '^[-+] '` doit rendre **34** (14 indices en 28 lignes, plus `enonce`, `bonneReponse`, `distracteurs` de l'item 12 en 6 lignes) | 0 | 34 |
+
+`FM5-1`, `FM5-2` et `FM5-3` sont **rouges sur `round-two`** et **verts sur `e918f43e`**. `FM5-4` et `FM5-5` sont des clauses (vertes des deux cotes : elles bornent le remplacement a un item). `FM5-6` borne le diff ; il compte les 14 indices de `FM6` et l'item remplace, rien d'autre. Si `nadia-prof` retire la recommandation de `FM6` avant l'audit, le chiffre attendu devient 8 (les quatre champs de l'item 12 en 8 lignes) et `FM5-2` rend toujours 4, l'indice de l'item 12 etant celui de 3.6.
+
+**Ce qui n'est pas verifie par ces commandes** : que *chaton* soit la vraie famille et *château* la fausse (un test voit un mot, pas son etymologie, `reponse-nadia-q-palier-2.md` section 4) ; que le sens departage *le chat* et *Elias* sur l'item 15 ; l'orthotypographie des quatre textes. Les trois sont a `nadia-prof` et au `relecteur-pedagogique`.
+
+### Ecart trouve par `sofia-sm` : `K10` bloque `S57-BR-FRA-CE1-24`
+
+**Fait** (`rapport-sofia-dev-palier-2.md`, lu ; je n'ai pas lance `mvn`) : le reacteur complet de la branche `s57-sofia-fra-ce1-24` est rouge sur un seul test, `AucunMotServiNeSEcarteDeSonAccentTest.chaqueMotServiEnProductionPorteSonAccent`. Le garde-fou refuse le mot `re` dans le libelle de competence du paquet, des que le paquet est dans le catalogue : *"le mot "re" n'est pas une forme du francais, alors que [ré] en est une du meme squelette"*. Le libelle, `descripteur.competence` (ligne 22 du YAML a `e918f43e`), est : *"Regrouper les mots d'une même famille et repérer un préfixe ou un suffixe fréquent (re-, dé-, -eur...)."* ; `dé` et `eur` passent. Le champ n'est pas modifie par le lot (`K2`) et copie la ligne `[FRA-CE1-24]` de `squad/programme/francais/competences-ce1.md` (ligne 76).
+
+**Ce que cela fait au lot** : `K10` le dit, le lot s'arrete, le besoin est ecrit par la developpeuse et route a `theo-archi`, ceux de l'autre instance n'attendent pas. `S57-BR-FRA-CE1-24` n'est donc **pas livrable** a `e918f43e`, `K3` n'est pas tenu en production, `FRA-CE1-24` reste `non couvert`. Aucune ligne de matrice ne bouge. Le poste `p2-4` est engage : ce n'est pas un report (`DEC-0120` A.95) ; s'il n'est pas audite a la cloture du palier 2, c'est un glissement (A.72), que `sofia-sm` compte.
+
+**Ce que je ne decide pas.**
+
+1. **Le garde-fou** (accepter un affixe cite avec son trait d'union, ou non) : `theo-archi`, au titre de `K10` et d'`ADR-0065`. Premiere decision, avant toute autre.
+2. **Le libelle**, seulement si `theo-archi` laisse le garde-fou tel quel : la question revient a `camille-po` et `nadia-prof`. Deux faits a connaitre avant : le libelle du paquet est une copie de la ligne du referentiel, donc le changer dans le seul paquet ouvre un ecart avec `competences-ce1.md` ; et le texte que l'enfant lit est a `nadia-prof`. Je n'ecris aucune formulation.
+3. **Ma propre clause** : `FM3` (*"le mot *prefixe* figure dans `descripteur.competence`, que les gabarits ne servent pas ... `theo-archi` la confirme s'il le faut"*) n'a pas ete confirmee, et le garde-fou lit ce champ comme *"chaine servie"*. Les deux peuvent etre vrais, le garde-fou etant plus large que le gabarit (`sofia-sm`, rapport) ; c'est a `theo-archi` de le dire, et `FM3` s'amende selon sa reponse, pas avant.
+
+### Routage de cette annotation
+
+Les codes `CR15` a `CR18` sont ceux de l'annotation de `s57-camille-p2-garde`, non fusionnee ; les suivants evitent la collision.
+
+| Code | Quoi | A qui |
+|---|---|---|
+| `CR19` | `PN8-1` a `PN8-6` et `FM5-1` a `FM5-6` : test des criteres, rouge sur `round-two`, vert sur les deux commits | `yanis-qa` |
+| `CR20` | Choix du caractere des espaces dans les quatre textes ; motifs `\x{A0}` des commandes a amender s'il change | `relecteur-pedagogique` |
+| `CR21` | `K10` sur `S57-BR-FRA-CE1-24` : garde-fou et `FM3` ; si le libelle change, retour a `camille-po` et `nadia-prof` | `theo-archi` |
+| `CR22` | Fusion : cette annotation et celle de `s57-camille-p2-garde` ajoutent toutes deux a la fin de `docs/backlog/backlog.md` ; le conflit est un double ajout, a garder des deux cotes | `sofia-sm` |

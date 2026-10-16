@@ -1,0 +1,100 @@
+schema: 1
+id: ce1-pronoms-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1PronomsTest. Chaque item viole une seule propriete
+# du paquet ; le jeu entier viole en plus les proportions de PRN-CE1-1 (aucun item ils ou elles sur
+# quatorze, cinq substituts simples sur quatorze) et l'equilibre des prenoms (quatorze feminins
+# distincts, onze masculins). Le premier item ne cite pas son mot, les quatorze autres le citent.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Identifier à qui renvoie un pronom personnel (il, elle, ils, elles) ou un substitut simple dans un texte court."
+lignesDeReferentiel: ["FRA-CE1-05"]
+items:
+  # PRN-CE1-1 : l'enonce ne cite pas son mot entre chevrons, c'est une question de personnage
+  - enonce: "Qui donne un biscuit ?"
+    texteSupport: "Zoé voit Paul. Elle lui donne un biscuit."
+    bonneReponse: "Zoé"
+    distracteurs: ["Paul", "un biscuit"]
+    indice: "Cherche qui donne dans la phrase d'avant."
+  # PN4 : la bonne reponse est la seule proposition a majuscule
+  - enonce: "Que désigne « il » dans le texte ?"
+    texteSupport: "Le chat voit Elias. Il lui donne un biscuit."
+    bonneReponse: "Elias"
+    distracteurs: ["le chat", "un biscuit"]
+    indice: "Le sens de la phrase aide à choisir."
+  # PRN-CE1-3 : le mot cite apparait deux fois dans le texte
+  - enonce: "Que désigne « il » dans le texte ?"
+    texteSupport: "Tom aide Malo. Il sourit et il saute."
+    bonneReponse: "Malo"
+    distracteurs: ["Tom", "Adam"]
+    indice: "Demande-toi : qui peut faire cette action ?"
+  # PRN-CE1-3 : un il impersonnel dans le texte
+  - enonce: "Que désigne « elle » dans le texte ?"
+    texteSupport: "Il pleut sur Zoé. Elle ouvre son parapluie."
+    bonneReponse: "Zoé"
+    distracteurs: ["Nina", "la pluie"]
+    indice: "Le sens de la phrase aide à choisir."
+  # LON-CE1-3 : trente et un mots, trois phrases de dix, dix et onze mots
+  - enonce: "Que désigne « elle » dans le texte ?"
+    texteSupport: "Mila prend son sac et part vers l'école avec Lola. Elle mange dans la grande cantine avec Jade et Nina. Le soir, Anna rentre à la maison et lit un peu."
+    bonneReponse: "Mila"
+    distracteurs: ["Lola", "la cantine"]
+    indice: "Relis la phrase d'avant."
+  # LON-CE1-4 : cinq phrases
+  - enonce: "Que désigne « il » dans le texte ?"
+    texteSupport: "Tom lave la pomme. Il l'essuie. La pomme est propre. Malo la pèle. Adam la mange."
+    bonneReponse: "Tom"
+    distracteurs: ["Malo", "Adam"]
+    indice: "Relis la phrase d'avant."
+  # LON-CE1-4 : une phrase de treize mots
+  - enonce: "Que désigne « il » dans le texte ?"
+    texteSupport: "Tom va à la piscine avec son père, sa mère et sa sœur. Il nage."
+    bonneReponse: "Tom"
+    distracteurs: ["Paul", "sa sœur"]
+    indice: "Relis la phrase d'avant."
+  # LON-CE1-5 : une proposition de sept mots
+  - enonce: "Que désigne « il » dans le texte ?"
+    texteSupport: "Hugo ouvre la porte à Rose. Il dit bonjour à la classe."
+    bonneReponse: "Rose"
+    distracteurs: ["Hugo", "la porte de la grande salle bleue"]
+    indice: "Relis la phrase d'avant."
+  # TRV-CE1-5 : l'indice contient une proposition de son item
+  - enonce: "Que désigne « elle » dans le texte ?"
+    texteSupport: "Lina voit Tom. Elle lui sourit."
+    bonneReponse: "Lina"
+    distracteurs: ["Tom", "un sourire"]
+    indice: "Cherche Tom dans la phrase d'avant."
+  # PN7 : l'indice qui servait les items 10 et 13 avant la correction de nadia-prof, le mot cite sans chevrons
+  - enonce: "Que désigne « elle » dans le texte ?"
+    texteSupport: "Eva donne un gâteau à Léo. Elle dit merci."
+    bonneReponse: "Eva"
+    distracteurs: ["Léo", "un gâteau"]
+    indice: "Elle désigne un mot féminin : cherche-le dans la phrase d'avant."
+  # substituts simples, cinq sur quatorze
+  - enonce: "Que désigne « le garçon » dans le texte ?"
+    texteSupport: "Mina et Hamza regardent un chien. Le garçon lui donne de l'eau."
+    bonneReponse: "Hamza"
+    distracteurs: ["Mina", "un chien"]
+    indice: "Cherche qui est un garçon dans la phrase d'avant."
+  - enonce: "Que désigne « l'animal » dans le texte ?"
+    texteSupport: "Nour joue avec son chat. L'animal saute sur une chaise."
+    bonneReponse: "son chat"
+    distracteurs: ["Nour", "une chaise"]
+    indice: "Cherche qui est un animal dans la phrase d'avant."
+  - enonce: "Que désigne « la fille » dans le texte ?"
+    texteSupport: "Adrien parle à Manon. La fille lui répond avec un sourire."
+    bonneReponse: "Manon"
+    distracteurs: ["Adrien", "un sourire"]
+    indice: "Cherche qui est une fille dans la phrase d'avant."
+  - enonce: "Que désigne « le garçon » dans le texte ?"
+    texteSupport: "Kenza et Enzo lisent un livre. Le garçon tourne la page."
+    bonneReponse: "Enzo"
+    distracteurs: ["Kenza", "un livre"]
+    indice: "Cherche qui est un garçon dans la phrase d'avant."
+  - enonce: "Que désigne « l'animal » dans le texte ?"
+    texteSupport: "Maya et Samir regardent un lapin. L'animal mange une carotte."
+    bonneReponse: "un lapin"
+    distracteurs: ["Maya", "Samir"]
+    indice: "Cherche qui est un animal dans la phrase d'avant."
