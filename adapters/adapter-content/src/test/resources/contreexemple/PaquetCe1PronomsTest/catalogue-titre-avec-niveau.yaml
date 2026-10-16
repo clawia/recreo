@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1PronomsTest. Le titre porte le niveau (ADR-0078).
+jeux:
+  - id: bandit-manchot-pronoms-fautif
+    titre: "Les pronoms du CE1"
+    consigne: "Lis le petit texte, puis réponds à la question."
+    mecanique: bandit-manchot
+    paquet: ce1-pronoms
+    nombreDeManches: 10

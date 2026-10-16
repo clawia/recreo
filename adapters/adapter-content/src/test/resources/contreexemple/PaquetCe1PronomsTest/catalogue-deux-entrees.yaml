@@ -1,0 +1,14 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1PronomsTest. Deux entrees servent le meme paquet.
+jeux:
+  - id: bandit-manchot-pronoms-fautif
+    titre: "Il, elle, ils, elles"
+    consigne: "Lis le petit texte, puis réponds à la question."
+    mecanique: bandit-manchot
+    paquet: ce1-pronoms
+    nombreDeManches: 10
+  - id: bandit-manchot-pronoms-fautif-bis
+    titre: "Qui fait quoi"
+    consigne: "Lis le petit texte, puis réponds à la question."
+    mecanique: bandit-manchot
+    paquet: ce1-pronoms
+    nombreDeManches: 10
