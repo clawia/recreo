@@ -852,3 +852,100 @@ Lances sur l'arbre de `round-two` a `97a205e8` avec ce fichier modifie (sections
 - **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances avec `python`, 13 sortis 0, aucun balayage vide ; le treizieme est `outils/mesurer-additions-cp-test.sh`.
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
+
+## Amendement du 2026-10-16 12:01 (UTC+02:00), palier 2 : six fusions, branche de `-24` mise a jour, etat des postes
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace ou precise est nomme. Arbre de depart : `round-two` a `fbcf94e9` (`origin/round-two` egal). Aucune ceremonie n'est animee par ce texte : c'est un amendement de planning, comme les precedents. Aucun Done n'est prononce.
+
+### 1. Fusions de ce jour, lignee verifiee avant chacune
+
+Lignee jugee par `juger_lignee` de `outils/verifier-lignee.sh`, chargee depuis le script et appelee avec le nom de la branche et le code de `git merge-base round-two <branche>` (meme raison que l'amendement du 11:05). Les six verdicts : *"descend de la lignee de round-two"*, sortie 0. Reacteur complet : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, `BUILD SUCCESS` a chaque fois qu'il a ete lance.
+
+| Ordre | Branche | Sommet livre | Fusion | Reacteur lance | Tests mesures par moi |
+|---|---|---|---|---|---|
+| 1 | `s57-theo-k10-accent` | `76642a48` | `1ac68087` | oui | 2599 (`adapter-content` 1569, 1567 avant : +2) |
+| 2 | `s57-theo-p2-trace` | `2277f2e3` | `4406f04e` | avec les fusions 3 et 4 | 2599 |
+| 3 | `s57-camille-p2-pn8` | `36766dae` | `2764310d` | avec les fusions 2 et 4 | 2599 |
+| 4 | `s57-relecteur-p2` | `e7a075ef` | `0e7af3ce` | une seule fois sur l'arbre des fusions 2 a 4 (documents seuls) | 2599 |
+| 5 | `s57-lea-forme-commune` | `78fac33d` (code `dc6f423d`) | `aca0d90f` | oui | 2603 (`adapter-web` 496, 492 avant : +4) |
+| 6 | `s57-marc-fra-ce1-05` | `cb50740a` (lot `b9f1c62f`) | `edcd3de9` | oui | 2640 (`adapter-content` 1606 : +37) |
+
+**Compte, d'ou vient l'ecart.** `marc-dev` annonce 2634 pour p2-3 : 2597 plus ses 37 tests. Mon total est 2640 : sa base n'etait pas celle de `round-two` apres les fusions 1 et 5, qui ajoutent 2 (garde de l'accent, `K10`) et 4 (forme commune) tests. 2597 + 2 + 4 + 37 = 2640. Repartition finale : 120, 31, 496, 1606, 381, 6 d'integration.
+
+**Fusion 3, conflit.** `docs/backlog/backlog.md` : double ajout en fin de fichier, l'annotation de `s57-camille-p2-garde` (deja fusionnee, `CR15` a `CR18`) et celle de `s57-camille-p2-pn8` (`CR19` a `CR22`). Les deux sont gardees, dans cet ordre, une ligne vide entre elles, aucun marqueur restant (`grep -c` des trois marqueurs : 0), aucune ligne retiree (`git diff HEAD^1 HEAD --stat` de la fusion : 92 insertions, 0 suppression ; la branche en ajoutait 93, une ligne vide n'est pas dupliquee). Aucune assertion n'est touchee : le fichier est un backlog. `CR22` de `camille-po` avait prevu ce conflit et sa resolution.
+
+**Fusion 5, condition de `Q-T15`.** `git diff --stat dc6f423d 78fac33d -- adapters domain application bootstrap pom.xml outils` rend 0 ligne : le code lu par `theo-archi` est le code fusionne (`lecture-theo-p2-7-forme-commune.md`, section 6, sur `round-two` depuis `4406f04e`). **Ecarts `TL9` et `TL10` de `theo-archi`, non corriges ici (cela changerait la tete) et inscrits comme dette :**
+
+- **`TL9`** : la liste des declarations n'est pas fermee par selecteur dans `LaFormeCommuneDesPropositionsLonguesEstEpingleeTest` ; une declaration ajoutee dans une regle mesuree passe. **Rattachee a `S57-GARDE-C1-SUJET-HORS-MESSAGE`**, engagee, comme le lanceur de la session l'a demande. **Ecart a dire** : `theo-archi` (section 6 de sa trace) route `TL9` a `lea-dev`, *"dans le prochain commit qui touche la forme, au plus tard celui de p2-10"*. Le rattachement ne change ni les criteres de la story de garde (je ne les amende pas) ni le prix, et ne decide pas qui ecrit : si `theo-archi` garde sa route, `TL9` reste a `lea-dev` et la story de garde la cite seulement. **Je ne clos pas `TL9`.**
+- **`TL10`** : la Javadoc de ce test annonce deux feuilles fautives, le code en porte trois (`regle-hors-seuil`, `valeur-changee`, `regle-ajoutee`). Redactionnel, meme route que `TL9` (prochain commit touchant ce test).
+
+**Diff de code contre la base de la cote (`Q-P4`, `aa9d703c`).** Mesure : `git diff --stat aa9d703c <ref> -- adapters domain application bootstrap pom.xml outils`.
+
+- **Apres la fusion 5 (`aca0d90f`)** : 8 fichiers, 406 insertions, 15 suppressions. Hors tests : `recreo.css` (+34, la forme), `cm1-sciences-extraire-information.yaml` (+4, -4 : `N1` et `N2`). Tests : `AucunMotServiNeSEcarteDeSonAccentTest` (+74, `K10`), `LaFormeCommuneDesPropositionsLonguesEstEpingleeTest` (+159) et ses trois feuilles fautives, `outils/mesurer-additions-cp-test.sh` (+136).
+- **A `edcd3de9`, apres la fusion 6** : 16 fichiers, 1346 insertions, 20 suppressions. S'y ajoutent `catalogue.yaml` (+6), `ce1-pronoms.yaml` (+5, -5), `PaquetCe1PronomsTest` et ses fixtures, la ligne d'inventaire de `TexteAccentueExposeParLePortEntrantTest`. Ces fichiers sont dans `adapters/` ou `bootstrap/` et ne sont pas dans le jar de la forme : je les nommerai a `nadia-prof` avant son rejeu de la forme, comme la section 9 du 20:56 le prescrit. Aucun ne touche un ecran de CE1 ou de CP.
+
+**Fusion 6, `PN8`.** Condition 1 : l'amendement de `PN8` est sur `round-two` (fusion 3, `2764310d`, avant celle-ci). Condition 2 : les six commandes de l'amendement, lancees sur l'arbre fusionne (`<ref>` = `HEAD` a `edcd3de9`), rendent :
+
+| Code | Attendu | Obtenu |
+|---|---|---|
+| `PN8-1` | 2 | 2 |
+| `PN8-2` | `10 13 ` | `10 13 ` |
+| `PN8-3` | 0 | 0 |
+| `PN8-4` | 5 | 5 |
+| `PN8-5` | 0 | 0 |
+| `PN8-6` | 5 | 5 (`git diff -U0 edcd3de9^1 edcd3de9 -- ce1-pronoms.yaml`, comptage des `@@`) |
+
+**Ecart de forme sur `PN8-6`** : la commande ecrite dans l'amendement calcule sa base par `git merge-base round-two <ref>`. Une fois la branche fusionnee, cette base est la branche elle-meme et la commande rend 0 (mesure : 0 avec `<ref>` = `cb50740a`). Elle ne vaut qu'avant la fusion ; le 5 ci-dessus est obtenu avec le premier parent de la fusion comme base. Je ne reecris pas la commande de `camille-po` ; je dis seulement qu'elle est a lancer avant la fusion.
+
+**Catalogue** (`grep -c "^  - id:" adapters/adapter-content/src/main/resources/catalogue.yaml`) : `edcd3de9` / 150 avant / entree `ce1-pronoms` (+1) / 151 apres. Avec la fusion de `round-two` dans la branche de `-24` (section 2) : 152.
+
+### 2. Branche `s57-sofia-fra-ce1-24` : `round-two` fusionnee DANS la branche, non fusionnee dans `round-two`
+
+`ADR-0065` A2 point 4. Casquette Scrum Master pour le geste de fusion ; le code de la branche reste celui de la developpeuse, non retouche. Lignee de la branche avant le geste : sortie 0. Fusion de `round-two` (`edcd3de9`) dans la branche : **`6b70d7e5`**, aucun conflit (`catalogue.yaml` et l'inventaire de `TexteAccentueExposeParLePortEntrantTest` ajoutaient chacun a des endroits distincts ; le diff du test entre `edcd3de9` et la branche montre trois ajouts, un par liste, ceux de `-24`, et les trois de `-05` sont deja dans `edcd3de9`). Reacteur complet sur la branche : `BUILD SUCCESS`, **2664 tests** (120, 31, 496, 1630, 381, 6) : 2640 + 24 de `PaquetCe1FamillesDeMotsTest`. Catalogue : 152 entrees. Le rouge de la base (`chaqueMotServiEnProductionPorteSonAccent`, rapporte par la developpeuse) a disparu avec `K10`. **Non fusionnee dans `round-two`** : `yanis-qa` relit la branche d'abord (section 7 du 09:03, precedent du palier 1).
+
+### 3. Obstacles : ce que les fichiers presents sur le disque permettent de clore
+
+- **`Q-T15` / `TP6`** : clos. `lecture-theo-p2-7-forme-commune.md` existe sur `round-two`, verdict *"fusionnable sur `dc6f423d`, tete `78fac33d`"*, delta de code vide verifie par moi.
+- **`K10`** : clos. `ADR-0065` amendement A3 existe sur `round-two` ; la branche de `-24`, rouge avant, est verte apres fusion.
+- **`PN8`** : clos pour l'amendement (fichier sur `round-two`) et pour la verification des commandes. `Q5` de `marc-dev` trouve sa reponse dans cet amendement ; `Q4` reste a `camille-po`, comme l'amendement du 11:05 le dit.
+- **`Q2` (orthotypographie des chevrons)** : le `relecteur-pedagogique` rend *"correct"* sur `N1` et `N2`, sur les items 10, 13 et 15 de `ce1-pronoms`, sur l'item *chat*/*chaton* et les 14 indices de `ce1-familles-de-mots` (`releve-relecteur-palier-2.md`, section 1), aucune correction a appliquer.
+- **Ouvert, route** : la section 5 du releve du relecteur (espace avant `?` non uniforme : 2377 lignes a espace insecable, 224 a espace ordinaire, `ADR-0060` consequence assumee 2) est une decision de typographie pour un enfant, **a `theo-archi` pour l'ADR et a `camille-po` pour le produit**. Je ne la tranche pas.
+- **Ouvert** : `TL9` et `TL10` (section 1) ; job `outils` et `node` (amendement du 11:05, section 5, route a `theo-archi` et `yanis-qa`, sans reponse).
+
+### 4. Poste de mesure : le juge `mvn-jdk21-test.sh` et `TMPDIR`
+
+`theo-archi` a constate 10 cas en echec quand `TMPDIR` est sous le scratchpad. Mecanisme, mesure : `outils/mvn-jdk21-test.sh` cree tout son banc par `BAC="$(mktemp -d)"` (ligne 23), qui honore `TMPDIR` ; il y place un `mvn` temoin, des JDK jetables et des `HOME` jetables, puis lance l'enveloppe avec `PATH="${BAC}/bin:${PATH}"` (fonction `jouer`). **Quand `TMPDIR` commence par une lettre de lecteur suivie de deux-points et d'une barre oblique (forme mixte de Git Bash), `mktemp -d` rend ce chemin tel quel ; `PATH`, separe par des deux-points, coupe l'entree apres la lettre de lecteur, le `java` et le `mvn` temoins ne sont plus trouves, et les cas qui en dependent echouent.** Mesure : forme mixte, 10 cas en echec et 4 ok, sortie 1 ; forme POSIX (`/c/...`), 14 ok, sortie 0 ; forme avec barres inverses, 14 ok, sortie 0 (je n'ai pas explique pourquoi cette derniere passe). Avec le `TMPDIR` par defaut de la session (`mktemp -d` rend un chemin POSIX sous le repertoire temporaire de l'utilisateur), le juge passe : 14 ok, sortie 0. Les fichiers temporaires sont sous ce repertoire, dans un dossier `tmp.XXXXXXXXXX` retire par le `trap` de la ligne 24. **Je n'ai pas modifie le script.** Question a `yanis-qa` et `theo-archi` : le juge doit-il refuser, ou normaliser, un `TMPDIR` qui contient un deux-points ? Le fichier `ci.yml` tourne sur Linux, ou le cas ne se presente pas.
+
+### 5. Etat des postes au 2026-10-16 12:01
+
+Un poste *livre* a un commit sur sa branche. *Fusionne* : sur `round-two`. Aucun Done n'est prononce par ce tableau.
+
+| Poste | Branche et sommet | Etat | Ce qui reste |
+|---|---|---|---|
+| p2-6, `S57-SCRIPT-ADDITIONS-CP` | `s57-marc-script-additions-cp` | fusionne (`97a205e8`) ; son rapport est fusionne avec p2-3 (`edcd3de9`) | mesure de `PA2` par `ines-design` ; je verifie le critere 1 de la story sur `round-two` (rapport present) avant de la declarer close |
+| p2-5, `S57-OBS-SCI-N1-N2` | `s57-marc-sci-n1-n2` | fusionne (`9cbf3571`) | rejeu 0,25 par `nadia-prof` ; orthotypographie : correct (relecteur) |
+| p2-3, `S57-BR-FRA-CE1-05` | `s57-marc-fra-ce1-05` | **fusionne (`edcd3de9`)** | audit de `nadia-prof` ; `Q4` a `camille-po` |
+| p2-4, `S57-BR-FRA-CE1-24` | `s57-sofia-fra-ce1-24`, `6b70d7e5` | **livre, `round-two` fusionnee dedans, non fusionne** | relecture de `yanis-qa` avant fusion ; audit de `nadia-prof` |
+| p2-7, forme commune | `s57-lea-forme-commune` | **fusionne (`aca0d90f`)** | rejeu de la forme par `nadia-prof` (ecarts de la section 1 a lui nommer) ; mesure de `ines-design` ; `TL9`, `TL10` |
+| garde de `C1'` | aucune branche | engagee (11:05) | ecriture par `theo-archi` ; test par `yanis-qa` ; `TL9` rattachee (section 1) |
+| `K10`, `ADR-0065` A3 | `s57-theo-k10-accent` | fusionne (`1ac68087`) | aucun |
+| p2-8, p2-9, p2-10, p2-11, p2-12 | - | inchange | la forme est fusionnee ; ces postes dependent aussi de `PA2`, `PA7`, `PA8` (amendement du 09:03) |
+
+### 6. Ce que cet amendement ne fait pas
+
+Ne fusionne pas `s57-sofia-fra-ce1-24` dans `round-two`. Ne prononce aucun Done, ne juge aucun contenu, ne touche ni la matrice (146 / 200), ni un paquet, ni un catalogue, ni du code, ni `ci.yml`, ni `mvn-jdk21-test.sh`. N'amende ni un critere de story ni un prix. Ne decide ni `TL9` (qui l'ecrit), ni la typographie de l'espace avant `?`, ni la normalisation de `TMPDIR`.
+
+### 7. Decisions prises
+
+**Aucune `ADR` ni `DEC` n'est creee ou amendee par cet amendement.** Decisions fusionnees ce jour, par leur auteur : `ADR-0065`, amendement A3 de `theo-archi` (statut `Accepte` inchange), `ADR-index.md` modifie en une ligne ; aucune `DEC` (l'annotation de `camille-po` fusionnee au point 3 est une annotation de `docs/backlog/backlog.md`, qui amende `PN8` et `FM5` et ne cree aucun `DEC`).
+
+### 8. Jobs de `ci.yml` lances pour ce commit
+
+Lances sur l'arbre de `round-two` a `edcd3de9` avec ce fichier modifie (sections 1 a 7), avant commit. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, sur l'arbre de `edcd3de9` : `BUILD SUCCESS`, exit 0, **2640 tests, 0 echec** (120, 31, 496, 1606, 381, 6 d'integration). Le build a lu ce fichier avant l'ajout du present amendement. Etape *"Package du fat jar"* non lancee. Meme commande sur la branche de `-24` a `6b70d7e5` : `BUILD SUCCESS`, 2664 tests.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh`, sortie 0 (relance apres l'ajout de ce texte).
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh` et `verifier-garde-fou-accent-test.sh` sortent 0 ; `commit-atteignable.sh fbcf94e9` sort 0 ; les sujets de `fbcf94e9..HEAD` (hors fusions) et le sujet prevu du commit passent dans `verifier-prefixes.sh`, sortie 0 ; `verifier-garde-fou-accent.sh "fbcf94e9..HEAD"` : *"1 commit(s) le touchent dans la plage, tous [THEO]."*, sortie 0 (c'est `76642a48`, `K10`).
+- **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances (`bash` pour les `.sh`, `python` pour les `.py`), 13 sortis 0, aucun balayage vide. `outils/mvn-jdk21-test.sh` y est lance avec le `TMPDIR` par defaut de la session (section 4).
+
+Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
