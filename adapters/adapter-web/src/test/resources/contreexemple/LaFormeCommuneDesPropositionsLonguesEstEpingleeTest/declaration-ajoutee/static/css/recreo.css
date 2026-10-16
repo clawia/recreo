@@ -1,0 +1,4 @@
+/* Contre-exemple : une declaration que la mesure ne contient pas s'ajoute a une regle de la forme. */
+@media (min-width: 720px) {
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) .propositions { row-gap: 0.5rem; column-gap: 0.25rem; }
+}
