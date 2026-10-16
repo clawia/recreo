@@ -235,3 +235,22 @@ les porte (`DEC-0120`, ligne 1387, ecrit la meme notation), et je ne les ai pas 
 `sofia-sm` ; ils s'ajouteront ici par une annotation datee. **Ce qui depend de ce point** : aucun verdict. Le caractere non
 bloquant de `TPH-CE1-R1` repose sur le precedent de `RDO-CP-R1` (section 3), pas sur `Q-N4` ; `Q-N4` portait sur ma
 recommandation de section 8, plus stricte, qui reste non retenue tant que l'utilisatrice ne l'a pas acceptee.
+
+## Annotation du 2026-10-16 (`nadia-prof`, s57, palier 2) : les mots de l'utilisatrice pour `Q-N4`
+
+Rien au-dessus n'est efface ; elle complete l'amendement du 2026-10-14 et le point `D3` ci-dessus.
+
+**Mots** : *"le pli n'est pas bloquant"*. **Provenance**, forme 2 de `DEC-0062` 3.1 : mots donnes par l'utilisatrice a l'agent
+principal le 2026-10-16 ; la date de son echange d'origine n'a pas ete fournie (le depot date la reponse relayee au 2026-10-14).
+Relayes a moi par l'agent principal, non lus de sa main. Cette annotation et celle de la fiche de `phrases-types` figent la
+citation (`DEC-0062`, 3.5).
+
+**Ce qu'ils changent** : la forme 2 de `D3` a desormais ses mots ; sa date reste incomplete, et c'est dit. **Ce qu'ils ne
+changent pas** : ils disent ce que ma notation *"`Q-N4` = non"* disait. `FRA-CE1-10` reste **VALIDE SOUS RESERVE** avec
+`TPH-CE1-R1` ; le pli reste, pour les lots a venir, une reserve non bloquante que je nomme et date, sur le precedent de
+`RDO-CP-R1`, ecrit avant la question ; ma recommandation de la section 8 (*"oui pour la suite"*) reste non retenue, par ses mots
+et non plus par ma notation.
+
+**Ce qu'ils ne disent pas, et que je ne leur fais pas dire** : que le pli cesse d'etre une reserve ou d'etre mesure ; qu'un
+critere de levee change ; qu'un debordement a droite ou un autre motif de refus soit couvert. Je les lis sur la question posee
+en section 8, rien de plus. Detail : `reponse-nadia-q-palier-2.md`, section 2.
