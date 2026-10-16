@@ -1,0 +1,32 @@
+schema: 1
+id: ce1-familles-de-mots-fautif-sans-affixe
+type: question
+# ADR-0013 obligation 3 : second jeu fautif de PaquetCe1FamillesDeMotsTest. Cinq items de famille,
+# aucun item d'affixe : FAM-CE1-1 demande au moins un quart d'items d'affixe.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Vocabulaire"
+  competence: "Regrouper les mots d'une même famille et repérer un préfixe ou un suffixe fréquent (re-, dé-, -eur...)."
+lignesDeReferentiel: ["FRA-CE1-24"]
+items:
+  - enonce: "Quel mot est de la même famille que « dent » ?"
+    bonneReponse: "dentiste"
+    distracteurs: ["danse", "bouche"]
+    indice: "Le bon mot garde un morceau et parle de la même chose."
+  - enonce: "Quel mot est de la même famille que « lait » ?"
+    bonneReponse: "laitier"
+    distracteurs: ["laid", "fromage"]
+    indice: "Le bon mot garde un morceau et parle de la même chose."
+  - enonce: "Quel mot est de la même famille que « fleur » ?"
+    bonneReponse: "fleuriste"
+    distracteurs: ["fleuve", "jardin"]
+    indice: "Le bon mot garde un morceau et parle de la même chose."
+  - enonce: "Quel mot est de la même famille que « terre » ?"
+    bonneReponse: "terrain"
+    distracteurs: ["terrible", "planète"]
+    indice: "Le bon mot garde un morceau et parle de la même chose."
+  - enonce: "Quel mot est de la même famille que « chat » ?"
+    bonneReponse: "chaton"
+    distracteurs: ["château", "souris"]
+    indice: "Le bon mot garde un morceau et parle de la même chose."

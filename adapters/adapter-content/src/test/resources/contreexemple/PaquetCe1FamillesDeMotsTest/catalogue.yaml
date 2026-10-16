@@ -1,0 +1,9 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1FamillesDeMotsTest. La consigne du jeu
+# n'est pas celle que l'enfant lit deja sur les entrees existantes.
+jeux:
+  - id: bandit-manchot-familles-de-mots-fautif
+    titre: "Les familles de mots"
+    consigne: "Trouve le mot de la même famille."
+    mecanique: bandit-manchot
+    paquet: ce1-familles-de-mots
+    nombreDeManches: 10

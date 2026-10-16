@@ -457,6 +457,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 6.3).
             "bandit-manchot-synonymes-contraires-ce1",
+            // S57-BR-FRA-CE1-24 (s57) : entree neuve, FRA-CE1-24, regrouper les mots d'une meme
+            // famille (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 6.2).
+            "bandit-manchot-familles-de-mots-ce1",
             // S50-ART (s50) : entree neuve, ART-CP-09, deuxieme ligne du referentiel d'arts
             // plastiques CP (DEC-0109, squad/conformite/ARBITRAGE-PREALABLE-s50-art-cp.md).
             "bandit-manchot-decrire-une-oeuvre-cp",
@@ -761,6 +764,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Des mots bien accordés",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
             "Même sens ou sens contraire",
+            // S57-BR-FRA-CE1-24 (s57) : titre neuf, sans niveau (ADR-0078).
+            "Les familles de mots",
             // S50-ART (s50) : titre neuf, sans niveau (ADR-0078).
             "Décrire une œuvre",
             // S55-ART-CP-10-PAQUET (s56) : titre neuf, sans niveau (ADR-0078), de nadia-prof (B9).
@@ -1727,6 +1732,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
             // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
             "Trouver un synonyme ou un contraire d'un mot fréquent.",
+            // S57-BR-FRA-CE1-24 (s57) : competence neuve, FRA-CE1-24, libelle du referentiel copie
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-24).
+            "Regrouper les mots d'une même famille et repérer un préfixe ou un suffixe fréquent "
+                    + "(re-, dé-, -eur...).",
             // S50-ART (s50) : competence neuve, ART-CP-09. Le libelle du referentiel
             // (squad/programme/arts-plastiques/competences-cp.md, ligne ART-CP-09) nomme
             // "couleurs" ; aucune couleur n'est servie par ce paquet (ART-1, arbitrage prealable

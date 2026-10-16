@@ -816,6 +816,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-synonymes-contraires
     nombreDeManches: 10
+  - id: bandit-manchot-familles-de-mots-ce1
+    titre: "Les familles de mots"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-familles-de-mots
+    nombreDeManches: 10
   - id: bandit-manchot-decrire-une-oeuvre-cp
     titre: "Décrire une œuvre"
     consigne: "Regarde l'œuvre, puis dis ce que tu vois."

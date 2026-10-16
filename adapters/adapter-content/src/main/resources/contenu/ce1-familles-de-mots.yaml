@@ -26,17 +26,17 @@ items:
   - enonce: "Quel mot est de la même famille que « dent » ?"
     bonneReponse: "dentiste"
     distracteurs: ["danse", "bouche"]
-    indice: "Un mot de la même famille garde un morceau du mot."
+    indice: "Le bon mot garde un morceau et parle de la même chose."
   # FAM-CE1-2: a, b
   - enonce: "Quel mot est de la même famille que « lait » ?"
     bonneReponse: "laitier"
     distracteurs: ["laid", "fromage"]
-    indice: "Cherche le mot qui parle de la même chose."
+    indice: "Le bon mot garde un morceau et parle de la même chose."
   # FAM-CE1-2: a, b
   - enonce: "Quel mot est de la même famille que « fleur » ?"
     bonneReponse: "fleuriste"
     distracteurs: ["fleuve", "jardin"]
-    indice: "Compare les trois mots avec le mot de départ."
+    indice: "Le bon mot garde un morceau et parle de la même chose."
   # FAM-CE1-1: affixe re-
   - enonce: "Que veut dire « refaire » ?"
     bonneReponse: "faire encore"
@@ -51,17 +51,17 @@ items:
   - enonce: "Quel mot est de la même famille que « terre » ?"
     bonneReponse: "terrain"
     distracteurs: ["terrible", "planète"]
-    indice: "Un mot de la même famille garde un morceau du mot."
+    indice: "Le bon mot garde un morceau et parle de la même chose."
   # FAM-CE1-2: a, b
   - enonce: "Quel mot est de la même famille que « danse » ?"
     bonneReponse: "danseur"
     distracteurs: ["dense", "musique"]
-    indice: "Cherche le mot qui parle de la même chose."
+    indice: "Le bon mot garde un morceau et parle de la même chose."
   # FAM-CE1-2: a, b
   - enonce: "Quel mot est de la même famille que « chant » ?"
     bonneReponse: "chanter"
     distracteurs: ["champ", "oiseau"]
-    indice: "Compare les trois mots avec le mot de départ."
+    indice: "Le bon mot garde un morceau et parle de la même chose."
   # FAM-CE1-1: affixe dé-
   - enonce: "Que veut dire « défaire » ?"
     bonneReponse: "le contraire de faire"
@@ -76,17 +76,17 @@ items:
   - enonce: "Quel mot est de la même famille que « savon » ?"
     bonneReponse: "savonner"
     distracteurs: ["savoir", "mousse"]
-    indice: "Un mot de la même famille garde un morceau du mot."
+    indice: "Le bon mot garde un morceau et parle de la même chose."
   # FAM-CE1-2: a, b
-  - enonce: "Quel mot est de la même famille que « livre » ?"
-    bonneReponse: "librairie"
-    distracteurs: ["livrer", "cahier"]
-    indice: "Cherche le mot qui parle de la même chose."
+  - enonce: "Quel mot est de la même famille que « chat » ?"
+    bonneReponse: "chaton"
+    distracteurs: ["château", "souris"]
+    indice: "Le bon mot garde un morceau et parle de la même chose."
   # FAM-CE1-2: a, b
   - enonce: "Quel mot est de la même famille que « peur » ?"
     bonneReponse: "peureux"
     distracteurs: ["peu", "cauchemar"]
-    indice: "Compare les trois mots avec le mot de départ."
+    indice: "Le bon mot garde un morceau et parle de la même chose."
   # FAM-CE1-1: affixe dé-
   - enonce: "Que veut dire « découvrir » ?"
     bonneReponse: "le contraire de couvrir"
@@ -101,17 +101,17 @@ items:
   - enonce: "Quel mot est de la même famille que « porte » ?"
     bonneReponse: "portail"
     distracteurs: ["portrait", "fenêtre"]
-    indice: "Un mot de la même famille garde un morceau du mot."
+    indice: "Le bon mot garde un morceau et parle de la même chose."
   # FAM-CE1-2: a, b
   - enonce: "Quel mot est de la même famille que « pomme » ?"
     bonneReponse: "pommier"
     distracteurs: ["pompe", "poire"]
-    indice: "Cherche le mot qui parle de la même chose."
+    indice: "Le bon mot garde un morceau et parle de la même chose."
   # FAM-CE1-2: a, b
   - enonce: "Quel mot est de la même famille que « école » ?"
     bonneReponse: "écolier"
     distracteurs: ["écoute", "classe"]
-    indice: "Compare les trois mots avec le mot de départ."
+    indice: "Le bon mot garde un morceau et parle de la même chose."
   # FAM-CE1-1: affixe -eur
   - enonce: "Que veut dire « nageur » ?"
     bonneReponse: "celui qui nage"
@@ -126,12 +126,12 @@ items:
   - enonce: "Quel mot est de la même famille que « nuage » ?"
     bonneReponse: "nuageux"
     distracteurs: ["nage", "pluie"]
-    indice: "Un mot de la même famille garde un morceau du mot."
+    indice: "Le bon mot garde un morceau et parle de la même chose."
   # FAM-CE1-2: a, b
   - enonce: "Quel mot est de la même famille que « sable » ?"
     bonneReponse: "sablier"
     distracteurs: ["table", "plage"]
-    indice: "Cherche le mot qui parle de la même chose."
+    indice: "Le bon mot garde un morceau et parle de la même chose."
   # FAM-CE1-1: affixe -ette
   - enonce: "Que veut dire « maisonnette » ?"
     bonneReponse: "une petite maison"
