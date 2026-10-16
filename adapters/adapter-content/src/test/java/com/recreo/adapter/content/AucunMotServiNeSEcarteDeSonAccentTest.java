@@ -112,23 +112,38 @@ class AucunMotServiNeSEcarteDeSonAccentTest {
      * Les mots d'une chaine : toute suite maximale de lettres. Les chiffres, la ponctuation et
      * l'apostrophe separent - "aujourd'hui" donne donc deux suites, dont aucune n'est fautive au
      * sens du critere (aucune n'a de soeur accentuee dans le lexique).
+     *
+     * <p><b>Amendement A3 (s57, K10).</b> Une suite collee a un trait d'union du seul cote ou le
+     * trait d'union est en bord de mot - "re-" devant une virgule, "-eur" apres une espace - est un
+     * affixe cite, pas un mot : le lexique ne porte que des mots, et la soeur qu'il lui trouve
+     * ("re" accent aigu, la note) n'en dit rien. Elle n'est pas rendue. Un trait d'union entre deux lettres
+     * ("peut-etre", "re-ecrire") laisse les deux suites jugees.</p>
      */
     static List<String> motsDe(String valeur) {
         List<String> mots = new ArrayList<>();
-        StringBuilder courant = new StringBuilder();
-        for (int rang = 0; rang < valeur.length(); rang++) {
-            char lettre = valeur.charAt(rang);
-            if (Character.isLetter(lettre)) {
-                courant.append(lettre);
-            } else if (courant.length() > 0) {
-                mots.add(courant.toString());
-                courant.setLength(0);
+        int rang = 0;
+        while (rang < valeur.length()) {
+            if (!Character.isLetter(valeur.charAt(rang))) {
+                rang++;
+                continue;
+            }
+            int debut = rang;
+            while (rang < valeur.length() && Character.isLetter(valeur.charAt(rang))) {
+                rang++;
+            }
+            if (!estUnAffixeCite(valeur, debut, rang)) {
+                mots.add(valeur.substring(debut, rang));
             }
         }
-        if (courant.length() > 0) {
-            mots.add(courant.toString());
-        }
         return mots;
+    }
+
+    private static boolean estUnAffixeCite(String valeur, int debut, int fin) {
+        boolean traitDevantEnBord = debut >= 1 && valeur.charAt(debut - 1) == '-'
+                && (debut == 1 || !Character.isLetter(valeur.charAt(debut - 2)));
+        boolean traitDerriereEnBord = fin < valeur.length() && valeur.charAt(fin) == '-'
+                && (fin + 1 == valeur.length() || !Character.isLetter(valeur.charAt(fin + 1)));
+        return traitDevantEnBord || traitDerriereEnBord;
     }
 
     /**
@@ -328,6 +343,43 @@ class AucunMotServiNeSEcarteDeSonAccentTest {
         assertThat(neDiffereQueParLaCedille("un zero", "un z" + (char) 0x00E9 + "ro")).isFalse();
         assertThat(neDiffereQueParLaCedille(garcon,
                 Normalizer.normalize(garconCedille, Normalizer.Form.NFD))).isTrue();
+    }
+
+    /**
+     * Amendement A3 d'ADR-0065, sur materiau reel : le libelle de competence de
+     * {@code ce1-familles-de-mots.yaml}, ligne 22 a {@code 4004fab7}, copie du referentiel
+     * ({@code FRA-CE1-24}). Il devient servi avec l'entree de catalogue de S57-BR-FRA-CE1-24 et
+     * rougissait sur "re". Chaque mutation sort de la forme d'un affixe cite et doit rester rouge.
+     */
+    @Test
+    void unAffixeCiteAvecSonTraitDUnionNEstPasJugeCommeUnMot() {
+        LexiqueFrancais lexique = LexiqueFrancais.charger();
+        String reel = "Regrouper les mots d'une m" + (char) 0x00EA + "me famille et rep"
+                + (char) 0x00E9 + "rer un pr" + (char) 0x00E9 + "fixe ou un suffixe fr"
+                + (char) 0x00E9 + "quent (re-, d" + (char) 0x00E9 + "-, -eur...).";
+        String origine = "descripteur de ce1-familles-de-mots a 4004fab7, competence";
+
+        assertThat(defautsDe(origine, reel, lexique)).isEmpty();
+        assertThat(defautsDe(origine, reel.replace("(re-,", "(re,"), lexique))
+                .as("sans son trait d'union, re est un mot du texte et il est juge")
+                .singleElement().asString().contains("le mot " + guillemets("re") + " ");
+        assertThat(defautsDe(origine, reel.replace("(re-,", "(re-ecrire,"), lexique))
+                .as("un trait d'union entre deux lettres lie deux mots, il ne cite pas un affixe")
+                .anyMatch(defaut -> defaut.contains("le mot " + guillemets("re") + " "))
+                .anyMatch(defaut -> defaut.contains("le mot " + guillemets("ecrire") + " "));
+    }
+
+    /**
+     * Le prix d'A3, grave comme celui des homographes : un mot reel colle a un trait d'union en bord
+     * de mot est lu comme un affixe et n'est plus juge. Cette clause echoue le jour ou ce trou serait
+     * ferme sans que l'ADR le dise.
+     */
+    @Test
+    void unMotColleAUnTraitDUnionEnBordResteInvisible() {
+        LexiqueFrancais lexique = LexiqueFrancais.charger();
+        assertThat(defautsDe("chaine en memoire", "Il faut ecrire.", lexique)).isNotEmpty();
+        assertThat(defautsDe("chaine en memoire", "Il faut -ecrire.", lexique)).isEmpty();
+        assertThat(defautsDe("chaine en memoire", "Il faut ecrire- vite.", lexique)).isEmpty();
     }
 
     /**
