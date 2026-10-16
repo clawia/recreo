@@ -22660,3 +22660,119 @@ Les codes `CR23` a `CR27` suivent `CR22` (annotation du 2026-10-16 10:45) ; la b
 | `CR25` | `S57-GARDE-C1-VIRGULE-ET-IMBRIQUE` : engagement au palier 3, en tete, avant tout poste qui modifie `recreo.css` | `sofia-sm` (planning) |
 | `CR26` | Forme du correctif (decoupeur partage ou garde seule), effet sur les cinq autres tests, refus ou evaluation du CSS imbrique | `theo-archi` |
 | `CR27` | `Z3` et `Z4` : confirmer que les limites de l'`ADR` restent des limites, ou dire quel critere mesurable il ecrirait ; je l'inscris s'il le dit | `theo-archi` |
+
+
+## Amendement de `PN8` apres le refus du lot `-05` sur `TRV-CE1-6` (`camille-po`, 2026-10-16 16:40, palier 2)
+
+Annotation datee, sur `round-two` a `e8d14ddb`. **Rien au-dessus n'est reecrit** ; ce qui est amende est nomme : `PN8` (sept criteres neufs, `PN8-7` a `PN8-13`, plus `PN8-14`), la valeur attendue de `PN8-6`, et la liste des fichiers que le lot touche (`K2`). Source : `nadia-prof`, `squad/conformite/FICHE-bandit-manchot-pronoms-ce1.md`, bloc de validation, verdict du 2026-10-16 (`REFUSE`), section 5 ; `rejeu-nadia-palier-2-a-lot05.md` (meme branche, `s57-nadia-p2-a2`, commit `e49ca262`, non fusionnee a cette date). **Matrice inchangee** : `FRA-CE1-05` reste `non couvert`. **Aucun prix de lot modifie.**
+
+**Ordre des gestes, dit.** `PN8` demande que la correction soit ajoutee a la story **avant l'ouverture du worktree** du developpeur. Le premier amendement (`36766dae`, 10:48) est arrive apres le commit livre (`b9f1c62f`, 10:25) : la clause n'y etait pas tenue. Ici, cet amendement est commite **avant** que `marc-dev` ouvre le worktree de la correction. Verifiable : `git reflog show --date=iso <branche de marc-dev> | tail -1` doit porter une heure posterieure a `git log -1 --format=%cI <commit de cet amendement>`. Tant que `sofia-sm` n'a pas fusionne, `marc-dev` lit cette annotation par `git show <commit de cet amendement>:docs/backlog/backlog.md`. Si le worktree est ouvert avant, c'est un ecart de calendrier, et le rapport de `marc-dev` le dit avec l'heure.
+
+### Le refus, ses mots
+
+Motif unique, `TRV-CE1-6` (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 2) : *"aucun rôle, aucune activité, aucune émotion distribués par genre"*. Sur les huit items ou un garcon et une fille sont en relation, *"Aucun item ou une fille agit envers un garcon qui recoit, ecoute ou remercie"* (verdict, section 4). Ce qui leve le refus : *"textes exacts"*, section 5 de la fiche. Item 16 : *Hamza* devient *Omar* parce que seul le prenom dit qui est *le garçon* ; seul, cet item aurait ete une reserve non bloquante, il entre dans la correction parce qu'elle rouvre le paquet (verdict, section 4).
+
+### Textes de `nadia-prof`, recopies sans reformulation
+
+Provenance commune : `nadia-prof`, fiche de conformite, bloc de validation, section 5 (*"Ce qui leve le refus : textes exacts"*), 2026-10-16. Numeros comptes depuis 1 sur `- enonce:`, enonces inchanges. `<YAML>` = `adapters/adapter-content/src/main/resources/contenu/ce1-pronoms.yaml`.
+
+| Item | Champ | Texte exact |
+|---|---|---|
+| 3 | `texteSupport` | `Zoé prête son jeu à Paul. Elle ouvre la boîte.` |
+| 3 | `distracteurs` | `["Paul", "son jeu"]` (bonne reponse et indice inchanges) |
+| 9 | `texteSupport` | `Maëlle ouvre la porte à Bastien. Il entre dans la classe.` |
+| 9 | `indice` | `« Il » désigne un mot masculin : cherche-le dans la phrase d'avant.` (bonne reponse et distracteurs inchanges) |
+| 13 | `texteSupport` | `Rose lit un livre à Léo. Elle tourne les pages.` (le reste inchange) |
+| 16 | `texteSupport` | `Mina et Omar regardent un chien. Le garçon lui donne de l'eau.` |
+| 16 | `bonneReponse` | `Omar` (distracteurs et indice inchanges) |
+| 18 | `texteSupport` | `Manon parle à Adrien. La fille lui pose une question.` |
+| 18 | `distracteurs` | `["Adrien", "une question"]` (bonne reponse et indice inchanges) |
+
+**Item 9, l'indice neuf.** Sa raison, dite par `nadia-prof` : l'ancien indice (*"Cherche qui fait l'action dans la phrase d'avant."*) designerait *Maëlle*, qui agit maintenant dans la premiere phrase ; l'indice neuf est de la forme de ceux des items 10 et 13.
+
+**Les espaces.** Meme decision que dans l'amendement de 10:45 (section *"Les espaces"*, `ADR-0060` clause 2, `ADR-0067`) : le paquet porte U+00A0 dans les chevrons et devant `:` et `?`, et les commandes l'exigent. Un seul des neuf textes est concerne, l'indice de l'item 9 (les huit autres ne portent ni chevrons ni `:` ni `?`). Si le `relecteur-pedagogique` retient un autre caractere, ce sont les motifs `\x{A0}` qui s'amendent, pas les textes.
+
+### Criteres `PN8-7` a `PN8-13` : commandes et sorties lues
+
+`<ref>` = le commit a juger. Chaque commande de `PN8-7` a `PN8-11` compte, dans l'item, les cinq lignes que la correction fixe (enonce, `texteSupport`, `bonneReponse`, `distracteurs`, `indice`) : elle rend **5** quand l'item est exactement celui de `nadia-prof`. Elle ne rend pas 0 avant, parce que les lignes que la correction laisse inchangees correspondent deja : le rouge est un chiffre different de 5, comme pour `PN8-4`.
+
+```
+PN8-7   git show <ref>:<YAML> | awk '/^  - enonce:/{n++} n==3' | grep -cP '^  - enonce: "Que désigne «\x{A0}elle\x{A0}» dans le texte\x{A0}\?"$|^    texteSupport: "Zoé prête son jeu à Paul\. Elle ouvre la boîte\."$|^    bonneReponse: "Zoé"$|^    distracteurs: \["Paul", "son jeu"\]$|^    indice: "Cherche qui fait l\x27action dans la phrase d\x27avant\."$'
+
+PN8-8   git show <ref>:<YAML> | awk '/^  - enonce:/{n++} n==9' | grep -cP '^  - enonce: "Que désigne «\x{A0}il\x{A0}» dans le texte\x{A0}\?"$|^    texteSupport: "Maëlle ouvre la porte à Bastien\. Il entre dans la classe\."$|^    bonneReponse: "Bastien"$|^    distracteurs: \["Maëlle", "la classe"\]$|^    indice: "«\x{A0}Il\x{A0}» désigne un mot masculin\x{A0}: cherche-le dans la phrase d\x27avant\."$'
+
+PN8-9   git show <ref>:<YAML> | awk '/^  - enonce:/{n++} n==13' | grep -cP '^  - enonce: "Que désigne «\x{A0}elle\x{A0}» dans le texte\x{A0}\?"$|^    texteSupport: "Rose lit un livre à Léo\. Elle tourne les pages\."$|^    bonneReponse: "Rose"$|^    distracteurs: \["Léo", "un livre"\]$|^    indice: "«\x{A0}Elle\x{A0}» désigne un mot féminin\x{A0}: cherche-le dans la phrase d\x27avant\."$'
+
+PN8-10  git show <ref>:<YAML> | awk '/^  - enonce:/{n++} n==16' | grep -cP '^  - enonce: "Que désigne «\x{A0}le garçon\x{A0}» dans le texte\x{A0}\?"$|^    texteSupport: "Mina et Omar regardent un chien\. Le garçon lui donne de l\x27eau\."$|^    bonneReponse: "Omar"$|^    distracteurs: \["Mina", "un chien"\]$|^    indice: "Cherche qui est un garçon dans la phrase d\x27avant\."$'
+
+PN8-11  git show <ref>:<YAML> | awk '/^  - enonce:/{n++} n==18' | grep -cP '^  - enonce: "Que désigne «\x{A0}la fille\x{A0}» dans le texte\x{A0}\?"$|^    texteSupport: "Manon parle à Adrien\. La fille lui pose une question\."$|^    bonneReponse: "Manon"$|^    distracteurs: \["Adrien", "une question"\]$|^    indice: "Cherche qui est une fille dans la phrase d\x27avant\."$'
+
+PN8-12  git show <ref>:<YAML> | grep -c 'Hamza'
+
+PN8-13a git diff -U0 e8d14ddb997965536d06689a812a998431ca3938 <ref> -- <YAML> | grep -c '^@@'
+
+PN8-13b git diff -U0 e8d14ddb997965536d06689a812a998431ca3938 <ref> -- <YAML> | grep -cE '^[-+] '
+```
+
+| Code | Attendu | `round-two` (`e8d14ddb`) | Version corrigee (mesure ci-dessous) |
+|---|---|---|---|
+| `PN8-7` (item 3) | **5** | 3 | 5 |
+| `PN8-8` (item 9) | **5** | 3 | 5 |
+| `PN8-9` (item 13) | **5** | 4 | 5 |
+| `PN8-10` (item 16) | **5** | 3 | 5 |
+| `PN8-11` (item 18) | **5** | 3 | 5 |
+| `PN8-12` (*Hamza* hors du paquet) | **0** | 2 | 0 |
+| `PN8-13a` (hunks contre la base) | **8** | 0 | 8 |
+| `PN8-13b` (lignes changees contre la base) | **18** | 0 | 18 |
+| `PN8-6` (hunks contre `aa9d703c`, valeur amendee) | **13** | 5 | 13 |
+
+`PN8-7` a `PN8-12` sont **rouges sur `round-two`** et vertes sur la version corrigee. `PN8-13a`, `PN8-13b` et `PN8-6` sont des bornes : `0` (ou 5 pour `PN8-6`) avant parce qu'aucune edition n'est faite, et un chiffre different apres signale une edition que `nadia-prof` n'a pas demandee.
+
+**Le compte.** La correction ajoute 8 hunks : item 3 (`texteSupport` et `distracteurs`, separes par `bonneReponse`), item 9 (`texteSupport` et `indice`), item 13 (`texteSupport`), item 16 (`texteSupport` et `bonneReponse`, **adjacents, donc un seul hunk** en `-U0`), item 18 (`texteSupport` et `distracteurs`). Elle change 9 lignes, soit 18 lignes `-` et `+`. **`PN8-6` change de valeur, pas de commande** : 5 avant la correction (lu sur `round-two` a `e8d14ddb`), **13** sur le commit qui la porte (5 + 8 : aucun des 8 hunks neufs n'est adjacent a l'un des 5 anciens, ce que la mesure confirme). Une version qui rend 5 apres la correction n'a pas la correction ; une version qui rend un autre chiffre que 13 porte une edition non demandee.
+
+**La base est un SHA : `e8d14ddb`** (`round-two` a la date de cette annotation). Son `ce1-pronoms.yaml` est celui de `b9f1c62f` (meme SHA-256, `60a1e5be...159f`). `PN8-13` ne depend donc pas de ce que `round-two` contiendra demain, contrairement a la forme `git merge-base round-two <ref>` du premier amendement, qui rendait 0 apres la fusion (annotation de 15:30, section T2).
+
+**Forme qui reste valable apres fusion.** Si `<fusion>` est un commit de fusion dont le premier parent est `round-two` avant la fusion : `git diff -U0 <fusion>^1 <fusion> -- <YAML> | grep -c '^@@'` doit rendre **8**, et la meme commande avec `grep -cE '^[-+] '` **18**. Precondition, a lancer d'abord : `git rev-list --parents -n1 <fusion> | wc -w` rend **3** (deux parents). Si `sofia-sm` fusionne en avance rapide, cette forme ne s'applique pas et `PN8-13` se lit sur le commit livre par `marc-dev`. `PN8-13` avec `<ref>` = `round-two` apres fusion ne vaut **que tant que** `git log --oneline e8d14ddb997965536d06689a812a998431ca3938..<ref> -- <YAML> | wc -l` rend 1 ; au-dela, un autre commit a touche le fichier et la forme a parents fait foi.
+
+**Mesure de la version corrigee, et ce qu'elle ne prouve pas.** Faite hors depot, dans un depot jetable ou j'ai recupere `e8d14ddb` et `aa9d703c`, commite sur `e8d14ddb` les trois fichiers du dernier paragraphe de la section suivante, puis fusionne ce commit sans avance rapide : les commandes ci-dessus, telles quelles, rendent les valeurs de la colonne de droite sur le commit et sur la fusion, et la forme a parents rend 8 et 18, avec 3 mots a `git rev-list --parents`. Le depot reel n'est pas touche. Trois mutations du commit corrige, pour verifier que les commandes mordent : indice de l'item 9 avec espaces ordinaires, `PN8-8` rend **4** ; une edition hors demande (item 8, un mot ajoute), `PN8-13a` rend **9** et `PN8-13b` **20** ; item 16 non corrige, `PN8-10` rend **3** et `PN8-12` **2**. Cette mesure ne prouve pas que `marc-dev` produira ces textes, ni la propriete que `nadia-prof` a refusee (section *"Ce qu'aucune commande ne verifie"*).
+
+**Clauses inchangees, a rejouer.** `PN8-1` a `PN8-5` (indices des items 10 et 13, item 15, `PN4`) rendent les memes sorties avant et apres : **2, `10 13 `, 0, 5, 0**. `PN8-5` (`PN4`, ses mots : *"jamais la seule proposition a majuscule"*) rend 0 sur la version corrigee : les cinq bonnes reponses modifiees ou reprises (*Zoé*, *Bastien*, *Rose*, *Omar*, *Manon*) ont chacune un distracteur a majuscule (*Paul*, *Maëlle*, *Léo*, *Mina*, *Adrien*).
+
+### Ce que la correction impose au test du paquet : un fait mesure, pas une solution
+
+`PaquetCe1PronomsTest` porte une table de genre des prenoms (`GENRE_DES_PRENOMS`) et un jeu fautif de `TRV-CE1-6` (`contreexemple/PaquetCe1PronomsTest/contenu/ce1-pronoms-fautif.yaml`) qui contiennent tous deux *Hamza*. **Mesure**, sur une copie de `e8d14ddb` hors depot, commande `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test -Dtest=PaquetCe1PronomsTest -Dsurefire.failIfNoSpecifiedTests=false` (perimetre `adapter-content` et ses amonts, avec `-am` ; **ce n'est pas la porte technique**) :
+
+| Etat de la copie | Tests | Echecs |
+|---|---|---|
+| `e8d14ddb` tel quel | 37 | 0 |
+| paquet corrige seul | 37 | **2** : `trv6LesPrenomsDistinctsSontEquilibresEnGenreAUnPres`, `trv6ChaquePrenomDeLaTableDeGenreFigureDansUnTexte` |
+| paquet corrige, table de genre qui nomme *Omar* au lieu de *Hamza* | 37 | **1** : `leJeuFautifCommiteEstRefuseSurSesPrenomsDesequilibres`, refuse pour une autre raison que celle qu'il atteste (message sur *Hamza* hors des listes, au lieu de *"féminins distincts"*) |
+| les deux, plus le jeu fautif qui nomme *Omar* au lieu de *Hamza* | 37 | **0** |
+
+**Critere `PN8-14`** : sur `<ref>`, la commande de mesure ci-dessus rend `Tests run: 37, Failures: 0, Errors: 0` et `BUILD SUCCESS`. Elle est verte sur `round-two` seul : c'est une clause, qui devient rouge des que le paquet corrige arrive sans le reste (2 puis 1 echec). Je ne dis pas comment le developpeur tient les trois fichiers ensemble : la forme de la table et le prenom du jeu fautif sont les siens. **`K2` est tenu** : les trois fichiers sont dans sa liste (`ce1-pronoms.yaml` parce que `nadia-prof` decide une correction, `PaquetCe1PronomsTest.java`, le dossier de fixtures `contreexemple/PaquetCe1PronomsTest/`), et `git diff-tree --no-commit-id --name-only -r <commit>` suivi du `grep -vE` de `K2` rend 0 ligne sur le commit de la mesure. Le test garde l'equilibre de la table a un pres, **pas ce que les prenoms font**.
+
+### Ce qu'aucune commande ne verifie
+
+- **La propriete refusee elle-meme**, `TRV-CE1-6` : *"aucun rôle, aucune activité, aucune émotion distribués par genre"*. Aucun test ne la garde (rapport de `marc-dev`, section 3, `K8` : *"les roles par genre"* est non garde ; fiche, section *"Ce dont `nadia-prof` reste la seule garde"*). Je ne l'exprime pas en compteur : un compte de prenoms par role dirait autre chose que son motif. `PN8-7` a `PN8-11` verifient que les **textes sont ceux qu'elle a ecrits**, ce que son verdict dit lever le refus ; que la distribution des roles soit levee, c'est sa lecture au rejeu. Sa lecture de ce qui tient apres correction, pour memoire (fiche, section 5) : la fille agit envers le garcon sur 3, 9, 13 et 18, le garcon envers la fille sur 10, 15 et 16, l'item 19 reste mixte.
+- `PRN-CE1-2` (reste a 10 selon elle), l'exactitude de chaque referent, l'orthotypographie des neuf textes : a `nadia-prof` et au `relecteur-pedagogique`.
+
+### Le rejeu, et ce que cet amendement ne chiffre pas
+
+`nadia-prof` ecrit le rejeu a **0,5** (fiche, section 5 : *"0,5 (des textes changent), au palier qui l'engage"* ; elle rejoue les 20 items, le pli compris). La marge de l'instance A est **0,5**, nommee et allouee a aucun poste (`planning.md`, amendement du 2026-10-15 20:56, section 2). **La composition ne change pas.** Je ne chiffre rien d'autre et je ne dis pas quel poste ni quel palier porte ce rejeu : c'est a `planning.md`. Aucun prix de lot n'est modifie.
+
+### Recommandation non reprise ici : l'indice de l'item 19
+
+`nadia-prof` recommande, sans bloquer, de remplacer l'indice de l'item 19 (*"Demande-toi : qui peut faire cette action ?"*, qui ne departage pas apres une erreur sur *Eva*) par celui des items 6 et 14 (*"Relis la phrase d'avant pour trouver qui agit."*), et laisse la decision a `camille-po` (verdict, section 6). **Cet amendement ne la prend pas** : la demande de `sofia-sm` porte sur les cinq items refuses. Elle est posee en `CR29` et se tranche **avant l'ouverture du worktree**, par un amendement qui ajoute un hunk : `PN8-13a` passerait a 9, `PN8-13b` a 20, `PN8-6` a 14. Sans amendement, elle est declinee, et le motif ecrit est celui-ci : cet item est tenu et ferme par `nadia-prof` (section 6, *"Aucune correction"*), et l'enfant avance de toute facon.
+
+### Routage de cette annotation
+
+Les codes `CR28` a `CR31` suivent `CR27` (annotation du 2026-10-16 15:30) ; une branche non fusionnee peut en avoir pris, la collision se resout a la fusion.
+
+| Code | Quoi | A qui |
+|---|---|---|
+| `CR28` | `PN8-7` a `PN8-14` : test des criteres, rouge sur `round-two` pour `PN8-7` a `PN8-12`, vert sur le commit livre ; les trois mutations de la section de mesure a rejouer | `yanis-qa` |
+| `CR29` | Recommandation de l'item 19, prise ou declinee, avant l'ouverture du worktree ; ouverture du worktree **apres** le commit de cet amendement | `sofia-sm` |
+| `CR30` | Orthotypographie des neuf textes avant le rejeu (demande de `nadia-prof`) ; U+00A0 de l'indice de l'item 9 | `relecteur-pedagogique` |
+| `CR31` | Ecrire la correction : paquet, table de genre, jeu fautif de `TRV-CE1-6` ; lancer `PN8-7` a `PN8-14` sur son commit et nommer les jobs de `ci.yml` qu'il a lances | `marc-dev` |
+
+**Ce qui reste a faire de mon cote, non fait ici** : la ligne de statut en tete de `FICHE-bandit-manchot-pronoms-ce1.md` (`nadia-prof` la route a `camille-po`, rejeu, section 4). La fiche porte son verdict sur la branche `s57-nadia-p2-a2`, non fusionnee : la toucher ici ferait un conflit. Je la mets a jour apres cette fusion.
