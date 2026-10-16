@@ -1,5 +1,11 @@
 # [Sprint s57] Rapport de developpeuse - palier 2, poste p2-4, `S57-BR-FRA-CE1-24` avec `S57-FRA-FAMILLES-LIVRE`
 
+- **Correction datee du 2026-10-16 (casquette developpeuse, apres le rapport qualite de `yanis-qa`, commit `54a606d8`, section 6)**. Le corps de ce rapport n'est pas reecrit ; quatre de ses phrases sont corrigees ici, sans changement de code :
+  - `E1` : *"non livrable en l'etat"* et *"rouge sur `K10`"* decrivent l'arbre `e918f43e` et sont **vrais a `e918f43e`, faux a la tete `6b70d7e5`**. `K10` est leve par l'amendement `A3` d'`ADR-0065` (`theo-archi`, 2026-10-16, present dans la branche par la fusion de `edcd3de9`) ; `yanis-qa` mesure sur `6b70d7e5` un reacteur complet vert (rapport qualite, section 5). Le sujet du commit `1febd011` (*"NON LIVRE : rouge sur K10"*) reste ce qu'il etait ce jour-la.
+  - `E2` : la ligne `FM5` du tableau `FM1` a `FM6` (*"sans objet"*) est fausse depuis l'amendement de `camille-po` du 2026-10-16 10:45 : **`FM5` s'applique**, ses six commandes (`FM5-1` a `FM5-6`) sont rejouees vertes par `yanis-qa` sur `6b70d7e5` (section 1 de son rapport).
+  - `E3` : le texte de l'item 12 n'est garde par aucun test Java (`yanis-qa`, mutation `M5` : *chaton* remplace par *chatte*, verte dans le reacteur). **Non garde en Java : `FM5-2` et `FM5-3` le gardent**, par commande. Aucun test n'est ajoute : le perimetre de `FM5` ne demande que des commandes, et un test d'egalite copierait le texte de `nadia-prof` en un second exemplaire a tenir.
+  - `E4` : l'amendement de `FM3` (le mot *préfixe* du libelle `descripteur.competence` n'est pas servi par les gabarits, mais est inventorie comme chaine exposee) est attendu de `camille-po` et de `theo-archi`. **Il n'est pas ecrit ici** ; il est route dans l'amendement de planning de `sofia-sm`.
+
 - **Casquette** : developpeuse, declaree au debut de la tache, apres la casquette Scrum Master (fusion `4004fab7`, geste distinct). Je n'arbitre aucun obstacle ici : celui de `K10` est route a `theo-archi`.
 - **Date** : 2026-10-16. **Arbre** : branche `s57-sofia-fra-ce1-24`, worktree `../recreo-s57-sofia-fra-ce1-24`, coupee de `round-two` a `4004fab7`. `bash outils/verifier-lignee.sh` sort 0.
 - **Commit du lot** : `1febd011` (code, contenu et tests dans le meme commit). **Non fusionne, non pousse, et rouge sur `K10` : non livrable en l'etat.**
