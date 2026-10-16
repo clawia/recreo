@@ -14,7 +14,8 @@
   ligne 1033, mention exigee d'avance : *"document textuel et tableau seuls ; le schema et le
   graphique restent non couverts"*. Referentiel :
   `squad/programme/sciences-et-technologie/competences-cm1.md`, ligne `SCI-CM1-20`.
-- **Derniere mise a jour** : 2026-10-14 (rejeu de `S54-OBS-SCI-CONSIGNE`, s57, bloc en fin de fiche).
+- **Derniere mise a jour** : 2026-10-16 (rejeu de `S57-OBS-SCI-N1-N2`, s57, palier 2, bloc en fin de fiche).
+  Rejeu precedent : 2026-10-14 (`S54-OBS-SCI-CONSIGNE`).
 
 ---
 
@@ -160,3 +161,65 @@ manche ; ce n'est pas le cas de `RDO-CP-R2`, ou *"celle-ci"* designe une image p
 **Tarif consomme** : rejeu 0,25 (poste 6, instance B). Marge de rejeu de B intacte, 0,75 non affectes intacts.
 
 **Signe** : `nadia-prof`, s57, palier 1, instance B, 2026-10-14.
+
+---
+
+### Rejeu du 2026-10-16 (`nadia-prof`, s57, palier 2, instance B) : `S57-OBS-SCI-N1-N2`, **N1 pris en compte : oui ; N2 pris en compte : oui**
+
+**Objet joue** : `round-two` a `e8d14ddb`, qui contient `69dd7631` (`marc-dev`, fusion `9cbf3571`) : `git merge-base
+--is-ancestor` sort 0 pour les deux. Le commit ne touche que le paquet, 4 lignes ajoutees et 4 retirees (`git show --stat`).
+Le statut global de cette fiche ne change pas : **VALIDE**, `SCI-CM1-20` reste `couvert-valide` avec sa mention, **non
+rouverte**. Aucune ligne de matrice ne bouge.
+
+**Jar** : `bash outils/mvn-jdk21.sh -B clean package -DskipTests` dans le worktree `s57-nadia-p2-b`, `BUILD SUCCESS` ;
+port 18513 libre avant, *"Tomcat started on port 18513"*, Java 21.0.10, arrete par son PID seul. Chrome sans interface,
+profil dans mon dossier de poste `s57-p2-nadia-prof-b`, 744 x 551, arrete par son PID. **Done technique** : je ne l'ai pas
+relance ; je m'appuie sur les quatre jobs de `ci.yml` que `marc-dev` nomme avec leur sortie pour p2-5
+(`rapport-marc-dev-palier-2.md`, section 4 : `build` 2597 tests 0 echec, `chemins`, `prefixes`, `outils`). La CI distante
+n'est lue par personne.
+
+**Joue** : deux parties de dix manches, les 12 items vus (de 1 a 2 fois chacun). Sur les trois items touches (9, 11, 12),
+une erreur, puis une deuxieme, puis la bonne reponse ; ailleurs, la bonne reponse. Captures regardees a l'ecran, pas
+seulement le DOM : la manche avant reponse, l'enonce et l'indice agrandis deux fois, la page apres deux erreurs, l'ecran de
+fin.
+
+| Critere | Ce que j'ai vu a l'ecran | Constat |
+|---|---|---|
+| 1. `N1` | Item 12, deux lignes : *"D'après ce texte, que permet ce transport de pollen"* / *"à de nombreuses plantes ?"*. Le point d'interrogation ne passe pas seul a la ligne. Bonne reponse et distracteurs servis : *"de produire des fruits et des graines"*, *"de pousser plus vite"*, *"de changer de couleur"*, inchanges | Texte servi identique a ma recommandation (`reponse-nadia-q-palier-1.md` 4.1), caractere par caractere, U+00A0 devant `?`. **Tenu** |
+| 2. `N2` | Item 9 : *"Relis la dernière phrase du texte, après les"* / *"mots « ce qui permet »."* ; item 11 : *"... après le mot"* / *"« aussi »."* ; item 12 : *"... après le mot"* / *"« permet »."*. Les chevrons ne se separent jamais du mot cite au retour a la ligne ; le point final reste apres le chevron fermant | Les trois indices servis egaux au fichier (comparaison par mon script) et a mes textes (4.2). **Tenu** |
+| 3. Aucun indice ne contient une proposition | Relu sur les trois items a l'ecran, propositions servies a cote | **Tenu** |
+| 4 et 5 | `git show --stat 69dd7631` : un fichier, 4 et 4 ; tests : rapport de `marc-dev` | Lu, pas rejoue |
+
+**Ce que l'enfant de CM1 lit maintenant.** La question de l'item 12 commence par *"que permet"*, comme l'item 9 : il ne
+peut plus la lire d'abord comme une affirmation. Dans les indices, *"après le mot « aussi »"* ne se lit plus *"apres le mot,
+aussi"*, et *"« ce qui permet »"* ne se lit plus comme le debut d'une relative : le mot a chercher dans le texte est
+designe. Chacun des trois mots cites figure une fois dans la phrase designee (*"ce qui permet"* dans la troisieme phrase du
+texte sur l'atmosphere, *"aussi"* dans la deuxieme du texte sur les abeilles, *"permet"* dans la troisieme). Exactitude :
+rien n'a change dans les textes, les reponses ni les distracteurs ; ma section 3 vaut toujours.
+
+**Apres deux erreurs** : les deux distracteurs sont barres, seule la bonne reponse reste a appuyer, l'indice reste
+affiche. L'enfant bloque avance. **Ecran de fin** : *"Tu as trouvé, tout seul : 8"*, *"Tu as joué toutes les questions :
+10"*, *"C'est fini !"* ; rien de neuf.
+
+**Observation datee du 2026-10-16, sans reserve ouverte : l'indice sous le pli.** A 744 x 551, apres une erreur, le bas de
+`.indice` est a 690 px sur l'item 12, a 616 ou 690 px sur l'item 9 selon l'ordre de tirage des propositions (deux ou trois
+rangees de boutons), a 542 px sur l'item 11. **Ce n'est pas un effet de `N1` ni de `N2`** : sur la meme manche servie, j'ai
+remplace dans la page l'indice (et l'enonce, sur l'item 12) par le texte d'avant `69dd7631` ; les cotes sont identiques au
+pixel (indice de 80 px de haut, enonce de 96 px, dans les deux cas). Le releve `releves-s57/p2-echantillon.json`
+(`ines-design`) donne les memes chiffres pour la forme commune. **Pourquoi je n'en fais pas une reserve ici** : la levee de
+cette famille se juge sur tous les items du paquet (arbitrage du palier 2, 6.3), et je n'en ai mesure que trois, a une
+seule largeur ; et ce rejeu a pour barre `N1` et `N2`, que je ne deplace pas. Si je l'ouvre, ce sera par un ecrit separe,
+avec la mesure des 12 items et l'allocation de son identifiant.
+
+**Ce dont je reste la seule garde, pour ce jeu** : qu'un mot cite dans un indice ou un enonce soit entre chevrons et figure
+dans la phrase designee (aucun test n'epingle ces textes, criteres 4 et 5 de la story) ; la position de `.indice` sous le
+pli (aucun test ne la tient).
+
+**Non joue** : la revelation, qui vient au troisieme essai faux (`BanditManchotSession`, `ESSAIS_AVANT_REVELATION = 3`) ;
+apres deux erreurs j'ai appuye sur la bonne reponse. `N1` et `N2` n'y changent que l'enonce et l'indice deja lus ; les
+largeurs autres que 744 ; l'orthographe et la ponctuation, que je n'ai pas controlees moi-meme
+(`relecteur-pedagogique`, `releve-relecteur-palier-2.md` 3.1 : correct, U+00A0).
+
+**Tarif consomme** : rejeu 0,25 (p2-5, instance B).
+
+**Signe** : `nadia-prof`, s57, palier 2, instance B, 2026-10-16.
