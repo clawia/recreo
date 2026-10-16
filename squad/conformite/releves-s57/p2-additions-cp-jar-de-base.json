@@ -1,0 +1,6578 @@
+{
+ "methode": {
+  "jeu": "bandit-manchot-additions-cp",
+  "largeur": 744,
+  "hauteur": 551,
+  "mesure": "bas de .indice, getBoundingClientRect().bottom + scrollY, apres une erreur",
+  "ensembleDeriveDe": "sommeMaximale de cp-additions-jusqu-a-10.yaml",
+  "sommeMaximale": 10
+ },
+ "complet": true,
+ "parties": 53,
+ "manches": 530,
+ "ensemble": [
+  "0 + 1",
+  "0 + 2",
+  "0 + 3",
+  "0 + 4",
+  "0 + 5",
+  "0 + 6",
+  "0 + 7",
+  "0 + 8",
+  "0 + 9",
+  "0 + 10",
+  "1 + 0",
+  "1 + 1",
+  "1 + 2",
+  "1 + 3",
+  "1 + 4",
+  "1 + 5",
+  "1 + 6",
+  "1 + 7",
+  "1 + 8",
+  "1 + 9",
+  "2 + 0",
+  "2 + 1",
+  "2 + 2",
+  "2 + 3",
+  "2 + 4",
+  "2 + 5",
+  "2 + 6",
+  "2 + 7",
+  "2 + 8",
+  "3 + 0",
+  "3 + 1",
+  "3 + 2",
+  "3 + 3",
+  "3 + 4",
+  "3 + 5",
+  "3 + 6",
+  "3 + 7",
+  "4 + 0",
+  "4 + 1",
+  "4 + 2",
+  "4 + 3",
+  "4 + 4",
+  "4 + 5",
+  "4 + 6",
+  "5 + 0",
+  "5 + 1",
+  "5 + 2",
+  "5 + 3",
+  "5 + 4",
+  "5 + 5",
+  "6 + 0",
+  "6 + 1",
+  "6 + 2",
+  "6 + 3",
+  "6 + 4",
+  "7 + 0",
+  "7 + 1",
+  "7 + 2",
+  "7 + 3",
+  "8 + 0",
+  "8 + 1",
+  "8 + 2",
+  "9 + 0",
+  "9 + 1",
+  "10 + 0"
+ ],
+ "nonMesures": [],
+ "horsEnsemble": [],
+ "enoncesAvecPlusieursCotes": [],
+ "coteMin": 486,
+ "coteMax": 486,
+ "anomalies": [],
+ "enonces": {
+  "0 + 1": [
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "1",
+     "3"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "0",
+     "2",
+     "1"
+    ],
+    "erronee": "0",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "2",
+     "1"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "0",
+     "1"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "0 + 2": [
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "2",
+     "3"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "0",
+     "1",
+     "2"
+    ],
+    "erronee": "0",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "0 + 3": [
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "3",
+     "2"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "0 + 4": [
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "4",
+     "2"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "5",
+     "4"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "3",
+     "5"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "5",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "4",
+     "2"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "0 + 5": [
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "4"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "3"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "0 + 6": [
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "5"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "0 + 7": [
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "8",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "6"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "0 + 8": [
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "9"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "0 + 9": [
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "10",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "0 + 10": [
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "1 + 0": [
+   {
+    "cote": 486,
+    "propositions": [
+     "1",
+     "3",
+     "2"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "3",
+     "1"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "1",
+     "2",
+     "0"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "1 + 1": [
+   {
+    "cote": 486,
+    "propositions": [
+     "0",
+     "1",
+     "2"
+    ],
+    "erronee": "0",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "3",
+     "4"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "1",
+     "3",
+     "2"
+    ],
+    "erronee": "1",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "1",
+     "3",
+     "2"
+    ],
+    "erronee": "1",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "1",
+     "0",
+     "2"
+    ],
+    "erronee": "1",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "1",
+     "3"
+    ],
+    "erronee": "1",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "1 + 2": [
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "3",
+     "2"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "2",
+     "1"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "1",
+     "3",
+     "2"
+    ],
+    "erronee": "1",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "1",
+     "3",
+     "2"
+    ],
+    "erronee": "1",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "3"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "1",
+     "2",
+     "3"
+    ],
+    "erronee": "1",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "3",
+     "4"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "3",
+     "1"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "1",
+     "2"
+    ],
+    "erronee": "1",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "3",
+     "5"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "1",
+     "2",
+     "3"
+    ],
+    "erronee": "1",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "5",
+     "4"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "5",
+     "4"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "1 + 3": [
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "6",
+     "5"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "2",
+     "3"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "4"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "4",
+     "5"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "6",
+     "5"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "2",
+     "3"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "3",
+     "2"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "2",
+     "4"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "3",
+     "4"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "2",
+     "3"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "5",
+     "3"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "5",
+     "4"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "3",
+     "5"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "2",
+     "3"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "1 + 4": [
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "3"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "4",
+     "5"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "3"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "3"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "6"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "4"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "5",
+     "6"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "4"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "7",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "1 + 5": [
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "4"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "7"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "4",
+     "5"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "7"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "5"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "7",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "4",
+     "5"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "1 + 6": [
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "8",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "8"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "6"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "8",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "5"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "6"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "5"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "1 + 7": [
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "7",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "8",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "9"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "1 + 8": [
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "11"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "8"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "9",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "10",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "11"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "11"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "1 + 9": [
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "12",
+     "10",
+     "11"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "12",
+     "10",
+     "11"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "11"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "11"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "9",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "11"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "2 + 0": [
+   {
+    "cote": 486,
+    "propositions": [
+     "0",
+     "1",
+     "2"
+    ],
+    "erronee": "0",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "2 + 1": [
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "2",
+     "1"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "3",
+     "2"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "5",
+     "4"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "1",
+     "2",
+     "3"
+    ],
+    "erronee": "1",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "3",
+     "4"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "5",
+     "4"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "1",
+     "2",
+     "3"
+    ],
+    "erronee": "1",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "3",
+     "4"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "1",
+     "2",
+     "3"
+    ],
+    "erronee": "1",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "5",
+     "3"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "4",
+     "2"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "2 + 2": [
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "3",
+     "4"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "5",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "5",
+     "3"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "4",
+     "2"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "3",
+     "5"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "3",
+     "2"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "5",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "4",
+     "5"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "3",
+     "4"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "3",
+     "4"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "3"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "2 + 3": [
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "4"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "6",
+     "5"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "5"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "6"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "5"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "5",
+     "6"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "5"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "5",
+     "6"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "4",
+     "5"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "2 + 4": [
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "7"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "7"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "5"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "7"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "6",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "2 + 5": [
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "7"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "6",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "7",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "8"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "5"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "7",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "5"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "2 + 6": [
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "8",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "8"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "9"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "2 + 7": [
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "8"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "11",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "8"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "11"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "8"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "7",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "11"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "11"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "2 + 8": [
+   {
+    "cote": 486,
+    "propositions": [
+     "12",
+     "10",
+     "11"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "11",
+     "12"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "11"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "11",
+     "12"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "9",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "12",
+     "11",
+     "10"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "11"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "9",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "12",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "11",
+     "9"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "11"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "3 + 0": [
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "3",
+     "4"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "3",
+     "1"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "4",
+     "3"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "3 + 1": [
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "3",
+     "4"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "4"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "4"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "3",
+     "2"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "4"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "3",
+     "2"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "3",
+     "5"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "4",
+     "2"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "3",
+     "2"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "5",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "3 + 2": [
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "5",
+     "4"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "6"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "4",
+     "5"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "6"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "7",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "6"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "4"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "4"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "5",
+     "3"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "4"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "5",
+     "6"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "3 + 3": [
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "7",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "6",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "4"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "7"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "5"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "6"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "6",
+     "5"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "3 + 4": [
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "8"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "6"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "8",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "5"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "3 + 5": [
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "8",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "8"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "8"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "7",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "10",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "6",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "3 + 6": [
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "11"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "9",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "10",
+     "9"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "8"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "11",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "11",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "11",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "7",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "3 + 7": [
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "9",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "8",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "10",
+     "12"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "12",
+     "11",
+     "10"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "11",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "10",
+     "12"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "12",
+     "10",
+     "11"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "12",
+     "11",
+     "10"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "12",
+     "11",
+     "10"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "10",
+     "12"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "4 + 0": [
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "2",
+     "4"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "2",
+     "3",
+     "4"
+    ],
+    "erronee": "2",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "4 + 1": [
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "3"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "4"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "3",
+     "5",
+     "4"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "6",
+     "5"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "4",
+     "5"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "3",
+     "4"
+    ],
+    "erronee": "3",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "4"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "7",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "4 + 2": [
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "7",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "7"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "6",
+     "5"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "4"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "4"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "7"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "8",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "4 + 3": [
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "6",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "5"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "7",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "5"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "7",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "8"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "6",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "7"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "6"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "4 + 4": [
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "9"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "6",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "7",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "9"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "9"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "8"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "6",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "4 + 5": [
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "11"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "8",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "7",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "8"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "9",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "8",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "9",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "4 + 6": [
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "11"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "11"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "10",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "12",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "11"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "11",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "12",
+     "11"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "5 + 0": [
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "4",
+     "3"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "6",
+     "5"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "4",
+     "5",
+     "3"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "5 + 1": [
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "7"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "5",
+     "7"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "8",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "5"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "5"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "7"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "5"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "6",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "5"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "5 + 2": [
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "7",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "6"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "8"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "8"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "6"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "7",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "5 + 3": [
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "6",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "8",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "9"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "10",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "5 + 4": [
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "11",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "10",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "11"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "9"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "8",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "8"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "11"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "8",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "11"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "8",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "8",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "8"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "5 + 5": [
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "10",
+     "9"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "10",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "10",
+     "12"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "11",
+     "9"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "11"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "11",
+     "12"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "11",
+     "12"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "6 + 0": [
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "8",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "4",
+     "5"
+    ],
+    "erronee": "4",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "5",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "6 + 1": [
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "7",
+     "6"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "6"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "6"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "5"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "8",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "6 + 2": [
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "7",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "8"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "8",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "9"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "6",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "8"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "9"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "6 + 3": [
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "11",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "11"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "11"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "6 + 4": [
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "10",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "12",
+     "10",
+     "11"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "11"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "10",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "11",
+     "9"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "11"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "10",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "7 + 0": [
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "7",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "8"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "5",
+     "6",
+     "7"
+    ],
+    "erronee": "5",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "7 + 1": [
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "6",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "6",
+     "7"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "9"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "9"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "6",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "8"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "10",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "7 + 2": [
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "9",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "10",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "10",
+     "9"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "8",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "8"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "7 + 3": [
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "11",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "11",
+     "9"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "11",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "10",
+     "9"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "10",
+     "12"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "10",
+     "12"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "8 + 0": [
+   {
+    "cote": 486,
+    "propositions": [
+     "6",
+     "7",
+     "8"
+    ],
+    "erronee": "6",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "6"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "7"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "8 + 1": [
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "9"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "8",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "7",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "9",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "8"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "11",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "8",
+     "9"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "11",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "8 + 2": [
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "10",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "11",
+     "12"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "11"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "8",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "12",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "12",
+     "11",
+     "10"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "9 + 0": [
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "10",
+     "9"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "11",
+     "9"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "8"
+    ],
+    "erronee": "10",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "7",
+     "9",
+     "8"
+    ],
+    "erronee": "7",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "7"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "9 + 1": [
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "12",
+     "11"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "12",
+     "11",
+     "10"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "12",
+     "10",
+     "11"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "8",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "12",
+     "10",
+     "11"
+    ],
+    "erronee": "12",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "9",
+     "11",
+     "10"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ],
+  "10 + 0": [
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "9",
+     "10"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "10",
+     "9",
+     "8"
+    ],
+    "erronee": "9",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "8",
+     "10",
+     "9"
+    ],
+    "erronee": "8",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "12",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   },
+   {
+    "cote": 486,
+    "propositions": [
+     "11",
+     "9",
+     "10"
+    ],
+    "erronee": "11",
+    "innerW": 744,
+    "innerH": 551,
+    "clientW": 744
+   }
+  ]
+ }
+}
