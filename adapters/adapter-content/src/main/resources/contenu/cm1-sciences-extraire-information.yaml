@@ -109,7 +109,7 @@ items:
     texteSupport: "Autour de la Terre se trouve une fine couche d'air : l'atmosphère. Elle protège les êtres vivants des rayons dangereux du Soleil. Elle retient aussi la chaleur, ce qui permet à l'eau de rester liquide à la surface de la planète."
     bonneReponse: "à l'eau de rester liquide"
     distracteurs: ["à l'eau de geler", "à l'air de se réchauffer"]
-    indice: "Relis la dernière phrase du texte, après les mots ce qui permet."
+    indice: "Relis la dernière phrase du texte, après les mots « ce qui permet »."
   - enonce: "D'après ce texte, que récoltent les abeilles en butinant les fleurs ?"
     texteSupport: "Les abeilles butinent les fleurs pour récolter du nectar. En passant de fleur en fleur, elles transportent aussi du pollen. Ce transport de pollen permet à de nombreuses plantes de produire des fruits et des graines."
     bonneReponse: "du nectar"
@@ -119,9 +119,9 @@ items:
     texteSupport: "Les abeilles butinent les fleurs pour récolter du nectar. En passant de fleur en fleur, elles transportent aussi du pollen. Ce transport de pollen permet à de nombreuses plantes de produire des fruits et des graines."
     bonneReponse: "du pollen"
     distracteurs: ["de la cire", "des épines"]
-    indice: "Relis la deuxième phrase du texte, après le mot aussi."
-  - enonce: "D'après ce texte, que ce transport de pollen permet-il à de nombreuses plantes ?"
+    indice: "Relis la deuxième phrase du texte, après le mot « aussi »."
+  - enonce: "D'après ce texte, que permet ce transport de pollen à de nombreuses plantes ?"
     texteSupport: "Les abeilles butinent les fleurs pour récolter du nectar. En passant de fleur en fleur, elles transportent aussi du pollen. Ce transport de pollen permet à de nombreuses plantes de produire des fruits et des graines."
     bonneReponse: "de produire des fruits et des graines"
     distracteurs: ["de pousser plus vite", "de changer de couleur"]
-    indice: "Relis la dernière phrase du texte, après le mot permet."
+    indice: "Relis la dernière phrase du texte, après le mot « permet »."
