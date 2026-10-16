@@ -107,8 +107,8 @@ items:
   # ordre
   - enonce: "Que fait Inès en dernier ?"
     texteSupport: "Inès enfile ses bottes. Elle sort dehors. Puis elle saute dans une flaque."
-    bonneReponse: "elle saute dans une flaque"
-    distracteurs: ["Inès enfile ses bottes", "elle sort dehors"]
+    bonneReponse: "saute dans une flaque"
+    distracteurs: ["enfile ses bottes", "sort dehors"]
     indice: "Relis le texte jusqu'à la fin."
   # ordre
   - enonce: "Que fait Sara avant de couper la pomme ?"
@@ -131,14 +131,14 @@ items:
   # ordre
   - enonce: "Que fait Ibrahim en dernier ?"
     texteSupport: "Ibrahim attend le bus. Le bus arrive et il monte. Il s'assoit près de la fenêtre."
-    bonneReponse: "il s'assoit près de la fenêtre"
-    distracteurs: ["Ibrahim attend le bus", "le bus arrive"]
+    bonneReponse: "s'assoit près de la fenêtre"
+    distracteurs: ["attend le bus", "monte"]
     indice: "Relis la dernière phrase."
   # ordre
   - enonce: "Que se passe-t-il à la fin ?"
     texteSupport: "Chloé plante une graine. Elle l'arrose chaque jour. Un jour, une fleur pousse."
     bonneReponse: "une fleur pousse"
-    distracteurs: ["Chloé plante une graine", "elle l'arrose chaque jour"]
+    distracteurs: ["Chloé plante une graine", "elle l'arrose"]
     indice: "Cherche ce qui arrive en dernier."
   # ordre
   - enonce: "Qui passe en dernier ?"
