@@ -460,3 +460,98 @@ le garde-fou modifierait aussi cette clause. Elle serait decorative.
 - Commit suivant : `.github/scripts/verifier-garde-fou-accent.sh`, son test, deux etapes du job
   `prefixes` de `.github/workflows/ci.yml`, et ce paragraphe. Aucun fichier Java ; compte ArchUnit
   inchange.
+
+## Amendement du 2026-10-16 (s57, `theo-archi`) - A3, un affixe cite avec son trait d'union n'est pas un mot
+
+Le texte ci-dessus est inchange, A1 et A2 compris. Cet amendement repond au besoin route par `K10` (A2,
+point 2) : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/rapport-sofia-dev-palier-2.md`, lot
+`S57-BR-FRA-CE1-24`, commit `1febd011`. Il est ecrit sur un worktree issu de `round-two` a `4004fab7`
+(A2, point 3) ; aucune autre branche ne modifie le garde-fou (`git diff --name-only round-two...<branche>`
+sur ce fichier et sur le test, pour chaque branche locale `*theo*` : vide).
+
+### Contexte
+
+Le lot branche `ce1-familles-de-mots` au catalogue. Son `descripteur.competence`, copie mot pour mot de la
+ligne `FRA-CE1-24` du referentiel, devient servi : *"... repérer un préfixe ou un suffixe fréquent (re-,
+dé-, -eur...)."*. Le critere le refuse : `motsDe` coupe au trait d'union, `re` n'est pas une forme du
+lexique, `ré` (la note) en est une du meme squelette. **Le texte est juste** : `re-` est la graphie du
+prefixe. **C'est le critere qui se trompe d'objet** : il juge un affixe comme un mot, sur un lexique qui ne
+porte que des mots. `dé-` et `-eur` passaient par hasard (`dé` est un mot, `eur` n'a pas de soeur).
+
+**Mesure, sur materiau reel**, copie de l'arbre de `1febd011` (`git archive`), `bash outils/mvn-jdk21.sh
+-B -pl adapters/adapter-content -am test`, perimetre `adapter-content` et ses amonts, JDK 21.0.10 :
+`BUILD FAILURE`, 1591 tests, **1 echec, un seul defaut** (*"le mot "re" n'est pas une forme du
+francais"*). Le meme arbre avec le test de cet amendement : `BUILD SUCCESS`, 1593 tests, 0 echec. Sur
+`round-two` (`4004fab7`), le garde-fou etait vert avant et reste vert apres : **A3 ne change aujourd'hui
+qu'un verdict, celui de `re`**.
+
+### Decision (A3)
+
+1. **Une suite de lettres collee a un trait d'union en bord de mot est un affixe cite, pas un mot**, et
+   `motsDe` ne la rend pas. Bord de mot : le trait d'union precede la suite et n'est pas lui-meme precede
+   d'une lettre (`-eur`), ou il la suit et n'est pas suivi d'une lettre (`re-`, `dé-`). L'admission se
+   derive de la forme du texte, jamais d'une liste (A2, point 3).
+2. **Un trait d'union entre deux lettres lie deux mots, qui restent juges** (`peut-être`, `re-ecrire`).
+3. **L'affixe cite est declare non garde**, comme la classe des homographes : son accentuation reste a la
+   lecture de `nadia-prof`. Le lexique ne pouvait pas la juger de toute facon : il ne porte pas d'affixes.
+4. Le libelle du paquet n'est pas reecrit, et `camille-po` comme `nadia-prof` n'ont rien a trancher pour
+   ce lot.
+
+### Regle executable
+
+**Ce n'est pas une regle ArchUnit**, pour le motif ecrit en tete de cet `ADR`. Compte inchange : 41
+`static final ArchRule`, 38 `@ArchTest`, 16 fichiers (methode d'`ADR-0104`, `git grep` des deux motifs sur
+les `*.java` de `4004fab7`) ; le fichier Java modifie n'en porte aucune.
+
+`AucunMotServiNeSEcarteDeSonAccentTest`, `motsDe` et `estUnAffixeCite`, plus deux clauses (7 au total) :
+
+- `unAffixeCiteAvecSonTraitDUnionNEstPasJugeCommeUnMot` : le libelle reel, recopie de la ligne 22 du
+  paquet a `4004fab7`, ne rend aucun defaut ; le meme sans le trait d'union de `re` rend exactement le
+  defaut `re` ; le meme avec `re-ecrire` rend `re` et `ecrire`.
+- `unMotColleAUnTraitDUnionEnBordResteInvisible` : le prix, grave (voir Consequences).
+
+**Morsure, par mutation du test sur une copie** (`4004fab7` plus ce test, la classe seule lancee, copie
+restauree, `cmp` identique) : admission neutralisee (`return false`), 2 echecs sur 7, les deux clauses
+neuves ; condition de bord retiree devant, 1 echec (`re-ecrire`) ; condition de bord retiree derriere,
+1 echec (`re-ecrire`). Trois mutations, trois rouges, chacune sur la clause qu'elle vise.
+
+### Consequences
+
+- **Bonne** : le lot `-24` passe sans toucher son texte. Toute citation d'affixe a venir avec son trait
+  d'union (le paquet porte 10 items d'affixe, `FM2`) passe sans amendement.
+- **Mauvaise, gravee dans un test** : un mot reel colle a un trait d'union en bord de mot n'est plus juge.
+  `"Il faut -ecrire."` et `"Il faut ecrire- vite."` passent, `"Il faut ecrire."` reste rouge. Cette
+  forme n'apparait dans le texte servi que par une faute de frappe ; elle rejoint la lecture de
+  `nadia-prof`.
+- **Mauvaise** : `-24` attend la fusion de cet amendement sur `round-two`, puis une fusion de `round-two`
+  dans sa branche (A2, point 4), a `sofia-sm`.
+
+**Dette ouverte, sans lien avec le verdict de `re`** : la decision 3 du texte d'origine dit juger *"les
+six champs du catalogue qu'une vue affiche (`titre`, `consigne`, et les quatre du descripteur)"*. Mesure
+sur `4004fab7` : `git grep -n "competence()" -- '*/src/main/*'` ne rend rien, et les seules lectures du
+descripteur hors de `domain` et `adapter-content` sont `niveau()` et `matiere()` dans `PartieService`.
+**`domaine` et `competence` ne sont lus par aucune vue** : le perimetre les inclut par enumeration, sans
+qu'une vue les affiche. C'est une inclusion de trop, qui ne coute que des faux rouges ; je ne la retire
+pas ici, parce que le retrait de `competence` aurait rendu ce lot vert en laissant le critere faux sur un
+champ affiche. Le traitement juste est un perimetre derive de ce que les vues lisent ; je l'ecris le jour
+ou un second faux rouge vient d'un champ non affiche, ou si une vue se met a afficher l'un des deux.
+
+### Alternatives considerees
+
+- **Reecrire le libelle** (`re-` devient autre chose) : corrige un texte juste pour satisfaire un faux
+  rouge, et deplace la decision vers `camille-po` et `nadia-prof` sans motif pedagogique. Ecartee.
+- **Retirer `competence` du perimetre** : motif reel (aucune vue ne l'affiche), mais le critere resterait
+  faux sur tout champ affiche qui cite un affixe. Ecartee, dette ouverte ci-dessus.
+- **Admettre `re` par liste** : interdit par A2 point 5 et par "Ce qui me ferait changer d'avis".
+
+### Ce qui me ferait changer d'avis plus tard
+
+- Une faute reelle d'accent trouvee par `nadia-prof` dans la forme `mot-` ou `-mot` : la borne serait trop
+  large, et l'admission devrait exiger une ponctuation ou une parenthese autour de l'affixe.
+- Un affixe cite sans trait d'union (*"le prefixe re"*) : la forme ne le voit pas, il resterait rouge, et
+  ce serait un nouveau besoin route par la meme voie.
+
+### Impact
+
+- Ce fichier, la ligne `ADR-0065` de `ADR-index.md`, `AucunMotServiNeSEcarteDeSonAccentTest.java`. Commit
+  `[THEO]` (job `prefixes`, controle du proprietaire du garde-fou).
