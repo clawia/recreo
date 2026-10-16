@@ -949,3 +949,81 @@ Lances sur l'arbre de `round-two` a `edcd3de9` avec ce fichier modifie (sections
 - **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances (`bash` pour les `.sh`, `python` pour les `.py`), 13 sortis 0, aucun balayage vide. `outils/mvn-jdk21-test.sh` y est lance avec le `TMPDIR` par defaut de la session (section 4).
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
+
+## Amendement du 2026-10-16 12:46 (UTC+02:00), palier 2 : fusion du rapport qualite de `-24` et du lot `-24`, etat des postes
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace ou precise est nomme. Arbre de depart : `round-two` a `9c271e14` (`origin/round-two` egal). Aucune ceremonie n'est animee par ce texte. Aucun Done n'est prononce.
+
+### 1. Fusions de ce jour
+
+Lignee verifiee avant chaque fusion : `bash outils/verifier-lignee.sh` depuis la racine sort 0 ; `git merge-base round-two 54a606d8` rend `9c271e14` (un seul commit, rapport seul, pose sur la tete de `round-two`) ; `git merge-base --is-ancestor edcd3de9 s57-sofia-fra-ce1-24` sort 0 (la branche de `-24` contient la tete de `-05`). Je n'ai pas lance `verifier-lignee.sh` depuis un worktree de chacune de ces deux branches : je me suis appuyee sur les commandes `git` ci-dessus, qui sont ce que le script appelle.
+
+| Ordre | Branche | Sommet livre | Fusion | Delta |
+|---|---|---|---|---|
+| 1 | `s57-yanis-p2-24` | `54a606d8` | `349ec934` | un fichier, `rapport-qualite-lot-24.md`, aucun code |
+| 2 | `s57-sofia-fra-ce1-24` | `a742ec8e` (lot `1febd011`, tete relue par `yanis-qa` : `6b70d7e5`) | `9f110983` | le code et le contenu de `6b70d7e5` ; `a742ec8e` ne change que `rapport-sofia-dev-palier-2.md` |
+
+Aucun conflit. `yanis-qa` rend *"fusionnable"* sur `6b70d7e5` ; la fusion 2 ajoute seulement la correction datee de ma casquette de developpeuse.
+
+**`E1` a `E4` du rapport qualite (section 6), sort de chacun.** `E1`, `E2`, `E3` : corriges dans `rapport-sofia-dev-palier-2.md` par une ligne datee (commit `a742ec8e`, casquette developpeuse, sans changement de code). Pour `E3`, j'ai choisi de **dire** *"non garde en Java : `FM5-2` et `FM5-3` le gardent"* et non d'ajouter un test : le perimetre de `FM5` (annotation de `camille-po` du 2026-10-16 10:45) ne demande que des commandes. Un test d'egalite sur l'item 12 serait une decision de `camille-po` ou de `theo-archi`, pas un oubli. **`E4`, route et non ecrit** : l'amendement de `FM3` (le libelle `descripteur.competence` n'est pas servi par les gabarits, mais est inventorie comme chaine exposee ; `fam3` ne lit que les quatre champs de l'enfant) est **attendu de `camille-po` et de `theo-archi`**. Il n'existe pas sur le disque : l'obstacle reste ouvert.
+
+### 2. Mesures sur l'arbre fusionne `9f110983`
+
+- **Reacteur complet** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, `BUILD SUCCESS`, exit 0, 6 modules `SUCCESS`, JDK 21.0.10 (ligne d'enveloppe). **2664 tests, 0 echec, 0 erreur, 0 ignore** : 120, 31, 496, 1630, 381 et 6 d'integration. Recompte a part par l'attribut `tests` des `TEST-*.xml` de chaque module : 2664.
+- **D'ou vient l'ecart.** 2664 = 2640 (reacteur a `edcd3de9`, mesure par moi) + 24 (`PaquetCe1FamillesDeMotsTest`, seul fichier de test neuf). Mon rapport de developpeuse annoncait 2621 : 2597 + 24, base d'avant les fusions de `K10` (+2), de la forme commune (+4) et de `-05` (+37). `yanis-qa` mesure 2664 sur `6b70d7e5` ; les deux mesures concordent.
+- **Catalogue** (`grep -c "^  - id: "` sur `catalogue.yaml`) : `9f110983` / 151 avant (a `349ec934`) / entree `bandit-manchot-familles-de-mots-ce1` (+1) / **152** apres. `mecanique: bandit-manchot` : 146 avant, 147 apres (le 147 de la consigne du lot est un compte de mecanique, pas d'entrees).
+- **Contenu** : `grep -c "paquet: ce1-familles-de-mots$"` sur `catalogue.yaml` : **1** ; `grep -c 'bonneReponse: "librairie"'` sur `ce1-familles-de-mots.yaml` : **0** ; `grep -c 'bonneReponse:'` : 24.
+- **`FM6` et `79130ca9`** : `git merge-base --is-ancestor 79130ca9 HEAD` sort 0, la story est sur `round-two`. Le point ouvert 2 de mon rapport de developpeuse est clos.
+
+### 3. Diff de code contre la base de la cote (`aa9d703c`), pour `nadia-prof` avant son rejeu de la forme
+
+Mesure : `git diff --stat aa9d703c 9f110983 -- adapters domain application bootstrap pom.xml outils` : **21 fichiers, 1950 insertions, 37 suppressions**. Nomme, par nature :
+
+- **Forme (ce que regarde le rejeu de `nadia-prof`)** : `adapter-web/.../static/css/recreo.css` (+34). Il n'a pas bouge depuis `aca0d90f` (fusion 5 du 12:01).
+- **Contenu servi** : `catalogue.yaml` (+12 : les entrees `ce1-pronoms` et `ce1-familles-de-mots`), `ce1-familles-de-mots.yaml` (item 12 et 14 indices), `ce1-pronoms.yaml` (+5 -5), `cm1-sciences-extraire-information.yaml` (+4 -4). Ces fichiers sont dans le jar ; ils ne portent pas la forme.
+- **Tests et jeux fautifs** : `AucunMotServiNeSEcarteDeSonAccentTest` (+74), `PaquetCe1FamillesDeMotsTest` (+493) et ses 3 fichiers fautifs, `PaquetCe1PronomsTest` (+789) et ses 4 fichiers fautifs, `LaFormeCommuneDesPropositionsLonguesEstEpingleeTest` (+159) et ses 3 feuilles fautives, `TexteAccentueExposeParLePortEntrantTest` (+18), `outils/mesurer-additions-cp-test.sh` (+136).
+
+Depuis `edcd3de9`, le delta de code est de **7 fichiers, 604 insertions, 17 suppressions** (catalogue, YAML de `-24`, test du paquet et ses 3 fichiers fautifs, inventaire de `bootstrap`).
+
+### 4. Point de depart pour la cote de reference
+
+`ines-design` mesure la cote de pli (744 x 551) **apres la fusion de la garde de `theo-archi`** (`s57-theo-garde-c1`, en cours chez `theo-archi`, **non fusionnee ici**), sur le sommet de `round-two` a ce moment. Je n'ecris pas de SHA : il n'existe pas encore.
+
+### 5. Deux decisions pour la cloture, non prises ici
+
+`yanis-qa` recommande (rapport qualite, sections 4.1 et 4.2) :
+
+1. **Declarer `node` et Python dans le job `outils` de `ci.yml`**, par `actions/setup-node` avec une majeure fixee (et la meme decision pour Python). Aujourd'hui l'absence de `node` rend le juge rouge et bruyant (`ECHEC node absent`), pas silencieux.
+2. **Normaliser `TMPDIR` dans `outils/mvn-jdk21-test.sh`** : `BAC="$(cd "$(mktemp -d)" && pwd)"` a la place de `BAC="$(mktemp -d)"`, plutot que de refuser un `TMPDIR` de forme `C:/`. La preuve sera manuelle et datee (aucun cas ne peut rejouer la forme mixte sur Linux).
+
+Ce sont deux decisions, a `theo-archi` (`ADR`), **a prendre a la cloture du palier**. Je ne modifie ni `ci.yml` ni `mvn-jdk21-test.sh`. Pour ce commit, le job `outils` a ete lance avec un `TMPDIR` sous le scratchpad de la session, en forme `/c/...`.
+
+### 6. Etat des postes au 2026-10-16 12:46
+
+| Poste | Branche | Etat | Ce qui reste |
+|---|---|---|---|
+| p2-4, `S57-BR-FRA-CE1-24` | `s57-sofia-fra-ce1-24` | **fusionne (`9f110983`)** | audit de `nadia-prof` (titre, consigne et place de l'entree sont de ma main, a juger par elle) ; `E4` a `camille-po` et `theo-archi` |
+| p2-3, `S57-BR-FRA-CE1-05` | `s57-marc-fra-ce1-05` | fusionne (`edcd3de9`) | audit de `nadia-prof` ; `Q4` a `camille-po` |
+| p2-7, forme commune | `s57-lea-forme-commune` | fusionne (`aca0d90f`) | rejeu de la forme par `nadia-prof` (section 3) ; mesure de `ines-design` (section 4) ; `TL9`, `TL10` |
+| garde de `C1'` | `s57-theo-garde-c1` | **en cours chez `theo-archi`, non fusionnee** | fusion apres lecture ; test par `yanis-qa` |
+| p2-5, p2-6 | - | fusionnes (inchange, amendement du 12:01) | rejeu 0,25 par `nadia-prof` ; mesure de `PA2` par `ines-design` |
+| p2-8 a p2-12 | - | inchange | dependent de `PA2`, `PA7`, `PA8` (amendement du 09:03) |
+
+### 7. Ce que cet amendement ne fait pas
+
+Ne fusionne pas `s57-theo-garde-c1`. Ne prononce aucun Done, technique ou pedagogique. Ne juge ni le titre, ni la consigne, ni l'item *chat*/*chaton*. Ne tranche ni `E4`, ni la declaration de `node` et de Python, ni la normalisation de `TMPDIR`. Ne touche ni la matrice, ni `ci.yml`, ni un script.
+
+### 8. Decisions prises
+
+**Aucune `ADR` ni `DEC` n'est creee ou amendee par cet amendement ni par les deux fusions.** Les deux decisions de la section 5 et l'amendement de `FM3` (`E4`) n'existent pas sur le disque : ils restent des obstacles ouverts.
+
+### 9. Jobs de `ci.yml` lances pour ce commit
+
+Lances sur l'arbre de `round-two` a `9f110983`, avant l'ajout du present amendement (le build ne l'a donc pas lu ; `chemins` est relance apres). Je ne deduis aucun job que je n'ai pas lance.
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl` : `BUILD SUCCESS`, exit 0, **2664 tests, 0 echec**. Etape *"Package du fat jar"* non lancee.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh`, sortie 0.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh` et `verifier-garde-fou-accent-test.sh` sortent 0 ; `commit-atteignable.sh` sur `origin/round-two` (`9c271e14`) sort 0 ; les sujets de `9c271e14..HEAD` (hors fusions) passent dans `verifier-prefixes.sh`, sortie 0 ; `verifier-garde-fou-accent.sh "9c271e14..HEAD"` : *"0 commit(s) le touchent dans la plage, tous [THEO]."*, sortie 0.
+- **`outils`** : les trois balayages (`outils/*-test.sh` : 6 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), **13 juges** lances avec `python`, 13 sortis 0, aucun balayage vide.
+
+Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
