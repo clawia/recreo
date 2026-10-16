@@ -22989,3 +22989,30 @@ Les codes `CR32` a `CR39` suivent `CR31` (annotation du 2026-10-16 16:40).
 | `Q-U11` | Un paquet refuse (`bandit-manchot-pronoms-ce1`, 2026-10-16 16:18) est servi depuis le refus : retrait (regime par defaut, `DEC-0045` section 3), ou fenetre bornee par un arbitrage ecrit (`DEC-0055`) ? | l'utilisatrice, par `sofia-sm` |
 
 **Ce que cette annotation ne fait pas** : ne prononce aucun Done, ne juge aucun texte, ne modifie ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni paquet, ni catalogue, ni test.
+
+---
+
+## Cloture du palier 2 de s57 : stories fermees, `Q-U11`, `Q2` de `marc-dev`, `Q-N5` (`camille-po`, 2026-10-16 20:45, palier 2)
+
+Annotation datee, 2026-10-16 20:45 (UTC+02:00), lue par `date`. **Rien au-dessus n'est reecrit.** Sources : les fichiers de rejeu de `nadia-prof` du 2026-10-16 (`squad/sprints/s57-version-cp-ce1-cm1-trois-instances/rejeu-nadia-palier-2-a-lot05-rejeu.md`, `-a-rct.md`, `-b-rdo-cp-r3.md`), `DEC-0120` A.111 a A.116. **Aucun critere n'est modifie.**
+
+### Stories fermees par les verdicts de `nadia-prof`
+
+| Story | Verdict, ses mots | Fichier |
+|---|---|---|
+| `S57-BR-FRA-CE1-05` | **VALIDE**, *"sans reserve"* ; `FRA-CE1-05` a `couvert-valide` (matrice, 148 / 200) | `rejeu-nadia-palier-2-a-lot05-rejeu.md`, resume |
+| `S57-RCT-CE1-R1` | `RCT-CE1-R1` **levee** ; `FRA-CE1-04` **VALIDE**, *"aucune reserve ouverte"* | `rejeu-nadia-palier-2-a-rct.md`, resume |
+| `S57-RDO-CP-R3` | `RDO-CP-R3` **levee** ; jeu **VALIDE**, *"aucune reserve ouverte"* | `rejeu-nadia-palier-2-b-rdo-cp-r3.md`, verdict |
+| `S57-RETRAIT-PRONOMS-CE1` | **non engagee, sans objet** : `Q-U11` repondue *"fenetre bornee"* (forme 2 de `DEC-0062`, `DEC-0120` A.111) ; aucun retrait n'a eu lieu ; le paquet est `VALIDE`. Son critere 1 (*"le jeu n'est plus servi"*) reste rouge par decision de l'utilisatrice | `DEC-0120` A.111 |
+
+### Questions
+
+- **`Q-U11`** : **close** (`DEC-0120` A.111).
+- **`Q2` de `marc-dev`** (jeu fautif de `TRV-CE1-6` aux anciens textes) : **decidee, pas de story** (`DEC-0120` A.113). Le jeu fautif est une entree de test que le test ne lit pas comme texte ; la propriete refusee n'a pas de garde automatique.
+- **`Q-N5`** : la recommandation de `nadia-prof` sur l'indice des dix items d'affixe de `-24` reste **declinee** (`DEC-0120` A.114) ; la question reste ouverte pour elle seule, sans echeance.
+
+### Palier 3
+
+Proposition d'ordre des restes, sans engagement : `DEC-0120` A.115. Les stories de `-06`, `-07` et `-11` (groupe X, deuxieme ecartement ecrit) s'ecrivent a l'ouverture du palier 3 ; elles n'existent pas aujourd'hui.
+
+**Ce que cette annotation ne fait pas** : ne prononce aucun Done, ne juge aucun texte, ne modifie ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni paquet, ni catalogue, ni test.

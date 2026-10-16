@@ -1737,3 +1737,97 @@ Sources, les verdicts de `nadia-prof` lus dans les fichiers de rejeu du 2026-10-
 
 - **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, paquet, test, `planning.md`, `composition-palier-2.md`. Ne dit pas que la CI distante est verte. N'engage aucun poste. Ne change aucun prix de `nadia-prof`.
 - **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison ; ceux qui ne sont pas lances ne sont pas deduits.
+
+---
+
+## Amendement du 2026-10-16, dix-huitieme (`camille-po`, cloture du palier 2 : `Q-U11` inscrite, matrice a 148 / 200, `Q2` de `marc-dev`, `Q-N5`, non affecte, mots de `S2`, proposition de palier 3)
+
+Annotation datee, 2026-10-16 20:40 (UTC+02:00), lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme. **Le statut ne change pas : `Acceptee` (A.77).** Arbre : `round-two` a `bb322938`, branche `s57-camille-p2-matrice`. Sources : `planning.md` (amendements du 2026-10-16 18:14, 19:20 et 20:15), les fichiers de rejeu de `nadia-prof` du palier 2, `FICHE-bandit-manchot-pronoms-ce1.md`, `DEC-0045` section 3, `DEC-0055`, `DEC-0062` 3.1, `A.100` a `A.110`. **Aucun code, catalogue, paquet, test ni `planning.md` n'est touche.** Aucun Done n'est prononce par moi.
+
+### A.111 `Q-U11` : la reponse est inscrite, la fenetre est close par le verdict, aucun retrait n'a eu lieu
+
+**Provenance, forme 2 de `DEC-0062` 3.1.** L'utilisatrice a choisi, le 2026-10-16, entre les deux options que `Q-U11` lui proposait (retrait, regime par defaut de `DEC-0045` section 3 ; ou fenetre bornee, `DEC-0055`) : ***"fenetre bornee"***. Ce libelle est celui de l'option choisie, cite entre guillemets ; **ses mots ne sont rien de plus dans ce texte**. Il m'a ete transmis par l'agent principal, par le formulaire de celui-ci ; **je ne l'ai pas lu de sa main**, l'heure de la reponse n'est pas fournie, et **aucun motif ni aucune echeance ne m'ont ete transmis : je n'en ecris aucun**.
+
+**Ce que cet acte est.** L'arbitrage ecrit de `DEC-0055` 2, condition 1, pour `bandit-manchot-pronoms-ce1` seul. La condition 2 (correction engagee au moment du refus) n'etait pas remplie a 16:18, ce que `A.106` constatait et qui reste vrai tel qu'ecrit : l'arbitrage de l'utilisatrice est donc l'exception nommee que `DEC-0055` 5 prevoit, datee, dont le motif n'est pas connu de moi. **Remplace** la decision de `A.106` (*"le paquet sort du catalogue servi"*) et son execution (`S57-RETRAIT-PRONOMS-CE1`) ; ne remplace pas le constat de fait de `A.106`.
+
+**Faits, lus.**
+
+- **Aucun retrait n'a eu lieu.** `git grep -c 'id: bandit-manchot-pronoms-ce1$' bb322938 -- adapters/adapter-content/src/main/resources/catalogue.yaml` rend **1** ; aucun commit de retrait sur `round-two`. `planning.md` 19:20, section 5 : *"pas de retrait"*, la story *"n'est pas engagee"*.
+- **Le rejeu de `-05` a eu lieu avant la cloture du palier 2** : `rejeu-nadia-palier-2-a-lot05-rejeu.md`, 2026-10-16 20:02, verdict **VALIDE**, sans reserve.
+- **La fenetre est close par ce verdict**, premier des deux evenements de `DEC-0055` 3 (*"VALIDE ... la fenetre se referme d'elle-meme, le jeu reste expose sur ce nouveau fondement"*). Le jeu a ete servi du refus (16:18) au verdict (20:02) : **3 h 44 min** ; il l'est ensuite sur un Done non refuse.
+- **La lecture de `planning.md` 19:20** (la question du retrait revient au palier 3 si le rejeu n'a pas lieu avant la cloture) **ne joue pas** : sa condition est fausse. Je ne la ratifie ni ne l'infirme : elle est de `sofia-sm`, ce n'est pas un mot de l'utilisatrice.
+
+**Ce qui a manque, nomme.** `DEC-0055` 3 exige une echeance ecrite, fixee a l'ouverture de la fenetre. Aucune n'a ete ecrite : la borne a ete l'evenement (le verdict), pas une date. Par ailleurs `A.106` decidait un retrait route avec une story, et il n'a pas ete execute entre le 17:40 et l'arbitrage de l'utilisatrice que le planning de 19:20 relaie : une decision ecrite et non executee, sans consequence ici parce que l'utilisatrice a repondu dans l'autre sens. Je l'ecris pour que le compte soit honnete.
+
+**Fermetures.** `Q-U11` : **close**. `S57-RETRAIT-PRONOMS-CE1` : **non engagee, sans objet** (backlog, annotation du meme jour). Son critere 1 (*"le jeu n'est plus servi"*) reste rouge par decision de l'utilisatrice, et le paquet est `VALIDE` : je ne la garde pas.
+
+### A.112 Matrice : une ligne passe, 148 / 200
+
+Lignes lues une a une dans la matrice (par `grep` sur le texte de la competence), contre le rejeu et la fiche :
+
+| Ligne | Ligne de la matrice | Verdict, ses mots | Etat avant | Effet |
+|---|---|---|---|---|
+| `FRA-CE1-05` | 1439 (`ce1-pronoms`) | **VALIDE**, *"sans reserve"* ; *"`camille-po` peut passer `FRA-CE1-05` a `couvert-valide`"* (fiche, rejeu du 2026-10-16) | `non couvert` (REFUSE) | **`couvert-valide`**, jeu `bandit-manchot-pronoms-ce1` ; historique du refus conserve dans la cellule |
+| `FRA-CE1-04` | 1438 (`ce1-texte-narratif`) | `RCT-CE1-R1` **levee** ; **VALIDE**, *"aucune reserve ouverte"* (`rejeu-nadia-palier-2-a-rct.md`) | `couvert-valide` (2026-10-15) | cellule mise a jour, statut inchange |
+| `ART-CP-10` | 2283 (`rapprocher-deux-oeuvres-cp`) | `RDO-CP-R3` **levee** ; jeu **VALIDE**, *"aucune reserve ouverte"* (`rejeu-nadia-palier-2-b-rdo-cp-r3.md`) | `couvert-valide` (2026-10-15) | cellule mise a jour, statut inchange |
+| `FRA-CE1-24` | 1458 (`familles-de-mots`) | **VALIDE**, sans reserve | `couvert-valide` (2026-10-16, note precedente) | verifiee, non touchee |
+
+**Ecart de la demande de cloture** : elle attendait trois passages ; `FRA-CE1-04` et `ART-CP-10` etaient `couvert-valide` depuis le 2026-10-15 au titre de `VALIDE SOUS RESERVE` : leur verdict d'aujourd'hui leve la reserve et ne change pas le statut. Meme ecart que `A.107` pour `-10`, `-13` et `-15`. `FRA-CE1-05` est fermee sans mention de couverture partielle (`grep -c -i "couverture partielle"` sur la fiche : 0).
+
+**Compte**, par la commande de la "Methode du compte" de la matrice (`awk -F'|'`, lignes de donnees, aucune mesure partielle), sortie lue avant puis apres le geste :
+
+| | `couvert-valide` | `en cours` | `non couvert` | `non couvrable en l'etat` | total | Taux |
+|---|---|---|---|---|---|---|
+| Avant (`bb322938`) | 147 | 4 | 49 | 77 | 277 | 147 / 200 = 73,50 % |
+| **Apres** | **148** | 4 | **48** | 77 | 277 | **148 / 200 = 74,00 %** |
+
+Par niveau, lignes atteignables / `couvert-valide` : CP 59 / 52, CE1 62 / 30, CM1 79 / 66. Compteur de version (`A.32`) : 148 + 4 = 152 / 200 = 76,00 % par la formule, critere 2 (CI verte sur l'arbre de la version) a lire sur cet arbre. **Le 147 / 200 des amendements de `planning.md` du 2026-10-16 (non remesure) est remplace par ce compte.**
+
+### A.113 `Q2` de `marc-dev` : la copie fautive de `TRV-CE1-6` ne suit pas le paquet, pas de story
+
+**Decision : non.** Le jeu fautif `ce1-pronoms-fautif.yaml` garde les anciens textes des items 3, 9, 13 et 18 ; seul *Hamza* devient *Omar* (item 16, `42071c23`).
+
+**Motifs de forme 1.**
+
+1. **Aucun enfant ne le lit.** Il est dans `adapters/adapter-content/src/test/resources/contreexemple/PaquetCe1PronomsTest/contenu/` (`ADR-0013`, obligation 3) et le catalogue servi ne le nomme pas (`git grep -n "ce1-pronoms-fautif" -- adapters/adapter-content/src/main` ne rend rien). Il n'entre dans aucun perimetre de `nadia-prof`.
+2. **Ce qu'il atteste n'a pas change.** Son test sur `TRV-CE1-6` est `leJeuFautifCommiteEstRefuseSurSesPrenomsDesequilibres` (`PaquetCe1PronomsTest`, lignes 742 a 751) : `verifierLEquilibreDesPrenoms` refuse l'excedent de prenoms feminins distincts et cite *"TRV-CE1-6"* et *"féminins distincts"*. Il ne lit le texte d'aucun item. Les anciens textes sont donc l'entree du jeu fautif sans effet sur le verdict du test, qui reste vert (2669 tests, `planning.md` 20:15).
+3. **La propriete que `nadia-prof` a refusee n'a pas de garde automatique, et je n'en demande pas.** *"La distribution des roles par genre"* est dans ce dont elle reste seule garde (fiche des pronoms, rejeu du 2026-10-16, section 4). Une copie fautive de cette propriete n'aurait aucun test a mordre.
+4. **Le perimetre produit est ferme** ; la forme d'une fixture de test est a `theo-archi` et a `marc-dev`. S'ils jugent que les anciens textes trompent un lecteur futur, c'est un commentaire de test, hors backlog produit : je ne le demande pas, je ne l'interdis pas.
+
+### A.114 `Q-N5`, non affecte de A', mots de `S2`, `Q-N4`
+
+**`Q-N5` (indice des dix items d'affixe de `-24`) : la recommandation reste declinee.** Elle l'etait par l'annotation du backlog du 2026-10-16 17:40 ; je la confirme apres le verdict. Motifs : (1) `nadia-prof` ne donne aucun texte (*"il dit ou regarder, ce que mon critere demande"*) ; (2) *"Observation sans reserve, et je ne releve pas ma barre"* (`rejeu-nadia-palier-2-ap-lot24.md` 2.3), et la ligne est `couvert-valide` sans reserve : rien ne manque a la competence ; (3) changer le paquet d'une ligne **VALIDE** appelle un rejeu (0,25 ou 0,5 a son registre) pris sur les 8,0 du palier 3, contre des lots qui n'ont encore aucun Done. **A ne pas confondre** avec `A.103`, qui a pris la recommandation sur les **14** indices de famille (`FM6`, tenue au rejeu) : ce sont deux recommandations. **Reprise** : si `nadia-prof` ecrit l'indice, je le recopie en critere sans reformulation (precedent `FM6`) et `sofia-sm` le place. `Q-N5` reste **ouverte pour elle seule**, sans echeance ; aucune reponse n'est au depot (`git grep -n "Q-N5"` : six occurrences, toutes la question). Premiere inscription le 2026-10-16, premier non-engagement ; aucun report a compter, aucune composition ne la retient.
+
+**Le non affecte de A' (0,25) tombe.** Registre du palier 2, seize lignes (`wc -l`), `awk -F'|' '{p[$1]+=$3; t+=$3} END{for(k in p) printf "%s %.2f\n",k,p[k]; printf "total %.2f\n",t}'` : `A 3.25`, `Ap 3.00`, `B 1.75`, **`total 8.00`** ; par etat, `facture 6.25`, `marge 1.50`, `non affecte 0.25`. Motifs : (a) `A.105` l'a ecrit : c'est *"un reste"*, pas un moyen de payer un rejeu ; (b) la borne est **par palier** (`PAR-9`, 8,0) et le precedent est ecrit : le palier 1 s'est clos avec 0,75 non affectes et 1,50 de marges intactes (`arbitrage-nadia-palier-2.md` 1), et le palier 2 a ete compose sur 8,0 sans les reprendre (`composition-palier-2.md` 2) ; (c) la capacite du palier 3 est celle que `nadia-prof` ecrira dans son arbitrage prealable (11.3, condition 3) : **je n'y ajoute rien**. Les marges inutilisees (1,50) tombent de la meme facon. Je ne l'attribue a aucun poste.
+
+**Mots de `S2` (utilisatrice, 2026-10-12, `RP-ACCUEIL-147`) : ils sont au depot**, contrairement a ce que `cloture-palier-1.md` (`P5`) et `arbitrage-nadia-palier-2.md` (section 9) ecrivent. Deux fichiers les portent, que `git grep -n "ping nadia dessus"` rend : `DEC-0120` section 4.5 (tableau, ligne `RP-ACCUEIL-147`) et `squad/rapports/JOURNAL-gouvernance-hors-sprint.md`, entree *"2026-10-12 - Audit avant fusion pour les chantiers hors sprint ; note a reprendre au planning (`camille-po`)"* (commit `1b683ef6`, point 3 : *"Demande de l'utilisatrice"*). Les mots cites : ***"ajoute le au repo et ping nadia dessus sur le sprint prochain"***, date de l'entree 2026-10-12. **Je les recopie, je n'y ajoute rien.** Ce qui manque est autre : aucune des deux entrees ne dit par quel chemin les mots me sont parvenus (de sa main, ou transmis), donc la forme 2 de `DEC-0062` 3.1 est satisfaite sur le texte (mots entre guillemets, date) sans que la transmission soit nommee. `RP-ACCUEIL-147` est fait (`cloture-palier-1.md`, section 2) : rien n'en depend.
+
+**`Q-N4` est au depot.** `nadia-prof` l'a inscrite le 2026-10-16 : `rejeu-nadia-palier-1.md`, section *"Annotation du 2026-10-16 (`nadia-prof`, s57, palier 2) : les mots de l'utilisatrice pour `Q-N4`"*, mots ***"le pli n'est pas bloquant"***, forme 2 ; et `FICHE-bandit-manchot-phrases-types-ce1.md`, *"Annotation du 2026-10-16"*, memes mots. `git grep -l "le pli n'est pas bloquant" bb322938 -- squad` rend six fichiers (ces deux-la, `FICHE-bandit-manchot-pronoms-ce1.md`, `FICHE-bandit-manchot-familles-de-mots-ce1.md`, `reponse-nadia-q-palier-2.md`, `planning.md`). **Ce qui manque, dit par elle** : la date de l'echange d'origine (*"n'a pas ete fournie"* ; *"le depot date la reponse relayee au 2026-10-14"*). Je ne la comble pas.
+
+### A.115 Proposition pour le palier 3 : ordre des restes, sans engagement
+
+**L'engagement est a `sofia-sm` au planning du palier 3 ; la capacite et les prix sont a `nadia-prof` (arbitrage prealable, condition 3).** Ce qui suit est mon ordre de priorite produit et ce que je ferai avant l'ouverture, rien d'autre. Etat de depart : 148 / 200 ; 48 `non couvert` (francais CE1 7, questionner le monde CE1 12 et CP 3, histoire des arts CM1 6, mathematiques CE1 5, enseignement moral et civique CE1 4 et CP 1, arts plastiques CE1 2 et CM1 2, histoire-geographie CM1 2, langues vivantes CM1 2, francais CM1 1 et CP 1) et 4 `en cours`.
+
+| Rang | Quoi | Prix | Motif | Compte |
+|---|---|---|---|---|
+| 1 | `S57-GARDE-C1-VIRGULE-ET-IMBRIQUE`, puis `S57-GARDE-PILE-DE-POLICES` | 0, hors `PAR` (`theo-archi`) | Dette de garde sur `recreo.css` : `CR25` et `A.108` les placent en tete et **avant tout poste qui modifie la feuille**. `A.101` est payee pour la story d'origine (`S57-GARDE-C1-SUJET-HORS-MESSAGE`, fusionnee : `e138ec97`) ; la dette restante est sa suite. Si aucun poste du palier 3 ne modifie la feuille, elles n'ont pas de prealable a tenir et restent en tete | premiere inscription le 2026-10-16, aucun report |
+| 2 | Commit de `RL5`, `RL6`, `RL7` (trois commentaires devenus faux) | hors `PAR`, aucun prix | Engage par `sofia-sm` le 2026-10-16 (`planning.md` 19:40, section 4), **non livre a la cloture** (`git log bb322938 --oneline` n'en nomme aucun). A livrer avant tout autre commit de code du palier 3 ; le commentaire de `manche.html` peut changer l'octet servi, a mesurer par le developpeur | premier glissement d'un poste engage, ecrit ici (le commit n'entre dans aucun lot) |
+| 3 | `-06` (`ce1-inference`), puis `-07` (`ce1-texte-documentaire`), puis `-11` (`ce1-negation`), groupe X, dans l'ordre de `nadia-prof` (`arbitrage-nadia-palier-2.md` 7 : *"prelever (`-04`, servi), puis suivre une reprise, puis deduire"* ; `-07` porte le risque de culture) | 1,0 chacun (bareme de `nadia-prof`) | Une ligne instruite par lot. **`-06` est le troisieme ecartement s'il n'entre pas au palier 3** (`composition-palier-2.md` 9) | voir ci-dessous |
+| 4 | `S57-GARDE-NOMBRE-DE-MANCHES` | 0, hors `PAR` | *"Aucun ecran ne change"*, aucun rejeu (backlog) : rien a attendre de `nadia-prof` | premiere inscription au palier 2, non retenue : pas un report |
+| 5 | `S57-TYP1-TEXTES-DE-GABARIT`, puis `S57-MESSAGE-PARTIE-PERDUE` | 0, hors `PAR` (`Q-T7` repondue : aucun rejeu, `reponse-nadia-q-palier-1.md`) | Rangs 7 et 8 de `nadia-prof` : *"Score :"* est lu a chaque manche ; la seconde attend d'abord la mesure du nombre de lignes a 744 et a 1200 | premiere inscription au palier 2, non retenues : pas un report |
+
+**Compte des ecartements de `-06`, `-07`, `-11` (groupe X), ecrit ici.** Premier ecartement : composition du palier 1, 2026-10-14 (*"restent pour un palier suivant"*, `composition-palier-1.md` 3). **Deuxieme : composition du palier 2, 2026-10-15** (`EC1`, un troisieme lot de X ne tient pas a 7,75 + 1,0). A ce rythme (un lot de X par palier), `-06` entre au 3, `-07` au 4, `-11` au 5. **Je ne tiens pas ce rythme pour acquis** : le palier 3 n'a plus de reserve a rejouer ni de rejeu de refus a financer, la contrainte de `EC1` ne s'y pose pas dans les memes termes, et trois lots dans A restent a la borne de `PAR-8` (trois lots, 5,0 par instance). **Si `-06` n'est pas retenu au palier 3, une `DEC` le dit avec son motif (troisieme ecartement)** ; de meme pour `-07` et `-11` au palier ou ils atteindraient leur troisieme. Aucune de ces trois lignes n'a de story (`grep -c "^### S57-BR-FRA-CE1-06"` rend 0, de meme `-07` et `-11`) et `nadia-prof` n'arbitre pas un lot sans story (arbitrage, section 8, point 9) : **j'ecrirai la story de `-06`, puis celles de `-07` et `-11`, a l'ouverture du palier 3 et avant son arbitrage prealable**, pas avant : `EC1` dit qu'elles s'ecrivent quand un palier les compose.
+
+**Lots d'A' et de B : je n'en propose aucun.** Une ligne sans paquet instruit n'est pas un lot (arbitrage, section 8, point 6), et le terrain neuf reste ferme tant qu'A' existe (`PAR-13`, condition 5). `nadia-prof` dit au palier 3 quelles lignes sont instruites ; ce que le tableau ne contient pas n'est ni refuse ni decide.
+
+### A.116 Routage, ce que cet amendement ne fait pas
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Amender le planning : `Q-U11` close (A.111), `Q2` decidee (A.113), non affecte de A' tombe (A.114), matrice a 148 / 200 (A.112), `Q-N5` declinee ; porter la proposition de A.115 a la composition du palier 3 ; `retro.md` (la lecon du sommet de rejeu est a elle) |
+| `nadia-prof` | `Q-N5`, sans echeance ; arbitrage prealable du palier 3 ; les deux fichiers qui portent les mots de `S2` (A.114), si elle veut corriger `D3` et la section 9 de son arbitrage |
+| `theo-archi` | Rien de neuf : forme des deux gardes du rang 1 (`CR26`, `CR27`, `CR39`) |
+| `relecteur-pedagogique` | Orthotypographie de cet amendement et des cellules de matrice mises a jour |
+
+- **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, paquet, test, `planning.md`. N'engage aucun poste. Ne fixe aucun prix. Ne dit pas que la CI distante est verte.
+- **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison ; ceux qui ne sont pas lances ne sont pas deduits.
