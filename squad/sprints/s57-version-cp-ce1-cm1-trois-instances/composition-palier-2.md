@@ -13,7 +13,7 @@
 | CO2 | Par instance | A 3,0 (1 lot) ; A' 3,0 (1 lot) ; B 1,75 (0 lot) |
 | CO3 | Lots | **deux** : `FRA-CE1-05` (A) et `FRA-CE1-24` (A') ; stories ecrites ce jour |
 | CO4 | Hors lot, dans les 8,0 | `TPH-CE1-R1`, `GNA-CE1-R1`, `RCT-CE1-R1`, `VSJ-CE1-R2` (rejeux) ; `RDO-CP-R3`, `N1` et `N2` (B) |
-| CO5 | Hors lot, hors des 8,0, prix 0 | forme commune (mise en oeuvre) ; `S57-MESSAGE-PARTIE-PERDUE`, `S57-TYP1-TEXTES-DE-GABARIT`, `S57-GARDE-NOMBRE-DE-MANCHES`, `D5` |
+| CO5 | Hors lot, hors des 8,0, prix 0 | forme commune (mise en oeuvre) ; `S57-MESSAGE-PARTIE-PERDUE`, `S57-TYP1-TEXTES-DE-GABARIT`, `S57-GARDE-NOMBRE-DE-MANCHES`. **`D5` n'y est plus : il est fait et fusionne** (`29d02bc6`, fusion `dbd4a612`, 2026-10-15 18:10, avant l'ouverture du palier 2), correction du 2026-10-16, section 13 |
 | CO6 | Avant tout rejeu de la forme commune | 43 enonces d'`additions-cp` a mesurer ; cote de reference de `Q-R4` ecrite en entier ; accord de `nadia-prof` sur `R3-1` et sur l'ascenseur (section 6) |
 | CO7 | Contradictions trouvees | sept (section 8) ; un critere amende (`CT3`) |
 | CO8 | Compte des jeux `bandit-manchot` | **145** (constate) ; 143 est le compte du catalogue a 148 entrees (section 8, `CT2`) |
@@ -81,7 +81,7 @@
 | `-05` | `Q-P6` : l'item 15 de `ce1-pronoms` (bonne reponse *"Elias"*, seule proposition a majuscule) est-il corrige avant le branchement ? Propriete de `nadia-prof` (6.1 point 3) | 1 item rouge sur 20 ; texte de la correction a elle |
 | `-05` | sa preference d'ordre (section 7) : audit **apres** la fusion de la forme commune | preference, pas condition ; sinon reserve de la famille `RCT-CE1-R1` (6.1 point 4) |
 | `-24` | `S57-FRA-FAMILLES-LIVRE` livree dans le commit que `nadia-prof` joue | `grep -c 'bonneReponse: "librairie"'` rend 1, doit rendre 0 |
-| `-24` | `Q-B2` : l'indice de l'item *livre* n'est pas celui qu'elle cite ; le motif de fond n'en depend pas | non repondue |
+| `-24` | `Q-B2` : l'indice de l'item *livre* n'est pas celui qu'elle cite ; le motif de fond n'en depend pas | **repondue le 2026-10-14** (`lecture-nadia-palier-1.md` 1.7, `D8`, `7161ab69`) ; relecture des cinq items faite le 2026-10-16 (`reponse-nadia-q-palier-2.md` 3.7) ; correction du 2026-10-16, section 13 |
 | `-24` | `git merge-base --is-ancestor 729b0d8a HEAD` sort 0 dans le worktree (A') | sort 0 sur `be48fd93` |
 | les deux | ligne datee *"lecture complete : <paquet>, N items lus"* avant le premier verdict (`S57-ARB-PALIER-2`) | 0 ligne pour chacun |
 
@@ -102,7 +102,7 @@ Aucun n'est un lot : ce sont des rejeux de jeux deja servis ou des reserves (`PA
 | `S57-MESSAGE-PARTIE-PERDUE` | - | 0 | a designer par `sofia-sm` | mesure prealable du nombre de lignes a 744 et 1200 ; apres `S57-FORME-C-VERDICT` (livree) | regard de `nadia-prof` au premier rejeu qui suit, sans prix |
 | `S57-TYP1-TEXTES-DE-GABARIT` | - | 0 | a designer par `sofia-sm` | `Q-T12` de `theo-archi` (perimetre `th:text`) | idem |
 | `S57-GARDE-NOMBRE-DE-MANCHES` | - | 0 | a designer par `sofia-sm` | liste de depart de `DEC-0121` section 3 | aucun rejeu |
-| `D5` (en-tete *"brouillon soumis"*, `P12` de `cloture-palier-1.md`) | - | 0 | `marc-dev`, `sofia-sm` | perimetre a mesurer : 10 paquets par `grep -rln`, neuf de plus au releve du `relecteur-pedagogique` | aucun rejeu |
+| `D5` (en-tete *"brouillon soumis"*, `P12` de `cloture-palier-1.md`) | - | 0 | **fait** : `29d02bc6` (`marc-dev`), fusionne par `dbd4a612` le 2026-10-15 18:10 | aucun : `grep -rln "brouillon soumis"` sur `contenu/` rend 0 fichier ; correction du 2026-10-16, section 13 | aucun rejeu |
 
 **Ordre propose.** Pour l'audit, celui de `nadia-prof` (arbitrage, section 7), que je ne change pas : mesure de la forme commune, puis `TPH` avec `GNA`, `RCT`, `RDO-CP-R3`, `VSJ-CE1-R2`, `N1` et `N2`. Les lots sont derriere ces restes (`-05`, puis `-24`, qui ne depend de rien). **Pour le developpement**, les deux lots n'attendent ni la forme ni ses mesures : ils partent des l'ouverture, sous `K1`. La forme commune ne part qu'apres `PA3` et `PA5`. L'ordre de fusion est a `sofia-sm` ; nadia-prof prefere la forme fusionnee avant `-05`, et le dit non conditionnel.
 
@@ -114,7 +114,7 @@ Aucun n'est un lot : ce sont des rejeux de jeux deja servis ou des reserves (`PA
 | EC2 | **`-08` et `-09`** | a aucun palier de s57 | 4.2 condition 4 |
 | EC3 | **`ART-CE1-01`, `ART-CE1-02`, `HDA-CM1-06`** et toute ligne sans paquet ni cousine | terrain neuf tant qu'A' existe ; une ligne non instruite n'est pas un lot | arbitrage 8 point 6 ; `PAR-13` |
 | EC4 | **Lots de `G4`** | rang 4a apres le francais CE1, rang 1 (`DEC-0120` section 1) ; aucun prix ne reste (0,25 non affecte) | `DEC-0120` A.35 |
-| EC5 | **Quatre stories a prix 0** comme lots | une story a prix 0 n'est pas un lot : `S57-MESSAGE-PARTIE-PERDUE`, `S57-TYP1-TEXTES-DE-GABARIT`, `S57-GARDE-NOMBRE-DE-MANCHES`, `D5` ne prennent ni une place de lot ni une part des 8,0 | arbitrage 8 point 8 |
+| EC5 | **Trois stories a prix 0** comme lots (quatre avant la correction du 2026-10-16 : `D5` est fait) | une story a prix 0 n'est pas un lot : `S57-MESSAGE-PARTIE-PERDUE`, `S57-TYP1-TEXTES-DE-GABARIT`, `S57-GARDE-NOMBRE-DE-MANCHES` ne prennent ni une place de lot ni une part des 8,0 | arbitrage 8 point 8 |
 | EC6 | **Un rejeu de la forme commune avant `PA1` et `PA2`** | la mesure d'`ines-design` est faite ; la cote de reference de `Q-R4` ne l'est pas en entier | arbitrage 8 point 4 |
 | EC7 | **`L1` ou `L2` accordes d'avance** | le candidat n'en a pas, et `nadia-prof` ne les accorde pas a tous les jeux (`Q-T5`) | arbitrage 8 point 5 |
 | EC8 | **La regle du bandeau** (`candidat-r3-option-bandeau.css`) comme partie de la forme | elle nomme `.cabinet-bandeau` et touche l'habillage garde pour `L1` ; elle n'entre que par `PA7`, si `nadia-prof` l'accorde pour `RCT-CE1-R1` | rapport d'`ines-design`, section 7 |
@@ -166,7 +166,7 @@ Aucun n'est un lot : ce sont des rejeux de jeux deja servis ou des reserves (`PA
 | `-06`, `-07`, `-11` (X) | **palier 1**, `composition-palier-1.md` section 3 : *"restent pour un palier suivant"* (2026-10-14) | ecartes pour capacite (`EC1`) | **deuxieme ecartement** pour chacun. A ce rythme (un lot de X par palier), `-11` entre au palier 5. **Si `-06` n'entre pas au palier 3, c'est le troisieme : une `DEC` le dit, avec le motif** |
 | `-24` | palier 1, place au palier 2 par `nadia-prof` (3.2) | retenu | pas un report |
 | `RCT`, `VSJ-CE1-R2`, `TPH`, `GNA`, `RDO-CP-R3`, `N1` et `N2` | palier 2 (cibles ecrites au backlog) | retenus, non engages sous prealable | **premiere inscription** ; un glissement du palier 2 est le premier report |
-| `S57-MESSAGE-PARTIE-PERDUE`, `S57-TYP1-TEXTES-DE-GABARIT`, `S57-GARDE-NOMBRE-DE-MANCHES`, `D5` | palier 2 au plus tot, non engagees | hors composition (prix 0) | premiere inscription |
+| `S57-MESSAGE-PARTIE-PERDUE`, `S57-TYP1-TEXTES-DE-GABARIT`, `S57-GARDE-NOMBRE-DE-MANCHES` (`D5` fait, hors compte) | palier 2 au plus tot, non engagees | hors composition (prix 0) | premiere inscription |
 
 **Aucune `DEC` n'est creee ni amendee par ce fichier.** L'amendement de `DEC-0120` qui porte cette composition (precedent : A.53 a A.62) s'ecrit **apres** l'amendement de `planning.md` de `sofia-sm`, qui nomme les proprietaires : une decision qui implique du code n'est pas prise sans proprietaire. Je ne l'ai pas ecrit ici parce que ces proprietaires ne sont pas encore nommes.
 
@@ -191,3 +191,10 @@ Sur ce worktree, les deux fichiers touches dans l'index, avant commit. Je ne ded
 - **`outils`** : non lance ; aucun outil n'est modifie.
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
+
+## 13. Corrections du 2026-10-16 (`camille-po`, palier 2, apres l'amendement de planning de 09:03)
+
+Heure lue par `date` : 2026-10-16 09:25 (UTC+02:00). Arbre : `round-two` a `aa9d703c`, branche `s57-camille-p2-garde`. **Rien d'autre n'est reecrit** : aucun prix, aucun lot, aucune ligne de matrice ne change.
+
+- **`D5` n'est pas un poste a venir : il est fait.** Quatre endroits de ce fichier le disaient non engage : le resume `CO5`, la ligne `D5` de la section 4, `EC5` (qui comptait *"quatre stories a prix 0"*) et la ligne de la section 9 ; ils sont corriges en place, avec renvoi a cette section. Preuves lues par moi le 2026-10-16 : `git merge-base --is-ancestor 29d02bc6 aa9d703c` sort 0 ; `git log -1 --format='%h %ad' --date=iso dbd4a612` rend *"2026-10-15 18:10:51"* (fusion de `s57-marc-d5`) ; la fusion de la cloture du palier 1 (`6dbb855d`) est du 2026-10-15 17:44:19 et l'ouverture du palier 2 du 2026-10-15 20:56 (`planning.md`) ; `grep -rl "brouillon soumis" adapters/adapter-content/src/main/resources/contenu` rend 0 fichier. **Le defaut est le mien** : la ligne reprenait *"perimetre a mesurer : 10 paquets"* de la cloture du palier 1 sans que je relance le `grep` le soir de la composition (20:43), 2 h 33 apres la fusion. Il reste **trois** stories a prix 0 non engagees : `S57-MESSAGE-PARTIE-PERDUE`, `S57-TYP1-TEXTES-DE-GABARIT`, `S57-GARDE-NOMBRE-DE-MANCHES`. Meme constat que `planning.md`, amendement du 2026-10-16, section 3.
+- **`Q-B2` est repondue depuis le 2026-10-14.** `lecture-nadia-palier-1.md` 1.7 (`D8`, commit `7161ab69`, ancetre de `round-two` : `git merge-base --is-ancestor 7161ab69 aa9d703c` sort 0) dit que l'indice qu'elle citait n'etait pas celui de l'item et que le motif de fond tient. Je l'avais ecrite *"non repondue"* ici (section 3, ligne `-24`) et dans l'amendement du backlog `S57-FRA-FAMILLES-LIVRE` du 2026-10-15. **Le defaut est le mien** : j'ai cherche la reponse dans l'arbitrage du palier 2, qui ne cite pas cet indice, et j'ai pris l'absence dans ce fichier pour l'absence de reponse, sans chercher `Q-B2` dans les fichiers de `nadia-prof` du palier 1. `reponse-nadia-q-palier-2.md` 3.7 a refait la relecture promise (cinq items, trois indices) et corrige son propre constat. Son effet sur `-24` est pris en section 3 de l'annotation du backlog du 2026-10-16 et en `DEC-0120` A.103.
