@@ -1495,3 +1495,79 @@ Commande : celle de la "Methode du compte" de la matrice (`awk -F'|'`, lignes de
 - **Aucun changement de code decide ici.** Les deux reserves `RCT-CE1-R1` et `RDO-CP-R3` ont chacune une story non engagee au backlog (annotation du 2026-10-15, 18:06) ; **jusqu'a l'engagement de `sofia-sm` au planning d'un palier avec un developpeur, rien n'est applique et le regime est celui de `DEC-0053`** (le pli reste une reserve non bloquante).
 - **Composition du palier 2** : non faite, elle suit l'arbitrage prealable de `nadia-prof` (`cloture-palier-1.md` section 9, condition (b)).
 - **Statuts de stories** : aucun ne change. **Matrice : 146 / 200.**
+
+---
+
+## Amendement du 2026-10-16, quinzieme (`camille-po`, arbitrages du palier 2 : compte des reports, worktrees de `-05` et `-24`, story du script de `PA1`)
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme. **Le statut ne change pas : `Acceptee` (A.77).** Arbre : `round-two` a `f6134910`, branche `s57-camille-p2-arbitrages`. Sources : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/planning.md` (amendement du 2026-10-15 20:56, sections 1 a 13), `composition-palier-2.md`, `reponse-nadia-q8.md`, `avis-theo-poste-8-art-cp-10.md` (annexe D). **Aucune ligne de matrice, aucun catalogue, aucun paquet, aucun code n'est touche** : 146 / 200 inchange. **Aucun prix, aucun lot n'est modifie.**
+
+### A.94 Provenance : trois decisions de l'utilisatrice, forme 2 de `DEC-0062`
+
+Donnees a l'agent principal le 2026-10-16, **mots non cites** parce que ce sont des reponses *"oui"* a des propositions ; je ne les ai pas lues de sa main (meme reserve que 0.1, A.1, A.77).
+
+- **(a) `E3` couvre tout le palier 2** (`Q-S7` du planning, section 10). **Remplace** la ligne de ce tableau *"porte des postes p2-7 et p2-12 seulement"* et la phrase de la section 1 du planning *"je ne l'applique pas comme porte du palier"*. `E3` est la lecture du diff de B1 par `theo-archi` ; `cloture-palier-1.md` (ligne 7) la nomme condition de l'ouverture du palier 2. **Ce que j'en tire pour les stories** : `K1` de `S57-BR-FRA-CE1-05`, `S57-BR-FRA-CE1-24`, `S57-OBS-SCI-N1-N2` et de la story de A.97 gagne la trace de `E3` comme condition. **Je n'en ecris pas la commande** : la forme de la trace est celle de `theo-archi`, et le `grep` que le planning a lance sur *"lecture du diff"* rend quatre fichiers qui la posent ou la constatent absente, donc une commande ecrite sur ces mots serait deja verte sans trace. Elle s'ecrit quand il a ecrit sa ligne. **A `sofia-sm`** : la section 4 du planning declare `p2-3` a `p2-6` partables sans prealable hors `K1` ; elle ne tient plus.
+- **(b) Affectations confirmees** : `marc-dev` sur trois postes (script de `PA1`, `S57-OBS-SCI-N1-N2`, `S57-BR-FRA-CE1-05`, dans cet ordre) ; `lea-dev` sur la forme commune puis `S57-RDO-CP-R3`. Ce sont celles de la section 5 du planning ; rien ne change a mes stories, qui nomment ces developpeurs.
+- **(c) `Q-S6`** : *"oui"* a la proposition que `camille-po` tranche le compte des reports par amendement de cette decision. C'est A.95.
+
+### A.95 `Q-S6` : le compte des reports a l'ouverture est celui d'A.66, a la lettre
+
+**Decision.** Un poste retenu par la composition d'un palier et non engage a l'ouverture de ce palier est un report, compte a l'ouverture, quelle qu'en soit la cause (A.66). **Remplace** la ligne de `composition-palier-2.md`, section 9, qui ecrivait *"premiere inscription ; un glissement du palier 2 est le premier report"* pour la forme commune, `RCT-CE1-R1`, `VSJ-CE1-R2`, `TPH-CE1-R1`, `GNA-CE1-R1`, `RDO-CP-R3`. `sofia-sm` a applique A.66 (planning, section 8) et l'a dit ; **l'ecart etait le mien** : ma composition (2026-10-15 20:43) est posterieure a A.66 (2026-10-14) et ne l'a pas appliquee.
+
+**Motifs de forme 1.**
+
+1. A.66 est ma regle, ecrite pour ce cas (*"quelle qu'en soit la cause"*), et A.67 l'a appliquee le jour de l'ouverture du palier 1 aux postes 7 et 8, que la composition du palier 1 avait retenus. Deux lectures pour la meme situation a un palier d'ecart, c'est deux regles.
+2. *"Un glissement du palier 2 est le premier report"* fait dependre le premier report d'un evenement a venir. C'est la condition sans date qu'A.66 remplace : sans date elle ne se declenche jamais et le compte disparait (mecanisme de `DEC-0007`).
+3. `sofia-sm` ecrit le compte a l'ouverture (A.75) ; la lecture qui lui laisse une date lisible est celle d'A.66.
+
+**Compte.** Premier report, ouverture du palier 2, 2026-10-15 20:56 : `p2-7` (forme commune), `p2-8` (`TPH-CE1-R1`), `p2-9` (`GNA-CE1-R1`), `p2-10` (`RCT-CE1-R1`), `p2-11` (`VSJ-CE1-R2`), `p2-12` (`RDO-CP-R3`). `p2-1` a `p2-6` sont engages : aucun report. Les stories a prix 0 que la composition ne retient pas (`S57-MESSAGE-PARTIE-PERDUE`, `S57-TYP1-TEXTES-DE-GABARIT`, `S57-GARDE-NOMBRE-DE-MANCHES`) n'ont pas de report : elles n'etaient pas retenues. `-06`, `-07`, `-11` ne sont pas des reports mais des ecartements, comptes a part (composition, section 9) ; cette decision ne les change pas.
+
+**Effet sur le palier 3.**
+
+- Un de ces six postes encore retenu et non engage a l'ouverture du palier 3 est un **second report**, compte ce jour-la, avec la date du premier. Aucun troisieme n'est permis (A.67) : au palier suivant, un poste non engage a nouveau n'entre pas dans la composition sans un acte ecrit, abandon ou question a l'utilisatrice.
+- Un de ces postes engage par amendement date pendant le palier 2 **garde son premier report** (A.83). Non audite a la cloture du palier 2, il glisse (glissement, pas report, A.72). Non audite a la cloture du palier 3, le second glissement est un report compte (A.72) : le second, donc le dernier permis.
+- `p2-8` et `p2-9` dependent de la forme (`p2-7`) selon la section 4 du planning, `p2-10` et `p2-11` aussi quand leur voie est la forme. Si `p2-7` n'est pas engagee a l'ouverture du palier 3, ces cinq postes prennent leur second report le meme jour. Engager `p2-7` pendant le palier 2 est le seul geste qui evite cela pour la chaine.
+
+### A.96 `Q-S4` : la lettre de `PN8` et `FM5` interdit d'ouvrir le worktree avant la lecture complete
+
+**Decision : oui.** `PN8` (`S57-BR-FRA-CE1-05`) et `FM5` (`S57-BR-FRA-CE1-24`) disent que la correction demandee par `nadia-prof` apres sa lecture complete est ajoutee par amendement a l'entree **avant l'ouverture du worktree**. Si le worktree est ouvert avant la lecture, une correction demandee apres elle arrive necessairement apres l'ouverture : la clause ne peut pas etre tenue. Je n'en vois pas d'autre lecture, et je ne l'assouplis pas.
+
+**Motifs de forme 1.**
+
+1. La phrase. Une lecture qui laisserait ouvrir le worktree rendrait `PN8` fausse dans le cas qu'elle prevoit.
+2. Le cas n'est pas theorique. Pour `-05` : l'item 15 de `ce1-pronoms` est rouge sur l'existant (`Q-P6`, bonne reponse *"Elias"*). Pour `-24` : `grep -c 'bonneReponse: "librairie"'` sur `ce1-familles-de-mots.yaml` rend 1 (`S57-FRA-FAMILLES-LIVRE`). Les fixtures et le test du paquet (`K3`, `K4`) s'ecrivent dans le worktree, sur un contenu que `nadia-prof` peut encore corriger.
+3. Le cout est faible : `marc-dev` porte le script et `S57-OBS-SCI-N1-N2` avant `-05` (planning, section 5) ; `-24` est le premier poste de `sofia-sm` developpeuse. La lecture est le poste `p2-1`, a l'ordre 1, et n'attend pas la fusion du planning.
+
+**Ce que cette decision n'est pas.** Ce n'est pas une exigence de `nadia-prof` : la sienne est *"avant le premier verdict"* (arbitrage du palier 2, 6.1 point 2). C'est un critere de mon fait, que je peux amender ; je ne le fais pas parce que le cout est faible. Elle remplace la ligne `Q-S4` du planning (sections 4 et 10 : *"worktrees ouverts, aucun YAML de paquet touche"*) pour `-05` et `-24` ; **l'amendement du planning est a `sofia-sm`**. `K2` reste.
+
+**Commande, ecrite au backlog.** Le worktree d'un lot part d'une base qui contient la ligne datee *"lecture complete : <paquet>, N items lus"* de son paquet. Rouge aujourd'hui : 0 ligne pour les deux paquets sur `round-two`, donc non vide ; la branche est lue avant sa fusion. **Cette commande n'est pas celle de `S57-ARB-PALIER-2`, critere 2, qui etait deja verte (A.98).**
+
+### A.97 `Q-S5` : la story du script de `PA1` est ecrite
+
+**Decision : `S57-SCRIPT-ADDITIONS-CP`, au backlog (annotation du 2026-10-16), prix 0, hors `PAR`, competence transverse.**
+
+`PAR-16` (`ARBITRAGE-PREALABLE-s34...`, section 6.1) dit : *"Je n'alloue contre ma borne aucun poste qui n'a pas de story a l'ouverture du sprint."* Le poste est a prix 0 et hors `PAR` : rien n'est alloue contre sa borne, `PAR-16` ne la demande pas, et la lecture du planning (section 10, `Q-S5`) est plus large que la clause. **Ce n'est pas le motif.** Motifs de forme 1 :
+
+1. Un poste engage, avec un developpeur et un mesureur nommes, doit avoir un observable : `CR14` est une ligne de routage, elle ne dit pas ce que *"livre"* veut dire (regle du depot : une story qui n'est pas au backlog n'existe pas).
+2. Le critere existe deja dans les mots de `nadia-prof` (`reponse-nadia-q8.md`, `N1` : *"Ni echantillon, ni partie d'essai qui en tiendrait lieu"* ; section 3 : 65 enonces distincts, egaux a l'ensemble derive) et dans `S57-FORME-COMMUNE-PROPOSITIONS-LONGUES`, critere 3 (22 enonces sur 65 mesures). Aucun fichier ne les transforme en entree et en sortie.
+3. Les ports codes en dur de `pilote-q7.mjs` et de `pilote-accueil.mjs` (`C1`, `C2` du planning) ont deja cause des collisions : le critere qui les interdit s'ecrit avant le script, pas apres.
+
+Le script mesure ; ce que la cote vaut est a `nadia-prof`.
+
+### A.98 Ecart trouve en verifiant `S57-ARB-PALIER-2`, critere 2 : deja vert
+
+Le critere 2 annoncait *"Aujourd'hui : 0 ligne pour chacun des deux, rouge"* avec `grep -rE "lecture complete.*ce1-pronoms.*20"` sur `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/` et `squad/conformite/`. Sur `round-two` a `f6134910`, `git grep -l -E 'lecture complete.*ce1-pronoms.*20'` rend `planning.md` (ligne 452, la ligne du poste `p2-1`), de meme pour `ce1-familles-de-mots` et 24. **Le critere etait vert sur ce qu'il devait exiger**, par un fichier de `sofia-sm` ecrit apres lui, dans le dossier qu'il cherche. **Remplace** la commande, pas les mots de `nadia-prof` : *"lecture complete : <paquet>, N items lus"*, avec ou sans accents graves autour du nom du paquet. Nouvelle commande, rouge (0 ligne pour chacun) sur le meme arbre : au backlog.
+
+### A.99 Routage, ce que cet amendement ne fait pas
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Amender le planning : `Q-S4` (A.96), `Q-S6` (A.95, section 8 deja alignee), `Q-S7` et section 4 (A.94 a), titre de `p2-6` (A.97) ; la ligne obsolete nommee ci-dessous ; lire la branche d'un lot avant fusion contre la commande de A.96 |
+| `nadia-prof` | Ecrire les lignes *"lecture complete"* de `ce1-pronoms` (20) et `ce1-familles-de-mots` (24) : elles ouvrent les worktrees de `-05` et `-24` |
+| `theo-archi` | La trace de `E3`, dans la forme qu'il choisit |
+| `marc-dev`, `ines-design`, `yanis-qa` | `S57-SCRIPT-ADDITIONS-CP` : ecriture, mesure, test des criteres |
+
+**Ligne obsolete du planning, nommee et non corrigee.** Section 3 (ligne 465) : *"`D5` ne s'engage pas avant la fusion de la forme commune"*, et la liste *"Hors `PAR`, non engages [...] `D5`"*, reprise par *"les quatre stories a prix 0 et `D5`"* de la section 4. `D5` est fait et fusionne : `29d02bc6` (`[MARC]`, 2026-10-15 18:10) est ancetre de `round-two` (`git merge-base --is-ancestor` sort 0), fusionne par `dbd4a612`, et `grep -rln "brouillon soumis"` sur `contenu/` rend 0. Meme ecart dans `composition-palier-2.md` (section 4, ligne `D5` ; resume `CO5`). Je ne corrige ni l'un ni l'autre.
+
+- **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, paquet, fiche, matrice, `planning.md`, `composition-palier-2.md`. Ne dit pas que la CI distante est verte. N'ecrit pas l'amendement de cette decision qui porte la composition du palier 2 (planning, section 13) : il n'etait pas demande.
+- **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison ; ceux qui ne sont pas lances ne sont pas deduits.
