@@ -112,7 +112,7 @@ Dix mots (`TRV-CE1-5` : douze au plus). Rien d'autre ne change sur ces deux item
 
 **Sinon, la cote se remesure sur la base reelle**, sans exception de contenu : un lot fusionne (`-05`, `-24`) touche `adapters/adapter-content` et rend la sortie non vide. Je ne juge pas, a la place d'une mesure, qu'un paquet neuf ne change pas l'ecran d'un autre jeu. Si `theo-archi` nomme un perimetre du jar different de celui-ci, le sien fait foi.
 
-**Ce qui reste inchange** : la methode, la largeur, la hauteur et les deux commandes de `Q-R5` (`merge-base --is-ancestor`, `diff --stat <base> <commit livre>`). La regle de `planning.md` section 9 (*"toute fusion sur `round-two` entre la mesure et la coupe force la remesure"*) est plus stricte que la mienne ; elle est a `sofia-sm`, je ne l'assouplis pas.
+**Ce qui reste inchange** : la methode, la largeur, la hauteur et les deux commandes de `Q-R5` (`merge-base --is-ancestor`, `diff --stat <base> <commit livre>`). La regle de `planning.md`, amendement du 2026-10-15 20:56, section 9 (*renvoi precise le 2026-10-16 21:25, ecart `R2` du releve de cloture*) (*"toute fusion sur `round-two` entre la mesure et la coupe force la remesure"*) est plus stricte que la mienne ; elle est a `sofia-sm`, je ne l'assouplis pas.
 
 ### 3.4 `Q-P5`, `PA7` : `RCT-CE1-R1`, les trois items a 552
 
