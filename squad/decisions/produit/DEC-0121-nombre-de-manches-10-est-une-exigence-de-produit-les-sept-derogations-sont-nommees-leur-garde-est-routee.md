@@ -55,3 +55,13 @@ Cette decision implique un changement de code (le garde de la liste). **Propriet
 - Elle ne tranche pas la forme du garde : place, nom du test, lecture du catalogue sont a `theo-archi` et au developpeur.
 - Elle ne prononce aucun Done pedagogique et ne juge la longueur d'une partie pour aucun jeu.
 - Elle ne cree aucun report : premiere inscription du sujet.
+
+## 8. Amendement du 2026-10-19 (`camille-po`) : une huitieme derogation
+
+`theo-archi` a releve (`avis-theo-preparation-palier-3-ce1.md`, `K4`, `Q1`) que la section 3 en liste sept quand le catalogue en porte huit. Mesure a l'arbre `ad65827e` : `awk '/^  - id:/{id=$3} /nombreDeManches:/{if($2!=10)print id,$2}' adapters/adapter-content/src/main/resources/catalogue.yaml` sur 152 `nombreDeManches` rend 8 entrees, les sept de la section 3 avec leurs valeurs, plus :
+
+| Entree | Valeur | Items du paquet | Decision qui la porte |
+|---|---|---|---|
+| `bandit-manchot-rapprocher-deux-oeuvres-cp` | 5 | 6 | `DEC-0116` ouvre le jeu ; **aucune decision ne nomme la valeur 5** : ratifiee ici |
+
+Le jeu est revenu au catalogue apres l'arbre de la section 3 (`13affd6f`), par `06c7804f` (2026-10-15). Le paquet compte 6 items : 5 est le maximum permis par `ADR-0023` (meme motif arithmetique que `designation-plan-de-la-classe`). `FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md` porte `nombreDeManches: 5` et `nadia-prof` y a joue des parties de cinq manches. Ce n'est pas un verdict sur la longueur d'une partie : cette question reste a `nadia-prof`. La section 3 reste ecrite telle quelle, a l'arbre `13affd6f` ; la liste en vigueur est la section 3 plus cette ligne, soit huit. La section 5 s'applique : cette ligne est une decision produit ecrite. Le routage (section 6) est inchange : `S57-GARDE-NOMBRE-DE-MANCHES`, amendee le meme jour.
