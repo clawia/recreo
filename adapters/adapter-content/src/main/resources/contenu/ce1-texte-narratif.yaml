@@ -11,7 +11,7 @@ lignesDeReferentiel: ["FRA-CE1-04"]
 # les conditions RCT-CE1-1 a RCT-CE1-3 et les sept conditions transverses TRV-CE1-1 a TRV-CE1-7 de
 # squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md (sections 2 et 3.4), sous LON-CE1-3 et
 # LON-CE1-4 (squad/conformite/ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md). Aucun Done n'est
-# prononce ici : ce paquet attend l'audit de nadia-prof.
+# prononce ici. Audit de nadia-prof : VALIDE, FICHE-bandit-manchot-texte-narratif-ce1.md (2026-10-16).
 #
 # RCT-CE1-1 : les quatre questions, marquees au-dessus de chaque item. Personnages 4, lieu 4
 # (huit sur vingt, sous la moitie), moment 5 (au moins un cinquieme), ordre 7 (au moins un quart).

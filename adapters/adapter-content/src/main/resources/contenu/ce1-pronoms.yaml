@@ -11,7 +11,7 @@ lignesDeReferentiel: ["FRA-CE1-05"]
 # conditions PRN-CE1-1 a PRN-CE1-3 et les sept conditions transverses TRV-CE1-1 a TRV-CE1-7 de
 # squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md (sections 2 et 3.5), sous LON-CE1-3 et
 # LON-CE1-4 (squad/conformite/ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md). Aucun Done n'est
-# prononce ici : ce paquet attend l'audit de nadia-prof.
+# prononce ici. Audit de nadia-prof : VALIDE, FICHE-bandit-manchot-pronoms-ce1.md (2026-10-16).
 #
 # PRN-CE1-1 : la question cite le mot entre guillemets et demande ce qu'il designe. Pronoms il (5),
 # elle (5), ils (4), elles (3) : ils et elles reunis font sept items sur vingt, au-dessus du
