@@ -23247,3 +23247,37 @@ Modele : `S57-ARB-PALIER-2` (ci-dessus), avec la commande remplacee par l'amende
 - **Fiches** (`CR43`) : ouvertes par moi apres chaque commit de branchement, pas avant.
 
 **Ce que cet amendement ne fait pas** : ne prononce aucun Done, ne juge aucun texte, ne modifie ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni paquet, ni catalogue, ni test, ni la matrice, ni `planning.md`.
+
+## Annotation du 2026-10-19 23:44 (UTC+02:00), palier 3 : deux stories de dette de commentaires (`AD3`, `AD7` de `composition-palier-3.md`)
+
+### S57-RL5-RL7-SOURCES-DES-COMMENTAIRES - les trois commentaires qui citent la mauvaise source sont corriges (poste hors `PAR`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux que la phrase *"Voici la bonne oeuvre. Appuie dessus."* que je lis ait une source que l'equipe sait retrouver, afin qu'on ne la change pas par erreur en croyant la copier d'un texte ancien. (Aucun ecran ne change.)
+- **Mecanique demandee** : aucune. **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Source** : `cloture-palier-2.md` section 9 (`R5`) ; `planning.md`, amendement du 2026-10-16 19:40, section 4, tableau `RL5` a `RL7` ; la source juste est `reponse-nadia-pa7-pa8.md`, section 2.4 (la phrase y est citee mot pour mot).
+- **Criteres d'acceptation** (mesures sur `6b6d271a`, 2026-10-19) :
+  1. **`RL5`** : `grep -c "reponse-nadia-pa7-pa8" adapters/adapter-web/src/main/resources/templates/fragments/manche.html` rend 1 ou plus. **Aujourd'hui : 0, rouge.** Le commentaire de 207 a 213 ne contient plus *"cette phrase, de nadia-prof (M4)"*.
+  2. **`RL6`** : `grep -c "reponse-nadia-pa7-pa8" adapters/adapter-web/src/test/java/com/recreo/adapter/web/TexteAccentueDesGabaritsTest.java` rend 1 ou plus. **Aujourd'hui : 0, rouge.** Le commentaire de 158 a 160 ne cite plus `ARBITRAGE-PREALABLE-s55` (**aujourd'hui : 1 occurrence**).
+  3. **`RL7`** : `grep -c "reponse-nadia-pa7-pa8" bootstrap/src/test/java/com/recreo/bootstrap/rendu/LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest.java` rend 1 ou plus. **Aujourd'hui : 0, rouge.** Le commentaire ligne 107 ne contient plus *"M4 du meme arbitrage, mot pour mot"*.
+  4. **Seules des lignes de commentaire changent** : `git diff --stat <commit>^ <commit>` nomme exactement ces trois fichiers ; dans chacun, les lignes modifiees sont des lignes de commentaire. **La phrase affichee ne change pas** : la ligne `<p class="reponse-revelee"` de `manche.html` et la constante `PHRASE_DE_REVELATION` sont identiques avant et apres. **Vert aujourd'hui, clause.**
+  5. **Un seul commit** pour les trois fichiers (jugement de `theo-archi`, `planning.md`, 21:46, section 9).
+  6. **Il precede le premier jar rejoue du palier 3** : `git merge-base --is-ancestor <commit> <sommet du premier rejeu>` sort 0, verifie par `sofia-sm` a la cloture. Le sommet de tout rejeu suivant dit que le code differe du precedent par ce commentaire (`planning.md`, 21:46, section 9).
+  7. **Done technique** : tous les jobs de `ci.yml` (`build`, `chemins`, `prefixes`, `outils`), nommes par qui l'annonce avec leur sortie.
+- **Prix** : **0, hors `PAR`**. **Palier** : 3, rang 2 de `DEC-0120` A.115 (lu *"avant tout commit de lot"* par l'amendement du 2026-10-19 de `preparation-palier-3-ce1-camille.md`, `AD5`). **Report** : premier glissement deja ecrit (`planning.md`, 21:46, section 9) ; non livre a la cloture du palier 3 : second, compte. **Agent** : `sofia-sm`, casquette developpeuse (reponse de l'utilisatrice, 2026-10-19) ; relecture `yanis-qa`. **Done pedagogique** : aucun propre, transverse.
+- **Lien** : `DEC-0120` A.115 ; `composition-palier-3.md` `AD2`, `AD3`, `AD5`.
+
+### S57-R6-COMMENTAIRES-DE-PAQUET - trois paquets ne disent plus qu'ils attendent un audit qu'ils ont passe, ni une phrase deja corrigee ailleurs (poste hors `PAR`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux que les exercices de pronoms, de texte narratif et de familles de mots que je joue soient decrits par leur fichier comme ils le sont vraiment, afin qu'on ne les retire pas ou ne les reecrive pas en les croyant non valides. (Aucun ecran ne change.)
+- **Mecanique demandee** : aucune. **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Source, ses mots** (`relecture-cloture.md`, `R6` ; `cloture-palier-2.md` section 9) : (a) *"ce paquet attend l'audit de nadia-prof"* dans `ce1-pronoms.yaml:14` et `ce1-texte-narratif.yaml:14`, les deux **VALIDE** (fiches, 2026-10-16) ; (b) *"La question est portee par la consigne du jeu quand l'enonce ne la porte pas"* dans `ce1-familles-de-mots.yaml:14`, alors que les 24 enonces se terminent par `?`. Forme de correction : (a) renvoi a la fiche comme `D5` ; (b) *"Chaque enonce porte sa question ; la consigne du jeu (catalogue.yaml) est generique."*
+- **Criteres d'acceptation** (mesures sur `6b6d271a`, 2026-10-19 ; chemin des paquets : `adapters/adapter-content/src/main/resources/contenu/`) :
+  1. **(a)** `grep -c "attend l'audit"` sur `ce1-pronoms.yaml` et sur `ce1-texte-narratif.yaml` rend 0. **Aujourd'hui : 1 et 1, rouge.** La ligne remplacee renvoie a la fiche du jeu par son nom (`FICHE-bandit-manchot-...-ce1.md`), comme `ce1-graphemes-complexes.yaml:8`.
+  2. **(b)** `grep -c "La question est portee par la consigne du jeu"` sur `ce1-familles-de-mots.yaml` rend 0 ; `grep -c "Chaque enonce porte sa question"` rend 1. **Aujourd'hui : 1 et 0, rouge.**
+  3. **Aucun item ne change** : `git diff <commit>^ <commit>` sur les trois fichiers ne montre que des lignes de commentaire (commencant par `#`) ; `grep -c 'bonneReponse:'` identique avant et apres (**valeur d'aujourd'hui a relever par le developpeur : non mesuree par moi**).
+  4. **Aucun autre fichier** : `git diff --stat <commit>^ <commit>` nomme ces trois fichiers et aucun autre ; le commit est distinct de celui de `S57-RL5-RL7-SOURCES-DES-COMMENTAIRES`.
+  5. **Il precede le premier jar rejoue du palier 3** (fichiers de `src/main/resources`, donc dans le jar) ; il ne precede pas les commits de lot. Meme verification qu'au critere 6 de la story precedente.
+  6. **Orthotypographie** du texte de remplacement relue par `relecteur-pedagogique`.
+  7. **Done technique** : tous les jobs de `ci.yml`, nommes avec leur sortie.
+- **Prix** : **0, hors `PAR`** (aucune lecture, aucun rejeu : aucun item ne change). **Palier** : 3, rang 2 apres `RL5` a `RL7`. **Report** : premiere inscription dans une composition. **Agent** : `sofia-sm`, casquette developpeuse, proposition a confirmer par elle (`AD7`). **Done pedagogique** : aucun propre ; la matrice ne bouge pas.
+- **Lien** : `cloture-palier-2.md` section 9 (`R6`) ; `D5` ; `composition-palier-3.md` `AD7`.
