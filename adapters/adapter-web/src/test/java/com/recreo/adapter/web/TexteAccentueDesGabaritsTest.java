@@ -155,9 +155,9 @@ class TexteAccentueDesGabaritsTest {
             "Tu n'as pas trouvé.",
             "La bonne réponse :",                  // candidat, idem ; la reponse suit, seule
             "Appuie sur la bonne réponse :",       // candidat, idem ; M5 : le geste reste demande
-            // ADR-0104, s55 : le texte de revelation d'une manche a propositions-images, M4 de
-            // ARBITRAGE-PREALABLE-s55-instance-a-francais-ce1.md, section 3.2 (confirme par
-            // ARBITRAGE-COMPLEMENT-s55-instance-a.md, section 1), de nadia-prof, copie tel quel.
+            // ADR-0104, s55 : le texte de revelation d'une manche a propositions-images, de nadia-prof,
+            // reponse-nadia-pa7-pa8.md, section 2.4 (il remplace M4 de ARBITRAGE-PREALABLE-s55-instance-a-francais-ce1.md,
+            // section 3.2), copie tel quel.
             "Voici la bonne œuvre. Appuie dessus.",
             "C'est fini !",                        // S10 : remplace le message refuse a S02
             "Oups ! Le jeu a un souci.",           // aucun arbitrage nomme dans le depot

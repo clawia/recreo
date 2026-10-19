@@ -104,7 +104,7 @@ class LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest {
     /** M5 de nadia-prof (ARBITRAGE-PREALABLE-s55-instance-a-francais-ce1.md, 3.2), mot pour mot. */
     private static final String NOM_ACCESSIBLE = "Choisir cette œuvre";
 
-    /** M4 du meme arbitrage, mot pour mot : la phrase de revelation d'une manche a images. */
+    /** La phrase de revelation d'une manche a images, de nadia-prof (reponse-nadia-pa7-pa8.md, 2.4), mot pour mot. */
     private static final String PHRASE_DE_REVELATION = "Voici la bonne œuvre. Appuie dessus.";
 
     private static final String GABARIT = "/templates/fragments/manche.html";
