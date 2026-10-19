@@ -25,7 +25,7 @@ Trois fichiers, cinq lignes de commentaire : `fragments/manche.html` (commentair
 | 2 (b) | `La question est portee par la consigne du jeu` 1 -> 0 ; `Chaque enonce porte sa question` 0 -> 1, dans `ce1-familles-de-mots.yaml` | vert |
 | 3 | `git diff -U0 HEAD^ HEAD` : 3 lignes `-`, 3 lignes `+`, toutes commencant par `#`. `grep -c 'bonneReponse:'` avant = apres : **20** (`ce1-pronoms`), **20** (`ce1-texte-narratif`), **24** (`ce1-familles-de-mots`) | vert |
 | 4 | `git diff --stat HEAD^ HEAD` : ces trois fichiers, rien d'autre ; commit distinct de `4bf3c359` | vert |
-| 5 | `e6c371ad` est fusionne avant tout jar rejoue et avant tout commit de lot du palier 3 (aucun lot n'est ouvert a `91ecf180`) | vert |
+| 5 | R6 est fusionne avant tout jar rejoue du palier 3 (je n'en ai rejoue aucun). Les worktrees de lot ouverts a la fusion (`s57-lea-mat-ce1-01`, `s57-marc-fra-ce1-06`) sont a `b9c6cb69`, sans commit propre : coupes avant la fusion, ils ne contiennent pas R6 ; le critere ne l'exige pas, mais `composition-palier-3.md` section 5 demande aux lots de se couper sur le sommet fusionne : a verifier par `sofia-sm` (Scrum Master) avant leur fusion | a verifier |
 | 6 | relecture orthotypographique par `relecteur-pedagogique` | **non faite, a lancer** |
 | 7 | jobs de `ci.yml`, section 4 | voir section 4 |
 
