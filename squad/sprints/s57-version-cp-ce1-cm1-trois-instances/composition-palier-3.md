@@ -234,3 +234,54 @@ Je classe, je ne reponds a aucune. Un obstacle n'est clos que quand le fichier q
 ## 11. Jobs de `ci.yml` lances pour ce fichier
 
 Voir l'amendement de `planning.md` du 2026-10-19, section 10 : les memes commandes couvrent les deux fichiers ; aucun commit n'est fait, donc `prefixes` n'est pas lance.
+
+## 12. Amendement du 2026-10-19 23:44 (UTC+02:00) : AD1, AD2 et AD4 decidees, lots de B et d'A' engages
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; les lignes ci-dessous remplacent, pour la lecture, celles qu'elles nomment. Auteure : `sofia-sm`, casquette Scrum Master. Arbre : `round-two` a `6b6d271a`. Source : l'utilisatrice a repondu *"ok"* le 2026-10-19 a ma recommandation sur `AD1`, `AD2` et `AD4` ; la reponse m'est relayee par l'agent lanceur et **je ne l'ai pas lue de sa main**. C'est un choix de capacite, ni une `ADR` ni une `DEC`. L'amendement de `planning.md` du meme jour porte le detail ; ce fichier porte ce qui est a lui.
+
+### 12.1 Ce qui est decide
+
+| Code | Inscrit comme decide |
+|---|---|
+| `AD1` | `lea-dev` prend `MAT-CE1-01` (B) et `EMC-CE1-01` (A') |
+| `AD2` | `RL5` a `RL7` est confiee a `sofia-sm`, casquette developpeuse |
+| `AD4` | pas de derogation a RG1 : `marc-dev` garde `-06`, `-07`, `-11` ; `lea-dev` n'a aucun lot de francais CE1 |
+
+### 12.2 Remplace les lignes `p3-4`, `p3-8`, `p3-9` de la section 3, la ligne `lea-dev ou sofia-sm` de la section 4.2 et la contradiction CT1 de la section 9
+
+| # | Poste | Agent nominatif | Etat |
+|---|---|---|---|
+| p3-4 | `RL5`, `RL6`, `RL7` | `sofia-sm`, casquette developpeuse | **engage sans story**, ecart dit (`AD3`, a `camille-po`) |
+| p3-8 | `ce1-nombres-jusqu-a-1000`, B | `lea-dev` ; audit `nadia-prof` (B) | **engage** |
+| p3-9 | `ce1-emc-biens-communs`, A' | `lea-dev` ; audit `nadia-prof` (A') | **engage** |
+| CT1 | stories de `-06` et `-07` contre RG1 | `marc-dev` | **tranchee** par `AD4` ; les stories, de `camille-po`, ne sont pas modifiees ici |
+
+Total recompte par `awk` le 2026-10-19 : A 4,00 ; Ap 2,00 ; B 2,00 ; total 8,00 ; `engage` 6,50 ; `marge` 1,50 ; `a-decider` 0.
+
+### 12.3 Ecart a RG2, dit
+
+RG2 demandait des developpeurs distincts sur des instances distinctes. `AD1` met B et A' chez `lea-dev`. L'ecart est applique, pas arbitre : `lea-dev` n'a qu'un worktree vivant a la fois (RG4), conduit `p3-8` puis `p3-9` et me dit quand il passe de l'un a l'autre ; la resolution de `catalogue.yaml` et de l'inventaire reste la mienne. `sofia-sm` n'a plus aucun lot : les deux lignes que la section 6 lui reservait si `AD1` la retenait tombent.
+
+### 12.4 Remplace les lignes `a decider (AD1)` de la table d'isolation de la section 6
+
+| Agent | Instance | Postes | Repertoire de scratchpad | Port de jeu | Port de debogage |
+|---|---|---|---|---|---|
+| `lea-dev` | B | p3-8 | `s57-p3-lea-dev-b` | 18531 | 19231 |
+| `lea-dev` | A' | p3-9 | `s57-p3-lea-dev-ap` | 18532 | 19232 |
+
+Aucun numero neuf. `lea-dev` a deux lignes et ne les entrelace pas. Branches et worktrees des lignes `p3-8` et `p3-9` de la section 6 : `s57-lea-mat-ce1-01` et `s57-lea-emc-ce1-01`, worktrees `../recreo-s57-lea-mat-ce1-01` et `../recreo-s57-lea-emc-ce1-01`, ouverts apres la fusion de `p3-4`.
+
+### 12.5 Remplace la ligne `MAT-CE1-01`, `EMC-CE1-01` de la section 7
+
+`p3-8` et `p3-9` sont engages apres la fusion de l'amendement de 23:09 (`6b6d271a`) : **premier report chacun** (`DEC-0120` A.66), l'engagement tardif evite le second et n'efface pas le premier. Compte a l'ouverture : 2 premiers reports. L'amendement de `DEC-0120` est a `camille-po`.
+
+### 12.6 Section 8 : etat de chaque code
+
+| Code | Etat |
+|---|---|
+| `AD1`, `AD2`, `AD4` | decidees, sur reponse relayee (12.1) |
+| `AD3`, `AD5`, `AD6`, `AD7` | a decider, chez `camille-po` ; non touchees |
+
+### 12.7 Ce que cette section ne fait pas
+
+N'ouvre aucun worktree de lot, ne cree aucune branche, ne modifie aucun prix, lot, instance ni critere de story, ne touche ni `backlog.md` ni `preparation-palier-3-ce1-camille.md`. Ne cree ni n'amende aucune `ADR` ni aucune `DEC`. Ne prononce aucun Done.

@@ -1995,3 +1995,64 @@ Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue. Le Do
 ### 11. Decisions prises
 
 **Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il ecrit : l'heure d'ouverture du palier 3 ; la composition de `camille-po` portee, sans changement de prix, de lot ni d'instance ; l'ordre `Z1`/`Z2`, `RL5` a `RL7`, lots, engage comme ordre de planning et non decide ; les affectations deduites des regles et les sept points a decider ; la designation de la table d'isolation de `composition-palier-3.md` ; le compte des reports a l'ouverture. **L'amendement de `DEC-0120` qui porte la composition** (precedent : A.53 a A.62 et A.91 a A.93 ; derniers amendements en vigueur, A.115 et A.116) est a `camille-po` : les proprietaires qu'elle attendait sont nommes ici, sauf les deux de `AD1`.
+
+## Amendement du 2026-10-19 23:44 (UTC+02:00), palier 3 : AD1, AD2 et AD4 inscrites comme decidees, lots de B et d'A' engages
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; cet amendement ne remplace aucune phrase de l'amendement de 23:09, il en corrige l'etat par les lignes ci-dessous. Arbre : `round-two` a `6b6d271a`, `bash outils/verifier-lignee.sh` sort 0, `git status --short` ne montre que `.claude/settings.local.json` (non suivi) avant ecriture, casquette Scrum Master. `camille-po` traite `AD3`, `AD5`, `AD6` et `AD7` en parallele dans `docs/backlog/backlog.md` et `preparation-palier-3-ce1-camille.md` : je ne touche aucun de ces deux fichiers et je laisse ces quatre points *"a decider"*, chez leur proprietaire.
+
+### 1. Ce qui est decide, et sur quoi je l'inscris
+
+L'utilisatrice a repondu *"ok"* le 2026-10-19 a ma recommandation sur `AD1`, `AD2` et `AD4`. **La reponse m'est relayee par l'agent qui m'a lance : je ne l'ai pas lue de sa main**, comme la reponse sur `DEC-0120`. Je n'ecris donc que ce que ma recommandation contenait, et je ne lui prete aucune autre parole. Cette reponse a une recommandation n'est ni une `ADR` ni une `DEC` : c'est un choix de capacite, que l'amendement de 23:09 classait a l'utilisatrice, et qu'elle peut inverser.
+
+| Code | Etait | Est inscrit comme decide |
+|---|---|---|
+| `AD1` | developpeurs de `MAT-CE1-01` (B) et d'`EMC-CE1-01` (A') : `lea-dev` ou `sofia-sm` | `lea-dev` prend `MAT-CE1-01` (B) **et** `EMC-CE1-01` (A') |
+| `AD2` | `RL5` a `RL7` confiee a `sofia-sm`, casquette developpeuse | oui : `sofia-sm`, casquette developpeuse, tache distincte |
+| `AD4` | derogation a la regle *"aucun lot de francais CE1 pour `lea-dev`"* | **pas de derogation** : `marc-dev` garde `-06`, `-07`, `-11` ; `lea-dev` n'a aucun lot de francais CE1 |
+
+### 2. Etat des postes : remplace les lignes `p3-4`, `p3-8` et `p3-9` de la section 4 de l'amendement de 23:09
+
+| # | Poste | Agent nominatif | Etat |
+|---|---|---|---|
+| p3-4 | `RL5`, `RL6`, `RL7` | `sofia-sm`, casquette developpeuse (`AD2`) | **engage sans story** ; l'ecart reste dit, `AD3` est a `camille-po` |
+| p3-5, p3-6, p3-7 | `-06`, `-07`, `-11` | `marc-dev` (`AD4`) | **engages**, inchanges ; la contradiction entre les stories de `-06` et `-07` (qui proposent `lea-dev`) et la regle est tranchee par `AD4`. Je ne modifie pas ces stories, qui sont de `camille-po` |
+| p3-8 | `ce1-nombres-jusqu-a-1000`, `S57-BR-MAT-CE1-01` (B) | `lea-dev` (`AD1`) ; audit `nadia-prof` (B) | **engage** par cet amendement |
+| p3-9 | `ce1-emc-biens-communs`, `S57-BR-EMC-CE1-01` (A') | `lea-dev` (`AD1`) ; audit `nadia-prof` (A') | **engage** par cet amendement |
+
+Arithmetique, lue le 2026-10-19 (`awk -F'|'` sur onze lignes `instance|poste|prix|etat`) : A 4,00 ; Ap 2,00 ; B 2,00 ; total 8,00 ; par etat, `engage` 6,50 ; `marge` 1,50 ; `a-decider` 0. Aucun prix, aucun lot, aucune instance ne change.
+
+### 3. Ce que la decision de `AD1` coute, dit et non arbitre
+
+- **Un seul developpeur sur deux instances.** La regle de `composition-palier-3.md` (RG2 : des developpeurs distincts sur des instances distinctes, parce que les lots d'un palier partagent `catalogue.yaml` et l'inventaire de `TexteAccentueExposeParLePortEntrantTest`) n'est pas tenue pour B et A' : `AD1` met les deux lots chez `lea-dev`. J'applique la decision et je dis l'ecart. Ce que je fais de mon role : `lea-dev` n'a **qu'un worktree vivant a la fois** (RG4) ; il conduit `p3-8` puis `p3-9`, l'ordre de la composition, et me dit quand il passe de l'un a l'autre ; la resolution des fichiers partages est la mienne, comme aux paliers 1 et 2, jamais une assertion affaiblie.
+- **Effet sur les instances** : le lot d'A' ne demarre qu'apres la livraison de celui de B. Je n'ai aucune mesure de charge pour dire lequel est le plus long, et je n'en invente pas.
+- **`sofia-sm` n'a plus aucun lot** : sa seule ligne de developpement est `p3-4`. Les deux lignes d'isolation de `sofia-sm` envisagees par la section 6 de `composition-palier-3.md` tombent.
+- **Reports.** L'amendement de 23:09 (section 7) ecrivait : *"premier report chacun si la reponse arrive apres la fusion de cet amendement"*. Cet amendement est fusionne sur `round-two` (`6b6d271a`) et la reponse est posterieure : **`p3-8` et `p3-9` sont chacun a leur premier report** (`DEC-0120` A.66), engages tardivement, ce qui evite un second report et ne l'efface pas. Compte a l'ouverture : 2 premiers reports. L'amendement de `DEC-0120` qui porte la composition est a `camille-po`.
+
+### 4. Isolation : remplace deux lignes de la table de `composition-palier-3.md` section 6
+
+La table reste dans `composition-palier-3.md` (une seule copie) ; son amendement du meme jour porte les deux lignes remplacees. Aucun numero neuf : `lea-dev` prend 18531 (B) et 19231, puis 18532 (A') et 19232, repertoires `s57-p3-lea-dev-b` et `s57-p3-lea-dev-ap`. **`lea-dev` a deux lignes et ne les entrelace pas.** Branches et worktrees : `s57-lea-mat-ce1-01` et `s57-lea-emc-ce1-01`, worktrees voisins du checkout, ouverts apres la fusion de `p3-4`.
+
+### 5. Ce qui reste a decider, chez son proprietaire
+
+| Code | Objet | Qui decide |
+|---|---|---|
+| `AD3` | story pour `RL5` a `RL7` | `camille-po` |
+| `AD5` | *"avant tout autre commit de code"* (`A.115` rang 2) et le commit de `Z1`/`Z2` | `camille-po`, avis de `theo-archi` |
+| `AD6` | `S57-GARDE-PILE-DE-POLICES` au palier 3 | `camille-po` (rang), puis `sofia-sm` (engagement) |
+| `AD7` | les trois commentaires d'en-tete de `R6` | `camille-po` (moment), puis `sofia-sm` (developpeur) |
+
+### 6. Ce que cet amendement ne fait pas
+
+N'ouvre aucun worktree de lot, ne cree aucune branche de lot, ne lance aucun agent. N'engage aucun lot de paquet avant la fusion de `p3-4` : les lots s'ouvrent apres elle (ordre de l'amendement de 23:09, section 3). Ne modifie aucun prix, aucun lot, aucune instance, aucun critere de story, ni `backlog.md`, ni `preparation-palier-3-ce1-camille.md`, ni la matrice. Ne prononce aucun Done. Ne decide ni `AD3`, ni `AD5`, ni `AD6`, ni `AD7`.
+
+### 7. Jobs de `ci.yml` lances pour ce commit
+
+Lances depuis le checkout, avec les deux amendements presents, avant le commit. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`chemins`** : `verifier-chemins-test.sh` rend *"Tous les cas passent : le garde-fou de chemins mord, et sur le bon motif."* ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh` : *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, sortie 0.
+- **`build`, partiel** : `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test` restreint a `AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest` et `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`, perimetre `bootstrap` et ses amonts : `BUILD SUCCESS`, 15 tests (5 et 10), 0 echec. Le reacteur complet est lance pour la tache suivante (`RL5` a `RL7`), pas pour celle-ci.
+- **`prefixes`** : lance apres le commit, resultat dans le message de retour de la tache. **`outils`** : non lance par ce commit, aucun outil modifie.
+
+### 8. Decisions prises
+
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il ecrit : `AD1`, `AD2` et `AD4` comme decidees sur la foi d'une reponse relayee ; l'engagement de `p3-8` et `p3-9` ; le compte des reports a l'ouverture (2 premiers reports) ; l'ecart a RG2, dit. L'amendement de `DEC-0120` qui porte la composition est a `camille-po`.
