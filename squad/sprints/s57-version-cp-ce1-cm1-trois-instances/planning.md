@@ -1877,3 +1877,121 @@ Nomme avec son destinataire dans `cloture-palier-2.md`, section 9.
 ### 13. Ce que cet amendement ne fait pas
 
 Ne prononce aucun Done, ne juge aucun contenu, ne touche ni la matrice (148 / 200, `camille-po`), ni un catalogue, ni un critere, ni du code. N'ecrit pas le commit de `RL5` a `RL7`. Ne modifie aucun fichier signe par un autre agent.
+
+---
+
+## Amendement du 2026-10-19 23:09 (UTC+02:00), ouverture du palier 3
+
+Annotation datee, heure lue par `date`, **inscrite avant l'ouverture de tout worktree du palier 3** (`D2` (c), precedent s56 et paliers 1 et 2). **Rien au-dessus n'est reecrit** ; cet amendement ne remplace aucune phrase. Arbre : `round-two` a `ee9ecd44`, `bash outils/verifier-lignee.sh` sort 0, `git status --short` ne montre que `.claude/settings.local.json` (non suivi) avant ecriture, casquette Scrum Master. Sources, par auteur : `sofia-sm` (`cloture-palier-2.md`, `ad65827e`, sections 8, 9 et 14) ; `nadia-prof` (`arbitrage-nadia-preparation-palier-3-ce1.md`, `b8fa7f9c` ; `reponses-nadia-questions-stories-palier-3.md`, `c3d1ebcf`, section 7) ; `camille-po` (`preparation-palier-3-ce1-camille.md`, `a5748847`, section 8 ; annotation "Palier 3 de s57" du backlog et son amendement, `ee9ecd44` ; `DEC-0120` A.66 et A.115) ; `theo-archi` (`reponses-theo-questions-stories-palier-3.md`, `34f6734a` ; `avis-theo-preparation-palier-3-ce1.md` et `decision-theo-garde-ce1-e3.md`, `08d0dc0e`). **Cet amendement ouvre le palier 3 sous les reserves de la section 7. Il n'ouvre aucun worktree** : `K1 (a)` des stories demande qu'il soit fusionne sur `round-two`, et je ne le fusionne pas. Il n'est pas commite par moi.
+
+### 1. Regle d'ouverture (`D2`), condition par condition
+
+| Condition de `D2` | Preuve lue sur l'arbre | Etat |
+|---|---|---|
+| (a) `cloture-palier-2.md` sur `round-two` | `git show HEAD:squad/sprints/s57-version-cp-ce1-cm1-trois-instances/cloture-palier-2.md` sort 0 | tenue |
+| (b) arbitrage prealable de `nadia-prof`, trois instances | meme commande sur `reponses-nadia-questions-stories-palier-3.md` : sort 0 ; sa section 7 est *"Arbitrage prealable du palier 3, instances A, A' et B"* ; elle porte la cloture du palier 2 (7.1), la capacite et l'affectation (7.2), les conditions de Done (7.3). *"Il n'y a pas de second fichier"* (section 3 du meme fichier) | tenue |
+| (c) composition de `camille-po`, avec la reference de l'arbitrage, heure avant les worktrees | section 8 de `preparation-palier-3-ce1-camille.md` : sort 0 ; variante (i), confirmee par `nadia-prof` (7.2, `CR41`) ; stories `S57-BR-*` et `S57-ARB-PALIER-3` en fin de `backlog.md`. `git worktree list` rend 2 lignes (le checkout et celui de `main`) ; aucune des branches de la section 6 de `composition-palier-3.md` n'existe (`git branch --list`, 0 par nom). Choix de (i) : delegation de l'utilisatrice du 2026-10-19 au mieux de la couverture, relayee a `camille-po` (backlog, annotation "Palier 3 de s57") et au lanceur de cette tache ; je n'ai pas lu ses mots de sa main | tenue par cet amendement (sections 2 a 4) |
+| (d) table d'isolation du palier, repertoires et ports neufs | `composition-palier-3.md`, section 6. **Ecart a la lettre de `D2` (d)** (*"l'amendement porte la table"*) : la table est dans ce fichier, a la demande du lanceur, et cet amendement la designe ; je ne la copie pas ici pour qu'elle ne puisse pas deriver en deux endroits. Ports : ceux du palier 2, aucun numero neuf ; 18522 n'est donne a personne (19222 est fixe en dur par `pilote-q7.mjs`) ; `netstat -ano` sur les ports 185xx et 192xx rend 0 ligne | tenue par `composition-palier-3.md`, designe ici |
+
+Sur le meme arbre : `git merge-base --is-ancestor 729b0d8a HEAD` sort 0 (`K1 (c)` de `S57-BR-EMC-CE1-01`, instance A'). `reponses-theo-questions-stories-palier-3.md` (`X5c`) dit qu'`ADR-0065` A2 ne demande ni amendement ni garde-fou pour qu'A' porte l'EMC.
+
+**Ce que `D2` ne demande pas et qui reste ouvert, nomme pour qu'aucun ne passe pour clos** :
+
+- **La lecture de l'isolation du palier 2 par `nadia-prof`** : aucun fichier du depot (`cloture-palier-2.md` section 10 ; `reponses-nadia-questions-stories-palier-3.md` 7.1 : *"Reste ouvert, a moi"*). Elle n'est pas une condition de `D2`.
+- **`Q4` de `theo-archi`** (crochet du harnais sur les redirections du shell) : decision de l'utilisatrice, non prise. La consigne ecrite de `composition-palier-3.md` section 6 n'est pas un moyen de garde.
+- **`K7`** : chaque developpeur du palier ecrit `rapport-<developpeur>-palier-3.md`, avec les jobs de `ci.yml` qu'il a lances.
+
+### 2. Composition portee (`camille-po`), prix de `nadia-prof`
+
+Reprise de `preparation-palier-3-ce1-camille.md` 8.2 et de `reponses-nadia-questions-stories-palier-3.md` 7.2 **sans modifier un prix, un lot ni une instance**. Somme recomptee par `awk` sur onze lignes de prix, sortie lue ce jour : A 4,00 ; A' 2,00 ; B 2,00 ; total 8,00 ; engage 4,50 ; marges 1,50 ; non engage 2,00 ; non affecte 0.
+
+| Instance | Total | Engage a l'ouverture | Marge, allouee a aucun poste | Non engage, retenu par la composition | Lots |
+|---|---|---|---|---|---|
+| A (groupe X) | 4,0 | 3,5 (arbitrage 0,5 ; `-06`, `-07`, `-11` 3,0) | 0,5 | 0 | 3 |
+| A' | 2,0 | 0,5 (arbitrage) | 0,5 | 1,0 (`EMC-CE1-01`, `AD1`) | 1 |
+| B | 2,0 | 0,5 (arbitrage) | 0,5 | 1,0 (`MAT-CE1-01`, `AD1`) | 1 |
+| hors instance | 0 | - | - | - | - |
+
+Bornes relues : somme 8,0 (`PAR-9`) ; plafond de 5,0 par instance, A est a 4,0 (`PAR-8`) ; trois lots au plus par instance, A en porte trois (borne atteinte), A' et B un ; aucun chiffre au-dela de 8,0 ; les marges et les non affectes du palier 2 sont tombes (`DEC-0120` A.114) et rien n'en est repris. Un lot a 1,0 pour `EMC-CE1-01` : prix de l'audit, l'ecriture du paquet n'est pas un poste du bareme (`nadia-prof`, 7.2).
+
+### 3. Ordre : `Z1`/`Z2`, `RL5` a `RL7`, lots. **Propose, confirme dans sa lecture, non decide**
+
+L'ordre est celui de la section 14 de `cloture-palier-2.md` et de `DEC-0120` A.115 : **proposition de `camille-po`, ecrite *"Rien n'est decide ici"* et *"sans engagement"***. Sa lecture architecturale est confirmee par `theo-archi` (`reponses-theo-questions-stories-palier-3.md`, ligne `ORD`) : `RL5` a `RL7` precede chaque lot, `Z1`/`Z2` ne lie les lots que par le rang. **Aucune `ADR` ni aucune `DEC` ne le decide.** L'engagement est a moi (A.115 : *"l'engagement est a `sofia-sm` au planning du palier 3"*) : **je l'engage comme ordre de planning, pas comme decision de produit ou d'architecture.**
+
+| Rang | Quoi | Porte |
+|---|---|---|
+| 1 | `S57-GARDE-C1-VIRGULE-ET-IMBRIQUE` (`Z1`, `Z2`) | porte de tout poste qui modifie `recreo.css` ; aucun des cinq lots n'y touche. Pas une porte des lots, sauf si l'un d'eux demande une regle de feuille |
+| 2 | commit de `RL5`, `RL6`, `RL7` | **porte des lots** : avant le premier jar rejoue du palier 3 et avant tout commit de lot ; les branches des cinq lots sont coupees sur le sommet de `round-two` apres sa fusion |
+| 3 | `-06`, `-07`, `-11` (A) ; `MAT-CE1-01` (B) ; `EMC-CE1-01` (A') | `-06`, `-07`, `-11` dans l'ordre d'audit de `nadia-prof` ; la lecture complete precede chaque verdict |
+
+Le rang est l'ordre de demarrage. **Ordre de fusion** : le premier pret est fusionne le premier, un a la fois, `bash outils/mvn-jdk21.sh -B clean verify` entier a la racine apres chacun, regle du palier 1 reprise. **Tout compte de tests est celui du reacteur sur l'arbre fusionne, que j'etablis moi-meme.** Dernier total mesure : 2669 sur `efb8d013` (`cloture-palier-2.md` section 12). Resolution des fichiers partages (`catalogue.yaml`, 152 entrees avant, 157 apres les cinq lots ; inventaire de `TexteAccentueExposeParLePortEntrantTest` ; `REGISTRE-identifiants.md`) : celle des paliers 1 et 2, jamais une assertion affaiblie. **Une phrase d'`A.115` dit autrement** (rang 2 : *"avant tout autre commit de code"*, le commit de `Z1`/`Z2` etant au rang 1) : `AD5`, a `camille-po`.
+
+### 4. Postes du palier 3, verification poste par poste (`PAR-16`) : les stories nommees (`K1 (a)`)
+
+Numerotation propre au palier 3. Titres lus par `grep -c "^#\{3,4\} .*<story>" docs/backlog/backlog.md` sur `ee9ecd44`. Le detail (prix, etat, issue de `DEC-0086` section 5) est dans `composition-palier-3.md`, section 3.
+
+| # | Poste | Story, titres au backlog | Inst. | Agent nominatif | Etat |
+|---|---|---|---|---|---|
+| p3-1 | Arbitrage prealable et lecture complete | `S57-ARB-PALIER-3` (2) | A, A', B | `nadia-prof` | **engage** : part ecrite livree, reste la lecture |
+| p3-3 | Garde de `C1'`, virgule et CSS imbrique | `S57-GARDE-C1-VIRGULE-ET-IMBRIQUE` (1) | hors `PAR` | `theo-archi` ; mesure `yanis-qa` | **engage** |
+| p3-4 | `RL5`, `RL6`, `RL7` | aucune (0) | hors `PAR` | `sofia-sm`, casquette developpeuse, sous `AD2` | **engage sans story**, ecart dit (`AD3`) |
+| p3-5 | `ce1-inference` | `S57-BR-FRA-CE1-06` (1) | A | `marc-dev` | **engage** |
+| p3-6 | `ce1-texte-documentaire` | `S57-BR-FRA-CE1-07` (1) | A | `marc-dev` | **engage** |
+| p3-7 | `ce1-negation` | `S57-BR-FRA-CE1-11` (1) | A | `marc-dev` | **engage** |
+| p3-8 | `ce1-nombres-jusqu-a-1000` | `S57-BR-MAT-CE1-01` (1) | B | **a decider** (`AD1`) | **non engage** |
+| p3-9 | `ce1-emc-biens-communs`, paquet a ecrire | `S57-BR-EMC-CE1-01` (1) | A' | **a decider** (`AD1`) | **non engage** |
+
+`p3-2` (les trois marges de 0,5) n'est pas un poste de travail. **Hors composition, non engages, aucun developpeur designe** : `S57-GARDE-PILE-DE-POLICES` (`AD6`), `S57-GARDE-NOMBRE-DE-MANCHES`, `S57-TYP1-TEXTES-DE-GABARIT`, `S57-MESSAGE-PARTIE-PERDUE`, le garde generique de `LON-CE1-3` a `-5` et `TRV-CE1-1` (forme `F1` de `theo-archi`, story non ecrite : `camille-po`), les trois commentaires d'en-tete de paquet de `R6` (`AD7`).
+
+### 5. Affectations nominatives des developpeurs
+
+**Deduit des regles ecrites** (`composition-palier-3.md`, section 4, `RG1` a `RG6`) : `theo-archi` pour `Z1`/`Z2` (la story le nomme, precedent du palier 2) ; `sofia-sm`, casquette developpeuse, pour `RL5` a `RL7` (mon texte du 2026-10-16 21:46, section 9, *"casquette developpeuse"*), **sous `AD2`** ; `marc-dev` pour `-06`, `-07`, `-11`, dans l'ordre d'audit, un worktree a la fois (`lea-dev` exclu des lots de francais CE1 par la regle de ce fichier, section "Charge des developpeurs").
+
+**Pas deduit** : le developpeur de `MAT-CE1-01` (B) et celui d'`EMC-CE1-01` (A') : `lea-dev` sur l'un, `sofia-sm` sur l'autre, **le sens est a l'utilisatrice (`AD1`)**. Les stories de `-06` et `-07` proposent `lea-dev` ; la regle l'exclut ; la derogation, si elle est voulue, est a l'utilisatrice (`AD4`).
+
+### 6. Isolation
+
+`composition-palier-3.md`, section 6, designee par la condition (d) ci-dessus : repertoires `s57-p3-<agent>-<instance>`, un port de jeu et un port de debogage par ligne, consigne ecrite a repeter en tete du message de lancement de chaque agent, branches et worktrees nommes, aucun n'existe a l'ecriture.
+
+### 7. Compte des reports et reserves d'ouverture
+
+Regles de `DEC-0120` A.66 a A.73, appliquees comme aux paliers 1 et 2 : un report est un poste retenu par la composition et non engage a l'ouverture, quelle qu'en soit la cause.
+
+| Poste | Etat a l'ouverture | Compte |
+|---|---|---|
+| `-06`, `-07`, `-11` | engages | pas de report ; deuxieme ecartement solde ; pas de troisieme |
+| p3-8 `MAT-CE1-01`, p3-9 `EMC-CE1-01` | **non engages tant que `AD1` n'est pas repondue** | **premier report chacun si la reponse arrive apres la fusion de cet amendement** ; si elle arrive avant, l'amendement se corrige et ils sont engages a l'ouverture |
+| `RL5` a `RL7` | engages sous `AD2` | premier glissement deja ecrit (21:46, section 9) ; non livres a la cloture du palier 3 : second glissement, report compte, ecrit ce jour-la |
+
+### 8. A decider
+
+Je classe, je ne reponds a aucune. Le detail est dans `composition-palier-3.md`, section 8.
+
+| Code | Objet | Qui decide |
+|---|---|---|
+| `AD1` | developpeurs de `MAT-CE1-01` et d'`EMC-CE1-01` : `lea-dev` ou `sofia-sm` | utilisatrice |
+| `AD2` | `RL5` a `RL7` confiee a `sofia-sm` sous la casquette developpeuse | utilisatrice, par le lanceur |
+| `AD3` | story pour `RL5` a `RL7` | `camille-po` |
+| `AD4` | derogation a la regle *"aucun lot de francais CE1 pour `lea-dev`"* | utilisatrice |
+| `AD5` | *"avant tout autre commit de code"* (`A.115` rang 2) et le commit de `Z1`/`Z2` | `camille-po`, avis de `theo-archi` |
+| `AD6` | `S57-GARDE-PILE-DE-POLICES` au palier 3 | `camille-po` (rang), puis `sofia-sm` (engagement) |
+| `AD7` | les trois commentaires d'en-tete de `R6` | `camille-po` (moment), puis `sofia-sm` (developpeur) |
+
+### 9. Ce que cet amendement ne fait pas
+
+N'ouvre aucun worktree, ne cree aucune branche, ne lance aucun agent, ne fusionne ni ne commite rien. Ne modifie aucun prix, aucun lot, aucune instance, aucun critere de story. Ne prononce aucun Done, ne juge aucun contenu, ne touche pas la matrice (148 / 200, `camille-po`). Ne decide ni l'ordre (section 3), ni `AD1` a `AD7`. N'ecrit pas le commit de `RL5` a `RL7`. Ne modifie aucun fichier signe par un autre agent : `planning.md` s'amende par cette annotation datee, comme sa section "Duree" l'a prevu (`D2`).
+
+### 10. Jobs de `ci.yml` lances pour ce commit
+
+Lances depuis le checkout, avec `composition-palier-3.md` (non suivi) et cette annotation presentes, avant tout commit (il n'y en a pas). Sorties des journaux ecrits dans mon repertoire de scratchpad. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 (*"Tous les cas passent : le garde-fou de chemins mord, et sur le bon motif."*) ; `git ls-files` (moins le test du garde-fou) et `composition-palier-3.md` passent a `verifier-chemins.sh` : sortie 0 (*"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*).
+- **`build`, partiel** : `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test` restreint a `AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest` et `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`, perimetre `bootstrap` et ses amonts : `BUILD SUCCESS`, 15 tests (5 et 10), 0 echec, premiere execution. Lance parce que ces deux tests lisent `squad/` par `Files.walk`, fichiers non suivis compris ; ils ont lu `composition-palier-3.md` et cette annotation avant l'ajout de la presente section, qui ne contient aucun tableau. Le reste du `build` (reacteur complet) et l'etape *"Package du fat jar"* ne sont pas lances : ce changement ne touche ni code ni contenu servi.
+- **`prefixes`** et **`outils`** : non lances. Aucun commit n'est fait ; aucun outil n'est modifie.
+- Lignee : `bash outils/verifier-lignee.sh` sort 0 avant et apres l'ecriture.
+
+Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue. Le Done technique n'est pas prononce par moi.
+
+### 11. Decisions prises
+
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il ecrit : l'heure d'ouverture du palier 3 ; la composition de `camille-po` portee, sans changement de prix, de lot ni d'instance ; l'ordre `Z1`/`Z2`, `RL5` a `RL7`, lots, engage comme ordre de planning et non decide ; les affectations deduites des regles et les sept points a decider ; la designation de la table d'isolation de `composition-palier-3.md` ; le compte des reports a l'ouverture. **L'amendement de `DEC-0120` qui porte la composition** (precedent : A.53 a A.62 et A.91 a A.93 ; derniers amendements en vigueur, A.115 et A.116) est a `camille-po` : les proprietaires qu'elle attendait sont nommes ici, sauf les deux de `AD1`.
