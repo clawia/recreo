@@ -15,6 +15,7 @@ import java.util.Set;
 
 import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.Regle;
 import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.classesDuSelecteur;
+import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.reglesDe;
 import static com.recreo.adapter.web.LAnimationRetardeMaisNeDetermineRienTest.reglesMaison;
 import static com.recreo.adapter.web.LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.documents;
 import static com.recreo.adapter.web.LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest.zoneEchangee;
@@ -78,7 +79,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *   <li><b>perimetre derive</b> : les ecrans viennent du repertoire de gabarits et la coquille est
  *       identifiee par le fait qu'elle contient la zone {@code hx-target} - meme derivation
  *       qu'ADR-0022, partagee plutot que recopiee. Les jetons viennent du balisage et des selecteurs
- *       maison. Aucun nom de classe, de fragment ni de marqueur n'est ecrit dans ce fichier ; un
+ *       maison. Aucun nom de classe, de fragment ni de marqueur n'est ecrit dans ce fichier, a une
+ *       exception pres : l'exemple de la decision 1 d'ADR-0031, epingle nommement pour qu'un
+ *       changement de jetons ne le fasse pas disparaitre sans rouge (amendement du 2026-10-20). Un
  *       ecran neuf, un habillage neuf ou un marqueur neuf entrent dans le controle le jour ou le
  *       gabarit les pose ;</li>
  *   <li><b>derivation totale</b> : aucun gabarit, aucune zone, plusieurs zones, aucune coquille,
@@ -674,5 +677,171 @@ class UnEcranNeGouvernePasLApparenceDUnAutreTest {
                 reglesMaison(RACINE_PRODUCTION)))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("aucun gabarit ne pose de region " + REGION_DU_MESSAGE);
+    }
+
+    private static boolean estUneClasse(Jeton jeton) {
+        return jeton.genre().equals(Jeton.CLASSE);
+    }
+
+    /**
+     * ADR-0031, amendement du 2026-10-20 ({@code Z1}) : la regle de {@code TP4} avec la classe du
+     * message en seconde position d'une liste de {@code :has(...)} ou de {@code :is(...)}, derriere
+     * une seconde classe du dehors. Ecrite en texte et lue par le lecteur de la feuille : une
+     * {@link Regle} construite a la main ne passerait pas par le decoupage de l'en-tete, qui est
+     * precisement ce qui laissait passer cette forme.
+     */
+    private static List<Regle> fautivesEnListe(Map<String, Document> gabarits, String pseudo) {
+        List<Regle> fautives = new ArrayList<>();
+        for (Message message : messages(gabarits, new ArrayList<>())) {
+            List<Jeton> dehors = message.seulementDehors().stream()
+                    .filter(UnEcranNeGouvernePasLApparenceDUnAutreTest::estUneClasse)
+                    .limit(2)
+                    .toList();
+            if (dehors.size() < 2) {
+                continue;
+            }
+            for (Jeton propre : message.propres()) {
+                if (estUneClasse(propre)) {
+                    String texte = "." + dehors.get(0).valeur() + ":" + pseudo + "(."
+                            + dehors.get(1).valeur() + ", ." + propre.valeur() + ") { row-gap: 0; }";
+                    List<Regle> lues = reglesDe("mutation de " + message.ecran(), texte);
+                    assertThat(lues)
+                            .as("une virgule entre parentheses ne coupe pas la regle : %s", texte)
+                            .hasSize(1);
+                    fautives.addAll(lues);
+                }
+            }
+        }
+        return fautives;
+    }
+
+    @Test
+    void uneClasseDuMessageEnSecondePositionDUnHasFaitEchouerLeGardeFou() {
+        Map<String, Document> gabarits = documents(RACINE_PRODUCTION);
+        List<Regle> fautives = fautivesEnListe(gabarits, "has");
+        assertThat(fautives).as("aucune regle fautive derivee : la mise a l'epreuve serait vide").isNotEmpty();
+        chacuneFaitEchouerLeGardeFou(gabarits, fautives);
+    }
+
+    @Test
+    void uneClasseDuMessageEnSecondePositionDUnIsFaitEchouerLeGardeFou() {
+        Map<String, Document> gabarits = documents(RACINE_PRODUCTION);
+        List<Regle> fautives = fautivesEnListe(gabarits, "is");
+        assertThat(fautives).as("aucune regle fautive derivee : la mise a l'epreuve serait vide").isNotEmpty();
+        chacuneFaitEchouerLeGardeFou(gabarits, fautives);
+    }
+
+    /**
+     * Clause de non-sur-detection de {@code Z1} : une liste de deux classes du message dans le
+     * {@code :has(...)} d'un sujet qui est le sommet du message reste verte. Elle mord le jour ou le
+     * decoupage de l'en-tete ou la lecture du sujet prendrait une virgule pour une sortie du message.
+     */
+    @Test
+    void uneListeDeClassesDuMessageSousSonSommetResteVerte() {
+        Map<String, Document> gabarits = documents(RACINE_PRODUCTION);
+        List<Regle> regles = new ArrayList<>(reglesMaison(RACINE_PRODUCTION));
+        int ajoutees = 0;
+        for (Message message : messages(gabarits, new ArrayList<>())) {
+            Optional<Jeton> sommet = message.sommet().stream()
+                    .filter(UnEcranNeGouvernePasLApparenceDUnAutreTest::estUneClasse)
+                    .filter(message.propres()::contains)
+                    .findFirst();
+            List<Jeton> dedans = message.seulementDescendants().stream()
+                    .filter(UnEcranNeGouvernePasLApparenceDUnAutreTest::estUneClasse)
+                    .limit(2)
+                    .toList();
+            if (sommet.isEmpty() || dedans.size() < 2) {
+                continue;
+            }
+            regles.addAll(reglesDe("clause de " + message.ecran(), "." + sommet.get().valeur()
+                    + ":has(." + dedans.get(0).valeur() + ", ." + dedans.get(1).valeur()
+                    + ") { color: inherit; }"));
+            ajoutees++;
+        }
+        assertThat(ajoutees).as("aucun message ne porte un sommet et deux classes interieures : la clause serait vide")
+                .isPositive();
+        verifierQuAucuneRegleHorsDuMessageNeLeNomme(gabarits, regles);
+    }
+
+    /**
+     * ADR-0031, amendement du 2026-10-20 ({@code Z2}) : une regle imbriquee est refusee par le
+     * lecteur de la feuille, et le refus cite la regle, donc la classe du message qu'elle nomme.
+     */
+    @Test
+    void uneRegleImbriqueeQuiNommeLeMessageEstRefuseeParLeLecteur() {
+        int eprouvees = 0;
+        for (Message message : messages(documents(RACINE_PRODUCTION), new ArrayList<>())) {
+            Optional<Jeton> sujet = message.seulementDehors().stream()
+                    .filter(UnEcranNeGouvernePasLApparenceDUnAutreTest::estUneClasse)
+                    .findFirst();
+            if (sujet.isEmpty()) {
+                continue;
+            }
+            for (Jeton propre : message.propres()) {
+                if (estUneClasse(propre)) {
+                    String texte = "." + sujet.get().valeur() + " { &:has(." + propre.valeur()
+                            + ") { row-gap: 0; } }";
+                    assertThatThrownBy(() -> reglesDe("mutation de " + message.ecran(), texte))
+                            .as(texte)
+                            .isInstanceOf(AssertionError.class)
+                            .hasMessageContaining("regle imbriquee")
+                            .hasMessageContaining("." + propre.valeur());
+                    eprouvees++;
+                }
+            }
+        }
+        assertThat(eprouvees).as("aucune regle imbriquee derivee : la mise a l'epreuve serait vide").isPositive();
+    }
+
+    /**
+     * ADR-0031, amendement du 2026-10-20 ({@code Z5}) : l'exemple de la decision 1, que la
+     * co-occurrence laisse passer depuis que l'ecran de manche pose aussi le verdict, est rouge par la
+     * clause du sujet hors du message. Seul cas nomme de ce fichier : si un changement de jetons le
+     * rendait inapplicable, ce test rougirait au lieu de laisser l'exemple de l'ADR sans preuve.
+     */
+    @Test
+    void lExempleDeLaDecisionUnEstRefuseParLaClauseDuSujetHorsDuMessage() {
+        String exemple = "body:has(.est-juste) .cabinet-bandeau";
+        List<Regle> regles = new ArrayList<>(reglesMaison(RACINE_PRODUCTION));
+        regles.addAll(reglesDe("exemple de la decision 1", exemple + " { background-color: gold; }"));
+        assertThatThrownBy(() -> verifierQuAucuneRegleHorsDuMessageNeLeNomme(
+                documents(RACINE_PRODUCTION), regles))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(exemple)
+                .hasMessageContaining("Condition C1' point 1");
+    }
+
+    /**
+     * ADR-0031, amendement du 2026-10-20 ({@code Z4}) : le nombre de regions d'annonce derivees des
+     * gabarits, en egalite. Retirer {@code role="status"} d'un message sortirait cet ecran du controle
+     * sans rouge ; le cliquet oblige le commit qui le fait a le dire ici et dans l'ADR.
+     */
+    private static final int REGIONS_D_ANNONCE = 3;
+
+    private static void verifierLeNombreDeRegionsDAnnonce(Map<String, Document> gabarits) {
+        assertThat(messages(gabarits, new ArrayList<>()))
+                .as("ADR-0031, amendement du 2026-10-20 : le nombre de regions %s des gabarits a "
+                        + "change. Un message qui perd sa region sort du controle de la condition C1' "
+                        + "sans rouge ; un message neuf y entre. Le commit qui fait l'un ou l'autre "
+                        + "met ce nombre a jour et le dit dans ADR-0031", REGION_DU_MESSAGE)
+                .hasSize(REGIONS_D_ANNONCE);
+    }
+
+    @Test
+    void leNombreDeRegionsDAnnonceEstEpingle() {
+        verifierLeNombreDeRegionsDAnnonce(documents(RACINE_PRODUCTION));
+    }
+
+    @Test
+    void unMessageQuiPerdSaRegionDAnnonceFaitEchouerLeCliquet() {
+        Map<String, Document> gabarits = documents(RACINE_PRODUCTION);
+        Element region = gabarits.values().stream()
+                .flatMap(document -> document.select(REGION_DU_MESSAGE).stream())
+                .findFirst()
+                .orElseThrow();
+        region.removeAttr(ATTRIBUT_DE_REGION);
+        assertThatThrownBy(() -> verifierLeNombreDeRegionsDAnnonce(gabarits))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("le nombre de regions");
     }
 }

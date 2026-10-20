@@ -142,8 +142,8 @@ class HabillageDesEcransTest {
             }
             String selecteurs = bloc.substring(0, accolade);
             String corps = bloc.substring(accolade + 1);
-            for (String selecteur : selecteurs.split(",")) {
-                blocs.merge(selecteur.strip(), corps, (ancien, nouveau) -> ancien + nouveau);
+            for (String selecteur : LAnimationRetardeMaisNeDetermineRienTest.selecteurs(selecteurs)) {
+                blocs.merge(selecteur, corps, (ancien, nouveau) -> ancien + nouveau);
             }
         }
         return blocs;
