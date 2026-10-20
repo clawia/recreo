@@ -11,6 +11,18 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `theo-archi`, s57, palier 3, le 2026-10-20 (allocation mecanique, clause 2 rouge sur le checkout de `round-two`).**
+Huit identifiants ajoutes, **`PL-1`** a **`PL-8`**, les codes de constat du resume de
+`squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md`, ecrits par `ines-design` sans
+allocation. **Un prefixe neuf**, `PL` : absent de la section 4 avant d'ecrire. Aucun sens n'est recopie ici (clause 4) : il
+vit dans le resume de ce fichier. Aucune allocation retiree, aucun autre identifiant manquant.
+
+Ligne d'etat courant portee de **986 / 178 a 994 / 179**. **Methode : le chiffre est celui que le garde-fou affiche sur
+mon diff.** `bash outils/mvn-jdk21.sh -B -q -pl bootstrap -am test -Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend : *"declare 986 identifiants
+alloues et 178 prefixes distincts, sa table en porte 994 et 179"*, seul echec des 10 tests. C'est ce **994 / 179** que je
+recopie.
+
 **Note de `nadia-prof`, s57, palier 1, instance B, le 2026-10-15 (rejeu d'`ART-CP-10`, VALIDE SOUS RESERVE).**
 Un identifiant ajoute, une reserve, **`RDO-CP-R3`**, ecrite dans `squad/conformite/FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md`.
 **Forme copiee** de `RDO-CP-R1` : trois segments, niveau au milieu, marqueur `R` dans le dernier (`ADR-0100`). Prefixe `RDO-CP`
@@ -905,7 +917,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `986` identifiants alloues, `178` prefixes distincts.
+**Compte courant, verifie par la CI** : `994` identifiants alloues, `179` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2026,6 +2038,14 @@ clause 2 par une exemption.
 | `PER-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `PER-R2` | `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md` |
 | `PER-R3` | `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md` |
+| `PL-1` | `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md` |
+| `PL-2` | `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md` |
+| `PL-3` | `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md` |
+| `PL-4` | `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md` |
+| `PL-5` | `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md` |
+| `PL-6` | `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md` |
+| `PL-7` | `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md` |
+| `PL-8` | `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md` |
 | `PLA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
 | `PLU-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `PLU-2` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
