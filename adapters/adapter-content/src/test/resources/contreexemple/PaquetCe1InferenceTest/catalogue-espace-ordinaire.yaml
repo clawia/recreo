@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1InferenceTest. Le titre porte une espace ordinaire devant le point d'interrogation, ou la regle veut U+00A0.
+jeux:
+  - id: bandit-manchot-inference-fautif
+    titre: "Que dit le texte ?"
+    consigne: "Lis le petit texte, puis réponds à la question."
+    mecanique: bandit-manchot
+    paquet: ce1-inference
+    nombreDeManches: 10

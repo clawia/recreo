@@ -1,0 +1,27 @@
+schema: 1
+id: ce1-inference-fautif-longueur
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1InferenceTest pour TRV-CE1-2. La bonne reponse est
+# strictement la plus longue, en caracteres, sur deux items de trois.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Faire une inférence simple à partir d'un texte court (une information non écrite : un sentiment, un lieu, une cause)."
+lignesDeReferentiel: ["FRA-CE1-06"]
+items:
+  - enonce: "Comment se sent Hugo ?"
+    texteSupport: "Hugo a gagné la course. Il lève les bras."
+    bonneReponse: "il est très content"
+    distracteurs: ["il est triste", "il a peur"]
+    indice: "Regarde ce que fait le personnage."
+  - enonce: "Où est Paul ?"
+    texteSupport: "Paul attend sur le quai. Un train arrive."
+    bonneReponse: "dans une gare de train"
+    distracteurs: ["au zoo", "à l'école"]
+    indice: "Les objets du texte te disent où l'on est."
+  - enonce: "Pourquoi Eva met-elle son manteau ?"
+    texteSupport: "Eva frissonne. Elle met son manteau."
+    bonneReponse: "parce qu'elle a froid"
+    distracteurs: ["parce qu'elle a une très grande faim", "parce qu'elle a chaud"]
+    indice: "Pense à ce que fait son corps."
