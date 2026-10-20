@@ -1,0 +1,24 @@
+schema: 1
+id: ce1-negation-fautif-longueur
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Passer d'une phrase affirmative à une phrase négative (ne... pas) et inversement."
+lignesDeReferentiel: ["FRA-CE1-11"]
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1NegationTest pour TRV-CE1-2. La bonne reponse est
+# strictement la plus longue, en caracteres, sur deux items de trois.
+items:
+  - enonce: "« Rex garde la maison. » Quelle est la phrase négative ?"
+    bonneReponse: "Rex ne garde pas la maison."
+    distracteurs: ["Rex garde pas la maison.", "Rex ne garde la maison."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."
+  - enonce: "« Tom ferme la porte. » Quelle est la phrase négative ?"
+    bonneReponse: "Tom ne ferme pas la porte."
+    distracteurs: ["Tom ferme pas la porte.", "Tom ne ferme la porte."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."
+  - enonce: "« Sami lit le livre. » Quelle est la phrase négative ?"
+    bonneReponse: "Sami ne lit pas le livre."
+    distracteurs: ["Sami ne lit le livre pas pas.", "Sami lit pas le livre."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."

@@ -1,0 +1,21 @@
+schema: 1
+id: ce1-negation-fautif-sans-famille
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Passer d'une phrase affirmative à une phrase négative (ne... pas) et inversement."
+lignesDeReferentiel: ["FRA-CE1-11"]
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1NegationTest pour TRV-CE1-2. Le second item ne nomme
+# aucune famille de distracteurs.
+items:
+  # NEG-CE1-3: d, d
+  - enonce: "« Zoé ne mange pas la soupe. » Quelle est la phrase affirmative ?"
+    bonneReponse: "Zoé mange la soupe."
+    distracteurs: ["Zoé ne mange la soupe.", "Zoé mange pas la soupe."]
+    indice: "Enlève les petits mots qui disent non."
+  - enonce: "« Léo aime les épinards. » Quelle est la phrase négative ?"
+    bonneReponse: "Léo n'aime pas les épinards."
+    distracteurs: ["Léo aime pas les épinards.", "Léo ne aime pas les épinards."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."

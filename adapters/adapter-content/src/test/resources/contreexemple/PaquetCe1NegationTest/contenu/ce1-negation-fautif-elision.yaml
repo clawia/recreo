@@ -1,0 +1,32 @@
+schema: 1
+id: ce1-negation-fautif-elision
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Passer d'une phrase affirmative à une phrase négative (ne... pas) et inversement."
+lignesDeReferentiel: ["FRA-CE1-11"]
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1NegationTest pour NEG-CE1-2. Cinq items, aucune
+# elision.
+items:
+  - enonce: "« Rex garde la maison. » Quelle est la phrase négative ?"
+    bonneReponse: "Rex ne garde pas la maison."
+    distracteurs: ["Rex garde pas la maison.", "Rex ne garde la maison pas."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."
+  - enonce: "« Tom ferme la porte. » Quelle est la phrase négative ?"
+    bonneReponse: "Tom ne ferme pas la porte."
+    distracteurs: ["Tom ferme pas la porte.", "Tom ne ferme la porte pas."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."
+  - enonce: "« Sami lit le livre. » Quelle est la phrase négative ?"
+    bonneReponse: "Sami ne lit pas le livre."
+    distracteurs: ["Sami lit pas le livre.", "Sami ne lit le livre pas."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."
+  - enonce: "« Zoé ne mange pas la soupe. » Quelle est la phrase affirmative ?"
+    bonneReponse: "Zoé mange la soupe."
+    distracteurs: ["Zoé ne mange la soupe.", "Zoé mange pas la soupe."]
+    indice: "Enlève les petits mots qui disent non."
+  - enonce: "« Mia ne dessine pas la maison. » Quelle est la phrase affirmative ?"
+    bonneReponse: "Mia dessine la maison."
+    distracteurs: ["Mia ne dessine la maison.", "Mia dessine pas la maison."]
+    indice: "Enlève les petits mots qui disent non."

@@ -930,3 +930,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-texte-documentaire
     nombreDeManches: 10
+  - id: bandit-manchot-negation-ce1
+    titre: "Des phrases qui disent non"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-negation
+    nombreDeManches: 10

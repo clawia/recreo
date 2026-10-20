@@ -462,6 +462,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S57-BR-FRA-CE1-07 (s57) : entree neuve, FRA-CE1-07, comprendre un texte documentaire ou une
             // consigne ecrite (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 3.7).
             "bandit-manchot-texte-documentaire-ce1",
+            // S57-BR-FRA-CE1-11 (s57) : entree neuve, FRA-CE1-11, passer d'une phrase affirmative a une
+            // phrase negative (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.2).
+            "bandit-manchot-negation-ce1",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
             // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 6.3).
@@ -777,6 +780,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Ce que le texte ne dit pas",
             // S57-BR-FRA-CE1-07 (s57) : titre neuf, sans niveau (ADR-0078), sans signe double.
             "Lis pour savoir",
+            // S57-BR-FRA-CE1-11 (s57) : titre neuf, sans niveau (ADR-0078), sans signe double.
+            "Des phrases qui disent non",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
             "Même sens ou sens contraire",
             // S57-BR-FRA-CE1-24 (s57) : titre neuf, sans niveau (ADR-0078).
@@ -1756,6 +1761,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-07).
             "Comprendre un texte documentaire court ou une consigne écrite, et y prélever une "
                     + "information.",
+            // S57-BR-FRA-CE1-11 (s57) : competence neuve, FRA-CE1-11, libelle du referentiel copie
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-11).
+            "Passer d'une phrase affirmative à une phrase négative (ne... pas) et inversement.",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
             // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
             "Trouver un synonyme ou un contraire d'un mot fréquent.",
