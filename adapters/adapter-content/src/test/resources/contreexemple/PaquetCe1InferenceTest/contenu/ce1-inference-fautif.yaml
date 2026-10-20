@@ -1,0 +1,61 @@
+schema: 1
+id: ce1-inference-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1InferenceTest. Chaque item viole une seule
+# propriete du paquet ; le jeu entier viole en plus les trois sortes d'INF-CE1-1 (un seul item de
+# lieu sur huit) et l'equilibre des prenoms (cinq feminins distincts, un masculin).
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Faire une inférence simple à partir d'un texte court (une information non écrite : un sentiment, un lieu, une cause)."
+lignesDeReferentiel: ["FRA-CE1-06"]
+items:
+  # INF-CE1-2 : la bonne reponse est ecrite telle quelle dans le texte
+  - enonce: "Comment se sent Malo ?"
+    texteSupport: "Malo est triste. Il pleure beaucoup."
+    bonneReponse: "il pleure"
+    distracteurs: ["il rit", "il dort"]
+    indice: "Regarde ce que fait le personnage."
+  # LON-CE1-3 : trente et un mots, trois phrases de onze, neuf et onze mots
+  - enonce: "Pourquoi Lina court-elle ?"
+    texteSupport: "Ce matin, Lina se lève très tôt et prend son sac. Elle court vers l'arrêt car le bus va partir. Elle ne veut pas arriver en retard à l'école ce jour."
+    bonneReponse: "pour attraper le bus"
+    distracteurs: ["pour aller jouer", "pour trouver l'arrêt"]
+    indice: "Pense à ce que fait le bus."
+  # LON-CE1-4 : cinq phrases
+  - enonce: "Comment se sent Mila ?"
+    texteSupport: "Mila dessine. Elle colorie. Elle découpe. Elle colle. Elle pleure."
+    bonneReponse: "elle est triste"
+    distracteurs: ["elle est contente", "elle a peur"]
+    indice: "Regarde ce que fait le personnage."
+  # LON-CE1-4 : une phrase de treize mots
+  - enonce: "Comment se sent Nina ?"
+    texteSupport: "Nina regarde le grand chien noir qui court très vite dans son jardin. Elle recule."
+    bonneReponse: "elle a peur"
+    distracteurs: ["elle est contente", "elle est triste"]
+    indice: "Regarde ce que fait le personnage."
+  # IN7 : la bonne reponse est la seule proposition a majuscule
+  - enonce: "Où est Zoé ?"
+    texteSupport: "Zoé voit des lions derrière une grille. Un singe grimpe."
+    bonneReponse: "Au zoo"
+    distracteurs: ["dans un arbre", "à la ferme"]
+    indice: "Cherche les indices : qu'y voit-on ?"
+  # TRV-CE1-5 : l'indice contient une proposition de l'item, "elle a peur"
+  - enonce: "Comment se sent Sara ?"
+    texteSupport: "Sara tremble dans le noir. Elle serre sa peluche."
+    bonneReponse: "elle a peur"
+    distracteurs: ["elle est contente", "elle est triste"]
+    indice: "Pense à ce que fait Sara quand elle a peur."
+  # TRV-CE1-5 : un indice de quinze mots
+  - enonce: "Comment se sent Lina ?"
+    texteSupport: "Lina serre son nounours. Elle ne veut pas bouger."
+    bonneReponse: "elle est triste"
+    distracteurs: ["elle est contente", "elle a peur"]
+    indice: "Relis bien tout le texte et regarde ce que fait le personnage à la fin."
+  # TRV-CE1-4 : le mot inference dans l'indice
+  - enonce: "Pourquoi Malo ouvre-t-il la porte ?"
+    texteSupport: "Malo entend un bruit. Il ouvre la porte."
+    bonneReponse: "pour voir qui est là"
+    distracteurs: ["pour aller dormir", "pour sortir le chat"]
+    indice: "Fais une inférence avec le texte."

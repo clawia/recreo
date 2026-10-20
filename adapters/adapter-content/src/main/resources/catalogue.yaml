@@ -918,3 +918,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-pronoms
     nombreDeManches: 10
+  - id: bandit-manchot-inference-ce1
+    titre: "Ce que le texte ne dit pas"
+    consigne: "Lis le petit texte, puis réponds à la question."
+    mecanique: bandit-manchot
+    paquet: ce1-inference
+    nombreDeManches: 10
