@@ -128,3 +128,38 @@ Les jobs `prefixes`, `chemins` et `outils` ont ete joues dans l'arbre principal,
 Precedent rapport de fusion : 2839. Ecart mesure : +1, tout entier dans `adapter-content` (1793 a 1794), et dans `PaquetCe1EmcBiensCommunsTest` : 35 methodes de test contre 34 a `7301cbbc` (comptage des annotations, et 35 dans le log). Ecart attendu : +1. Le total correspond. Somme de mon propre log ; les autres lots corriges ne changent pas le nombre de tests.
 
 **Decisions** : aucune `ADR` ni `DEC` creee ou modifiee. **Obstacle ouvert** : allocation des identifiants `PL-1` a `PL-8` du fichier d'`ines-design` (route : `theo-archi`, `ADR-0085` clause 2). **Non fait** : `relecteur-pedagogique` n'a pas relu ces fusions ; `nadia-prof` n'a pas rejoue les lots corriges ; la CI distante n'a pas juge ; matrice, stories, worktrees et branches non touches.
+
+## 8. Fusion de la garde de pile de polices (K7), sur `round-two`
+
+Casquette Scrum Master. `round-two` verifie a `6d2e5b38` avant la fusion, `git status` sans fichier suivi modifie.
+
+| Branche | Tete | Coupee sur | Fusion | Conflit |
+|---|---|---|---|---|
+| `s57-theo-garde-pile-de-polices` | `558dd887` | `5ee20db7` (ancetre de `6d2e5b38`, verifie par `merge-base`) | `4650aeab`, `--no-ff` | aucun : `ADR-0054`, `ADR-index` et le registre fusionnent sans marqueur |
+
+Contenu : `LaPileDePolicesServieNeChangePasEnSilenceTest` (8 tests, `adapter-web`), six fichiers de contre-exemple sous `src/test/resources/contreexemple/`, un amendement a `ADR-0054`, une ligne d'index. Aucun fichier hors de ces neuf.
+
+**Verify de reference** : worktree detache `recreo-k7` passe de `c7dab42b` a `4650aeab` apres `git status` vide. `bash outils/mvn-jdk21.sh -B clean verify`, racine : `BUILD SUCCESS`, six modules `SUCCESS`, 6 min 23 s. Worktree conserve.
+
+| Job de `ci.yml` | Etapes | Resultat |
+|---|---|---|
+| `prefixes` | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-prefixes.sh` sur `6d2e5b38..HEAD` sans merges, `verifier-garde-fou-accent-test.sh` (21 cas), `verifier-garde-fou-accent.sh 6d2e5b38..HEAD` | tous 0 |
+| `chemins` | `verifier-chemins-test.sh`, `verifier-chemins.sh` sur `git ls-files` | 0 et 0 |
+| `outils` | 6 `outils/*-test.sh`, 2 `squad/outils/*/*-test.sh`, 5 `outils/*-test.py` | 13 juges, 0 echec |
+| `build`, `mvn -B verify` | voir ci-dessus | `BUILD SUCCESS` |
+| `build`, package | `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package` dans `recreo-k7` | `BUILD SUCCESS`, `recreo.jar` repackage, 4 min 11 s |
+
+Les jobs `prefixes`, `chemins` et `outils` ont ete joues dans l'arbre principal, identique a `4650aeab`. Le `BASE` de push reel n'existe pas en local : `6d2e5b38` en tient lieu.
+
+| Module | Tests |
+|---|---|
+| `domain` | 120 |
+| `application` | 31 |
+| `adapter-web` | 516 |
+| `adapter-content` | 1794 |
+| `bootstrap` | 381 (surefire) + 6 (failsafe) = 387 |
+| Total | **2848** |
+
+Attendu : 2840 + 8 = 2848. Le total correspond. L'ecart avec les 2847 mesures par `theo-archi` est de +1 et il vient de sa base : `5ee20db7` ne contient pas `bb23e556` (le test ajoute a `PaquetCe1EmcBiensCommunsTest`), donc 2839 + 8 = 2847 sur son arbre. Le delta de `adapter-web` (508 a 516) est de 8, `adapter-content` ne bouge pas. Les 8 methodes de test du fichier sont comptees par annotation ; les chiffres sont la somme de mon propre log.
+
+**Decisions** : aucune `ADR` ni `DEC` creee par cette fusion. `ADR-0054` est amendee par `theo-archi` dans la branche fusionnee (statut inchange par moi). **Obstacle ouvert** : inchange, allocation `PL-1` a `PL-8` (route : `theo-archi`). **Non fait** : la CI distante n'a pas juge ; ni worktree ni branche supprimes ; rien pousse.
