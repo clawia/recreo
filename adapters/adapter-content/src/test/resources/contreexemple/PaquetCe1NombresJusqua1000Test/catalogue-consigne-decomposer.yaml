@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1NombresJusqua1000Test. La consigne fait lire le mot decomposer (NUM-CE1-5).
+jeux:
+  - id: bandit-manchot-nombres-fautif
+    titre: "Les nombres jusqu'à 1000"
+    consigne: "Lis bien, puis décompose le nombre."
+    mecanique: bandit-manchot
+    paquet: ce1-nombres-jusqu-a-1000
+    nombreDeManches: 10

@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1NombresJusqua1000Test. Le titre porte une espace ordinaire devant le point d'interrogation, ou la regle veut U+00A0.
+jeux:
+  - id: bandit-manchot-nombres-fautif
+    titre: "Quel est ce nombre ?"
+    consigne: "Lis bien les nombres, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-nombres-jusqu-a-1000
+    nombreDeManches: 10
