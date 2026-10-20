@@ -456,6 +456,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S57-BR-FRA-CE1-05 (s57) : entree neuve, FRA-CE1-05, identifier a qui renvoie un pronom
             // (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 3.5).
             "bandit-manchot-pronoms-ce1",
+            // S57-BR-FRA-CE1-07 (s57) : entree neuve, FRA-CE1-07, comprendre un texte documentaire ou une
+            // consigne ecrite (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 3.7).
+            "bandit-manchot-texte-documentaire-ce1",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
             // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 6.3).
@@ -767,6 +770,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Des mots bien accordés",
             // S57-BR-FRA-CE1-05 (s57) : titre neuf, sans niveau (ADR-0078), sans signe double.
             "Il, elle, ils, elles",
+            // S57-BR-FRA-CE1-07 (s57) : titre neuf, sans niveau (ADR-0078), sans signe double.
+            "Lis pour savoir",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
             "Même sens ou sens contraire",
             // S57-BR-FRA-CE1-24 (s57) : titre neuf, sans niveau (ADR-0078).
@@ -1738,6 +1743,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-05).
             "Identifier à qui renvoie un pronom personnel (il, elle, ils, elles) ou un substitut "
                     + "simple dans un texte court.",
+            // S57-BR-FRA-CE1-07 (s57) : competence neuve, FRA-CE1-07, libelle du referentiel copie
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-07).
+            "Comprendre un texte documentaire court ou une consigne écrite, et y prélever une "
+                    + "information.",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
             // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
             "Trouver un synonyme ou un contraire d'un mot fréquent.",

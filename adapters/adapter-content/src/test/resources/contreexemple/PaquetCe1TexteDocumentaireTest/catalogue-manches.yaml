@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1TexteDocumentaireTest. Le jeu se joue en sept manches, ou DEC-0121 veut dix.
+jeux:
+  - id: bandit-manchot-texte-documentaire-fautif
+    titre: "Lis pour savoir"
+    consigne: "Lis le petit texte, puis réponds à la question."
+    mecanique: bandit-manchot
+    paquet: ce1-texte-documentaire
+    nombreDeManches: 7

@@ -1,0 +1,14 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1TexteDocumentaireTest. Deux entrees servent le meme paquet.
+jeux:
+  - id: bandit-manchot-texte-documentaire-fautif
+    titre: "Lis pour savoir"
+    consigne: "Lis le petit texte, puis réponds à la question."
+    mecanique: bandit-manchot
+    paquet: ce1-texte-documentaire
+    nombreDeManches: 10
+  - id: bandit-manchot-texte-documentaire-fautif-bis
+    titre: "Lis et retrouve"
+    consigne: "Lis le petit texte, puis réponds à la question."
+    mecanique: bandit-manchot
+    paquet: ce1-texte-documentaire
+    nombreDeManches: 10

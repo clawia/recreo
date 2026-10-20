@@ -1,0 +1,36 @@
+schema: 1
+id: ce1-texte-documentaire-fautif-consigne
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Comprendre un texte documentaire court ou une consigne écrite, et y prélever une information."
+lignesDeReferentiel: ["FRA-CE1-07"]
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1TexteDocumentaireTest pour DOC-CE1-1. Le texte marque
+# consigne ne compte qu'une phrase.
+items:
+  # documentaire
+  - enonce: "Que mange le renard ?"
+    texteSupport: "Le renard mange de la viande. Le lapin mange de l'herbe."
+    bonneReponse: "de la viande"
+    distracteurs: ["de l'herbe", "du pain"]
+    indice: "Cherche le mot « renard » dans le texte."
+  # documentaire
+  - enonce: "Où vit le poisson ?"
+    texteSupport: "Le poisson vit dans l'eau. Il nage vite."
+    bonneReponse: "dans l'eau"
+    distracteurs: ["dans un arbre", "dans le ciel"]
+    indice: "Cherche le mot « poisson » dans le texte."
+  # documentaire
+  - enonce: "Que mange le hibou ?"
+    texteSupport: "Le hibou mange des souris. Il chasse la nuit."
+    bonneReponse: "des souris"
+    distracteurs: ["de l'herbe", "du pain"]
+    indice: "Cherche le mot « hibou » dans le texte."
+  # consigne
+  - enonce: "Que faut-il prendre ?"
+    texteSupport: "Prends un crayon et une feuille."
+    bonneReponse: "un crayon"
+    distracteurs: ["un livre", "une règle"]
+    indice: "Relis la consigne."

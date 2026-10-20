@@ -1,0 +1,74 @@
+schema: 1
+id: ce1-texte-documentaire-fautif
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Comprendre un texte documentaire court ou une consigne écrite, et y prélever une information."
+lignesDeReferentiel: ["FRA-CE1-07"]
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1TexteDocumentaireTest. Chaque item viole une seule
+# propriete du paquet, dans l'ordre : DOC-CE1-2 (aucun distracteur dans le texte, puis bonne reponse
+# absente du texte), DOC-CE1-3 (un chiffre), LON-CE1-3, LON-CE1-4 (cinq phrases, treize mots), la
+# majuscule seule, TRV-CE1-5 (une proposition dans l'indice, quinze mots) et TRV-CE1-4.
+items:
+  # DOC-CE1-2 : aucun distracteur ne figure dans le texte
+  - enonce: "Où vit le poisson ?"
+    texteSupport: "Le poisson vit dans l'eau. Il nage vite."
+    bonneReponse: "dans l'eau"
+    distracteurs: ["dans un arbre", "dans le ciel"]
+    indice: "Cherche le mot « poisson » dans le texte."
+  # DOC-CE1-2 : la bonne reponse ne figure pas dans le texte
+  - enonce: "Que mange le hibou ?"
+    texteSupport: "Le hibou chasse la nuit. Il mange des souris."
+    bonneReponse: "des mulots"
+    distracteurs: ["des souris", "de l'herbe"]
+    indice: "Cherche le mot « hibou » dans le texte."
+  # DOC-CE1-3 : un chiffre
+  - enonce: "Combien de pattes a le chien ?"
+    texteSupport: "Le chien a 4 pattes. Il court vite."
+    bonneReponse: "4 pattes"
+    distracteurs: ["le chien", "2 pattes"]
+    indice: "Cherche le mot « chien » dans le texte."
+  # LON-CE1-3 : trente et un mots, trois phrases de douze, huit et onze mots
+  - enonce: "Que fait la fourmi ?"
+    texteSupport: "Ce matin, la fourmi sort de son nid et cherche du grain. Elle le porte sur son dos jusqu'au nid. Elle ne s'arrête pas avant la tombée de la nuit noire."
+    bonneReponse: "cherche du grain"
+    distracteurs: ["sort de son nid", "porte sur son dos"]
+    indice: "Cherche le mot « fourmi » dans le texte."
+  # LON-CE1-4 : cinq phrases
+  - enonce: "Que mange la vache ?"
+    texteSupport: "La vache mange de l'herbe. Elle boit de l'eau. Elle dort. Elle rumine. Elle marche."
+    bonneReponse: "de l'herbe"
+    distracteurs: ["de l'eau", "de la viande"]
+    indice: "Cherche le mot « vache » dans le texte."
+  # LON-CE1-4 : une phrase de treize mots
+  - enonce: "Où vit l'ours ?"
+    texteSupport: "L'ours brun vit dans la grande forêt avec ses petits et sa famille. Il dort l'hiver."
+    bonneReponse: "dans la grande forêt"
+    distracteurs: ["avec ses petits", "dans l'eau"]
+    indice: "Cherche le mot « ours » dans le texte."
+  # DO7 : la bonne reponse est la seule proposition a majuscule
+  - enonce: "Que mange l'âne ?"
+    texteSupport: "L'âne mange du foin. Il boit de l'eau."
+    bonneReponse: "Du foin"
+    distracteurs: ["de l'eau", "de la viande"]
+    indice: "Cherche le mot « âne » dans le texte."
+  # TRV-CE1-5 : l'indice contient une proposition de l'item, "dans la mer"
+  - enonce: "Où nage le requin ?"
+    texteSupport: "Le requin nage dans la mer. Il a de grandes dents."
+    bonneReponse: "dans la mer"
+    distracteurs: ["dans un lac", "de grandes dents"]
+    indice: "Cherche le mot « requin » puis dans la mer."
+  # TRV-CE1-5 : un indice de quinze mots
+  - enonce: "Que boit le chat ?"
+    texteSupport: "Le chat boit du lait. Il dort ensuite."
+    bonneReponse: "du lait"
+    distracteurs: ["du jus", "il dort"]
+    indice: "Relis bien tout le texte et regarde ce que fait le chat à la fin."
+  # TRV-CE1-4 : le mot radical dans l'indice
+  - enonce: "Que mange le singe ?"
+    texteSupport: "Le singe mange des fruits. Il grimpe aux arbres."
+    bonneReponse: "des fruits"
+    distracteurs: ["aux arbres", "du pain"]
+    indice: "Cherche le radical dans le texte."

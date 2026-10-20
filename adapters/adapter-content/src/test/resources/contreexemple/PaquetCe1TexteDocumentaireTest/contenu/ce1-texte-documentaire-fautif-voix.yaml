@@ -1,0 +1,18 @@
+schema: 1
+id: ce1-texte-documentaire-fautif-voix
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Comprendre un texte documentaire court ou une consigne écrite, et y prélever une information."
+lignesDeReferentiel: ["FRA-CE1-07"]
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1TexteDocumentaireTest pour TRV-CE1-1. Un item porte un
+# champ a voix haute.
+items:
+  - enonce: "Que mange le lapin ?"
+    texteSupport: "Le lapin mange de l'herbe. Le renard mange de la viande."
+    texteAVoixHaute: "Le lapin mange de l'herbe."
+    bonneReponse: "de l'herbe"
+    distracteurs: ["de la viande", "du pain"]
+    indice: "Cherche le mot « lapin » dans le texte."
