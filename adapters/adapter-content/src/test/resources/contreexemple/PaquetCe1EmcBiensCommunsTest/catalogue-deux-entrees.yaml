@@ -1,0 +1,14 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1EmcBiensCommunsTest. Deux entrees servent le meme paquet.
+jeux:
+  - id: bandit-manchot-biens-fautif
+    titre: "Les biens de tous"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-biens-communs
+    nombreDeManches: 10
+  - id: bandit-manchot-biens-fautif-bis
+    titre: "Ce qui est à tous"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-biens-communs
+    nombreDeManches: 10

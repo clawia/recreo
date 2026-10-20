@@ -328,6 +328,10 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      */
     private static final Map<String, String> PAQUETS_HORS_DU_DOMAINE_NUMERIQUE = Map.ofEntries(
             // s53 (session de contenu hors sprint) : paquets non branches au catalogue, propositions textuelles.
+            Map.entry("ce1-emc-biens-communs",
+            "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-20 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
             Map.entry("ce1-accord-groupe-nominal",
             "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
                     + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"

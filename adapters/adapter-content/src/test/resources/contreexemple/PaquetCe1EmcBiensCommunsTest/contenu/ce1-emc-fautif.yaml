@@ -1,0 +1,93 @@
+schema: 1
+id: ce1-emc-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1EmcBiensCommunsTest. Chaque item viole une seule
+# propriete du paquet ; le jeu entier viole en plus FER-3 (deux items de tache 2 sur onze), les trois
+# exemples du libelle (aucune bonne reponse ne nomme la bibliotheque ni la cour) et l'equilibre des
+# prenoms (quatre feminins distincts pour deux masculins).
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CE1"
+  domaine: "Respecter autrui"
+  competence: "Respecter les biens personnels et collectifs : reconnaître ce qui appartient à tous (matériel de la classe, livres de la bibliothèque, jeux de la cour) et le geste qui le protège."
+lignesDeReferentiel: ["EMC-CE1-01"]
+items:
+  # BCO-CE1-1 : aucune mention de tache
+  # TRV-CE1-2 : c, c
+  - enonce: "Quel geste sans tâche garde le livre de Lina ?"
+    bonneReponse: "elle tourne les pages"
+    distracteurs: ["elle plie la page", "elle écrit dedans"]
+    indice: "Pense aux pages."
+  # BCO-CE1-1 tache 2
+  # TRV-CE1-2 : a, a
+  - enonce: "Quel geste hors famille garde le livre de Zoé ?"
+    bonneReponse: "elle tourne les pages"
+    distracteurs: ["elle plie la page", "elle écrit dedans"]
+    indice: "Pense aux pages."
+  # BCO-CE1-1 tache 2
+  # TRV-CE1-2 : c, d
+  - enonce: "Léo a fini de lire un livre de la classe. Que fait-il ?"
+    bonneReponse: "le ranger sur l'étagère"
+    distracteurs: ["le jeter par terre", "l'oublier sur le banc"]
+    indice: "Pense à l'étagère."
+  # BCO-CE1-1 tache 1
+  # TRV-CE1-2 : a, a
+  - enonce: "Quel objet est à ton école ?"
+    bonneReponse: "les ciseaux de la classe"
+    distracteurs: ["la trousse de Mila", "le stylo de Lina"]
+    indice: "Regarde chaque objet."
+  # BCO-CE1-1 tache 1
+  # TRV-CE1-2 : a, a
+  - enonce: "Quel jeu est à tous ?"
+    bonneReponse: "les ciseaux de la classe"
+    distracteurs: ["le ballon chez Aya", "la corde de Mila"]
+    indice: "Regarde chaque objet."
+  # BCO-CE1-1 tache 1
+  # TRV-CE1-2 : a, a
+  - enonce: "Quel objet est à tout le monde sans prénom ?"
+    bonneReponse: "les ciseaux de la classe"
+    distracteurs: ["un cartable", "une trousse"]
+    indice: "Regarde chaque objet."
+  # BCO-CE1-1 tache 1
+  # TRV-CE1-2 : a, a
+  - enonce: "Quel objet est à tous avec texte ?"
+    texteSupport: "Les ciseaux sont à tout le monde."
+    bonneReponse: "les ciseaux de la classe"
+    distracteurs: ["la trousse de Mila", "le stylo de Lina"]
+    indice: "Regarde chaque objet."
+  # BCO-CE1-1 tache 1
+  # TRV-CE1-2 : a, a
+  - enonce: "Quel objet est à tous en sept mots ?"
+    bonneReponse: "les ciseaux de la classe pour tous les élèves"
+    distracteurs: ["la trousse de Mila", "le stylo de Lina"]
+    indice: "Regarde chaque objet."
+  # BCO-CE1-1 tache 1
+  # TRV-CE1-2 : a, a
+  - enonce: "Quel objet est à tous avec un long indice ?"
+    bonneReponse: "les ciseaux de la classe"
+    distracteurs: ["la trousse de Mila", "le stylo de Lina"]
+    indice: "Regarde bien chaque objet l'un après l'autre et dis à qui il sert vraiment ici."
+  # BCO-CE1-1 tache 1
+  # TRV-CE1-2 : a, a
+  - enonce: "Quel objet est à tous avec la réponse ?"
+    bonneReponse: "les ciseaux de la classe"
+    distracteurs: ["la trousse de Mila", "le stylo de Lina"]
+    indice: "Dis : les ciseaux de la classe."
+  # BCO-CE1-1 tache 1
+  # TRV-CE1-2 : a, a
+  - enonce: "Quel objet identique A est à tous ?"
+    bonneReponse: "les ciseaux de la classe"
+    distracteurs: ["la trousse de Mila", "le stylo de Lina"]
+    indice: "Regarde chaque objet."
+  # BCO-CE1-1 tache 1
+  # TRV-CE1-2 : a, a
+  - enonce: "Quel objet identique B est à tous ?"
+    bonneReponse: "les ciseaux de la classe"
+    distracteurs: ["la trousse de Mila", "le stylo de Lina"]
+    indice: "Regarde chaque objet."
+  # BCO-CE1-1 tache 1
+  # TRV-CE1-2 : c, c
+  - enonce: "Quel geste toujours le plus long pour Omar ?"
+    bonneReponse: "il tourne les pages avec soin"
+    distracteurs: ["il plie", "il écrit"]
+    indice: "Pense aux pages."
