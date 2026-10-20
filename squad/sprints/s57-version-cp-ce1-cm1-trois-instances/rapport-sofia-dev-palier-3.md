@@ -90,3 +90,41 @@ Le `BASE` de push reel n'existe pas en local : `43c3e988` (sommet de `round-two`
 Cloture du palier 2 : 2669. Ecart mesure : +170. Ecart attendu : 7 (Z1/Z2) + 32 + 36 + 31 + 30 + 34 = 170. Le total correspond. Le chiffre est ici une somme de mon propre log, pas un chiffre relaye ; les cinq lots annonces ne sont pas reventiles par module, seule la somme est verifiee.
 
 **Non fait.** `relecteur-pedagogique` n'a pas relu ces fusions ; la CI distante n'a pas jugé ; la matrice, les stories, les worktrees et les branches ne sont pas touches.
+
+## 7. Fusions des corrections du palier 3 (K7), sur `round-two`
+
+Casquette Scrum Master. Entree : `lecture-nadia-palier-3.md`. Sommet de `round-two` avant fusion : `7301cbbc`, verifie inchange depuis le depart ; les deux branches ont pour base de fusion `7301cbbc`. Fusion `--no-ff`, sans rebase, reset, force ni push. Fichiers touches, tous des YAML de paquets ou leurs tests : `ce1-inference.yaml`, `ce1-negation.yaml`, `ce1-texte-documentaire.yaml`, `ce1-emc-biens-communs.yaml`, `ce1-nombres-jusqu-a-1000.yaml`, `PaquetCe1EmcBiensCommunsTest.java`, `ce1-emc-fautif.yaml` (contre-exemple du test).
+
+| Rang | Branche (sommet) | Fusion | Conflits |
+|---|---|---|---|
+| 1 | `s57-marc-corr-p3-fra` (`85de7b45`, trois commits : `954c3b09`, `5c999686`, `85de7b45`) | `27a8a56a` | aucun |
+| 2 | `s57-lea-corr-p3` (`bb23e556`, deux commits : `1d96821b`, `bb23e556`) | `c7dab42b` | aucun |
+
+Aucun conflit : aucune resolution a decrire, aucune assertion modifiee.
+
+**Premier verify, rouge, sans rapport avec la fusion.** `clean verify` sur `C:` du poste (arbre de travail principal) : `BUILD FAILURE`, un echec dans `bootstrap`, `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest.leDepotReelEstCoherent` (PAR-5). Cause : le fichier non suivi `mesure-ines-palier-3-pli-744x551.md` (present avant mes fusions, absent de `HEAD`) ecrit les identifiants `PL-1` a `PL-8`, que `REGISTRE-identifiants.md` n'alloue pas ; le test balaie le disque, pas l'index. Je n'ai pas touche ce fichier (hors perimetre, propriete d'`ines-design`). Il reste a allouer ses identifiants ou a le commiter selon ADR-0085, clause 2 : decision a router, pas a prendre ici. Tant qu'il est non suivi dans l'arbre principal, un `verify` local y est rouge.
+
+**Verify de reference** : worktree detache `recreo-k7` sur `c7dab42b`, arbre propre (`git status` vide), pour juger l'arbre fusionne et lui seul. Ce worktree est conserve, non supprime.
+
+| Job | Etapes | Resultat |
+|---|---|---|
+| `build`, `mvn -B verify` | `bash outils/mvn-jdk21.sh -B clean verify`, racine | `BUILD SUCCESS`, six modules `SUCCESS`, 0 echec, 0 erreur, 0 ignore |
+| `build`, `package` | `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package` | `BUILD SUCCESS`, `bootstrap/target/recreo.jar` produit (repackage Spring Boot) |
+| `prefixes` | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-prefixes.sh` sur `7301cbbc..HEAD` (avec et sans merges), `verifier-garde-fou-accent-test.sh`, `verifier-garde-fou-accent.sh 7301cbbc..HEAD` | tous 0 |
+| `chemins` | `verifier-chemins-test.sh`, `verifier-chemins.sh` sur `git ls-files` | 0 et 0 |
+| `outils` | balayage de `outils/*-test.sh`, `squad/outils/*/*-test.sh`, `outils/*-test.py` | 13 juges, 0 echec |
+
+Les jobs `prefixes`, `chemins` et `outils` ont ete joues dans l'arbre principal, pas dans le worktree propre. Le `BASE` de push reel n'existe pas en local : `7301cbbc` en tient lieu.
+
+| Module | Tests |
+|---|---|
+| `domain` | 120 |
+| `application` | 31 |
+| `adapter-web` | 508 |
+| `adapter-content` | 1794 |
+| `bootstrap` | 381 (surefire) + 6 (failsafe) = 387 |
+| Total | **2840** |
+
+Precedent rapport de fusion : 2839. Ecart mesure : +1, tout entier dans `adapter-content` (1793 a 1794), et dans `PaquetCe1EmcBiensCommunsTest` : 35 methodes de test contre 34 a `7301cbbc` (comptage des annotations, et 35 dans le log). Ecart attendu : +1. Le total correspond. Somme de mon propre log ; les autres lots corriges ne changent pas le nombre de tests.
+
+**Decisions** : aucune `ADR` ni `DEC` creee ou modifiee. **Obstacle ouvert** : allocation des identifiants `PL-1` a `PL-8` du fichier d'`ines-design` (route : `theo-archi`, `ADR-0085` clause 2). **Non fait** : `relecteur-pedagogique` n'a pas relu ces fusions ; `nadia-prof` n'a pas rejoue les lots corriges ; la CI distante n'a pas juge ; matrice, stories, worktrees et branches non touches.
