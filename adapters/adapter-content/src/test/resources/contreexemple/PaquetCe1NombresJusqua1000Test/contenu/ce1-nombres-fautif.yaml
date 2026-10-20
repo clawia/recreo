@@ -1,0 +1,62 @@
+schema: 1
+id: ce1-nombres-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1NombresJusqua1000Test. Chaque item viole une seule
+# propriete du paquet, et le jeu entier porte un texteSupport (NB8) que le paquet reel n'a pas.
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Dénombrer, lire, écrire et décomposer les nombres jusqu'à 1000 (unités, dizaines, centaines)"
+lignesDeReferentiel: ["MAT-CE1-01"]
+items:
+  # NUM-CE1-1 : un nombre au-dessus de 1000
+  - enonce: "Lis ce nombre : 1200."
+    bonneReponse: "mille deux cents"
+    distracteurs: ["mille deux", "mille"]
+    indice: "Dis le mille, puis ce qui reste."
+  # NUM-CE1-1 et NUM-CE1-6 : un nombre de deux chiffres, sans zero
+  - enonce: "Lis ce nombre : 45."
+    bonneReponse: "quarante-cinq"
+    distracteurs: ["quarante", "cinquante-quatre"]
+    indice: "Dis la dizaine, puis l'unité."
+  # NUM-CE1-3 : une bonne reponse mal ecrite en lettres (cing)
+  - enonce: "Lis ce nombre : 305."
+    bonneReponse: "trois cent cing"
+    distracteurs: ["trois cent cinquante", "trois cent quinze"]
+    indice: "Dis la centaine, puis ce qui reste."
+  # NUM-CE1-3 : un distracteur mal ecrit en lettres (cents au pluriel au milieu)
+  - enonce: "Lis ce nombre : 620."
+    bonneReponse: "six cent vingt"
+    distracteurs: ["six cents vingt", "six cent deux"]
+    indice: "Dis la centaine, puis la dizaine."
+  # NUM-CE1-3 : la bonne reponse (274) n'est pas la valeur des lettres (247)
+  - enonce: "Écris en chiffres : deux cent quarante-sept."
+    bonneReponse: "274"
+    distracteurs: ["247", "427"]
+    indice: "Écris la centaine d'abord, puis la dizaine."
+  # NUM-CE1-7 (le dernier distracteur n'a que deux chiffres) et NUM-CE1-3 (aucun item lire en ce jeu)
+  - enonce: "Écris en chiffres : sept cent trois."
+    bonneReponse: "703"
+    distracteurs: ["730", "73"]
+    indice: "Une place du nombre reste vide."
+  # NUM-CE1-7 : un distracteur d'un seul mot contre trois
+  - enonce: "Lis ce nombre : 407."
+    bonneReponse: "quatre cent sept"
+    distracteurs: ["quatre", "quatre cent dix-sept"]
+    indice: "Regarde bien le chiffre du milieu."
+  # NUM-CE1-5 : le mot decomposer, et NUM-CE1-4 : une decomposition sur deux seulement
+  - enonce: "Décompose : 358 = 300 + 50 +  ?"
+    bonneReponse: "8"
+    distracteurs: ["5", "3"]
+    indice: "Regarde le chiffre des unités."
+  - enonce: "Quel nombre est égal à 70 + 5 ?"
+    bonneReponse: "75"
+    distracteurs: ["57", "705"]
+    indice: "Chaque terme donne un chiffre à sa place."
+  # NB8 : un texteSupport
+  - enonce: "Lis ce nombre : 800."
+    texteSupport: "Huit cents."
+    bonneReponse: "huit cents"
+    distracteurs: ["sept cents", "neuf cents"]
+    indice: "Il n'y a ni dizaine ni unité à dire."

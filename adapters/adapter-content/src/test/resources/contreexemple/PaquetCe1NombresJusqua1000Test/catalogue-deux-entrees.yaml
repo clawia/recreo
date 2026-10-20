@@ -1,0 +1,14 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1NombresJusqua1000Test. Deux entrees servent le meme paquet.
+jeux:
+  - id: bandit-manchot-nombres-fautif
+    titre: "Les nombres jusqu'à 1000"
+    consigne: "Lis bien les nombres, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-nombres-jusqu-a-1000
+    nombreDeManches: 10
+  - id: bandit-manchot-nombres-fautif-bis
+    titre: "Les grands nombres"
+    consigne: "Lis bien les nombres, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-nombres-jusqu-a-1000
+    nombreDeManches: 10

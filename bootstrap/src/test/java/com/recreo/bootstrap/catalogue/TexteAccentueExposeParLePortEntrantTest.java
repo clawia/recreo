@@ -465,6 +465,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S57-BR-FRA-CE1-11 (s57) : entree neuve, FRA-CE1-11, passer d'une phrase affirmative a une
             // phrase negative (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.2).
             "bandit-manchot-negation-ce1",
+            // S57-BR-MAT-CE1-01 (s57) : entree neuve, MAT-CE1-01, lire, ecrire et decomposer les
+            // nombres jusqu'a 1000 (squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md,
+            // section 2).
+            "bandit-manchot-nombres-jusqu-a-1000-ce1",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
             // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 6.3).
@@ -782,6 +786,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis pour savoir",
             // S57-BR-FRA-CE1-11 (s57) : titre neuf, sans niveau (ADR-0078), sans signe double.
             "Des phrases qui disent non",
+            // S57-BR-MAT-CE1-01 (s57) : titre neuf, sans niveau (ADR-0078).
+            "Les nombres jusqu'à 1000",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
             "Même sens ou sens contraire",
             // S57-BR-FRA-CE1-24 (s57) : titre neuf, sans niveau (ADR-0078).
@@ -1764,6 +1770,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S57-BR-FRA-CE1-11 (s57) : competence neuve, FRA-CE1-11, libelle du referentiel copie
             // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-11).
             "Passer d'une phrase affirmative à une phrase négative (ne... pas) et inversement.",
+            // S57-BR-MAT-CE1-01 (s57) : competence neuve, MAT-CE1-01, libelle du referentiel copie
+            // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-01). Couverture
+            // partielle nommee (NUM-CE1-2) : le paquet ne sert pas "dénombrer".
+            "Dénombrer, lire, écrire et décomposer les nombres jusqu'à 1000 (unités, dizaines, "
+                    + "centaines)",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
             // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
             "Trouver un synonyme ou un contraire d'un mot fréquent.",

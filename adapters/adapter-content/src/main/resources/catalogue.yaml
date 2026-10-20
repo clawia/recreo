@@ -936,3 +936,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-negation
     nombreDeManches: 10
+  - id: bandit-manchot-nombres-jusqu-a-1000-ce1
+    titre: "Les nombres jusqu'à 1000"
+    consigne: "Lis bien les nombres, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-nombres-jusqu-a-1000
+    nombreDeManches: 10
