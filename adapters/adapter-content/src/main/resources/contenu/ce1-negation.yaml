@@ -34,7 +34,7 @@ items:
   - enonce: "« Inès écoute la radio. » Quelle est la phrase négative ?"
     bonneReponse: "Inès n'écoute pas la radio."
     distracteurs: ["Inès écoute pas la radio.", "Inès n'écoute la radio pas."]
-    indice: "Une phrase négative dit que quelque chose n'a pas lieu."
+    indice: "Cherche les deux petits mots qui entourent le verbe."
   # NEG-CE1-3: a, b
   - enonce: "« Rex garde la maison. » Quelle est la phrase négative ?"
     bonneReponse: "Rex ne garde pas la maison."
@@ -50,7 +50,7 @@ items:
   - enonce: "« Le chat n'aime pas la pluie. » Quelle est la phrase affirmative ?"
     bonneReponse: "Le chat aime la pluie."
     distracteurs: ["Le chat n'aime la pluie.", "Le chat aime pas la pluie."]
-    indice: "Une phrase affirmative dit que quelque chose a lieu."
+    indice: "Enlève les petits mots qui disent non."
   # NEG-CE1-3: a, c
   # NEG-CE1-2: elision
   - enonce: "« Tom ouvre la fenêtre. » Quelle est la phrase négative ?"
@@ -61,7 +61,7 @@ items:
   - enonce: "« Mia ferme la porte. » Quelle est la phrase négative ?"
     bonneReponse: "Mia ne ferme pas la porte."
     distracteurs: ["Mia ferme pas la porte.", "Mia ne ferme la porte pas."]
-    indice: "Une phrase négative dit que quelque chose n'a pas lieu."
+    indice: "Cherche les deux petits mots qui entourent le verbe."
   # NEG-CE1-3: a, c
   # NEG-CE1-2: elision
   - enonce: "« Karim habite ici. » Quelle est la phrase négative ?"
@@ -78,7 +78,7 @@ items:
   - enonce: "« Inès n'ouvre pas la boîte. » Quelle est la phrase affirmative ?"
     bonneReponse: "Inès ouvre la boîte."
     distracteurs: ["Inès n'ouvre la boîte.", "Inès ouvre pas la boîte."]
-    indice: "Une phrase affirmative dit que quelque chose a lieu."
+    indice: "Enlève les petits mots qui disent non."
   # NEG-CE1-3: a, b
   # NEG-CE1-2: elision
   - enonce: "« Sofia attend le bus. » Quelle est la phrase négative ?"
@@ -89,7 +89,7 @@ items:
   - enonce: "« Le vent souffle fort. » Quelle est la phrase négative ?"
     bonneReponse: "Le vent ne souffle pas fort."
     distracteurs: ["Le vent souffle pas fort.", "Le vent ne souffle fort pas."]
-    indice: "Une phrase négative dit que quelque chose n'a pas lieu."
+    indice: "Cherche les deux petits mots qui entourent le verbe."
   # NEG-CE1-3: b, a
   - enonce: "« Yanis range ses crayons. » Quelle est la phrase négative ?"
     bonneReponse: "Yanis ne range pas ses crayons."
@@ -105,7 +105,7 @@ items:
   - enonce: "« Karim n'attend pas le train. » Quelle est la phrase affirmative ?"
     bonneReponse: "Karim attend le train."
     distracteurs: ["Karim n'attend le train.", "Karim attend pas le train."]
-    indice: "Une phrase affirmative dit que quelque chose a lieu."
+    indice: "Enlève les petits mots qui disent non."
   # NEG-CE1-3: a, b
   - enonce: "« Les enfants chantent. » Quelle est la phrase négative ?"
     bonneReponse: "Les enfants ne chantent pas."
@@ -116,7 +116,7 @@ items:
   - enonce: "« Elle utilise le crayon. » Quelle est la phrase négative ?"
     bonneReponse: "Elle n'utilise pas le crayon."
     distracteurs: ["Elle utilise pas le crayon.", "Elle ne utilise pas le crayon."]
-    indice: "Une phrase négative dit que quelque chose n'a pas lieu."
+    indice: "Cherche les deux petits mots qui entourent le verbe."
   # NEG-CE1-3: a, b
   # NEG-CE1-2: elision
   - enonce: "« Léa oublie son cartable. » Quelle est la phrase négative ?"
@@ -133,7 +133,7 @@ items:
   - enonce: "« Il n'écoute pas la maîtresse. » Quelle est la phrase affirmative ?"
     bonneReponse: "Il écoute la maîtresse."
     distracteurs: ["Il n'écoute la maîtresse.", "Il écoute pas la maîtresse."]
-    indice: "Une phrase affirmative dit que quelque chose a lieu."
+    indice: "Enlève les petits mots qui disent non."
   # NEG-CE1-3: a, c
   # NEG-CE1-2: elision
   - enonce: "« Le train arrive ici. » Quelle est la phrase négative ?"
@@ -145,7 +145,7 @@ items:
   - enonce: "« Noé aime la pluie. » Quelle est la phrase négative ?"
     bonneReponse: "Noé n'aime pas la pluie."
     distracteurs: ["Noé aime pas la pluie.", "Noé ne aime pas la pluie."]
-    indice: "Une phrase négative dit que quelque chose n'a pas lieu."
+    indice: "Cherche les deux petits mots qui entourent le verbe."
   # NEG-CE1-3: d, d
   - enonce: "« Le vent ne souffle pas. » Quelle est la phrase affirmative ?"
     bonneReponse: "Le vent souffle."
@@ -156,4 +156,4 @@ items:
   - enonce: "« Noé n'habite pas ici. » Quelle est la phrase affirmative ?"
     bonneReponse: "Noé habite ici."
     distracteurs: ["Noé n'habite ici.", "Noé habite pas ici."]
-    indice: "Une phrase affirmative dit que quelque chose a lieu."
+    indice: "Enlève les petits mots qui disent non."

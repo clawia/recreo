@@ -137,7 +137,7 @@ items:
   - enonce: "Pourquoi Nour verse-t-elle de l'eau ?"
     texteSupport: "Nour pose une graine dans la terre. Chaque jour, elle verse un peu d'eau. Une petite tige sort de terre."
     bonneReponse: "pour que la graine pousse"
-    distracteurs: ["pour poser une graine", "pour laver la terre"]
+    distracteurs: ["pour poser une graine", "pour jouer avec l'eau"]
     indice: "Relis ce qui sort de terre à la fin."
   # cause ; a, b
   - enonce: "Pourquoi Zoé montre-t-elle sa feuille ?"
