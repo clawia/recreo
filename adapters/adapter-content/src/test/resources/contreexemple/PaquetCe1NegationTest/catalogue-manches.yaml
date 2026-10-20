@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1NegationTest. Le jeu se joue en sept manches, ou DEC-0121 veut dix.
+jeux:
+  - id: bandit-manchot-negation-fautif
+    titre: "Des phrases qui disent non"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-negation
+    nombreDeManches: 7

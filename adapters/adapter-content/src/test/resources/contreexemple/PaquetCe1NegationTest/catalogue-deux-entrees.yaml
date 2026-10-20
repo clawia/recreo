@@ -1,0 +1,14 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1NegationTest. Deux entrees servent le meme paquet.
+jeux:
+  - id: bandit-manchot-negation-fautif
+    titre: "Des phrases qui disent non"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-negation
+    nombreDeManches: 10
+  - id: bandit-manchot-negation-fautif-bis
+    titre: "Dire non"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-negation
+    nombreDeManches: 10

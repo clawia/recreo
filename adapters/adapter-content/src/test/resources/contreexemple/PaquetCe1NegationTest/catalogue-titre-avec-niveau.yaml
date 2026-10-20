@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1NegationTest. Le titre porte le niveau (ADR-0078).
+jeux:
+  - id: bandit-manchot-negation-fautif
+    titre: "La négation du CE1"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-negation
+    nombreDeManches: 10

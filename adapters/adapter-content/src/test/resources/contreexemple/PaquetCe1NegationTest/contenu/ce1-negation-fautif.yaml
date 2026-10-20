@@ -1,0 +1,41 @@
+schema: 1
+id: ce1-negation-fautif
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Passer d'une phrase affirmative à une phrase négative (ne... pas) et inversement."
+lignesDeReferentiel: ["FRA-CE1-11"]
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1NegationTest. Chaque item viole une seule propriete
+# du paquet : NEG-CE1-1 (le mot jamais, un enonce qui ne demande ni la negative ni l'affirmative),
+# la majuscule seule, LON-CE1-5, TRV-CE1-5 (quatorze mots, une proposition dans l'indice) et TRV-CE1-4.
+items:
+  - enonce: "« Zoé aime la soupe. » Quelle est la phrase négative ?"
+    bonneReponse: "Zoé n'aime jamais la soupe."
+    distracteurs: ["Zoé aime jamais la soupe.", "Zoé ne aime jamais la soupe."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."
+  - enonce: "« Léo aime les épinards. » Quelle est la phrase correcte ?"
+    bonneReponse: "Léo n'aime pas les épinards."
+    distracteurs: ["Léo aime pas les épinards.", "Léo ne aime pas les épinards."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."
+  - enonce: "« Léo aime le chocolat. » Quelle est la phrase négative ?"
+    bonneReponse: "Léo n'aime pas le chocolat."
+    distracteurs: ["léo aime pas le chocolat.", "léo ne aime pas le chocolat."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."
+  - enonce: "« Mia aime la peinture. » Quelle est la phrase négative ?"
+    bonneReponse: "Mia n'aime pas du tout la peinture bleue."
+    distracteurs: ["Mia aime pas la peinture.", "Mia ne aime pas la peinture."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."
+  - enonce: "« Tom ferme la porte. » Quelle est la phrase négative ?"
+    bonneReponse: "Tom ne ferme pas la porte."
+    distracteurs: ["Tom ferme pas la porte.", "Tom ne ferme la porte pas."]
+    indice: "Relis bien toutes les phrases et regarde où sont les petits mots du verbe."
+  - enonce: "« Sami lit le livre. » Quelle est la phrase négative ?"
+    bonneReponse: "Sami ne lit pas le livre."
+    distracteurs: ["Sami lit pas le livre.", "Sami ne lit le livre pas."]
+    indice: "Cherche la phrase Sami ne lit pas le livre."
+  - enonce: "« Eva chante fort. » Quelle est la phrase négative ?"
+    bonneReponse: "Eva ne chante pas fort."
+    distracteurs: ["Eva chante pas fort.", "Eva ne chante fort pas."]
+    indice: "Cherche le complément du verbe."
