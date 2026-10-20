@@ -186,41 +186,90 @@ class LAnimationRetardeMaisNeDetermineRienTest {
     private static List<Regle> regles(List<Path> feuilles) {
         List<Regle> regles = new ArrayList<>();
         for (Path feuille : feuilles) {
-            String nom = feuille.getFileName().toString();
-            String source = sansCommentaires(lire(feuille));
-            List<String> pile = new ArrayList<>();
-            StringBuilder prelude = new StringBuilder();
-            int position = 0;
-            while (position < source.length()) {
-                char caractere = source.charAt(position);
-                if (caractere == '}') {
-                    if (!pile.isEmpty()) {
-                        pile.remove(pile.size() - 1);
-                    }
-                    prelude.setLength(0);
-                    position++;
-                } else if (caractere != '{') {
-                    prelude.append(caractere);
-                    position++;
-                } else {
-                    String entete = prelude.toString().strip();
-                    prelude.setLength(0);
-                    position++;
-                    if (entete.startsWith("@")) {
-                        pile.add(entete);
-                        continue;
-                    }
-                    int fin = source.indexOf('}', position);
-                    String corps = source.substring(position, fin < 0 ? source.length() : fin);
-                    position = fin < 0 ? source.length() : fin + 1;
-                    String contexte = String.join(" ", pile);
-                    for (String selecteur : entete.split(",")) {
-                        regles.add(new Regle(nom, contexte, selecteur.strip(), corps));
-                    }
+            regles.addAll(reglesDe(feuille.getFileName().toString(), lire(feuille)));
+        }
+        return regles;
+    }
+
+    /**
+     * Les regles d'un texte de feuille, sous le nom {@code nom}. Visible dans le paquet pour que les
+     * garde-fous mettent leur mutation a l'epreuve de ce lecteur-ci, et non d'une {@link Regle}
+     * construite a la main qui ne passerait jamais par lui (ADR-0031, amendement du 2026-10-20).
+     *
+     * <p>Une regle imbriquee dans une regle de style (CSS imbrique, {@code &}) est <b>refusee</b> :
+     * ce lecteur prend le corps d'une regle jusqu'a la premiere accolade fermante et ne verrait jamais
+     * l'en-tete de la regle interieure, que tous les garde-fous de la feuille liraient donc a faux.
+     */
+    static List<Regle> reglesDe(String nom, String feuille) {
+        List<Regle> regles = new ArrayList<>();
+        String source = sansCommentaires(feuille);
+        List<String> pile = new ArrayList<>();
+        StringBuilder prelude = new StringBuilder();
+        int position = 0;
+        while (position < source.length()) {
+            char caractere = source.charAt(position);
+            if (caractere == '}') {
+                if (!pile.isEmpty()) {
+                    pile.remove(pile.size() - 1);
+                }
+                prelude.setLength(0);
+                position++;
+            } else if (caractere != '{') {
+                prelude.append(caractere);
+                position++;
+            } else {
+                String entete = prelude.toString().strip();
+                prelude.setLength(0);
+                position++;
+                if (entete.startsWith("@")) {
+                    pile.add(entete);
+                    continue;
+                }
+                int fin = source.indexOf('}', position);
+                String corps = source.substring(position, fin < 0 ? source.length() : fin);
+                if (corps.indexOf('{') >= 0) {
+                    throw new AssertionError(nom + " : " + entete + " { " + corps.strip() + " } : "
+                            + "regle imbriquee, non lue par les garde-fous de la feuille. Ce depot "
+                            + "refuse le CSS imbrique plutot que de l'evaluer (ADR-0031, amendement "
+                            + "du 2026-10-20) : ecrire la regle interieure a plat, son selecteur "
+                            + "complet en tete");
+                }
+                position = fin < 0 ? source.length() : fin + 1;
+                String contexte = String.join(" ", pile);
+                for (String selecteur : selecteurs(entete)) {
+                    regles.add(new Regle(nom, contexte, selecteur, corps));
                 }
             }
         }
         return regles;
+    }
+
+    /**
+     * Les selecteurs d'un en-tete de regle : coupe aux seules virgules de premier niveau. Une virgule
+     * entre parentheses ou entre crochets appartient a un {@code :has(...)}, un {@code :is(...)} ou
+     * une valeur d'attribut, pas a la liste ; la couper ferait lire au garde-fou deux moities de
+     * selecteur dont aucune n'est la regle que le navigateur applique (ADR-0031, {@code Z1}).
+     */
+    static List<String> selecteurs(String entete) {
+        List<String> selecteurs = new ArrayList<>();
+        StringBuilder courant = new StringBuilder();
+        int profondeur = 0;
+        for (int position = 0; position < entete.length(); position++) {
+            char caractere = entete.charAt(position);
+            if (caractere == '(' || caractere == '[') {
+                profondeur++;
+            } else if (caractere == ')' || caractere == ']') {
+                profondeur--;
+            }
+            if (caractere == ',' && profondeur == 0) {
+                selecteurs.add(courant.toString().strip());
+                courant.setLength(0);
+            } else {
+                courant.append(caractere);
+            }
+        }
+        selecteurs.add(courant.toString().strip());
+        return selecteurs;
     }
 
     private static boolean declare(Regle regle, String propriete, String valeurAttendue) {

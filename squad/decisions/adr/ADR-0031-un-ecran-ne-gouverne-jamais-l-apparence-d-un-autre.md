@@ -322,3 +322,103 @@ calculees. **Reutiliser `sujet` de `LAnimationRetardeMaisNeDetermineRienTest`** 
 
 **Ce qui me ferait changer d'avis** : une seconde region d'annonce hors du message (un score annonce, par exemple), qui ferait du score un
 jeton du message ; ou un message qui ne serait plus une region d'annonce. La derivation du message serait alors a reprendre.
+
+## Amendement du 2026-10-20 (s57, `theo-archi`) - une virgule entre parentheses, une regle imbriquee, l'exemple de la decision 1, le nombre de regions d'annonce
+
+**Contexte.** Story `S57-GARDE-C1-VIRGULE-ET-IMBRIQUE`. Trois constats sur l'arbre de cloture du palier 2 (`bb322938`), mesures dans
+`rapport-qualite-garde-c1.md` (`yanis-qa`) et dans `confirmation-archunit-palier-2.md` de s57 (sections 4.2 et 5) :
+
+- **`F2`, ce que la regle du 2026-10-16 ne gardait pas** (ajoute a sa liste *"Ce que cette regle ne garde pas"*, puis retire par la
+  decision ci-dessous, dans ce meme commit). `Z1` : `.ecran-de-jeu:has(.consigne, .est-faux) .propositions { row-gap: 0; }`, 12 tests
+  des deux classes de la garde, **0 echec** ; 501 tests d'`adapter-web`, 0 echec (`M2` de `yanis-qa`). `Z2` :
+  `.ecran-de-jeu { &:has(.est-faux) .propositions { row-gap: 0; } }`, 12 tests, **0 echec** (`M4`). Cause : `reglesMaison` coupait
+  l'en-tete sur toute virgule, parentheses comprises, et prenait le corps d'une regle jusqu'a la premiere accolade fermante, donc ne
+  voyait jamais l'en-tete d'une regle imbriquee. La decision du 2026-10-16 promettait `:has(...)` compris : elle ne le tenait pas sous
+  une virgule.
+- **`F1`, la decision 1 ne mordait plus sur son propre exemple depuis s10.** Depuis `5c60102e` (2026-08-13), `fragments/manche.html`
+  pose `est-juste` sur son signal : `body:has(.est-juste) .cabinet-bandeau` ne reunit plus deux ecrans exclusifs, et la co-occurrence
+  le laisse passer (`Z5b`). Du 2026-08-13 au 2026-10-16, il n'etait rouge que par
+  `CabinetDeLaMachineTest.chaqueSelecteurEpingleEstEprouveParLeJeuFautif`, pour une raison de registre (`Z5a`). **La decision 1 reste
+  juste** pour ce qu'elle juge : deux jetons de deux ecrans qui ne s'affichent jamais ensemble. **Ce n'est plus elle qui garde C4 sur
+  l'ecran de manche** : c'est la clause du sujet hors du message. La ligne 1 de la table de morsure se lit comme une mesure du
+  2026-08-11, pas comme l'etat du code.
+- **`Z4`** : un ecran dont le message perd sa region d'annonce sort du controle sans rouge (consequence ecrite le 2026-10-16).
+
+**Decision.**
+
+1. **Le lecteur de la feuille coupe un en-tete de regle aux seules virgules de premier niveau**, hors parentheses et hors crochets
+   (`LAnimationRetardeMaisNeDetermineRienTest.selecteurs`). Les trois autres decoupages d'en-tete a la virgule du module passent par
+   lui : `HabillageDesEcransTest.blocsParSelecteur`, `TailleDesTextesEtBoutonsTest.blocsParSelecteur` et
+   `TailleDesTextesEtBoutonsTest.reglesEcritesMaison`. Le quatrieme `split(",")` lu par `confirmation-archunit-palier-2.md` 5.1,
+   `AucunEtatDePressableNEstAbandonneAuTiersTest` ligne 593, coupe l'argument d'une pseudo-classe deja extrait de ses parentheses, pas
+   un en-tete de regle : inchange.
+2. **Le lecteur refuse le CSS imbrique** plutot que de l'evaluer : une regle de style dont le corps ouvre une accolade est un echec,
+   dont le message cite la regle (donc les jetons qu'elle nomme) et dit *"regle imbriquee, non lue par les garde-fous de la feuille"*.
+   Motif : la feuille n'en porte aucune (mesure ci-dessous) ; evaluer `&` demanderait de resoudre l'imbrication pour tous les
+   garde-fous qui lisent ce lecteur, pour un usage que personne n'a. Refuser coute une condition, et son mode de defaillance est un
+   rouge. **Ce qui me ferait changer d'avis** : une premiere regle imbriquee demandee pour un motif reel ; on evalue alors `&` dans le
+   lecteur, une fois pour tous.
+3. **L'exemple de la decision 1 est epingle nommement**, rouge par la clause du sujet hors du message. C'est le seul nom de classe que
+   le fichier de la regle ecrit : si un changement de jetons rendait l'exemple inapplicable, ce test rougirait au lieu de laisser
+   l'exemple de cet `ADR` sans preuve.
+4. **Le nombre de regions d'annonce derivees des gabarits est un cliquet exact : 3** (`fragments/designation.html`,
+   `fragments/manche.html`, `fragments/saisie.html`, population du 2026-10-16), sans nommer un gabarit. Ce qu'il interdit reellement :
+   retirer `role="status"` d'un message sans que le commit le dise (2, rouge), ou en ajouter un sans le dire (4, rouge). Retirer une
+   region pour une raison d'accessibilite reste possible : le commit qui le fait met le nombre a jour et l'ecrit ici.
+
+**Effet sur les autres garde-fous du lecteur, dit avant et mesure.** Script de lecture hors depot, commentaires retires, profondeur
+comptee sur `(`, `)`, `[`, `]`, sur l'arbre `b9c6cb69` : `recreo.css`, 169 en-tetes de regle de style ; `vendor/bootstrap.min.css`,
+2555 ; les 96 feuilles de `adapters/adapter-web/src/test/resources` ; regles-@ comprises : **0** virgule entre parentheses ou
+crochets, **0** regle imbriquee. Aucun garde-fou qui lit ces feuilles ne change de verdict.
+
+**Regle executable.** Pas une `ArchRule` : l'objet est une feuille de style et des gabarits. Le lecteur vit dans
+`adapters/adapter-web/src/test/java/com/recreo/adapter/web/LAnimationRetardeMaisNeDetermineRienTest.java` (`reglesDe`, `selecteurs`),
+les tests dans `adapters/adapter-web/src/test/java/com/recreo/adapter/web/UnEcranNeGouvernePasLApparenceDUnAutreTest.java`, sept de
+plus (14 au lieu de 7) :
+
+- `uneClasseDuMessageEnSecondePositionDUnHasFaitEchouerLeGardeFou` et `uneClasseDuMessageEnSecondePositionDUnIsFaitEchouerLeGardeFou` :
+  pour chaque message et chaque classe qu'il est seul a poser, `.<classe du dehors>:has(.<seconde classe du dehors>, .<classe du
+  message>)` (puis `:is`), **ecrite en texte et lue par `reglesDe`**, ajoutee a la production, rougit en citant son selecteur. Le test
+  exige aussi que le texte soit lu comme une seule regle. Les mises a l'epreuve du 2026-10-16 construisaient la `Regle` a la main :
+  elles ne passaient pas par le decoupage, qui etait le defaut ;
+- `uneListeDeClassesDuMessageSousSonSommetResteVerte` : clause de non-sur-detection, `.<sommet du message>:has(.<a>, .<b>)` reste vert ;
+- `uneRegleImbriqueeQuiNommeLeMessageEstRefuseeParLeLecteur` ;
+- `lExempleDeLaDecisionUnEstRefuseParLaClauseDuSujetHorsDuMessage` (`Z5b`, decision 3) ;
+- `leNombreDeRegionsDAnnonceEstEpingle` et `unMessageQuiPerdSaRegionDAnnonceFaitEchouerLeCliquet` (decision 4).
+
+**Preuve de morsure.** Commande : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test
+-Dtest=UnEcranNeGouvernePasLApparenceDUnAutreTest -Dsurefire.failIfNoSpecifiedTests=false`, perimetre `adapter-web` et ses amonts, une
+classe, 14 tests, JDK 21.0.10 (`java.version` du rapport Surefire). Fichier mute dans le worktree apres verification que le motif
+apparait une fois, puis restaure par copie de reference (`cmp` identique).
+
+| Code | Mutation | Mesure |
+|---|---|---|
+| `V0` | aucune | 14 tests, 0 echec |
+| `V1` | le lecteur coupe de nouveau sur toute virgule (`entete.split(",")`) | **2 echecs** : les deux tests `...EnSecondePosition...` |
+| `V2` | le refus de l'imbrication desactive | **1 echec** : `uneRegleImbriqueeQuiNommeLeMessageEstRefuseeParLeLecteur` |
+| `V3` | critere 1 de la story, ajoute en fin de `recreo.css` | **2 echecs**, le rapport cite `est-faux` |
+| `V4` | critere 2 (`:is`) | **2 echecs**, le rapport cite `est-faux` |
+| `V5` | critere 4, `.ecran-de-jeu { &:has(.est-faux) .propositions { row-gap: 0; } }` | **9 echecs**, le rapport porte le message du refus, qui cite la regle et donc `.est-faux` |
+| `V6` | critere 5 (b), `.ecran-de-jeu .message-jeu:has(.est-faux, .est-juste) .indice { color: inherit; }` | 0 echec |
+| `V7` | critere 5 (c), `.ecran-de-jeu { & .message-jeu .signal.est-faux { color: inherit; } }` | **9 echecs** : rouge par construction, voir les consequences |
+
+**Ce que cette regle ne garde pas, nomme.** `Z1` et `Z2` sortent de la liste du 2026-10-16. Y restent `data-oeuvre-revelee`, les
+points 2 et 3 de `C1'`, la limite 4.b et la limite 4.a depuis `fragments/retour.html` (`Z3`, declencheur inchange). S'y ajoutent : une
+accolade dans une chaine du corps (`content: "{"`) est lue comme une imbrication, faux rouge, la feuille n'en ecrit aucune ; une
+virgule dans des parentheses imbriquees de l'argument d'une pseudo-classe, lue par `AucunEtatDePressableNEstAbandonneAuTiersTest`
+pour la specificite, reste coupee a plat.
+
+**Consequences.** Bonne : les deux formes `Z1` et `Z2` rougissent sur tous les ecrans a message, et tous les garde-fous de la feuille
+lisent la meme population. Mauvaises : le CSS imbrique est interdit dans ce depot, y compris pour une regle legitime ; le critere 5 (c)
+de la story, ecrit pour une evaluation de l'imbrication, devient rouge, et `camille-po` l'a amende (`d640121d`, *"regle imbriquee, non lue par les garde-fous de la
+feuille"*). Le critere 4 tient tel qu'ecrit : le message du refus cite `.est-faux`. Le cliquet de la decision 4 demande un geste a
+qui retire ou ajoute une region d'annonce.
+
+**Alternatives considerees.** **Corriger la garde seule** : ecartee, le defaut est dans la lecture de la feuille, et les autres
+garde-fous qui la partagent liraient encore une population fausse des qu'une virgule est entre parentheses. **Evaluer `&`** : ecartee
+ci-dessus. **Deriver l'exemple de la decision 1 au lieu de le nommer** : ecartee, une forme derivee existe toujours et ne dit pas le
+jour ou l'exemple ecrit dans cet `ADR` cesse de s'appliquer.
+
+**Compte ArchUnit inchange** : 41 `static final ArchRule`, 38 `@ArchTest`, 16 fichiers (methode d'`ADR-0104`, `git grep -hcE` des deux
+motifs sur les `*.java` suivis, sommes par `awk`), sur `b9c6cb69` et sur ce commit ; aucun des quatre fichiers modifies ne porte l'un
+des deux motifs.

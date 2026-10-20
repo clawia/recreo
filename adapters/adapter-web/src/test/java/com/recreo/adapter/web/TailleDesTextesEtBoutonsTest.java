@@ -192,8 +192,8 @@ class TailleDesTextesEtBoutonsTest {
                 }
                 String selecteurs = bloc.substring(0, accolade);
                 String corps = bloc.substring(accolade + 1);
-                for (String selecteur : selecteurs.split(",")) {
-                    blocs.merge(selecteur.strip(), corps, (ancien, nouveau) -> ancien + ";" + nouveau);
+                for (String selecteur : LAnimationRetardeMaisNeDetermineRienTest.selecteurs(selecteurs)) {
+                    blocs.merge(selecteur, corps, (ancien, nouveau) -> ancien + ";" + nouveau);
                 }
             }
         }
@@ -827,8 +827,8 @@ class TailleDesTextesEtBoutonsTest {
                         String origine = preludes.isEmpty()
                                 ? feuille.toString()
                                 : feuille + " sous " + String.join(" ", preludes);
-                        for (String selecteur : prelude.split(",")) {
-                            regles.add(new RegleEcrite(origine, selecteur.strip(), tampon.toString()));
+                        for (String selecteur : LAnimationRetardeMaisNeDetermineRienTest.selecteurs(prelude)) {
+                            regles.add(new RegleEcrite(origine, selecteur, tampon.toString()));
                         }
                     }
                     tampon.setLength(0);
