@@ -45,8 +45,8 @@ items:
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : a, a
   - enonce: "Quel objet est à tout le monde sans prénom ?"
-    bonneReponse: "les ciseaux de la classe"
-    distracteurs: ["un cartable", "une trousse"]
+    bonneReponse: "le crayon de la classe"
+    distracteurs: ["le cartable", "le sac"]
     indice: "Regarde chaque objet."
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : a, a

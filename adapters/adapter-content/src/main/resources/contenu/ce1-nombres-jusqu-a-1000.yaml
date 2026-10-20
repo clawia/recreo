@@ -90,11 +90,11 @@ items:
     indice: "Soixante et onze commence par soixante, mais vaut plus."
   # Verbe "decomposer" (jamais nomme a l'enfant - NUM-CE1-5), avec le vocabulaire centaines,
   # dizaines et unites (NUM-CE1-4)
-  - enonce: "Quel nombre s'écrit 3 centaines, 4 dizaines et 7 unités ?"
+  - enonce: "Quel nombre a 3 centaines, 4 dizaines et 7 unités ?"
     bonneReponse: "347"
     distracteurs: ["374", "437"]
     indice: "Écris les centaines, puis les dizaines, puis les unités."
-  - enonce: "Quel nombre s'écrit 6 centaines et 5 unités ?"
+  - enonce: "Quel nombre a 6 centaines et 5 unités ?"
     bonneReponse: "605"
     distracteurs: ["650", "615"]
     indice: "Chaque place du nombre doit avoir un chiffre."
@@ -106,7 +106,7 @@ items:
     bonneReponse: "7 centaines"
     distracteurs: ["4 centaines", "5 centaines"]
     indice: "Les centaines sont la première place."
-  - enonce: "Quel nombre s'écrit 4 centaines et 3 dizaines ?"
+  - enonce: "Quel nombre a 4 centaines et 3 dizaines ?"
     bonneReponse: "430"
     distracteurs: ["403", "340"]
     indice: "Pense à la place des unités."

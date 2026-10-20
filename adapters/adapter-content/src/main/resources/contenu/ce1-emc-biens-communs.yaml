@@ -32,7 +32,8 @@ lignesDeReferentiel: ["EMC-CE1-01"]
 #   (a) un bien d'une seule personne propose quand la question demande un bien de tous ;
 #   (b) un bien de tous propose quand la question demande un bien d'une seule personne ;
 #   (c) un geste qui abime le bien ;
-#   (d) un geste qui laisse le bien sans protection.
+#   (d) un geste qui laisse le bien sans protection ;
+#   (e) un geste qui fait d'un bien de tous le sien.
 # La bonne reponse est strictement la plus longue (en caracteres) dans la moitie des items au plus.
 #
 # TRV-CE1-1, -5, -6, LON-CE1-1, -2, -5 : niveau CE1, une seule ligne, aucun texteSupport ni voix, un indice
@@ -48,74 +49,74 @@ items:
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : a, a
   - enonce: "Quel objet est à tous les élèves de l'école ?"
-    bonneReponse: "les ballons de la cour"
-    distracteurs: ["la gourde de Jade", "le cartable bleu de Tom"]
+    bonneReponse: "le ballon de la cour"
+    distracteurs: ["le cartable de Tom", "le manteau de Jade"]
     indice: "Demande-toi : un seul élève s'en sert, ou tous ?"
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : a, a
   - enonce: "Parmi ces objets, lequel peut servir à tout le monde ?"
-    bonneReponse: "les livres de la bibliothèque"
-    distracteurs: ["la trousse d'Inès", "le manteau d'Omar"]
+    bonneReponse: "le livre de la bibliothèque"
+    distracteurs: ["le manteau d'Omar", "le cahier d'Inès"]
     indice: "Regarde à qui appartient chaque objet."
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : a, a
   - enonce: "Un seul de ces objets est à tout le monde. Lequel ?"
-    bonneReponse: "les ciseaux de la classe"
-    distracteurs: ["la trousse rouge de Mila", "le stylo vert de Samir"]
+    bonneReponse: "la règle de la classe"
+    distracteurs: ["la trousse de Mila", "la gomme de Samir"]
     indice: "Pense à celui dont tous les élèves peuvent se servir."
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : a, a
   - enonce: "Quel objet peut être utilisé par n'importe quel élève ?"
-    bonneReponse: "les jeux de la cour"
-    distracteurs: ["le bonnet de Zoé", "le sac à dos de Léo"]
+    bonneReponse: "le jeu de la cour"
+    distracteurs: ["le bonnet de Zoé", "le sac de Léo"]
     indice: "Lis chaque objet et dis qui s'en sert."
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : a, a
   - enonce: "Quel objet est à tout le monde dans l'école ?"
-    bonneReponse: "les crayons de la classe"
-    distracteurs: ["la règle verte d'Aya", "la colle de Noé"]
+    bonneReponse: "le crayon de la classe"
+    distracteurs: ["le stylo d'Aya", "le feutre de Noé"]
     indice: "Compare les trois objets : qui peut les utiliser ?"
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : a, a
   - enonce: "Hugo veut un objet que tous les élèves partagent. Que choisit-il ?"
-    bonneReponse: "un livre de la bibliothèque"
-    distracteurs: ["le goûter de Mila", "la casquette d'Adam"]
+    bonneReponse: "le jeu de la classe"
+    distracteurs: ["le goûter de Mila", "le chapeau d'Adam"]
     indice: "Pense à ce qui ne reste pas dans le sac d'un élève."
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : b, b
   - enonce: "Quel objet est à une seule personne ?"
     bonneReponse: "la trousse de Lina"
-    distracteurs: ["les ciseaux de la classe", "les ballons de la cour"]
+    distracteurs: ["la règle de la classe", "la corde de la cour"]
     indice: "Demande-toi : qui a le droit de s'en servir ?"
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : b, b
   - enonce: "Un seul de ces objets est à un seul élève. Lequel ?"
     bonneReponse: "le cartable d'Omar"
-    distracteurs: ["les livres de la bibliothèque", "les crayons de la classe"]
+    distracteurs: ["le livre de la bibliothèque", "le crayon de la classe"]
     indice: "Lis le nom de chaque objet avec attention."
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : b, b
   - enonce: "Parmi ces objets, lequel n'est qu'à un seul élève ?"
     bonneReponse: "la gourde de Zoé"
-    distracteurs: ["les feutres de la classe", "les jeux de la cour"]
+    distracteurs: ["la colle de la classe", "la balle de la cour"]
     indice: "Pense à l'objet qu'un seul élève utilise."
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : b, b
   - enonce: "Quel objet n'est pas à tout le monde ?"
     bonneReponse: "le stylo de Samir"
-    distracteurs: ["les cordes de la cour", "les livres de la classe"]
+    distracteurs: ["le jeu de la cour", "le livre de la classe"]
     indice: "Demande-toi quel objet ne sert qu'à une personne."
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : b, b
   - enonce: "Maya et Noé regardent trois objets. Lequel est à une seule personne ?"
     bonneReponse: "le cahier d'Inès"
-    distracteurs: ["les ballons de la cour", "les livres de la bibliothèque"]
+    distracteurs: ["le ballon de la cour", "le livre de la bibliothèque"]
     indice: "Compare ce qui sert à beaucoup d'élèves et à un seul."
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : b, b
   - enonce: "Quel objet est à un élève, et pas à toute l'école ?"
     bonneReponse: "le manteau de Léo"
-    distracteurs: ["les jeux de la cour", "les feutres de la classe"]
+    distracteurs: ["le jeu de la cour", "le feutre de la classe"]
     indice: "Cherche ce que les autres élèves ne peuvent pas utiliser."
   # BCO-CE1-1 tache 2
   # TRV-CE1-2 : c, c
@@ -124,16 +125,16 @@ items:
     distracteurs: ["elle plie un coin", "elle écrit son prénom dedans"]
     indice: "Pense à ce qui garde les pages en bon état."
   # BCO-CE1-1 tache 2
-  # TRV-CE1-2 : c, d
+  # TRV-CE1-2 : d, d
   - enonce: "Omar voit une page déchirée dans un livre de la bibliothèque. Que fait-il ?"
     bonneReponse: "il prévient un adulte"
-    distracteurs: ["il arrache toute la page", "il fait semblant de rien voir"]
+    distracteurs: ["il le rend sans rien dire", "il cache la page"]
     indice: "Demande-toi qui doit savoir que le livre est abîmé ?"
   # BCO-CE1-1 tache 2
-  # TRV-CE1-2 : c, d
+  # TRV-CE1-2 : e, d
   - enonce: "Un ballon de la cour est crevé. Que fait Jade ?"
     bonneReponse: "elle prévient un adulte"
-    distracteurs: ["elle le jette à la poubelle", "elle le cache dans un coin"]
+    distracteurs: ["elle le garde pour elle", "elle le cache dans un coin"]
     indice: "Pense à qui peut décider quoi faire du ballon."
   # BCO-CE1-1 tache 2
   # TRV-CE1-2 : d, c
@@ -145,7 +146,7 @@ items:
   # TRV-CE1-2 : c, c
   - enonce: "Samir veut lire un livre de la bibliothèque. Que fait-il avant de l'ouvrir ?"
     bonneReponse: "il se lave les mains"
-    distracteurs: ["il mange du chocolat", "il frotte ses mains par terre"]
+    distracteurs: ["il mange en lisant", "il l'ouvre avec des doigts collants"]
     indice: "Pense aux traces que laissent les doigts."
   # BCO-CE1-1 tache 2
   # TRV-CE1-2 : c, c
@@ -163,13 +164,13 @@ items:
   # TRV-CE1-2 : d, c
   - enonce: "Inès a un livre de la bibliothèque et il pleut. Que fait-elle ?"
     bonneReponse: "elle le garde au sec"
-    distracteurs: ["elle le laisse sous la pluie", "elle le pose dans une flaque"]
+    distracteurs: ["elle le laisse sous la pluie", "elle le pose sur un banc"]
     indice: "Pense à ce que l'eau fait au papier."
   # BCO-CE1-1 tache 2
-  # TRV-CE1-2 : d, d
-  - enonce: "Hugo joue avec un jeu de la classe. Que fait-il pour ne perdre aucune pièce ?"
-    bonneReponse: "il compte les pièces"
-    distracteurs: ["il joue sans les compter", "il prête une pièce"]
+  # TRV-CE1-2 : d, e
+  - enonce: "Hugo joue avec un jeu de la classe. Que fait-il quand la partie est finie ?"
+    bonneReponse: "il vérifie qu'il ne manque rien"
+    distracteurs: ["il laisse tout sur la table", "il garde une pièce pour lui"]
     indice: "Pense à ce qui montre qu'aucune pièce ne manque."
   # BCO-CE1-1 tache 2
   # TRV-CE1-2 : d, c

@@ -66,7 +66,7 @@ class PaquetCe1EmcBiensCommunsTest {
 
     private static final Pattern TACHE = Pattern.compile("BCO-CE1-1 tache ([12])");
 
-    private static final Pattern FAMILLES = Pattern.compile("TRV-CE1-2 : ([a-d]), ([a-d])");
+    private static final Pattern FAMILLES = Pattern.compile("TRV-CE1-2 : ([a-e]), ([a-e])");
 
     /** BCO-CE1-1 et FER-1 : les trois exemples du libelle de la competence. */
     private static final Pattern CLASSE = Pattern.compile("(?<!\\p{L})classe(?!\\p{L})", FLAGS);
@@ -127,7 +127,7 @@ class PaquetCe1EmcBiensCommunsTest {
                     .map(m -> m.group(1) + m.group(2)).toList();
             assertThat(familles)
                     .as("TRV-CE1-2 : '%s' déclare exactement une paire de familles de distracteurs "
-                            + "(a à d)", enonce)
+                            + "(a à e)", enonce)
                     .hasSize(1);
             return familles.get(0);
         }
@@ -265,7 +265,7 @@ class PaquetCe1EmcBiensCommunsTest {
     private static void verifierLesFamilles(List<ItemLu> items) {
         for (ItemLu item : items) {
             String familles = item.familles();
-            String permises = item.tache().equals("1") ? "ab" : "cd";
+            String permises = item.tache().equals("1") ? "ab" : "cde";
             assertThat(familles.chars().allMatch(famille -> permises.indexOf(famille) >= 0))
                     .as("TRV-CE1-2 : '%s' déclare les familles « %s », la tâche %s n'admet que « %s »",
                             item.enonce(), familles, item.tache(), permises)
@@ -275,6 +275,14 @@ class PaquetCe1EmcBiensCommunsTest {
                         .as("TRV-CE1-2 : '%s' mélange deux familles de distracteurs dans une question "
                                 + "d'appartenance", item.enonce())
                         .isTrue();
+                String premierMot = item.bonneReponse().split(" ")[0];
+                for (String distracteur : item.distracteurs()) {
+                    assertThat(distracteur.split(" ")[0])
+                            .as("BCO-CE1-1 : « %s » (distracteur de '%s') n'a pas le même premier mot "
+                                    + "que la bonne réponse « %s » : l'article donne la réponse",
+                                    distracteur, item.enonce(), item.bonneReponse())
+                            .isEqualTo(premierMot);
+                }
                 boolean distracteursPersonnels = familles.charAt(0) == 'a';
                 for (String distracteur : item.distracteurs()) {
                     assertThat(nommeUnPersonnage(distracteur))
@@ -583,6 +591,15 @@ class PaquetCe1EmcBiensCommunsTest {
         assertThatThrownBy(() -> verifierLesMotsDuFoyer(items))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("chez");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurDesPropositionsQuiNOntPasLeMemeArticle() {
+        List<ItemLu> items = fautif("Quel jeu est à tous");
+
+        assertThatThrownBy(() -> verifierLesFamilles(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("l'article donne la réponse");
     }
 
     @Test
