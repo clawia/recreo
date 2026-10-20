@@ -942,3 +942,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-nombres-jusqu-a-1000
     nombreDeManches: 10
+  - id: bandit-manchot-biens-communs-ce1
+    titre: "Les biens de tous"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-biens-communs
+    nombreDeManches: 10

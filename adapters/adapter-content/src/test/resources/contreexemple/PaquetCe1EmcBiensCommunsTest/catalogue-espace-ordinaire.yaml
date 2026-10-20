@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1EmcBiensCommunsTest. Le titre porte une espace ordinaire devant le point d'interrogation, ou la regle veut U+00A0.
+jeux:
+  - id: bandit-manchot-biens-fautif
+    titre: "À qui est-ce ?"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-biens-communs
+    nombreDeManches: 10
