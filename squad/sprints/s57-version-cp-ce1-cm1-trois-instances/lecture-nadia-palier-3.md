@@ -198,3 +198,86 @@ correction ; l'indice apres une erreur et le pli.
 | moi | jouer les cinq lots sur le jar des corrections ; ouvrir les verdicts dans les fiches |
 
 **Signe** : `nadia-prof`, s57, palier 3, 2026-10-20.
+
+---
+
+## Suite du 2026-10-20 : relecture des corrections, pli, langue
+
+- **Date** : 2026-10-20, 10:01 (UTC+02:00), lu par `date`. **Arbre** : `round-two` a `4650aeab` (contient `c7dab42b`, `27a8a56a`).
+- **Lu** : `git diff 5ee20db7 4650aeab` sur les cinq paquets, les items de `-07` et de l'EMC en entier ; la section *"Remesure du
+  2026-10-20"* de `mesure-ines-palier-3-pli-744x551.md` (`42238bc5`) ; `releve-relecteur-palier-3.md` (non suivi).
+- **Toujours un audit degrade** : je n'ai pas lance le jar. **Aucun Done n'est prononce ici**, pour le motif de l'en-tete
+  (4.1 points 5, 4.2). Aucun paquet modifie, aucun identifiant ecrit ni alloue, rien de commite par moi.
+
+### S1. Les corrections demandees : toutes faites
+
+| Lot | Items demandes | Fait, lu sur `4650aeab` |
+|---|---|---|
+| `-06` | 19 | oui : *"pour jouer avec l'eau"* |
+| `-07` | 1, 2, 3, 7, 9, 10, 12, 13, 14, 16, 18 | oui, les 11 : indice de 10 *"Relis la premiere phrase."* ; 3 reecrit (riviere / sable) ; 1, 2, 7, 9 avec un distracteur de culture (*"des carottes"*, *"du miel"*...) ; 12, 13, 14, 16, 18 sur un detail de la consigne |
+| `-11` | indices 2, 5, 7, 10, 12, 15, 17, 20, 22, 24 | oui : 10 et 10 sur les deux indices que je proposais, 4 autres ; aucune *"a lieu"* restante ; `TRV-CE1-5` tenue (3 indices distincts) |
+| `MAT-CE1-01` | 15, 16, 19 | oui : *"Quel nombre a ..."* |
+| EMC | tache 1 ; 14, 15, 17, 20, 21 | oui : les 12 items de la tache 1 ont trois propositions au singulier et au meme article ; 14, 15, 17, 20 sans distracteur absurde ni negation sans *ne* ; 21 reecrit comme je le proposais |
+
+La barre que j'avais ecrite est atteinte sur les cinq lots : ces corrections ne sont plus une condition. Ce qui suit est neuf, et
+date du 2026-10-20.
+
+### S2. Le pli : recevable comme reserve non bloquante, sur les cinq lots
+
+Ma condition 4.1 point 4 dit qu'un indice sous le pli a 744 x 551 apres une erreur est une **reserve non bloquante** (mots de
+l'utilisatrice). Je ne la durcis pas apres coup : **je ne refuse aucun lot pour le pli**. Cotes reprises de la remesure, non
+rejouees par moi : `-07` 0 sur 20, `MAT-CE1-01` 0 sur 22, `-06` 5 sur 20, EMC 11 sur 24, `-11` 22 sur 24.
+
+**Consequence pour `-11`, `-06`, EMC : un correctif de gabarit, pas de contenu.** La cause mesuree est le nombre de rangees de
+propositions (section R2 de la remesure). Raccourcir les phrases de `-11` casserait `NEG-CE1-3` (memes mots hors de la negation) ;
+raccourcir les textes de `-06` toucherait `INF-CE1-1`. Je ne demande donc aucune correction de contenu pour le pli. Demande a
+`ines-design`, avec mon veto sur la solution. **J'exige** : a 744 x 551, apres une erreur, l'indice entier visible sans defiler sur
+les items de ces trois paquets, en gardant (a) la taille du texte que lit l'enfant, (b) les trois propositions sur le meme ecran que
+l'enonce, (c) l'ordre enonce, texte, propositions, indice. Une solution qui cache le texte support ou les propositions pour faire
+place a l'indice, je la refuse. Reserve non bloquante tant que ce correctif n'est pas servi.
+
+### S3. Langue de l'enfant et faute certaine
+
+| Point | Verdict | Exigence |
+|---|---|---|
+| EMC item 14, indice *"Demande-toi qui doit savoir ... ?"* | **faute certaine, je donne mon accord** a la correction du relecteur, au domaine duquel elle appartient (`DEC-0056`) | *"Demande-toi : qui doit savoir que le livre est abime ?"* (forme des items 1 et 7), avant que l'enfant le lise |
+| EMC item 9, *"lequel n'est qu'a un seul eleve ?"* | **a corriger** | *ne ... que* n'est pas une negation, et `ce1-negation` apprend au meme enfant a lire *ne* comme *non* : il peut lire *"n'est pas a un seul eleve"*. Un enonce sans *ne ... que* (par exemple *"lequel est a un seul eleve ?"*) |
+| EMC item 8, *"Un seul de ces objets est a un seul eleve. Lequel ?"* | **a corriger** | un seul *seul* (par exemple *"Lequel de ces objets est a un seul eleve ?"*) |
+| `-06` item 14, *"son frere. Il se met a pleuvoir."* | **a corriger** | le *Il* impersonnel suit *son frere* : un lecteur de CE1 le lit comme le frere, juste avant une question qui depend de *lui*. Une phrase de pluie qui ne commence pas par *Il* (par exemple *"La pluie commence a tomber."*) |
+| `-07` items 4 et 8, *Soleil* / *soleil* | **garde** | l'astre a cote de la Lune et de la Terre (4), l'usage courant (8) : les deux sont justes |
+| `MAT-CE1-01` item 18, *"Dans 745, combien de centaines ?"* | **garde** | forme courante des manuels de CE1, courte |
+
+Les quatre *a corriger* sont des reserves nouvelles, pas un durcissement de S1 : corrigees avant mon jeu, elles disparaissent ;
+sinon un Done ne pourra etre que *sous reserve* pour l'EMC et `-06`.
+
+**Correction de mon propre constat** : en section 2 j'ai omis l'item 17 de `-07` (*"Que faut-il faire en dernier ?"*, *"Melange
+bien"*) parmi les consignes que la logique du geste donne. Il releve du meme critere ; le jeu texte masque le tranchera, avec 9
+(chauve-souris le jour), 13 (*eau claire*) et 14 (*un peu*). Nouveau aussi, a confirmer en jouant : EMC item 17, la question dit
+*"avant de l'ouvrir"* et les deux distracteurs ne sont pas des gestes d'avant ; l'enfant peut eliminer par la forme.
+
+### S4. Ce qui exige encore un jeu reel, et qui peut le faire
+
+| Quoi | Qui |
+|---|---|
+| `-07`, les 20 items joues texte masque (4.2) | **moi seule** : c'est un jugement sur la culture d'un enfant, aucun pilote ne le rend |
+| Chaque bonne reponse et distracteur relus a l'ecran, cinq lots (4.1 point 5) | moi, sur le jar des corrections de S3 |
+| Que le descripteur (*decomposer*, `MAT-CE1-01`) n'apparaisse sur aucun ecran | moi ; `ines-design` peut l'appuyer d'un releve du texte rendu, sans le remplacer |
+| Espaces insecables, chevrons, ponctuation rendus | `relecteur-pedagogique` sur l'ecran, ou `ines-design` par releve ; non verifie a ce jour |
+
+`sofia-sm` me fournit le jar construit sur le commit qui porte S3 ; je joue ce commit-la (4.1 point 6).
+
+### S5. Verdict par lot : aucun Done prononce
+
+| Lot | Etat | Reste avant mon jeu | Reserve non bloquante |
+|---|---|---|---|
+| `-06` | a jouer | item 14 (S3) | pli, 5 items |
+| `-07` | a jouer | rien | aucune ; jeu texte masque des 20 items, dont 9, 13, 14, 17 |
+| `-11` | a jouer | rien | pli, 22 items |
+| `MAT-CE1-01` | a jouer | mention `NUM-CE1-2` mot pour mot (`camille-po`) ; plafond `en cours` | aucune |
+| EMC | a jouer | items 8, 9 (S3) ; indice 14 (relecteur, mon accord) | pli, 11 items ; item 17 (S3) |
+
+**Je reste la seule garde**, en plus de la section 7 : qu'un mot de la question ou de l'indice ne se lise pas comme une
+negation qu'il n'est pas (EMC 9), et qu'un pronom impersonnel ne soit pas pris pour un personnage (`-06` 14). Aucun test ne lit
+une phrase comme un enfant de CE1.
+
+**Signe** : `nadia-prof`, s57, palier 3, 2026-10-20, 10:01.
