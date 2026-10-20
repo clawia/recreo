@@ -354,3 +354,83 @@ depot, et en faire entrer un pour cette propriete serait une dependance de test 
 d'entree vers l'assertion de rendu que `ADR-0025` refuse. La mesure au navigateur reste le geste de
 `nadia-prof`, avec sa methode ; ce que ce lot ajoute est que sa mesure ne peut plus etre invalidee sans
 que quelqu'un l'apprenne.
+
+## Amendement du 2026-10-20 (s57, `theo-archi`) - la pile de polices servie ne change pas en silence
+
+**Contexte.** La section *"Ce que je nomme sans le resoudre"* laissait entiere la question de la police de l'appareil cible, et
+nommait *"la pile de polices declaree - qu'elle ne change pas en silence"* comme ce qui serait gardable, sans l'ecrire comme regle.
+`DEC-0122` 3.5 (2026-10-16) a tranche le perimetre : une cote vaut pour la pile servie, rendue sur le poste de mesure. La question de
+l'appareil reste ouverte ; la pile servie devient une propriete du depot. Mesure de `camille-po` sur `78270b4c`
+(`S57-GARDE-PILE-DE-POLICES`) : `body { font-family: Georgia, serif; }` en fin de `recreo.css`, et les trois autres formes ensemble,
+passaient `adapter-web` (501 tests, 0 echec). La feuille tierce est deja epinglee par empreinte (`ADR-0014`), une police chargee depuis
+le reseau deja refusee : manquait la police declaree par la feuille maison ou par un gabarit.
+
+**Decision.** La pile de polices servie est celle de la feuille tierce. Refuser :
+
+1. dans une feuille maison, une declaration `font-family` ou `font`, une regle `@font-face`, ou la definition d'une propriete
+   personnalisee que la feuille tierce lit dans une declaration de police ;
+2. dans un gabarit, les memes declarations dans un attribut `style` ou `th:style` (la valeur et chacun de ses litteraux entre
+   apostrophes), ou dans une balise `<style>`. Le critere 4 de la story laissait le choix : **refuse**, pas nomme comme limite. Cout
+   nul : les gabarits portent 4 attributs de style (3 `th:style` de teinte dans `accueil.html`, 1 `style` de position dans
+   `fragments/designation.html`) et 0 balise `<style>`, aucun ne declare une police.
+
+**Perimetre derive.** Les variables de police ne sont pas ecrites dans le test : ce sont celles qu'une declaration `font` ou
+`font-family` de la feuille tierce lit par `var(...)`. Mesure sur `5ee20db7` (lecture hors depot de `vendor/bootstrap.min.css`,
+commentaires retires) : **4**, `--bs-body-font-family`, `--bs-btn-font-family`, `--bs-font-monospace`, `--bs-font-sans-serif` ; la
+cloture transitive (une variable lue par une variable de police) n'en ajoute **aucune**, elle n'est donc pas ecrite. Son declencheur :
+une mise a jour de la feuille tierce, que l'empreinte d'`ADR-0014` rend deja visible. Une population vide est un echec.
+
+**Regle executable.** Pas une `ArchRule` : l'objet est une feuille de style et des gabarits.
+`adapters/adapter-web/src/test/java/com/recreo/adapter/web/LaPileDePolicesServieNeChangePasEnSilenceTest.java`, huit tests :
+
+- `niLaFeuilleMaisonNiUnGabaritNeChangentLaPileDePolices` : la production, verte sans exemption ;
+- `chaqueFormeDeDeclarationDePoliceFaitEchouerLeGardeFou` : les quatre formes de la story, une a une, plus
+  `:root { --bs-font-sans-serif: Georgia, serif; }`, chacune ajoutee en fin du texte reel de la feuille maison et lue par le lecteur
+  partage (`reglesDe`) ; chacune rougit et le message cite son jeton (`font-family`, `font:`, `--bs-body-font-family`, `@font-face`,
+  `--bs-font-sans-serif`) ;
+- `uneTailleUneGraisseEtUneVariableMaisonRestentVertes` : clause de non-sur-detection, `font-size`, `font-weight` et une variable maison
+  `--teinte-font` ;
+- `unePoliceDansUnStyleDeGabaritFaitEchouerLeGardeFou` : un `th:style` reel de `accueil.html`, precede du litteral
+  `'font-family: Georgia; '` ;
+- `unePoliceDansUneBaliseStyleDeGabaritFaitEchouerLeGardeFou` ;
+- `sansVariableDePoliceDeriveeLaClauseEchoueAuLieuDePasserAVide` ;
+- `unDepotQuiRedefinitLaPileFaitEchouerLeGardeFou` et `leMemeDepotSansPoliceDeclareeResteVert` (`ADR-0013` obligation 3) : un depot
+  fictif sous `contreexemple/LaPileDePolicesServieNeChangePasEnSilenceTest/`, dont la feuille tierce lit `--tiers-police`, que la
+  feuille maison redefinit et dont un gabarit declare une police, et son jumeau sans ces deux declarations. Aucun nom du depot reel :
+  la variable fautive n'est connue que par la feuille tierce du jeu. Ce jeu a ete ajoute apres que `LesGardeFousSontMisALEpreuveTest`
+  a rougi au premier `verify` (un balayage de `src/main/` sans jeu fautif sous `contreexemple/`).
+
+**Preuve de morsure.** Commande : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test
+-Dtest=LaPileDePolicesServieNeChangePasEnSilenceTest -Dsurefire.failIfNoSpecifiedTests=false`, perimetre `adapter-web` et ses amonts,
+une classe, 6 tests a ce moment-la (avant le jeu fautif), JDK 21.0.10 (`java.version` du rapport Surefire). Le fichier de test mute apres verification que le motif apparait
+une fois, restaure par copie de reference (`cmp` identique) ; chaque mutation a compile.
+
+| Code | Mutation du test | Mesure |
+|---|---|---|
+| `W0` | aucune | 6 tests, 0 echec |
+| `W1` | variables nommees a la main (`--bs-body-font-family` seule) au lieu d'etre derivees | **1 echec**, `chaqueFormeDeDeclarationDePoliceFaitEchouerLeGardeFou` (la forme `--bs-font-sans-serif`) |
+| `W2` | la detection de `@font-face` desactivee | **1 echec**, le meme test |
+| `W3` | les litteraux d'un attribut de style ignores, la valeur brute seule lue | **1 echec**, `unePoliceDansUnStyleDeGabaritFaitEchouerLeGardeFou` |
+
+Les mutations de `recreo.css` elle-meme, criteres 1 et 2 de la story, sont a `yanis-qa` (`CR39`).
+
+**Ce que cette regle ne garde pas, nomme.** Une police posee par le JavaScript apres le rendu ; `letter-spacing`, `word-spacing`,
+`font-stretch` et toute propriete qui change la largeur d'un texte sans changer la pile (hors de `DEC-0122`, qui parle de la pile) ;
+la feuille tierce elle-meme, epinglee par empreinte (`ADR-0014`) ; une variable de police que la feuille tierce ne lirait qu'a travers
+une autre variable (aucune aujourd'hui) ; les polices installees sur une tablette (`DEC-0122` 3.3), qui restent la question ouverte
+de la section ci-dessus.
+
+**Consequences.** Bonne : une cote mesuree par `nadia-prof` ne peut plus etre invalidee par une police declaree en silence. Mauvaise :
+changer la police du produit, meme pour une raison de lisibilite, demande d'amender cette regle et de remesurer les cotes ; c'est
+voulu, et c'est un geste de `nadia-prof` et d'`ines-design` avant d'etre un commit. Le lecteur des regles-`@` de ce test est un petit
+balayage propre, parce que le lecteur partage ne rend aucune regle pour un bloc `@font-face`.
+
+**Alternatives considerees.** **Epingler la pile par egalite** (la valeur de `--bs-body-font-family` de la feuille tierce) : ecartee,
+l'empreinte d'`ADR-0014` epingle deja toute la feuille tierce. **Nommer la limite des gabarits au lieu de la refuser** : ecartee, le
+refus coute zero sur les gabarits actuels et son mode de defaillance est un rouge.
+
+**Ce qui me ferait changer d'avis** : une decision de produit de servir une police propre, qui ferait de la feuille maison le
+porteur de la pile ; la regle s'inverserait alors en egalite sur cette declaration.
+
+**Compte ArchUnit inchange** : 41 `static final ArchRule`, 38 `@ArchTest`, 16 fichiers (methode d'`ADR-0104`), sur `5ee20db7` et sur ce
+commit ; le fichier de test ne porte aucun des deux motifs.
