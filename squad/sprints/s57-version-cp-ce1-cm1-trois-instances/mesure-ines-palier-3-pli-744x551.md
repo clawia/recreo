@@ -260,3 +260,363 @@ Un jar sur le port 18671, un Chrome sur le 19671 avec son profil, arretes par le
 ## Decisions prises
 
 **Aucune.** Ce fichier ne cree ni n'amende aucune `ADR` ni `DEC`, ne leve aucune reserve et ne prononce aucun Done.
+
+
+
+---
+
+# Remesure du 2026-10-20 (apres les corrections de contenu), 744 x 551 apres une erreur
+
+- **Auteure** : `ines-design`. **Date** : 2026-10-20, 09:57 (UTC+02:00), lue par `date` (mesure de 09:47 a 09:54). Cette section complete les sections 1 a 9 ci-dessus, qui restent la mesure de `7301cbbc` et ne sont pas modifiees.
+- **Ce que cette section est** : des cotes en pixels. Elle ne prononce aucun Done, ne dit pas si une reserve est recevable et ne propose aucun changement de contenu ou de style : le veto est a `nadia-prof`.
+- **Identifiants** : PL-1 a PL-8 gardent leur sens ; ceux dont la valeur change sont mis a jour ci-dessous sous le meme code. **PL-9 et PL-10 sont nouveaux et provisoires** : je les ai nommes dans ce texte, ils ne sont pas alloues au registre. `theo-archi` doit les allouer (ou en retenir d'autres) et reporter les codes ici.
+
+## R1. Arbre, jar, methode
+
+- **Arbre** : `round-two` a `4650aeabb0412c3da0d974728c43637af5f4145d` (fusion de `ADR-0054`, pile de polices ; contient la fusion `c7dab42b`), worktree `s57-ines-p3` avance en avant rapide, branche `s57-ines-p3`. `git diff --stat 7301cbbc 4650aeab -- adapters/adapter-web/src/main` : **vide** (aucun gabarit, aucune feuille, aucun octet servi n'a change). `recreo.css` : blob `7cff4fd3751a6184ebe8391e017bd0b082fbfff1` (identique), SHA-256 servi `e1cd65c255a5142efc19c5cb616134b1d26bd17ffb401684e1e0a0ea2728cf41` (identique a la section 1).
+- **Jar** : `bash outils/mvn-jdk21.sh -B clean package -DskipTests`, sortie 0, copie hors depot, SHA-256 `bccaf1e76b8a0905629ded6cf506e8e12670cc73811fb2763c4c31929b6c31bb`. JDK 21.0.10, port 18681, PID 59992 lu sur le port en ecoute, arrete par ce PID (le port ne repond plus).
+- **Methode** : celle de la section 1, inchangee. Meme pilote (`pilote-p3.mjs`, hors depot), Chrome sans tete, un seul navigateur a mon nom (PID 60808, profil jetable, port 19681 ; a la fin du pilote, aucun processus ne portait plus ce profil, controle par liste). Cinq largeurs (720, 744, 768, 992, 1200), hauteur 551, deux modes (avec et sans barre), arrivee, erreur 1 (six ordres des propositions), erreur 2, revelation (six ordres). Aucune regle de style injectee. Critere : bas de `.indice` au plus a 551.
+- **Couverture** : cinq paquets en entier, pas seulement les items modifies : `-07` 20 sur 20 (8 parties), `-06` 20 sur 20 (6), `EMC` 24 sur 24 (5), `-11` 24 sur 24 (5), `MAT-CE1-01` 22 sur 22 (8). Anomalies (item non retrouve ou ambigu) : 0. Texte rendu egal au texte du YAML sur les 110 items. 4400 etats releves (110 items x 4 etats x 10 combinaisons largeur-mode).
+- **Paquets** : `FRA-CE1-11` = `ce1-negation` (jeu `bandit-manchot-negation-ce1`), `MAT-CE1-01` = `ce1-nombres-jusqu-a-1000` (jeu `bandit-manchot-nombres-jusqu-a-1000-ce1`), lus dans `catalogue.yaml` et `lignesDeReferentiel`.
+
+## R2. Resume
+
+| Code | Constat a `4650aeab`, 744 x 551, apres une erreur | Section |
+|---|---|---|
+| PL-1 | Inchange (l'ecart de numerotation des items 14 et 20 entre `-06` et `-07` reste dans la section 2) | 2 |
+| PL-2 (mis a jour) | `-07` : **0 item sur 20** a un bas d'indice au-dela de 551 (avant : 1). Maximum **508**. L'item 13 passe de 3 a 2 rangees (582 -> 508). L'item 12 (4 phrases) passe de 478 a **404** (propositions sur 1 rangee au lieu de 2) | R3, R4 |
+| PL-3 (mis a jour) | `-06` : **5 items sur 20** depassent encore, les memes qu'avant : 14 (556 ou 630), 16, 19 et 20 (582), 17 (552 dans 2 ordres sur 6). Seul le 19 a un hash change, sa cote est restee 582 | R3, R4 |
+| PL-4 (mis a jour) | `EMC-CE1-01` : **11 items sur 24** depassent dans au moins un ordre, **8 dans les six** (avant : 16 et 10). Maximum 596 (items 11 et 21) | R3, R4 |
+| PL-5 | Reste vrai : ce qui descend l'indice est le nombre de rangees de propositions (74 px) et de lignes de texte (30 px) ; l'indice lui-meme occupe 1 ligne (50 px) ou 2 lignes (80 px). A 992 et 1200 : **aucun item des cinq paquets** ne depasse (bas de l'indice 518 au plus) | R4, R5 |
+| PL-6 (mis a jour) | 720 avec barre rend des cotes differentes de 744 pour **4 items** : `EMC` 14 (522 -> 596), 15 (518 -> 566), 19 (548 -> 596) et `MAT` 5 (518 -> 548). `-07`, `-06`, `-11` : aucune difference de 720 a 768, avec ou sans barre. 720 sans barre, 744 et 768 : identiques | R5 |
+| PL-7 (mis a jour) | Un bouton de reponse depasse le pli dans un seul cas : `-06` 14, 556 dans 2 ordres sur 6, de 720 a 768. Chemin de sortie (`a.btn.lien-accueil`, `a.btn.chip-niveau`) : bas a **66** dans les 4400 etats. Aucun `.explication` rendu, aucun debordement horizontal | R5 |
+| PL-8 (mis a jour) | Hash du texte et de l'item des 110 items, avec la liste de ceux qui ont change | R6 |
+| **PL-9 (nouveau)** | `FRA-CE1-11` : **22 items sur 24 depassent, dans les six ordres** (bas de l'indice 566 pour 8 items, 596 pour 14) ; les items 23 et 24 tiennent (492). Les propositions finissent a 492 (3 rangees) pour 22 items ; l'indice occupe 1 ligne (566) ou 2 lignes (596). A 992 et 1200 : aucun item ne depasse (518 au plus) | R4 |
+| **PL-10 (nouveau)** | `MAT-CE1-01` : **22 items sur 22 tiennent**, maximum **548** (item 6, 3 px sous le critere). L'item 5 est a 518, et a 548 a 720 avec barre. 17 items sur 22 ont leurs propositions sur 1 rangee | R4, R5 |
+
+## R3. Items dont le hash a change, et leur cote
+
+Le hash est celui de la section 6, recalcule en Python sur le YAML de `4650aeab` et compare, pour chaque item, a celui que le pilote a calcule : **0 ecart sur 110 items**. La comparaison se fait avec le YAML de `7301cbbc`.
+
+| Paquet | Items dont le hash de l'item a change | Dont la cote a change (744, sans barre) | Hash change, cote egale |
+|---|---|---|---|
+| `-07` | 1, 2, 3, 7, 9, 10, 12, 13, 14, 16, 18 (11) ; hash du texte change : 3 | 9 (434 -> 508), 12 (478 -> 404), 13 (582 -> 508) | 1, 2, 3, 7, 10, 14, 16, 18 |
+| `-06` | 19 (1) | aucun | 19 (582) |
+| `EMC` | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 17, 20, 21 (17) | 1 (548 -> 474), 3 (596 -> 522), 6 (522-596 -> 522), 7 (444-518 -> 444), 9 (492-566 -> 492), 12 (522-596 -> 522), 14 (596 -> 522), 17 (566 -> 492-566), 21 (522-596 -> 596) | 2, 4, 5, 8, 10, 11, 15, 20 |
+| `-11` | 2, 5, 7, 10, 12, 15, 17, 20, 22, 24 (10) | non mesure avant | - |
+| `MAT-CE1-01` | 15, 16, 19 (3) | non mesure avant | - |
+
+- Ces listes coincident avec celles de la consigne et de `lecture-nadia-palier-3.md` : `-07` 11 items, `-06` item 19, `EMC` 17 items (la tache 1 en entier et 14, 15, 17, 20, 21), 10 indices de `-11`, `MAT` items 15, 16, 19.
+- **Verification inverse** : aucun item au hash inchange n'a une cote differente de celle de la section 4, ni a 744 ni aux neuf autres combinaisons largeur-mode.
+- `EMC` 21 est le seul item dont la cote **monte** : 522 dans certains ordres et 596 dans d'autres avant, 596 dans les six apres (3 rangees partout). `EMC` 17 ne descend que dans certains ordres (566 -> 492 a 566).
+- `EMC` encore au-dela de 551 dans au moins un ordre : 2, 8, 11, 13, 16, 17, 20, 21, 22, 23, 24.
+
+## R4. Cotes a 744 x 551, mode sans barre, apres une erreur (cinq paquets)
+
+Colonnes comme en section 4 : phrases, lignes du texte, bas du texte, bas de la proposition la plus basse (minimum-maximum sur les six ordres), rangees, bas de `.indice`, position par rapport a 551. *autres* : combinaison largeur-mode dont la cote differe.
+
+### FRA-CE1-07, `ce1-texte-documentaire`
+| Item | Phr. | Lignes texte | Bas texte | Bas proposition (min-max) | Rangees | Bas indice (min-max) | Pli |
+|---|---|---|---|---|---|---|---|
+| 1 | 3 | 2 | 200 | 360-360 | 1-1 | 434-434 | au-dessus |
+| 2 | 3 | 2 | 200 | 434-434 | 2-2 | 508-508 | au-dessus |
+| 3 | 3 | 2 | 200 | 434-434 | 2-2 | 508-508 | au-dessus |
+| 4 | 3 | 2 | 200 | 360-360 | 1-1 | 434-434 | au-dessus |
+| 5 | 3 | 2 | 200 | 360-360 | 1-1 | 434-434 | au-dessus |
+| 6 | 2 | 2 | 200 | 434-434 | 2-2 | 508-508 | au-dessus |
+| 7 | 2 | 1 | 170 | 330-330 | 1-1 | 404-404 | au-dessus |
+| 8 | 3 | 1 | 170 | 330-330 | 1-1 | 404-404 | au-dessus |
+| 9 | 3 | 2 | 200 | 434-434 | 2-2 | 508-508 | au-dessus |
+| 10 | 3 | 2 | 200 | 434-434 | 2-2 | 508-508 | au-dessus |
+| 11 | 3 | 2 | 200 | 434-434 | 2-2 | 508-508 | au-dessus |
+| 12 | 4 | 1 | 170 | 330-330 | 1-1 | 404-404 | au-dessus |
+| 13 | 3 | 2 | 200 | 434-434 | 2-2 | 508-508 | au-dessus |
+| 14 | 3 | 2 | 200 | 360-360 | 1-1 | 434-434 | au-dessus |
+| 15 | 3 | 1 | 170 | 330-330 | 1-1 | 404-404 | au-dessus |
+| 16 | 3 | 1 | 170 | 330-330 | 1-1 | 404-404 | au-dessus |
+| 17 | 3 | 1 | 170 | 404-404 | 2-2 | 478-478 | au-dessus |
+| 18 | 3 | 2 | 200 | 360-360 | 1-1 | 434-434 | au-dessus |
+| 19 | 3 | 1 | 170 | 404-404 | 2-2 | 478-478 | au-dessus |
+| 20 | 3 | 1 | 170 | 330-330 | 1-1 | 404-404 | au-dessus |
+
+### FRA-CE1-06, `ce1-inference`
+| Item | Phr. | Lignes texte | Bas texte | Bas proposition (min-max) | Rangees | Bas indice (min-max) | Pli |
+|---|---|---|---|---|---|---|---|
+| 1 | 2 | 1 | 170 | 330-330 | 1-1 | 404-404 | au-dessus |
+| 2 | 3 | 2 | 200 | 434-434 | 2-2 | 508-508 | au-dessus |
+| 3 | 3 | 1 | 170 | 404-404 | 2-2 | 478-478 | au-dessus |
+| 4 | 3 | 2 | 200 | 434-434 | 2-2 | 508-508 | au-dessus |
+| 5 | 3 | 2 | 200 | 360-360 | 1-1 | 434-434 | au-dessus |
+| 6 | 3 | 2 | 200 | 434-434 | 2-2 | 508-508 | au-dessus |
+| 7 | 3 | 2 | 200 | 360-360 | 1-1 | 434-434 | au-dessus |
+| 8 | 3 | 2 | 200 | 360-360 | 1-1 | 434-434 | au-dessus |
+| 9 | 3 | 2 | 200 | 360-360 | 1-1 | 434-434 | au-dessus |
+| 10 | 3 | 2 | 200 | 434-434 | 2-2 | 508-508 | au-dessus |
+| 11 | 3 | 2 | 200 | 434-434 | 2-2 | 508-508 | au-dessus |
+| 12 | 3 | 2 | 200 | 360-360 | 1-1 | 434-434 | au-dessus |
+| 13 | 3 | 2 | 200 | 434-434 | 2-2 | 508-508 | au-dessus |
+| 14 | 4 | 2 | 200 | 482-556 | 2-3 | 556-630 | sous le pli, tous ordres (+79 au pire) |
+| 15 | 2 | 2 | 200 | 434-434 | 2-2 | 508-508 | au-dessus |
+| 16 | 3 | 2 | 200 | 508-508 | 3-3 | 582-582 | sous le pli, tous ordres (+31 au pire) |
+| 17 | 2 | 1 | 170 | 404-478 | 2-3 | 478-552 | sous le pli a 1 px dans certains ordres |
+| 18 | 3 | 1 | 170 | 404-404 | 2-2 | 478-478 | au-dessus |
+| 19 | 3 | 2 | 200 | 508-508 | 3-3 | 582-582 | sous le pli, tous ordres (+31 au pire) |
+| 20 | 3 | 2 | 200 | 508-508 | 3-3 | 582-582 | sous le pli, tous ordres (+31 au pire) |
+
+### EMC-CE1-01, `ce1-emc-biens-communs` (aucun texte-support)
+| Item | Phr. | Lignes texte | Bas texte | Bas proposition (min-max) | Rangees | Bas indice (min-max) | Pli |
+|---|---|---|---|---|---|---|---|
+| 1 | 0 | - | - | 370-370 | 2-2 | 474-474 | au-dessus |
+| 2 | 0 | - | - | 418-492 | 2-3 | 492-566 | sous le pli a 15 px dans certains ordres |
+| 3 | 0 | - | - | 418-418 | 2-2 | 522-522 | au-dessus |
+| 4 | 0 | - | - | 418-418 | 2-2 | 492-492 | au-dessus |
+| 5 | 0 | - | - | 370-370 | 2-2 | 444-444 | au-dessus |
+| 6 | 0 | - | - | 418-418 | 2-2 | 522-522 | au-dessus |
+| 7 | 0 | - | - | 370-370 | 2-2 | 444-444 | au-dessus |
+| 8 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) |
+| 9 | 0 | - | - | 418-418 | 2-2 | 492-492 | au-dessus |
+| 10 | 0 | - | - | 370-370 | 2-2 | 474-474 | au-dessus |
+| 11 | 0 | - | - | 418-492 | 2-3 | 522-596 | sous le pli a 45 px dans certains ordres |
+| 12 | 0 | - | - | 418-418 | 2-2 | 522-522 | au-dessus |
+| 13 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) |
+| 14 | 0 | - | - | 418-418 | 2-2 | 522-522 | au-dessus ; autres: 720-barre 418-492 / 522-596 |
+| 15 | 0 | - | - | 444-444 | 3-3 | 518-518 | au-dessus ; autres: 720-barre 492-492 / 566-566 |
+| 16 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) |
+| 17 | 0 | - | - | 418-492 | 2-3 | 492-566 | sous le pli a 15 px dans certains ordres |
+| 18 | 0 | - | - | 418-418 | 2-2 | 492-492 | au-dessus |
+| 19 | 0 | - | - | 444-444 | 3-3 | 548-548 | au-dessus ; autres: 720-barre 492-492 / 596-596 |
+| 20 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) |
+| 21 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 22 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) ; autres: 720-barre 492-492 / 596-596 |
+| 23 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) |
+| 24 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) |
+
+### FRA-CE1-11, `ce1-negation` (aucun texte-support ; mesure nouvelle)
+| Item | Phr. | Lignes texte | Bas texte | Bas proposition (min-max) | Rangees | Bas indice (min-max) | Pli |
+|---|---|---|---|---|---|---|---|
+| 1 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 2 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 3 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 4 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) |
+| 5 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) |
+| 6 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 7 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 8 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 9 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) |
+| 10 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) |
+| 11 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 12 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 13 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 14 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) |
+| 15 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) |
+| 16 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 17 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 18 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 19 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) |
+| 20 | 0 | - | - | 492-492 | 3-3 | 566-566 | sous le pli, tous ordres (+15 au pire) |
+| 21 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 22 | 0 | - | - | 492-492 | 3-3 | 596-596 | sous le pli, tous ordres (+45 au pire) |
+| 23 | 0 | - | - | 418-418 | 2-2 | 492-492 | au-dessus |
+| 24 | 0 | - | - | 418-418 | 2-2 | 492-492 | au-dessus |
+
+### MAT-CE1-01, `ce1-nombres-jusqu-a-1000` (aucun texte-support ; mesure nouvelle)
+| Item | Phr. | Lignes texte | Bas texte | Bas proposition (min-max) | Rangees | Bas indice (min-max) | Pli |
+|---|---|---|---|---|---|---|---|
+| 1 | 0 | - | - | 370-370 | 2-2 | 444-444 | au-dessus |
+| 2 | 0 | - | - | 370-444 | 2-3 | 444-518 | au-dessus |
+| 3 | 0 | - | - | 370-370 | 2-2 | 444-444 | au-dessus |
+| 4 | 0 | - | - | 296-296 | 1-1 | 370-370 | au-dessus |
+| 5 | 0 | - | - | 444-444 | 3-3 | 518-518 | au-dessus ; autres: 720-barre 444-444 / 548-548 |
+| 6 | 0 | - | - | 444-444 | 3-3 | 548-548 | au-dessus |
+| 7 | 0 | - | - | 296-296 | 1-1 | 370-370 | au-dessus |
+| 8 | 0 | - | - | 296-296 | 1-1 | 370-370 | au-dessus |
+| 9 | 0 | - | - | 296-296 | 1-1 | 370-370 | au-dessus |
+| 10 | 0 | - | - | 296-296 | 1-1 | 400-400 | au-dessus |
+| 11 | 0 | - | - | 296-296 | 1-1 | 370-370 | au-dessus |
+| 12 | 0 | - | - | 296-296 | 1-1 | 370-370 | au-dessus |
+| 13 | 0 | - | - | 296-296 | 1-1 | 370-370 | au-dessus |
+| 14 | 0 | - | - | 296-296 | 1-1 | 400-400 | au-dessus |
+| 15 | 0 | - | - | 344-344 | 1-1 | 448-448 | au-dessus |
+| 16 | 0 | - | - | 296-296 | 1-1 | 370-370 | au-dessus |
+| 17 | 0 | - | - | 296-296 | 1-1 | 370-370 | au-dessus |
+| 18 | 0 | - | - | 296-296 | 1-1 | 370-370 | au-dessus |
+| 19 | 0 | - | - | 296-296 | 1-1 | 370-370 | au-dessus |
+| 20 | 0 | - | - | 296-296 | 1-1 | 370-370 | au-dessus |
+| 21 | 0 | - | - | 296-296 | 1-1 | 400-400 | au-dessus |
+| 22 | 0 | - | - | 296-296 | 1-1 | 370-370 | au-dessus |
+
+
+## R5. Largeurs et modes
+
+Nombre d'items dont le bas de `.indice` depasse 551 apres une erreur, dans au moins un des six ordres (entre parentheses : dans les six).
+
+| Largeur, mode | `-07` (20) | `-06` (20) | `EMC` (24) | `-11` (24) | `MAT` (22) |
+|---|---|---|---|---|---|
+| 720, barre | 0 (0) | 5 (4) | 14 (10) | 22 (22) | 0 (0) |
+| 720, sans barre | 0 (0) | 5 (4) | 11 (8) | 22 (22) | 0 (0) |
+| 744, barre | 0 (0) | 5 (4) | 11 (8) | 22 (22) | 0 (0) |
+| 744, sans barre | 0 (0) | 5 (4) | 11 (8) | 22 (22) | 0 (0) |
+| 768, barre | 0 (0) | 5 (4) | 11 (8) | 22 (22) | 0 (0) |
+| 768, sans barre | 0 (0) | 5 (4) | 11 (8) | 22 (22) | 0 (0) |
+| 992, les deux modes | 0 | 0 | 0 | 0 | 0 |
+| 1200, les deux modes | 0 | 0 | 0 | 0 | 0 |
+
+- Valeur maximale du bas de l'indice, de 720 a 768 : `-07` 508, `-06` 630 (item 14), `EMC` 596, `-11` 596, `MAT` 548. A 992 : 434, 508, 492, 518, 518. A 1200 : 404, 508, 444, 444, 444.
+- Revelation (hors du critere lu en 4.1 point 4, pour information), 744 sans barre, bas de `.indice` au-dela de 551 dans au moins un ordre : `-07` 9 items, `-06` 14, `EMC` 22, `-11` 24, `MAT` 3.
+- Seconde erreur, 744 sans barre, ordre servi : `-07` 0, `-06` 4, `EMC` 9, `-11` 22, `MAT` 0.
+- Boutons de reponse au-dela de 551 apres une erreur : `-06` 14 seulement (556, 2 ordres sur 6). Boutons de sortie et de niveau : bas a 66, dans les 4400 etats.
+
+## R6. Hash des items mesures (PL-8 mis a jour)
+
+Methode de la section 6 (hash du texte : SHA-256 du champ `texteSupport` rendu ; hash de l'item : SHA-256 du JSON compact de `[enonce, texteSupport, bonneReponse, distracteurs tries, indice]`). La colonne *Hash de l'item* dit si le hash a change par rapport a `7301cbbc` (non mesure avant : `-11`, `MAT`). Etat du YAML a `4650aeab` (blobs) : `ce1-texte-documentaire.yaml` `6256e555235e190695daf272529d45aee8299e3e` ; `ce1-inference.yaml` `be32340de90326406057a11fccd9a72309fd3cdf` ; `ce1-emc-biens-communs.yaml` `57a99de875c51fdf1e363621d4932a27a62df7ea` ; `ce1-negation.yaml` `0a505f3ba1aae430ebbacddc8c2e53a7d77e05e7` ; `ce1-nombres-jusqu-a-1000.yaml` `f6b5a42e32f7162cb0da1b9a2db520d889872111`. Une cote reste valable tant que le hash de l'item, les gabarits (`git diff --stat 4650aeab <sommet> -- adapters/adapter-web/src/main` vide) et la feuille sont inchanges.
+
+#### Hash, FRA-CE1-07
+| Item | SHA-256 du texte | SHA-256 de l'item | Hash de l'item |
+|---|---|---|---|
+| 1 | ce939573e83e176f3a9a9a1e82e1498df5edfeb7ca7f5ee4d9bc8d1b931c9ba1 | 75f66c6a3f78a93f6e46a6a9f432a0ef1500d47a5c856632bd1f5de122951ff3 | change |
+| 2 | b3b7c88332fc12cf3161c39dbeee32f69fe721d797191d797cae80340edec0ae | 3ca034fbef009744ab558ae9ec5c97ccb3894d0fb0e395f13ed6d75f33d2ed9f | change |
+| 3 | 0db7c3a294309bee8cef6684b9d841f90ee6f60315825b21978575632b6ef83d | c1b8a64b826ff4e2739022fd9d03f6270e9a51dbdc7dcf916d89655db13d0676 | change |
+| 4 | f6b0f97749dbf51d40899fbcd935d47406dd3e8caaafb5b75ad0fe427481c6d0 | 1e432c0b17f413ede2cefdeb8779fe086251e78bd5e05e7ffedf1251d12a9741 | egal |
+| 5 | 4498635b71cb747b8479136e236a8bfb2ad9888843f3f2d697e3b6c5420d8551 | 81329493bf039cc7325d2a2cd6acc9388df0a3b1172c4801f2ddf894da50b96c | egal |
+| 6 | f22f03ecd377bd9e09c6591349295f69b6611de1bd909c0ca74f38afd1915822 | 3ab6ac734eb03c26860a90397771fc65c9a72e1e07e84f7afb7e0bf6bd106a01 | egal |
+| 7 | d93c46901af8eff4c84eb6741f5d57e5b840710ab3c982d255da0f39ab1b4c95 | 0f700e20ccec0937afa6f555ec1edd977aae3287837468884d82958801fbdae4 | change |
+| 8 | d0c8699aa6fc5844444661779ef05b2f6ffa8cdd8d5e086f0bcf485ff0d70848 | 5fd32c700aebf2fc616be0c919b13e44cedd365e1d82a675a3b02e041260fc81 | egal |
+| 9 | 6f59a6fb7cd1ecdb2d2dfe2f2080a71df7c69d372dd47f4c0ea692610945df10 | 221d59eb2e78f5442edb8a735293627154c0420f355d802a1ba9bad827b17f19 | change |
+| 10 | 7eb5d4414ff7d7ab1e716f30dabeef0dba37d699baea37953bfb6dd7de9014de | fa7f21a8fd006921798470a9e3ad393f2cdce20e4938fbbb9fd5382808c2b401 | change |
+| 11 | c3fcf6e9911daf64cc5394c3ec1a7681c28d49392a35e7fb8f0e21214acd419a | 7be46ff2beb16e5cc70ee5181b6e3fc9308d368d662f15b0ebe8acc82ca0022a | egal |
+| 12 | e81cfdf42f26690b15f78148602184f34014b6175cde1ec1c6c4858b90d000fe | bb122a7b1761a95c7fc11278e5ba603fd4b83ed3622c97b464c6838a9f97ef3e | change |
+| 13 | 90bc24b898b075005ca76429b3ad52c1cfb9f110cd1c5c7b73fe6e372865f91c | 74f2115a4fc25c59afd8ed2047fc215ab05da982a434eeea98ded5adcb4e319a | change |
+| 14 | 4033d8f0b17773fbb42086a4c8871b93e95ec89da64cd93f8a67a5ea16daca9d | 4d3448bef47491d226f4c3e01c0e67956981232bf6a241c72b1a79a8c16e1971 | change |
+| 15 | 79fbdd96b15ec2d96244e45f8be7f565b1249dcd078a034e844788b2b3e1b3cb | 5e44532f924b06876cc0d24422459659b3cec6e815400fd99191d7f0b04043bc | egal |
+| 16 | fe092c0d0a14e46bbf660cb8e492e70afd598008abd46c2d7ef1b3e402c74bf2 | 507d8a01b413053b9ff99ad165bf95665d50b63a216cfaa7085bd992f485c50f | change |
+| 17 | 1ed4f8d883a63cf688efdb6f53dae3a8ecdcac6138e6242526d94ae0964a6751 | 1e237bdf4ff53a81eb4023ac7723f5b8ae17e00a6ae40c72361e609dcc4189ac | egal |
+| 18 | 7ed834cbc36f6d4f09263128ba2dff0fd69dfa29703382e2fec65ffa3379197c | 1e26c41c76cb03ac3b1b45f7bc87a05221f7f0b8cf5aabe8866cc0b94ea47842 | change |
+| 19 | a633a1d08533c0ec401a8c33e3f7d1bcd15c6175c2668458deab7ca5c68b0108 | 5e9b25e49f91c78d0233551b4d87da4909d24c707fdcffc6299c0ca5f1ebb7f8 | egal |
+| 20 | 02810c93cc335450517561e1bbecd0b693a9eba91fa8be471ea4939718e50eae | 5d14d30a9aff82c4dfd6c9e6ab366b1727e470a9ecf9ec3c2788e113eb66a3a1 | egal |
+
+#### Hash, FRA-CE1-06
+| Item | SHA-256 du texte | SHA-256 de l'item | Hash de l'item |
+|---|---|---|---|
+| 1 | d7af1b76de1402018361327dd593b29c8883ffa70076eca21c3d24627d300157 | 09cf645081e83346c52900a908a42407a38a3bafa4ed896809969b689b2e81ee | egal |
+| 2 | 2f063d7faae560e474155a7f9b5c2a8ee5aae65b00e546ec46624a00134ccccf | fe647ff2993b6666a1433f33150fdb0d4ebf65f1b6756a2060abffac6e14c5ee | egal |
+| 3 | b95cf25ad57e2cdc3e69bb8ad5a0588317650bf046cc72953e21b2e10897d1d4 | 5b47a8dbc0c661a8747de78861fdab64c217643364020d00743d45ca033df5ba | egal |
+| 4 | be29d89dad0a2bf4816793b732388c8e371b32a3603d9cce21452debbc331765 | 0e0d196948dbe9462387d716b4f120d72b9d6fb06ad3a6bb471af1d89a55766e | egal |
+| 5 | 159cf43991d1b92f90b1bdb0c709df4ee9b91252dc7c271ef3f7962e43dfeaaa | c9f15be81f8b2081214d95f90fed2f74ec15a204f6799ef5c8785742671427c2 | egal |
+| 6 | 5f2070e8787599717527d8f278a7bb2b5973af11b7a11ba4d406907766e56f38 | ffe0ad3e72df22d37f63da1e77c131608f6d0c788b3fb54aea85f156ddc9f8d0 | egal |
+| 7 | 51020b9ef57a55ec14c3472eadddb59b815636b25bf571e0ac48664f6ddc499c | 55ee091f16e1f14ab3713f1b28076e133a1dd368c50920a7292c46755083bdae | egal |
+| 8 | eec58098ff6a2294639e1a8a5ccf1d6d57b6612254980d784d3d0e46936ed9c7 | f6c0d98107a822c533d610a21b84e734518ad2a8a9ce6df7f1d0357b3eaedf77 | egal |
+| 9 | 74276daf161a81e2dc446ffcace40d21e3c0c89269464354e51a2bbcd67cfa5b | 9e6003f9ea24f2f1fcae42eff99152ec53a444a71b482aadd16269deb0e06b74 | egal |
+| 10 | 29e2915a2727e80e0307825808b7401390c76fc88083547a8b8ffc0b328b3047 | f71d6ae4db09ef4898029d17b2424da5d7e77d4ef0c0a14528272ec79f1e319c | egal |
+| 11 | 680f9e6d2d2ee81637cf2b94b8fc92a86a3819898dc62887393c94d30b91bfa9 | c295cdc37cb9e86bb7cef7d313c83b1827e7ce01745f40f3d28a0ca66fd6ba86 | egal |
+| 12 | 42c9b5ca8d72af74621210a2138b2e6a24f8cbc40eb282f5f5a8c6442a541ab7 | 96d86dc31f73ad2240c06fe2c5fe60f059f99ee76fcbf723224e20d499cba472 | egal |
+| 13 | f4c633c3d9b746016bdf03c11ed919193c4bc405dcc6827c2ca57b3073f39787 | 63a8992d12f3432bed09f30c7db84f09dddcfde33db7a12334bdc8e4c490710f | egal |
+| 14 | 74307b4ac1d0fed31a05c14dcc0a0febf4cc923b4d8eb5122ac708de488e873b | bb8b8dcab00366a99f01c4e1fed58dc72a619497cb580408014ef4cb29e4d0e6 | egal |
+| 15 | c0088eea0e284ef65a6c1e9838fcc55b36bf1bbc436cbc9c9a00f900074f3036 | d87f3bac08b0d2c49ce675e51d665c64ad78d996899c3ac554ead39e1ead856e | egal |
+| 16 | 528f3077fc72a1e680f13222e80ae352ed5c9a1dc4cbca14e6d0e55aa351bbe5 | 2e98a4c98e2038ee168c802532c10d41a66fe91abb61a2b1499a71b0c64e284b | egal |
+| 17 | 760bb34efdf5854c826a4b93df9a557bf7cfb7f190bd63ea5a5af6b472e4f19c | 7e195cd4a8787f3a303b577313492d4a2f6918dcaadb1b063978448cf6a8ac28 | egal |
+| 18 | 1efc9bc845a68dc9a87bcbe70bea06e04c79267d8d73e4e00c9db2b475216191 | c6fabf899d6cc8974c7071486687cd5b1945c2cec66c9c1838198b8e36d483d5 | egal |
+| 19 | b888d8804f3cb822d43b3a9c501fccf63da7ad4d2fdb35fc9ec6f3dcc595817c | 34d2e2091eb04c419d729b484ad33d90ff15c0d4f8412ab4bca85d111ac74dec | change |
+| 20 | f46e219db617817c50ea82b3d5743d77969da5284c709cc1724acfe94df4435e | 7806062f81288bbe2bf53f92e1660ba6121497f7929baf2f38127cf79350b7d8 | egal |
+
+#### Hash, EMC-CE1-01
+| Item | SHA-256 de l'item | Hash de l'item |
+|---|---|---|
+| 1 | e7bbde0d326aefeb1c646942344a6b47b9f6ac0d47221adb11de27f016547a17 | change |
+| 2 | bf0e852fa5d0e25d06d43baf9c4f25049814015a1768857a307e13a62a820349 | change |
+| 3 | 3b9b49a532416b26d61665bbacc545639d03942219f9d1d48e81f019c57768a4 | change |
+| 4 | a984eff57c1044e6e882deb344d746314a09c70b601ed21acd933d77ac3ec54f | change |
+| 5 | fbdf6b6007f4089cf8300b0dff7ed22cb283a3bc491b29d734571c563057687e | change |
+| 6 | 6b34953cf536569aea04e2fefb7b2ede44db79a44503fd721efea4b0763a21b8 | change |
+| 7 | 78bbd9262a20021ed7a7b5219bdfd117a93aad060287d577a9ff15214596c84b | change |
+| 8 | 6dd3c5881c08555c4a07f8cfa6a90ed5f314f35e8e4cf1e048edae6428cbb6b4 | change |
+| 9 | b2f826f628a245637a695fef2998870841b43ee1623b3e5d23206bd6287c0772 | change |
+| 10 | 1e7b185271e78e0b19d3581a6a54733b3e2dffec886dede976d8f000baa667f4 | change |
+| 11 | d392c8cc06cac45e63274d92ad8d0a77250dafd846c3c6ada194ad38de149be2 | change |
+| 12 | 5ae5a12eb56985554967e65b1fc333ef179099f5889795e47041cba62ecc9faa | change |
+| 13 | 4f3254f9137a93362c5692793a4ce9fcfccaba0c2f0c09831c8ea6219fccc918 | egal |
+| 14 | c5c216250a18df061509613b09ab8a383623ba89be2e871e33d0d5de087f8345 | change |
+| 15 | b38cee1d0ff4d36d1e57f2d2f82ec59407924e6c44b03e0d31fe1891e18c4eb3 | change |
+| 16 | afe4133424f77c7ad596c0bad282adfeb6bc3b1d964eeb5d21b8a7fddb6daa0d | egal |
+| 17 | 9cedf9689e1a8b6c8a7e3de29c08c5073b09cd2c6f76c1bee74852d04413949b | change |
+| 18 | 6a71bb908571cd6561880df041858c648818c3f63a895c3500887f8d246e9564 | egal |
+| 19 | 316f66d2f50f7982755bcce9bb88ea0cea07e65a6da588767246a6f9e3ba9270 | egal |
+| 20 | d928a6515b0726085d3d80c46e935fc93c00e496a8c7ab259ea9db5fc42fdd85 | change |
+| 21 | fe072d9add7b103ae73db6c8e76608ef29f5b7c5fa475d234f44891903ed3990 | change |
+| 22 | daeae94abcf76599f95ccc69ceac1a277f0eafebc35fb878aea18445dbee6439 | egal |
+| 23 | 0d760390e57ce5c500bb22139968181655add0006edfd95db65e64b20905b6ca | egal |
+| 24 | 810a206c786fe47f9c4120ca038b47482d5569ef04621897c6660b5373dfd4b1 | egal |
+
+#### Hash, FRA-CE1-11
+| Item | SHA-256 de l'item | Hash de l'item |
+|---|---|---|
+| 1 | 2881bd14cd626b59a9fa18102fb0ac7e475285058d92a442f3db6ad2d06d4850 | non mesure avant |
+| 2 | 11508fad92c234b4568650692d58260e04944f5e70652a38243ab2e810d0b5e7 | non mesure avant |
+| 3 | 49ea5198d1fe3a8d3e5ae29e1a07567f8ddb6852d708a9b8f09ec20863e6812b | non mesure avant |
+| 4 | 48576e05661c3eef08afaccdd14271f3f138d0be557e6c6967bdab99b7fa2eec | non mesure avant |
+| 5 | 31a5c62660374207983af1924fd20406c115570a7deb59a4dec4a8204291cb90 | non mesure avant |
+| 6 | 37c21274d8051854b2f6e0ec417a9aba07921e4cf881035abcbf51322944a585 | non mesure avant |
+| 7 | d298de015ae10f3fe6f816803b21686f2656eb82d9339bea9cb38e2f9d06798b | non mesure avant |
+| 8 | 5c98597f81935b2b3f7a130a8fa89e1d13dec35fb0306527e34ca59081a8e623 | non mesure avant |
+| 9 | ccf5d7e5a0edbb019b28188bba25695a59c131fb510b7562d8a7379dba9e0b16 | non mesure avant |
+| 10 | efcd1f76710bb7c072926fe5055763f645345c6c90532fa7390513826be3c087 | non mesure avant |
+| 11 | f843b5d59f3c00afd143844824b10fb2a76faf66e87c99b0f7f1cb45068ef083 | non mesure avant |
+| 12 | 445f400466fbf9edc8d7139cce3a2682322e82b33068594a70a2b5632ff4d05e | non mesure avant |
+| 13 | 23c51762c8005022f5bd3fbbb1dbb79d37512cab9dfc0f220089de96e8f2773c | non mesure avant |
+| 14 | 0466f5087159df7ce857c2840c02500196f713416936cc2aa2c786ec1fc623ee | non mesure avant |
+| 15 | 395480948bba5d30021fea7faba07484d8a41df8b1684cb68229a621698cc360 | non mesure avant |
+| 16 | e081343f07cbb872de77e57ba766d26099c31e04b28f6a63ff2fa54a14061205 | non mesure avant |
+| 17 | 7534ab9987494ce3dfe3c8e584b9792d576ae6b53519091e2252b222a92f956f | non mesure avant |
+| 18 | 0eb15dcce21b62432a6288c3cc73e7fc5e702af36f1258d2e194e6b7477e2335 | non mesure avant |
+| 19 | 35793434cdf3a4d959cae7fbc7a684bc5f599e65abebda090357028ffe69fee6 | non mesure avant |
+| 20 | 62673a7a20c8ef7385e9e549d712feedb258b34bf62d83bc921fd764ce04dd10 | non mesure avant |
+| 21 | f092dc88751dfafbf2116022d1c66bd2a258a92a7d129e21b8edc923c9aff33c | non mesure avant |
+| 22 | a0ce2c144fee539c108dd25364f85f8f02cb8dc1be7f972714e20ded44e93e58 | non mesure avant |
+| 23 | e41efabd4efce0137a66f5a2141cb355e554ea054bc5b92f862a533ba42b4e26 | non mesure avant |
+| 24 | eb582ece2bbfbc0bb6f331e3c37fc1644b9527637c7f909c5b4e81386569e68b | non mesure avant |
+
+#### Hash, MAT-CE1-01
+| Item | SHA-256 de l'item | Hash de l'item |
+|---|---|---|
+| 1 | ba5c1515290fe293fb3f178356a186fd756a089521415fa5c5e85e51ee8fb14a | non mesure avant |
+| 2 | 5787c869d3e2ab029f1c600dbc2f2e4bb1cb984b8529f94823028571893e63fc | non mesure avant |
+| 3 | 2abcc7fd6c3b1baa842d31d72241ab3a90b77730fab4520ee9e3dd420edf8096 | non mesure avant |
+| 4 | fd64e6c83749fa71424bcb29beb7dd51c2149200f3a7d3b334e97f668a4c04f0 | non mesure avant |
+| 5 | 1865fdfb1314e860b81e60f9c0f58e8b3c193b743ce9f70ff55da4e6c10abbfd | non mesure avant |
+| 6 | dd48911cec101a7f3c6697ba99475b0ac972e25e5685a0580917d5c8248e120d | non mesure avant |
+| 7 | bb409c3a9c1850d612fd643561bb0c973fd665815a56fed822759d6474e1932a | non mesure avant |
+| 8 | ac6889db58af94630046d7875e7e3f7475929f348d6d4810346bf6337f1d6bbb | non mesure avant |
+| 9 | 1135e3d586bacc809f2a64ac37df117dfdc5919930a0ff01250a5a2b43cbd820 | non mesure avant |
+| 10 | 42b92b54a040a831950830e10382113964a5c5da70baf958836ef7b65f19904c | non mesure avant |
+| 11 | 6848548f0c3b8a1f4f6084b3607a42becdc57afee8980e034bb034b4931d087b | non mesure avant |
+| 12 | 2529d40c39ba89f9711fa5b3759fc1252245f904a72eec636aaf49fae3f00abc | non mesure avant |
+| 13 | 3ed18a91e00a2e2609a06be7097c9c8f1fad5f347371fdb95531e18df4e18c3f | non mesure avant |
+| 14 | c72d6627a8a057449ebdd6874f583f880c15e548044bf28d5dc26715b1f6dded | non mesure avant |
+| 15 | b6a38c60f289188fe56d37cfcdee30709a07028ac117dd507b9a50a88baa208a | non mesure avant |
+| 16 | 37aeb9a60f313783b733aa052778019feb96ed045c7e298b2b5a8d881760e84d | non mesure avant |
+| 17 | 823339465d1af651cd4be44c12692a51b75efbf1b85e463cd401cef7c29252b0 | non mesure avant |
+| 18 | e1f7986ee6af58edfe36ce3b666d326da6db2f9eae2cee26f845b8e34b5a8a7c | non mesure avant |
+| 19 | ab88307d69ad8c9d3874051ea8aa7d8b9a33a3e6b701e022d817b554fd3a96d0 | non mesure avant |
+| 20 | d3d9395c96fb522458542e0181149dc0f7169dab0111c66e6c763612ff70b415 | non mesure avant |
+| 21 | dc6943353ad8885c649d0f77dc95819400c32afd5a9620cce2c3727277c019ec | non mesure avant |
+| 22 | 88965c047fed88d768657e8cf97f40bb1b55a66650a567fadd950899f967502e | non mesure avant |
+
+
+## R7. Ce qui tient, ce qui ne tient pas (au sens du critere lu, sans jugement)
+
+- **Tient a 744 x 551** : `-07` 20 items sur 20 ; `MAT-CE1-01` 22 sur 22 (marge minimale 3 px, item 6) ; `-06` 15 sur 20 ; `EMC` 13 sur 24 ; `-11` 2 sur 24 (23 et 24). A 992 et 1200 : tous les items des cinq paquets. Chemin de sortie au-dessus du pli dans tous les etats.
+- **Ne tient pas** : `-06` 14, 16, 17 (1 px, 2 ordres sur 6), 19, 20 ; `EMC` 2, 8, 11, 13, 16, 17, 20, 21, 22, 23, 24 ; `-11` 1 a 22.
+- **Observe, sans cause isolee par une variante** : dans `-11`, 22 items ont trois rangees de propositions (492) et un indice de 1 ou 2 lignes ; 14 items ont un indice de 2 lignes (596), 8 un indice de 1 ligne (566), les items 23 et 24 un indice de 1 ligne a 492. Dans `MAT`, les propositions sont courtes et tiennent sur 1 rangee pour 17 items (296 ou 344), sur 2 ou 3 rangees pour 5 (items 1, 2, 3, 5, 6). Je releve des cotes.
+
+## R8. Ce que je n'ai pas mesure
+
+- Les neuf polices imposees, un appareil reel, le clavier, le focus, un doigt. Aucune variante de style.
+- Une seule police (celle du poste) et un seul navigateur. Le releve brut (JSON, 20 Mo environ) reste hors depot.
+- Les corrections de gabarit ou de feuille : il n'y en a pas, le jar est mesure tel quel.
+
+## R9. Isolation
+
+Un jar sur le port 18681 (PID 59992, arrete par ce PID), un Chrome sur le port 19681 avec son profil jetable (PID 60808). Aucun processus arrete par nom d'image. Worktree `s57-ines-p3` (avance en avant rapide sur `round-two`, branche `s57-ines-p3`, aucun commit dans le checkout principal, aucune fusion). Aucun fichier d'un tiers deplace ou supprime.
+
+## Decisions prises (remesure)
+
+**Aucune.** Cette section ne cree ni n'amende aucune `ADR` ni `DEC`, ne leve aucune reserve et ne prononce aucun Done. PL-9 et PL-10 sont a allouer au registre par `theo-archi`.
