@@ -230,3 +230,18 @@ La section 7.3 laissait `Q-09` suspendue a l'avis de `nadia-prof` sur `R6`. Cet 
 - 2.4 : tient. Le paquet `ce1-deplacements-quadrillage` tel quel reste refuse d'avance ; la ligne n'entre dans aucun compteur.
 
 **`Q-05` reste `Acceptee`** (une grille pour informations est voulue). **Ce que cette lecture ne leve pas** : `DEP-CE1-2` ; elle ne permet pas `couvert-valide`, qu'une designation sur la grille etait seule a fermer (`arbitrage-nadia-q05-q10.md` 1.2). Aucune ligne de matrice ne bouge pour `MAT-CE1-14`. Detail et consequences sur la story : `DEC-0120` A.137, amendement de `S57-BR-MAT-CE1-14-GRILLE`.
+
+
+## Amendement du 2026-10-21, sixieme (`camille-po`, `Q-05` : *"une grille dessinee"*) - la lecture est fixee
+
+**Aucun texte d'origine n'est reecrit.** Statut de `DEC-0123` : `Acceptee`, inchange.
+
+**Les mots**, 2026-10-21, cites mot pour mot avec leur date par l'agent lanceur (forme 2 de `DEC-0062` G) : *"QP3 c'est une grille déssinée"*, reponse a la question de `nadia-prof` (`arbitrage-nadia-palier-4.md` 8.1) : *"si 'tableau d'informations' veut dire la grille dessinee sans case a toucher, c'est la forme (a) ; si c'est un tableau rempli de donnees, il n'est recevable pour aucune ligne"*.
+
+**Ce qui change.** Les mots de `Q-05` restent *"ajouter une grille pour infos a l'enfant"*. Leur lecture est maintenant **fixee** : **une grille dessinee, sans case designable, forme (a) de `nadia-prof`**. Le cinquieme amendement l'avait laissee ouverte entre un quadrillage et un tableau de donnees ; **le tableau de donnees est ecarte** (non recevable pour aucune ligne), la lecture de 2.1 (un quadrillage montre) **se retrouve exacte quant au dessin, et inexacte quant a la designation** : la forme (b) qu'elle visait reste retiree.
+
+**Ce que cela fait aux sections 2.2 a 2.4**, sans les reecrire : 2.2 (*"le produit veut un quadrillage montre"*) se lit de nouveau ainsi, avec le plafond `en cours` ; 2.3, ligne `nadia-prof` : repondue (8.1, conditions 1, 2, 4, 5, 6, 8 de `arbitrage-nadia-q05-q10.md` 1.3, mention nouvelle) ; ligne `theo-archi` : `A3` n'est pas un prealable (`avis-theo-palier-4.md` 2.4), reste le complement pour la forme (a) ; 2.4 tient.
+
+**Ce que cette lecture ne dit pas, et que 3.2 (revers) annoncait** : la grille dessinee est un dessin au sens du poids, pas au sens de la liste des cinq lignes de `Q-06`. **La tension et la question qui en resulte sont ecrites a `DEC-0120` A.143**, pas ici. `Q-06` n'est pas modifiee : sa condition de retour (une nouvelle reponse) vaut pour les cinq lignes, pas pour `MAT-CE1-14`.
+
+**`Q-05` reste `Acceptee`.** Aucune ligne de matrice ne bouge. Story : `S57-BR-MAT-CE1-14-GRILLE`, reecrite, non engagee. Detail : `DEC-0120` A.141 a A.144.

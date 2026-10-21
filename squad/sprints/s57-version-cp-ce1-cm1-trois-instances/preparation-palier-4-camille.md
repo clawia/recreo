@@ -81,7 +81,7 @@ Chaque ligne : la ligne de matrice, le prix de `nadia-prof` (bareme ou indicatif
 | LP6 | `EMC-CE1-04`, interet d'un seul et de tous (a ecrire) | 1,0, `couvert-valide` | A' | idem | **pret** ; hors du repli a 8,0 ; ordre interne de `nadia-prof` : dernier |
 | LP7 | `MAT-CE1-15` illustre, `ce1-figures-planes` (20, a reecrire avec ses figures) | 1,5, `en cours` | B | idem | **conditionnel** : recevable illustre, **story ecrite ce jour**, mais le paquet est a reecrire et la borne de 8,0 ne la porte pas ; sa forme textuelle est refusee d'avance |
 | LP8 | `FRA-CE1-03`, `ce1-mots-irreguliers` (20) | 1,0, `en cours` | a dire (hors X et Y) | `marc-dev` (`RG1`) | **conditionnel, pas de story** : non recevable tant que `nadia-prof` n'a pas juge le cousinage du paquet (*"Je le ferai si `camille-po` me le demande"*) ; je le lui demande ici, la story s'ecrit apres sa reponse |
-| LP9 | `MAT-CE1-14`, grille montree | (a) 1,5 `en cours` ; (b) 3,0, ou 1,5 si un seul paquet, `couvert-valide` | B | a designer | non : avis de `theo-archi` (`A3`, un ou deux paquets, cliquet de poids des dessins) et `QP3` |
+| LP9 | `MAT-CE1-14`, grille dessinee (forme (a) seule depuis `QP3`, amendement du 2026-10-21) | 1,5 `en cours` (la forme (b) a 3,0 est retiree) | B | `lea-dev` (celui de B, a confirmer par `sofia-sm`) | **non pret** : question a l'utilisatrice sur le cliquet de poids (`DEC-0120` A.143), complement de `theo-archi` pour la forme (a), mesure d'ecran des etiquettes, `nadia-prof` (critere 3, `PAR-13`). Detail : amendement du 2026-10-21, `QP3` |
 | LP10 | `FRA-CE1-09` (20, explications a ecrire) | 1,0, `couvert-valide` | francais CE1 | `marc-dev` | **s58 au plus tot** (condition 4) |
 | LP11 | `FRA-CE1-08` (20) | 1,0, `couvert-valide` | francais CE1 | `marc-dev` | **s58 au plus tot, apres `-09`** |
 | LP12 | `FRA-CE1-29`, mots sous la dictee (a ecrire) | 1,0, `en cours` | a dire | `marc-dev` | s58 au plus tot ; `TRV-CE1-1` a annoter |
@@ -101,7 +101,7 @@ Sources des prix : `arbitrage-nadia-preparation-palier-3-ce1.md` section 2 (lot 
 | `FRA-CE1-27` | terrain neuf (`PAR-13`) : *"il ne s'ouvre pas tant qu'A' existe"* (3.1) |
 | `ART-CE1-01`, `-02` | terrains neufs, pas tant qu'A' existe ; **le corpus manque** (12 reproductions, ni dessin ni photographie) ; la double preuve d'une photographie n'est pas lue par `theo-archi` |
 | questionner le monde CE1 | *"il ne prend pas le sprint ou une autre instance audite un paquet sans cousine"* ; s57 est ce sprint (`ART-CP-10`, instance B, palier 1). Paquets ecrivables, aucun audit |
-| `MAT-CE1-14` | prealables de `theo-archi` ouverts (`A3`, cliquet de poids) et lecture de *"infos"* non confirmee |
+| `MAT-CE1-14` | lecture fixee par `QP3` (grille dessinee, forme (a)) ; `A3` n'est pas un prealable ; restent la question du cliquet de poids a l'utilisatrice, le complement de `theo-archi` et la mesure des etiquettes (amendement du 2026-10-21, `QP3`) |
 | `MAT-CE1-15` | au repli de 8,0 : forme illustree 1,5, B a 3,5 + A 2,0 + A' 3,0 = 8,5. Conditionnel a 11,5 (section 5bis) |
 | `FRA-CE1-03` | non recevable tant que le cousinage n'est pas juge ; conditionnel a 11,5 |
 | dessins (`QLM-CE1-09`, `-11`, moitie dessinee de `QLM-CE1-07`, `MAT-CE1-02`, `-09`) | **sortis du perimetre par la reponse de l'utilisatrice** (`DEC-0123` 3) ; condition de retour : une nouvelle reponse |
@@ -279,3 +279,31 @@ Lances depuis le checkout, avec tous les fichiers de ce geste presents dans l'ar
 - **Question neuve** : `QP8` (developpeur d'une quatrieme instance, `RG2`), **posee seulement si C doit porter un lot**.
 
 Aucun identifiant de condition neuf : `QP8` n'a pas de tiret et n'appartient qu'a ce fichier et a `DEC-0120` A.139. Non commite.
+
+
+## Amendement du 2026-10-21 (`camille-po`) - `QP3` : *"une grille dessinee"*, et `LP9`
+
+**Rien au-dessus n'est reecrit**, sauf deux cellules de tableau qui disaient *"(b) 3,0"* et *"lecture de infos non confirmee"* (lignes `LP9` de la section 3 et `MAT-CE1-14` de la section 4), mises a jour. Les mots, cites mot pour mot avec leur date par l'agent lanceur (forme 2, `DEC-0062` G) : *"QP3 c'est une grille déssinée"*, reponse a la question de `nadia-prof` (`arbitrage-nadia-palier-4.md` 8.1). **Lecture fixee : grille dessinee, sans case designable, forme (a).** Amendement de decision : `DEC-0120` A.141 a A.144 ; `DEC-0123` sixieme amendement. Story reecrite : `S57-BR-MAT-CE1-14-GRILLE` (`docs/backlog/backlog.md`, fin de fichier, annotation datee).
+
+### `LP9`, etat
+
+| Point | Valeur |
+|---|---|
+| Prix, instance, developpeur | **1,5** indicatif (`nadia-prof` 8.1, a confirmer a son arbitrage prealable) ; **B** ; `lea-dev` (celui de B, `QP6`), pas designe par lot |
+| Ce qui est pret | story reecrite, mesuree contre le paquet (0 illustration ; 20 enonces sur 20 nomment une coordonnee ; 3 indices *"Dessine le quadrillage"*) ; conditions de `nadia-prof` ecrites (1.3 points 1, 2, 4, 5, 6, 8 ; mention de 8.1) ; `A3` non prealable ; la mesure de 36 zones sans objet |
+| Ce qui manque | (1) la reponse de l'utilisatrice a la question de `DEC-0120` A.143 (cliquet de poids) ; (2) complement de `theo-archi` pour la forme (a) : un ou deux paquets, octets d'un 6 x 6 a etiquettes tracees, paragraphe d'`ADR-0080` ; (3) mesure d'`ines-design` des etiquettes (17,8 px a 296, non mesuree) avant l'engagement ; (4) `nadia-prof` : *"par sa coordonnee seule"*, `PAR-13` en forme (a), arbitrage prealable ; (5) composition et `planning.md` (`sofia-sm`) ; (6) le paquet reecrit avec ses dessins |
+| Report | premier ecartement au palier 3, **deuxieme s'il n'est pas engage au palier 4** ; un troisieme demande une `DEC` |
+
+### Composition maximale et file de fusion
+
+Si `LP9` devient pret : **9,0 + 1,5 = 10,5**, sept lots (A 2,0 ; B 4,5 et trois lots ; A' 4,0), dans `PAR-8` (5,0 et trois lots). **`LP7` et `LP9` sont toutes deux de B** : ensemble, 6,0 et quatre lots, hors `PAR-8` ; le conditionnel reste **11,5** (`LP8` plus l'une des deux), jamais 13,0. File de fusion a sept lots, **calculee, non mesuree** (formule de `DEC-0120` A.139) : `verify` 1 h 19 a 1 h 29, job `build` 2 h 25 a 2 h 41. Le commit de `LP9` deplace `POIDS_TOTAL_MAXIMUM` : tout autre lot qui installe des dessins dans le meme palier entre en conflit sur cette constante.
+
+**Ce qui l'empeche encore** : les manques (1) a (6). Les points (1) et (4) ne sont pas a l'equipe.
+
+### La tension, et la question
+
+La grille est un dessin au sens du cliquet de poids (69 203 octets, 56 fichiers, mesure ce jour), que `DEC-0123` 3.2 invoque parmi les motifs pour sortir cinq autres dessins ; elle n'en est pas un au sens de la liste de `Q-06`. Vingt grilles ajouteraient de l'ordre de 43 % a 134 % du total actuel (estimation de `theo-archi` et plafond par dessin, non mesures). **Question a l'utilisatrice** : *"Acceptez-vous que le poids total des dessins monte pour les grilles de cette seule ligne ? Un oui n'ouvre pas les cinq autres lignes."* Texte complet : `DEC-0120` A.143. Cette question n'a pas d'identifiant.
+
+### Ce que ce fichier ne fait pas, dans cet amendement
+
+N'ecrit ni la composition ni un amendement de `planning.md`, n'engage aucun poste, ne fixe aucun prix, ne touche pas la matrice (`MAT-CE1-14` reste `non couvert`, aucune cellule ne change). Non commite, aucun `mvn`.
