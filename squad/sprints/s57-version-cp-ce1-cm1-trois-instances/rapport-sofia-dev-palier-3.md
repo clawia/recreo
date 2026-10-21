@@ -182,3 +182,28 @@ Départ : `git status` vide, sommet `132ac960`. Les deux branches ne touchent qu
 **Décisions** : aucune `ADR` ni `DEC` créée ou modifiée par ces fusions. **Obstacle ouvert** : allocation `PL-9` et `PL-10`.
 
 **Nettoyage** : `git branch --merged round-two` positif pour les deux branches, `git status` vide dans chaque worktree. Worktrees `recreo-s57-ines-p3` et `recreo-s57-yanis-mutations-css` supprimés, branches supprimées par `git branch -d`.
+
+## 10. Porte technique de `21e994a4` (casquette Scrum Master)
+
+Sommet de `round-two` : `21e994a4` ([THEO], allocation de `PL-9` et `PL-10` au registre). Worktree detache propre a ce SHA, `git status` vide avant lancement, `HEAD` verifie identique apres.
+
+| Job de `ci.yml` | Etapes lancees | Resultat |
+|---|---|---|
+| `prefixes` | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-prefixes.sh` sur le dernier commit sans merges (pas de `BASE` local, branche `-1` du workflow), `verifier-garde-fou-accent-test.sh`, `verifier-garde-fou-accent.sh` sur `HEAD^!` | tous 0 |
+| `chemins` | `verifier-chemins-test.sh`, `verifier-chemins.sh` sur `git ls-files` | 0 et 0 |
+| `outils` | 6 `outils/*-test.sh`, 2 `squad/outils/*/*-test.sh`, 5 `outils/*-test.py` | 13 juges, 0 echec |
+| `build`, verify | `bash outils/mvn-jdk21.sh -B clean verify`, racine | `BUILD SUCCESS`, six modules `SUCCESS`, 11 min 51 s |
+| `build`, package | `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package` | `BUILD SUCCESS`, 10 min 22 s |
+
+| Module | Tests |
+|---|---|
+| `domain` | 120 |
+| `application` | 31 |
+| `adapter-web` | 516 |
+| `adapter-content` | 1794 |
+| `bootstrap` | 381 (surefire) + 6 (failsafe) = 387 |
+| Total | **2848** |
+
+Attendu 2848 (section 8), ecart 0 : le total correspond. Les chiffres sont la somme de mon propre log de verify. Depuis la section 8, seuls des fichiers de `squad/` ont change, ce que ce total confirme sans le demontrer par diff. Le registre, rouge en section 9, est vert dans ce verify.
+
+**Decisions** : aucune `ADR` ni `DEC` creee ou modifiee par cette mesure. **Obstacle** : l'allocation de `PL-9` et `PL-10` est close par l'existence de l'allocation dans le registre au sommet testee ici. **Non fait** : la CI distante n'a pas juge ; rien pousse.
