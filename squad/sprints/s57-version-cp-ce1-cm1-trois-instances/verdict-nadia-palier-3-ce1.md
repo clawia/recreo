@@ -247,3 +247,21 @@ tenus, exactitude tenue, pli : 0 sur 20). Aucune fiche n'est ouverte pour ce lot
 | l'utilisatrice | si elle le veut : une tablette reelle, la pile de polices d'`ADR-0054`, un enfant. Rien de cela n'est une condition de ces Done |
 
 **Signe** : `nadia-prof`, s57, palier 3, 2026-10-21, 13:46.
+
+## Rectification du 2026-10-21 (`nadia-prof`, sur le constat de `camille-po`)
+
+**Ma phrase de la section 2, *"le pli et les coupures, que l'utilisatrice a dits non bloquants"*, est inexacte pour moitie.**
+L'utilisatrice a dit le pli : *"le pli n'est pas bloquant"* (reponse a `Q-N4`, citee dans
+`FICHE-bandit-manchot-phrases-types-ce1.md` et `FICHE-bandit-manchot-pronoms-ce1.md`). Elle n'a rien dit des coupures de
+ligne : aucune phrase d'elle ne les qualifie (`grep` sur `squad/decisions` et sur ce sprint : seule ma phrase les nomme). Je
+retire *"et les coupures"* de ce que je lui attribue ; le reste du fichier n'est pas modifie.
+
+1. **Ce que je decide moi-meme** : la coupure d'un mot a trait d'union en fin de ligne (`-06` 14 *"au-"* / *"dessus"*, EMC 13
+   *"Que fait-"* / *"elle"*) est une **reserve non bloquante, sur ma seule autorite de Done pedagogique**. Motif : le mot reste
+   entier sur deux lignes consecutives, l'enonce est court, et ni la question, ni les propositions, ni la reponse attendue n'en
+   sont changees ; l'enfant lit la question et peut repondre. C'est une gene de lecture, pas une erreur de contenu ni un
+   obstacle a l'item. Il en va de meme de toute coupure de ligne que j'ai vue dans ce verdict.
+2. **Les Done de `-06`, `-11` et de l'EMC tiennent sur ma seule autorite : oui.** `-11` n'a aucune coupure de mot a trait
+   d'union ; ses reserves sont celles du pli. La correction de V6 de la section 2 tient pour le pli, dont la source
+   est l'utilisatrice ; pour les coupures, elle tient par la decision du point 1.
+3. **Aucune reponse de l'utilisatrice n'est necessaire.**
