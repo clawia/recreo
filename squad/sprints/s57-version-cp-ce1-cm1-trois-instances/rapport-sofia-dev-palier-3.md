@@ -256,3 +256,30 @@ Mesure du registre : `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=
 **Decisions** : aucune `ADR` ni `DEC` creee ou modifiee par cette fusion. **Obstacle ouvert** : allocation de PL-11, PL-12, PL-13, a router vers `theo-archi` (`ADR` attendu sur le disque avant de le clore). **Constat** : `veto-nadia-gabarit-pli.md` est apparu modifie et non commite dans le depot principal pendant la fusion ; je ne l'ai pas commite.
 
 Worktree `../recreo-ines-p3-b383` supprime (statut vide) et branche supprimee par `git branch -d`.
+
+## 13. Porte technique de `ad9ef86d` (casquette Scrum Master)
+
+Sommet de `round-two` teste : `ad9ef86d` (allocation de PL-11, PL-12 et PL-13 au registre, `theo-archi`). Worktree detache cree par `git worktree add --detach` a ce SHA, `git status` vide avant lancement, `HEAD` et `git status` verifies identiques apres les deux builds.
+
+| Job de `ci.yml` | Etapes lancees | Resultat |
+|---|---|---|
+| `prefixes` | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-prefixes.sh` sur le dernier commit sans merges (branche `-1` du workflow), `verifier-garde-fou-accent-test.sh`, `verifier-garde-fou-accent.sh` sur `HEAD^!` | tous 0 |
+| `chemins` | `verifier-chemins-test.sh`, `verifier-chemins.sh` sur `git ls-files` | 0 et 0 |
+| `outils` | 6 `outils/*-test.sh`, 2 `squad/outils/*/*-test.sh`, 5 `outils/*-test.py` | 13 juges, 0 echec |
+| `build`, verify | `bash outils/mvn-jdk21.sh -B clean verify`, racine | `BUILD SUCCESS`, six modules `SUCCESS`, 11 min 56 s |
+| `build`, package | `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package` | `BUILD SUCCESS`, 9 min 27 s, `bootstrap/target/recreo.jar` produit |
+
+Limite de la porte : la CI distante n'a pas juge, rien n'est pousse. Les jobs ci-dessus sont ceux du workflow rejoues en local, et le motif `prefixes` n'a verifie que le dernier commit, pas la plage depuis une base de push.
+
+| Module | Tests |
+|---|---|
+| `domain` | 120 |
+| `application` | 31 |
+| `adapter-web` | 522 |
+| `adapter-content` | 1794 |
+| `bootstrap` | 381 (surefire) + 6 (failsafe) = 387 |
+| Total | **2854** |
+
+Attendu : 2852 (section 11) + 2 = 2854. L'ecart vient du seul commit `5302af53` (cherry-pick de `b383b0bb`) : `git diff d3fce602 ad9ef86d` sur `adapters/adapter-web/src/test/java` ajoute 2 lignes `@Test` et n'en retire aucune, dans `LaFormeCommuneDesPropositionsLonguesEstEpingleeTest` (les deux autres fichiers de test touches sont des fixtures CSS sans test). `adapter-web` passe de 520 a 522, les autres modules ne bougent pas. Le rapport d'`ines-design` donne 120 + 31 + 522 = 673 sur `-pl adapters/adapter-web -am` : coherent avec la ligne `adapter-web` ci-dessus. Le total correspond. Les chiffres sont la somme de mon propre log de verify.
+
+**Decisions** : aucune `ADR` ni `DEC` creee ou modifiee par cette porte. **Obstacle** : l'obstacle de la section 12 (allocation de PL-11, PL-12, PL-13) est clos, le fichier existe : `squad/decisions/REGISTRE-identifiants.md` modifie par `ad9ef86d`, et `leDepotReelEstCoherent` passe dans ce `verify`. **Non fait** : `s57-ines-p3-pli` reste non fusionnee.
