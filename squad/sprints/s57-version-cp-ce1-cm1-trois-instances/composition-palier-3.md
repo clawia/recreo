@@ -285,3 +285,26 @@ Aucun numero neuf. `lea-dev` a deux lignes et ne les entrelace pas. Branches et 
 ### 12.7 Ce que cette section ne fait pas
 
 N'ouvre aucun worktree de lot, ne cree aucune branche, ne modifie aucun prix, lot, instance ni critere de story, ne touche ni `backlog.md` ni `preparation-palier-3-ce1-camille.md`. Ne cree ni n'amende aucune `ADR` ni aucune `DEC`. Ne prononce aucun Done.
+
+## 13. Amendement du 2026-10-21 17:45 (UTC+02:00), cloture du palier 3 : ecarts 5 et 7 du releve du `relecteur-pedagogique`
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit.** Source : `releve-relecteur-cloture-palier-3.md` (`01105a16`), ecarts 5 et 7, a `sofia-sm`. Arbre : `round-two` a `d09655bf`. Casquette Scrum Master.
+
+### 13.1 Ecart 5 : deux citations rangees sous une seule source
+
+La section 5 ecrit que l'ordre est *propose* par `camille-po` (`cloture-palier-2.md` section 14, `DEC-0120` A.115 : *"Rien n'est decide ici"*, *"sans engagement"*). Les deux citations n'ont pas la meme source :
+
+| Citation | Source | Mesure ce jour |
+|---|---|---|
+| *"Rien n'est decide ici"* | `cloture-palier-2.md`, section 14, ligne 278 : c'est ma phrase | `grep -n "Rien n'est decide ici"` rend la ligne 278 de `cloture-palier-2.md` et aucune ligne de `DEC-0120` |
+| *"sans engagement"* | titre de `DEC-0120` A.115 : *"Proposition pour le palier 3 : ordre des restes, sans engagement"* | `grep -n "^### A.115"` sur `DEC-0120` rend ce titre |
+
+**Lire** : *"Rien n'est decide ici"* de `sofia-sm`, `cloture-palier-2.md` section 14 ; *"sans engagement"* de `camille-po`, `DEC-0120` A.115 (titre). La meme correction vaut pour `planning.md`, amendement du 2026-10-19 23:09, section 3, annotee dans `planning.md` ce jour.
+
+### 13.2 Ecart 7 : le renvoi a `cloture-palier-3.md`
+
+La section 5 renvoie a `cloture-palier-3.md` pour *"une ligne par fusion : SHA, compte d'avant, entrees fusionnees, compte d'apres"*. Le fichier n'existait pas a la date du releve. **Il existe** : `cloture-palier-3.md`, section 3, porte les 21 fusions du palier et, pour chacune, le compte de `catalogue.yaml` avant et apres, plus le `grep -c "paquet: <nom>$"` des cinq paquets. Aucune ligne de cette composition n'est modifiee.
+
+### 13.3 Decisions prises
+
+**Aucune `ADR` ni `DEC` creee ou modifiee.** Cet amendement ne modifie ni prix, ni lot, ni instance, ni table d'isolation. Les verifications de son commit sont nommees dans `cloture-palier-3.md`, section 12.
