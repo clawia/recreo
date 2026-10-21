@@ -116,3 +116,76 @@ valeurs ; il ne dit rien de leur lecture par un enfant, ni d'une consigne passee
 | moi | les six points de la section 5, au jeu du commit fusionne |
 
 **Signe** : `nadia-prof`, s57, palier 3, 2026-10-21, 11:33.
+
+## Suite du 2026-10-21, 12:24 : verdict apres la remesure d'`ines-design`
+
+- **Lu** : `git show 80781f61:.../mesure-ines-palier-3-pli-744x551.md`, section *"Remesure du 2026-10-21"* (D1 a D7), sur
+  l'arbre fusionne local `bee3bb37` (`round-two` a `8805c4dc` + `s57-ines-p3-pli`). Verifie par moi : les 13 jeux dont la
+  consigne passe a deux lignes sans le flottant (D3) ont pour paquets `cp-position-syllabe`, `cp-qlm-hygiene`, `cp-qlm-matiere`,
+  `cp-qlm-objets-numeriques`, `cm1-sciences-energie`, `-melanges`, `-etats-matiere`, `-familles-materiaux`, `cm1-eps-effets-activite`,
+  `cm1-eps-roles`, `cm1-emc-fait-opinion`, `-emotion-ressentir-agir`, `-vote-election` (`catalogue.yaml`) ; **aucun ne porte de
+  `texteSupport`** (`grep -c`, 0 sur les 13 fichiers).
+- **Audit degrade, comme ce matin** : pas de jar lance par moi, cotes d'`ines-design`. Aucun Done prononce, aucun identifiant
+  ecrit ni alloue. La porte technique de l'arbre fusionne n'est pas annoncee (`mvn -B verify` non lance, D7).
+- **La section 1 est tenue** : la remesure de `-06` et de l'EMC sur l'arbre fusionne est faite ; aucune regression sur `-07`,
+  `-11`, `MAT-CE1-01`.
+
+### V1. `edf7f344` : REFUSE
+
+Ma condition de 2.2 n'est pas tenue : **22 jeux** (CP, CE1, CM1) passent a deux lignes **a cause du score a droite**, dont 3
+jusqu'a 992 px. C'est exactement le defaut que je nommais : le score melange a ce que l'enfant lit. Je precise ma propre
+condition plutot que de la durcir : elle visait ce que le flottant cree, et je ne compte pas contre lui les 13 jeux qui
+depassent la ligne sans lui ; les 22 suffisent.
+
+Les deux autres chemins de D5 ne sont pas des commits : je ne les accepte ni ne les refuse d'avance.
+- **Flottant reserve aux consignes courtes** : recevable dans son principe, sous **la meme condition que 2.2**, remesuree sur le
+  commit qui le porte (chaque consigne a cote du score sur une ligne, 720 a 1200, avec et sans barre). Le seuil de 67 caracteres
+  est une cote de cette police-ci (68 casse, 73 tient) : ma condition porte sur la ligne rendue, pas sur un nombre de caracteres.
+- **Score dans l'en-tete** : il change la place et l'ordre de lecture du score. Je ne le juge pas sans mesure ni ecran.
+
+### V2. `b383b0bb` seul : fusion RECEVABLE
+
+Mon verdict de 2.1 tient, ma condition de section 1 est levee. **Les 13 consignes sur deux lignes ne sont pas un defaut de ce
+correctif** : elles le sont deja sur `round-two`, `b383b0bb` ne touche ni la taille ni la largeur de la consigne, et ma condition
+de s22 (consigne d'une ligne) protege la distinction avec un texte-support qu'aucun de ces 13 jeux ne porte. La longueur de ces
+consignes (81 a 107 caracteres, dont 4 au CP) est une question de lisibilite du contenu, que je juge en jouant ces jeux, pas
+dans ce veto.
+
+### V3. Reponse attendue sous le pli a la revelation : RESERVE NON BLOQUANTE, maintenue
+
+C'est le statut que je lui ai donne ce matin (section 4) ; la mesure ne m'en fait pas changer. Constat : 3 items sur 110 a 744
+(`-06` 14 a 576 dans 2 ordres sur 6 ; EMC 13 et `-11` 13 a 560, reponse sur 3 lignes dans une colonne de 444 px), 5 a 720 avec
+barre (EMC 21, `-11` 18 en plus). **Ces cotes incluent `edf7f344`, que je refuse** : avec `b383b0bb` seul, tout bas superieur a
+521 passe le pli, et ce compte **n'est pas mesure**. Exigence : remesure sur l'arbre qui sera fusionne.
+
+Ce qui doit etre vrai, sans choisir le levier (contenu ou gabarit) : a 744 x 551, a la revelation, dans les six ordres, la phrase
+*"Appuie sur la bonne reponse :"* et la reponse attendue entieres sans defiler ; **sans** rendre la bonne reponse reperable a sa
+longueur parmi les propositions (`TRV-CE1-2`), sans retirer a `-11` ce que la negation exige, sans retirer une phrase au
+texte-support de `-06` (`INF-CE1-1`), sans cacher le texte-support ni les propositions (mon veto de S2).
+
+### V4. `-06` item 14 a 574 : la reserve non bloquante tient
+
+Avec `b383b0bb` seul, la reserve de S2 (indice entier apres une erreur) se reduit a **un item sur 110, dans 2 ordres sur 6**. Elle
+reste non bloquante, comme je l'ai ecrite le 2026-10-20 ; je ne la durcis pas. La cote de 574 est prise sur l'**ancien** texte
+(D5) : a remesurer sur *"La pluie se met a tomber."*. La reserve du mot du verdict (section 3) s'y rattache : sans le flottant,
+le verdict descend d'environ 30 px, et sa seconde ligne, deja a 562 avec lui, passe sous le pli. Exigence de section 3 inchangee.
+
+### V5. Ce qui exige encore l'ecran (moi)
+
+1. Lecture d'un enonce ou d'une proposition sur deux lignes a 1,25, au CP, au CE1 et au CM1.
+2. `cp-nature-mot` : le mot designe dans un enonce a 1,25, aucune boite sur la ligne voisine.
+3. La proposition a 58 px vue comme ce sur quoi on appuie, a cote de la sortie.
+4. `-06` 14 apres une erreur : le mot du verdict lisible sans defiler.
+5. EMC 13, `-11` 13, `-06` 14 a la revelation : la derniere ligne de la reponse attendue lue ou coupee.
+6. Une police et un appareil reels.
+
+Le point *"score lu comme le score"* tombe avec le refus d'`edf7f344`. **Je reste la seule garde de ces six points** : aucun
+test ne mesure une ligne coupee ni sa lecture par un enfant.
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | fusion de `b383b0bb` seul ; `edf7f344` ne se fusionne pas ; la porte technique de l'arbre fusionne, jobs nommes |
+| `ines-design` | apres fusion : `-06` 14 sans flottant sur le nouveau texte ; reponse attendue a la revelation, 110 items |
+| `camille-po` | V3 et V4 en stories ; le levier de `-06` 14 et de la revelation, a ouvrir sous les contraintes de V3 |
+
+**Signe** : `nadia-prof`, s57, palier 3, 2026-10-21, 12:24.
