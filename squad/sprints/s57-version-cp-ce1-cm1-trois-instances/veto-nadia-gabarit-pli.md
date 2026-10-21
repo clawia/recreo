@@ -2,7 +2,7 @@
 
 - **Auteure** : `nadia-prof`, professeure des ecoles. **Date** : 2026-10-21, 11:33 (UTC+02:00), lu par `date`.
 - **Objet** : la demande de ma section S2 de `lecture-nadia-palier-3.md` (2026-10-20), servie par `ines-design` sur la branche
-  `s57-ines-p3-pli`, non fusionnee : **trois** commits `[INES]` (`b383b0bb`, `edf7f344`, `af8fa4c9`), pas quatre.
+  `s57-ines-p3-pli`, non fusionnee : **trois** commits `[INES]` (`5302af53`, `edf7f344`, `af8fa4c9`), pas quatre.
 - **Lu** : `git show af8fa4c9:.../mesure-ines-palier-3-pli-744x551.md`, sections C1 a C11 ; `git diff round-two...s57-ines-p3-pli`
   sur `recreo.css` et sur `LaFormeCommuneDesPropositionsLonguesEstEpingleeTest.java` ; `git show --stat` de chaque commit ;
   `fragments/manche.html` (ordre du message) ; `recreo.css` lignes 369-388 (`.enonce`, `.texte-support`).
@@ -32,10 +32,10 @@ la branche fusionnee avec `round-two`.
 
 | Commit | Verdict | Motif |
 |---|---|---|
-| `b383b0bb` (en-tete, interlignes) | **RECEVABLE** | voir 2.1 |
+| `5302af53` (en-tete, interlignes) | **RECEVABLE** | voir 2.1 |
 | `edf7f344` (score a droite de la consigne) | **RECEVABLE sous une condition de mesure avant fusion** ; **REFUSE** si elle n'est pas tenue | voir 2.2 |
 
-### 2.1 `b383b0bb`
+### 2.1 `5302af53`
 
 **Ma barre de S2 est atteinte, je ne la deplace pas.** (a) Aucune taille de police ni graisse ne change : le diff ne declare aucun
 `font-size`. (b) Les trois propositions restent sur l'ecran de l'enonce (bas a 470 au plus, cote d'`ines-design`). (c) Aucun
@@ -110,7 +110,7 @@ valeurs ; il ne dit rien de leur lecture par un enfant, ni d'une consigne passee
 | A qui | Quoi |
 |---|---|
 | `ines-design` | la remesure de la section 1 ; le releve des consignes de la section 2.2 ; le bas de `.reponse-attendue` a la revelation (section 4) |
-| `sofia-sm` | fusion de `b383b0bb` apres la section 1 ; de `edf7f344` apres la section 2.2 ; la porte technique, non annoncee par la mesure (`mvn -B verify` et les autres jobs non lances) |
+| `sofia-sm` | fusion de `5302af53` apres la section 1 ; de `edf7f344` apres la section 2.2 ; la porte technique, non annoncee par la mesure (`mvn -B verify` et les autres jobs non lances) |
 | `theo-archi` | l'allocation des trois identifiants de la mesure d'`ines-design` |
 | `camille-po` | les deux reserves nouvelles (sections 3 et 4), en stories |
 | moi | les six points de la section 5, au jeu du commit fusionne |
@@ -143,10 +143,10 @@ Les deux autres chemins de D5 ne sont pas des commits : je ne les accepte ni ne 
   est une cote de cette police-ci (68 casse, 73 tient) : ma condition porte sur la ligne rendue, pas sur un nombre de caracteres.
 - **Score dans l'en-tete** : il change la place et l'ordre de lecture du score. Je ne le juge pas sans mesure ni ecran.
 
-### V2. `b383b0bb` seul : fusion RECEVABLE
+### V2. `5302af53` seul : fusion RECEVABLE
 
 Mon verdict de 2.1 tient, ma condition de section 1 est levee. **Les 13 consignes sur deux lignes ne sont pas un defaut de ce
-correctif** : elles le sont deja sur `round-two`, `b383b0bb` ne touche ni la taille ni la largeur de la consigne, et ma condition
+correctif** : elles le sont deja sur `round-two`, `5302af53` ne touche ni la taille ni la largeur de la consigne, et ma condition
 de s22 (consigne d'une ligne) protege la distinction avec un texte-support qu'aucun de ces 13 jeux ne porte. La longueur de ces
 consignes (81 a 107 caracteres, dont 4 au CP) est une question de lisibilite du contenu, que je juge en jouant ces jeux, pas
 dans ce veto.
@@ -155,7 +155,7 @@ dans ce veto.
 
 C'est le statut que je lui ai donne ce matin (section 4) ; la mesure ne m'en fait pas changer. Constat : 3 items sur 110 a 744
 (`-06` 14 a 576 dans 2 ordres sur 6 ; EMC 13 et `-11` 13 a 560, reponse sur 3 lignes dans une colonne de 444 px), 5 a 720 avec
-barre (EMC 21, `-11` 18 en plus). **Ces cotes incluent `edf7f344`, que je refuse** : avec `b383b0bb` seul, tout bas superieur a
+barre (EMC 21, `-11` 18 en plus). **Ces cotes incluent `edf7f344`, que je refuse** : avec `5302af53` seul, tout bas superieur a
 521 passe le pli, et ce compte **n'est pas mesure**. Exigence : remesure sur l'arbre qui sera fusionne.
 
 Ce qui doit etre vrai, sans choisir le levier (contenu ou gabarit) : a 744 x 551, a la revelation, dans les six ordres, la phrase
@@ -165,7 +165,7 @@ texte-support de `-06` (`INF-CE1-1`), sans cacher le texte-support ni les propos
 
 ### V4. `-06` item 14 a 574 : la reserve non bloquante tient
 
-Avec `b383b0bb` seul, la reserve de S2 (indice entier apres une erreur) se reduit a **un item sur 110, dans 2 ordres sur 6**. Elle
+Avec `5302af53` seul, la reserve de S2 (indice entier apres une erreur) se reduit a **un item sur 110, dans 2 ordres sur 6**. Elle
 reste non bloquante, comme je l'ai ecrite le 2026-10-20 ; je ne la durcis pas. La cote de 574 est prise sur l'**ancien** texte
 (D5) : a remesurer sur *"La pluie se met a tomber."*. La reserve du mot du verdict (section 3) s'y rattache : sans le flottant,
 le verdict descend d'environ 30 px, et sa seconde ligne, deja a 562 avec lui, passe sous le pli. Exigence de section 3 inchangee.
@@ -184,13 +184,13 @@ test ne mesure une ligne coupee ni sa lecture par un enfant.
 
 | A qui | Quoi |
 |---|---|
-| `sofia-sm` | fusion de `b383b0bb` seul ; `edf7f344` ne se fusionne pas ; la porte technique de l'arbre fusionne, jobs nommes |
+| `sofia-sm` | fusion de `5302af53` seul ; `edf7f344` ne se fusionne pas ; la porte technique de l'arbre fusionne, jobs nommes |
 | `ines-design` | apres fusion : `-06` 14 sans flottant sur le nouveau texte ; reponse attendue a la revelation, 110 items |
 | `camille-po` | V3 et V4 en stories ; le levier de `-06` 14 et de la revelation, a ouvrir sous les contraintes de V3 |
 
 **Signe** : `nadia-prof`, s57, palier 3, 2026-10-21, 12:24.
 
-### V6. Suite du 2026-10-21 : `b383b0bb` seul, remesure d'`ines-design`
+### V6. Suite du 2026-10-21 : `5302af53` seul, remesure d'`ines-design`
 
 - **Lu** : `git show 41578ff7:.../mesure-ines-palier-3-pli-744x551.md`, section *"Remesure du 2026-10-21 apres le refus
   d'`edf7f344`"* (E1 a E7), branche `s57-ines-p3-b383`. Cotes d'`ines-design`, non rejouees par moi. Aucun Done, aucun identifiant.
@@ -211,7 +211,7 @@ reste non bloquante, au meme statut que le pli.
 | EMC 13, `-11` 13 (et EMC 21, `-11` 18 a 720 avec barre) | reponse attendue 587, 2 lignes | reponse attendue entiere a la revelation | contenu ou gabarit ; `TRV-CE1-2`, et pour `-11` ce que la negation exige |
 | `-06` 14, la phrase a 552 (1 px) | derniere ligne du texte | lisible sans defiler | **jeu reel** seulement : 1 px est sous la precision d'un rectangle de ligne (E6) |
 
-**3. Ordre : oui, fusionner `b383b0bb` maintenant, et traiter les 6 items ensuite.** A ma lecture du diff, ce commit fait remonter
+**3. Ordre : oui, fusionner `5302af53` maintenant, et traiter les 6 items ensuite.** A ma lecture du diff, ce commit fait remonter
 le contenu (en-tete plus mince, interlignes reduits) : il ne cree aucun de ces depassements. Ce point n'est pas mesure sur
 `round-two` avant correctif ; c'est une deduction de la forme du diff, pas une cote. Les 6 items deviennent des stories de
 `camille-po`. Le Done de `-06`, de l'EMC et de `-11` reste a prononcer **apres** mon jeu de l'arbre fusionne (V5), avec ces reserves

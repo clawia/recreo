@@ -2170,3 +2170,62 @@ Les autres regles du meme tableau : `RG3` (`marc-dev` pour un lot a texte suppor
 | Utilisatrice | `QP8`, seulement si C doit porter un lot ; `QP7` a la cloture du palier 5 |
 
 **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne compose pas le palier 4, n'amende ni `planning.md`, ni `PAR-8`, ni `PAR-9`, ni le document de criteres, ni `composition-palier-3.md`. N'engage aucun poste, ne fixe aucun prix, n'affecte aucune instance. **Decisions de produit prises ici** : (1) le passage de `FRA-CE1-27` et `-29` a `non couvert` et le maximum de 202 (A.135) ; (2) rien d'autre : le seuil de 20,0 et le nombre de quatre instances sont ses mots, pas ma decision. Aucun identifiant de condition neuf. `DEC-0120` reste `Acceptee`.
+
+
+## Amendement du 2026-10-21, vingt-troisieme (`camille-po`, reponse de l'utilisatrice a `QP3` : *"une grille dessinee"*)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** A.137 et la reponse a `QP3` de l'amendement precedent (*"un tableau d'informations"*) sont **precisees** par ce qui suit, pas effacees. **Statut de `DEC-0120` : `Acceptee`, inchange.** Ce que je n'ai pas fait : lancer `mvn`, jouer un jar, composer le palier 4, amender `planning.md`, ecrire un prix, un identifiant de condition neuf. Arbre : `round-two` a `01c3563e`.
+
+### A.141 Les mots, et ce que nadia-prof avait dit qu'ils feraient
+
+Cites tels que l'agent lanceur me les transmet, 2026-10-21 (forme 2 de `DEC-0062` G) : *"QP3 c'est une grille déssinée"*. Ils repondent a la question que `nadia-prof` posait en 8.1 de `arbitrage-nadia-palier-4.md` : *"si 'tableau d'informations' veut dire la grille dessinee sans case a toucher, c'est la forme (a) ; si c'est un tableau rempli de donnees, il n'est recevable pour aucune ligne"*. **La premiere branche est choisie. Lecture fixee : une grille dessinee, sans case designable, forme (a) de `nadia-prof`.** Le tableau de donnees n'est pas voulu.
+
+Consequences sur A.137, ligne par ligne :
+
+| Point de A.137 | Maintenant |
+|---|---|
+| *"Forme (b) [...] plus fondee par ses mots"* | **retiree** de la story `S57-BR-MAT-CE1-14-GRILLE` ; elle ne se rouvre que par une nouvelle reponse de l'utilisatrice |
+| Forme (a), *"a condition que le tableau montre bien un quadrillage"* | **la condition est remplie** : c'est un quadrillage dessine |
+| Plafond `en cours` | tient ; `DEP-CE1-2` est lue *"montre, de 4 x 4 a 6 x 6, cases de meme taille"*, pas *"toutes designables"* (`nadia-prof` 8.1) |
+| Question a `nadia-prof` (la forme (a) satisfait-elle `DEP-CE1-2` pour `en cours` ?) | **repondue par elle** en 8.1 : oui, conditions 1, 2, 4, 5, 6 et 8 de `arbitrage-nadia-q05-q10.md` 1.3, point 3 sans objet, point 7 remplace par sa mention (*"se reperer et se deplacer servis sur un quadrillage montre, reponse au choix sans designation ; 'coder un deplacement' servi du cote reception [...] la ligne reste en cours"*) |
+| Avis de `theo-archi` : `A3` tombe-t-il ? | repondu avant la reponse, `avis-theo-palier-4.md` 2.1 et 2.4 : **`A3` n'est pas un prealable**. La contrainte est la bande d'etiquettes d'une grille carree (6 unites sur 100 a 6 x 6, 17,8 px a 296, lisibilite non mesuree). Son avis visait la forme (b) ; **son complement pour la forme (a) n'est pas ecrit** |
+
+**Ce que l'utilisatrice n'a pas dit** : la seconde moitie de la question de 8.1 (*"la ligne reste 'en cours' : elle ne passe pas a 'couverte' [...] L'acceptez-vous ?"*) n'a pas de mot de sa part. `nadia-prof` ecrit *"Un oui sur le quadrillage : forme (a)"* ; je suis cette lecture, et je l'ecris comme une lecture : le plafond `en cours` n'est ni accepte ni refuse par ses mots.
+
+### A.142 `LP9` : prix, instance, developpeur, etat
+
+| Point | Valeur |
+|---|---|
+| Prix | **1,5**, indicatif, lot illustre (`nadia-prof` 8.1), a confirmer a son arbitrage prealable ; je n'en fixe aucun |
+| Instance | **B** (`PAR-2` : mathematiques CE1) |
+| Developpeur | `lea-dev` est celui de B (`QP6`) ; **pas designe par lot**, a confirmer par `sofia-sm` dans la composition. B porterait trois lots en sequence (`RG4`) |
+| Pret | la story reecrite (forme (a) seule, criteres 1, 3, 6, 8, 14 reecrits ou neufs, mesures contre le paquet `ce1-deplacements-quadrillage` : 0 illustration, 20 enonces sur 20 qui nomment une coordonnee, 3 indices *"Dessine le quadrillage"*) ; les conditions de `nadia-prof` ecrites ; `A3` non prealable ; la mesure de 36 zones (`avis-theo-palier-4.md` 2.3) **sans objet** |
+| Manque | (1) la reponse de l'utilisatrice a la question de A.143 ; (2) le complement de `theo-archi` pour la forme (a) : un ou deux paquets (tous les items sont `type: question`, je ne tranche pas), octets mesures d'un dessin 6 x 6 a etiquettes tracees, paragraphe `A3 pour MAT-CE1-14` d'`ADR-0080` ; (3) la mesure d'`ines-design` des etiquettes a 296 px et a 744 x 551 avant l'engagement ; (4) la reponse de `nadia-prof` a *"par sa coordonnee seule"* (critere 3) ; (5) son arbitrage prealable (prix, `PAR-13` pour la forme (a), voir A.143) ; (6) la composition et l'amendement de `planning.md` (`sofia-sm`) ; (7) le paquet reecrit avec ses dessins, ce qui est le lot lui-meme |
+| Report | premier ecartement au palier 3 ; **deuxieme s'il n'est pas engage au palier 4** ; un troisieme demande une `DEC` avec son motif |
+
+**Composition maximale** (arithmetique, `PAR-8` : 5,0 et trois lots par instance). Si `LP9` devient pret : **9,0 + 1,5 = 10,5**, sept lots (A 2,0 ; B 3,0 + 1,5 = **4,5, trois lots** ; A' 4,0). **`LP7` et `LP9` sont toutes deux de B** : ensemble, B ferait 6,0 et quatre lots, au-dela de `PAR-8`. Le conditionnel de 11,5 (`LP7` et `LP8`) devient donc : `LP8` plus `LP9`, ou `LP8` plus `LP7`, **11,5 dans les deux cas, jamais 13,0**. Ce qui empeche encore `LP9` d'etre pret : les sept points de la ligne *"Manque"*, dont deux ne sont pas a l'equipe (l'utilisatrice, `nadia-prof`).
+
+**File de fusion, sept lots** (meme formule que A.139 : un `verify` complet a la fois, 11 min 17 s a 12 min 39 s par fusion, 20 min 44 s a 23 min 01 s pour le job `build` ; **calcule, non mesure**) : `verify` **1 h 19 a 1 h 29**, job `build` **2 h 25 a 2 h 41** (six lots : 1 h 08 a 1 h 16 et 2 h 04 a 2 h 18). Le commit de `LP9` deplace `POIDS_TOTAL_MAXIMUM` (`ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTest`) : **un autre lot qui installe des dessins dans le meme palier (`LP7`) entre en conflit sur la meme constante**, ce qui plaide pour ne pas les mettre dans le meme palier ; l'ordre de fusion est a `sofia-sm`. Les autres lots de 9,0 n'ajoutent aucun dessin (je ne l'ai pas verifie lot par lot : a lire par `sofia-sm` a la composition).
+
+### A.143 La grille dessinee est-elle un dessin au sens de `Q-06` ? La tension, et la question qui en resulte
+
+**Au sens de `Q-06`, la liste, non** : `DEC-0123` 3.1 sort cinq lignes nommees (`QLM-CE1-09`, `QLM-CE1-11`, la moitie dessinee de `QLM-CE1-07`, `MAT-CE1-02`, `MAT-CE1-09`) ; `MAT-CE1-14` n'en est pas, et 3.2 point 4 la dit *"couverte separement par `Q-05`"*. **Au sens du cliquet de poids, oui** : c'est un fichier SVG sous `static/illustrations`, et 3.2 (revers) l'ecrivait deja : *"la grille de `Q-05` est elle-meme un dessin ; le cliquet plein et `PAR-13` lui sont opposables comme aux autres"*. **Le cliquet n'interdit rien** : `POIDS_TOTAL_MAXIMUM` se deplace dans le commit qui installe les octets, sur la valeur mesuree (`ADR-0077` decision 6), et `theo-archi` ne trouve aucun plafond absolu (`avis-theo-palier-4.md` 2.4). Rien ne se contredit dans les textes.
+
+**La tension est dans les motifs, pas dans la regle.** `DEC-0123` 3.2 point 1 sort les cinq dessins en invoquant *"terrain neuf, poids plein, aucun prix"* ; l'utilisatrice veut cette grille-ci. Le meme poids plein s'applique : `POIDS_TOTAL_MAXIMUM = 69203` octets, 56 fichiers, **mesure ce jour** (`git ls-files` rend 56 sous `static/illustrations`). Un dessin par item a vingt items, au plafond par dessin de 4633 octets : **92 660 octets au plus** (calcul), 30 a 90 ko selon l'ordre de grandeur de `theo-archi` (non mesure), soit **une hausse d'environ 43 % a 134 % du total actuel** (30 ko et 92 660 octets sur 69 203, calcul). Si le poids a pese pour sortir cinq lignes, il pese pour celle-ci ; si elle passe, le motif n'etait pas le poids pour les cinq autres, ou il l'etait et il a change. **Je ne tranche pas a sa place.**
+
+**`PAR-13`** : `nadia-prof` ecrit *"Pas un terrain neuf au sens de `PAR-13`"* parce que *"la designation sur grille a rencontre du contenu reel (`designation-symetrie-ce1`)"* (`arbitrage-nadia-q05-q10.md` 1.4). **En forme (a) il n'y a plus de designation** ; son motif est celui de la forme (b). Sa lecture de `PAR-13` est a la matiere (mathematiques CE1 est servie), mais **elle ne l'a pas reecrite pour la forme (a)**. Question a elle, a son arbitrage prealable, pas a l'utilisatrice.
+
+**La question a l'utilisatrice, une seule** (formulee pour une personne qui n'a pas lu les `DEC`) : *"La grille de `MAT-CE1-14` est un dessin, un par exercice, vingt au plus. Les cinq autres lignes a dessin sont sorties du produit en partie parce que le poids total des dessins est au plafond (69 203 octets aujourd'hui). Ces vingt grilles feraient monter ce plafond d'environ 40 % a plus de 130 % (estimation de `theo-archi`, non mesuree). Acceptez-vous cette hausse pour cette ligne seule ? Un oui n'ouvre pas les cinq autres lignes : leur retour demande une reponse a elles."* Sans reponse, `LP9` n'est pas engageable : la regle le permet, mais `DEC-0123` 3.3 a fait du report des dessins une direction qu'elle a choisie, et la contourner par un commit de cliquet serait la defaire sans lui avoir demande. **Cette question n'a pas d'identifiant** : je n'en cree pas ; elle est posee a l'utilisatrice par `sofia-sm` ou l'agent lanceur avec le prochain lot de questions.
+
+### A.144 Routage, ce que cet amendement ne fait pas
+
+| A qui | Quoi |
+|---|---|
+| l'utilisatrice | la question de A.143 |
+| `theo-archi` | le complement de la forme (a) (A.142, point 2) ; son avis ecrit dans un fichier neuf du dossier du sprint |
+| `ines-design` | la mesure des etiquettes d'une grille de 6 x 6 (A.142, point 3) ; elle propose, ne tranche pas |
+| `nadia-prof` | *"par sa coordonnee seule"* ; `PAR-13` pour la forme (a) ; prix et instance a son arbitrage prealable ; le signalement du referentiel de mathematiques CE1 (aucune ligne sur la lecture de donnees en tableau, `arbitrage-nadia-palier-4.md` 8.1) : **je ne l'ai pas traite ici** (hors de la demande), il reste a verifier contre le texte officiel, et une ligne neuve est a elle |
+| `sofia-sm` | la composition (10,5 ou le repli), l'amendement de `planning.md`, la file de fusion et l'ordre de `LP7`/`LP9` si les deux sont retenus |
+| `lea-dev` | rien avant l'engagement |
+
+**Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne compose pas le palier 4, n'amende ni `planning.md`, ni la matrice (`MAT-CE1-14` reste `non couvert`, **aucune cellule ne change** : la cellule ne dit rien de la forme), ni le compteur de version (je n'ai pas lu si `nadia-prof` a ecrit pour cette ligne le plafond que le compteur d'A.32 exige : non calcule). **Decisions de produit prises ici** : aucune. La forme (a) est le choix de l'utilisatrice, la mention est a `nadia-prof`, le prix aussi. Aucun identifiant de condition neuf. `DEC-0120` reste `Acceptee`. Non commite.

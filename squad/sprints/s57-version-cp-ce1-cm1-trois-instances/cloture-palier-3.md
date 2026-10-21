@@ -399,7 +399,7 @@ Repris dans `review.md` a la cloture du sprint. **Un obstacle n'est clos que qua
 | `PL-1` a `PL-13`, identifiants non alloues | technique | `theo-archi` | registre | **clos** : `21e994a4`, `ad9ef86d`, et allocation de `PL-1` a `PL-8` avec la mesure `6d2e5b38` |
 | Verdicts des cinq lots | pedagogie | `nadia-prof` | fiches | **clos** : section 1 |
 | `R6` de `nadia-prof`, refus de saisie | produit, pedagogie | utilisatrice, `nadia-prof` | `DEC-0124`, arbitrage | **clos** sous une reserve non bloquante ; l'ordinateur n'est pas mesure |
-| Correctif de gabarit du pli | pedagogie | `nadia-prof` | veto | **clos** pour `b383b0bb` ; `edf7f344` refuse, sort de la branche a l'utilisatrice (section 13 (i)) |
+| Correctif de gabarit du pli | pedagogie | `nadia-prof` | veto | **clos** pour `5302af53` ; `edf7f344` refuse, sort de la branche a l'utilisatrice (section 13 (i)) |
 | `DO2`, trou de garde | qualite | `camille-po`, developpeur | critere, test | **ouvert** (section 7) |
 | `E3`, garde generique `LON-CE1-3` a `-5` et `TRV-CE1-1` | technique | `camille-po`, `theo-archi` | story, `ADR` | **ouvert** : `DA1`, `DA2` |
 | Reserves du palier 3 sans story (pli, verdict, coupure, item 17) | produit | `camille-po` | stories | **ouvert** : `DA3` |

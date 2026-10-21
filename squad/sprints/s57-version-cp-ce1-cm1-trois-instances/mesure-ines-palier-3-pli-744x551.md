@@ -636,9 +636,9 @@ Arbre : `round-two` a `a0a69859b9db0e7ea9f1f4c85c93b26439979b43` a la coupe (`gi
 
 | Commit | Fichier | Regle, sous `@media (min-width: 720px)` | Effet mesure |
 |---|---|---|---|
-| `b383b0bb` (PL-11) | `static/css/recreo.css` | `.entete { padding: 0.5rem 0; }` | l'en-tete passe de 82 a 66 px (-16) ; le bouton de sortie garde sa taille (109 x 50) |
-| `b383b0bb` (PL-11) | idem | `.ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) .enonce { line-height: 1.25; }` | l'interligne passe de 1,5 (bibliotheque tierce ; mesure : 48 px pour 32 px) a 1,25 (40 px) : -16 px pour un enonce sur deux lignes |
-| `b383b0bb` (PL-11) | idem | meme selecteur, `.proposition { line-height: 1.25; }` | la proposition passe de 680 x 66 a 680 x 58 : -8 px par rangee, -24 px pour trois rangees |
+| `5302af53` (PL-11) | `static/css/recreo.css` | `.entete { padding: 0.5rem 0; }` | l'en-tete passe de 82 a 66 px (-16) ; le bouton de sortie garde sa taille (109 x 50) |
+| `5302af53` (PL-11) | idem | `.ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) .enonce { line-height: 1.25; }` | l'interligne passe de 1,5 (bibliotheque tierce ; mesure : 48 px pour 32 px) a 1,25 (40 px) : -16 px pour un enonce sur deux lignes |
+| `5302af53` (PL-11) | idem | meme selecteur, `.proposition { line-height: 1.25; }` | la proposition passe de 680 x 66 a 680 x 58 : -8 px par rangee, -24 px pour trois rangees |
 | `edf7f344` (PL-12) | idem | `.ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres):not(:has(.bloc-adulte)) > .score { float: right; margin-left: 1rem; }` | le score se lit a droite de la ligne de la consigne : -30 px. Il reste le premier enfant de l'ecran dans le document |
 | les deux | `LaFormeCommuneDesPropositionsLonguesEstEpingleeTest.java` et `src/test/resources/contreexemple/LaFormeCommuneDesPropositionsLonguesEstEpingleeTest/` | les quatre valeurs sont ajoutees a la forme epinglee (l'en-tete entre dans la population par son nom, seulement sous 720 px) ; trois jeux fautifs commites (`interligne-change`, `entete-change`, `score-sans-flottant`) et trois tests qui les mordent | une valeur qui change, ou une regle qui s'ajoute, rougit au lieu d'invalider la mesure sans bruit |
 
@@ -702,7 +702,7 @@ Nombre d'items dont le bas de `.indice` depasse 551 apres une erreur, dans au mo
 
 ## C6. Les items sous le pli avant, un par un, et la cote sans la regle du score
 
-Colonnes : bas de `.indice`, en pixels, a 744 sans barre, dans les six ordres (min-max). **Sans la regle du score** = le meme jar, une seule regle annulee a l'execution (`float: none; margin-left: 0`) : c'est l'etat du commit `b383b0bb` seul, mesure sur les 110 items a 744 uniquement.
+Colonnes : bas de `.indice`, en pixels, a 744 sans barre, dans les six ordres (min-max). **Sans la regle du score** = le meme jar, une seule regle annulee a l'execution (`float: none; margin-left: 0`) : c'est l'etat du commit `5302af53` seul, mesure sur les 110 items a 744 uniquement.
 
 **`-06`**
 
@@ -747,7 +747,7 @@ Comptes, jar entier contre jar sans la regle du score (744, sans barre, apres un
 | `-11` | 24 sur 24 | 24 sur 24 | 510 | 540 | 0 | 0 |
 | `MAT` | 22 sur 22 | 22 sur 22 | 470 | 500 | 0 | 0 |
 
-**Lecture, sans jugement** : le commit `b383b0bb` seul met 109 items sur 110 au-dessus du pli. L'item restant est `-06` 14 : bas de `.indice` a 574 (23 px sous le pli) dans les deux ordres sur six ou ses propositions occupent trois rangees. La regle du score (`edf7f344`) l'amene a 544. C'est la seule difference de compte entre les deux etats ; les autres paquets gagnent 30 px de marge avec la regle, sans changer de camp. Si `nadia-prof` refuse la regle du score, il faut un autre levier pour cet item ; je n'en ai pas qui respecte ses conditions.
+**Lecture, sans jugement** : le commit `5302af53` seul met 109 items sur 110 au-dessus du pli. L'item restant est `-06` 14 : bas de `.indice` a 574 (23 px sous le pli) dans les deux ordres sur six ou ses propositions occupent trois rangees. La regle du score (`edf7f344`) l'amene a 544. C'est la seule difference de compte entre les deux etats ; les autres paquets gagnent 30 px de marge avec la regle, sans changer de camp. Si `nadia-prof` refuse la regle du score, il faut un autre levier pour cet item ; je n'en ai pas qui respecte ses conditions.
 
 ## C7. En dehors du critere lu, pour information : revelation et seconde erreur
 
@@ -810,7 +810,7 @@ Un jar sur le port 18692 (PID 39956) et, plus tot, deux sur 18690 et 18691 (PID 
 
 ## Decisions prises (correctif du pli)
 
-**Aucune.** Cette section ne cree ni n'amende aucune `ADR` ni `DEC`, ne leve aucune reserve et ne prononce aucun Done. PL-11, PL-12 et PL-13 sont a allouer au registre par `theo-archi`. Les commits sont locaux, non fusionnes, non pousses ; `nadia-prof` peut refuser `edf7f344` sans toucher a `b383b0bb`.
+**Aucune.** Cette section ne cree ni n'amende aucune `ADR` ni `DEC`, ne leve aucune reserve et ne prononce aucun Done. PL-11, PL-12 et PL-13 sont a allouer au registre par `theo-archi`. Les commits sont locaux, non fusionnes, non pousses ; `nadia-prof` peut refuser `edf7f344` sans toucher a `5302af53`.
 
 
 
@@ -819,12 +819,12 @@ Un jar sur le port 18692 (PID 39956) et, plus tot, deux sur 18690 et 18691 (PID 
 # Remesure du 2026-10-21 sur l'arbre fusionne (`round-two` + `s57-ines-p3-pli`), a la demande du veto de `nadia-prof`
 
 - **Auteure** : `ines-design`. **Date** : 2026-10-21, 12:17 (UTC+02:00), lue par `date` (mesures de 12:01 a 12:15). Cette section complete les precedentes, qui ne sont pas modifiees. Elle compte des pixels : aucun Done, aucune decision de design, aucun commit de gabarit ou de feuille. Le veto sur `edf7f344` est a `nadia-prof` (`veto-nadia-gabarit-pli.md`, `8805c4dc`).
-- **Nombre de commits de la branche** : `git log round-two..s57-ines-p3-pli` rend **trois** commits `[INES]`, pas quatre : `b383b0bb` (PL-11, gabarit), `edf7f344` (PL-12, gabarit), `af8fa4c9` (la mesure, un fichier markdown). Deux commits touchent `recreo.css`, un seul touche la mesure.
+- **Nombre de commits de la branche** : `git log round-two..s57-ines-p3-pli` rend **trois** commits `[INES]`, pas quatre : `5302af53` (PL-11, gabarit), `edf7f344` (PL-12, gabarit), `af8fa4c9` (la mesure, un fichier markdown). Deux commits touchent `recreo.css`, un seul touche la mesure.
 - **Identifiants** : PL-11, PL-12 et PL-13 gardent leur sens (PL-11 regle de base, PL-12 score a droite, PL-13 ce qui tient encore sous le pli). **Je n'ai pas besoin de nouvel identifiant** : le constat des consignes est le cout de PL-12, celui du verdict et de la reponse attendue prolonge PL-13. Les deux reserves que `nadia-prof` date du 2026-10-21 (verdict de `-06` 14, phrase et reponse a la revelation) sont a nommer par elle et `camille-po`, pas par moi.
 
 ## D1. Arbre, jar, methode
 
-- **Arbre** : worktree d'integration jetable `recreo-ines-integ-pli`, coupe de `round-two` a `8805c4dcdde05181a3b0434a757e26cfe9e8cbd4`, puis `git merge --no-ff s57-ines-p3-pli` (sans conflit) : commit de fusion local `bee3bb37b80f634c58beb827823fb16f3731f55d`, **non pousse, non fusionne dans `round-two`**, parents `8805c4dc` et `af8fa4c9`. `git diff --stat round-two HEAD -- adapters/adapter-web/src/main` : un fichier, `recreo.css`, 25 lignes ajoutees (les deux regles de `b383b0bb` et `edf7f344`) ; aucun gabarit. Feuille servie : SHA-256 `4b1294bd31474bbdb2a772e7b88ebab3bd499c00853a54e711ae5aee4fd75cf2`, **egale** a celle du jar de `edf7f344` mesure en C3.
+- **Arbre** : worktree d'integration jetable `recreo-ines-integ-pli`, coupe de `round-two` a `8805c4dcdde05181a3b0434a757e26cfe9e8cbd4`, puis `git merge --no-ff s57-ines-p3-pli` (sans conflit) : commit de fusion local `bee3bb37b80f634c58beb827823fb16f3731f55d`, **non pousse, non fusionne dans `round-two`**, parents `8805c4dc` et `af8fa4c9`. `git diff --stat round-two HEAD -- adapters/adapter-web/src/main` : un fichier, `recreo.css`, 25 lignes ajoutees (les deux regles de `5302af53` et `edf7f344`) ; aucun gabarit. Feuille servie : SHA-256 `4b1294bd31474bbdb2a772e7b88ebab3bd499c00853a54e711ae5aee4fd75cf2`, **egale** a celle du jar de `edf7f344` mesure en C3.
 - **Contenu depuis ma derniere mesure** (`4650aeab` -> `8805c4dc`) : le hash de l'item a change pour `-06` 14 (et son texte-support : *"La pluie se met a tomber."*), `EMC` 8, 9 et **14** ; aucun pour `-07`, `-11`, `MAT-CE1-01`. Meme methode de hash que la section 6 (recalcul Python compare au pilote : 0 ecart sur 110 items). `EMC` 14 n'est pas dans la liste du veto, le hash le dit.
 - **Jar** : `bash outils/mvn-jdk21.sh -B clean package -DskipTests` (sortie 0, tout le reacteur, pas de mesure partielle), copie hors depot, SHA-256 `96be35bf926e4987c9fdb7e18b4315978335ec12a0eeef728228d21b3f4bdce0`. Port 18691, PID 50052 lu sur le port en ecoute, arrete par ce PID.
 - **Methode** : celle de la section 1 (pilote `pilote-p3.mjs`, avec en plus le bas de `.reponse-revelee` et de `.reponse-attendue` dans chacun des six ordres). Un seul Chrome a mon nom a la fois (PID 37484 puis 42436, profils jetables, ports 19691 et 19692, disparus a la fin de chaque pilote : controle par liste), cinq largeurs (720, 744, 768, 992, 1200), hauteur 551, deux modes (avec et sans barre), arrivee, erreur 1 et revelation dans les six ordres, erreur 2. Aucune regle de style injectee pour les paquets. Critere : bas de `.indice` au plus a 551.
@@ -844,7 +844,7 @@ Un jar sur le port 18692 (PID 39956) et, plus tot, deux sur 18690 et 18691 (PID 
 - **De 720 a 768, avec et sans barre, et a 992 et 1200 : 0 item** des 110 a un bas d'indice au-dela de 551. Aucun debordement horizontal.
 - **Les maxima sont ceux de la section C4** (jar de `edf7f344` sur `a0a69859`) : `-06` 544, `EMC` 510, `-11` 510, `-07` 438, `MAT` 470. Les corrections de contenu fusionnees depuis (`-06` 14, `EMC` 8, 9, 14) ne les deplacent pas : `EMC` 8 est a 440, 9 a 374, 14 a 444.
 - **`-06` item 14** : texte-support de 2 lignes, indice de 1 ligne, propositions sur 2 rangees (bas 404, indice 478) ou 3 rangees (bas 470, indice 544) selon l'ordre. Dans les 2 ordres sur 6 a trois rangees (`021` et `120`), le signal occupe 494 a 570 et **le verdict (boite de 60 px, deux lignes de 30 px : *"Ce n'est pas ça. Essaie encore !"*) occupe 502 a 562** : la premiere ligne finit a 532, la seconde a 562. La boite du verdict depasse 551 de 11 px, celle du signal de 19 px. Je n'ai pas mesure si le trait des lettres de la seconde ligne est coupe.
-- **Boutons de sortie et de niveau** (`a.btn.lien-accueil`, `a.btn.chip-niveau`) : bas a **58** (66 avant `b383b0bb`) dans les 4400 etats.
+- **Boutons de sortie et de niveau** (`a.btn.lien-accueil`, `a.btn.chip-niveau`) : bas a **58** (66 avant `5302af53`) dans les 4400 etats.
 
 ### Cotes par item, `FRA-CE1-06`, `ce1-inference` (744, sans barre, apres une erreur, six ordres)
 
@@ -904,13 +904,13 @@ Les cotes par item de `-07`, `-11` et `MAT-CE1-01` sont dans le releve brut (hor
 
 ## D3. Condition de `nadia-prof` sur `edf7f344` : chaque consigne sur une ligne a cote du score
 
-- **Perimetre** : les **157 jeux** de `catalogue.yaml` (152 `bandit-manchot`, 3 `designation`, 2 `saisie` ; 59 CP, 40 CE1, 58 CM1, niveau lu dans le descripteur du paquet), joues un par un depuis l'accueil de leur niveau. La consigne est celle du catalogue, fixee au demarrage de la partie ; elle ne change pas ensuite : 0 changement releve entre l'arrivee et l'ecran qui suit un premier coup (152 jeux ; les 5 jeux de saisie et de designation n'ont pas de proposition a cliquer). A chaque etat : cinq largeurs x deux modes. Trois variantes sur le meme DOM : (A) telle que servie ; (B) avec "Score : 10", pire largeur du score ; (C) `float: none` sur `.score` (la consigne telle qu'elle serait avec `b383b0bb` seul).
+- **Perimetre** : les **157 jeux** de `catalogue.yaml` (152 `bandit-manchot`, 3 `designation`, 2 `saisie` ; 59 CP, 40 CE1, 58 CM1, niveau lu dans le descripteur du paquet), joues un par un depuis l'accueil de leur niveau. La consigne est celle du catalogue, fixee au demarrage de la partie ; elle ne change pas ensuite : 0 changement releve entre l'arrivee et l'ecran qui suit un premier coup (152 jeux ; les 5 jeux de saisie et de designation n'ont pas de proposition a cliquer). A chaque etat : cinq largeurs x deux modes. Trois variantes sur le meme DOM : (A) telle que servie ; (B) avec "Score : 10", pire largeur du score ; (C) `float: none` sur `.score` (la consigne telle qu'elle serait avec `5302af53` seul).
 - **Regle appliquee a** 146 jeux (propositions ecrites, sans bloc adulte, sans deux oeuvres). Non appliquee a 11 : 6 a bloc adulte (dont `saisie-mot-dicte-cp`), 4 sans `.propositions` (`saisie-complements-10-cp` et les 3 `designation`), 1 a deux oeuvres. `float` calcule du score : `right` pour 146 jeux, `none` pour 11.
 - **Etat "apres un coup"** : la premiere proposition cliquee, juste ou fausse selon l'item. Je n'ai pas force une erreur sur chaque jeu.
 - **Resultat (variante A)** : **31 jeux sur 157** ont une consigne sur **deux lignes** a au moins une largeur ; **126 tiennent sur une ligne partout**. Par niveau : 14 CP, 1 CE1, 16 CM1. Par largeur : 31 a 720, 30 a 744, 30 a 768, **3 a 992, 0 a 1200**. Aucun jeu sur trois lignes ou plus. Sur les 146 jeux soumis a la regle : 30 passent sur deux lignes, 116 tiennent.
 - **Par quel commit** :
   - **22 jeux par `edf7f344`** : une ligne dans la variante C, deux dans la variante A. Le flottant retire a la consigne la largeur du score (environ 100 px, marge de 16 px en plus). 18 ou 19 jeux a 720, 744 et 768 ; **3 a 992** (`melanges-cm1`, `roles-eps-cm1`, `emotion-ressentir-agir-cm1`) ; `institutions-cm1` seulement a 720 avec barre, dans l'etat qui suit un premier coup.
-  - **13 jeux sans le flottant** (variante C), donc ni par `edf7f344` ni par `b383b0bb` (qui ne touche ni la taille ni la largeur de la consigne) : la consigne depasse la ligne a elle seule, a 720-768. Ce sont les plus longues (81 a 107 caracteres). 4 jeux sont dans les deux listes : `melanges-cm1`, `roles-eps-cm1` et `emotion-ressentir-agir-cm1` (deux lignes a 720-768 sans flottant, et a 992 par le flottant), `hygiene-cp` (deux lignes sans flottant a 720 avec barre seulement, par le flottant aux autres largeurs). Un de ces 13 est un jeu a bloc adulte (`position-syllabe-cp`), hors de la regle.
+  - **13 jeux sans le flottant** (variante C), donc ni par `edf7f344` ni par `5302af53` (qui ne touche ni la taille ni la largeur de la consigne) : la consigne depasse la ligne a elle seule, a 720-768. Ce sont les plus longues (81 a 107 caracteres). 4 jeux sont dans les deux listes : `melanges-cm1`, `roles-eps-cm1` et `emotion-ressentir-agir-cm1` (deux lignes a 720-768 sans flottant, et a 992 par le flottant), `hygiene-cp` (deux lignes sans flottant a 720 avec barre seulement, par le flottant aux autres largeurs). Un de ces 13 est un jeu a bloc adulte (`position-syllabe-cp`), hors de la regle.
   - **Variante B** (score a deux chiffres, pire cas ; je n'ai pas verifie qu'un ecran de manche l'affiche) : 2 jeux de plus, `etapes-developpement-cm1` (720 avec barre) et `classer-etres-vivants-cm1` (720 a 768).
 - **Seuil de longueur** : tous les jeux de **67 caracteres ou moins** (108 des 146) tiennent sur une ligne a toutes les largeurs et dans les deux modes. Au-dela, la largeur des lettres compte : la plus courte consigne qui passe sur deux lignes en compte 68, la plus longue qui tient a 744 en compte 73. Les consignes des cinq paquets mesures (40 a 52 caracteres) tiennent.
 
@@ -969,9 +969,9 @@ Mesure : bas de `.reponse-revelee` ("Appuie sur la bonne réponse :") et de `.re
 
 ## D5. Ce que je propose, sans l'appliquer (`edf7f344` est a `nadia-prof`)
 
-Le seul item qui ne tient que grace a `edf7f344` est `-06` 14 : 574 sans le flottant, 544 avec (C6, mesure faite sur l'ancien texte, non refaite sans le flottant sur le nouveau). Les 109 autres tiennent avec `b383b0bb` seul, avec 30 px de marge en moins. Trois leviers, tous non appliques :
+Le seul item qui ne tient que grace a `edf7f344` est `-06` 14 : 574 sans le flottant, 544 avec (C6, mesure faite sur l'ancien texte, non refaite sans le flottant sur le nouveau). Les 109 autres tiennent avec `5302af53` seul, avec 30 px de marge en moins. Trois leviers, tous non appliques :
 
-1. **Fusionner `b383b0bb`, pas `edf7f344`** : les 22 consignes reviennent sur une ligne, les 13 qui sont sur deux lignes sans flottant y restent. `-06` 14 reste sous le pli (indice 574) : il faut un autre levier pour lui, que `nadia-prof` choisit (contenu ou gabarit).
+1. **Fusionner `5302af53`, pas `edf7f344`** : les 22 consignes reviennent sur une ligne, les 13 qui sont sur deux lignes sans flottant y restent. `-06` 14 reste sous le pli (indice 574) : il faut un autre levier pour lui, que `nadia-prof` choisit (contenu ou gabarit).
 2. **Garder le flottant pour les consignes courtes seulement** : le CSS ne connait pas la longueur d'un texte, et le rendu ne fournit aujourd'hui aucune donnee qui la porte. Il faudrait une classe ou un attribut pose par le controleur (par exemple selon un seuil de 67 caracteres, d'apres la mesure ci-dessus). **Je ne l'ecris pas : a remonter a `sofia-sm`.** Effet attendu : 108 jeux gardent le gain, 38 ne l'ont pas, `-06` 14 (consigne de 47 caracteres) le garde, ce que ce releve confirme sur les cotes de D2.
 3. **Sortir le score de la ligne de la consigne** (dans la bande de l'en-tete, a droite des boutons de niveau) : modification de gabarit, de l'ordre du document (le score est aujourd'hui lu et tabule en premier) et de sa place. Non essayee, non mesuree, et elle ne se conclut pas sans l'avis de `nadia-prof`.
 
@@ -995,7 +995,7 @@ Un jar (port 18691, PID 50052) et un Chrome a la fois (PID 37484 puis 42436, por
 
 ---
 
-# Remesure du 2026-10-21 apres le refus d'`edf7f344` : `b383b0bb` seul sur `round-two`
+# Remesure du 2026-10-21 apres le refus d'`edf7f344` : `5302af53` seul sur `round-two`
 
 - **Auteure** : `ines-design`. **Date** : 2026-10-21, 12:40 (UTC+02:00), lue par `date` (mesures de 12:31 a 12:38). Cette section suit les precedentes, reprises telles quelles de la branche `s57-ines-p3-pli` (`80781f61`), **sans qu'un chiffre y soit change**. Elle compte des pixels : aucun Done, aucune decision, aucune correction de contenu ni de gabarit. Ce que `nadia-prof` decide sur les restes sous le pli est a elle (`veto-nadia-gabarit-pli.md`, sections V1 a V5).
 - **Une correction de lecture, sans changer un chiffre** : en D4, j'ai ecrit que la reponse attendue d'`EMC` 13 et de `-11` 13 "tient sur 3 lignes". C'etait une deduction de la hauteur de la boite (96 px). **Elle tient sur 2 lignes** (releve des lignes ci-dessous) ; la boite est plus haute que ses deux lignes.
@@ -1010,12 +1010,12 @@ Un jar (port 18691, PID 50052) et un Chrome a la fois (PID 37484 puis 42436, por
 ## E2. Branche, tests, jar
 
 - **Branche** : `s57-ines-p3-b383`, worktree `recreo-ines-p3-b383`, coupee de `round-two` a `859cf327ff75df615c79abc2ea9010d785947ce4`, **un seul commit** par `git cherry-pick b383b0bb` (sans conflit) : `5302af53c4ad906db86e2e1753709e11824b7962`. `s57-ines-p3-pli` est intacte (`80781f61`). `git diff --stat 8805c4dc 859cf327 -- adapters bootstrap` : vide (le contenu est celui de la section precedente).
-- **Le test n'a pas eu besoin d'etre ajuste.** `LaFormeCommuneDesPropositionsLonguesEstEpingleeTest` a ete ecrit dans `b383b0bb`, avant `edf7f344` : il n'epingle que les trois valeurs de ce commit (`.entete` `padding: 0.5rem 0`, interligne 1,25 de l'enonce, interligne 1,25 de la proposition) et ses deux jeux fautifs (`entete-change`, `interligne-change`). Il ne contient ni `float` ni `margin-left` du score (le seul `.score` de la liste est la regle de forme existante `margin: 0`). Il n'y a donc pas de second commit : un commit sans changement serait faux. Les hauteurs en pixels (en-tete 66, proposition 58) ne sont pas epinglees, ce sont des cotes mesurees ; l'epingle est sur les valeurs de feuille dont elles decoulent.
+- **Le test n'a pas eu besoin d'etre ajuste.** `LaFormeCommuneDesPropositionsLonguesEstEpingleeTest` a ete ecrit dans `5302af53`, avant `edf7f344` : il n'epingle que les trois valeurs de ce commit (`.entete` `padding: 0.5rem 0`, interligne 1,25 de l'enonce, interligne 1,25 de la proposition) et ses deux jeux fautifs (`entete-change`, `interligne-change`). Il ne contient ni `float` ni `margin-left` du score (le seul `.score` de la liste est la regle de forme existante `margin: 0`). Il n'y a donc pas de second commit : un commit sans changement serait faux. Les hauteurs en pixels (en-tete 66, proposition 58) ne sont pas epinglees, ce sont des cotes mesurees ; l'epingle est sur les valeurs de feuille dont elles decoulent.
 - **Tests** : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test` (mesure partielle, `-am` present, sortie 0) : domain 120, application 31, adapter-web **522**, soit 673 tests, 0 echec, 0 erreur, 0 ignore. `LaFormeCommuneDesPropositionsLonguesEstEpingleeTest` : 7 tests, 0 echec. **Jobs lances : cette commande seulement.** Ni `mvn -B verify` complet, ni les autres jobs de `ci.yml` : je n'annonce pas la porte technique.
 - **Jar** : `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package -DskipTests` (sortie 0), SHA-256 `c3bdf2caa037a39e05b589d14d572e089bf8557290a86fb0198b7896300f1e12`. Feuille servie `/css/recreo.css` : SHA-256 `1fa775cadc55f9b7a2252312340aae077c36218b019cdbf9ad2ebc11dc3654b5`. Port 18701, PID 37012 lu sur le port en ecoute, arrete par ce PID.
 - **Methode** : celle de la section 1, avec deux releves de plus : le bas de la derniere ligne de `.verdict`, de `.reponse-revelee` et de `.reponse-attendue` (rectangles de lignes du texte, pas la boite), et le nombre de lignes de la reponse attendue. Un seul Chrome (PID 25212, profil jetable, port 19701, disparu a la fin du pilote), cinq largeurs (720, 744, 768, 992, 1200), hauteur 551, avec et sans barre, erreur 1 et revelation dans les six ordres. Couverture : 110 items sur 110, 0 anomalie, texte rendu egal au YAML. Critere : bas au plus a 551.
 
-## E3. Apres une erreur, `b383b0bb` seul, 744 x 551
+## E3. Apres une erreur, `5302af53` seul, 744 x 551
 
 | Paquet | Items | Bas de `.indice` au plus a 551 dans les six ordres | Max du bas de `.indice` | Marge la plus faible |
 |---|---|---|---|---|
@@ -1084,7 +1084,7 @@ Un jar (port 18691, PID 50052) et un Chrome a la fois (PID 37484 puis 42436, por
 | 23 | 0 | - | - | 436-436 | 3-3 | 510-510 | au-dessus |
 | 24 | 0 | - | - | 436-436 | 3-3 | 510-510 | au-dessus |
 
-## E4. A la revelation, `b383b0bb` seul (PL-13 mis a jour)
+## E4. A la revelation, `5302af53` seul (PL-13 mis a jour)
 
 Bas de `.reponse-revelee` ("Appuie sur la bonne réponse :") et de `.reponse-attendue`, boite et **derniere ligne du texte**, dans les six ordres, 110 items. *Dans* = nombre d'ordres sur 6 ou la cote depasse 551.
 
@@ -1115,7 +1115,7 @@ Bas de `.reponse-revelee` ("Appuie sur la bonne réponse :") et de `.reponse-att
 ## E6. Ce qui n'est pas mesure ici
 
 - La lecture a l'ecran (les points de V5), le trait des lettres, une police et un appareil reels. Je mesure des rectangles de lignes de texte : un descendant (`p`, `q`, `y`) ou un accent peut s'etendre sous ou au-dessus de ce rectangle de quelques pixels.
-- Les consignes du catalogue : la mesure D3 (31 jeux sur deux lignes avec le flottant) est celle de `edf7f344` ; sur cette branche, **la consigne est celle de `round-two`** (13 jeux sur deux lignes sans le flottant, que `nadia-prof` ne compte pas contre `b383b0bb`). Je ne l'ai pas rejouee ici.
+- Les consignes du catalogue : la mesure D3 (31 jeux sur deux lignes avec le flottant) est celle de `edf7f344` ; sur cette branche, **la consigne est celle de `round-two`** (13 jeux sur deux lignes sans le flottant, que `nadia-prof` ne compte pas contre `5302af53`). Je ne l'ai pas rejouee ici.
 - Une erreur forcee sur chacun des 152 jeux de proposition ; la regle `PL-11` sur les ecrans a bloc adulte, a deux oeuvres, de saisie et de designation (l'en-tete y est plus mince aussi).
 
 ## E7. Isolation
