@@ -265,3 +265,39 @@ retire *"et les coupures"* de ce que je lui attribue ; le reste du fichier n'est
    d'union ; ses reserves sont celles du pli. La correction de V6 de la section 2 tient pour le pli, dont la source
    est l'utilisatrice ; pour les coupures, elle tient par la decision du point 1.
 3. **Aucune reponse de l'utilisatrice n'est necessaire.**
+
+## `-07`, rejeu texte masque des items 5, 9, 17 (2026-10-21, `nadia-prof`)
+
+- **Lu** : `git diff 8407f73f ac986aca` sur `ce1-texte-documentaire.yaml` (branche `s57-marc-doc-p3`, non fusionnee) : seuls
+  les items 5, 9 et 17 changent. Genres comptes sur `ac986aca` : **11 documentaires, 9 consignes** (et non 9 et 11 comme le
+  disait le message de relance) ; `DOC-CE1-1` tient. Les 17 autres items : etat masque du releve d'`ines-design`, juges en
+  section 4.2, inchanges.
+- **Audit degrade, declare** : ces trois items ne sont pas joues a l'ecran ; je les juge sur le fichier, en lisant l'enonce et
+  les trois propositions sans le texte.
+
+| Item | Sans le texte | Tient ? | Le reste |
+|---|---|---|---|
+| 5 *"Avec quoi fabrique-t-on le verre ?"* (*"du sable"* ; *"du bois"*, *"de la laine"*) | le verre fait de sable n'est pas une culture de CE1, et le sable n'a rien de transparent : aucune des trois ne s'impose, le texte departage | oui | fait exact ; trois matieres dans le texte (`DOC-CE1-2`) ; l'indice nomme le mot de la question |
+| 9 *"Comment dort le cheval ?"* (*"debout"* ; *"en boule"*, *"la tête en bas"*) | *"la tête en bas"* s'ecarte pour un cheval ; *"en boule"* reste vraisemblable pour qui n'a pas vu un cheval dormir, comme *"sous la terre"* en 2 | oui | *"Le cheval dort debout"* est la generalisation des documentaires pour enfants (il se couche aussi pour le sommeil profond) : je l'accepte au meme titre que *"Le pull se fabrique avec de la laine"* (lecture du 2026-10-20, section 2) |
+| 17 *"Que faut-il faire juste après avoir cassé les œufs ?"* (*"Ajoute du sucre"* ; *"Mélange bien"*, *"Casse deux œufs"*) | *"Casse deux œufs"* s'ecarte ; on peut melanger les oeufs avant ou apres le sucre : deux restent vraisemblables, la consigne departage | oui | detail que seule la consigne fixe, la barre de 4.4 |
+
+**L'ecart de l'item 9 (le cheval au lieu de la chauve-souris) : accepte.** J'ai ecrit *"garder l'etre (`DOC-CE1-3`)"* ; ce que
+`DOC-CE1-3` protege, c'est un etre qu'un enfant de CE1 connait ou se represente sans image, et le cheval l'est. J'avais
+moi-meme renonce a proposer un exemple sur la chauve-souris, pour le motif que donne `marc-dev` (des distracteurs vrais). La
+chauve-souris reste dans le texte, comme distracteur. Ce n'est pas un abaissement de ma barre : c'est son motif, tenu.
+
+`TRV-CE1-2` (longueur) : la bonne reponse est strictement la plus longue dans 5 items sur 20, comme avant ; aucun des trois
+items neufs n'en est.
+
+**Verdict : pas encore prononce. Il depend de l'ecran, pour un seul motif.** Le jeu texte masque est tenu sur les 20 items.
+Mais ma condition 4.1 point 5 (*"chaque bonne reponse et chaque distracteur relus a l'ecran"*) et le point 6 (audite sur le
+commit joue) ne sont pas tenus pour ces trois items : je les ai exiges des quatre autres lots, je ne m'en dispense pas ici.
+Aucun refus : il ne reste aucun motif de contenu.
+
+**A demander a `ines-design`** : sur le jar construit a `ac986aca` (ou sur `round-two` apres sa fusion), le releve des items 5,
+9 et 17 de `-07` dans la forme de sa section A : texte DOM des etats V, E et R, et une capture a 744 x 551 de l'arrivee, de
+l'erreur et de la revelation. Des qu'il montre le texte du fichier rendu tel quel, je prononce le Done de `-07` et j'ouvre sa
+fiche ; le pli et les coupures de ligne, s'il y en a, sont des reserves non bloquantes (section 4.1 point 4 ; rectification
+ci-dessus).
+
+**Signe** : `nadia-prof`, s57, palier 3, 2026-10-21.
