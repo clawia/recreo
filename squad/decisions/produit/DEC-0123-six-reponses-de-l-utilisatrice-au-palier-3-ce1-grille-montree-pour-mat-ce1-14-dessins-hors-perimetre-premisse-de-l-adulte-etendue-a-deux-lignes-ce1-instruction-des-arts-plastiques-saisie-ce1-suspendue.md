@@ -182,3 +182,7 @@ La matrice (148 / 200) ; `planning.md` ; `composition-palier-3.md` ; `DEC-0120` 
 ## Amendement du 2026-10-21 (`camille-po`, `DEC-0124`) - la suspension de `Q-09` est levee
 
 L'utilisatrice a repondu a `Q-09` (mots relayes, non lus de sa main) : *"Q9 il n'y aura pas de correction automatique du clavier"*. C'est la lecture (b) de la section 7.3 : le produit demande au clavier de ne pas corriger ; `DEC-0047` section 2 est remplacee en partie. **La condition posee a `theo-archi` en 7.4 (*"seulement si une neutralisation est voulue"*) est remplie.** Les avis de `nadia-prof` (`R6`) et de `theo-archi` (mesure sur les deux appareils) ne sont pas rendus : ils sont demandes, voir `DEC-0124` sections 3 a 6. Les sections 7.5 et 8 (ligne `R6`) sont inchangees dans ce qu'elles disent des lignes : aucune cellule ne bouge. Le statut de `Q-09` n'est plus *"suspendue"* mais *"repondue, avis en cours"*. Aucun autre fichier n'est modifie par cet amendement.
+
+## Amendement du 2026-10-21, second (`camille-po`, `DEC-0124`) - `R6` est leve
+
+La section 7.3 laissait `Q-09` suspendue a l'avis de `nadia-prof` sur `R6`. Cet avis est rendu : `R6` est leve par l'arbitrage de l'utilisatrice, avec une reserve non bloquante (`DEC-0124`, amendement du 2026-10-21 ; `arbitrage-nadia-q05-q10.md`, section 8). Les sections 7.5 et 8 de la presente DEC ne bougent pas, aucune ligne ne change de statut, la matrice reste a 152 / 200.

@@ -110,3 +110,15 @@ Consequences pour le produit :
 - `ADR-0058` n'est pas amendee par moi : c'est `theo-archi`.
 - Les refus `R1` a `R5` et la regle de l'adulte (`DEC-0123` section 5.2, borne aux deux lignes de CE1 et aux lignes de CP ou la voix est la competence) : inchanges.
 - **Aucun identifiant de condition ou de critere du type `XX-n` n'est alloue** : tous ceux qui sont cites existent deja. Les deux identifiants neufs sont ce numero de DEC (`DEC-0124`, derniere en date `DEC-0123`) et le nom de story `S57-SAISIE-CLAVIER-SANS-CORRECTION`, sans suffixe numerique.
+
+## Amendement du 2026-10-21 (`camille-po`, s57) - `R6` est leve par l'arbitrage de l'utilisatrice
+
+**Mots de l'utilisatrice**, relayes par l'agent lanceur, non lus de sa main : *"a toujours a oui et b a non sur tablette uniquement, pour moi c'est bon R6 peut etre leve"*.
+
+**Faits** (`squad/sprints/s57-version-cp-ce1-cm1-trois-instances/arbitrage-nadia-q05-q10.md`, sections 7.5 et 8.1) : la verification porte sur la tablette seule ; l'ordinateur n'est pas mesure ; le jar joue n'est pas identifie ; (a) oui, le champ n'est pas corrige ; (b) non, des mots sont proposes au-dessus du clavier.
+
+**Ce que `nadia-prof` en a fait** (section 8, commit `b5dd1d4c`) : `R6` est leve, sur la decision de l'utilisatrice, qu'elle lit telle quelle. Elle nomme une reserve, **non bloquante**, datee du 2026-10-21, mot pour mot : *"sur la tablette, des mots sont proposes au-dessus du clavier ; un enfant qui en touche un n'a pas ecrit le mot"*. Elle exige que la cellule de matrice la porte pour `FRA-CE1-21`, `FRA-CE1-29` et `LVE-CM1-06`, et pour `FRA-CP-09` (8.4) ; l'omission de s45 5.3 est fermee et le Done de s26 tient sans rejeu de contenu.
+
+**Effet** : les sections 3 a 6 qui attendaient l'avis de `nadia-prof` sur `R6` sont rendues. `Q-09` n'est plus *"repondue, avis en cours"* : elle est close. La reserve est reprise dans les quatre cellules de `squad/programme/MATRICE-couverture.md`. **Aucun statut ne change** : `FRA-CP-09` reste `couvert-valide`, les trois autres lignes gardent leur statut et leur plafond. Compteurs inchanges, 152 / 200.
+
+**Ce que cet amendement ne fait pas** : il ne leve pas la limite ecrite par `nadia-prof` (l'ordinateur n'est pas mesure) ; il n'ouvre aucune story ; il ne demande pas la suppression des mots proposes, question qui releve de `theo-archi`. `DEC-0124` reste `Acceptee`.
