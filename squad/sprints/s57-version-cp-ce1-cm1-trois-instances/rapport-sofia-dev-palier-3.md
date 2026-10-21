@@ -319,3 +319,38 @@ Limite de la porte : la CI distante n'a pas juge, rien n'est pousse. Les jobs so
 Ecart a 2854 (section 13) : 0, comme attendu. Aucun test ajoute ni retire, la fusion ne change que des donnees YAML et un fichier de `squad/`. Les chiffres sont la somme de mon propre log de verify.
 
 **Decisions** : aucune `ADR` ni `DEC` creee ou modifiee par cette fusion. **Obstacles** : aucun nouveau. **Non fait** : `s57-ines-p3-pli` reste non fusionnee (commit refuse, decision a l'utilisatrice).
+
+## 15. Fusion de s57-ines-r2, porte technique de `cb18ebfa` (casquette Scrum Master)
+
+**Fusion** (`--no-ff`, sans rebase, reset, force ni push) :
+
+| Branche | Sommet | Fusion | Perimetre verifie par `git diff --stat round-two...s57-ines-r2` |
+|---|---|---|---|
+| `s57-ines-r2` | `89f4afeb` | `cb18ebfa` | un seul fichier : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/releve-ecran-ines-palier-3.md`, 150 insertions (releve a l'ecran des items 5, 9 et 17 de `ce1-texte-documentaire`) |
+
+`round-two` etait a `cb4d81d0` (matrice a 152 sur 200, commitee en `[CAM]`) avant fusion, `git status` vide. Aucun fichier de test ni de contenu touche.
+
+Sommet de `round-two` teste : `cb18ebfa`. Worktree detache cree par `git worktree add --detach`, `git status` vide avant lancement, `HEAD` et `git status` verifies identiques apres les deux builds.
+
+| Job de `ci.yml` | Etapes lancees | Resultat |
+|---|---|---|
+| `prefixes` | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `commit-atteignable.sh`, `verifier-prefixes.sh` sur `--no-merges` de `cb4d81d0..HEAD`, `verifier-garde-fou-accent-test.sh`, `verifier-garde-fou-accent.sh` sur `cb4d81d0..HEAD` | tous 0 (0 commit touche le garde-fou de l'accent) |
+| `chemins` | `verifier-chemins-test.sh`, `verifier-chemins.sh` sur `git ls-files` | 0 et 0 |
+| `outils` | 6 `outils/*-test.sh`, 2 `squad/outils/*/*-test.sh`, 5 `outils/*-test.py` | 13 juges, 0 echec |
+| `build`, verify | `bash outils/mvn-jdk21.sh -B clean verify`, racine | `BUILD SUCCESS`, six modules `SUCCESS`, 11 min 55 s |
+| `build`, package | `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package` | `BUILD SUCCESS`, 9 min 44 s, `bootstrap/target/recreo.jar` produit (21,5 Mo) |
+
+Limite de la porte : la CI distante n'a pas juge, rien n'est pousse. Les jobs sont ceux du workflow rejoues en local, `prefixes` sur la plage `cb4d81d0..HEAD` et non sur une base de push reelle.
+
+| Module | Tests |
+|---|---|
+| `domain` | 120 |
+| `application` | 31 |
+| `adapter-web` | 522 |
+| `adapter-content` | 1794 |
+| `bootstrap` | 381 (surefire) + 6 (failsafe) = 387 |
+| Total | **2854** |
+
+Ecart a 2854 (section 14) : 0, comme attendu. La fusion n'ajoute qu'un fichier de `squad/`. Les chiffres sont la somme de mon propre log de verify.
+
+**Decisions** : aucune `ADR` ni `DEC` creee ou modifiee par cette fusion. **Obstacles** : aucun nouveau. **Non fait** : `s57-ines-p3-pli` reste non fusionnee. `review.md` et `retro.md` de s57 ne sont pas encore ecrits.
