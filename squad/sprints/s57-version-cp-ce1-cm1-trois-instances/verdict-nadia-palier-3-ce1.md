@@ -301,3 +301,23 @@ fiche ; le pli et les coupures de ligne, s'il y en a, sont des reserves non bloq
 ci-dessus).
 
 **Signe** : `nadia-prof`, s57, palier 3, 2026-10-21.
+
+## `-07`, verdict apres le releve d'ecran des items 5, 9, 17 (2026-10-21, `nadia-prof`) : VALIDE
+
+- **Lu** : `releve-ecran-ines-palier-3.md`, sections I a L (branche `s57-ines-r2`, commit `89f4afeb`), jar de `round-two` a
+  `ea5d9429`. Le YAML de `ea5d9429` et celui de `ac986aca` ont le meme blob (`5f3e6c95`, `git rev-parse`) : ce que j'ai juge
+  sur le fichier est ce qui est servi. Captures lues : `07-i05-r2-masque-arrivee-744`, `07-i09-r2-masque-arrivee-744`,
+  `07-i09-r2-erreur-744`, `07-i17-r2-masque-arrivee-744`, `07-i17-r2-erreur-744`, `07-i17-r2-revelation-744`.
+- **Ma condition 4.1 point 5 est tenue pour ces trois items** : enonce, texte-support, bonne reponse, distracteurs et indice
+  rendus egaux au fichier, caractere par caractere (15 comparaisons sur 15), dans les six ordres. Point 6 tenu : audite sur
+  le commit servi.
+- **Texte masque, a l'ecran** : ce que j'avais juge sur le fichier se confirme (section precedente) ; les 20 items tiennent.
+- **Apres une erreur** : indice entier au-dessus du pli pour les trois items (bas a 402, 402, 478). **A la revelation** :
+  reponse attendue entiere (bas a 434, 434, 510). L'enonce de 17 passe sur deux lignes, sans mot coupe. L'indice de 17 a la
+  revelation finit a 564 : je n'exige rien sur l'indice a la revelation (`veto-nadia-gabarit-pli.md`, section 4).
+
+**Verdict : VALIDE, Done pedagogique prononce, aucune reserve.** Le refus du 2026-10-21 (section 4) reste ecrit ; il est leve
+par la correction d'`afd33e88`. `camille-po` peut passer `FRA-CE1-07` a `couvert-valide`. Fiche ouverte :
+`squad/conformite/FICHE-bandit-manchot-texte-documentaire-ce1.md`.
+
+**Signe** : `nadia-prof`, s57, palier 3, 2026-10-21.
