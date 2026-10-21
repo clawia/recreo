@@ -307,3 +307,51 @@ La grille est un dessin au sens du cliquet de poids (69 203 octets, 56 fichiers,
 ### Ce que ce fichier ne fait pas, dans cet amendement
 
 N'ecrit ni la composition ni un amendement de `planning.md`, n'engage aucun poste, ne fixe aucun prix, ne touche pas la matrice (`MAT-CE1-14` reste `non couvert`, aucune cellule ne change). Non commite, aucun `mvn`.
+
+
+## Amendement du 2026-10-21 (`camille-po`) - etat definitif de la composition proposee du palier 4
+
+**Rien au-dessus n'est reecrit.** Les sections 3, 5, 5bis et 8 restent exactes a leur date ; ce qui suit les remplace pour l'engagement. Mots de l'utilisatrice (forme 2, `DEC-0062` G, cites avec leur date) : *"LP9 oui on peut augmenter le poids des dessins / QP3 plafond accepté / composition de palier 4 OK / pousse après tout ça"*. Decision et detail : `DEC-0120` A.145 a A.152. Arbre : `round-two` a `fedaf20f`. **Ce fichier n'est ni `composition-palier-4.md` ni un amendement de `planning.md`** : `sofia-sm` les ecrit apres lui. Aucun prix n'est fixe par moi, ceux de `nadia-prof` (`arbitrage-nadia-palier-4.md` sections 1 a 8) sont repris.
+
+### 11. Composition proposee, etat definitif
+
+| Instance | Developpeur | Lots | Prix des lots | Arbitrage + marge | Total | `PAR-8` (5,0 et 3 lots) |
+|---|---|---|---|---|---|---|
+| A, francais CE1 | `marc-dev` | `LP1` `FRA-CE1-21` | 1,0 | 0,5 + 0,5 | **2,0** | 2,0 et 1 lot : tenu |
+| B, mathematiques CE1 | `lea-dev` | `LP2` `MAT-CE1-10`, `LP3` `MAT-CE1-11`, `LP9` `MAT-CE1-14` | 1,0 + 1,0 + 1,5 | 0,5 + 0,5 | **4,5** | 4,5 et 3 lots : tenu, au plafond de lots |
+| A', EMC | `sofia-sm` | `LP4` `EMC-CE1-02`, `LP5` `EMC-CE1-03`, `LP6` `EMC-CE1-04` | 1,0 x 3 | 0,5 + 0,5 | **4,0** | 4,0 et 3 lots : tenu, au plafond de lots |
+| C | aucun | aucun lot recevable | 0 | n'ouvre pas | 0 | sans objet |
+| **Palier** | | **7 lots, 7,5** | | **3,0** | **10,5** | |
+
+Arithmetique, treize lignes `instance|poste|prix|etat` (`A|arbitrage prealable|0.50|engage`, `A|marge de rejeu|0.50|marge`, `A|FRA-CE1-21 lot|1.00|engage`, puis B et Ap sur le meme modele, `B|MAT-CE1-14 lot|1.50|engage`, `Ap|EMC-CE1-04 lot|1.00|engage`), `awk -F'|'` de la section 5, sortie lue : `A 2.00`, `Ap 4.00`, `B 4.50`, `total 10.50`, `engage 9.00`, `marge 1.50`, 7 lots. **Total engage : 9,0 (repli de 8,0 plus `LP6`) plus `LP9` 1,5 = 10,5**, dont 1,5 de marge, 0,5 par instance, allouee a aucun lot. Au-dessus de 8,0, c'est la decision de l'utilisatrice, ecrite comme telle par `nadia-prof` (8.4).
+
+**Ordre** (produit ; l'ordre de fusion est a `sofia-sm`) : mathematiques, francais, EMC (`DEC-0120` A.35). B : `LP2`, `LP3`, puis `LP9` en dernier, qui ne bloque aucun lot. A' : `LP4`, `LP5`, puis `LP6`.
+
+**Conditionnel, du plus sur au moins sur** :
+1. `LP6` : ne part qu'apres un verdict `LP4` ou `LP5` sans refus (`nadia-prof` 3.3). Sinon 9,5 et un deuxieme ecartement.
+2. `LP1` : subordonne a mon amendement de `S57-BR-FRA-CE1-21` (24 enonces, `QP1`), **non fait**. Sinon A n'ouvre pas : 8,5.
+3. `LP9` : conditions de `DEC-0120` A.149 (arbitrage prealable de `nadia-prof`, glyphes et mesure d'`ines-design` avant l'ecriture du paquet, 20 SVG et test croise de `theo-archi`, constante de poids dans le commit des dessins). Sinon 9,0 et un deuxieme ecartement.
+
+Plancher : 8,0, le repli de `nadia-prof`. **Conflit sur `POIDS_TOTAL_MAXIMUM`** : aucun lot du palier 4 autre que `LP9` n'installe de dessin ; si un autre le faisait, `LP9` fusionne en premier et le second recalcule la constante sur l'arbre fusionne (`DEC-0120` A.149).
+
+**Mise a jour des lignes de la section 3** : `LP9` n'est plus *"non pret"* au sens de la section 3 : **engageable sous conditions**, forme (a), 1,5, B, `lea-dev`. `LP2` a `LP5` : developpeurs designes (`QP6`). `LP7`, `LP8` : non engages.
+
+### 12. Reports, comptes
+
+| Poste | Etat |
+|---|---|
+| `LP1` a `LP5` | premier ecartement du palier 3, **soldes** par l'engagement |
+| `LP6`, `LP9` | premier ecartement du palier 3, soldes par l'engagement ; **deuxieme** s'ils ne partent pas ; un troisieme demande une `DEC` avec son motif |
+| `LP7` | **deuxieme ecartement, ecrit** : B au plafond de trois lots avec `LP9`, un seul illustre par palier, dessin neuf non route, paquet a reecrire. Un troisieme au palier 5 demande une `DEC` |
+| `LP8` | **deuxieme ecartement, ecrit** : cousinage juge, mais aucune story, `marc-dev` porte `LP1`. Premier de la file du palier 5. Un troisieme demande une `DEC` |
+| trois stories hors `PAR` (section 6) | deuxieme ecartement ; **une troisieme non-entree est la direction que personne n'a choisie** : `S57-GARDE-NOMBRE-DE-MANCHES` est prete, proposee hors `PAR`, prix 0 ; les deux autres attendent `Q-T12` et une mesure ; une `DEC` avec le motif s'ecrit si elles n'entrent pas a l'ouverture |
+| `E5` | ferme (`DEC-0062` G) |
+
+### 13. Ce qui reste ouvert
+
+1. Mon amendement de `S57-BR-FRA-CE1-21` (condition de `LP1`).
+2. **Taille de la grille** (4 x 4, 5 x 5, 6 x 6) et nombre d'items de `LP9` : **`nadia-prof` et moi, pas l'utilisatrice**. Poids de +66 %, +77 %, +88 % (`avis-theo-palier-4.md` 7.4) : dans la fourchette qu'elle a acceptee ; a 176 px, 6 x 6 donne des etiquettes de 14 px, au minimum d'`ines-design`. La mesure d'`ines-design` departage ; le choix est a `nadia-prof`.
+3. `PAR-9` (egalite ou plafond a 10,5 sur 20,0), a `nadia-prof`. `QP7` a la cloture du palier 5. `QP8` non posee.
+4. A `sofia-sm` : `composition-palier-4.md`, l'amendement de `planning.md`, la table d'isolation, la file de fusion (sept lots : `verify` 1 h 19 a 1 h 29 et job `build` 2 h 25 a 2 h 41, **calcules, non mesures**), puis la poussee demandee par l'utilisatrice.
+
+Aucun identifiant de condition neuf : `LP1` a `LP9` et `QP1` a `QP8` n'ont pas de tiret. Non commite, aucun `mvn`.

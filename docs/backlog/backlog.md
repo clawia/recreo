@@ -23732,3 +23732,31 @@ Ce qui change dans la story (les lignes sont reecrites a leur place, ce paragrap
 | Critere 14, neuf | - | refus ecrits d'avance de `nadia-prof` (1.3, point 8), ses mots |
 
 **Ce qui n'est plus a faire** : la mesure de 36 zones par item a 744 x 551 (`avis-theo-palier-4.md` 2.3) ne s'applique plus ; elle visait la forme (b). **Ce qui reste** : la mesure des etiquettes d'un 6 x 6 (17,8 px a 296, non mesuree), le complement de `theo-archi` pour la forme (a), la reponse a la question de `DEC-0120` A.143 (cliquet de poids), la question a `nadia-prof` sur le critere 3. **Le motif du choix de forme** (amendement F de `DEC-0062`) devient sans objet : il n'y a plus de choix de forme, l'utilisatrice l'a fait. **Non engagee, sans palier.** Non commite.
+
+### `S57-BR-MAT-CE1-14-GRILLE` : poids et plafond acceptes, chiffres corriges, criteres neufs (`LP9`, 2026-10-21)
+
+**Rien au-dessus n'est reecrit.** Les mots, cites avec leur date par l'agent lanceur (forme 2, `DEC-0062` G) : *"LP9 oui on peut augmenter le poids des dessins / QP3 plafond accepté / composition de palier 4 OK / pousse après tout ça"*. Decision : `DEC-0120` A.145 a A.152 ; `DEC-0123` septieme amendement.
+
+- **Etat** : **engageable sous conditions, pas engagee.** Dans la composition proposee du palier 4 au prix indicatif de 1,5, instance B, `lea-dev` (`DEC-0120` A.148). Le lot ne s'ouvre que lorsque les conditions de `nadia-prof`, d'`ines-design` et de `theo-archi` sont ecrites (`DEC-0120` A.149). Premier ecartement du palier 3 : solde si elle est engagee, **deuxieme sinon**.
+- **Poids** : l'utilisatrice accepte que le poids total monte pour cette ligne seule. Le critere 6 *"cliquet de poids"* est donc tenu pour acquis quant au principe : il reste la mise a jour de la constante, dans le commit qui ajoute les dessins, sur la valeur mesuree. Borne du oui : total d'au plus 161 863 octets (`DEC-0120` A.146).
+- **Plafond** : `en cours`, accepte. Aucun critere ne vise `couvert-valide`.
+- **Taille de grille et nombre d'items** : **ouverts, a `nadia-prof` et a moi** (pas a l'utilisatrice). Le critere 1 garde *"4 a 6 cases par cote"* tant qu'elle n'a pas choisi ; le choix s'ecrit ici, par une annotation datee, apres la mesure d'`ines-design`.
+- **Regle d'ordre sur `POIDS_TOTAL_MAXIMUM`** si un autre lot installe des dessins dans le meme palier : `DEC-0120` A.149. Aucun lot du palier 4 n'en installe d'autre.
+
+**Chiffres corriges** (les textes d'origine ne sont pas reecrits, la colonne de droite fait foi) :
+
+| Ou | Ce qui etait ecrit | Ce qu'il faut lire |
+|---|---|---|
+| Critere 6, et l'annotation du 2026-10-21 (*"17,8 px a 296"*) | etiquettes de 17,8 px a 296 px | **ne vaut pas pour la forme (a)** : un item `question` illustre rend a 176 px (`avis-theo-palier-4.md` 7.1). A 176 px, cases de 25,2 px (6 x 6), 30,3 px (5 x 5), 37,8 px (4 x 4) ; glyphe de 14,1 px a 6 x 6, **au minimum d'`ines-design`** (calcul, non mesure) |
+| `DEC-0120` A.142 : *"complement de `theo-archi`"* | a faire | **rendu** (`avis-theo-palier-4.md` 7) : un seul paquet (tous les items sont `type: question`), `ADR-0080` non amende, 20 dessins de gabarit connu, poids mesure sur prototype |
+| `DEC-0120` (*"`MAT-CE1-14` reste conditionnee a `A3` d'`ADR-0080`"*) | prealable | **ne vaut plus pour la forme (a)** : `A3` n'est pas un prealable (`avis-theo-palier-4.md` 2.4, 7.5). Les cinq `symetrie-grille-*.svg` ne sont pas reutilisables (trait de 0,7, 352 px) |
+
+**Criteres neufs 15 a 19**, chacun avec sa valeur aujourd'hui, a `fedaf20f` :
+
+15. **Un dessin par item, sous le bon nom.** `git ls-files adapters/adapter-web/src/main/resources/static/illustrations | grep -c 'quadrillage-'` rend **0** aujourd'hui (rouge) ; apres le lot, autant que d'items du paquet (20 si le paquet garde 20 items), `quadrillage-a` a `quadrillage-t`. Chaque item du paquet porte une `illustration` qui resout vers l'un d'eux : `grep -c 'illustration:'` sur `ce1-deplacements-quadrillage.yaml` rend **0** aujourd'hui (rouge), autant que d'items apres.
+16. **Le poids bouge avec les octets, et dans la borne.** La somme des octets en LF du repertoire est egale a `POIDS_TOTAL_MAXIMUM` : **egale aujourd'hui (69 203 et 69 203, 56 fichiers)**, ce qui est deja garde par le test existant ; **ce qui est neuf est la borne** : apres le lot, la somme est **au plus 161 863** (aujourd'hui 69 203, la hausse est de 0) et la constante a change **dans le commit qui ajoute les fichiers** (`git diff-tree --no-commit-id --name-only -r <commit>` nomme les fichiers de `quadrillage-` et celui du test de poids).
+17. **Le dessin dit ce que l'item dit.** Un test de `bootstrap`, forme et nom a `theo-archi`, croise chaque dessin avec son item. Il n'existe pas aujourd'hui (rouge). Il porte au moins trois morsures sur les 20 dessins reels, mutes en memoire, chacune le rend rouge : une marque deplacee d'une case, un axe inverse, une grille de 7 x 7. Ses proprietes sont celles de `avis-theo-palier-4.md` 7.5 (depart marque, arrivee calculee egale a `bonneReponse`, distracteurs dans la grille, colonnes de A vers la droite, ligne 1 la plus basse).
+18. **L'etiquette se lit.** Avant l'ecriture du paquet, `ines-design` rend un candidat de la taille choisie a 176 px, a 744 x 551 et a 320 px, et releve la hauteur de l'encre d'un glyphe : **au moins 14 px**. Aucun releve n'existe aujourd'hui (rouge). Le resultat est un fichier date, lu par `nadia-prof` avec son verdict.
+19. **Deux gardes deja verts, ecrits pour qu'on ne les defasse pas.** Aucun `<text` ni `<tspan` dans les dessins (garde existant de `LIllustrationDeContenuResoutEtAucuneNeDortTest`, vert aujourd'hui, vide faute de fichier) ; **aucun `quadrillage-` dans `DESSINS_DE_DESIGNATION`** (`grep -c` sur la liste rend 0 aujourd'hui, et le doit apres : y figurer declarerait une designation qui n'existe pas). Ce ne sont pas des criteres correctifs : ils ne rougissent aujourd'hui sur rien.
+
+**Ce que la story ne dit pas** : l'exactitude des 20 dessins aux yeux de l'enfant, la lisibilite des glyphes (`nadia-prof` et `ines-design` seules), *"par sa coordonnee seule"* (question de `nadia-prof`, ouverte). **Taille du lot** : **M** pour `theo-archi` (le test croise), non plus S. **Non commite.**

@@ -245,3 +245,13 @@ La section 7.3 laissait `Q-09` suspendue a l'avis de `nadia-prof` sur `R6`. Cet 
 **Ce que cette lecture ne dit pas, et que 3.2 (revers) annoncait** : la grille dessinee est un dessin au sens du poids, pas au sens de la liste des cinq lignes de `Q-06`. **La tension et la question qui en resulte sont ecrites a `DEC-0120` A.143**, pas ici. `Q-06` n'est pas modifiee : sa condition de retour (une nouvelle reponse) vaut pour les cinq lignes, pas pour `MAT-CE1-14`.
 
 **`Q-05` reste `Acceptee`.** Aucune ligne de matrice ne bouge. Story : `S57-BR-MAT-CE1-14-GRILLE`, reecrite, non engagee. Detail : `DEC-0120` A.141 a A.144.
+
+
+## Amendement du 2026-10-21, septieme (`camille-po`, `Q-05` et `Q-06` : le poids des dessins pour `MAT-CE1-14` seule)
+
+**Aucun texte d'origine n'est reecrit.** Statut de `DEC-0123` : `Acceptee`, inchange. Les mots, cites par l'agent lanceur avec leur date (forme 2, `DEC-0062` G) : *"LP9 oui on peut augmenter le poids des dessins / QP3 plafond accepté / composition de palier 4 OK / pousse après tout ça"*. Detail et conditions : `DEC-0120` A.145 a A.152.
+
+- **3.2, point 1 et son revers** (*"terrain neuf, poids plein, aucun prix"* ; *"la grille de `Q-05` est elle-meme un dessin ; le cliquet plein [...] lui est opposable"*). **Pour `MAT-CE1-14`, le poids n'est plus un motif contre la ligne** : l'utilisatrice accepte que le poids total monte pour cette ligne seule (la question de `DEC-0120` A.143). Hausse mesuree par `theo-archi` : +66 % a +88 % selon la taille, dans la fourchette qu'on lui avait soumise. **Borne du oui** : au-dela de 92 660 octets ajoutes (total superieur a 161 863), la question se repose.
+- **`Q-05`** reste `Acceptee`. Le plafond `en cours` de la forme (a) est accepte par ses mots (*"QP3 plafond accepté"*) ; la ligne ne passe pas a `couvert-valide` sur cette forme ; la forme (b) reste retiree.
+- **`Q-06` n'est pas modifiee.** Ses cinq lignes (`QLM-CE1-09`, `QLM-CE1-11`, la moitie dessinee de `QLM-CE1-07`, `MAT-CE1-02`, `MAT-CE1-09`) restent hors perimetre : *"Un oui n'ouvre pas les cinq autres lignes"*. Le motif du poids n'est ni leve ni reaffirme pour elles, il n'a pas ete repose. **3.3** (le report des dessins est une direction qu'elle a choisie) tient. Tout autre dessin, dont le second triangle rectangle de `MAT-CE1-15`, demande sa propre reponse.
+- **Aucune cellule de matrice ne bouge** : `MAT-CE1-14` reste `non couvert`. Le changement de code que `Q-05` appelle (20 dessins, test croise, constante de poids) a un proprietaire, `lea-dev` (B), par la composition du palier 4 (`DEC-0120` A.148, A.152) ; il n'est applique que par l'engagement de la story.
