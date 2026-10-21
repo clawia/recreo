@@ -242,3 +242,17 @@ Worktree detache propre a `d3fce602`, `git status` vide avant lancement, `HEAD` 
 Attendu : 2848 (section 10) + 4 = 2852. L'ecart vient du seul commit `19aa6c98` : le diff de ses fichiers Java ajoute 4 methodes `@Test` a `LaPileDePolicesServieNeChangePasEnSilenceTest` et n'en retire aucune. `adapter-web` passe de 516 a 520, les autres modules ne bougent pas. Le total correspond. Les commits de lea et de marc ne touchent aucun test en nombre (une chaine modifiee dans un test pour lea, un YAML pour marc). Le "+ 8" de la consigne etait deja compris dans les 2848 : c'est le delta de la section 8. Les chiffres sont la somme de mon propre log de verify.
 
 **Decisions** : aucune `ADR` ni `DEC` creee ou modifiee par cette fusion. `19aa6c98` porte l'amendement d'`ADR-0054` par `theo-archi`, deja inscrit dans l'index des `ADR` ; je ne l'ai pas modifie. **Obstacles** : aucun nouveau. **Non fait** : la CI distante n'a pas juge, rien pousse ; `s57-ines-p3-pli` reste a fusionner apres le veto de `nadia-prof`.
+
+## 12. Fusion de s57-ines-p3-b383 (casquette Scrum Master)
+
+Fusion `--no-ff` de `s57-ines-p3-b383` (`41578ff7`) dans `round-two` : `edb2ed8a`. Sommet avant fusion `859cf327`, arbre propre, branche coupee sur `859cf327`. Contenu : le cherry-pick `5302af53` d'`ines-design` (en-tete a 66 px, interligne de l'enonce et des propositions a 1,25) et sa mesure `41578ff7`.
+
+Perimetre verifie par `git diff --name-only round-two...s57-ines-p3-b383` : `recreo.css`, `LaFormeCommuneDesPropositionsLonguesEstEpingleeTest.java`, deux contre-exemples de ce test sous `adapters/adapter-web/src/test/resources/contreexemple/` (`entete-change`, `interligne-change`) et `mesure-ines-palier-3-pli-744x551.md`. Les deux contre-exemples n'etaient pas nommes dans la consigne : ils sont les fixtures du test de forme, je les ai juges inclus.
+
+`s57-ines-p3-pli` (`edf7f344`, refuse par `nadia-prof`) n'est pas fusionnee ; son worktree et sa branche sont conserves.
+
+Mesure du registre : `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`. Resultat : `Tests run: 10, Failures: 1, Errors: 0, Skipped: 0`, `BUILD FAILURE`. L'echec est `leDepotReelEstCoherent` : `mesure-ines-palier-3-pli-744x551.md` ecrit PL-11, PL-12 et PL-13, que `REGISTRE-identifiants.md` n'alloue pas. C'est l'etat attendu. Aucun `verify` complet n'a ete lance : la porte technique reste a mesurer apres l'allocation par `theo-archi`.
+
+**Decisions** : aucune `ADR` ni `DEC` creee ou modifiee par cette fusion. **Obstacle ouvert** : allocation de PL-11, PL-12, PL-13, a router vers `theo-archi` (`ADR` attendu sur le disque avant de le clore). **Constat** : `veto-nadia-gabarit-pli.md` est apparu modifie et non commite dans le depot principal pendant la fusion ; je ne l'ai pas commite.
+
+Worktree `../recreo-ines-p3-b383` supprime (statut vide) et branche supprimee par `git branch -d`.
