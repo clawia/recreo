@@ -105,7 +105,7 @@ items:
     indice: "Les objets du texte te disent où l'on est."
   # cause ; a, b
   - enonce: "Pourquoi Inès ouvre-t-elle son parapluie au-dessus de lui ?"
-    texteSupport: "Ce matin, Inès part à l'école avec son frère. Il se met à pleuvoir. Inès ouvre son parapluie au-dessus de lui. Ils arrivent tout secs."
+    texteSupport: "Ce matin, Inès part à l'école avec son frère. La pluie se met à tomber. Inès ouvre son parapluie au-dessus de lui. Ils arrivent tout secs."
     bonneReponse: "pour qu'il ne soit pas mouillé"
     distracteurs: ["pour aller à l'école", "parce qu'il fait nuit"]
     indice: "Demande-toi ce qui se passe juste avant."
