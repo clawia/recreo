@@ -163,3 +163,22 @@ Les jobs `prefixes`, `chemins` et `outils` ont ete joues dans l'arbre principal,
 Attendu : 2840 + 8 = 2848. Le total correspond. L'ecart avec les 2847 mesures par `theo-archi` est de +1 et il vient de sa base : `5ee20db7` ne contient pas `bb23e556` (le test ajoute a `PaquetCe1EmcBiensCommunsTest`), donc 2839 + 8 = 2847 sur son arbre. Le delta de `adapter-web` (508 a 516) est de 8, `adapter-content` ne bouge pas. Les 8 methodes de test du fichier sont comptees par annotation ; les chiffres sont la somme de mon propre log.
 
 **Decisions** : aucune `ADR` ni `DEC` creee par cette fusion. `ADR-0054` est amendee par `theo-archi` dans la branche fusionnee (statut inchange par moi). **Obstacle ouvert** : inchange, allocation `PL-1` a `PL-8` (route : `theo-archi`). **Non fait** : la CI distante n'a pas juge ; ni worktree ni branche supprimes ; rien pousse.
+
+## 9. Fusion des deux rapports de mesure (casquette Scrum Master)
+
+Fusions `--no-ff` dans `round-two`, sans rebase, reset, force ni push :
+
+| Branche | Sommet | Fusion | Fichier ajouté |
+|---|---|---|---|
+| `s57-ines-p3` | `42238bc5` | `46313f13` | `mesure-ines-palier-3-pli-744x551.md` |
+| `s57-yanis-mutations-css` | `2459f304` | `9f8b84be` | `rapport-qualite-palier-3-mutations-css.md` |
+
+Départ : `git status` vide, sommet `132ac960`. Les deux branches ne touchent que des fichiers sous `squad/` (une seule fiche chacune). Ce contrôle a été fait sur `git diff --name-only 132ac960 9f8b84be` après la fusion : ma commande de contrôle avant fusion était mal formée et n'a rien listé. Le résultat est le même, mais l'ordre prescrit n'a pas été tenu.
+
+**Registre à l'état rouge attendu.** Mesure partielle, périmètre `bootstrap` avec `-am`, classe `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` : 10 tests, 1 échec (`leDepotReelEstCoherent`), 0 erreur. Les deux seuls écarts rapportés sont `PL-9` et `PL-10`, écrits dans `mesure-ines-palier-3-pli-744x551.md` et non alloués dans `squad/decisions/REGISTRE-identifiants.md`. Aucun autre identifiant en écart. Ce rouge se ferme par l'allocation de `PL-9` et `PL-10`, route : `theo-archi`.
+
+**Non lancé** : `mvn -B verify` complet, ni les jobs `prefixes`, `outils`, `build`. Seul `chemins` a été joué, sur les deux fichiers ajoutés : code de sortie 0.
+
+**Décisions** : aucune `ADR` ni `DEC` créée ou modifiée par ces fusions. **Obstacle ouvert** : allocation `PL-9` et `PL-10`.
+
+**Nettoyage** : `git branch --merged round-two` positif pour les deux branches, `git status` vide dans chaque worktree. Worktrees `recreo-s57-ines-p3` et `recreo-s57-yanis-mutations-css` supprimés, branches supprimées par `git branch -d`.
