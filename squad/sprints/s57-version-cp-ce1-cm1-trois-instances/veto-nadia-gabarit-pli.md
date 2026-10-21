@@ -189,3 +189,32 @@ test ne mesure une ligne coupee ni sa lecture par un enfant.
 | `camille-po` | V3 et V4 en stories ; le levier de `-06` 14 et de la revelation, a ouvrir sous les contraintes de V3 |
 
 **Signe** : `nadia-prof`, s57, palier 3, 2026-10-21, 12:24.
+
+### V6. Suite du 2026-10-21 : `b383b0bb` seul, remesure d'`ines-design`
+
+- **Lu** : `git show 41578ff7:.../mesure-ines-palier-3-pli-744x551.md`, section *"Remesure du 2026-10-21 apres le refus
+  d'`edf7f344`"* (E1 a E7), branche `s57-ines-p3-b383`. Cotes d'`ines-design`, non rejouees par moi. Aucun Done, aucun identifiant.
+- **Correction de mon V3** : j'y ai ecrit que la reponse d'EMC 13 et de `-11` 13 tenait sur 3 lignes, en reprenant la deduction
+  de D4. `ines-design` l'a corrigee (E4) : **2 lignes**. Ce que j'en tirais ne change pas.
+
+**1. Statut.** V3 reste une **reserve non bloquante**, pour la fusion comme pour le Done. Je ne la durcis pas parce que le compte
+passe de 3 a 6 items : la barre est celle de ce matin, c'est le refus d'`edf7f344` qui a deplace les cotes. La reserve du verdict
+de `-06` 14 (section 3) passe de *"a verifier"* a **"a traiter"** : la seconde ligne du verdict finit a 590, sous le pli (E3). Elle
+reste non bloquante, au meme statut que le pli.
+
+**2. Par item, a 744 x 551, dans les six ordres** (je decris ce qui doit etre vrai, pas le levier) :
+
+| Item | Ce qui depasse | Exigence | Nature |
+|---|---|---|---|
+| `-06` 14 (2 ordres sur 6, trois rangees de propositions) | indice 574, verdict 590, phrase 552, reponse 603 | apres une erreur : verdict et indice entiers ; a la revelation : phrase et reponse entieres | contenu ou gabarit ; contraintes `INF-CE1-1`, `TRV-CE1-2`, S3, mon veto de S2 |
+| `-06` 16, 19, 20 | reponse attendue 563 ; boite du signal 560, texte du verdict 550 | reponse attendue entiere a la revelation | contenu ou gabarit, memes contraintes ; **jeu reel** pour la boite du signal (icone coupee ou non) |
+| EMC 13, `-11` 13 (et EMC 21, `-11` 18 a 720 avec barre) | reponse attendue 587, 2 lignes | reponse attendue entiere a la revelation | contenu ou gabarit ; `TRV-CE1-2`, et pour `-11` ce que la negation exige |
+| `-06` 14, la phrase a 552 (1 px) | derniere ligne du texte | lisible sans defiler | **jeu reel** seulement : 1 px est sous la precision d'un rectangle de ligne (E6) |
+
+**3. Ordre : oui, fusionner `b383b0bb` maintenant, et traiter les 6 items ensuite.** A ma lecture du diff, ce commit fait remonter
+le contenu (en-tete plus mince, interlignes reduits) : il ne cree aucun de ces depassements. Ce point n'est pas mesure sur
+`round-two` avant correctif ; c'est une deduction de la forme du diff, pas une cote. Les 6 items deviennent des stories de
+`camille-po`. Le Done de `-06`, de l'EMC et de `-11` reste a prononcer **apres** mon jeu de l'arbre fusionne (V5), avec ces reserves
+ecrites.
+
+**Signe** : `nadia-prof`, s57, palier 3, 2026-10-21.
