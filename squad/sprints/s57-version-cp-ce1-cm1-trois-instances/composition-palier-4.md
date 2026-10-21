@@ -251,3 +251,12 @@ Je classe, je ne reponds a aucune.
 ## 11. Jobs de `ci.yml` lances pour ce fichier
 
 Voir l'amendement de `planning.md` du meme jour, section "Jobs" : les memes commandes couvrent les trois fichiers.
+
+## 12. Amendement du 2026-10-21 22:31 (UTC+02:00) : reponse de l'utilisatrice a AP1
+
+- **Ecrit par** : l'agent lanceur, qui cite les mots de l'utilisatrice (README section 2 bis : un enonce cite mot pour mot avec sa date vaut forme 2 de DEC-0062). Le fichier est celui de sofia-sm : elle n'a pas ecrit cet amendement, et peut l'annoter.
+- **La question posee** : *"AP1 : lire strictement la regle A-5 (rapports de palier 3 de Marc et Lea avant tout worktree), ou accepter qu'ils ouvrent avec le rapport ecrit pendant le lot ?"*
+- **La reponse** (2026-10-21, mots cites tels quels) : *"note pour AP1 qu'on l'ouvre et que le rapport est écris pendant le lot, ne lance rien de plus"*.
+- **Ce que ca decide** : AP1 est tranchee. Les worktrees de marc-dev et de lea-dev s'ouvrent sans que leur rapport du palier 3 existe, et le rapport du palier 3 s'ecrit pendant leur lot. Ni la lecture stricte (porte d'engagement) ni la lecture retenue plus haut (porte d'ouverture de worktree) ne s'appliquent a OV1 : celle-ci est levee comme condition d'ouverture. A-5 de retro-palier-3.md reste ecrit tel quel ; ce fichier dit qu'il ne conditionne pas ces deux ouvertures.
+- **Ce que ca ne decide pas** : la fin du rapport (a quel moment il est du : avant la fusion du lot, ou avant la cloture du palier) n'est pas dite par l'utilisatrice ; ni la taille de la grille de MAT-CE1-14, ni l'engagement de LP9, ni LP6.
+- **"Ne lance rien de plus"** : au moment de cet amendement, aucun lot, aucun agent et aucun worktree du palier 4 n'est lance. Le palier est ouvert sur le papier (planning.md) et rien d'autre.
