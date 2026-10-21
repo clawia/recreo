@@ -5,7 +5,7 @@ descripteur:
   matiere: "Enseignement moral et civique"
   niveau: "CE1"
   domaine: "Respecter autrui"
-  competence: "Respecter les biens personnels et collectifs : reconnaître ce qui appartient à tous (matériel de la classe, livres de la bibliothèque, jeux de la cour) et le geste qui le protège."
+  competence: "Respecter les biens personnels et collectifs : reconnaître ce qui appartient à tous (matériel de la classe, livres de la bibliothèque, jeux de la cour) et le geste qui le protège."
 lignesDeReferentiel: ["EMC-CE1-01"]
 #
 # S57-BR-EMC-CE1-01 (s57, palier 3). Paquet ecrit par lea-dev dans le lot, sur la competence EMC-CE1-01
@@ -90,13 +90,13 @@ items:
     indice: "Demande-toi : qui a le droit de s'en servir ?"
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : b, b
-  - enonce: "Un seul de ces objets est à un seul élève. Lequel ?"
+  - enonce: "Un de ces objets est à un seul élève. Lequel ?"
     bonneReponse: "le cartable d'Omar"
     distracteurs: ["le livre de la bibliothèque", "le crayon de la classe"]
     indice: "Lis le nom de chaque objet avec attention."
   # BCO-CE1-1 tache 1
   # TRV-CE1-2 : b, b
-  - enonce: "Parmi ces objets, lequel n'est qu'à un seul élève ?"
+  - enonce: "Parmi ces objets, lequel est à un seul élève ?"
     bonneReponse: "la gourde de Zoé"
     distracteurs: ["la colle de la classe", "la balle de la cour"]
     indice: "Pense à l'objet qu'un seul élève utilise."
@@ -129,7 +129,7 @@ items:
   - enonce: "Omar voit une page déchirée dans un livre de la bibliothèque. Que fait-il ?"
     bonneReponse: "il prévient un adulte"
     distracteurs: ["il le rend sans rien dire", "il cache la page"]
-    indice: "Demande-toi qui doit savoir que le livre est abîmé ?"
+    indice: "Demande-toi : qui doit savoir que le livre est abîmé ?"
   # BCO-CE1-1 tache 2
   # TRV-CE1-2 : e, d
   - enonce: "Un ballon de la cour est crevé. Que fait Jade ?"
