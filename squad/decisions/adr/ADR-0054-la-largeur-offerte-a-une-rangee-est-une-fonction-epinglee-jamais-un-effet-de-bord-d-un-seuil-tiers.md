@@ -434,3 +434,78 @@ porteur de la pile ; la regle s'inverserait alors en egalite sur cette declarati
 
 **Compte ArchUnit inchange** : 41 `static final ArchRule`, 38 `@ArchTest`, 16 fichiers (methode d'`ADR-0104`), sur `5ee20db7` et sur ce
 commit ; le fichier de test ne porte aucun des deux motifs.
+
+## Amendement du 2026-10-21 (s57, `theo-archi`) - un echappement CSS ne cache pas une police, `inherit` n'en pose aucune (`R5`, `R6`)
+
+**Contexte.** `rapport-qualite-palier-3-mutations-css.md` de s57 (`yanis-qa`, section 4, constats 1 et 2), mesure sur `558dd887`, la
+classe du garde seule (8 tests) :
+
+- **`R5`, un trou.** `body { \66ont-family: Georgia; }` (`ME8`) et `@\66ont-face { ... }` (`ME9`) passaient : 0 echec. Le garde
+  comparait le texte ecrit de la propriete et de l'en-tete, pas leur forme decodee. `\66` est `f` dans la grammaire des identifiants
+  CSS ; l'equivalence est lue dans cette grammaire, **non rendue dans un navigateur**, ni par `yanis-qa` ni par moi.
+- **`R6`, un faux rouge.** `button { font-family: inherit; }` (`ME10`) etait refuse, et le message ne le distinguait pas d'une
+  police declaree. Aucune regle de la feuille actuelle ne l'ecrit.
+
+**Decision.**
+
+1. **`R5` : le garde decode les echappements CSS avant de comparer** la propriete, la valeur et l'en-tete d'une regle-`@` :
+   une barre oblique inverse suivie de 1 a 6 chiffres hexadecimaux et d'un blanc facultatif vaut le caractere de ce point de code ;
+   suivie de tout autre caractere, elle vaut ce caractere. Le message cite la declaration telle qu'elle est ecrite
+   (`declare \66ont-family: Georgia`), pour qu'on la retrouve dans la feuille. Le decodage vit dans le garde
+   (`LaPileDePolicesServieNeChangePasEnSilenceTest.sansEchappements`), pas dans le lecteur partage : aucun autre garde-fou de la
+   feuille ne compare un nom de propriete a une liste, et la question ne s'y pose pas aujourd'hui.
+2. **`R6` : `inherit` est admis** comme valeur de `font-family` et de `font`, et elle seule. **Motif** : `inherit` reprend la police
+   du parent et n'en pose aucune ; la pile servie reste celle que la feuille tierce donne a `body`, que `DEC-0122` 3.5 garde. La
+   feuille tierce l'ecrit elle-meme (`button,input,optgroup,select,textarea{...font-family:inherit...}`, lu dans
+   `vendor/bootstrap.min.css` sur `a0a69859`) : refuser l'idiome dans la feuille maison serait refuser ce que la pile mesuree contient
+   deja. **Ce qui reste refuse** : toute autre valeur, dont `initial`, `revert` et `unset` ecrits sur `font` ou `font-family`.
+   `initial` rend la police par defaut du navigateur et `revert` la feuille de l'agent utilisateur, qui pour un bouton n'est pas la
+   pile du texte : les deux changent la pile. `unset` vaut `inherit` pour une propriete heritee, mais je ne l'admets pas sans usage
+   constate : il rougit, et le jour ou une regle en a besoin, on l'ajoute ici. Une variable de police reste refusee quelle que soit
+   sa valeur.
+
+**Regle executable.** Meme fichier, douze tests (huit avant cet amendement) :
+
+- `uneProprieteDePoliceEcriteParEchappementFaitEchouerLeGardeFou` et `uneRegleDePoliceEcriteParEchappementFaitEchouerLeGardeFou` :
+  deux depots fictifs neufs sous `contreexemple/LaPileDePolicesServieNeChangePasEnSilenceTest/`
+  (`propriete-de-police-ecrite-par-echappement`, `regle-de-police-ecrite-par-echappement`) ;
+- `desEchappementsQuiNeNommentAucunePoliceRestentVerts` : leur jumeau vert (`echappement-sans-police`), des echappements qui decodent
+  en `color` et en `font-size`, et `button { font-family: inherit; }` ;
+- `uneDeclarationQuiHeriteLaPoliceDuParentResteVerteEtInitialResteRouge` : sur la feuille maison reelle, `font-family: inherit` et
+  `font: INHERIT` restent verts ; `font-family: initial` rougit.
+
+**Preuve de morsure.** Commande : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test
+-Dtest=LaPileDePolicesServieNeChangePasEnSilenceTest -Dsurefire.failIfNoSpecifiedTests=false`, perimetre `adapter-web` et ses amonts,
+une classe, 12 tests, JDK 21.0.10. Chaque mutation : motif present une fois verifie, fichier restaure par copie de reference
+(`cmp` identique), aucune erreur de compilation.
+
+| Code | Mutation | Mesure |
+|---|---|---|
+| `W0` | aucune | 12 tests, 0 echec |
+| `ME8` | `body { \66ont-family: Georgia; }` en fin de `recreo.css` | **3 echecs**, le message cite `declare \66ont-family: Georgia` ; vert avant cet amendement |
+| `ME9` | `@\66ont-face { font-family: Zz; src: local(Arial); }` en fin de `recreo.css` | **3 echecs**, le message cite `declare une regle @font-face` ; vert avant |
+| `ME10` | `button { font-family: inherit; }` en fin de `recreo.css` | **0 echec** ; rouge avant |
+| `W1` | variables nommees a la main au lieu d'etre derivees | **1 echec**, `chaqueFormeDeDeclarationDePoliceFaitEchouerLeGardeFou` |
+| `W2` | detection de `@font-face` desactivee | **2 echecs**, le meme et `uneRegleDePoliceEcriteParEchappementFaitEchouerLeGardeFou` |
+| `W3` | litteraux d'un attribut de style ignores | **2 echecs**, `unePoliceDansUnStyleDeGabaritFaitEchouerLeGardeFou` et `unDepotQuiRedefinitLaPileFaitEchouerLeGardeFou` |
+| `W4` | decodage desactive (`sansEchappements` rend son entree) | **2 echecs**, les deux tests d'echappement |
+| `W5` | `inherit` de nouveau refuse | **2 echecs**, `desEchappementsQuiNeNommentAucunePoliceRestentVerts` et `uneDeclarationQuiHeriteLaPoliceDuParentResteVerteEtInitialResteRouge` |
+
+**Lecture des "3 echecs" de `ME8` et `ME9`** : trois tests lisent la feuille reelle (le test principal et deux clauses vertes) ; ils
+rougissent ensemble pour une seule detection, comme le dit la methode de `yanis-qa`.
+
+**Ce que cette regle ne garde pas, nomme** (s'ajoute a la liste du 2026-10-20). Un echappement dans le nom d'une variable de police
+est decode comme le reste ; la casse d'une propriete personnalisee, que CSS distingue, est ramenee en minuscules, ce qui ne peut que
+sur-detecter. Les echappements ne sont pas decodes dans les autres garde-fous de la feuille (decision 1).
+
+**Consequences.** Bonne : les deux formes de `R5` rougissent, et l'idiome de la feuille tierce passe. Mauvaise : un `inherit` sur un
+element dont le parent porterait une autre police heriterait de cette police ; ce cas ne peut pas exister tant que la regle refuse
+toute autre declaration de police, ce qui est la condition de cette exception.
+
+**Alternatives considerees.** **Refuser `inherit` et le dire dans le message** : ecartee, elle refuse ce que la pile mesuree contient
+deja et oblige la premiere regle legitime a demander une exemption. **Nommer `R5` comme limite** : ecartee, le decodage coute une
+fonction et son mode de defaillance est un rouge. **Decoder dans le lecteur partage** : ecartee pour l'instant (decision 1) ; ce qui me
+ferait changer d'avis est un second garde-fou qui compare un nom de propriete ou un en-tete a une liste.
+
+**Compte ArchUnit inchange** : 41 `static final ArchRule`, 38 `@ArchTest`, 16 fichiers (methode d'`ADR-0104`), sur `a0a69859` et sur ce
+commit.

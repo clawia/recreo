@@ -31,7 +31,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * silence la rendrait fausse sans qu'aucun test le voie.
  *
  * <p><b>Ce qui est refuse.</b> Dans une feuille maison : une declaration {@code font-family} ou
- * {@code font}, une regle {@code @font-face}, ou la definition d'une propriete personnalisee que la
+ * {@code font} dont la valeur n'est pas {@code inherit}, une regle {@code @font-face}, ou la definition d'une propriete personnalisee que la
  * feuille tierce lit dans une declaration de police. Dans un gabarit : les memes declarations dans un
  * attribut {@code style} ou {@code th:style} (valeur et litteraux), ou dans une balise
  * {@code <style>}.
@@ -64,8 +64,56 @@ class LaPileDePolicesServieNeChangePasEnSilenceTest {
             + "cote mesuree ne vaut que pour la pile avec laquelle elle l'a ete (DEC-0122 3.5, ADR-0054, "
             + "amendement du 2026-10-20)";
 
-    /** Une declaration {@code propriete: valeur}, la propriete en minuscules. */
-    private record Declaration(String propriete, String texte) {
+    /**
+     * La seule valeur d'une declaration de police admise : elle reprend la police du parent et n'en
+     * pose aucune. La feuille tierce l'ecrit elle-meme sur les controles de formulaire.
+     */
+    private static final String VALEUR_HERITEE = "inherit";
+
+    /**
+     * Une declaration {@code propriete: valeur}, propriete et valeur decodees de leurs echappements
+     * CSS, la propriete en minuscules ; {@code texte} est la declaration telle qu'elle est ecrite.
+     */
+    private record Declaration(String propriete, String valeur, String texte) {
+    }
+
+    private static final char BARRE_INVERSE = 92;
+
+    private static boolean estHexadecimal(char caractere) {
+        return Character.digit(caractere, 16) >= 0;
+    }
+
+    /**
+     * Un identifiant CSS decode de ses echappements (ADR-0054, amendement R5) : une barre oblique inverse suivie de 1 a
+     * 6 chiffres hexadecimaux et d'un blanc facultatif vaut le caractere de ce point de code ;
+     * la barre oblique inverse suivie de tout autre caractere vaut ce caractere. Sans ce decodage,
+     * {@code \66ont-family} et {@code @\66ont-face}, qu'un navigateur lit comme {@code font-family} et
+     * {@code @font-face}, passeraient la comparaison de texte.
+     */
+    static String sansEchappements(String texte) {
+        StringBuilder decode = new StringBuilder();
+        int position = 0;
+        while (position < texte.length()) {
+            char caractere = texte.charAt(position);
+            if (caractere != BARRE_INVERSE || position + 1 >= texte.length()) {
+                decode.append(caractere);
+                position++;
+                continue;
+            }
+            int debut = position + 1;
+            int fin = debut;
+            while (fin < texte.length() && fin - debut < 6 && estHexadecimal(texte.charAt(fin))) {
+                fin++;
+            }
+            if (fin == debut) {
+                decode.append(texte.charAt(debut));
+                position = debut + 1;
+                continue;
+            }
+            decode.appendCodePoint(Integer.parseInt(texte.substring(debut, fin), 16));
+            position = fin < texte.length() && Character.isWhitespace(texte.charAt(fin)) ? fin + 1 : fin;
+        }
+        return decode.toString();
     }
 
     private static List<Declaration> declarations(String corps) {
@@ -74,7 +122,9 @@ class LaPileDePolicesServieNeChangePasEnSilenceTest {
             int deuxPoints = morceau.indexOf(':');
             if (deuxPoints > 0) {
                 declarations.add(new Declaration(
-                        morceau.substring(0, deuxPoints).strip().toLowerCase(Locale.ROOT), morceau.strip()));
+                        sansEchappements(morceau.substring(0, deuxPoints).strip()).toLowerCase(Locale.ROOT),
+                        sansEchappements(morceau.substring(deuxPoints + 1).strip()).toLowerCase(Locale.ROOT),
+                        morceau.strip()));
             }
         }
         return declarations;
@@ -110,8 +160,10 @@ class LaPileDePolicesServieNeChangePasEnSilenceTest {
     }
 
     private static boolean declarePolice(Declaration declaration, Set<String> variables) {
-        return PROPRIETES_DE_POLICE.contains(declaration.propriete())
-                || variables.contains(declaration.propriete());
+        if (PROPRIETES_DE_POLICE.contains(declaration.propriete())) {
+            return !declaration.valeur().equals(VALEUR_HERITEE);
+        }
+        return variables.contains(declaration.propriete());
     }
 
     /** Les en-tetes de regle-@ d'un texte de feuille : le lecteur partage n'en rend aucune regle. */
@@ -137,7 +189,7 @@ class LaPileDePolicesServieNeChangePasEnSilenceTest {
     private static void defautsDeFeuille(String origine, String feuille, Set<String> variables,
                                          List<String> defauts) {
         for (String entete : entetesDeRegleAt(feuille)) {
-            if (entete.toLowerCase(Locale.ROOT).startsWith(REGLE_DE_POLICE)) {
+            if (sansEchappements(entete).toLowerCase(Locale.ROOT).startsWith(REGLE_DE_POLICE)) {
                 defauts.add(origine + " : declare une regle " + REGLE_DE_POLICE);
             }
         }
@@ -244,6 +296,52 @@ class LaPileDePolicesServieNeChangePasEnSilenceTest {
     @Test
     void leMemeDepotSansPoliceDeclareeResteVert() {
         verifier(CONTRE_EXEMPLES.resolve("pile-tierce-intacte"));
+    }
+
+    /** ADR-0054, amendement R5 : {@code \66ont-family} est {@code font-family} pour un navigateur. */
+    @Test
+    void uneProprieteDePoliceEcriteParEchappementFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifier(CONTRE_EXEMPLES.resolve("propriete-de-police-ecrite-par-echappement")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("body : declare \\66ont-family: Georgia, serif");
+    }
+
+    /** ADR-0054, amendement R5 : {@code @\66ont-face} est {@code @font-face} pour un navigateur. */
+    @Test
+    void uneRegleDePoliceEcriteParEchappementFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifier(CONTRE_EXEMPLES.resolve("regle-de-police-ecrite-par-echappement")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("declare une regle " + REGLE_DE_POLICE);
+    }
+
+    /**
+     * Jumeau vert des deux precedents : des echappements qui decodent en {@code color} et en
+     * {@code font-size}, et {@code font-family: inherit}, ne declarent aucune police. Le decodage ne
+     * transforme pas tout echappement en faute.
+     */
+    @Test
+    void desEchappementsQuiNeNommentAucunePoliceRestentVerts() {
+        verifier(CONTRE_EXEMPLES.resolve("echappement-sans-police"));
+    }
+
+    /**
+     * ADR-0054, amendement R6 : {@code inherit} reprend la police du parent et n'en pose aucune ; la
+     * feuille tierce l'ecrit elle-meme. Ajoute a la feuille maison reelle, il reste vert ; une autre
+     * valeur generique, {@code initial}, qui rend la police par defaut du navigateur, reste rouge.
+     */
+    @Test
+    void uneDeclarationQuiHeriteLaPoliceDuParentResteVerteEtInitialResteRouge() {
+        Map<String, String> heritees = feuillesMaisonDeProduction();
+        heritees.replaceAll((nom, texte) -> texte
+                + "\nbutton { font-family: inherit; }\n.consigne { font: INHERIT; }\n");
+        verifierQueLaPileNEstPasChangee(heritees, documents(RACINE_PRODUCTION), variablesDeProduction());
+
+        Map<String, String> initiales = feuillesMaisonDeProduction();
+        initiales.replaceAll((nom, texte) -> texte + "\nbutton { font-family: initial; }\n");
+        assertThatThrownBy(() -> verifierQueLaPileNEstPasChangee(initiales, documents(RACINE_PRODUCTION),
+                variablesDeProduction()))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("button : declare font-family: initial");
     }
 
     /**
