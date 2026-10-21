@@ -161,3 +161,108 @@ Le parallele de developpement est **deux**, pas trois : `marc-dev` sur A, `lea-d
 ## Decisions prises
 
 Aucune `ADR` ni `DEC` creee. `ADR-0058` porte une correction datee (ecarts 36 a 38), sans changement de statut ni de regle ; `ADR-index.md` inchange, aucun statut ne bouge. La decision sur l'ecart 39 est prise dans son sens et **n'est pas ecrite comme regle** : elle le sera par amendement d'`ADR-0010` avec son motif et son cas de test, dans un seul commit ; jusque-la elle n'est pas une regle. Compte des regles ArchUnit inchange.
+
+## 7. Complement du 2026-10-21, 21:31 (UTC+02:00) : `MAT-CE1-14` en forme (a) seule
+
+- **Mots de l'utilisatrice**, cites par l'agent lanceur : *"QP3 c'est une grille déssinée"*. Lecture fixee par `camille-po` : forme (a) seule (`backlog.md:23715-23734`). **Arbre** : `round-two` a `e4d54795`, heure lue par `date`.
+- **Ce que cette section ne fait pas** : ni prix, ni taille de grille, ni nombre d'items, ni reponse a la question d'`A.143` (`DEC-0120`) : elles sont a `nadia-prof`, `camille-po` et l'utilisatrice. Aucun identifiant neuf.
+
+### 7.1 Deux corrections de ma section 2, et de ce qui la cite
+
+1. **La section 2 calculait a 352 px, la forme (a) rend a 176 px.** Un item `question` montre son dessin dans `.image-item` (`manche.html:121`), plafonne a `11rem` (`recreo.css:447-449`). Les 352 px sont ceux de `.image-designation` (`designation.html:43`, `recreo.css:492-493`), absents de la forme (a). Les *"17,8 px a 296"* de 2.1, recopies par le critere 6 de la story (`backlog.md:23316`, `:23734`), ne valent donc pas pour (a). Les chiffres justes sont en 7.3.
+2. **Les grilles servies pesent 1442 a 2215 octets** sur le perimetre du cliquet (fichier commite, LF : `git show HEAD:<fichier> | tr -d '\r' | wc -c`). Mes *"1462 a 2245"* de 2.4 etaient des `wc -c` sur l'arbre de travail, fins de ligne CRLF.
+3. La phrase *"marge de 1,7 unite au-dessus de la barre de 15"* ne vient pas de ce fichier. 2.1 ecrit le contraire : a 6 x 6 etiquete, les cases sont *"a la barre, sans marge"*. Elle est de toute facon sans objet en forme (a), voir 7.4.
+
+### 7.2 Mecanique : rien a construire
+
+`bandit-manchot` sert deja des items `question` illustres, avec une image par item : `ce1-solides.yaml` (15 `illustration:`, type `question` ligne 3), `ce1-sens-multiplication.yaml:35`, `:44`, `cp-figures-planes.yaml`. **Un seul paquet** suffit, puisque tous les items sont `question` et que le chargeur lit `type` une fois par fichier (`YamlContentPackLoader.java:106`). C'est la reponse au point *"un ou deux paquets"* de `DEC-0120:2203`.
+
+**Ce qui existe pour `MAT-CE1-14`** : `ce1-deplacements-quadrillage.yaml`, 20 items en texte, grille de 4 x 4, aucune illustration (en-tete, ligne 1), absent de `catalogue.yaml` (`grep -c` rend 0). Ses 20 enonces nomment le depart par sa coordonnee (`:44`, `:85` par exemple) et trois indices disent *"Dessine le quadrillage"* (`grep -c` rend 3). Les points 2 et 5 de `arbitrage-nadia-q05-q10.md` 1.3 l'obligent donc a etre reecrit. **`cp-deplacements-quadrillage` n'a pas de SVG** : son en-tete l'ecrit (*"ce paquet ne porte aucune illustration"*, `cp-deplacements-quadrillage.yaml:46`), et `grep -c svg` rend 0. **Les cinq `symetrie-grille-*.svg` ne sont pas reutilisables tels quels** : declares a 352 px (`symetrie-grille-a.svg:4`), sans etiquettes, trait de 0,7 (`:5`). A 176 px, ce trait rend `floor(0,7 x 1,76) = 1` px, sous le plancher de 2 px du garde de geometrie (`ChaqueIllustration...Test.java:240`, `:554`, calcul `:782-797`).
+
+### 7.3 Les dessins : combien, quel gabarit, quel nom, qui
+
+**Nombre : un dessin par item, soit 20 si le paquet garde 20 items** (critere 1 de la story, `backlog.md:23725` ; 20 items, `grep -c "^  - enonce"`). Chaque item marque une case qui lui est propre (objet, depart, ou depart et arrivee), comme `cp-monnaie` et `ce1-solides`. Le nombre d'items est a `camille-po` et `nadia-prof`.
+
+**Gabarit**, chaque point juge par un garde existant :
+
+| Propriete | Valeur | Ce qui la garde |
+|---|---|---|
+| Cadre | `viewBox="0 0 100 100"`, `width="176" height="176"` | plafond de 176 px (`ChaqueIllustration...Test.java:172`, `:539-546`) ; meme rapport (`:547`) |
+| Trait | au moins 1,14 unite, donc 1,2 : `floor(1,2 x 1,76) = 2` px | plancher (`:240`, `:554`) |
+| Etiquettes | tracees, bande de 10 unites a gauche (lignes, de bas en haut) et en bas (colonnes, de gauche a droite) | aucun `<text` ni `<tspan` (`LIllustrationDeContenuResoutEtAucuneNeDortTest.java:611`) |
+| Liste `DESSINS_DE_DESIGNATION` | **le dessin n'y entre pas** | `:205`, `:539` : y figurer serait declarer une designation qui n'existe pas |
+| Nom | proposition : `quadrillage-a` a `quadrillage-t` | patron des familles servies (`solide-cube-a`, `symetrie-grille-a`). Aucun fichier ne commence ainsi (`ls static/illustrations`) |
+
+**Taille rendue, calcul et non mesure** : la grille occupe `96 - 10 = 86` unites. Une case vaut 14,3 unites, soit 25,2 px a 6 x 6 ; 30,3 px a 5 x 5 ; 37,8 px a 4 x 4. Pour un glyphe de 8 unites, l'encre rend 14,1 px, juste au plancher de 14 px qu'`ines-design` pose pour un chiffre trace. **Ce plancher n'est verifie par aucun garde** (`ChaqueIllustration...Test.java:233-238`).
+
+**Qui dessine.** Toute la geometrie est arithmetique : lignes, positions des etiquettes, marques placees au centre d'une case calculee. **Un script la produit sans juger de l'oeil.** Je l'ai fait en prototype hors depot, non commite (7.4). **Ce que le script ne peut pas produire** : la forme des glyphes et des marques. Le corpus ne definit que les chiffres 0, 1, 2 et 5 (`grep -ho '<path id=' static/illustrations/*.svg` rend `g0`, `g1`, `g2`, `g5`), dessines par `ines-design` (`monnaie-en-tout-a.svg`, en-tete : *"Glyphes d'ines-design, recopies a l'identique"*). **Il manque A a F, et 3, 4 et 6**, plus trois marques distinctes (objet, depart, arrivee). Elles sont a `ines-design`, puis le script les recopie dans les 20 fichiers. **Le script n'a pas a etre commite** : ce sont les 20 fichiers qui sont juges (7.5), et non l'outil qui les a produits. Un script commite sous `outils/` devrait porter un juge pur et son test (`ci.yml:90-96`). Ce qui me ferait changer d'avis : une deuxieme regeneration des 20 fichiers.
+
+### 7.4 Cliquet de poids : il bouge, et il ne l'interdit pas
+
+**Etat mesure** : 56 fichiers sous `static/illustrations` (`git ls-files | wc -l`). Total de 69 203 octets (somme de `git show HEAD:<f> | tr -d '\r' | wc -c` sur les 56), egal a `POIDS_TOTAL_MAXIMUM` (`:355`). Les deux constantes sont **en egalite** (`:830-837`). Le plus gros dessin reste `frise-journee-ecole.svg`, a 4633 octets (`:279`).
+
+**Prototype mesure**, ecrit par un script hors depot, non commite. Glyphes provisoires de ma main, que le monde ne dessinera pas ainsi. Deux lignes de commentaire d'en-tete, une marque de depart. Taille LF : **6 x 6 : 3060 octets ; 5 x 5 : 2662 ; 4 x 4 : 2277** (`wc -c`). Le prototype ne porte aucun `<text` (`grep -c` rend 0). Le garde de geometrie n'a pas ete lance sur lui.
+
+| Grille | 20 dessins (calcul sur le prototype) | Total apres | Hausse |
+|---|---|---|---|
+| 6 x 6 | 61 200 | 130 403 | +88 % |
+| 5 x 5 | 53 240 | 122 443 | +77 % |
+| 4 x 4 | 45 540 | 114 743 | +66 % |
+
+Ces chiffres **remplacent mon ordre de grandeur de 2.4** (*"30 a 90 ko"*, non mesure) et la borne de 92 660 octets d'`A.143`, qui la calculait au plafond par dessin. Marge d'erreur non mesuree : les glyphes reels d'`ines-design`, les commentaires d'en-tete reels, une marque d'arrivee en plus sur les items de codage (environ 80 octets par fichier, d'apres le prototype). **Le plafond par dessin (4633) ne bouge pas** tant qu'aucun fichier ne le depasse : le prototype 6 x 6 en est a 1573 octets.
+
+**Ce qu'il faut faire** : **S**, deplacer `POIDS_TOTAL_MAXIMUM` sur la valeur mesuree dans le commit qui installe les octets, avec une ligne de motif dans la Javadoc (`:281-353`), comme les dix mouvements precedents. Rien dans le depot n'interdit ce mouvement. Que le poids soit acceptable reste la question d'`A.143`, posee a l'utilisatrice et non a moi.
+
+### 7.5 `ADR-0080`, et la condition de `nadia-prof` en test
+
+**`ADR-0080` n'est pas a amender pour la forme (a).** Il gouverne la designation. Il ecrit lui-meme qu'un paquet `question` est hors du garde-fou 3 (`ADR-0080...md:1164-1165`). La barre de 15 unites est celle d'une zone a toucher (`:1183-1186`), et la forme (a) n'en a aucune. Le paragraphe *"A3 pour `MAT-CE1-14`"* que 2.4 prevoyait et que `DEC-0120:2203` attend est sans objet. **Ecart a `camille-po`** : `DEC-0120:785` (*"`MAT-CE1-14` reste conditionnee a `A3` d'`ADR-0080`"*) ne vaut plus pour (a).
+
+**Ce qu'un agent ne peut pas faire, c'est voir que les 20 dessins disent la meme chose que les 20 reponses.** C'est la condition que je fais executer. Elle prend la forme d'**un test de lot qui croise chaque dessin avec son item**. Il vit dans `bootstrap`, seul module qui lit a la fois le contenu et `static/illustrations` (le motif du placement est ecrit a `ChaqueIllustration...Test.java:195-199` ; le precedent est `LIllustrationDeContenuResoutEtAucuneNeDortTest`). La forme de lecture du dessin est imposee : une marque porte un `id` (`depart`, `arrivee`, `objet`), une etiquette est un `<use>` vers son glyphe. Le test en deduit la case par les coordonnees, jamais par le nom.
+
+| Point de 1.3 (`arbitrage-nadia-q05-q10.md:68-80`), garde par 8.1 (`arbitrage-nadia-palier-4.md:275`) | Encodable | Ce que le test refuserait reellement |
+|---|---|---|
+| 1, et 8 *"plus grande que 6 x 6"* | oui, dans le dessin : nombre de lignes, ecarts egaux | une grille de 7 x 7, des cases inegales |
+| 1, `DEP-CE1-1` (un tiers des chemins change d'axe) et `DEP-CE1-4` (trois codes de meme longueur, formes des quatre mots) | oui, dans l'enonce et les reponses | un paquet sous le tiers, un code plus court |
+| 2, depart marque | oui : marque `depart` presente ; la case d'arrivee calculee depuis cette marque et les pas de l'enonce **egale `bonneReponse`** | un depart dessine sur la mauvaise case, ce que seule une lecture de l'image verrait autrement |
+| 2, *"ne la nomme pas par sa coordonnee seule"* | oui, des que `nadia-prof` a repondu a la question de la story (`backlog.md:23726`) | un enonce qui recopie la coordonnee du depart |
+| 4, codage | oui : marques `depart` et `arrivee` ; seul le bon code mene de l'une a l'autre ; chaque code mene a une case reelle | un distracteur qui mene aussi a l'arrivee, ou qui sort de la grille |
+| 5, axes | oui : colonnes dans l'ordre de A vers la droite, ligne 1 la plus basse, sur les 20 dessins ; aucun indice *"Dessine le quadrillage"* | un axe inverse sur un seul dessin |
+| 8, distracteur hors grille ; item sans grille | oui : chaque distracteur dans la grille ; chaque item porte une illustration | une case F7, un item sans dessin |
+| Se reperer | oui : la case de la marque `objet` egale `bonneReponse` | un objet dessine ailleurs que la reponse |
+| 6, `LON-CE1`, `TRV-CE1` | **non verifie** ici, gardes existants ou garde `E3` (section 4) | - |
+| Lisibilite des glyphes et des marques ; *"lecture complete avant verdict"* | **non** : aucune propriete du fichier ne le dit | audit d'`ines-design` et de `nadia-prof` |
+| 7, mention | non : texte de la fiche | `nadia-prof` |
+
+**Preuve exigee** : les morsures portent sur les 20 dessins reels, mutes en memoire (une marque deplacee d'une case, un axe inverse, une grille de 7). C'est la forme du juge pur de `ChaqueIllustration...Test.java:488-495`, jamais une fixture de ma main. Ce test ne cree aucune classe de production : **aucune regle ArchUnit n'est touchee**, et je n'ecris pas d'`ADR`, car c'est le test d'un paquet. Ce qui me ferait changer d'avis : un second paquet de quadrillage illustre, qui justifierait un garde commun.
+
+### 7.6 Taille
+
+**M** pour le lot, et non le **S** que `LP9` portait (tableau de la section 1). Le paquet, l'entree de catalogue et le cliquet sont **S**. Le test croise est un garde neuf, donc **M** sur mon echelle (en-tete). Sans lui, le lot redevient **S**, mais les points 1, 2, 4, 5 et 8 sur les 20 dessins ne reposent alors que sur une lecture de l'image, que l'agent auteur ne peut pas faire.
+
+### 7.7 Mesure d'ecran : faisable par `ines-design` avant l'engagement
+
+La mesure des 36 zones de 2.3 est sans objet (`backlog.md:23734`). Le prealable que `nadia-prof` cite (`arbitrage-nadia-palier-4.md:279`) se lit donc, pour (a), comme ceci : **un dessin candidat de 6 x 6 rendu a 176 px**, encre des glyphes et marques distinctes dans une case de 25 px, a 744 x 551 et a 320 px. Il ne faut aucun code : l'ecran d'item `question` illustre est deja servi (`ce1-solides`). **Faisable avant l'engagement, dans cet ordre** :
+
+1. `ines-design` dessine les glyphes manquants et les trois marques ;
+2. le script produit un candidat ;
+3. elle le substitue a l'illustration d'un item servi, sur une copie non commitee, et capture avec `outils/mesurer-rendu.sh <largeur> <url> <png> [hauteur]` (`mesurer-rendu.sh:35`).
+
+Cout : un `package` du jar, de 9 min 27 s a 10 min 22 s au palier 3 (section 3.1). Que le script accepte une URL `file://` sur le SVG seul est **non verifie**. C'est cette mesure qui departage 6 x 6, 5 x 5 et 4 x 4, et le choix revient a `nadia-prof`.
+
+### 7.8 Pret, pas pret
+
+| Pret | Pas pret, et a qui |
+|---|---|
+| mecanique, type `question` illustre, gardes de geometrie, de texte et de resolution, entree de catalogue sur le patron existant | glyphes A a F, 3, 4, 6 et les trois marques (`ines-design`) |
+| aucun `ADR` a ecrire ni a amender, aucune regle ArchUnit touchee | mesure de 7.7 (`ines-design`), puis taille de grille et nombre d'items (`nadia-prof`, `camille-po`) |
+| poids estime par prototype (7.4) | reponse de l'utilisatrice a `A.143` (poids) ; reponse de `nadia-prof` sur *"par sa coordonnee seule"* et sur `PAR-13` pour (a) (`DEC-0120:2203`) |
+| | paquet reecrit, 20 dessins, test croise de 7.5 : le lot lui-meme (developpeur designe par `sofia-sm`, forme du test : moi) |
+| | ecart `DEC-0120:785` et chiffre du critere 6 (`backlog.md:23316`, `:23734`) : `camille-po` |
+
+**Jobs de `ci.yml` lances pour cette section** : voir 7.9.
+
+### 7.9 Jobs et mesures lances pour cette section
+
+- **`build`, mesure partielle** : copie propre de `e4d54795` par `git archive`, hors depot, plus ce fichier. Commande : `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test` sur les quatre classes nommees en section 6. `-am` est present, le perimetre est ces quatre classes. Resultat : **28 tests, 0 echec, 0 erreur** (attributs des quatre `TEST-*.xml`), exit 0, de 21:35 a 21:39, puis relance de 21:39 a 21:42 sur la version qui porte 7.9 : 28 tests, 0 echec. JDK 21.0.10, version que rapporte la machine virtuelle des tests (`java.version`).
+- **`chemins`** : `verifier-chemins.sh` sur ce fichier : *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, exit 0.
+- **`verify` complet, `package`, `prefixes`, `outils`** : **non lances**. Aucun code, aucun outil, aucun commit.
