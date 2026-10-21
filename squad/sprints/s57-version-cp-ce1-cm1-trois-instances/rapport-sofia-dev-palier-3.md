@@ -283,3 +283,39 @@ Limite de la porte : la CI distante n'a pas juge, rien n'est pousse. Les jobs ci
 Attendu : 2852 (section 11) + 2 = 2854. L'ecart vient du seul commit `5302af53` (cherry-pick de `b383b0bb`) : `git diff d3fce602 ad9ef86d` sur `adapters/adapter-web/src/test/java` ajoute 2 lignes `@Test` et n'en retire aucune, dans `LaFormeCommuneDesPropositionsLonguesEstEpingleeTest` (les deux autres fichiers de test touches sont des fixtures CSS sans test). `adapter-web` passe de 520 a 522, les autres modules ne bougent pas. Le rapport d'`ines-design` donne 120 + 31 + 522 = 673 sur `-pl adapters/adapter-web -am` : coherent avec la ligne `adapter-web` ci-dessus. Le total correspond. Les chiffres sont la somme de mon propre log de verify.
 
 **Decisions** : aucune `ADR` ni `DEC` creee ou modifiee par cette porte. **Obstacle** : l'obstacle de la section 12 (allocation de PL-11, PL-12, PL-13) est clos, le fichier existe : `squad/decisions/REGISTRE-identifiants.md` modifie par `ad9ef86d`, et `leDepotReelEstCoherent` passe dans ce `verify`. **Non fait** : `s57-ines-p3-pli` reste non fusionnee.
+
+## 14. Fusion de s57-marc-doc-p3 et de s57-ines-r1, porte technique de `4d39b47d` (casquette Scrum Master)
+
+**Fusions** (`--no-ff`, sans rebase, reset, force ni push) :
+
+| Branche | Sommet | Base | Fusion | Perimetre verifie par `git diff --stat round-two...<branche>` |
+|---|---|---|---|---|
+| `s57-marc-doc-p3` | `ac986aca` | `9d892663` | `afd33e88` | un seul fichier : `adapters/adapter-content/src/main/resources/contenu/ce1-texte-documentaire.yaml`, 12 insertions, 12 suppressions (items 5, 9, 17) |
+| `s57-ines-r1` | `56ce720e` | `8407f73f` | `4d39b47d` | un seul fichier : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/releve-ecran-ines-palier-3.md`, 392 insertions |
+
+Aucun fichier de test touche par `s57-marc-doc-p3` : aucune assertion n'a change. `round-two` etait a `4d924f2d` avant fusion, `git status` vide.
+
+Sommet de `round-two` teste : `4d39b47d`. Worktree detache cree par `git worktree add --detach`, `git status` vide avant lancement, `HEAD` et `git status` verifies identiques apres les deux builds.
+
+| Job de `ci.yml` | Etapes lancees | Resultat |
+|---|---|---|
+| `prefixes` | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-prefixes.sh` sur `--no-merges` de `4d924f2d..HEAD`, `verifier-garde-fou-accent-test.sh`, `verifier-garde-fou-accent.sh` sur `4d924f2d..HEAD` | tous 0 (0 commit touche le garde-fou de l'accent) |
+| `chemins` | `verifier-chemins-test.sh`, `verifier-chemins.sh` sur `git ls-files` | 0 et 0 |
+| `outils` | 6 `outils/*-test.sh`, 2 `squad/outils/*/*-test.sh`, 5 `outils/*-test.py` | 13 juges, 0 echec |
+| `build`, verify | `bash outils/mvn-jdk21.sh -B clean verify`, racine | `BUILD SUCCESS`, six modules `SUCCESS`, 11 min 17 s |
+| `build`, package | `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package` | `BUILD SUCCESS`, 9 min 46 s, `bootstrap/target/recreo.jar` produit (21,5 Mo) |
+
+Limite de la porte : la CI distante n'a pas juge, rien n'est pousse. Les jobs sont ceux du workflow rejoues en local, `prefixes` sur la plage `4d924f2d..HEAD` et non sur une base de push reelle.
+
+| Module | Tests |
+|---|---|
+| `domain` | 120 |
+| `application` | 31 |
+| `adapter-web` | 522 |
+| `adapter-content` | 1794 |
+| `bootstrap` | 381 (surefire) + 6 (failsafe) = 387 |
+| Total | **2854** |
+
+Ecart a 2854 (section 13) : 0, comme attendu. Aucun test ajoute ni retire, la fusion ne change que des donnees YAML et un fichier de `squad/`. Les chiffres sont la somme de mon propre log de verify.
+
+**Decisions** : aucune `ADR` ni `DEC` creee ou modifiee par cette fusion. **Obstacles** : aucun nouveau. **Non fait** : `s57-ines-p3-pli` reste non fusionnee (commit refuse, decision a l'utilisatrice).
