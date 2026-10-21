@@ -1,0 +1,4 @@
+/* Contre-exemple : l'interligne des propositions revient a 1,5, la valeur de la bibliotheque tierce. */
+@media (min-width: 720px) {
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) .proposition { line-height: 1.5; }
+}

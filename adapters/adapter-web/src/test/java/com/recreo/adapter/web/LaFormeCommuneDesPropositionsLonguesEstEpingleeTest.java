@@ -21,6 +21,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * L1 ni L2) est versee dans la feuille maison telle qu'elle a ete mesuree, et reste ce qu'elle a ete
  * mesuree etre : hors {@code .ecran-deux-oeuvres}, sous {@code @media (min-width: 720px)}.
  *
+ * <p>S57, palier 3 (correctif du pli a 744 x 551) : trois regles s'y ajoutent, mesurees sur les cinq
+ * paquets CE1 (mesure-ines-palier-3-pli-744x551.md) - la marge verticale de l'en-tete (0,5 rem) et
+ * l'interligne de l'enonce et celui des propositions (1,25). L'en-tete n'exclut pas l'ecran a deux
+ * oeuvres, parce que c'est la coquille permanente : il entre dans la population par son nom, et
+ * seulement sous le seuil de 720 px (la regle de base, hors seuil, n'est pas celle qui a ete mesuree
+ * et n'est pas jugee ici).
+ *
  * <p><b>Ce que ce fichier garde.</b> Les cotes (bas de {@code .indice} au plus 551 a 744 x 551) ont
  * ete relevees sur ces regles, avec ces valeurs : une valeur qui change, ou une regle qui s'ajoute au
  * meme sujet, invalide la mesure sans qu'aucun rouge le dise. Aucun automate du reacteur ne rend une
@@ -55,13 +62,19 @@ class LaFormeCommuneDesPropositionsLonguesEstEpingleeTest {
     /** Ce qui fait d'une regle une regle de la forme : elle exclut l'ecran a deux oeuvres. */
     private static final String EXCLUSION = ":not(.ecran-deux-oeuvres)";
 
+    /** La coquille permanente : seule regle de la forme qui n'exclut pas l'ecran a deux oeuvres. */
+    private static final String ENTETE = ".entete";
+
     private static final String ECRAN = ".ecran-de-jeu:has(.propositions)" + EXCLUSION;
     private static final String MESSAGE = ECRAN + " > .message-jeu";
 
     private record Declaration(String selecteur, String propriete, String valeur) {
     }
 
-    /** Les cinq regles R3-1 a R3-5, avec les valeurs sur lesquelles la cote de reference est mesuree. */
+    /**
+     * Les cinq regles R3-1 a R3-5 et les trois du correctif du pli, avec les valeurs sur lesquelles
+     * la cote de reference est mesuree.
+     */
     private static final List<Declaration> LA_FORME = List.of(
             new Declaration(".zone-jeu:has(> .ecran-de-jeu" + EXCLUSION + " .propositions)",
                     "padding-top", "0"),
@@ -77,7 +90,10 @@ class LaFormeCommuneDesPropositionsLonguesEstEpingleeTest {
             new Declaration(MESSAGE + " > .signal", "grid-row", "1 / span 3"),
             new Declaration(MESSAGE + " > :not(.signal)", "grid-column", "2"),
             new Declaration(ECRAN + " .signal .verdict", "margin-bottom", "0"),
-            new Declaration(MESSAGE + " > .signal + *", "margin-top", "0"));
+            new Declaration(MESSAGE + " > .signal + *", "margin-top", "0"),
+            new Declaration(ENTETE, "padding", "0.5rem 0"),
+            new Declaration(ECRAN + " .enonce", "line-height", "1.25"),
+            new Declaration(ECRAN + " .proposition", "line-height", "1.25"));
 
     private static Set<String> selecteursAttendus() {
         Set<String> selecteurs = new LinkedHashSet<>();
@@ -89,7 +105,8 @@ class LaFormeCommuneDesPropositionsLonguesEstEpingleeTest {
 
     static void verifierLaFormeCommune(Path racine) {
         List<Regle> population = reglesMaison(racine).stream()
-                .filter(regle -> regle.selecteur().contains(EXCLUSION))
+                .filter(regle -> regle.selecteur().contains(EXCLUSION)
+                        || (regle.selecteur().equals(ENTETE) && regle.contexte().equals(CONTEXTE)))
                 .toList();
         assertThat(population)
                 .as("cette clause ne prouve rien si aucune regle maison de %s n'exclut %s", racine,
@@ -168,6 +185,24 @@ class LaFormeCommuneDesPropositionsLonguesEstEpingleeTest {
         assertThatThrownBy(() -> verifierLaFormeCommune(racine))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining(ECRAN + " > .indice n'est pas une regle de la forme mesuree");
+    }
+
+    @Test
+    void unInterligneQuiChangeFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("interligne-change");
+        assertThatThrownBy(() -> verifierLaFormeCommune(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(ECRAN + " .proposition declare line-height a 1.5")
+                .hasMessageContaining("la forme a ete mesuree a 1.25");
+    }
+
+    @Test
+    void uneMargeDEnteteQuiChangeSousLeSeuilFaitEchouerLeGardeFou() {
+        Path racine = CONTRE_EXEMPLES.resolve("entete-change");
+        assertThatThrownBy(() -> verifierLaFormeCommune(racine))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(ENTETE + " declare padding a 1rem 0")
+                .hasMessageContaining("la forme a ete mesuree a 0.5rem 0");
     }
 
     @Test
