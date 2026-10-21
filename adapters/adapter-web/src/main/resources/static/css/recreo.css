@@ -1932,6 +1932,24 @@ body:has(.ecran-exclusif) .chip-niveau {
     .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .message-jeu > .signal + * { margin-top: 0; }
 }
 
+/* S57, palier 3 (ines-design, a la demande de nadia-prof, lecture-nadia-palier-3.md S2) : a 744 x 551,
+   apres une erreur, l'indice entier tient au-dessus du pli sur les paquets a trois rangees de propositions
+   (ce1-negation, ce1-emc-biens-communs, ce1-inference). Le correctif est un gabarit, pas un contenu :
+   aucune taille de police, aucun rembourrage, aucun ecart entre deux boutons, aucune largeur ne change, le
+   texte-support garde son interligne, et l'ordre consigne, texte, enonce, propositions, indice est celui du
+   document. Deux rubriques seulement, et ni l'une ni l'autre ne nomme un paquet, une longueur de
+   proposition ni un etat du verdict.
+   - l'en-tete passe de 1 rem a 0,5 rem de marge haute et basse (-16 px) : le bouton de sortie garde sa
+     taille et sa place dans le rang, seule la bande qui l'entoure est plus mince ;
+   - l'interligne de l'enonce et des propositions passe de 1,5 (valeur de la bibliotheque tierce) a 1,25 :
+     -8 px par rangee de propositions et -16 px pour un enonce sur deux lignes. Les lettres gardent leur
+     taille. Sous 720 px rien ne change. */
+@media (min-width: 720px) {
+    .entete { padding: 0.5rem 0; }
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) .enonce { line-height: 1.25; }
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) .proposition { line-height: 1.25; }
+}
+
 /* Hors sprint accueil par matiere (DEC-0117, ADR-0105, ADR-0106, arbitrage de nadia-prof APM-1 a APM-11).
    Reprise des regles candidates d'ines-design (squad/conformite/releves-accueil/accueil-vues.css), a deux
    ecarts pres que l'ADR impose : la teinte n'arrive que par les deux proprietes personnalisees

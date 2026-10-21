@@ -1,0 +1,4 @@
+/* Contre-exemple : la marge verticale de l'en-tete sous le seuil revient a 1 rem. */
+@media (min-width: 720px) {
+    .entete { padding: 1rem 0; }
+}
