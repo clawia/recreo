@@ -420,3 +420,24 @@ La formule *"recu de MASTER, sans source dans le depot"* tolere l'accord au plur
 **Statut** : aucune decision ne change, aucun texte d'origine n'est reecrit, aucune ligne de matrice ne bouge. Aucun identifiant de condition neuf.
 
 **Renvoi** : l'amendement du meme jour de `DEC-0120` (A.132), de `DEC-0123` et de `DEC-0124` porte la question et la reponse. **Sans balayage retroactif au-dela de la liste** (section 7 de ce fichier, amendement D).
+
+## Amendement F du 2026-10-21 (`camille-po`) - ce que l'amendement E laisse ouvert de `E5`, et la regle que j'applique en attendant
+
+**Statut de `DEC-0062` : `Acceptee`, inchange.** Aucun texte d'origine n'est reecrit. Source : l'ecart 9 de `releve-relecteur-cloture-palier-3.md`, dont E ne traite que la liste.
+
+**Ce que E ne dit pas, et que je dis.** La confirmation *"confirme"* est elle-meme arrivee par l'agent lanceur (amendement E, deuxieme paragraphe). Si un enonce que l'agent lanceur me transmet est de forme 3, sa confirmation transmise de la meme facon l'est aussi, et le passage de la liste a la forme 2 ne se tient pas par ses propres moyens. Il se tient **seulement si l'utilisatrice tient pour siens les mots que l'agent lanceur donne comme les siens**. Aucun fichier du depot ne le dit. E reste valable comme etat de fait (les mots de la liste sont cites, confirmes, dates) ; il ne ferme pas `E5`.
+
+**Ce qui reste ouvert**, une fois E compte :
+
+1. **La regle pour une reponse relayee** (`E5`, ouvert depuis `cloture-palier-1.md`, reporte a `cloture-palier-2.md`, reporte a `cloture-palier-3.md` : **troisieme palier**). Elle est a moi ; je l'ecris ci-dessous.
+2. **Les enonces hors liste** : la delegation du 2026-10-19 (*"continue au mieux pour obtenir la meilleure couverture"*), `DEC-0120` A.114 (mots de `S2` et de `Q-N4`), `Q-U11`, les paliers 1 et 2. Forme 3 a la lettre d'A.2 ; pas de balayage retroactif (section 7).
+3. **Le canal** : par quel moyen les mots arrivent la premiere fois a l'agent lanceur. A l'utilisatrice (`cloture-palier-3.md` section 13 (h)).
+
+**La regle que j'applique (`E5`), pour mes propres ecrits.**
+
+- *"Relayee"* n'est pas une forme et je ne l'emploie plus seul. Un enonce de l'utilisatrice que je tiens de l'agent lanceur s'ecrit **en forme 3** (formule fixe d'A.2, mots cites, date), ou **en forme 2 apres une confirmation demandee en citant ces mots**, comme E, avec le fait dit que la confirmation est relayee.
+- Un enonce de forme 3 **ne fonde rien** (3.2) : ni `DEC`, ni critere, ni choix de story. Quand un choix de produit s'appuie sur lui, son motif est ecrit ailleurs (un texte d'un agent, forme 1), ou le choix attend.
+- **Application immediate** : dans `S57-BR-MAT-CE1-14-GRILLE`, la phrase qui motive le choix de la forme (b) par la delegation du 2026-10-19 perd ce motif ; le motif reste le texte de `nadia-prof` (`arbitrage-nadia-q05-q10.md` 1.2 : (b) seule ferme la ligne en `couvert-valide`). Voir l'amendement du meme jour au backlog.
+- Cette regle vaut pour ce que j'ecris. Elle ne dit rien pour les autres agents : `sofia-sm` la porte a `squad/README.md` si l'utilisatrice repond oui a la question ci-dessous.
+
+**La question, une seule, a l'utilisatrice** : *quand l'agent qui lance une tache me transmet une reponse de votre part, vaut-elle vos mots (forme 2 : cites entre guillemets, avec la date), ou reste-t-elle recue de MASTER (forme 3) tant que vous ne l'avez pas ecrite vous-meme ?* Sans reponse, la regle ci-dessus tient et `E5` reste compte comme ouvert. Route : `sofia-sm`, section 13 (h) de `cloture-palier-3.md`.

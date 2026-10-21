@@ -363,3 +363,7 @@ Source : `DEC-0123` (ses mots relayes, non lus de la main de l'utilisatrice ; sa
 **Identifiants.** Aucun identifiant de condition neuf n'est alloue ici ni dans `DEC-0123` : tous ceux qui sont cites existent deja. La story ecrite en fin de backlog n'emploie aucun identifiant non alloue ; son nom (`S57-BR-MAT-CE1-14-GRILLE`) suit le modele des stories voisines.
 
 Non commite. Matrice (148 / 200) et `planning.md` non touches.
+
+## Amendement du 2026-10-21, 18:45 (`camille-po`, ecart 9 du releve de cloture du palier 3) - provenance des mots de `DEC-0123`
+
+**Rien au-dessus n'est reecrit.** Les six reponses `Q-05` a `Q-10`, citees plus haut comme *"mots relayes, non lus de la main de l'utilisatrice"*, ont ete confirmees mot pour mot le 2026-10-21 (`DEC-0123`, troisieme amendement ; `DEC-0062`, amendement E) : elles passent de la forme 3 a la forme 2 de `DEC-0062`. **Ce que cela ne fait pas** : la confirmation est elle-meme arrivee par l'agent lanceur (`DEC-0062`, amendement F, premier point) ; la lecture de *"infos"* (`Q-05`) reste a confirmer (`QP3`). Le sort de la reponse relayee en general (`E5`) reste ouvert.

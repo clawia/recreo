@@ -249,3 +249,7 @@ N'engage aucun poste, ne fixe aucun prix, n'affecte aucune instance. Ne prononce
 ## 10. Jobs de `ci.yml`
 
 Lances depuis le checkout, avec tous les fichiers de ce geste presents dans l'arbre, avant tout commit (je n'en fais pas) : voir le message de livraison. Je ne deduis aucun job que je n'ai pas lance ; le Done technique n'est pas prononce par moi.
+
+## Amendement du 2026-10-21, 18:45 (`camille-po`, ecart 9 du releve de cloture du palier 3) - provenance de la consigne du palier 4
+
+**Rien au-dessus n'est reecrit.** Les mots de la consigne (*"pour le palier 4 augmente le seuil avec des instances en // jusqu'a 3 si besoin"*), cites en sections 0 et PR2b comme *"relayee, non lue de sa main"*, ont ete confirmes mot pour mot le 2026-10-21 (`DEC-0120` A.132 ; `DEC-0062`, amendement E) : forme 2 de `DEC-0062`. **Ce qui ne l'est pas** : ma lecture (le seuil est la borne de 8,0 de `PAR-9`, les instances sont A, A' et B), toujours *a confirmer* ; la confirmation est elle-meme arrivee par l'agent lanceur (`DEC-0062`, amendement F, premier point). Le chiffre *"7 h 26 au mur"* de la section 5bis reste *"relaye, non lu dans un fichier"* : il est de forme 3 et ne fonde aucun choix de ce fichier. `E5` reste ouvert.
