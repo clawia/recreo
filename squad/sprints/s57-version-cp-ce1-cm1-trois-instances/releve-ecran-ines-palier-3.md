@@ -390,3 +390,153 @@ Un jar (port 18711, PID 33452) et un Chrome (PID 41044, port 19711), arretes par
 ## Decisions prises
 
 **Aucune.** Ce fichier ne cree ni n'amende aucune `ADR` ni `DEC`, ne leve aucune reserve, ne prononce aucun Done et ne cree aucun identifiant de condition.
+
+
+---
+
+# Releve a l'ecran du 2026-10-21 (suite) : `-07`, items 5, 9 et 17 apres la correction de `marc-dev`
+
+- **Auteure** : `ines-design`. **Date** : 2026-10-21, 14:46 (UTC+02:00), lue par `date` (releve de 14:41 a 14:45). Cette section suit la section A ci-dessus, dont elle reprend la forme, sans en changer un chiffre. Elle demande a `nadia-prof` rien d'autre que de lire ; elle ne prononce aucun Done, ne juge aucun contenu, ne decide rien. Aucun identifiant nouveau.
+- **Demande** : `verdict-nadia-palier-3-ce1.md`, derniere section (rejeu de `-07`, items 5, 9 et 17) : texte DOM des etats V, E et R, trois captures a 744 x 551 par item, l'etat texte masque en plus, et la comparaison au YAML.
+- **Arbre** : `round-two` a `ea5d94292a54469c369717008abaee41806be4b7` (contient `afd33e88`, la correction des items 5, 9 et 17, et la fusion de mon releve), worktree detache dedie `recreo-ines-r2`, branche `s57-ines-r2`. Blob du YAML lu : `git rev-parse round-two:adapters/adapter-content/src/main/resources/contenu/ce1-texte-documentaire.yaml` = `5f3e6c953c5d72f5b6c531988bad45476715d8f4`.
+- **Jar** : `bash outils/mvn-jdk21.sh -B clean package -DskipTests` (sortie 0), copie hors depot, SHA-256 `0b6fd178e7364331e983f1c10728857c56c71ea09dfaa9aef4f886f87f7f4b9f`. Feuille servie `/css/recreo.css` : SHA-256 `1fa775cadc55f9b7a2252312340aae077c36218b019cdbf9ad2ebc11dc3654b5` (identique a celle de la section A). Port 18721, PID 52152, arrete par ce PID.
+- **Methode** : celle de la section A (pilote `releve2.mjs`, hors depot). Un seul Chrome sans tete (PID 23200, profil jetable, port 19721, disparu a la fin du pilote). Fenetre de 744 x 551 avec barre classique et de 720 x 551 sans barre, facteur 1. 26 parties jouees depuis `/niveaux/CE1/matieres/francais` ; a **chaque** rencontre d'un des trois items, je releve l'enonce, le texte-support et l'ordre des propositions a l'arrivee, j'appuie sur une proposition fausse et je releve l'indice, puis je donne la bonne reponse. La premiere rencontre de chaque item est jouee en entier (arrivee, erreur, seconde erreur, revelation) avec captures. 11, 16 et 15 rencontres : item 5, 9, 17. **Les six ordres possibles des trois propositions ont ete servis pour chacun des trois items** (6 sur 6).
+- **Etat "texte masque"** : comme en section A, il n'existe pas dans le produit ; je cache `.texte-support` par une feuille de style posee dans la page ouverte (`display: none`), rien d'autre. Je le releve a l'arrivee (M), apres une erreur (EM) et a la revelation (RM). Le reste du DOM est celui du jar.
+- **Captures** : 36 PNG (3 items x 6 etats x 2 largeurs), dans le dossier `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\` (meme dossier que la section A ; `%TEMP%` est la variable d'environnement du dossier temporaire de l'utilisatrice). Nom : `07-i<NN>-r2-<etat>-<744 ou 720s>.png`, `720s` = 720 x 551 sans barre. Le chemin de chacune est cite en entier ci-dessous.
+
+## I. Le texte servi est-il celui du YAML ?
+
+**Oui, identique, sur les trois items.** 15 comparaisons sur 15, caractere par caractere (espaces insecables U+00A0 comprises, aucune normalisation) entre le YAML de `round-two` et le DOM servi. **Aucun ecart.**
+
+| Item | Champ du YAML | Valeur du YAML | Rendu identique (comparaison caractere par caractere, U+00A0 compris) | Releve sur |
+|---|---|---|---|---|
+| 5 | enonce | "Avec quoi fabrique-t-on le verre ?" | oui | V et 11 rencontres |
+| 5 | texteSupport | "Le verre se fabrique avec du sable. Le papier se fabrique avec du bois. Le pull se fabrique avec de la laine." | oui | V et 11 rencontres ; le DOM garde le texte meme masque |
+| 5 | bonneReponse | "du sable" | oui | R (reponse attendue) |
+| 5 | distracteurs | "du bois ; de la laine" | oui | les 6 ordres servis : meme ensemble de 3 propositions que bonneReponse + distracteurs |
+| 5 | indice | "Cherche le mot « verre » dans le texte." | oui | E et 11 rencontres, six ordres |
+| 9 | enonce | "Comment dort le cheval ?" | oui | V et 16 rencontres |
+| 9 | texteSupport | "La chauve-souris dort la tête en bas. Le cheval dort debout. Le chat dort en boule." | oui | V et 16 rencontres ; le DOM garde le texte meme masque |
+| 9 | bonneReponse | "debout" | oui | R (reponse attendue) |
+| 9 | distracteurs | "en boule ; la tête en bas" | oui | les 6 ordres servis : meme ensemble de 3 propositions que bonneReponse + distracteurs |
+| 9 | indice | "Cherche le mot « cheval » dans le texte." | oui | E et 16 rencontres, six ordres |
+| 17 | enonce | "Que faut-il faire juste après avoir cassé les œufs ?" | oui | V et 15 rencontres |
+| 17 | texteSupport | "Casse deux œufs dans un bol. Ajoute du sucre. Mélange bien." | oui | V et 15 rencontres ; le DOM garde le texte meme masque |
+| 17 | bonneReponse | "Ajoute du sucre" | oui | R (reponse attendue) |
+| 17 | distracteurs | "Mélange bien ; Casse deux œufs" | oui | les 6 ordres servis : meme ensemble de 3 propositions que bonneReponse + distracteurs |
+| 17 | indice | "Les instructions se lisent dans l'ordre." | oui | E et 15 rencontres, six ordres |
+
+Ce que la comparaison couvre : l'enonce, le texte-support, la bonne reponse (telle que la revelation l'affiche), l'ensemble des trois propositions (la bonne et les deux distracteurs), l'indice (tel qu'il s'affiche apres une erreur). Ce qu'elle ne couvre pas : l'ordre des propositions, que le jeu tire au hasard (c'est l'objet des tables ci-dessous) ; et les mots que le gabarit ecrit lui-meme (verdict, phrase de revelation), qui ne viennent pas du YAML.
+
+## J. Les trois items, etat par etat
+
+### Item 5
+
+Texte DOM exact (zone de jeu, `innerText`, ce que l'oeil lit). V = arrivee, M = arrivee texte masque, E = apres une erreur, EM = idem texte masque, R = revelation, RM = idem texte masque.
+
+- **V** : "Score : 0 / Lis le petit texte, puis réponds à la question. / Le verre se fabrique avec du sable. Le papier se fabrique avec du bois. Le pull se fabrique avec de la laine. / Avec quoi fabrique-t-on le verre ? / du bois du sable de la laine"
+- **M** : "Score : 0 / Lis le petit texte, puis réponds à la question. / Avec quoi fabrique-t-on le verre ? / du bois du sable de la laine"
+- **E** : "Score : 0 / Lis le petit texte, puis réponds à la question. / Le verre se fabrique avec du sable. Le papier se fabrique avec du bois. Le pull se fabrique avec de la laine. / Avec quoi fabrique-t-on le verre ? / du bois du sable de la laine / Ce n'est pas ça. Essaie encore ! / Cherche le mot « verre » dans le texte."
+- **EM** : "Score : 0 / Lis le petit texte, puis réponds à la question. / Avec quoi fabrique-t-on le verre ? / du bois du sable de la laine / Ce n'est pas ça. Essaie encore ! / Cherche le mot « verre » dans le texte."
+- **R** : "Score : 0 / Lis le petit texte, puis réponds à la question. / Le verre se fabrique avec du sable. Le papier se fabrique avec du bois. Le pull se fabrique avec de la laine. / Avec quoi fabrique-t-on le verre ? / du bois du sable de la laine / Ce n'est pas ça. / Appuie sur la bonne réponse : / du sable / Cherche le mot « verre » dans le texte."
+- **RM** : "Score : 0 / Lis le petit texte, puis réponds à la question. / Avec quoi fabrique-t-on le verre ? / du bois du sable de la laine / Ce n'est pas ça. / Appuie sur la bonne réponse : / du sable / Cherche le mot « verre » dans le texte."
+
+Cotes a 744 x 551 (ordre servi, premiere rencontre) : en E, signal 352-428, verdict 360-420, indice 352-402 ; en R, phrase 352-382, reponse attendue 386-434, indice 438-488. Le bas du viewport est a 551.
+
+| Etat | Capture 744 x 551, barre classique | Capture 720 x 551, sans barre |
+|---|---|---|
+| V arrivee | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i05-r2-arrivee-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i05-r2-arrivee-720s.png` |
+| M arrivee, texte masque | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i05-r2-masque-arrivee-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i05-r2-masque-arrivee-720s.png` |
+| E erreur | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i05-r2-erreur-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i05-r2-erreur-720s.png` |
+| EM erreur, texte masque | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i05-r2-masque-erreur-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i05-r2-masque-erreur-720s.png` |
+| R revelation | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i05-r2-revelation-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i05-r2-revelation-720s.png` |
+| RM revelation, texte masque | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i05-r2-masque-revelation-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i05-r2-masque-revelation-720s.png` |
+
+Les six ordres de propositions servis par le jeu (tires au hasard par le serveur ; 11 rencontres de l'item au total, chaque rencontre jouee jusqu'a une erreur pour relever l'indice) :
+
+| Ordre servi (de gauche a droite et de haut en bas) | Rencontres | Indice rendu apres l'erreur |
+|---|---|---|
+| "de la laine / du bois / du sable" | 1 | "Cherche le mot « verre » dans le texte." |
+| "de la laine / du sable / du bois" | 2 | "Cherche le mot « verre » dans le texte." |
+| "du bois / de la laine / du sable" | 2 | "Cherche le mot « verre » dans le texte." |
+| "du bois / du sable / de la laine" | 4 | "Cherche le mot « verre » dans le texte." |
+| "du sable / de la laine / du bois" | 1 | "Cherche le mot « verre » dans le texte." |
+| "du sable / du bois / de la laine" | 1 | "Cherche le mot « verre » dans le texte." |
+
+### Item 9
+
+Texte DOM exact (zone de jeu, `innerText`, ce que l'oeil lit). V = arrivee, M = arrivee texte masque, E = apres une erreur, EM = idem texte masque, R = revelation, RM = idem texte masque.
+
+- **V** : "Score : 4 / Lis le petit texte, puis réponds à la question. / La chauve-souris dort la tête en bas. Le cheval dort debout. Le chat dort en boule. / Comment dort le cheval ? / en boule debout la tête en bas / Bravo !"
+- **M** : "Score : 4 / Lis le petit texte, puis réponds à la question. / Comment dort le cheval ? / en boule debout la tête en bas / Bravo !"
+- **E** : "Score : 4 / Lis le petit texte, puis réponds à la question. / La chauve-souris dort la tête en bas. Le cheval dort debout. Le chat dort en boule. / Comment dort le cheval ? / en boule debout la tête en bas / Ce n'est pas ça. Essaie encore ! / Cherche le mot « cheval » dans le texte."
+- **EM** : "Score : 4 / Lis le petit texte, puis réponds à la question. / Comment dort le cheval ? / en boule debout la tête en bas / Ce n'est pas ça. Essaie encore ! / Cherche le mot « cheval » dans le texte."
+- **R** : "Score : 4 / Lis le petit texte, puis réponds à la question. / La chauve-souris dort la tête en bas. Le cheval dort debout. Le chat dort en boule. / Comment dort le cheval ? / en boule debout la tête en bas / Ce n'est pas ça. / Appuie sur la bonne réponse : / debout / Cherche le mot « cheval » dans le texte."
+- **RM** : "Score : 4 / Lis le petit texte, puis réponds à la question. / Comment dort le cheval ? / en boule debout la tête en bas / Ce n'est pas ça. / Appuie sur la bonne réponse : / debout / Cherche le mot « cheval » dans le texte."
+
+Cotes a 744 x 551 (ordre servi, premiere rencontre) : en E, signal 352-428, verdict 360-420, indice 352-402 ; en R, phrase 352-382, reponse attendue 386-434, indice 438-488. Le bas du viewport est a 551.
+
+| Etat | Capture 744 x 551, barre classique | Capture 720 x 551, sans barre |
+|---|---|---|
+| V arrivee | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i09-r2-arrivee-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i09-r2-arrivee-720s.png` |
+| M arrivee, texte masque | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i09-r2-masque-arrivee-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i09-r2-masque-arrivee-720s.png` |
+| E erreur | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i09-r2-erreur-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i09-r2-erreur-720s.png` |
+| EM erreur, texte masque | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i09-r2-masque-erreur-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i09-r2-masque-erreur-720s.png` |
+| R revelation | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i09-r2-revelation-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i09-r2-revelation-720s.png` |
+| RM revelation, texte masque | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i09-r2-masque-revelation-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i09-r2-masque-revelation-720s.png` |
+
+Les six ordres de propositions servis par le jeu (tires au hasard par le serveur ; 16 rencontres de l'item au total, chaque rencontre jouee jusqu'a une erreur pour relever l'indice) :
+
+| Ordre servi (de gauche a droite et de haut en bas) | Rencontres | Indice rendu apres l'erreur |
+|---|---|---|
+| "debout / en boule / la tête en bas" | 1 | "Cherche le mot « cheval » dans le texte." |
+| "debout / la tête en bas / en boule" | 4 | "Cherche le mot « cheval » dans le texte." |
+| "en boule / debout / la tête en bas" | 4 | "Cherche le mot « cheval » dans le texte." |
+| "en boule / la tête en bas / debout" | 5 | "Cherche le mot « cheval » dans le texte." |
+| "la tête en bas / debout / en boule" | 1 | "Cherche le mot « cheval » dans le texte." |
+| "la tête en bas / en boule / debout" | 1 | "Cherche le mot « cheval » dans le texte." |
+
+### Item 17
+
+Texte DOM exact (zone de jeu, `innerText`, ce que l'oeil lit). V = arrivee, M = arrivee texte masque, E = apres une erreur, EM = idem texte masque, R = revelation, RM = idem texte masque.
+
+- **V** : "Score : 5 / Lis le petit texte, puis réponds à la question. / Casse deux œufs dans un bol. Ajoute du sucre. Mélange bien. / Que faut-il faire juste après avoir cassé les œufs ? / Casse deux œufs Ajoute du sucre Mélange bien / Bravo !"
+- **M** : "Score : 5 / Lis le petit texte, puis réponds à la question. / Que faut-il faire juste après avoir cassé les œufs ? / Casse deux œufs Ajoute du sucre Mélange bien / Bravo !"
+- **E** : "Score : 5 / Lis le petit texte, puis réponds à la question. / Casse deux œufs dans un bol. Ajoute du sucre. Mélange bien. / Que faut-il faire juste après avoir cassé les œufs ? / Casse deux œufs Ajoute du sucre Mélange bien / Ce n'est pas ça. Essaie encore ! / Les instructions se lisent dans l'ordre."
+- **EM** : "Score : 5 / Lis le petit texte, puis réponds à la question. / Que faut-il faire juste après avoir cassé les œufs ? / Casse deux œufs Ajoute du sucre Mélange bien / Ce n'est pas ça. Essaie encore ! / Les instructions se lisent dans l'ordre."
+- **R** : "Score : 5 / Lis le petit texte, puis réponds à la question. / Casse deux œufs dans un bol. Ajoute du sucre. Mélange bien. / Que faut-il faire juste après avoir cassé les œufs ? / Casse deux œufs Ajoute du sucre Mélange bien / Ce n'est pas ça. / Appuie sur la bonne réponse : / Ajoute du sucre / Les instructions se lisent dans l'ordre."
+- **RM** : "Score : 5 / Lis le petit texte, puis réponds à la question. / Que faut-il faire juste après avoir cassé les œufs ? / Casse deux œufs Ajoute du sucre Mélange bien / Ce n'est pas ça. / Appuie sur la bonne réponse : / Ajoute du sucre / Les instructions se lisent dans l'ordre."
+
+Cotes a 744 x 551 (ordre servi, premiere rencontre) : en E, signal 428-504, verdict 436-496, indice 428-478 ; en R, phrase 428-458, reponse attendue 462-510, indice 514-564. Le bas du viewport est a 551.
+
+| Etat | Capture 744 x 551, barre classique | Capture 720 x 551, sans barre |
+|---|---|---|
+| V arrivee | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i17-r2-arrivee-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i17-r2-arrivee-720s.png` |
+| M arrivee, texte masque | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i17-r2-masque-arrivee-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i17-r2-masque-arrivee-720s.png` |
+| E erreur | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i17-r2-erreur-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i17-r2-erreur-720s.png` |
+| EM erreur, texte masque | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i17-r2-masque-erreur-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i17-r2-masque-erreur-720s.png` |
+| R revelation | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i17-r2-revelation-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i17-r2-revelation-720s.png` |
+| RM revelation, texte masque | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i17-r2-masque-revelation-744.png` | `%TEMP%\claude\C--perso-recreo\957eaa03-2940-45a5-97b0-5e2a3ea72bed\scratchpad\r1-releve\07-i17-r2-masque-revelation-720s.png` |
+
+Les six ordres de propositions servis par le jeu (tires au hasard par le serveur ; 15 rencontres de l'item au total, chaque rencontre jouee jusqu'a une erreur pour relever l'indice) :
+
+| Ordre servi (de gauche a droite et de haut en bas) | Rencontres | Indice rendu apres l'erreur |
+|---|---|---|
+| "Ajoute du sucre / Casse deux œufs / Mélange bien" | 1 | "Les instructions se lisent dans l'ordre." |
+| "Ajoute du sucre / Mélange bien / Casse deux œufs" | 2 | "Les instructions se lisent dans l'ordre." |
+| "Casse deux œufs / Ajoute du sucre / Mélange bien" | 4 | "Les instructions se lisent dans l'ordre." |
+| "Casse deux œufs / Mélange bien / Ajoute du sucre" | 2 | "Les instructions se lisent dans l'ordre." |
+| "Mélange bien / Ajoute du sucre / Casse deux œufs" | 3 | "Les instructions se lisent dans l'ordre." |
+| "Mélange bien / Casse deux œufs / Ajoute du sucre" | 3 | "Les instructions se lisent dans l'ordre." |
+
+## K. Ce que ce releve ne montre pas
+
+Meme liste que la section G (un appareil reel, une police reelle, le geste et la lecture d'un enfant, un lecteur d'ecran), plus : l'etat texte masque est construit par moi et n'est pas un etat du produit ; chaque capture montre un ordre de propositions parmi six ; le bas de l'`indice` et de la reponse attendue sont des bas de boite (le jar de cette section a la meme feuille que celui de la section A, l'interligne 1,25 y est). Pour les cotes du pli (en E et en R), c'est le tableau de chaque item qui fait foi ; je ne les juge pas.
+
+## L. Isolation
+
+Un jar (port 18721, PID 52152) et un Chrome (PID 23200, port 19721), arretes par PID, aucun processus arrete par nom d'image. Aucun fichier de `domain`, `application`, `adapters`, `bootstrap` ni aucun gabarit modifie. Le seul fichier modifie est celui-ci, sur la branche `s57-ines-r2` (worktree `recreo-ines-r2`) ; aucune fusion, aucun push. `mvn -B verify` n'est pas lance : je n'annonce pas la porte technique.
+
+## Decisions prises (suite du releve)
+
+**Aucune.** Cette section ne cree ni n'amende aucune `ADR` ni `DEC`, ne leve aucune reserve, ne prononce aucun Done et ne cree aucun identifiant.
