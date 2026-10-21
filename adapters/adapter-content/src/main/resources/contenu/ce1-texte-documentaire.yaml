@@ -50,11 +50,11 @@ items:
     distracteurs: ["du Soleil", "d'un nuage"]
     indice: "Relis la première phrase."
   # documentaire
-  - enonce: "Avec quoi fabrique-t-on le papier ?"
+  - enonce: "Avec quoi fabrique-t-on le verre ?"
     texteSupport: "Le verre se fabrique avec du sable. Le papier se fabrique avec du bois. Le pull se fabrique avec de la laine."
-    bonneReponse: "du bois"
-    distracteurs: ["du sable", "de la laine"]
-    indice: "Cherche le mot « papier » dans le texte."
+    bonneReponse: "du sable"
+    distracteurs: ["du bois", "de la laine"]
+    indice: "Cherche le mot « verre » dans le texte."
   # documentaire
   - enonce: "Comment les poissons respirent-ils ?"
     texteSupport: "Les baleines remontent à la surface pour respirer. Les poissons respirent sous l'eau avec des branchies."
@@ -74,11 +74,11 @@ items:
     distracteurs: ["à l'est", "au nord"]
     indice: "Relis la dernière phrase."
   # documentaire
-  - enonce: "Que fait la chauve-souris le jour ?"
-    texteSupport: "La chauve-souris dort la tête en bas. Le jour, elle reste cachée. Elle sort la nuit et mange des insectes."
-    bonneReponse: "elle reste cachée"
-    distracteurs: ["elle sort", "elle mange des insectes"]
-    indice: "Cherche les mots « le jour » dans le texte."
+  - enonce: "Comment dort le cheval ?"
+    texteSupport: "La chauve-souris dort la tête en bas. Le cheval dort debout. Le chat dort en boule."
+    bonneReponse: "debout"
+    distracteurs: ["en boule", "la tête en bas"]
+    indice: "Cherche le mot « cheval » dans le texte."
   # documentaire
   - enonce: "À quelle température l'eau gèle-t-elle ?"
     texteSupport: "L'eau gèle à zéro degré. Elle bout à cent degrés. Quand il fait chaud, la glace fond."
@@ -122,10 +122,10 @@ items:
     distracteurs: ["la trousse", "la chaise"]
     indice: "Cherche le mot « range » dans la consigne."
   # consigne
-  - enonce: "Que faut-il faire en dernier ?"
+  - enonce: "Que faut-il faire juste après avoir cassé les œufs ?"
     texteSupport: "Casse deux œufs dans un bol. Ajoute du sucre. Mélange bien."
-    bonneReponse: "Mélange bien"
-    distracteurs: ["Casse deux œufs", "Ajoute du sucre"]
+    bonneReponse: "Ajoute du sucre"
+    distracteurs: ["Mélange bien", "Casse deux œufs"]
     indice: "Les instructions se lisent dans l'ordre."
   # consigne
   - enonce: "Avec quoi trace-t-on le rond ?"
