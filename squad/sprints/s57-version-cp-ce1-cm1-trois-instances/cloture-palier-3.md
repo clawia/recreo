@@ -469,3 +469,45 @@ Obstacles de la section 15 : `E5` passe a **clos** (regle ecrite dans `squad/REA
 4. **Mon `verify` entier de developpeuse prend sa place dans la file** du nombre de `verify` simultanes (regle (1) de la section 14), comme celui des autres ; je ne le double pas par un `verify` de fusion sous mon autre casquette.
 5. **Retard assume** : daily, routage et fusions de A et de B se font entre deux lots de A', pas pendant. Si un obstacle bloque `marc-dev` ou `lea-dev` pendant un lot, il est route a `camille-po` ou `theo-archi` sans attendre ma casquette de Scrum Master, ou je reprends la main a la fin du lot. **La charge de `lea-dev` (B, jusqu'a trois lots) et la mienne (A', jusqu'a trois lots) ne sont pas mesurees** ; le palier 3 n'a mesure ni l'une ni l'autre.
 6. **Reste a l'utilisatrice** : si elle juge que 2 a 4 ne suffisent pas pour une branche dont l'auteure fusionne, elle l'ecrit ; je ne tranche pas mon propre controle.
+
+## Amendement du 2026-10-21 22:16 (UTC+02:00), ouverture du palier 4 : ce que les sections 13, 14 et 15 ne disent plus
+
+Annotation datee, heure lue par `date`, casquette Scrum Master. **Ce fichier est ecrit une seule fois ; ceci est un amendement date, non une reecriture** : les sections 13 a 15 restent telles qu'elles etaient a leur date. Arbre : `round-two` a `eca79363`. Cet amendement ne ferme pas le palier 3, que ce fichier a clos, et ne cree ni n'amende aucune `ADR` ni aucune `DEC`.
+
+### 1. Section 14, *"Pour l'ouvrir"* : les quatre conditions de `D2`
+
+| Condition | Ce que la section 14 disait | Etat a cette date |
+|---|---|---|
+| (a) ce fichier sur `round-two` | a faire | tenue : `git show HEAD:<chemin>` sort 0 |
+| (b) arbitrage prealable de `nadia-prof`, chaque instance | *"il n'existe pas"* | **existe** : `arbitrage-nadia-palier-4.md` (`cae06461`, section 8 en `f197dc39`). Borne 8,0 maintenue au 18:32, puis composition recevable a quatre instances au 20:56 (8.4) ; `PAR-9` et la ligne de `PAR-8` pour quatre instances restent a elle (`DEC-0120` A.138) |
+| (c) composition de `camille-po` | a faire | **faite** : `preparation-palier-4-camille.md` section 11, `DEC-0120` A.148, approuvee par l'utilisatrice (*"composition de palier 4 OK"*) |
+| (d) table d'isolation | *"que j'ecris apres la composition"* | **faite** : `composition-palier-4.md` section 6 |
+
+L'amendement de `planning.md` du 2026-10-21 22:13 ouvre le palier 4. **Les six regles de charge et de parallele** que la section 14 posait sans les ecrire (*"Ce qui est a moi pour la composition"*) sont ecrites dans `composition-palier-4.md` : nombre de `verify` entiers simultanes (`RF1`), reprise apres un arret (`RF9`), lignes d'isolation par agent lance (section 6), lignee avant fusion (`RF10`), allocation avant fusion (`RF8`), un amendement de `planning.md` par etat des postes (`RF11`).
+
+### 2. Section 13, ce que les reponses de l'utilisatrice ferment
+
+| Point | Etat a cette date |
+|---|---|
+| (a) `QP6` | `lea-dev` sur B, `sofia-sm` sur A' : composition ecrite, `RG2` tenue, aucun report pour ce motif |
+| (d) `QP3` | la reponse *"un tableau d'informations"* est precisee par *"QP3 c'est une grille déssinée"*, puis par *"QP3 plafond accepté"* et *"LP9 oui on peut augmenter le poids des dessins"* : forme (a), plafond `en cours`, `LP9` engageable sous conditions (`DEC-0120` A.141 a A.149) |
+| (e) la lecture de la consigne sur le seuil | **tranchee par ses mots** : *"1 quatre instances"*, soit 20,0 = quatre instances de 5,0 (`DEC-0120` A.138). La ligne *"seuil du palier 4 : sans reponse, ouvert"* de l'amendement de 2026-10-21 (20:59) et son conflit de 15,0 pour trois instances sont **leves**. Correction de `nadia-prof` a lire avec : le palier 3 n'a eu **aucune instance pleine** (A 4,0 sur 4,0 composes, A' 1,5 sur 2,0, B 1,5 sur 2,0 ; plafond de 5,0 chacune) ; ce qui s'est rempli est sa fenetre, 7,75 sur 8,0 (`arbitrage-nadia-palier-4.md` 8.4) |
+| (f) les quatre decisions de `cloture-palier-2.md` section 13 | **inchangees** : `grep -c setup-node` et `grep -c setup-python` sur `ci.yml` rendent 0, `retro.md` de s57 n'existe pas ; je n'ai modifie ni `ci.yml` ni `outils/mvn-jdk21-test.sh` |
+| (i) `s57-ines-p3-pli` et `recreo-ines-integ-pli` | **fait constate, decision non lue** : `git branch --list 's57-*'` rend 0 et `git worktree list` rend 2 lignes ; la branche et les deux worktrees de la section 13 (i) n'existent plus. Je ne sais pas qui les a supprimes ni sur quelle decision ; le commit `e4d54795` annoncait leur suppression prochaine |
+
+### 3. Section 15, obstacles
+
+Un obstacle n'est clos que quand le fichier qui le tranche existe. Relu par `grep -n "^### A.13[4-8]"` sur `DEC-0120` : les titres de `A.134` (`QP6`), `A.135` (`QP5`), `A.136` (`QP7`), `A.137` (`QP3`) et `A.138` (le seuil) existent.
+
+| Obstacle | Etat |
+|---|---|
+| `QP3`, `QP5`, `QP6` | **clos** : `DEC-0120` A.134, A.135, A.137, precisees par A.141 a A.149 pour `QP3` |
+| `QP7` | **repondu sans decision, clos sur ce point** : `DEC-0120` A.136, la cloture de s57 est reposee a la cloture du palier 5 |
+| Lecture de la consigne sur le seuil | **clos** : `DEC-0120` A.138 |
+| `E5` | clos (`squad/README.md` section 2 bis, amendement du 20:59) |
+
+**Reste ouvert, a l'ouverture du palier 4** : les points `AP1` a `AP6` de `composition-palier-4.md` section 9, et `OV1` a `OV10` de la section 8, dont **les rapports de developpeur `marc-dev` et `lea-dev` du palier 3**, que la section 9 (point 9) disait absents et qui le sont toujours. L'amendement de `CLAUDE.md` sur le CE1 (`DEC-0123` 5.4) n'est pas fait.
+
+### 4. Decisions prises
+
+**Aucune `ADR` ni aucune `DEC` creee ou modifiee.** Cet amendement ne modifie ni prix, ni lot, ni instance, ni table d'isolation. Les verifications de son commit sont nommees dans l'amendement de `planning.md` du 2026-10-21 22:13, section 12.
