@@ -354,3 +354,32 @@ Limite de la porte : la CI distante n'a pas juge, rien n'est pousse. Les jobs so
 Ecart a 2854 (section 14) : 0, comme attendu. La fusion n'ajoute qu'un fichier de `squad/`. Les chiffres sont la somme de mon propre log de verify.
 
 **Decisions** : aucune `ADR` ni `DEC` creee ou modifiee par cette fusion. **Obstacles** : aucun nouveau. **Non fait** : `s57-ines-p3-pli` reste non fusionnee. `review.md` et `retro.md` de s57 ne sont pas encore ecrits.
+
+## 16. Fusion de s57-theo-autocorrect, porte technique de `03de0f6d` (casquette Scrum Master)
+
+Branche `s57-theo-autocorrect` (`5a0b55f3`, coupee sur `63d7a0f0`), fusionnee `--no-ff` dans `round-two` a `59aabaa5` (`git log` et `git status` verifies, arbre vide). `git diff --stat round-two...s57-theo-autocorrect` : quatre fichiers, exactement le perimetre annonce (`saisie.html`, `EcranDeSaisieTest.java`, `ADR-0058` et `ADR-index.md`), 102 ajouts, 6 suppressions. Fusion : `03de0f6d`. Pas de rebase, de reset, de force ni de push.
+
+Sommet de `round-two` teste : `03de0f6d`. Worktree detache cree par `git worktree add --detach`, `git status` vide avant et apres les builds.
+
+| Job de `ci.yml` | Etapes lancees | Resultat |
+|---|---|---|
+| `prefixes` | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-prefixes.sh` sur `--no-merges` de `63d7a0f0..HEAD`, `verifier-garde-fou-accent-test.sh`, `verifier-garde-fou-accent.sh` sur `63d7a0f0..HEAD` | tous 0 (0 commit touche le garde-fou de l'accent) |
+| `chemins` | `verifier-chemins-test.sh`, `verifier-chemins.sh` sur `git ls-files` | 0 et 0 |
+| `outils` | 6 `outils/*-test.sh`, 2 `squad/outils/*/*-test.sh`, 5 `outils/*-test.py` | 13 juges, 0 echec |
+| `build`, verify | `bash outils/mvn-jdk21.sh -B clean verify`, racine | `BUILD SUCCESS`, six modules `SUCCESS`, 12 min 11 s |
+| `build`, package | `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package` | `BUILD SUCCESS`, 9 min 50 s, `bootstrap/target/recreo.jar` produit (22 497 423 octets) |
+
+Limite de la porte : la CI distante n'a pas juge, rien n'est pousse. Les jobs sont ceux du workflow rejoues en local, `prefixes` sur la plage `63d7a0f0..HEAD` et non sur une base de push reelle.
+
+| Module | Tests |
+|---|---|
+| `domain` | 120 |
+| `application` | 31 |
+| `adapter-web` | 523 |
+| `adapter-content` | 1794 |
+| `bootstrap` | 381 (surefire) + 6 (failsafe) = 387 |
+| Total | **2855** |
+
+Ecart a 2854 (section 15) : +1, `adapter-web` 522 vers 523, comme annonce par `theo-archi` (`EcranDeSaisieTest.leChampDemandeAuClavierDeNePasCorrigerLaFrappe`). Les autres modules sont inchanges. Les chiffres sont la somme de mon propre log de verify.
+
+**Decisions** : `ADR-0058` modifiee (amendement du 2026-10-21, `autocorrect="off"` sur le champ de saisie, reponse a `Q-09` ; statut de l'ADR inchange, ligne de `ADR-index.md` mise a jour). Aucune `ADR` ni `DEC` creee. `DEC-0124` (commit `59aabaa5`) est anterieure a cette fusion. **Obstacles** : aucun nouveau. **Non fait** : `s57-ines-p3-pli` reste non fusionnee. L'amendement dit lui-meme que le comportement sur appareils n'est pas mesure. `review.md` et `retro.md` de s57 ne sont pas encore ecrits.
