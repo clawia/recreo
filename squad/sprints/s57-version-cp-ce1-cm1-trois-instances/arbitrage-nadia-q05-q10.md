@@ -432,3 +432,38 @@ datee. `S46-VERIF-SAISIE-MOT-DICTE-CP` a sa reponse : `R6` s'appliquait, il est 
 produit non plus.
 
 **Signe** : `nadia-prof`, s57, 2026-10-21, 16:12.
+
+---
+
+## 9. Amendement du 2026-10-21, 18:28 (`nadia-prof`) : ecarts 17, 20, 24 et 25 du releve de cloture
+
+Source : `releve-relecteur-cloture-palier-3.md`, section 3.3. **Rien au-dessus n'est reecrit.** Aucune decision ne change.
+
+**Ecart 17, la reserve de 8.2.** La formulation qui gouverne est celle de `FICHE-saisie-mot-dicte-cp.md` (annotation du meme
+jour, 18:28) : *"sur la tablette, des mots sont proposes au-dessus du clavier ; un enfant qui en touche un n'a pas ecrit le
+mot"*. Le bloc cite de 8.2 reste ecrit comme developpement du motif. En 8.2 (tableau) et en 8.4, *"la reserve ci-dessus"* et
+*"celle de 8.2"* designent cette formulation-la. `DEC-0124` et les quatre cellules de matrice la citent mot pour mot ; leur
+source a nommer est la fiche (ecart 10, a `camille-po`).
+
+**Ecart 20, convention de citation, tranchee pour mes fichiers.** Un texte servi a l'enfant, ou que je propose pour qu'il le
+soit, se cite tel quel : accents, apostrophe et espace insecable compris. La prose autour reste en ASCII. Il en va de meme
+d'une ligne de referentiel citee. Correction dans ce fichier : ligne 112, *"sous la dictee"* se lit *"sous la dictée"*
+(`competences-ce1.md`, `FRA-CE1-29`). La ligne 148 n'est pas une citation : c'est une mention que je fixe pour une cellule de
+matrice, registre ASCII de la matrice. Elle ne change pas.
+
+**Ecart 24.**
+
+1. Ligne 54, colonne *"Pourquoi"* : la phrase entre guillemets n'est pas une citation. Je l'ai composee a partir de deux
+   cellules du tableau de la section 1 d'`ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`. Lire sans guillemets : c'est la
+   forme de s43, ou se reperer et se deplacer passent par une designation sur un quadrillage dessine et coder par un choix
+   textuel illustre. La mention fixee d'avance est dans le meme fichier, section *"Mention de couverture"*.
+2. Ligne 44, guillemets imbriques. Lire : *"Un enfant qui repond 'A3' en lisant trois etiquettes n'a pas montre ou il est ; un
+   enfant qui appuie sur une case l'a montre."*
+3. Ligne 8, `Q-06` : la phrase etait coupee sans marque. Ses mots entiers (`DEC-0123`, section 0) : *"mettre ca hors contexte
+   pour le moment avec ta justification"*.
+
+**Ecart 25, section 4.1.** *"`saisie.html`, lignes 71 a 74"* est faux, y compris a `6927d926`, l'arbre de ce document : la
+puce citee y est aux lignes 75 a 78. *"Le champ, ligne 87"* etait exact a `6927d926` et ne l'est plus. Lire : le commentaire
+de `fragments/saisie.html` qui porte la puce `autocomplete="off"`, et le champ `input#reponse-ecrite`, lus a `6927d926`.
+
+**Signe** : `nadia-prof`, 2026-10-21, 18:28.

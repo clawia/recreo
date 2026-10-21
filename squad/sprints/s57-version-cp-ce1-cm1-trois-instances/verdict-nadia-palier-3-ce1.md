@@ -17,6 +17,9 @@
   aucun paquet, ni le catalogue, ni la matrice. Il n'ecrit ni n'alloue aucun identifiant de condition ou de reserve : les
   reserves sont designees par le repere de mes documents qui les a ouvertes (`V3`, `V4`, `S3` de `veto-nadia-gabarit-pli.md`
   et `lecture-nadia-palier-3.md`), ou par une description. Non commite par moi.
+- **Etat final, ligne ajoutee le 2026-10-21 a 18:28 (ecart 18 de `releve-relecteur-cloture-palier-3.md`)** : **cinq Done**.
+  `-07` est **VALIDE**, sans reserve (derniere section, 14:49). Le Resume, la section 3.2 et la ligne `-07` du Routage sont
+  l'etat de 13:46 : historiques, non reecrits. Resume a jour et autres corrections : derniere section de ce fichier.
 
 ## Resume
 
@@ -321,3 +324,33 @@ par la correction d'`afd33e88`. `camille-po` peut passer `FRA-CE1-07` a `couvert
 `squad/conformite/FICHE-bandit-manchot-texte-documentaire-ce1.md`.
 
 **Signe** : `nadia-prof`, s57, palier 3, 2026-10-21.
+
+## Amendement du 2026-10-21, 18:28 (`nadia-prof`) : ecarts 18, 21, 22 et 25 du releve de cloture
+
+Source des ecarts : `releve-relecteur-cloture-palier-3.md`, section 3.3. **Rien au-dessus n'est reecrit** ; chaque phrase
+corrigee reste lisible a sa place. Aucun verdict ne change.
+
+**Ecart 18, Resume a jour.** Le Resume du haut est celui de 13:46. L'etat final :
+
+| Lot | Verdict final | Fiche |
+|---|---|---|
+| `FRA-CE1-06` | **VALIDE SOUS RESERVE** | `FICHE-bandit-manchot-inference-ce1.md` |
+| `FRA-CE1-07` | **REFUSE** a 13:46, puis **VALIDE** a 14:49, aucune reserve | `FICHE-bandit-manchot-texte-documentaire-ce1.md` |
+| `FRA-CE1-11` | **VALIDE SOUS RESERVE** | `FICHE-bandit-manchot-negation-ce1.md` |
+| `MAT-CE1-01` | **VALIDE**, plafond `en cours` | `FICHE-bandit-manchot-nombres-jusqu-a-1000-ce1.md` |
+| `EMC-CE1-01` | **VALIDE SOUS RESERVE** | `FICHE-bandit-manchot-biens-communs-ce1.md` |
+
+Ce fichier prononce donc cinq Done et un refus leve, et ouvre cinq fiches. La ligne `-07` du Routage (*"ligne inchangee"*) est
+remplacee par : `camille-po` passe `FRA-CE1-07` a `couvert-valide` (fait par elle, `cb4d81d0`).
+
+**Ecart 21, en-tete.** *"Porte technique etablie par le coordinateur"* n'a pas de source nommee. Source, forme 1 de `DEC-0062` :
+`sofia-sm`, `rapport-sofia-dev-palier-3.md` section 13, porte de `ad9ef86d` : jobs `prefixes`, `chemins`, `outils`, `build`
+(verify racine et package), 2854 tests.
+
+**Ecart 22, derniere section.** *"leve par la correction d'`afd33e88`"* : `afd33e88` est la fusion. Lire : leve par la
+correction `ac986aca` (`marc-dev`), fusionnee par `afd33e88`.
+
+**Ecart 25, section 1, ligne 4.3.** *"cellule de la matrice, ligne 1021"* etait exact a `8407f73f`, l'arbre juge ; la ligne
+bouge depuis. Lire : la cellule de `MAT-CE1-01` dans `squad/programme/MATRICE-couverture.md`, lue a `8407f73f`.
+
+**Signe** : `nadia-prof`, 2026-10-21, 18:28.

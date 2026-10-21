@@ -472,3 +472,13 @@ Ce n'est pas une barre relevee sur le Done : c'est une reserve neuve, nommee et 
 aucun test ne voit le clavier, et le produit ne distingue pas un mot touche d'un mot tape.
 
 **Signe** : `nadia-prof`, 2026-10-21.
+
+### Annotation du 2026-10-21, 18:28 (`nadia-prof`, ecart 17 de `releve-relecteur-cloture-palier-3.md`) : la formulation qui gouverne
+
+La meme reserve a ete ecrite deux fois dans le commit `b5dd1d4c`, en deux formulations : ici, et dans
+`arbitrage-nadia-q05-q10.md` section 8.2. **La formulation de cette fiche gouverne**, pour les quatre lignes (`FRA-CP-09`,
+`FRA-CE1-21`, `FRA-CE1-29`, `LVE-CM1-06`) : *"sur la tablette, des mots sont proposes au-dessus du clavier ; un enfant qui en
+touche un n'a pas ecrit le mot"*. Motifs : un verdict et ses reserves s'ecrivent dans la fiche ; c'est cette formulation que
+`DEC-0124` et les quatre cellules de matrice citent deja. La phrase de 8.2 que celle-ci ne reprend pas (*"Le produit ne le voit
+pas, et ne peut pas le distinguer d'un mot tape."*) n'est pas la reserve : c'est ce dont je reste la garde, ecrit au paragraphe
+ci-dessus. Le bloc de 8.2 reste ecrit ; il est aligne par un amendement date de ce fichier-la.

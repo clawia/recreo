@@ -281,3 +281,35 @@ negation qu'il n'est pas (EMC 9), et qu'un pronom impersonnel ne soit pas pris p
 une phrase comme un enfant de CE1.
 
 **Signe** : `nadia-prof`, s57, palier 3, 2026-10-20, 10:01.
+
+## Amendement du 2026-10-21, 18:28 (`nadia-prof`) : ecarts 20 et 23 du releve de cloture
+
+Source : `releve-relecteur-cloture-palier-3.md`, section 3.3. **Rien au-dessus n'est reecrit.** Aucun verdict de lecture ne
+change.
+
+**Ecart 20.** Convention tranchee pour mes fichiers (`arbitrage-nadia-q05-q10.md`, section 9) : le texte servi a l'enfant, et
+celui que je propose pour qu'il le soit, se citent tels quels, accents, apostrophe et espace insecable compris. Formes exactes
+des citations de ce fichier, servies a `5ee20db7`, l'arbre lu, ou proposees par moi :
+
+| Ligne | Ecrit ici | Forme exacte | Nature |
+|---|---|---|---|
+| 62 | Zoe, *"parce qu'elle est fiere"* | Zoé, *"parce qu'elle est fière"* | servi, `ce1-inference` item 20 |
+| 83 | *"Relis la derniere phrase."* | *"Relis la dernière phrase."* | servi, `ce1-texte-documentaire` item 10 |
+| 83 | *"L'eau gele a zero degre."* | *"L'eau gèle à zéro degré."* | servi, meme item |
+| 83, 217 | *"Relis la premiere phrase."* | *"Relis la première phrase."* | propose |
+| 84 | *"pres de l'eau"* | *"près de l'eau"* | servi, item 3 |
+| 84 | *"Le crocodile nage dans la riviere."*, *"dans la riviere"* | *"Le crocodile nage dans la rivière."*, *"dans la rivière"* | propose |
+| 98 | *"Il n'ecoute pas la maitresse."* | *"Il n'écoute pas la maîtresse."* | servi, `ce1-negation` item 20 |
+| 130 | *"Quel nombre s'ecrit 3 centaines, 4 dizaines et 7 unites ?"* | *"Quel nombre s'écrit 3 centaines, 4 dizaines et 7 unités ?"* | servi, `ce1-nombres-jusqu-a-1000` item 15 |
+| 130 | *"Quel nombre a 3 centaines, 4 dizaines et 7 unites ?"* | *"Quel nombre a 3 centaines, 4 dizaines et 7 unités ?"* | propose |
+| 244 | *"lequel n'est qu'a un seul eleve ?"* | *"lequel n'est qu'à un seul élève ?"* | servi, `ce1-emc-biens-communs` item 9 |
+| 244 | *"lequel est a un seul eleve ?"* | *"lequel est à un seul élève ?"* | propose |
+| 246 | *"son frere. Il se met a pleuvoir."* | *"son frère. Il se met à pleuvoir."* | servi, `ce1-inference` item 14 |
+| 246 | *"La pluie commence a tomber."* | *"La pluie commence à tomber."* | propose ; servi ensuite sous la forme *"La pluie se met à tomber."* (`62b65097`) |
+
+**Ecart 23, section S2.** *"(mots de l'utilisatrice)"* ne donne ni ses mots ni leur date. Ses mots : *"le pli n'est pas
+bloquant"*, reponse a `Q-N4`, forme 2 de `DEC-0062`, inscrits le 2026-10-16 (`FICHE-bandit-manchot-phrases-types-ce1.md`,
+annotation du 2026-10-16). Ils portent sur le pli seul, pas sur les coupures de ligne (`verdict-nadia-palier-3-ce1.md`,
+rectification du 2026-10-21).
+
+**Signe** : `nadia-prof`, 2026-10-21, 18:28.

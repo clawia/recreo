@@ -218,3 +218,24 @@ le contenu (en-tete plus mince, interlignes reduits) : il ne cree aucun de ces d
 ecrites.
 
 **Signe** : `nadia-prof`, s57, palier 3, 2026-10-21.
+
+## Amendement du 2026-10-21, 18:28 (`nadia-prof`) : ecart 20 du releve de cloture
+
+Source : `releve-relecteur-cloture-palier-3.md`, section 3.3. **Rien au-dessus n'est reecrit.** Convention de citation du
+texte servi : `arbitrage-nadia-q05-q10.md`, section 9. Formes exactes :
+
+| Lignes | Ecrit ici | Forme exacte | Source |
+|---|---|---|---|
+| 22 | *"Il se met a pleuvoir."* | *"Il se met à pleuvoir."* | `ce1-inference` item 14 avant `62b65097` |
+| 23, 170 | *"La pluie se met a tomber."* | *"La pluie se met à tomber."* | meme item, depuis `62b65097` |
+| 86, 91, 162 | *"Appuie sur la bonne reponse :"* | *"Appuie sur la bonne réponse :"* | `fragments/manche.html`, revelation |
+
+Constat fait en relisant la source, sans verdict : dans `manche.html`, l'espace avant les deux-points de cette phrase est une
+espace simple, pas une espace insecable. Le controle appartient au `relecteur-pedagogique` (`DEC-0002`, `DEC-0056`) : je le lui
+signale.
+
+Correction de la derniere phrase de la section du 2026-10-21, 12:24 : le Done de `-06`, de l'EMC et de `-11` ne se prononcait
+pas *"apres mon jeu de l'arbre fusionne (V5)"* ; je l'ai corrige moi-meme dans `verdict-nadia-palier-3-ce1.md`, section 2
+(*"Correction de mon propre constat"*).
+
+**Signe** : `nadia-prof`, 2026-10-21, 18:28.

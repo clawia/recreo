@@ -7,6 +7,9 @@
 - **Ligne declaree** : `FRA-CE1-11`. **Story** : `S57-BR-FRA-CE1-11`.
 - **Competence programme visee** : `squad/programme/francais/competences-ce1.md`, `FRA-CE1-11`, *"Passer d'une phrase
   affirmative a une phrase negative (ne... pas) et inversement."*
+  **Correction du 2026-10-21, 18:28 (`nadia-prof`, ecart 19 de `releve-relecteur-cloture-palier-3.md`)** : cette citation
+  perd les accents et les marques de code de sa source. Texte exact de la ligne : *"Passer d'une phrase affirmative à une
+  phrase négative (`ne... pas`) et inversement."*
 - **Conditions opposables** : `NEG-CE1-1` a `NEG-CE1-3` (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`) ; communes de
   `arbitrage-nadia-preparation-palier-3-ce1.md` 4.1 et 4.2 ; corrections des dix indices de `lecture-nadia-palier-3.md`,
   section 3.
