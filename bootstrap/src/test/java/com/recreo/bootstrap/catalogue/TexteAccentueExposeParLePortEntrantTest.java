@@ -1783,7 +1783,7 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "centaines)",
             // S57-BR-EMC-CE1-01 (s57) : competence neuve, EMC-CE1-01, libelle du referentiel copie
             // (squad/programme/enseignement-moral-et-civique/competences-ce1.md, ligne EMC-CE1-01).
-            "Respecter les biens personnels et collectifs : reconnaître ce qui appartient à tous "
+            "Respecter les biens personnels et collectifs : reconnaître ce qui appartient à tous "
                     + "(matériel de la classe, livres de la bibliothèque, jeux de la cour) et le geste "
                     + "qui le protège.",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
