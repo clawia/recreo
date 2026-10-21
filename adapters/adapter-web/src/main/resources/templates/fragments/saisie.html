@@ -72,10 +72,19 @@
            ou reformate certaines frappes sans que ni l'enfant ni le serveur ne le sachent, ce qui
            aggrave a un endroit qui nous appartient l'ecart "ce que l'enfant a produit / ce que le
            serveur a recu" que nadia-prof a nomme comme un angle mort assume ;
-         - autocomplete="off" n'est PAS une neutralisation de la correction automatique du clavier,
-           que l'utilisatrice a acceptee le 2026-08-25. Il evite la liste des valeurs deja tapees
-           ailleurs, que le navigateur affiche par-dessus l'ecran de jeu et qui peut souffler une
-           reponse. Motif de forme, jamais de bareme.
+         - autocomplete="off" n'est PAS une neutralisation de la correction automatique du clavier.
+           Il evite la liste des valeurs deja tapees ailleurs, que le navigateur affiche par-dessus
+           l'ecran de jeu et qui peut souffler une reponse. Motif de forme, jamais de bareme.
+         - autocorrect="off" demande au navigateur et au clavier de ne pas corriger la frappe.
+           Decision de l'utilisatrice du 2026-10-21, reponse a Q-09 : "il n'y aura pas de correction
+           automatique du clavier". Elle revient sur DEC-0047 section 2 (2026-08-25), qui
+           l'acceptait. ADR-0058, amendement du 2026-10-21. C'est le seul attribut que MDN relie a
+           cette correction. LIMITE : c'est une demande, pas une garantie. MDN le donne "Baseline
+           2026" (septembre 2026) : un navigateur ou un appareil plus ancien peut l'ignorer, et la
+           correction est faite par le clavier de l'appareil, que le serveur ne voit pas. Un test
+           verifie le HTML servi ; aucun test du depot ne verifie ce que fait le clavier.
+           spellcheck et autocapitalize ne sont pas poses : leur effet sur un clavier virtuel n'a
+           pas ete verifie.
          D2 reste ouverte et rien n'est ecrit ici a sa place : le mode de clavier de l'item
          (inputmode) est une cle du contrat de contenu, donc une decision de theo-archi, et
          ADR-0070 refuse une cle ecrite avant que son champ existe. CPL-7 - "au CP, entrer un
@@ -85,7 +94,7 @@
           th:attr="hx-post=@{'/parties/' + ${jeuId} + '/reponses'}"
           hx-target="#jeu" hx-swap="innerHTML">
         <input class="champ-reponse" id="reponse-ecrite" name="reponseEcrite" type="text"
-               data-role="action" autocomplete="off"
+               data-role="action" autocomplete="off" autocorrect="off"
                th:attr="data-focus-cible=${focusSurLeChamp}" th:value="${brouillon}">
         <button type="submit" class="btn valider" data-role="action">Je réponds</button>
     </form>

@@ -91,6 +91,26 @@ class EcranDeSaisieTest {
     }
 
     /**
+     * Decision de l'utilisatrice du 2026-10-21 (Q-09), ADR-0058 amendement du 2026-10-21 : le champ
+     * demande au navigateur et au clavier de ne pas corriger la frappe. Verifie sur les deux etats
+     * ou le champ est rendu - manche fraiche et champ garde apres un refus - et sur les deux items du
+     * jeu de test. Ce test prouve le HTML servi, pas ce que fait le clavier de l'appareil.
+     */
+    @Test
+    void leChampDemandeAuClavierDeNePasCorrigerLaFrappe() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        Document fraiche = demarrer(session);
+        Document apresUnRefus = ecrire(session, "3");
+        Document secondItem = ecrire(session, "7");
+        assertThat(secondItem.select(".enonce").text()).isEqualTo("Ecris le mot");
+
+        for (Document ecran : List.of(fraiche, apresUnRefus, secondItem)) {
+            assertThat(ecran.select("input.champ-reponse")).hasSize(1);
+            assertThat(ecran.select("input.champ-reponse").attr("autocorrect")).isEqualTo("off");
+        }
+    }
+
+    /**
      * SAI-9a : a chaque refus avant la revelation, la chaine que l'enfant a ecrite reste visible et
      * la reponse attendue n'est <b>jamais</b> nommee - ni par un mot, ni par une marque.
      */

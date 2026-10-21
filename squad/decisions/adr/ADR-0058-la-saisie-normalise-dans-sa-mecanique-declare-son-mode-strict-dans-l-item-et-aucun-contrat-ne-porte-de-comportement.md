@@ -670,3 +670,70 @@ la section 2 le decide. Le declencheur de reouverture que la section 1 avait ecr
 mode reellement demande par un paquet"* - **n'est pas ce qui a joue**, et la difference compte : la
 conception n'a pas ete revue parce qu'on a imagine un besoin, elle l'a ete parce qu'une regle verte
 la refusait.
+
+---
+
+## Amendement du 2026-10-21 (s57, hors sprint) - l'utilisatrice revient sur la correction acceptee : le champ demande `autocorrect="off"`
+
+- **Auteur** : theo-archi. **Fait neuf** : l'utilisatrice repond a `Q-09` (question posee par
+  `nadia-prof`, `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/arbitrage-nadia-q05-q10.md`
+  section 4.2) : *"il n'y aura pas de correction automatique du clavier"*. Elle revient sur `DEC-0047`
+  section 2 (2026-08-25), qui l'acceptait. La `DEC` et la story qui l'ecrivent sont a `camille-po` ;
+  ce bloc n'en tient pas lieu.
+- **Rien de ce qui precede n'est efface.** Ce bloc est le cinquieme de ce fichier.
+
+### 1. Ce qui est retire
+
+La premiere puce de la section 5 de l'amendement du 2026-08-25 - *"Je ne reintroduis aucune
+neutralisation de la correction automatique, sous aucun nom"* - **ne vaut plus**. Son seul motif
+etait le choix de l'utilisatrice, qui a change.
+
+### 2. Ce que je decide
+
+**Le champ `input.champ-reponse` de `fragments/saisie.html` porte `autocorrect="off"`.** C'est le seul
+attribut que MDN relie a la correction automatique (attribut global enumere, `on` ou `""` et `off`,
+applique aux `<input>` de texte). Il est pose sur le gabarit et non declare par l'item : la decision
+vaut pour toute la saisie, aucun paquet n'a a la porter, et `ADR-0070` n'est pas touche - aucune cle
+de schema n'est ajoutee.
+
+**Ne sont pas poses**, faute de verification : `spellcheck="false"` (MDN le dit indice, sans dire s'il
+agit sur la correction d'un clavier virtuel) et `autocapitalize` (page MDN non consultee par moi).
+Les poser serait ajouter deux pieces dont l'effet n'est pas etabli.
+
+### 3. La limite, telle qu'elle est
+
+- **Un attribut est une demande au navigateur et au clavier, pas une garantie.** MDN marque
+  `autocorrect` *"Baseline 2026, newly available, since September 2026, might not work in older
+  devices or browsers"*. Sur un navigateur ou un appareil plus ancien, la demande peut etre ignoree
+  sans que rien ne le signale.
+- **La correction est faite par le clavier de l'appareil**, qui depend du systeme et du clavier
+  installe. Le serveur ne recoit que la chaine envoyee ; la limite de la section 5 de l'amendement du
+  2026-08-25 sur `SAI-9` (*"l'enfant tape `bato`, l'appareil envoie `baton`"*) est reduite la ou la
+  demande est suivie, pas fermee. `SAI-2c` reste la seule trace visible d'une correction faite malgre
+  la demande.
+- **Ce qui est testable ici : le HTML servi.** Ce qui ne l'est pas : ce que fait le clavier. La mesure
+  sur les deux appareils de `DEC-0040` que `nadia-prof` pose comme condition (arbitrage cite, section
+  4.2 point 3) **n'est pas faite** ; aucun test du depot ne peut la remplacer. Lever ou non `R6` reste
+  a `nadia-prof`.
+
+### 4. Regle executable
+
+**Ce n'est pas une regle ArchUnit** : ArchUnit voit des types Java, pas un attribut de gabarit
+Thymeleaf. Le mecanisme automatique est un test jsoup sur le document rendu (`ADR-0008`) :
+`EcranDeSaisieTest.leChampDemandeAuClavierDeNePasCorrigerLaFrappe`, dans
+`adapters/adapter-web/src/test/java/com/recreo/adapter/web/EcranDeSaisieTest.java`.
+
+**Perimetre contre l'omission** : il juge les trois rendus ou le champ existe dans le jeu de test -
+manche fraiche, champ garde apres un refus (`D5`, variante A), et l'item suivant, en forme exacte -
+et exige un champ et un seul sur chacun, pour qu'un ecran sans champ ne le rende pas vert a vide.
+
+**Morsure mesuree le 2026-10-21**, sur `s57-theo-autocorrect`, arbre de travail : attribut retire du
+`<input>` (motif trouve une fois, puis absent de la balise), `-pl adapters/adapter-web -am
+-Dtest=EcranDeSaisieTest` : **15 tests lances, 1 echec**, celui-ci (`expected: "off" but was: ""`).
+Fragment restaure : 15 tests, 0 echec. JDK 21.0.10, version rapportee par la machine virtuelle des
+tests.
+
+### 5. Ce que cet amendement ne change pas
+
+Les sections 1 a 8, les quatre amendements precedents hors la puce retiree en 1, `R-A` a `R-D`, et
+`autocomplete="off"`, dont le motif (la liste des valeurs deja tapees) est distinct et tient.
