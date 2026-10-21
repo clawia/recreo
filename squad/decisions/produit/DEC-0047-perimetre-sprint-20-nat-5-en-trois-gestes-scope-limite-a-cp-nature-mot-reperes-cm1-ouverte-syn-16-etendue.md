@@ -498,3 +498,7 @@ arbitrage, son retrait ne libere aucune capacite a reaffecter ce sprint.
   section "Sprint 20" mis a jour (trois chantiers au lieu de quatre plus une extension retiree).
 - Aucun fichier sous `domain/`, `application/`, `adapters/` ni `bootstrap/` n'est modifie ; aucune
   ligne de `squad/programme/MATRICE-couverture.md` ne bouge.
+
+## Amendement du 2026-10-21 (`camille-po`, `DEC-0124`) - la section 2 est remplacee en partie : la correction automatique du clavier n'est plus acceptee
+
+Reponse de l'utilisatrice au 2026-10-21, mots relayes par l'agent lanceur et non lus de sa main : *"Q9 il n'y aura pas de correction automatique du clavier"*. **Remplace**, dans la section 2 : *"un clavier virtuel qui corrige et complete est accepte"*, et l'ecart de l'option *"neutraliser la correction"*. **Maintient** : la saisie vaut sur les deux appareils de `DEC-0040` ; l'option *"limiter la saisie au clavier physique"* reste ecartee. La section 2 reste lisible telle qu'ecrite ; sa lecture courante est dans `DEC-0124`, section 1. Le statut de cette DEC reste `Acceptee`. Aucun autre fichier n'est modifie par cet amendement.

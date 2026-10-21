@@ -5,7 +5,7 @@
 - **Auteur** : camille-po
 - **Sprint** : s57 (palier 3, non engage pour ce qui suit)
 - **Competences programme visees** : `MAT-CE1-14` (`Q-05`) ; `FRA-CE1-27`, `FRA-CE1-29`, `FRA-CE1-21` (`Q-08`, `Q-09`) ; `FRA-CE1-08`, `FRA-CE1-09` (`Q-07`) ; `ART-CE1-01`, `ART-CE1-02` (`Q-10`) ; `QLM-CE1-07` (moitie dessinee), `QLM-CE1-09`, `QLM-CE1-11`, `MAT-CE1-02`, `MAT-CE1-09` (`Q-06`). **Aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge** : 148 / 200, inchange.
-- **Statut** : **Acceptee** pour `Q-05`, `Q-06`, `Q-07`, `Q-08` et `Q-10`. **`Q-09` est suspendue** (section 7) : ni acceptee ni refusee, elle n'a pas de statut propre tant que `nadia-prof` n'a pas repondu.
+- **Statut** : **Acceptee** pour `Q-05`, `Q-06`, `Q-07`, `Q-08` et `Q-10`. **`Q-09` etait suspendue** (section 7), levee le 2026-10-21 par amendement (`DEC-0124`) : ni acceptee ni refusee, elle n'a pas de statut propre tant que `nadia-prof` n'a pas repondu.
 - **Lien** : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/preparation-palier-3-ce1-camille.md` (section 5, section 8.6) ; `arbitrage-nadia-preparation-palier-3-ce1.md` (sections 3 et 4, avis sur `Q-05` a `Q-10`) ; `avis-theo-preparation-palier-3-ce1.md` ; `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` (section 1, `DEP-CE1-1` a `DEP-CE1-4`) ; `ARBITRAGE-PREALABLE-s19-mecanique-de-saisie.md` (section 3, motif `R6`) ; `DEC-0046`, `DEC-0068`, `DEC-0099` (section 4 ter), `DEC-0120` (A.13, A.31, A.32, A.35) ; `ADR-0080` (`A3`), `ADR-0082` ; story `S57-BR-MAT-CE1-14-GRILLE` (`docs/backlog/backlog.md`, non engagee).
 
 ## 0. Ce que sont ces mots
@@ -178,3 +178,7 @@ Le gabarit `saisie.html` (`adapters/adapter-web/src/main/resources/templates/fra
 ## 9. Ce que cette DEC ne change pas
 
 La matrice (148 / 200) ; `planning.md` ; `composition-palier-3.md` ; `DEC-0120` (aucun amendement) ; `CLAUDE.md` ; `saisie.html` et tout fichier sous `domain/`, `application/`, `adapters/`, `bootstrap/` ; aucun prix, aucune affectation d'instance, aucun Done pedagogique. Aucun identifiant de condition neuf n'est alloue : tous ceux qui sont cites existent deja au registre.
+
+## Amendement du 2026-10-21 (`camille-po`, `DEC-0124`) - la suspension de `Q-09` est levee
+
+L'utilisatrice a repondu a `Q-09` (mots relayes, non lus de sa main) : *"Q9 il n'y aura pas de correction automatique du clavier"*. C'est la lecture (b) de la section 7.3 : le produit demande au clavier de ne pas corriger ; `DEC-0047` section 2 est remplacee en partie. **La condition posee a `theo-archi` en 7.4 (*"seulement si une neutralisation est voulue"*) est remplie.** Les avis de `nadia-prof` (`R6`) et de `theo-archi` (mesure sur les deux appareils) ne sont pas rendus : ils sont demandes, voir `DEC-0124` sections 3 a 6. Les sections 7.5 et 8 (ligne `R6`) sont inchangees dans ce qu'elles disent des lignes : aucune cellule ne bouge. Le statut de `Q-09` n'est plus *"suspendue"* mais *"repondue, avis en cours"*. Aucun autre fichier n'est modifie par cet amendement.
