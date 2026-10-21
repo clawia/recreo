@@ -383,3 +383,54 @@ Limite de la porte : la CI distante n'a pas juge, rien n'est pousse. Les jobs so
 Ecart a 2854 (section 15) : +1, `adapter-web` 522 vers 523, comme annonce par `theo-archi` (`EcranDeSaisieTest.leChampDemandeAuClavierDeNePasCorrigerLaFrappe`). Les autres modules sont inchanges. Les chiffres sont la somme de mon propre log de verify.
 
 **Decisions** : `ADR-0058` modifiee (amendement du 2026-10-21, `autocorrect="off"` sur le champ de saisie, reponse a `Q-09` ; statut de l'ADR inchange, ligne de `ADR-index.md` mise a jour). Aucune `ADR` ni `DEC` creee. `DEC-0124` (commit `59aabaa5`) est anterieure a cette fusion. **Obstacles** : aucun nouveau. **Non fait** : `s57-ines-p3-pli` reste non fusionnee. L'amendement dit lui-meme que le comportement sur appareils n'est pas mesure. `review.md` et `retro.md` de s57 ne sont pas encore ecrits.
+
+## Amendement du 2026-10-21 17:43 (UTC+02:00), cloture du palier 3 : ecarts 1 a 4 du releve du `relecteur-pedagogique`
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** : cet amendement corrige par addition. Source : `releve-relecteur-cloture-palier-3.md` (`01105a16`), ecarts 1 a 4, tous a `sofia-sm`. Arbre : `round-two` a `d09655bf`. Casquette Scrum Master. Ecrit en ASCII.
+
+### 1. Ecart 1 : la section 6 dit les branches de lots coupees avant `RL5` a `RL7` ; `git merge-base` dit l'inverse
+
+**Phrase fausse** (section 6, sous le titre) : *"Cinq branches sont coupees sur `b9c6cb69`, avant RL5 a RL7 et R6"*. **Verifiee ce jour**, une commande par ligne :
+
+| Commande | Sortie |
+|---|---|
+| `git merge-base --is-ancestor 4bf3c359 b9c6cb69` (commit de `RL5` a `RL7`) | 0 : ancetre |
+| `git merge-base --is-ancestor 20470501 b9c6cb69` (fusion de `RL5` a `RL7`) | 0 : ancetre |
+| `git merge-base --is-ancestor 91ecf180 b9c6cb69` (fusion de `R6`) | 1 : pas ancetre |
+| `git merge-base --is-ancestor 4bf3c359 <tete>` pour `78b260e3`, `b4ab00d6`, `fba84a0d`, `9921ddee`, `bd99abcf`, `43cd625d` | 0 pour les six |
+| `git merge-base --is-ancestor e6c371ad <tete>` (commit de `R6`) pour les six memes tetes | 1 pour cinq, 0 pour `43cd625d` seule |
+
+**Texte juste** : les cinq branches coupees sur `b9c6cb69` (`Z1`/`Z2`, `-06`, `-07`, `-11`, `MAT-CE1-01`) **contiennent** `RL5` a `RL7` et ne contiennent pas `R6` ; `s57-lea-emc-ce1-01`, coupee sur `d640121d`, contient les deux. **La regle *"jamais avant"* de `composition-palier-3.md` section 5 est donc tenue** pour `RL5` a `RL7`, la porte des lots ; la phrase de la section 6 disait le contraire. Pour `R6`, aucune regle d'ordre ne portait sur les branches de lots, et le constat de la section 6 (fichiers disjoints) reste vrai. La section 3 de ce fichier (critere 5 de `R6`) disait deja que les worktrees de lot ouverts a la fusion de `R6` ne le contiennent pas : la section 6 se contredisait. `camille-po` releve le meme ecart (`DEC-0120` A.117). **Cause : j'ai ecrit la section 6 sans relancer `git merge-base`.**
+
+### 2. Ecart 2 : titre, casquettes, dates et perimetre des totaux
+
+Le titre (*"rapport de developpeuse - palier 3, postes p3-4 (`RL5` a `RL7`) et R6"*), la ligne *"Casquette : developpeuse"* et la ligne *"Date : 2026-10-20"* ne valent que pour les sections 1 a 5. **Les sections 6 a 16 sont un journal de fusions et de portes techniques, casquette Scrum Master, du 2026-10-20 au 2026-10-21.** Faute d'heure lue par `date` au moment de chaque section, l'heure est celle de `git log` (fusion, ou commit pour une porte) :
+
+| Section | Fusions ou sommet de la porte | Heure de la fusion ou du sommet | Commit de la section |
+|---|---|---|---|
+| 6 | `55328470`, `59d6f245`, `a6b1bf1b`, `03acf639`, `4912d211`, `5d3d7a96` | 2026-10-20 08:28 a 08:29 | `5ee20db7` (08:48) |
+| 7 | `27a8a56a`, `c7dab42b` | 2026-10-20 09:17 | `2e3d792a` (09:38) |
+| 8 | `4650aeab` | 2026-10-20 09:43 | `cef340f0` (10:14) |
+| 9 | `46313f13`, `9f8b84be` | 2026-10-21 09:26 | `1e0bd21e` (09:30) |
+| 10 | sommet `21e994a4` | 2026-10-21 09:38 | `a0a69859` (10:02) |
+| 11 | `bf402bc3`, `78ab8a5b`, `d3fce602` | 2026-10-21 11:29 a 11:30 | `6af9dc60` (11:56) |
+| 12 | `edb2ed8a` | 2026-10-21 12:43 | `ae497341` (12:46) |
+| 13 | sommet `ad9ef86d` | 2026-10-21 12:56 | `8407f73f` (13:19) |
+| 14 | `afd33e88`, `4d39b47d` | 2026-10-21 14:15 | `ea5d9429` (14:38) |
+| 15 | `cb18ebfa` | 2026-10-21 14:58 | `63d7a0f0` (15:22) |
+| 16 | `03de0f6d` | 2026-10-21 15:54 | `b49517bc` (16:18) |
+
+**Perimetre de chaque total des sections 6 a 16** : somme des lignes `Tests run:` de fin de module du log de `bash outils/mvn-jdk21.sh -B clean verify` lance depuis la racine, sans `-pl`, sur le sommet nomme dans la section (reacteur complet, six modules, tests d'integration compris). Les tableaux d'origine ne portaient ni cette commande ni cette date ; je ne les ai pas rejoues pour les ajouter, je les donne ici telles que les sections les decrivent.
+
+### 3. Ecart 3 : un emplacement de poste dans la section 7
+
+La section 7 ecrit que le premier `clean verify` a ete lance *"sur"* une lettre de lecteur *"du poste (arbre de travail principal)"*. **Lire : "dans l'arbre de travail principal".** Une lettre de lecteur est un emplacement de poste (`CLAUDE.md`, conventions de redaction) ; la ligne n'en avait pas besoin.
+
+### 4. Ecart 4 : registre mixte, et une colonne inexacte
+
+- **La derniere colonne de la section 9 (fichier ajoute), premiere ligne, est inexacte.** `mesure-ines-palier-3-pli-744x551.md` etait suivi depuis `6d2e5b38` (2026-10-20 09:43) ; la fusion `46313f13` le **modifie** (`git diff --stat 46313f13^1 46313f13` : 360 insertions). Seule la seconde ligne est un fichier neuf : `rapport-qualite-palier-3-mutations-css.md`, 87 insertions (`git show --stat 9f8b84be^2`).
+- **Registre.** Les lignes 92, 171, 176, 178, 180, 182 et 184 sont de la prose accentuee dans un fichier ecrit en ASCII ailleurs. **Je ne les reecris pas** : elles restent telles qu'ecrites, et le fichier garde ce melange, dit ici. Les fichiers neufs de ma main pour la cloture du palier 3 sont en ASCII.
+
+### 5. Ce que cet amendement ne fait pas, et decisions
+
+Ne modifie aucune ligne d'origine, ne rejoue aucun `verify`, ne touche ni code ni contenu servi. **Aucune `ADR` ni `DEC` creee ou modifiee.** Les verifications de ce commit sont nommees dans `cloture-palier-3.md`, section 12.
