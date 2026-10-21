@@ -134,3 +134,13 @@ Aucune regle ecrite, amendee ou retiree par ce fichier : c'est un avis, sans dec
 ## Decisions prises
 
 Aucune `ADR` ni `DEC` creee ou amendee. `ADR-index.md` inchange.
+
+## Amendement du 2026-10-21 18:32 (UTC+02:00), `theo-archi` - ecarts 34 et 35 de `releve-relecteur-cloture-palier-3.md`
+
+Rien au-dessus n'est reecrit.
+
+**Ecart 34, numeros de ligne.** Ils resolvent a la base declaree, `ad65827e`, et derivent depuis. Verifie par `git show <sha>:<fichier> | sed -n <ligne>p` : a `ad65827e`, la ligne 1021 de la matrice est la competence de `MAT-CE1-01`, 2105 `QLM-CE1-01`, 2314 `ART-CE1-01`, 2553 `EMC-CE1-01` ; a `50dbd73f`, ces lignes sont 1029, 2113, 2322 et 2561 (+8, notes de `camille-po` ajoutees en tete). Dans `backlog.md`, 22634 (critere 9 de `S57-GARDE-C1-VIRGULE-ET-IMBRIQUE`) ne bouge pas, 22637 (*"avant tout poste qui modifie `recreo.css`"*) devient 22641, 22095 (`S57-GARDE-NOMBRE-DE-MANCHES`) ne bouge pas. Les lire comme des ancres nommees au SHA `ad65827e` : la ligne de matrice par son code, la story par son titre.
+
+**Ecart 35, script hors depot.** Traite dans l'amendement du meme jour de `decision-theo-garde-ce1-e3.md`, qui ecrit le script en entier et le rejoue a deux SHA. La mesure `G5` de la section 3.2 ci-dessus n'est pas celle-la : elle portait sur 14 paquets, avec une methode que j'ai remplacee le 2026-10-19 par celle de la decision. **Elle n'est pas rejouable et je ne la donne plus comme mesure** : la mesure qui vaut est celle de la decision, 47 paquets.
+
+**Ecart trouve par moi en ecrivant l'avis du palier 4, hors du releve.** La ligne `MAT-CE1-15` de la section 1.2 ecrit *"les figures du CP existent (...), le triangle rectangle non"*. C'etait faux a sa date : `figure-triangle-rectangle.svg` est au depot depuis `28150cd4` (2026-08-31, `git log --diff-filter=A`) et sert `cp-figures-planes.yaml`. La forme *reconnaitre* de `MAT-CE1-15` n'attend donc aucun dessin.

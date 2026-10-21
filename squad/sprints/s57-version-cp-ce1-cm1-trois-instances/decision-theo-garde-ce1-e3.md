@@ -93,3 +93,66 @@ A reprendre par `camille-po`. Je ne redige pas la story.
 ## Decisions prises
 
 Forme `F1` retenue. Aucune `ADR` ni `DEC` creee ou amendee. `ADR-index.md` inchange. Question ouverte a `nadia-prof` : section 3, colonne de droite.
+
+## Amendement du 2026-10-21 18:32 (UTC+02:00), `theo-archi` - ecart 35 de `releve-relecteur-cloture-palier-3.md`
+
+Rien au-dessus n'est reecrit. La section 2 ecrivait *"Le script est hors depot"* : ses chiffres ne se rejouaient pas depuis le depot. **Le script est ci-dessous, en entier**, sous la seule forme admise ici : les caracteres non ASCII de l'original (le blanc insecable et la plage des majuscules accentuees) y sont ecrits en echappements `\uXXXX`, que le moteur d'expressions de Python lit comme les caracteres eux-memes. Rien d'autre ne change.
+
+**Rejeu, 2026-10-21 18:30.** Python 3.14, PyYAML 6.0.3. Repertoire de contenu et `catalogue.yaml` extraits par `git archive <sha> adapters/adapter-content/src/main/resources` dans un repertoire hors depot ; `python mesure_e3.py <contenu> <catalogue.yaml>`. Sortie de l'original et de la forme echappee ci-dessous comparees par `md5sum` : **identiques** aux deux SHA.
+
+| Mesure | `ad65827e` (base de la section 2) | `50dbd73f` |
+|---|---|---|
+| Paquets CE1 par descripteur | 47 (Francais 19 branches + 7 ; Mathematiques 16 + 5) | 48 (Francais 22 + 4 ; Mathematiques 17 + 4 ; EMC 1 + 0) |
+| Propositions textuelles | 3048 | 3120 (EMC 72) |
+| `LON-CE1-5`, plus de 6 mots | 1, `ce1-sens-multiplication.yaml` item 15 (ligne 113) | 1, le meme |
+| `LON-CE1-5`, plus d'une phrase ; `LON-CE1-3` ; `LON-CE1-4` (deux mesures) ; `texteAVoixHaute` | 0 ; 0 ; 0 et 0 ; 0 | 0 ; 0 ; 0 et 0 ; 0 |
+| `texteSupport` | 80, dans `FRA-CE1-04` a `-07` | 80, les memes |
+
+La section 2 est donc rejouee a l'identique a sa base. Depuis, `nadia-prof` a fixe les matieres soumises (`reponses-nadia-questions-stories-palier-3.md`, ligne `Q-X1` : mathematiques CE1 ni `LON-CE1-5` ni `TRV-CE1-1` a `-7`) : la faute de `ce1-sens-multiplication` sort du perimetre et **le plafond est 0 partout** a `50dbd73f`, sous cette methode.
+
+```python
+import sys, re, pathlib, yaml, collections
+contenu = pathlib.Path(sys.argv[1]); catalogue = pathlib.Path(sys.argv[2]).read_text(encoding="utf-8")
+ESP = r"[\s\u00a0]"
+LC = re.compile(r"[\w]", re.UNICODE)
+def mots(t):
+    return [x for x in re.split(ESP + "+", t.strip()) if re.search(r"[^\W_]", x)]
+FIN = re.compile(r"[.?!](?=" + ESP + r"*$)|[.?!](?=" + ESP + r"+[A-Z\u00c0-\u00d6\u00d8-\u00de])")
+def phrases(t):
+    out, d = [], 0
+    for m in FIN.finditer(t):
+        p = t[d:m.end()].strip()
+        if mots(p): out.append(p)
+        d = m.end()
+    r = t[d:].strip()
+    if mots(r): out.append(r)
+    return out
+paq = 0; props = 0; p6 = []; p1 = []; ts = 0; ts30 = []; ts4 = []; ts12 = []; voix = []; nonstr = 0
+parMat = collections.Counter(); tsPaq = collections.Counter(); branche = collections.Counter()
+for f in sorted(contenu.glob("*.yaml")):
+    c = yaml.safe_load(f.read_text(encoding="utf-8"))
+    if not isinstance(c, dict) or str((c.get("descripteur") or {}).get("niveau")) != "CE1": continue
+    paq += 1; mat = c["descripteur"]["matiere"]
+    b = bool(re.search(r"paquet: " + re.escape(c["id"]) + r"$", catalogue, re.M))
+    branche[(mat, b)] += 1
+    if "texteAVoixHaute" in f.read_text(encoding="utf-8"): voix.append(f.name)
+    for i, it in enumerate(c.get("items") or [], 1):
+        for p in [it.get("bonneReponse")] + list(it.get("distracteurs") or []):
+            if p is None: continue
+            if not isinstance(p, str): nonstr += 1; continue
+            props += 1; parMat[mat] += 1
+            if len(mots(p)) > 6: p6.append((f.name, i, p))
+            if len(phrases(p)) > 1: p1.append((f.name, i, p))
+        t = it.get("texteSupport")
+        if isinstance(t, str):
+            ts += 1; tsPaq[(f.name, tuple(c.get("lignesDeReferentiel") or []))] += 1
+            if len(mots(t)) > 30: ts30.append((f.name, i, len(mots(t))))
+            if len(phrases(t)) > 4: ts4.append((f.name, i))
+            if any(len(mots(s)) > 12 for s in phrases(t)): ts12.append((f.name, i))
+print("paquets CE1 (descripteur)", paq, dict(branche))
+print("propositions texte", props, dict(parMat), "non texte", nonstr)
+print("LON-CE1-5 >6 mots", len(p6), p6[:20]); print("LON-CE1-5 >1 phrase", len(p1), p1[:20])
+print("texteSupport", ts, dict(tsPaq))
+print("LON-CE1-3 >30", len(ts30), ts30); print("LON-CE1-4 >4 phrases", len(ts4), ts4); print("LON-CE1-4 phrase>12", len(ts12), ts12)
+print("TRV-CE1-1 texteAVoixHaute", len(voix), voix)
+```

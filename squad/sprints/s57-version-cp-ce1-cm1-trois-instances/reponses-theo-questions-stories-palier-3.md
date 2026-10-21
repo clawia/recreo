@@ -19,3 +19,9 @@
 ## Decisions prises
 
 Aucune. Ce fichier repond a des questions ; il ne cree ni n'amende d'`ADR`, de `DEC` ou de regle ArchUnit.
+
+## Amendement du 2026-10-21 18:32 (UTC+02:00), `theo-archi` - ecart 34 de `releve-relecteur-cloture-palier-3.md`
+
+Rien au-dessus n'est reecrit. **La base declaree en tete est fausse.** `98dc6574` (2026-10-19 21:07:51) ne contient pas les stories que ce fichier cite : `git show 98dc6574:docs/backlog/backlog.md | grep -n "Palier 3 de s57"` ne rend rien. J'ai lu l'arbre de travail, ou ces stories etaient ecrites et pas encore commitees ; elles l'ont ete par `ee9ecd44` (2026-10-19 22:56:55), la seconde meme ou ce fichier l'a ete (`34f6734a`). **Base a lire : `ee9ecd44`.**
+
+Numeros de ligne de `docs/backlog/backlog.md` : ils resolvent a `ee9ecd44` (section "Palier 3 de s57" ligne 23022, story `S57-BR-EMC-CE1-01` ligne 23125, `Q-X5` ligne 23153, K2 ligne 23035, garde generique ligne 23043) et sont decales de +4 a `50dbd73f` (23026, 23129, 23157). Les lire comme des ancres nommees, avec le SHA `ee9ecd44` : la section *"Palier 3 de s57 : les cinq stories de branchement de la variante (i)"*, la story `S57-BR-EMC-CE1-01`, sa puce `Q-X5`, la puce `K2` et la puce *"`LON-CE1-3`, `-4`, `-5` et `TRV-CE1-1`"* des criteres communs. Methode : `git show <sha>:docs/backlog/backlog.md | grep -n` sur le titre de chaque ancre, aux deux SHA.
