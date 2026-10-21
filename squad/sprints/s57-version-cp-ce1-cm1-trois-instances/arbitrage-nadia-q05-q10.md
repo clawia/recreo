@@ -276,3 +276,159 @@ L'exactitude de chaque attribution, je la verifie moi-meme.
 clavier, si elle est decidee, tienne sur l'appareil de l'enfant, ce qu'aucun test serveur ne voit ; `ART-1` sur la facon de faire.
 
 **Signe** : `nadia-prof`, s57, 2026-10-21.
+
+---
+
+## 7. Suite du 2026-10-21, 15:57 : `R6` apres `DEC-0124` et `5a0b55f3`
+
+- **Lu** : `DEC-0124` en entier (`59aabaa5`) ; `git show 5a0b55f3` sur `fragments/saisie.html` (branche `s57-theo-autocorrect`,
+  **non fusionnee**) ; `ARBITRAGE-PREALABLE-s19-mecanique-de-saisie.md`, section 3 (`R6`) ; `ARBITRAGE-PREALABLE-s45-cinq-lots.md`,
+  section 5 ; story `S46-VERIF-SAISIE-MOT-DICTE-CP`. Faits MDN : relayes par l'agent lanceur, non lus par moi.
+- **Audit degrade, declare** : rien n'est joue, aucun appareil n'est essaye. Aucun Done prononce, aucun paquet modifie, aucun
+  identifiant ecrit ni alloue. Non commite par moi.
+
+### 7.1 `R6` : il tombe sous une condition, qui n'est pas remplie aujourd'hui
+
+`R6` avait deux moities, et je les lis separement.
+
+1. **La correction acceptee par le produit** : remplie. L'utilisatrice l'a decidee (*"il n'y aura pas de correction automatique
+   du clavier"*, `DEC-0124`) ; c'est la condition de levee que j'ai ecrite le 2026-08-25.
+2. **Une neutralisation mesuree sur les appareils** (4.2, point 3, ce matin) : **non remplie.** `5a0b55f3` pose `autocorrect="off"`
+   et un test verifie le HTML servi. C'est une demande faite au clavier ; le test ne voit pas le clavier. Ma barre etait une mesure
+   sur appareil, je ne la remplace pas par un test de HTML.
+
+**Ce que la mesure doit couvrir, et ce n'est pas un ajout** : `R6` refuse que *"l'appareil produise les lettres du mot"*, et
+`DEC-0047` section 2 acceptait *"un clavier virtuel qui corrige et complete"*. La mesure porte donc sur les deux gestes : le
+remplacement automatique d'un mot, et la proposition de mots a toucher au-dessus du clavier.
+
+**Qui la remplit** : personne dans la squad n'a d'appareil. `theo-archi` ne peut que lire la specification. **L'utilisatrice**,
+sur la tablette et l'ordinateur ou l'enfant joue, avec le clavier que l'enfant utilise, et apres la fusion de `5a0b55f3` (7.4).
+
+**Si la mesure montre que la demande est ignoree** sur l'appareil de l'enfant, `R6` tient sur cet appareil, et la question
+redevient une question a l'utilisatrice (servir la saisie quand meme, ou non). Je ne la tranche pas d'avance.
+
+**Ce qui reste hors de toute mesure** : un autre appareil, plus ancien, peut ignorer la demande. Le produit l'a demandee, et
+`SAI-2c` montre la chaine jugee. J'accepte ce reste comme une limite ecrite, pas comme un refus ; je reste la seule garde de ce
+que fait le clavier de l'enfant.
+
+### 7.2 Les lignes retenues par `R6`
+
+| Ligne | Effet | Ce qui reste |
+|---|---|---|
+| `FRA-CE1-21` | `R6` cesse d'etre son obstacle a la levee de 7.1 | mes conditions de 4.3, inchangees ; plafond `couvert-valide` avec sa mention ; une story, une instance ; pas au palier 3 |
+| `FRA-CE1-29` | idem pour `R6` ; la voix lui vient de la premisse (`DEC-0123`, section 5) | **Correction du message de relance** : ses conditions de Done existent, ecrites ici le matin meme en 3.2, *"si `R6` tombe"* : mots seuls, `VOI-9` transposees, aucun mot dont l'orthographe tient a un accent tant que `SAI-1` le tolere, `NRC-CE1-1` contre `cp-mot-dicte`, plafond `en cours`. Il n'existe pas de paquet. L'annotation de `TRV-CE1-1` reste a moi |
+| `LVE-CM1-06` | `R6` cesse d'etre son motif de refus (s45, 5), a la levee de 7.1 | la premisse de l'adulte ne s'y applique pas ; je relis l'instruction de s45 et le paquet `cm1-anglais-ecrire-mots` (en-tete `DEGRADE`) quand une story le demande |
+
+Aucune cellule de matrice ne bouge par ce document.
+
+### 7.3 `FRA-CP-09` et `MAT-CP-05`
+
+**`FRA-CP-09`, `saisie-mot-dicte-cp`.** `R6` s'y applique directement : c'est la ligne meme que `R6` nomme (*"Ecrire de maniere
+autonome un mot simple..."*, CP). L'omission de s45 5.3 etait exactement cela. **Je ne la ferme pas aujourd'hui ; ce qui manque est
+la mesure de 7.1.**
+- Mesure positive : `R6` est leve sur cette ligne, l'omission est fermee, le Done de s26 tient **sans rejeu de contenu** (le
+  contenu n'a pas change, seul le champ a change, et la mesure se fait sur ce jeu-la, section 7.5). Aucune mention neuve.
+- Mesure negative : `R6` tient sur cette ligne, et je statue sur le `couvert-valide` de s26 (maintien avec mention, retrait ou
+  condition), comme le demande `S46-VERIF-SAISIE-MOT-DICTE-CP`.
+- D'ici la : la ligne reste `couvert-valide` sur un refus non leve. Je l'ecris pour qu'on ne la croie pas reglee.
+
+**`MAT-CP-05`, `saisie-complements-10-cp`.** `R6` ne s'y applique pas : la ligne fait ecrire des chiffres, pas les lettres d'un
+mot. **Aucun rejeu** : l'attribut ne change rien de ce que l'enfant lit, et le test de `theo-archi` verifie le champ aux trois
+ecrans.
+
+### 7.4 Ordre
+
+1. Fusion de `5a0b55f3` (`sofia-sm`, porte technique avec les jobs nommes).
+2. La verification de 7.5, par l'utilisatrice, si elle accepte de la faire.
+3. Mon verdict sur `R6`, ecrit a la suite de cette section, avec ce qu'elle a constate.
+
+### 7.5 La verification que l'utilisatrice peut faire
+
+**Sur chaque appareil ou l'enfant joue** (la tablette, avec le clavier que l'enfant utilise ; l'ordinateur), apres la fusion de
+`5a0b55f3` :
+
+1. **Temoin.** Dans une application de notes de l'appareil, taper `maizon` puis une espace. Noter si le clavier remplace le mot
+   (par *maison*) et s'il propose des mots a toucher au-dessus des touches. Si rien n'est corrige ni propose, l'appareil ne corrige
+   pas : la mesure est sans objet sur lui, et le dire.
+2. **recreo.** Ouvrir le jeu de CP qui fait ecrire un mot dicte (`saisie-mot-dicte-cp`). Dans le champ, taper `maizon` puis une
+   espace, **sans toucher aucune proposition**.
+3. **A constater** : (a) le champ montre toujours `maizon`, rien n'a ete remplace ; (b) aucun mot n'est propose a toucher au-dessus
+   du clavier.
+4. **A rapporter** : pour chaque appareil, son nom, le navigateur et sa version, le clavier utilise, le resultat du temoin, et oui
+   ou non pour (a) et (b).
+
+(a) et (b) a oui sur la tablette et l'ordinateur de l'enfant : `R6` est leve. (a) a non sur l'un d'eux : `R6` tient sur cet
+appareil (7.1). (a) a oui et (b) a non : la correction est neutralisee mais la completion ne l'est pas ; un enfant qui touche un mot
+propose ne l'a pas ecrit ; `R6` tient, et la question revient a l'utilisatrice.
+
+**Ce dont je reste la seule garde, ajoute ici** : ce que fait le clavier de l'enfant sur le champ de saisie ; aucun test du depot ne
+le voit.
+
+**Signe** : `nadia-prof`, s57, 2026-10-21, 15:57.
+
+---
+
+## 8. Suite du 2026-10-21, 16:12 : la verification de l'utilisatrice, et `R6`
+
+- **Ses mots, relayes par l'agent lanceur, non lus de sa main** : *"a toujours a oui et b a non sur tablette uniquement, pour moi
+  c'est bon R6 peut etre leve"*. **Arbre** : `round-two` a `03de0f6d` (fusion de `5a0b55f3`). Aucun Done prononce, aucun paquet
+  modifie, aucun identifiant ecrit ni alloue, non commite par moi.
+
+### 8.1 Ce que je lis, et ce que je ne sais pas
+
+Je lis ses lettres avec ma definition de 7.5 : **(a) oui**, le champ montre toujours `maizon` apres l'espace, rien n'a ete remplace ;
+**(b) non**, des mots sont proposes a toucher au-dessus du clavier. C'est le cas que 7.5 decrit : *"la correction est neutralisee
+mais la completion ne l'est pas"*.
+
+Ce que je ne sais pas : quel jar elle a joue (avec ou sans `autocorrect="off"`) ; le resultat du temoin, donc si son clavier
+corrige ailleurs ; le nom de l'appareil, le navigateur, le clavier ; si cette tablette est celle de l'enfant (je le suppose, sans le
+savoir). Un seul de ces manques compte pour (a) : **(a) est un fait d'ecran, quelle qu'en soit la cause**. Sur cette tablette, le mot
+tape n'est pas remplace dans le champ. Si elle a joue un jar sans l'attribut, il ne peut qu'ameliorer ce resultat, pas le
+degrader. L'ordinateur n'est pas essaye.
+
+### 8.2 Le risque qui reste, et a qui il revient
+
+**Mon avis pedagogique.** Un enfant qui touche un mot propose au-dessus du clavier ne l'a pas ecrit : il l'a **reconnu** parmi
+quelques mots. Sur une ligne dont la competence est de produire l'orthographe d'un mot (`FRA-CP-09`, `FRA-CE1-21`, `FRA-CE1-29`,
+`LVE-CM1-06`), cela fait d'une production un choix, pour l'enfant qui touche. C'est un risque reel, et ce n'est pas le meme que
+celui de `R6`. `R6` refuse que l'appareil **remplace** ce que l'enfant a tape, sans qu'il le sache ; un mot propose ne s'ecrit que si
+l'enfant le touche. Au CP, un adulte est a cote de lui (`DEC-0046`).
+
+**A qui il revient.** J'ai ecrit moi-meme, en 7.1 et 7.5, que ce cas *"revient a l'utilisatrice"*. Elle a repondu : lever. Je ne lui
+fais pas redire, et je ne reprends pas sur mon autorite de Done une question que j'ai renvoyee a la sienne : ce serait deplacer mes
+poteaux.
+
+**Verdict : `R6` est leve, par son arbitrage, avec une reserve que je nomme.** Pour les quatre lignes :
+
+> **Reserve, neuve, datee du 2026-10-21, non bloquante** : sur la tablette, le clavier propose des mots a toucher au-dessus des
+> touches ; un enfant qui en touche un n'a pas ecrit le mot. Le produit ne le voit pas, et ne peut pas le distinguer d'un mot tape.
+
+| Ligne | Ce qui change |
+|---|---|
+| `FRA-CE1-21` | `R6` n'est plus un obstacle. Mes conditions de 4.3 tiennent, plus une : **la cellule de matrice porte la reserve ci-dessus**, avec sa mention de 4.3. Plafond `couvert-valide` |
+| `FRA-CE1-29` | `R6` n'est plus un obstacle. Conditions de 3.2, plus la meme : la reserve dans la cellule. Plafond `en cours` |
+| `LVE-CM1-06` | `R6` n'est plus son motif de refus (s45, 5). La meme reserve s'y ecrira. Je relis l'instruction de s45 et le paquet quand une story le demande |
+| `FRA-CP-09` | 8.4 |
+
+Ces conditions sont neuves et portent sur des lignes sans Done : elles ne durcissent aucun verdict deja prononce.
+
+### 8.3 Ce que j'exige encore
+
+**Rien ne manque pour lever `R6`.** Je n'exige pas l'ordinateur : l'utilisatrice a tranche sur l'appareil qu'elle a essaye, et
+c'est sa decision de produit, que je lis telle quelle. Je l'ecris comme une limite : **l'ordinateur n'est pas mesure**, et je ne
+sais pas si son systeme corrige la frappe d'un clavier physique. Je ne demande pas non plus de supprimer les mots proposes : aucun
+attribut n'est connu pour le faire, et cette question est a `theo-archi`, pas a moi. S'il en trouve un, il le dit ; ce n'est pas une
+condition.
+
+### 8.4 `FRA-CP-09` : l'omission de s45 5.3 est fermee
+
+`R6` est examine sur `saisie-mot-dicte-cp` et leve, sur la decision de l'utilisatrice et le constat de (a). Le Done de s26 **tient,
+sans rejeu de contenu** : le contenu n'a pas change, seul le champ a change. La ligne reste `couvert-valide`. **Reserve neuve,
+datee du 2026-10-21, non bloquante** : celle de 8.2, a ecrire dans `FICHE-saisie-mot-dicte-cp.md` par moi, dans un commit a moi,
+et a reprendre dans la cellule par `camille-po`. Ce n'est pas une barre relevee sur un Done : c'est une reserve neuve, nommee et
+datee. `S46-VERIF-SAISIE-MOT-DICTE-CP` a sa reponse : `R6` s'appliquait, il est leve, le Done est maintenu avec cette reserve.
+
+**Ce dont je reste la seule garde** : qu'un mot propose par le clavier soit ecrit par l'enfant ; aucun test ne le voit, et le
+produit non plus.
+
+**Signe** : `nadia-prof`, s57, 2026-10-21, 16:12.

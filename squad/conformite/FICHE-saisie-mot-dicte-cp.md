@@ -453,3 +453,22 @@ points. Le gabarit ajoute son point a un texte qui en porte deja un.
 meme mecanique, **une validation a champ vide consomme un essai**, ce qui, depuis le remede de
 `SCO-1`, coute a la manche tout credit possible. C'est `SCO-R3`, ecrite dans
 `FICHE-bandit-manchot-additions-cp.md` avec le reste de ce qui touche la mecanique.
+
+---
+
+# 2026-10-21 - `R6` leve sur ce jeu, et une reserve neuve (`nadia-prof`, s57)
+
+**Condition de la levee** : `R6` est leve par l'arbitrage de l'utilisatrice du 2026-10-21 (mots relayes par l'agent lanceur,
+non lus de sa main : *"a toujours a oui et b a non sur tablette uniquement, pour moi c'est bon R6 peut etre leve"*). Mesure faite
+**sur la tablette seule** ; **l'ordinateur n'est pas mesure** ; **le jar joue n'est pas identifie** (avec ou sans
+`autocorrect="off"`, fusionne en `03de0f6d`). Detail : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/arbitrage-nadia-q05-q10.md`,
+sections 7 et 8. L'omission de s45 5.3 (`S46-VERIF-SAISIE-MOT-DICTE-CP`) est fermee : `R6` s'appliquait a cette ligne, il est leve,
+le Done du 2026-09-01 est maintenu sans rejeu de contenu.
+
+**Reserve neuve, datee du 2026-10-21, non bloquante** : "sur la tablette, des mots sont proposes au-dessus du clavier ; un enfant
+qui en touche un n'a pas ecrit le mot".
+
+Ce n'est pas une barre relevee sur le Done : c'est une reserve neuve, nommee et datee. **Je reste la seule garde** de ce point :
+aucun test ne voit le clavier, et le produit ne distingue pas un mot touche d'un mot tape.
+
+**Signe** : `nadia-prof`, 2026-10-21.
