@@ -2068,3 +2068,35 @@ Annotation datee, heure lue par `date`, **limitee a ce qui est de ma competence*
 5. **Consigne de l'utilisatrice sur la borne du palier 4** (relayee, non lue de sa main) : la borne de 8,0 est a `nadia-prof` (`PAR-9`) ; je ne l'ai pas relevee ; la capacite par instance est a son arbitrage prealable du palier 4 (A.126 a A.129). Les regles de charge et de parallele sont a `sofia-sm` (A.130).
 
 Ne modifie aucun prix, lot ou instance, n'engage aucun poste, ne touche ni la matrice ni `composition-palier-3.md`.
+
+## Amendement du 2026-10-21 17:46 (UTC+02:00), cloture du palier 3 : ecarts 5, 6 et 9 du releve du `relecteur-pedagogique`, engagements hors tableau
+
+Annotation datee, heure lue par `date`, casquette Scrum Master. **Rien au-dessus n'est reecrit.** Source : `releve-relecteur-cloture-palier-3.md` (`01105a16`), ecarts 5 et 6 (a `sofia-sm`), ecart 9 (a `camille-po`, qui touche trois lignes de ce fichier). Arbre : `round-two` a `d09655bf`. Ecrit en ASCII. Cet amendement ne ferme pas le palier : `cloture-palier-3.md` le fait.
+
+### 1. Ecart 5 : la section 3 de l'amendement de 23:09 range deux citations sous une source
+
+La section 3 de l'amendement de 23:09 dit que l'ordre est celui de la section 14 de `cloture-palier-2.md` et de `DEC-0120` A.115, et attribue les deux citations a ces deux sources ensemble. **Lire** : *"Rien n'est decide ici"* est de `sofia-sm`, `cloture-palier-2.md` section 14 (ligne 278 ; `DEC-0120` n'a pas cette phrase) ; *"sans engagement"* est de `camille-po`, titre de `DEC-0120` A.115. Meme correction dans `composition-palier-3.md`, section 13.1.
+
+### 2. Ecart 6 : la delegation du 2026-10-19, sans ses mots
+
+La ligne (c) de la section 1 de l'amendement de 23:09 dit la delegation de l'utilisatrice du 2026-10-19 *"relayee a `camille-po` [...] et au lanceur de cette tache"* sans citer ses mots. **Ses mots, tels que `camille-po` les ecrit** (`docs/backlog/backlog.md`, annotation "Palier 3 de s57", composition ecrite ici) : *"continue au mieux pour obtenir la meilleure couverture"*, 2026-10-19. Source en forme 1 de `DEC-0062` : `camille-po`, ce fichier du backlog. **Etat de ces mots : ils ne sont pas dans la liste que `DEC-0120` A.132 confirme** (voir 3) : ils restent relayes, et la variante (i) de la composition s'appuie dessus (`composition-palier-3.md` section 2).
+
+### 3. Ecart 9 sur les lignes de ce fichier : les mots de `AD1`, `AD2` et `AD4`
+
+L'amendement de 23:44 (sections 1 et 8) inscrit `AD1`, `AD2` et `AD4` *"sur la foi d'une reponse relayee"*, forme que `DEC-0062` section 3.1 n'a pas. **Etat au 2026-10-21 17:36** (`d09655bf`, `DEC-0120` A.132, `DEC-0062` amendement E) : l'utilisatrice a repondu *"confirme"* a la question qui reprend ces mots, **relayee a son tour** par l'agent lanceur a `camille-po`, qui ne l'a pas lue de sa main. `camille-po` les fait passer a la forme 2 **pour la liste seulement**. Ce que cela change dans ce fichier : le *"ok"* sur `AD1`, `AD2`, `AD4` a sa forme ; **rien d'autre n'est confirme** : ni la delegation du 2026-10-19 (point 2), ni les lectures des agents, ni le canal par lequel les mots sont arrives la premiere fois. `E5` reste ouvert pour le reste.
+
+### 4. Engagements hors tableau du palier 3, a l'ouverture et a la cloture
+
+**Je ne les ai pas inscrits ici au moment ou ils ont eu lieu.** Le tableau de l'amendement de 23:44 laisse `AD6` et `AD7` chez `camille-po` (*"puis `sofia-sm` (engagement)"*). Trois stories ont ete livrees sans amendement de `planning.md` qui les engage :
+
+| Story | Livraison | Developpeur | Amendement qui l'engage |
+|---|---|---|---|
+| `S57-R6-COMMENTAIRES-DE-PAQUET` (`AD7`) | `e6c371ad`, fusion `91ecf180` | `sofia-sm`, casquette developpeuse | aucun |
+| `S57-GARDE-PILE-DE-POLICES` (`AD6`) | `558dd887`, fusion `4650aeab` | `theo-archi` | aucun : l'engagement de `sofia-sm` n'a pas ete ecrit |
+| `S57-SAISIE-CLAVIER-SANS-CORRECTION` | `5a0b55f3`, fusion `03de0f6d` | `theo-archi` | aucun : avant cet amendement, `grep -c` sur ce fichier rendait 0 |
+
+C'est la forme de l'ecart que la lecon 6 de `retro-palier-2.md` voulait eviter (un engagement hors tableau sans ligne). Le fait est ecrit, pas rattrape : aucun amendement retrospectif ne fabrique l'engagement qui n'a pas eu lieu. Les livraisons sont dans `cloture-palier-3.md`, section 1.
+
+### 5. Decisions prises
+
+**Aucune `ADR` ni `DEC` creee ou modifiee par cet amendement.** Il ecrit : deux corrections de citation, les mots de la delegation du 2026-10-19 avec leur etat, l'etat des mots de `AD1`, `AD2`, `AD4` au 2026-10-21 17:36, et trois engagements livres sans amendement. Il ne modifie aucun prix, lot, instance ni critere de story.
