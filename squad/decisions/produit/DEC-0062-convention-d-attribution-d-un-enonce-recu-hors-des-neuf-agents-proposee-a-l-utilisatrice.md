@@ -441,3 +441,21 @@ La formule *"recu de MASTER, sans source dans le depot"* tolere l'accord au plur
 - Cette regle vaut pour ce que j'ecris. Elle ne dit rien pour les autres agents : `sofia-sm` la porte a `squad/README.md` si l'utilisatrice repond oui a la question ci-dessous.
 
 **La question, une seule, a l'utilisatrice** : *quand l'agent qui lance une tache me transmet une reponse de votre part, vaut-elle vos mots (forme 2 : cites entre guillemets, avec la date), ou reste-t-elle recue de MASTER (forme 3) tant que vous ne l'avez pas ecrite vous-meme ?* Sans reponse, la regle ci-dessus tient et `E5` reste compte comme ouvert. Route : `sofia-sm`, section 13 (h) de `cloture-palier-3.md`.
+
+## Amendement G du 2026-10-21 (`camille-po`) - l'utilisatrice repond oui a la question de l'amendement F : la reponse que l'agent lanceur transmet vaut ses mots
+
+**Statut de `DEC-0062` : `Acceptee`, inchange.** Aucun texte d'origine n'est reecrit.
+
+**La question** est celle de l'amendement F : *quand l'agent qui lance une tache me transmet une reponse de votre part, vaut-elle vos mots (forme 2 : cites entre guillemets, avec la date), ou reste-t-elle recue de MASTER (forme 3) tant que vous ne l'avez pas ecrite vous-meme ?* **Sa reponse**, 2026-10-21, telle que l'agent lanceur me la transmet, entre guillemets : *"E5 oui ça vaut pour mes mots"*. Je ne l'ai pas lue de sa main ; par sa propre reponse, cela n'est plus un obstacle a la forme 2.
+
+**Ce que cela ferme.** `E5` est **ferme pour les messages que l'agent lanceur cite mot pour mot, avec leur date, a partir du 2026-10-21** : ils s'ecrivent en forme 2 (mots cites entre guillemets, date), sans confirmation supplementaire a demander. **E5 etait ouvert depuis `cloture-palier-1.md`, reporte a `cloture-palier-2.md` puis a `cloture-palier-3.md` : trois paliers.** Il se ferme au quatrieme.
+
+**Ce que cela ne fait pas.**
+
+- **Pas de balayage retroactif.** La delegation du 2026-10-19 (*"continue au mieux pour obtenir la meilleure couverture"*), `DEC-0120` A.114 (mots de `S2` et de `Q-N4`), `Q-U11`, les paliers 1 et 2 et tout enonce hors liste que l'agent lanceur n'a pas cite mot pour mot avec sa date **restent comme ils sont** : forme 3 a la lettre d'A.2. L'amendement F disait que le motif de la forme (b) de `S57-BR-MAT-CE1-14-GRILLE` ne pouvait pas etre la delegation : cela reste vrai.
+- **Un message paraphrase, resume ou date de facon approximative n'est pas couvert** : seule la citation mot pour mot avec sa date l'est.
+- **Le canal** (comment les mots arrivent la premiere fois a l'agent lanceur) reste une question a l'utilisatrice (`cloture-palier-3.md` section 13 (h)) ; sa reponse dit que ce qui est cite vaut ses mots, pas par quel moyen cela arrive.
+
+**La regle de procedure** (ce que chaque agent fait d'une reponse transmise) est a porter a `squad/README.md` par `sofia-sm`, qui le fait en parallele de ce geste : **je ne touche pas ce fichier.** Tant qu'elle ne l'a pas fait, la regle vaut pour ce que j'ecris, comme l'amendement F le disait.
+
+**Application dans ce geste** : les mots de `E5`, `QP3`, `QP5`, `QP6`, `QP7` et du seuil (*"1 quatre instances"*) sont cites en forme 2 dans `DEC-0120` A.133.

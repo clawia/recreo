@@ -367,3 +367,7 @@ Non commite. Matrice (148 / 200) et `planning.md` non touches.
 ## Amendement du 2026-10-21, 18:45 (`camille-po`, ecart 9 du releve de cloture du palier 3) - provenance des mots de `DEC-0123`
 
 **Rien au-dessus n'est reecrit.** Les six reponses `Q-05` a `Q-10`, citees plus haut comme *"mots relayes, non lus de la main de l'utilisatrice"*, ont ete confirmees mot pour mot le 2026-10-21 (`DEC-0123`, troisieme amendement ; `DEC-0062`, amendement E) : elles passent de la forme 3 a la forme 2 de `DEC-0062`. **Ce que cela ne fait pas** : la confirmation est elle-meme arrivee par l'agent lanceur (`DEC-0062`, amendement F, premier point) ; la lecture de *"infos"* (`Q-05`) reste a confirmer (`QP3`). Le sort de la reponse relayee en general (`E5`) reste ouvert.
+
+## Amendement du 2026-10-21 (`camille-po`) - `Q-05` : *"un tableau d'informations"*
+
+**Rien au-dessus n'est reecrit.** La reponse de l'utilisatrice a `QP3` de `preparation-palier-4-camille.md` (*"QP3 un tableau d'informations"*, forme 2 de `DEC-0062` amendement G) corrige la lecture de `Q-05` (*"ajouter une grille pour infos a l'enfant"*) : **ce n'est pas un quadrillage montre, c'est un tableau d'informations sans cases designables.** Les passages de ce fichier qui lisent *"infos"* comme un quadrillage montre se lisent avec cette correction : `DEP-CE1-2` n'est pas levee par cette lecture. Consequences : `DEC-0123`, cinquieme amendement ; `DEC-0120` A.137 ; amendement de `S57-BR-MAT-CE1-14-GRILLE`.

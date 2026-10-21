@@ -23688,3 +23688,24 @@ Ces reserves sont celles de `nadia-prof` et sont **non bloquantes** : aucun Done
 - **Ce que la story ne dit pas** : que les nouveaux distracteurs sont bons (a `nadia-prof`) ; que `NRC-CE1-1` est tenue (aucun garde-fou ne compare deux paquets, elle seule).
 - **Done pedagogique** : `nadia-prof` seule, apres rejeu de l'item. **Prix, instance, agent** : **a poser par `nadia-prof`** (rejeu d'un item, pas un lot) ; instance A' et `lea-dev` (auteur du paquet) proposes, non decides ; engagement `sofia-sm`.
 - **Lien** : `FICHE-bandit-manchot-biens-communs-ce1.md` ; `verdict-nadia-palier-3-ce1.md` (3.5) ; `S57-BR-EMC-CE1-01`.
+
+## Amendements de `camille-po`, 2026-10-21 : reponses de l'utilisatrice a `QP3` et `QP6`
+
+Annotation datee, sur `round-two` a `50c74519`. **Rien au-dessus n'est reecrit.** Aucun identifiant de condition neuf n'est alloue. Mots de l'utilisatrice, forme 2 de `DEC-0062` (amendement G) : *"QP6 lea dev pour B et sofia pour A'"* ; *"QP3 un tableau d'informations"*.
+
+### `S57-BR-MAT-CE1-14-GRILLE` : *"un tableau d'informations"* (`QP3`)
+
+Le *"Statut"* de la story disait : *"Ma lecture : un quadrillage est montre a l'enfant. Si elle voulait une autre grille, cette story est a reecrire."* **Elle voulait une autre grille** (`DEC-0123`, cinquieme amendement ; `DEC-0120` A.137). **La story est a reecrire, et elle ne l'est pas ici** : la reecriture suit la reponse de `nadia-prof` a la question de A.137, pour ne pas ecrire un critere que sa lecture de `DEP-CE1-2` refuserait.
+
+Etat des parties de la story, sans les retirer :
+
+- **Besoin, forme (a)** : ecrits pour un quadrillage montre. Compatible avec les mots de l'utilisatrice **si** le tableau montre un quadrillage ; sinon le besoin est a reformuler.
+- **Forme (b) et criteres 1 (lecture sur `zones`) et 11** : supposent des cases designables, que l'utilisatrice ecarte. Le choix de (b) du premier amendement reposait sur ma lecture ecartee ; **il n'est plus tenu comme choix de produit**, sans que (b) soit declaree irrecevable : c'est a `nadia-prof`.
+- **Plafond** : `en cours` (forme (a)). **`couvert-valide` n'est atteignable que si (b) est rouverte** par une nouvelle reponse de l'utilisatrice.
+- **Critere 6 (cliquet de poids, `A3`)** : conditionne par l'avis de `theo-archi` : tableau en dessin ou en texte, `A3` requis ou non sans designation.
+- **Prix, instance** : (a) 1,5, B ; inchange et indicatif. **Toujours non engagee, sans palier** : `LP9` reste hors du palier 4.
+- **Criteres 2 a 5, 7 a 10, 12 a 14 (`DEP-CE1-1`, `-3`, `-4`, mention de couverture, etiquettes)** : non touches par cette reponse ; a relire a la reecriture.
+
+### Palier 4 de s57 : developpeurs designes par l'utilisatrice (`QP6`)
+
+Les stories `S57-BR-MAT-CE1-10` et `S57-BR-MAT-CE1-11` portaient *"Developpeur : a designer par `sofia-sm`"* ; `S57-BR-EMC-CE1-02`, `-03` et `-04` aussi. **L'utilisatrice designe : `lea-dev` pour B (`MAT-CE1-10`, `-11`), `sofia-sm` pour A' (`EMC-CE1-02`, `-03`, `-04`).** `S57-BR-FRA-CE1-21` : `marc-dev`, inchange (`RG1`, `RG3`). `RG1`, `RG2` et `RG4` lues dans `DEC-0120` A.134 : tenues, sans ecart a `RG2`. **Le *"report a l'ouverture"* que ces quatre stories annoncaient pour une designation manquante ne s'applique plus pour ce motif.** Reste a `sofia-sm` : la composition, l'amendement de `planning.md`, la procedure de ses deux casquettes. Aucune de ces stories n'est engagee par cette annotation.

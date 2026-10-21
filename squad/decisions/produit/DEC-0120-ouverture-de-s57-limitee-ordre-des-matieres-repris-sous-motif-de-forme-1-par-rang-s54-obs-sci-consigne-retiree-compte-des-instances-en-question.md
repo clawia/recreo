@@ -2035,3 +2035,138 @@ Ne prononce aucun Done, n'engage aucun poste, ne fixe aucune borne ni aucun prix
 **Statut** : aucune decision ne change, aucun texte d'origine n'est reecrit, aucune ligne de matrice ne bouge. Aucun identifiant de condition neuf.
 
 **Dans cette decision** la liste couvre les mots de `AD1`, `AD2` et `AD4` (A.117 a A.131 les citent), de `Q-05` a `Q-10` (A.120) et la consigne sur le seuil (A.126). `DEC-0120` reste `Acceptee`.
+
+## Amendement du 2026-10-21, vingt-deuxieme (`camille-po`, reponses de l'utilisatrice a `E5`, `QP3`, `QP5`, `QP6`, `QP7` et au seuil du palier 4)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** Ce que je n'ai pas fait : lancer `mvn`, jouer un jar, composer le palier 4, amender `planning.md`, toucher `squad/README.md` (a `sofia-sm`). Arbre : `round-two` a `50c74519`.
+
+### A.133 Les mots de l'utilisatrice, forme 2 de `DEC-0062`
+
+Cites tels que l'agent lanceur me les transmet, 2026-10-21, valant ses mots depuis sa reponse a `E5` (`DEC-0062`, amendement G) :
+
+- *"E5 oui ça vaut pour mes mots, QP6 lea dev pour B et sofia pour A', QP7 après un palier 5 voir 6 je ne sais pas encore, QP5 oui, QP3 un tableau d'informations"* ;
+- sur le seuil, a la question *"voulez-vous lever le plafond par instance a 6,67, ou passer a quatre instances, ou fixer 15,0 (trois instances a 5,0) ?"* dont la voie 1 etait *"Quatre instances a 5,0 (4 x 5,0 = 20,0)"* : *"1 quatre instances"* ; elle avait dit avant *"on monte a 20"*.
+
+**Ce que je lis et ce que je ne lis pas.** Je lis chaque mot comme une reponse a la question de `preparation-palier-4-camille.md` qui porte son code. **Ces lectures sont les miennes** : celle de `QP3` est ecrite en A.137 avec ce qu'elle laisse ouvert. Je n'ai pas lu *"on monte a 20"* dans un fichier avant ce jour : c'est une citation de l'agent lanceur, datee du 2026-10-21, forme 2 a cette date.
+
+### A.134 `QP6` : `lea-dev` sur B, `sofia-sm` sur A' - `RG1`, `RG2` et `RG4`, lues dans `composition-palier-3.md` section 4.1
+
+| Regle | Texte | Etat avec A : `marc-dev`, B : `lea-dev`, A' : `sofia-sm` |
+|---|---|---|
+| `RG1` | `lea-dev` ne recoit aucun lot de francais CE1 | **tenue.** `lea-dev` porte B (mathematiques CE1) ; le seul lot de francais CE1 du repli (`LP1`, `FRA-CE1-21`) est a `marc-dev` |
+| `RG2` | des developpeurs distincts sur des instances distinctes (motif : `catalogue.yaml` et l'inventaire de `TexteAccentueExposeParLePortEntrantTest` sont partages) | **tenue, sans ecart.** Trois instances, trois developpeurs. Au palier 3, `AD1` avait mis B et A' chez `lea-dev` et l'ecart etait dit (`composition-palier-3.md` 12.3) ; il n'existe plus |
+| `RG4` | un developpeur n'entrelace pas ses worktrees : un a la fois, et il le dit | **tenue si** `lea-dev` livre `LP2` puis `LP3` (puis un troisieme lot de B) l'un apres l'autre, et `sofia-sm` `LP4`, `LP5`, `LP6` de meme. La regle est de `sofia-sm` ; je ne la declare tenue que sur ce que la reponse dit, pas sur le deroule |
+
+Les autres regles du meme tableau : `RG3` (`marc-dev` pour un lot a texte support) ne vise aucun lot du repli ; `RG6` (l'agent est celui que la story nomme) : les stories de `LP2` a `LP6` ne nomment aucun developpeur (*"a designer par `sofia-sm`"*), la designation est donc celle de l'utilisatrice et non plus une designation de `sofia-sm` par elle-meme.
+
+**`sofia-sm` porte deux casquettes, jamais simultanees (`RG5`).** `RG5` : casquette declaree au debut de la tache, aucun arbitrage de son propre obstacle (elle le note, change de casquette, le route), commits `[SOF]`, fusion de sa propre branche par `outils/verifier-lignee.sh` et liste de fichiers contre `K2`, relue par `yanis-qa` : *"je n'ai pas d'autre juge, et je le dis"*. **Ce que cela implique, en faits et sans trancher la procedure** (elle est a elle) :
+
+1. **Les fusions** : l'ordre de fusion et la file sont de sa casquette de Scrum Master (`avis-theo-palier-4.md` 3.3 : *"La mecanique exacte est a `sofia-sm`"*). Pendant qu'elle developpe, aucune fusion de `marc-dev` ou de `lea-dev` ne se decide par elle ; elle les fait avant ou apres, ou elle designe qui les fait. **Je n'ecris pas laquelle.**
+2. **La chaine d'A' est la plus longue** : trois lots l'un apres l'autre, chacun coupe apres la fusion du precedent (3.3, point 4). Chaque fusion de sa propre branche tient sur `yanis-qa` seul comme second regard.
+3. **Les verifications** : un seul `verify` complet a la fois sur le poste (3.3, point 1). Le sien comme developpeuse et ceux de la file qu'elle conduit comme Scrum Master se partagent le meme jeton ; la file ne peut pas avancer pendant qu'elle verifie son propre lot.
+4. **Les obstacles** : un obstacle sur A' n'est pas arbitre par elle. Qui le recoit quand c'est elle qui le porte est un point de procedure que `RG5` ne ferme pas.
+5. **Le double Done** n'a pas de variante pour ses lots : CI sur les jobs nommes, Done pedagogique de `nadia-prof`.
+
+**`theo-archi` recommandait deux developpeurs** (`avis-theo-palier-4.md` 3.4 : *"trois instances de lecture, deux developpeurs, une file de fusion et un jeton de `verify` complet"*) et laissait l'option de capacite a l'utilisatrice et a `sofia-sm`. **Elle a choisi trois developpeurs** : c'est son choix, ecrit ici avec la recommandation qu'il ne suit pas.
+
+**Ce que cela fait au report.** `preparation-palier-4-camille.md` 7.2 disait `QP6` *"bloquante a l'ouverture"* : sans reponse, premier report pour chacun des quatre lots non engages. **Elle a repondu ; les developpeurs de `LP2` a `LP5` sont designes. Il n'y a donc pas de report a l'ouverture du palier 4 pour ce motif**, si le reste est tenu : l'arbitrage de `nadia-prof` (A.138), la composition et l'amendement de `planning.md` de `sofia-sm`, la table d'isolation. Je ne compte aucun report tant qu'aucun de ces trois points n'a manque.
+
+### A.135 `QP5` : le maximum de la version passe de 200 a 202
+
+*"QP5 oui"* : l'utilisatrice sait que le maximum de la version, qu'elle avait fixe a 200 (`Q-U10`, A.38), passe a **202**, le taux baissant de 0,75 point sans qu'aucune ligne ne bouge. **Appliquee dans `MATRICE-couverture.md`**, selon A.123 :
+
+| Ligne | Statut avant | Statut apres | Plafond |
+|---|---|---|---|
+| `FRA-CE1-27` (moitie *ecouter*) | `non couvrable en l'etat` | `non couvert` | `en cours` ; la moitie *s'exprimer* reste irreversible |
+| `FRA-CE1-29` (mots sous la dictee) | `non couvrable en l'etat` | `non couvert` | `en cours` |
+
+**Compteurs**, commande de la "Methode du compte" de la matrice lancee ce jour, sortie lue, avant et apres : `couvert-valide` 152 et 152, `en cours` 5 et 5, `non couvert` 43 et **45**, `non couvrable en l'etat` 77 et **75**, total 277 et 277, denominateur atteignable 200 et **202**. **152 / 202 = 75,25 %** (76,00 % avant). Compteur de version (A.32) : 152 + 5 = 157 / 202 = 77,72 %. CE1 : 64 lignes atteignables, 34 `couvert-valide` (53,13 %), contre 62 avant. **Le recul n'est pas une regression du produit** : le numerateur n'a pas bouge.
+
+**Ecart a A.123, dit.** A.123 annoncait le passage *apres* l'annotation de `TRV-CE1-1` par `nadia-prof`, et A.125 la lui routait. **Cette annotation n'existe toujours pas** (`grep -c "2026-10-21" squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` rend 0 ; `arbitrage-nadia-palier-4.md` section 1 la porte parmi ses ouverts). Le passage est fait **avant** elle, sur le *"oui"* de l'utilisatrice et sur la consigne de l'agent lanceur de l'appliquer. Ce que cela ne change pas : l'annotation reste a `nadia-prof`, aucun jeu n'est branche, aucun verdict n'est rendu, le plafond est celui qu'elle a ecrit (`arbitrage-nadia-q05-q10.md` 3.1 et 3.2). Les cellules des deux lignes portent l'ecart.
+
+### A.136 `QP7` : s57 se prolonge au-dela du palier 4
+
+*"QP7 après un palier 5 voir 6 je ne sais pas encore"* : s57 **ne se clot pas** apres le palier 4. Un palier 5 est voulu, un palier 6 est possible, la suite n'est pas decidee. **Rien ne se clot** : aucune cloture de sprint, aucun rapport de sprint, aucune retro n'est declenche par cette reponse (`duree-et-paliers.md` : le sprint s'arrete quand l'utilisatrice l'arrete).
+
+**Ce que cela implique, en faits :**
+
+- **La condition 4 de `nadia-prof` tient pour tout s57, quelle que soit sa duree** (`arbitrage-nadia-q05-q10.md` 2). `FRA-CE1-08`, `-09`, `-29` ne s'ouvrent donc dans aucun palier de s57. Les paliers 5 et 6 n'ont pour stock que ce qui reste de la section 3 de `preparation-palier-4-camille.md` : `LP6` si elle n'entre pas au palier 4, `LP7`, `LP8`, `LP9`, **si leurs prealables tombent** (paquet reecrit, story de `LP8`, `theo-archi` et la reponse de `nadia-prof` a la question de A.137). Les seize lignes que `QP7` comptait sur 43 `non couvert` attendent s58 ; `FRA-CE1-27` et `FRA-CE1-29` y entrent, soit un compte a refaire apres ce geste, non fait ici.
+- **Un palier 5 n'est pas un palier plein par defaut.** Le seuil est un plafond (A.139) ; ce qui n'est pas pret n'est pas engage. Un palier 5 de deux lots est un palier de deux lots.
+- **Le risque nomme par `DEC-0007`** (la couverture tenue fermee par des reports successifs) **est maintenant un choix**, pas une derive : l'utilisatrice a repondu en connaissant cette consequence (*"je ne sais pas encore"* apres le palier 5). Je ne le compte pas comme un report. **Je repose la question a la cloture du palier 5**, en citant cette reponse ; l'ecrire dans le fichier de cloture est a `sofia-sm`.
+
+### A.137 `QP3` : *"un tableau d'informations"* - ce que cette lecture ne leve pas
+
+**Ses mots** : *"QP3 un tableau d'informations"*, a la question *"voulez-vous un quadrillage montre sur lequel l'enfant se repere, se deplace et appuie sur la case, ou un tableau d'informations sans cases designables ?"* **Elle choisit la seconde lecture.** `DEC-0123` 2.1 lisait *"une grille pour infos a l'enfant"* comme un quadrillage montre ; **cette lecture est ecartee par elle**. La reserve de 2.1 (*"si l'utilisatrice voulait un tableau d'informations, `DEP-CE1-2` n'est pas levee"*) **se realise**, et mon propre texte le dit : **cette lecture ne leve pas `DEP-CE1-2`**.
+
+**Ce que `DEP-CE1-2` demande, ses mots** (`ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` section 1, cites par la story) : *"Le quadrillage est montre des qu'un item demande de se reperer ou de se deplacer. Designation sur dessin, grille d'au moins 4 x 4 et d'au plus 6 x 6 cases, toutes de meme taille et toutes designables."* **Un tableau sans cases designables ne satisfait pas la seconde phrase.** Ce que `nadia-prof` a ecrit (`arbitrage-nadia-q05-q10.md` 1.2) : `DEP-CE1-2` n'est leve en entier que par une designation sur la grille ; la forme (a) (grille montree, choix parmi trois textes) laisse la ligne `en cours`, la forme (b) (l'enfant appuie sur la case) la ferme.
+
+**Ce que cela implique pour `MAT-CE1-14` et `S57-BR-MAT-CE1-14-GRILLE`, sans decider a la place de `nadia-prof` :**
+
+| Point | Avant (story amendee) | Avec *"un tableau d'informations"* |
+|---|---|---|
+| Forme (b) | visee, parce qu'elle seule ferme la ligne en `couvert-valide` | **plus fondee par ses mots** : (b) exige des cases designables, qu'elle ecarte. Mon choix de (b) reposait sur ma lecture de `Q-05`, que sa reponse ecarte. **Je ne la retire pas de la story** : c'est a `nadia-prof` de dire si (b) reste recevable comme produit que l'utilisatrice n'a pas demande |
+| Forme (a) | repli | **la seule forme compatible avec ses mots**, plafond `en cours`, 1,5 (indicatif), **a condition** que le tableau montre bien un quadrillage. S'il montre autre chose (une legende, une table de codes), le paquet textuel reste refuse d'avance (`DEC-0123` 2.4) |
+| Plafond | `couvert-valide` possible par (b) | **`en cours`** tant que (b) n'est pas reouverte. La ligne ne ferme pas dans s57 sur cette lecture |
+| `A3` d'`ADR-0080` | requis ou non pour une grille de designation de 4 x 4 a 6 x 6 | **tombe peut-etre** : `A3` est une clause de designation ; sans zones designables, la question change de nature. **C'est `theo-archi` qui le dit**, et il dit aussi si le tableau est un dessin (le cliquet de poids, `POIDS_TOTAL_MAXIMUM` en egalite, s'applique alors) ou du texte (sans octet de dessin, mais **un fragment de page** qu'aucune mecanique du catalogue ne porte aujourd'hui : *"sans modification de mecanique"* est a lui) |
+| Criteres 1 (lecture sur `zones`) et 11 de la story | zones designables | **ne tiennent plus** sous cette lecture ; ils ne sont pas retires, la story est a reecrire apres la reponse de `nadia-prof` |
+| Prix, instance | (a) 1,5 ; (b) 3,0 ou 1,5 ; B | (a) 1,5, B ; **pas pret** : la question ci-dessous et l'avis de `theo-archi` precedent |
+
+**La question, une seule, routee a `nadia-prof`** : *sous la lecture de l'utilisatrice (un tableau d'informations sans cases designables), la forme (a) satisfait-elle `DEP-CE1-2` pour le plafond `en cours`, ou la clause refuse-t-elle d'avance tout item de deplacement sans designation ?* Sans sa reponse `LP9` reste hors palier. **La story n'est pas engagee, la matrice ne bouge pas.**
+
+### A.138 Le seuil : *"1 quatre instances"*, soit 20,0
+
+**Ce qui est decide, par elle** : le seuil du palier 4 monte a **20,0 = quatre instances de `nadia-prof` a 5,0 chacune**. Elle ecarte les deux autres voies (un plafond par instance releve a 6,67 ; trois instances a 5,0 pour 15,0). **L'arithmetique du conflit etait la suivante, et elle l'a levee** : `PAR-8` plafonne a 5,0 et a trois lots par instance, donc trois instances donnent au plus 15,0 ; 20,0 est quatre instances a 5,0 ou un plafond a 6,67. **Elle choisit les instances.** Ma lecture de A.126 (*"jusqu'a 3"* = l'etat des paliers 1 a 3, ou un plafond de trois) est **ecartee par ses mots** : le nombre passe de trois a quatre.
+
+**Ce qui change, ce qui ne change pas.**
+
+| Regle | Texte lu | Sort |
+|---|---|---|
+| `PAR-8`, plafond par instance | *"au plus 5,0 et trois lots par instance"* | **inchange**, a sa demande : quatre instances portent au plus 12 lots |
+| `PAR-8`, borne du palier | *"8,0 a deux ou trois instances, 5,0 a une"* | **ne dit rien de quatre instances.** Le texte nomme deux ou trois : une borne a quatre est une ligne a ecrire, par `nadia-prof` |
+| `PAR-9` | *"la somme des budgets egale la borne"* | **a lire par `nadia-prof`** : a 20,0 la somme des budgets engages (A.139) est 9,0. Le precedent des *"non affectes"* (0,75 dans `ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md` 10.2 : *"La somme de 8,0 etait juste"*) existe ; qu'un reste de 11,0 s'ecrive de meme ou que la borne soit un plafond est son jugement |
+| D7 / 4.3 de `ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md` | *"O1. La borne de s57 est 8,0, pour trois instances"* ; *"Je ne pose aucun chiffre au-dela de 8,0"* | a amender par `nadia-prof`, par un document date : `O2` a 20,0 pour quatre instances. Elle a ecrit qu'au-dela de 8,0 c'est *"sa decision de produit"* (celle de l'utilisatrice) et qu'elle l'ecrit comme la sienne (`arbitrage-nadia-palier-4.md` 2.3) : **les mots sont maintenant ecrits (A.133)** |
+| `DEC-0120` A.28, A.126 | *"Borne de s57 : 8,0 pour trois instances"* | **non reecrits** ; cet amendement les remplace pour le palier 4, a la date |
+| A.33 et A.36 | instances A, A' et B | une **quatrieme instance, C**, est une affectation de `nadia-prof` (arbitrage prealable 0,5, marge 0,5) ; je ne la nomme par aucune matiere |
+| `PAR-2`, `PAR-13`, condition 4, `Q-06` | une matiere et un niveau jamais partages ; aucun terrain neuf tant qu'A' existe ; `FRA-CE1-08`, `-09`, `-29` hors s57 ; dessins hors perimetre | **inchanges** : ce sont ces regles, et non le nombre d'instances, qui limitent les lots (A.139) |
+
+**Ce qui est amende, et par qui.** `nadia-prof` : `O2` et son chiffre pour le palier 4, la capacite de chaque instance dont C, la lecture de `PAR-9` (egalite ou plafond), une ligne de `PAR-8` pour quatre instances. `sofia-sm` : l'amendement de `planning.md`, la composition, la table d'isolation de quatre instances sur plus de lots, la file de fusion. **Ce que je n'ai pas lu et que je ne dis donc pas amende** : `planning.md`, `composition-palier-3.md` et la table d'isolation, ou le nombre d'instances est ecrit (a `sofia-sm`). Ce qui n'est pas amende : le plafond par instance de `PAR-8`, `PAR-2`, `PAR-13`, la condition 4.
+
+**Arbitrage prealable du palier 4 de `nadia-prof`** (18:32, anterieur a la reponse) : borne **8,0** maintenue, repli de 8,0 recevable (cinq lots), `EMC-CE1-04` seul ajout a 9,0. Il reste valide tant qu'elle ne l'a pas amende ; **elle ecrit sa capacite a quatre instances apres cette reponse, ou maintient le repli et le dit.**
+
+### A.139 Ce que quatre instances ouvrent pour le palier 4
+
+**Le seuil est un plafond, pas un objectif : ce qui n'est pas pret n'est pas engage.** Lots prets et prix de `nadia-prof` (`preparation-palier-4-camille.md` 3, prix indicatifs confirmes a son arbitrage du palier 4) :
+
+| Lot | Ligne | Prix | Instance | Developpeur (A.134) |
+|---|---|---|---|---|
+| `LP1` | `FRA-CE1-21` | 1,0 | A | `marc-dev` |
+| `LP2`, `LP3` | `MAT-CE1-10`, `-11` | 1,0 + 1,0 | B | `lea-dev` |
+| `LP4`, `LP5`, `LP6` | `EMC-CE1-02`, `-03`, `-04` | 1,0 x 3 | A' | `sofia-sm` |
+
+**Composition maximale en lots prets : 9,0**, six lots, trois instances qui portent un lot (3,0 de couts fixes plus 6,0 de lots). **11,5 conditionnel**, huit lots, repose sur `LP7` (paquet a reecrire) et `LP8` (cousinage juge recevable par `nadia-prof`, mais sans story) : ils ne sont pas prets. **A 20,0, 9,0 font 45 % du seuil ; le reste, 11,0, n'a pas de lot.**
+
+**La quatrieme instance C n'a aucun lot pret, et la raison est celle de plusieurs regles, pas du seuil.** Francais CE1 est a A, mathematiques CE1 a B, EMC a A' (`PAR-2`, jamais partages). Les lots hors de ces trois matieres (`FRA-CE1-27`, arts plastiques CE1, questionner le monde CE1) sont des terrains neufs que `PAR-13` ferme tant qu'A' existe, et `nadia-prof` a ecrit qu'un paquet sans cousine ne s'audite pas dans le sprint ou une autre instance en audite un. `FRA-CE1-08`, `-09`, `-29` : condition 4. Les dessins : `Q-06`. **Ouvrir C sans lot ajoute 1,0 de couts fixes et aucune ligne de couverture : je ne le propose pas.** Une instance C n'a de lot que si `nadia-prof` leve `PAR-13` ou la condition 4, ou si un palier ulterieur y fait entrer un terrain neuf : c'est son arbitrage et non le mien.
+
+**`QP8`, une question a l'utilisatrice, a poser seulement si C doit porter un lot** : `RG2` demande des developpeurs distincts, et `marc-dev` (A), `lea-dev` (B) et `sofia-sm` (A') sont pris, `RG4` interdisant d'entrelacer. `theo-archi` est architecte, `yanis-qa` QA, `ines-design` designer : **je ne designe personne.** Une quatrieme instance avec un lot demande soit un ecart a `RG2` (qu'elle a deja accepte au palier 3 par son *"ok"* a `AD1`, pour un cas different), soit un developpeur qu'elle nomme. Sans lot dans C, `QP8` n'est pas posee.
+
+**La file de fusion, recalculee pour les lots prets d'apres les prix** (`avis-theo-palier-4.md` 3.3 : un seul `verify` complet a la fois, une fusion a la fois, `verify` de 11 min 39 s mesure sur une copie propre de `50dbd73f` ; les durees par fusion de 11 min 17 s a 12 min 39 s sont **calculees, non mesurees**) :
+
+| Composition | Lots | `verify` seul | Job `build` entier (20 min 44 s a 23 min 01 s par fusion) |
+|---|---|---|---|
+| repli de `nadia-prof`, 8,0 | 5 | 56 min a 1 h 03 | 1 h 44 a 1 h 55 |
+| 9,0, prets | **6** | **1 h 08 a 1 h 16** | **2 h 04 a 2 h 18** |
+| 11,5, conditionnel | 8 | 1 h 30 a 1 h 41 | 2 h 46 a 3 h 04 |
+| plafond de `PAR-8` a quatre instances, aucun lot pret | 12 | 2 h 15 a 2 h 32 | 4 h 09 a 4 h 36 |
+
+**La quatrieme instance n'allonge pas la file** tant qu'elle ne porte pas de lot : la file compte les fusions, pas les instances. Les lignes de 6 et 8 lots sont celles de `theo-archi`, les deux autres sont calculees de la meme formule ; la ligne de 12 est le plafond du reglement, **pas une composition**.
+
+### A.140 Routage, ce que cet amendement ne fait pas
+
+| A qui | Quoi |
+|---|---|
+| `nadia-prof` | `O2` a 20,0 et la capacite de quatre instances, ou le maintien du repli ; `PAR-9` (egalite ou plafond) ; une ligne de `PAR-8` pour quatre instances ; l'annotation de `TRV-CE1-1` (A.135) ; la question de A.137 |
+| `sofia-sm` | La composition du palier 4 et l'amendement de `planning.md` (quatre instances, trois developpeurs, ordre de fusion) ; la procedure de ses deux casquettes (A.134) ; `squad/README.md` pour la regle de `DEC-0062` G ; le fichier de cloture pour `QP7` |
+| `theo-archi` | `A3` et la nature du tableau d'informations (A.137) |
+| Utilisatrice | `QP8`, seulement si C doit porter un lot ; `QP7` a la cloture du palier 5 |
+
+**Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne compose pas le palier 4, n'amende ni `planning.md`, ni `PAR-8`, ni `PAR-9`, ni le document de criteres, ni `composition-palier-3.md`. N'engage aucun poste, ne fixe aucun prix, n'affecte aucune instance. **Decisions de produit prises ici** : (1) le passage de `FRA-CE1-27` et `-29` a `non couvert` et le maximum de 202 (A.135) ; (2) rien d'autre : le seuil de 20,0 et le nombre de quatre instances sont ses mots, pas ma decision. Aucun identifiant de condition neuf. `DEC-0120` reste `Acceptee`.

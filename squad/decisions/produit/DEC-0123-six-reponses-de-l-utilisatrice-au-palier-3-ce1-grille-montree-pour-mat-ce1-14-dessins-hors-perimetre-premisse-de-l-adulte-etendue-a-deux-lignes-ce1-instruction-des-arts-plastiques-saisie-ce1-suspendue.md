@@ -214,3 +214,19 @@ La section 7.3 laissait `Q-09` suspendue a l'avis de `nadia-prof` sur `R6`. Cet 
 
 1. **Ecart 11, l'etat de `Q-09`.** Les sections 7.4 et 8 (ligne `R6`) et le titre disent *"suspendue"*. Etat a ce jour, en une phrase : **`Q-09` est close.** Repondue par l'utilisatrice (`DEC-0124`, section 0), la suspension levee par `DEC-0124` section 2, l'avis de `nadia-prof` rendu (`arbitrage-nadia-q05-q10.md` section 8 : `R6` leve avec une reserve non bloquante). `DEC-index.md` porte *"Acceptee ; `Q-09` close le 2026-10-21"*. Les deux amendements precedents qui disent *"repondue, avis en cours"* puis *"`R6` est leve"* restent exacts a leur date.
 2. **Ecart 16, un numero de ligne.** La section 7.2 cite *"le commentaire des lignes 71 a 78"* de `fragments/saisie.html` ; `DEC-0124` cite le meme commentaire par *"lignes 75 a 78"*. Lu a `6927d926`, l'arbre de cette decision : la puce *`autocomplete="off"` n'est PAS une neutralisation de la correction automatique du clavier`* occupe les lignes **75 a 78** ; les lignes 71 a 74 sont la puce precedente (`type="text"`, jamais `type="number"`). **Forme stable** : la puce *`autocomplete="off"`* du commentaire qui precede `input#reponse-ecrite`, a `6927d926`. A `HEAD` le champ et le commentaire ont change de place et de texte (`5a0b55f3`) ; un numero de ligne n'est plus cite.
+
+## Amendement du 2026-10-21, cinquieme (`camille-po`, `Q-05` : *"un tableau d'informations"*) - la lecture de *"une grille pour infos a l'enfant"* change
+
+**Aucun texte d'origine n'est reecrit.** Statut de `DEC-0123` : `Acceptee`, inchange.
+
+**Les mots**, 2026-10-21, tels que l'agent lanceur me les transmet, forme 2 de `DEC-0062` (amendement G) : *"QP3 un tableau d'informations"*, reponse a la question *"voulez-vous un quadrillage montre sur lequel l'enfant se repere, se deplace et appuie sur la case, ou un tableau d'informations sans cases designables ?"*
+
+**Ce qui change.** La section 2.1 lisait *"ajouter une grille pour infos a l'enfant"* comme **un quadrillage montre**. **L'utilisatrice choisit l'autre lecture** : un tableau d'informations, sans cases designables. La reserve de 2.1 (*"si l'utilisatrice voulait un tableau d'informations, `DEP-CE1-2` n'est pas levee"*) se realise. **Lecture ecartee : la mienne.** Les mots de `Q-05` restent *"ajouter une grille pour infos a l'enfant"* ; c'est leur lecture qui est corrigee, par elle.
+
+**Ce que cela fait aux sections 2.2 a 2.4**, sans les reecrire :
+
+- 2.2 (*"le produit **veut** un quadrillage montre"*) : **ne se lit plus ainsi.** Le produit veut un tableau d'informations ; qu'il montre un quadrillage est une question a `nadia-prof`, pas une decision de produit.
+- 2.3 : la ligne `nadia-prof` devient la question de `DEC-0120` A.137 (la forme (a) satisfait-elle `DEP-CE1-2` pour le plafond `en cours`, ou la clause refuse-t-elle d'avance tout item de deplacement sans designation ?) ; la ligne `theo-archi` devient : `A3` d'`ADR-0080` tombe-t-il sans designation, et le tableau est-il un dessin ou du texte.
+- 2.4 : tient. Le paquet `ce1-deplacements-quadrillage` tel quel reste refuse d'avance ; la ligne n'entre dans aucun compteur.
+
+**`Q-05` reste `Acceptee`** (une grille pour informations est voulue). **Ce que cette lecture ne leve pas** : `DEP-CE1-2` ; elle ne permet pas `couvert-valide`, qu'une designation sur la grille etait seule a fermer (`arbitrage-nadia-q05-q10.md` 1.2). Aucune ligne de matrice ne bouge pour `MAT-CE1-14`. Detail et consequences sur la story : `DEC-0120` A.137, amendement de `S57-BR-MAT-CE1-14-GRILLE`.

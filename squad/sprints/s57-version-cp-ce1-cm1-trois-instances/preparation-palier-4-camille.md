@@ -253,3 +253,29 @@ Lances depuis le checkout, avec tous les fichiers de ce geste presents dans l'ar
 ## Amendement du 2026-10-21, 18:45 (`camille-po`, ecart 9 du releve de cloture du palier 3) - provenance de la consigne du palier 4
 
 **Rien au-dessus n'est reecrit.** Les mots de la consigne (*"pour le palier 4 augmente le seuil avec des instances en // jusqu'a 3 si besoin"*), cites en sections 0 et PR2b comme *"relayee, non lue de sa main"*, ont ete confirmes mot pour mot le 2026-10-21 (`DEC-0120` A.132 ; `DEC-0062`, amendement E) : forme 2 de `DEC-0062`. **Ce qui ne l'est pas** : ma lecture (le seuil est la borne de 8,0 de `PAR-9`, les instances sont A, A' et B), toujours *a confirmer* ; la confirmation est elle-meme arrivee par l'agent lanceur (`DEC-0062`, amendement F, premier point). Le chiffre *"7 h 26 au mur"* de la section 5bis reste *"relaye, non lu dans un fichier"* : il est de forme 3 et ne fonde aucun choix de ce fichier. `E5` reste ouvert.
+
+## Amendement du 2026-10-21 (`camille-po`) - les reponses de l'utilisatrice, et les engagements mis a jour
+
+**Rien au-dessus n'est reecrit.** Mots de l'utilisatrice, forme 2 de `DEC-0062` (amendement G), cites en `DEC-0120` A.133 : *"E5 oui ça vaut pour mes mots, QP6 lea dev pour B et sofia pour A', QP7 après un palier 5 voir 6 je ne sais pas encore, QP5 oui, QP3 un tableau d'informations"*, puis, sur le seuil, *"1 quatre instances"* (4 x 5,0 = 20,0). Consequences ecrites en `DEC-0120` A.134 a A.140. Aucun poste n'est engage, aucun prix n'est fixe, `planning.md` n'est pas amende, la composition n'est pas faite (`sofia-sm`).
+
+### Les reponses, une par une
+
+| Code | Reponse | Ce qui change dans ce fichier |
+|---|---|---|
+| `QP6` | `lea-dev` pour B, `sofia-sm` pour A' | **Section 7.2 : elle n'est plus bloquante.** `RG1`, `RG2` et `RG4` tenues (`DEC-0120` A.134), pas d'ecart a `RG2`. Les deux casquettes de `sofia-sm` et leurs effets sur les fusions : A.134, la procedure est a elle |
+| `QP7` | s57 se prolonge : palier 5, voire 6, la suite non decidee | Section 7.2 : **rien ne se clot** ; le stock des paliers 5 et 6 est `LP6`, `LP7`, `LP8`, `LP9` sous leurs prealables (`DEC-0120` A.136). La question est reposee a la cloture du palier 5 |
+| `QP5` | oui | **Appliquee** : `FRA-CE1-27` et `-29` a `non couvert`, maximum 202, **152 / 202 = 75,25 %**, compteur de version 157 / 202 = 77,72 %. Section 5.2 : *"155 / 202 = 76,73 %"* et les chiffres a denominateur 202 sont maintenant ceux de la matrice. Ecart a A.123 dit : `TRV-CE1-1` n'est pas annotee |
+| `QP3` | *"un tableau d'informations"* | **La lecture de `DEC-0123` 2.1 est ecartee** ; ne leve pas `DEP-CE1-2` ; `LP9` (forme (b)) n'a plus de fondement dans ses mots, forme (a) plafond `en cours`, a la condition que le tableau montre un quadrillage. Question a `nadia-prof`, avis de `theo-archi` : `DEC-0120` A.137. **`LP9` reste hors palier** |
+| `E5` | oui, ses mots valent | **Ferme pour les messages cites mot pour mot avec leur date, a partir du 2026-10-21** (`DEC-0062` G). Le report de la section 8 (*"troisieme palier"*) se solde. La regle de procedure est a `sofia-sm` (`squad/README.md`) |
+| Seuil | *"1 quatre instances"* | **20,0 = quatre instances a 5,0.** `PAR-8` plafond par instance inchange. Les sections 0 et PR2b lisaient *"jusqu'a 3"* comme trois instances : **lecture ecartee par ses mots** (`DEC-0120` A.138) |
+
+### Engagements mis a jour (section 8 et section 3)
+
+- **`LP2` a `LP5` : developpeurs designes** (`LP2`, `LP3` : `lea-dev` ; `LP4`, `LP5` : `sofia-sm`). **Pas de report a l'ouverture pour ce motif**, si le reste est tenu : arbitrage de `nadia-prof` ecrit (il l'est pour le repli de 8,0 ; sa capacite a quatre instances reste a ecrire), composition et amendement de `planning.md` (`sofia-sm`), table d'isolation. `LP6` : `sofia-sm`, developpeuse ; il reste au deuxieme ecartement au repli de 8,0, solde a 9,0.
+- **`LP1`** : `marc-dev`, inchange. Instance A, a confirmer par `nadia-prof` (elle l'a ecrit recevable).
+- **`LP9`** : hors palier (ci-dessus). Premier ecartement du palier 3 ; **second s'il n'est pas engage au palier 4** : un troisieme demande une `DEC` avec son motif (section 8, inchangee).
+- **`LP7`, `LP8`** : non prets, deuxieme ecartement s'ils ne sont pas engages. `LP8` : cousinage juge recevable par `nadia-prof` (`arbitrage-nadia-palier-4.md`), story a ecrire apres ma decision d'ordre ; **je ne l'ecris pas dans ce geste** (hors de la demande).
+- **Composition maximale a quatre instances** : **9,0 en lots prets** (six lots, `LP1` a `LP6`), 11,5 conditionnel ; la quatrieme instance n'a aucun lot pret (`PAR-2`, `PAR-13`, condition 4, `Q-06`). **20,0 est un plafond.** File de fusion recalculee : 6 lots, 1 h 08 a 1 h 16 de `verify`, 2 h 04 a 2 h 18 de job `build` ; 8 lots, 1 h 30 a 1 h 41 et 2 h 46 a 3 h 04 (`DEC-0120` A.139).
+- **Question neuve** : `QP8` (developpeur d'une quatrieme instance, `RG2`), **posee seulement si C doit porter un lot**.
+
+Aucun identifiant de condition neuf : `QP8` n'a pas de tiret et n'appartient qu'a ce fichier et a `DEC-0120` A.139. Non commite.
