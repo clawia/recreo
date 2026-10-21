@@ -207,3 +207,38 @@ Sommet de `round-two` : `21e994a4` ([THEO], allocation de `PL-9` et `PL-10` au r
 Attendu 2848 (section 8), ecart 0 : le total correspond. Les chiffres sont la somme de mon propre log de verify. Depuis la section 8, seuls des fichiers de `squad/` ont change, ce que ce total confirme sans le demontrer par diff. Le registre, rouge en section 9, est vert dans ce verify.
 
 **Decisions** : aucune `ADR` ni `DEC` creee ou modifiee par cette mesure. **Obstacle** : l'allocation de `PL-9` et `PL-10` est close par l'existence de l'allocation dans le registre au sommet testee ici. **Non fait** : la CI distante n'a pas juge ; rien pousse.
+
+## 11. Fusion des trois corrections du palier 3 et porte technique de `d3fce602` (casquette Scrum Master)
+
+Sommet de `round-two` verifie avant fusion : `644497b3`, `git status` vide. Les trois branches descendent de `a0a69859` (`git merge-base --is-ancestor`). Fusions `--no-ff`, dans cet ordre, aucun conflit sur les trois :
+
+| Branche | Commit fusionne | Fusion | Fichiers touches |
+|---|---|---|---|
+| `s57-lea-corr2-p3` | `d0f3b1aa` | `bf402bc3` | `ce1-emc-biens-communs.yaml`, `TexteAccentueExposeParLePortEntrantTest.java` |
+| `s57-marc-inf-il` | `62b65097` | `78ab8a5b` | `ce1-inference.yaml` |
+| `s57-theo-garde-polices-r5-r6` | `19aa6c98` | `d3fce602` | `LaPileDePolicesServieNeChangePasEnSilenceTest.java`, 3 contre-exemples de gabarit, une ADR et son index |
+
+Les deux fichiers ou un conflit etait attendu (test de lea, YAML de marc) ont fusionne sans conflit : rien a resoudre, rien affaibli. `s57-ines-p3-pli` n'est pas fusionnee (veto de `nadia-prof` a exercer).
+
+Worktree detache propre a `d3fce602`, `git status` vide avant lancement, `HEAD` et `git status` verifies identiques apres.
+
+| Job de `ci.yml` | Etapes lancees | Resultat |
+|---|---|---|
+| `prefixes` | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-prefixes.sh` sur le dernier commit sans merges (branche `-1` du workflow), `verifier-garde-fou-accent-test.sh`, `verifier-garde-fou-accent.sh` sur `HEAD^!` | tous 0 |
+| `chemins` | `verifier-chemins-test.sh`, `verifier-chemins.sh` sur `git ls-files` | 0 et 0 |
+| `outils` | 6 `outils/*-test.sh`, 2 `squad/outils/*/*-test.sh`, 5 `outils/*-test.py` | 13 juges, 0 echec |
+| `build`, verify | `bash outils/mvn-jdk21.sh -B clean verify`, racine | `BUILD SUCCESS`, six modules `SUCCESS`, 12 min 39 s |
+| `build`, package | `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package` | `BUILD SUCCESS`, 9 min 53 s |
+
+| Module | Tests |
+|---|---|
+| `domain` | 120 |
+| `application` | 31 |
+| `adapter-web` | 520 |
+| `adapter-content` | 1794 |
+| `bootstrap` | 381 (surefire) + 6 (failsafe) = 387 |
+| Total | **2852** |
+
+Attendu : 2848 (section 10) + 4 = 2852. L'ecart vient du seul commit `19aa6c98` : le diff de ses fichiers Java ajoute 4 methodes `@Test` a `LaPileDePolicesServieNeChangePasEnSilenceTest` et n'en retire aucune. `adapter-web` passe de 516 a 520, les autres modules ne bougent pas. Le total correspond. Les commits de lea et de marc ne touchent aucun test en nombre (une chaine modifiee dans un test pour lea, un YAML pour marc). Le "+ 8" de la consigne etait deja compris dans les 2848 : c'est le delta de la section 8. Les chiffres sont la somme de mon propre log de verify.
+
+**Decisions** : aucune `ADR` ni `DEC` creee ou modifiee par cette fusion. `19aa6c98` porte l'amendement d'`ADR-0054` par `theo-archi`, deja inscrit dans l'index des `ADR` ; je ne l'ai pas modifie. **Obstacles** : aucun nouveau. **Non fait** : la CI distante n'a pas juge, rien pousse ; `s57-ines-p3-pli` reste a fusionner apres le veto de `nadia-prof`.
