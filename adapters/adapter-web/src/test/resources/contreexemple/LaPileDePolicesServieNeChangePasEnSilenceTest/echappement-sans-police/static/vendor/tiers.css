@@ -1,0 +1,2 @@
+:root { --tiers-police: sans-serif; }
+body { font-family: var(--tiers-police); }
