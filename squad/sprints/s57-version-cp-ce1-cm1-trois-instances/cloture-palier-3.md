@@ -441,3 +441,31 @@ Repris dans `review.md` a la cloture du sprint. **Un obstacle n'est clos que qua
 | `REGISTRE-identifiants.md` | modifie : allocation de `PL-1` a `PL-13` (`ADR-0085`, clause 2) | sans objet |
 
 `ADR-index.md` et `DEC-index.md` portent les lignes correspondantes. **Les corrections du releve de cloture ecrites par ce palier (amendements de `rapport-sofia-dev-palier-3.md`, de `composition-palier-3.md` et de `planning.md`) ne creent ni n'amendent aucune decision.** `retro-palier-3.md`, a cote de ce fichier, porte les lecons du palier ; il n'est pas la `retro.md` du sprint.
+
+## Amendement du 2026-10-21 (`sofia-sm`, casquette Scrum Master) - reponses de l'utilisatrice aux questions de la section 13
+
+**Ce fichier est ecrit une seule fois ; ceci est un amendement date, non une reecriture.** Aucune decision n'est prise ici et aucune `DEC` ni `ADR` n'est creee ou amendee : `camille-po` consigne les siennes (`DEC-0062` amendement G, `DEC-0120` A.133 et suivants, `DEC-0123`).
+
+**Provenance.** Mots de l'utilisatrice, 2026-10-21, forme 2, **transmis par l'agent lanceur et cites par lui mot pour mot**, sans la question posee : *"E5 oui ça vaut pour mes mots, QP6 lea dev pour B et sofia pour A', QP7 après un palier 5 voir 6 je ne sais pas encore, QP5 oui, QP3 un tableau d'informations"*. Les questions sont celles de la section 13 (a) a (d) et de `DEC-0062` amendement F. **L'agent lanceur n'a pas cite la question de `QP5` ni celle de `E5` : je les lis dans ce fichier et dans l'amendement F, et je le dis plutot que de le taire.**
+
+| Point | Reponse | Ce qui suit, et qui l'ecrit |
+|---|---|---|
+| `E5`, section 13 (h) point 3 | *"oui ça vaut pour mes mots"* | **Ferme.** La regle est ecrite dans `squad/README.md` section 2 bis (paragraphe *"Un enonce de l'utilisatrice transmis par l'agent lanceur"*). Les points (1), (2) et (4) de la section 13 (h) **ne sont pas couverts par cette reponse** : la delegation du 2026-10-19, les enonces hors liste et le canal restent sans confirmation ; sans balayage retroactif, ils gardent leur forme |
+| `QP6`, section 13 (a) | *"lea dev pour B et sofia pour A'"* | `lea-dev` sur B, `sofia-sm` sur A' : l'option O2, sens tranche. `RG2` est tenue. Le report des quatre lots non engages a l'ouverture est evite. `camille-po` l'ecrit dans la composition. Mes regles pour les deux casquettes : ci-dessous |
+| `QP7`, section 13 (b) | *"après un palier 5 voir 6 je ne sais pas encore"* | **Pas de decision.** s57 ne se clot pas apres le palier 4 ; la cloture apres le palier 5, voire 6, n'est pas arretee. Le palier 5 est a composer. Ce que la section 13 (b) renvoie a *"s58"* reste ou il est |
+| `QP5`, section 13 (c) | *"oui"* | Le maximum passe de 200 a 202 (sens lu dans la section 13 (c), la question n'etant pas citee). Le reclassement de `FRA-CE1-27` et `-29` et le calcul sont a `camille-po` et a `nadia-prof` ; je ne touche ni la matrice ni le taux |
+| `QP3`, section 13 (d) | *"un tableau d'informations"* | Le tableau sans cases designables : il ne leve pas `DEP-CE1-2`, plafond `en cours` (section 13 (d)). La story `S57-BR-MAT-CE1-14-GRILLE` et `LP9` sont a `camille-po` |
+| Seuil du palier 4 | **sans reponse : ouvert** | Conflit `PAR-8` : 5,0 par instance et trois lots par instance donnent **15,0 pour trois instances**, ce qui ne se concilie pas avec un seuil de 20. La section 13 (e) reste ouverte ; la borne est a `nadia-prof`, la composition a `camille-po` |
+
+Obstacles de la section 15 : `E5` passe a **clos** (regle ecrite dans `squad/README.md`, qui existe sur le disque) ; `QP3`, `QP5`, `QP6` : **repondus**, leur artefact (`DEC` de `camille-po`) n'est **pas verifie par moi** et ces lignes ne passent a *clos* qu'a son existence ; `QP7` : **repondu sans decision** ; la lecture de la consigne sur le seuil : **ouvert**.
+
+### Proposition de `sofia-sm` pour ses deux casquettes sur le palier 4
+
+**Proposition, pas un engagement : elle n'engage pas le palier et la composition reste a `camille-po`.** Je ne porte jamais les deux casquettes dans la meme tache ; sur A', un lot est une tache de developpeuse, tout le reste est une tache de Scrum Master.
+
+1. **Un lot de A' commence et finit sous la seule casquette de developpeuse.** Pendant un lot, je ne fusionne rien, je ne juge aucune lignee, je n'anime aucun amendement de `planning.md` : ces gestes attendent la fin du lot (`RG4` : un worktree a la fois). Le seul geste de Scrum Master que je ne retarde pas est l'ecriture d'un arret d'agent, au moment ou il survient (`A10` de s56).
+2. **Ma propre branche n'est pas jugee par moi.** La lignee de la branche de A' est lue par `theo-archi` (`git merge-base --is-ancestor`, resultat ecrit), le rapport qualite est celui de `yanis-qa` seul (`RG5`), et le Done pedagogique reste a `nadia-prof`. **Je ne fusionne la branche de A' qu'apres ces deux ecrits sur le disque.** Sans eux, elle attend.
+3. **Le total de tests d'apres fusion d'un lot de A' est mesure par `yanis-qa`, pas par moi.** Je mesure celui de A et de B (lots de `marc-dev` et de `lea-dev`).
+4. **Mon `verify` entier de developpeuse prend sa place dans la file** du nombre de `verify` simultanes (regle (1) de la section 14), comme celui des autres ; je ne le double pas par un `verify` de fusion sous mon autre casquette.
+5. **Retard assume** : daily, routage et fusions de A et de B se font entre deux lots de A', pas pendant. Si un obstacle bloque `marc-dev` ou `lea-dev` pendant un lot, il est route a `camille-po` ou `theo-archi` sans attendre ma casquette de Scrum Master, ou je reprends la main a la fin du lot. **La charge de `lea-dev` (B, jusqu'a trois lots) et la mienne (A', jusqu'a trois lots) ne sont pas mesurees** ; le palier 3 n'a mesure ni l'une ni l'autre.
+6. **Reste a l'utilisatrice** : si elle juge que 2 a 4 ne suffisent pas pour une branche dont l'auteure fusionne, elle l'ecrit ; je ne tranche pas mon propre controle.
