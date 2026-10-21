@@ -128,6 +128,26 @@ de l'utilisatrice, et le refus de test de `theo-archi` tient (`avis-faisabilite.
 47 fichiers sur 65 rouges). Pas de balayage retroactif (`DEC-0062` section 7) : `DEC-0114` n'est pas
 touchee.
 
+**Un enonce de l'utilisatrice transmis par l'agent lanceur** (amendement du 2026-10-21, `sofia-sm`,
+sur la reponse de l'utilisatrice a la question de `DEC-0062` amendement F, point 3 : *"E5 oui ça vaut
+pour mes mots"*). Le terme *"relayee"* n'est pas une forme et ne s'ecrit pas seul. La regle, qui ferme
+`E5` :
+
+- **Cite mot pour mot, avec sa date, par l'agent lanceur : forme 2.** Un enonce de l'utilisatrice que
+  l'agent lanceur transmet vaut ses mots, et s'ecrit `de l'utilisatrice`, mots entre guillemets, date.
+  Il peut fonder une `DEC`, un critere ou un verdict, comme tout enonce de forme 2.
+- **Non cite mot pour mot : forme 3, et elle ne fonde rien.** Un resume, une paraphrase, *"elle est
+  d'accord"* ou un enonce dont l'agent lanceur n'a pas les mots restent *recu de MASTER, sans source
+  dans le depot* ; la borne de la forme 3 (ci-dessus) s'applique entiere.
+- **L'agent lanceur cite aussi la question posee, pas seulement la reponse.** Une reponse sans sa
+  question ne se relit pas (*"oui"* ne dit pas a quoi). Les deux sont ecrites avec la date ; a defaut,
+  la reponse est de forme 3.
+- **Pas de balayage retroactif** (`DEC-0062` section 7). Les enonces des paliers 1 a 3 hors de la
+  liste de `DEC-0062` amendement E gardent la forme qu'ils portent, tant que l'utilisatrice ne les a
+  pas confirmes mot pour mot.
+- **Ce que la regle ne dit pas** : par quel canal les mots arrivent la premiere fois a l'agent
+  lanceur (`DEC-0062` amendement F, point 3) reste a l'utilisatrice.
+
 **MASTER s'ecrit toujours en capitales** et n'apparait jamais seul, mais dans la formule fixe -
 c'est ce qui le distingue a la lecture de *Scrum Master*. **MASTER n'ecrit jamais dans le depot** et
 n'entre pas dans la table des prefixes de commit de la section 8 : un commit prefixe `[MASTER]` est
