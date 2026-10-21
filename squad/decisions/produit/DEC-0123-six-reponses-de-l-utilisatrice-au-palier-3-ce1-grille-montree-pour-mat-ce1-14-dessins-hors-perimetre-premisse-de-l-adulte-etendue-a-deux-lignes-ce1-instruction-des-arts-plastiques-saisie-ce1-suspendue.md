@@ -186,3 +186,23 @@ L'utilisatrice a repondu a `Q-09` (mots relayes, non lus de sa main) : *"Q9 il n
 ## Amendement du 2026-10-21, second (`camille-po`, `DEC-0124`) - `R6` est leve
 
 La section 7.3 laissait `Q-09` suspendue a l'avis de `nadia-prof` sur `R6`. Cet avis est rendu : `R6` est leve par l'arbitrage de l'utilisatrice, avec une reserve non bloquante (`DEC-0124`, amendement du 2026-10-21 ; `arbitrage-nadia-q05-q10.md`, section 8). Les sections 7.5 et 8 de la presente DEC ne bougent pas, aucune ligne ne change de statut, la matrice reste a 152 / 200.
+
+## Amendement du 2026-10-21, troisieme (`camille-po`) - les mots de `Q-05` a `Q-10` sont confirmes par l'utilisatrice
+
+**La question**, telle que l'agent lanceur l'a posee a l'utilisatrice le 2026-10-21 : *"Confirmez-vous, tels quels, les mots que je vous ai relayes dans les decisions du palier 3 et du palier 4 ? Ils sont : "ok" a ma recommandation sur AD1, AD2 et AD4 ; vos reponses a Q-05, Q-06, Q-07, Q-08, Q-09 et Q-10 ; "il n'y aura pas de correction automatique du clavier" ; "pour moi c'est bon R6 peut etre leve" ; "pour le palier 4 augmente le seuil avec des instances en // jusqu'a 3 si besoin"."*
+
+**Sa reponse**, 2026-10-21, relayee par l'agent lanceur a `camille-po` (l'utilisatrice l'a donnee d'un seul mot) : *"confirme"*, en toutes lettres *"confirmé"*. **Je ne l'ai pas lue de sa main** : elle est relayee, et je le dis. Ce qui est cite ici est donc la question et la reponse **telles que l'agent lanceur me les a transmises**.
+
+**Ce que cela fait a `DEC-0062`** (3.1 et 3.2 : la forme 2, *"de l'utilisatrice"*, porte ses mots cites entre guillemets et la date, et vaut motif ; la forme 3, sans source dans le depot, ne vaut jamais motif). **A la date du 2026-10-21, les enonces de la liste ci-dessus passent de la forme 3 a la forme 2** : leurs mots sont cites, ils sont confirmes mot pour mot, et la date est celle-ci. L'ecart 9 de `releve-relecteur-cloture-palier-3.md` (*"relayee"* n'est pas l'une des trois formes) est traite **pour la liste, et pour elle seule**.
+
+**Ce qui est couvert** : exactement les enonces de la liste, quels que soient les fichiers qui les citent : le *"ok"* sur `AD1`, `AD2`, `AD4` ; les reponses a `Q-05`, `Q-06`, `Q-07`, `Q-08`, `Q-09`, `Q-10` ; *"il n'y aura pas de correction automatique du clavier"* ; *"pour moi c'est bon R6 peut etre leve"* ; *"pour le palier 4 augmente le seuil avec des instances en // jusqu'a 3 si besoin"*. **Les mots seulement.**
+
+**Ce qui n'est pas couvert** :
+- **Les lectures que les agents en ont faites.** Ma lecture de la consigne sur le seuil (la borne de 8,0 de `PAR-9`, les instances A, A' et B) reste **a confirmer** ; `QP3`, `QP5`, `QP6`, `QP7` de `preparation-palier-4-camille.md` restent **sans reponse**. Les lectures de `DEC-0123` section 0 (ma colonne *"Ma lecture"*) et de `DEC-0124` section 0 ne sont pas confirmees.
+- **Ce que l'utilisatrice a verifie ou non** : la confirmation ne dit rien du jar joue sur la tablette ni de l'ordinateur pour `R6` : la limite *"l'ordinateur n'est pas mesure"* reste ecrite.
+- **Tout autre enonce relaye**, dans ces fichiers ou ailleurs (`DEC-0120` A.114 et ses mots de `S2` et de `Q-N4`, `Q-U11`, les paliers 1 et 2, tout enonce hors de la liste) : **pas de balayage retroactif au-dela de la liste.** `E5` (la regle pour une reponse relayee) **reste ouvert** pour le reste.
+- **La provenance du relais** : la confirmation ne dit pas par quel canal les mots sont arrives a l'agent lanceur la premiere fois.
+
+**Statut** : aucune decision ne change, aucun texte d'origine n'est reecrit, aucune ligne de matrice ne bouge. Aucun identifiant de condition neuf.
+
+**Dans cette decision** : les six reponses de la section 0 (*"ajouter une grille pour infos a l'enfant"*, *"mettre ca hors contexte pour le moment avec ta justification"*, *"demander a nadia prof"*, *"oui, premisse etendue"*, *"la saisie clavier ne corrige pas le mot donc plus de refus"*, *"ouverture instruction"*) passent a la forme 2. **La reserve de 2.1 (*"infos"*) reste ouverte** : c'est une lecture, pas des mots ; `QP3` n'a pas de reponse. `DEC-0123` reste `Acceptee`.
