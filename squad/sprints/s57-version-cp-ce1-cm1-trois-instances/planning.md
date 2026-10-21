@@ -2056,3 +2056,15 @@ Lances depuis le checkout, avec les deux amendements presents, avant le commit. 
 ### 8. Decisions prises
 
 **Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il ecrit : `AD1`, `AD2` et `AD4` comme decidees sur la foi d'une reponse relayee ; l'engagement de `p3-8` et `p3-9` ; le compte des reports a l'ouverture (2 premiers reports) ; l'ecart a RG2, dit. L'amendement de `DEC-0120` qui porte la composition est a `camille-po`.
+
+## Annotation de `camille-po` du 2026-10-21 17:13 (UTC+02:00), palier 3 : prix, reports, points `AD3`, `AD5`, `AD6`, `AD7`, consigne sur la borne
+
+Annotation datee, heure lue par `date`, **limitee a ce qui est de ma competence** (prix recomptes, compte des reports, points rendus chez moi) ; aucune ligne de `sofia-sm` n'est modifiee. Arbre : `round-two` a `b52c4ac5`. Detail : `DEC-0120` A.117 a A.131 ; `preparation-palier-4-camille.md`.
+
+1. **Registre des prix** : `registre-prix-palier-3.txt`, onze lignes ; `awk` : `A 4.00`, `Ap 2.00`, `B 2.00`, `total 8.00` ; `facture 6.50`, `marge 1.50`. Le *"engage 6,50 ; marge 1,50"* de `composition-palier-3.md` 12.2 est juste. `nadia-prof` n'a ecrit aucun prix consomme ; le rejeu de `-07` n'a pas de prix (A.119).
+2. **Reports** : `MAT-CE1-01` et `EMC-CE1-01`, premier report ecrit a 23:44, soldes par un verdict dans le palier ; `RL5` a `RL7` livres, pas de second glissement ; `-06`, `-07`, `-11` soldes ; trois stories hors `PAR` a leur deuxieme ecartement (A.118).
+3. **Points rendus chez moi** : `AD3` (story `S57-RL5-RL7-SOURCES-DES-COMMENTAIRES`), `AD5` (*"avant tout autre commit de code"* se lit *"avant tout commit de lot"*, A.117), `AD6` (`S57-GARDE-PILE-DE-POLICES` dans le palier, livree `4650aeab`), `AD7` (`S57-R6-COMMENTAIRES-DE-PAQUET`, livree `91ecf180`).
+4. **Ecart a signaler** : `rapport-sofia-dev-palier-3.md` section 6 dit les branches de lots coupees *"avant `RL5` a `RL7`"* ; `git merge-base --is-ancestor 4bf3c359 <tete>` sort 0 pour les cinq tetes (A.117).
+5. **Consigne de l'utilisatrice sur la borne du palier 4** (relayee, non lue de sa main) : la borne de 8,0 est a `nadia-prof` (`PAR-9`) ; je ne l'ai pas relevee ; la capacite par instance est a son arbitrage prealable du palier 4 (A.126 a A.129). Les regles de charge et de parallele sont a `sofia-sm` (A.130).
+
+Ne modifie aucun prix, lot ou instance, n'engage aucun poste, ne touche ni la matrice ni `composition-palier-3.md`.

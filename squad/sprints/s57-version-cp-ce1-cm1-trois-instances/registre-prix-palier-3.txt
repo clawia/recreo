@@ -1,0 +1,11 @@
+A|arbitrage prealable|0.50|facture
+A|FRA-CE1-06 lot|1.00|facture
+A|FRA-CE1-07 lot|1.00|facture
+A|FRA-CE1-11 lot|1.00|facture
+A|marge de rejeu|0.50|marge
+Ap|arbitrage prealable|0.50|facture
+Ap|EMC-CE1-01 lot|1.00|facture
+Ap|marge de rejeu|0.50|marge
+B|arbitrage prealable|0.50|facture
+B|MAT-CE1-01 lot|1.00|facture
+B|marge de rejeu|0.50|marge

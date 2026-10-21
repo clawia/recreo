@@ -1831,3 +1831,185 @@ Par niveau, lignes atteignables / `couvert-valide` : CP 59 / 52, CE1 62 / 30, CM
 
 - **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, paquet, test, `planning.md`. N'engage aucun poste. Ne fixe aucun prix. Ne dit pas que la CI distante est verte.
 - **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison ; ceux qui ne sont pas lances ne sont pas deduits.
+
+## Amendement du 2026-10-21, dix-neuvieme (`camille-po`, palier 3 : ordre tenu et ecart au rapport, reports comptes, prix, reponses de l'utilisatrice `Q-05` a `Q-10`, matrice, ce que le palier n'a pas ecrit comme regle)
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; ce que cet amendement corrige est nomme (A.117 : la phrase de `A.115` rang 2). Etat de l'arbre : `round-two` a `b52c4ac5` (`git status` vide a la lecture). **Ce que je n'ai pas fait** : lancer `mvn`, jouer un jar. Les faits de git sont lus par `git merge-base --is-ancestor` et `git log` ; les verdicts sont ceux de `nadia-prof` (`verdict-nadia-palier-3-ce1.md`, `arbitrage-nadia-q05-q10.md`), relayes sans etre juges. Dossier : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/`.
+
+### A.117 L'ordre du palier 3 : propose, confirme, non decide, et tenu
+
+**Statut de l'ordre, dans l'ordre des fichiers.** `A.115` le donne *"sans engagement"* (rang 1 `Z1`/`Z2`, rang 2 `RL5` a `RL7`, rang 3 les lots) ; `theo-archi` confirme la lecture d'architecture (`reponses-theo-questions-stories-palier-3.md`, ligne `ORD` : `RL5` a `RL7` precede chaque lot, `Z1`/`Z2` ne lie les lots que par le rang) ; `sofia-sm` l'engage *"comme ordre de planning, pas comme decision de produit ou d'architecture"* (`planning.md`, amendement du 2026-10-19 23:09, section 3). **Aucune `ADR` ni `DEC` ne le decide, et cet amendement non plus : il constate ce qui a ete fait.**
+
+**Correction de `A.115` rang 2** (ma reponse a `AD5` du 2026-10-19 23:44, `preparation-palier-3-ce1-camille.md`, jamais portee ici) : *"avant tout autre commit de code"* se lit *"avant tout commit de lot"*. Le rang 1 est a moi dans la meme decision, il ne peut etre l'*"autre"* du rang 2. `Z1`/`Z2` et `RL5` a `RL7` ne se portent pas l'un l'autre ; seule `RL5` a `RL7` est une porte des lots.
+
+**Ce que git montre** (2026-10-20, heures de `git log`) :
+
+| Poste | Commit | Fusion | Heure du commit |
+|---|---|---|---|
+| `RL5` a `RL7` | `4bf3c359` | `20470501` | 00:07 |
+| commentaires d'en-tete de paquet (`R6` du releve) | `e6c371ad` | `91ecf180` | 00:14 |
+| lots (cinq tetes : `b4ab00d6` `-06`, `fba84a0d` `-07`, `9921ddee` `-11`, `bd99abcf` `MAT-CE1-01`, `43cd625d` `EMC-CE1-01`) | -- | `59d6f245` a `5d3d7a96` | 08:05 a 08:21 |
+| `Z1`/`Z2` | `78b260e3` | `55328470` | 08:07 |
+| pile de polices | `558dd887` | `4650aeab` | 09:43 |
+
+`git merge-base --is-ancestor 4bf3c359 <tete>` sort **0 pour les cinq tetes de lots** : la porte de `RL5` a `RL7` est tenue. Les commentaires d'en-tete (`e6c371ad`) ne sont ancetres que de la tete d'`EMC-CE1-01` : ce n'est pas une porte des lots (`AD7` : *"pas avant les commits de lot"*), c'est une porte du premier jar rejoue, et `91ecf180` est ancetre de la base de ce jar. `Z1`/`Z2` n'est pas premiere dans le temps (commit a 08:07, apres `RL5` a `RL7` et apres les commentaires d'en-tete) : sans consequence, elle n'a aucune porte.
+
+**Ecart trouve en verifiant, a `sofia-sm`** : `rapport-sofia-dev-palier-3.md`, section 6, ecrit que cinq branches sont *"coupees sur `b9c6cb69`, avant `RL5` a `RL7` et `R6`"*. `b9c6cb69` est **posterieur** a la fusion de `RL5` a `RL7` (`20470501`) et anterieur a celle des commentaires d'en-tete (`91ecf180`) : vrai pour `R6`, **faux pour `RL5` a `RL7`**. L'ordre n'en est pas touche ; la phrase du rapport l'est. Je ne modifie pas son fichier.
+
+### A.118 Reports et glissements du palier 3, comptes
+
+Regle d'`A.66` a `A.73` et `A.83`, appliquee comme aux paliers 1 et 2.
+
+| Poste | Etat a l'ouverture (2026-10-19) | Sort au palier 3 | Compte |
+|---|---|---|---|
+| `-06`, `-07`, `-11` | engages, deuxieme ecartement (paliers 1 et 2) | `-06` **VALIDE SOUS RESERVE**, `-11` **VALIDE SOUS RESERVE** (`9d892663`) ; `-07` **REFUSE** le meme jour (`9d892663`) puis **VALIDE**, aucune reserve (`c17c3f9e`) | deuxieme ecartement **solde par l'entree** ; pas de troisieme |
+| `MAT-CE1-01`, `EMC-CE1-01` | non engages a l'ouverture de l'amendement de 23:09, engages a 23:44 (`AD1`) | `MAT-CE1-01` **VALIDE**, plafond `en cours` ; `EMC-CE1-01` **VALIDE SOUS RESERVE** (`9d892663`), tous deux dans le palier | **premier report chacun, ecrit et solde** (`A.66`, `A.83` : l'engagement tardif n'efface pas le report, il evite le suivant) ; aucun second |
+| `RL5` a `RL7` | engages (`AD2`), premier glissement (`A.115` rang 2, `planning.md` 21:46 section 9) | livres, `4bf3c359`, fusion `20470501` | **pas de second glissement** |
+| `Z1`/`Z2`, `S57-GARDE-PILE-DE-POLICES`, `S57-R6-COMMENTAIRES-DE-PAQUET` | premiere inscription (`AD6`, `AD7`) | livres (`55328470`, `4650aeab`, `91ecf180`) | aucun report |
+| `S57-GARDE-NOMBRE-DE-MANCHES`, `S57-TYP1-TEXTES-DE-GABARIT`, `S57-MESSAGE-PARTIE-PERDUE` | hors composition (`composition-palier-3.md` section 3) | non engagees | **deuxieme ecartement.** Premier : s57, palier 2 (composition du 2026-10-15, ecrit en `A.115` le 2026-10-16 : *"premiere inscription au palier 2, non retenue : pas un report"*). **Un troisieme, au palier 4, serait une direction que personne n'a choisie** : `preparation-palier-4-camille.md` les propose |
+
+**Lignes ecartees du palier 3, premier ecartement** (`preparation-palier-3-ce1-camille.md` 8.5 : *"le palier 3 est leur premier ecartement, pas un report repete"*) : `MAT-CE1-10`, `-11`, `-14`, `-15`, `FRA-CE1-03`, `-21`, `EMC-CE1-02`, `-03`, `-04`. Un second ecartement au palier 4 s'ecrit dans `preparation-palier-4-camille.md`, ligne par ligne. Les lignes a dessin ne sont plus un report : l'utilisatrice les a sorties du perimetre (`DEC-0123` 3.3).
+
+### A.119 Prix du palier 3 : registre, consomme, marges, ecarts
+
+Registre commite : `registre-prix-palier-3.txt` (onze lignes, `wc -l`). Commandes lues ce jour : `awk -F'|' '{p[$1]+=$3; t+=$3} END{for(k in p) printf "%s %.2f\n",k,p[k]; printf "total %.2f\n",t}' registre-prix-palier-3.txt | sort` rend `A 4.00`, `Ap 2.00`, `B 2.00`, **`total 8.00`** ; par etat (`awk -F'|' '{e[$4]+=$3} END{for(k in e) printf "%s %.2f\n",k,e[k]}' registre-prix-palier-3.txt | sort`) : `facture 6.50`, `marge 1.50`. Lots : `awk -F'|' '$2 ~ / lot$/{t++} END{print t}' registre-prix-palier-3.txt` rend 5.
+
+| Instance | Composition | Facture | Detail | Marge |
+|---|---|---|---|---|
+| A (groupe X) | 4,00 | **3,50** | arbitrage 0,5 ; `-06`, `-07`, `-11` 1,0 chacun | 0,50 |
+| A' | 2,00 | **1,50** | arbitrage 0,5 ; `EMC-CE1-01` 1,0 | 0,50 |
+| B | 2,00 | **1,50** | arbitrage 0,5 ; `MAT-CE1-01` 1,0 | 0,50 |
+| **total** | **8,00** | **6,50** | | **1,50** |
+
+**Verification de la demande** : *"6,50 engage et 1,50 de marge"* (`composition-palier-3.md`, section 12.2) est juste : 3 x 0,5 + 5 x 1,0 = 6,5 ; 3 x 0,5 = 1,5 ; 6,5 + 1,5 = 8,0. Aucun ecart de somme avec le planning (`planning.md` 23:09, section 2 : *"engage 4,50, non engage 2,0"* avant `AD1` ; 23:44 : *"engage 6,50"* apres), avec `preparation-palier-3-ce1-camille.md` 8.2 (A 4,0, B 2,0, A' 2,0) ni avec `reponses-nadia-questions-stories-palier-3.md` 7.2. Bornes : somme 8,0 (`PAR-9`) ; plafond de 5,0 par instance, A est a 4,0 (`PAR-8`) ; trois lots au plus, A en porte trois.
+
+**Ce que le registre n'ecrit pas, et pourquoi.** `nadia-prof` n'a ecrit **aucun prix consomme** pour le palier 3 : ni champ *"Tarif consomme"* ni ligne de routage de prix dans ses rapports de palier (`grep` sur `verdict-nadia-palier-3-ce1.md`, `lecture-nadia-palier-3.md`, `veto-nadia-gabarit-pli.md`, `arbitrage-nadia-q05-q10.md`, les quatre fiches ouvertes). Les cinq lots sont inscrits **`facture` a leur prix de composition** (arbitrage 0,5 par instance livre, lot a 1,0 avec verdict ecrit). **Le rejeu de `-07`** (refus a 13:46, correction `ac986aca`, rejeu et releve a l'ecran, verdict `c17c3f9e`) **n'a aucun prix ecrit** : au palier 2, un rejeu apres refus valait 0,5 (`A.105`, `-05`), et `nadia-prof` route ici *"les rejeux sur la marge de chaque instance"* (`lecture-nadia-palier-3.md`, section 8). Si elle l'ecrit a 0,5, la marge de A (0,5) est consommee en entier : A passe a 4,00 facture et 0 de marge, le palier a 7,00 facture et 1,00 de marge ; **le total par instance ne change pas** (A 4,00) et le fichier se corrige d'une ligne. **Je ne l'ecris pas a sa place.** Les marges de B et d'A' sont intactes jusqu'a preuve du contraire : aucun rejeu ne les touche. Le non affecte du palier est 0, rien ne tombe.
+
+### A.120 Les reponses de l'utilisatrice `Q-05` a `Q-10` et ce que le palier en a fait
+
+Toutes relayees par l'agent lanceur le 2026-10-21 (forme 2 de `DEC-0062`) : **je ne les ai pas lues de sa main**, et je ne les date pas plus precisement que le jour. Consignees en entier par `DEC-0123` (`Q-05` a `Q-10`, `Q-09` suspendue) et `DEC-0124` (`Q-09`). Ce qui suit dit ce que `nadia-prof` et la squad en ont fait.
+
+| Question | Ses mots, relayes | Ce qui en est fait | Ou |
+|---|---|---|---|
+| `Q-05`, `MAT-CE1-14` | *"ajouter une grille pour infos a l'enfant"* | le refus d'avance du paquet textuel tombe des que la grille est montree ; `DEP-CE1-2` n'est leve en entier que par une designation sur la grille ; mon choix de forme (b), repli (a) ; prealables ouverts (`theo-archi`, `QP3`) | `arbitrage-nadia-q05-q10.md` 1 ; backlog, amendement de `S57-BR-MAT-CE1-14-GRILLE` |
+| `Q-06`, dessins | *"mettre ca hors contexte pour le moment avec ta justification"* | `QLM-CE1-09`, `-11`, moitie dessinee de `QLM-CE1-07`, `MAT-CE1-02`, `-09` hors perimetre ; direction choisie, plus un report ; condition de retour : une nouvelle reponse | `DEC-0123` 3 |
+| `Q-07`, `-08` et `-09` | *"demander a nadia prof"* | **la condition 4 tient pour tout s57** ; a s58 au plus un des deux par sprint, `-09` d'abord ; stories ecrites, non engagees | `arbitrage-nadia-q05-q10.md` 2 |
+| `Q-08`, premisse de l'adulte | *"oui, premisse etendue"* | etendue a `FRA-CE1-27` et `FRA-CE1-29` **seules** ; `TRV-CE1-1` a annoter par `nadia-prof` (non fait) ; amendement de `CLAUDE.md` a `sofia-sm` (non fait) | `DEC-0123` 5 ; `arbitrage-nadia-q05-q10.md` 3 |
+| `Q-09`, saisie | *"la saisie clavier ne corrige pas le mot donc plus de refus"* (deux lectures), puis *"Q9 il n'y aura pas de correction automatique du clavier"*, puis, apres sa verification sur tablette, *"a toujours a oui et b a non sur tablette uniquement, pour moi c'est bon R6 peut etre leve"* | `autocorrect="off"` pose (`5a0b55f3`, fusion `03de0f6d`) ; **`R6` leve par son arbitrage**, avec une reserve non bloquante que `nadia-prof` ecrit (*"sur la tablette, des mots sont proposes au-dessus du clavier ; un enfant qui en touche un n'a pas ecrit le mot"*), portee par les cellules de `FRA-CP-09`, `FRA-CE1-21`, `FRA-CE1-29`, `LVE-CM1-06` ; l'ordinateur n'est pas mesure | `DEC-0124` et ses deux amendements ; `arbitrage-nadia-q05-q10.md` 7 et 8 |
+| `Q-10`, arts plastiques | *"ouverture instruction"* | instruction ecrite (forme, corpus acceptable, droits) ; **le corpus manque** ; terrains neufs, pas a s57 | `arbitrage-nadia-q05-q10.md` 5 ; backlog, `S57-ART-CE1-01-ET-02` |
+
+**Lecture de `Q-09`, et ce qu'elle a coute.** La premiere phrase de l'utilisatrice avait deux lectures (`DEC-0123` 7.3) ; la seconde les a departagees ; la troisieme a leve `R6` sur un fait de tablette. `nadia-prof` n'a pas rouvert la question que sa propre section 7.1 avait renvoyee a l'utilisatrice (8.2 : *"je ne reprends pas sur mon autorite de Done une question que j'ai renvoyee a la sienne"*).
+
+### A.121 Ecarts trouves en lisant le palier, avec leur destinataire
+
+| Ecart | Constat | A qui |
+|---|---|---|
+| Rapport de developpeuse, section 6 | *"avant `RL5` a `RL7`"* contredit par `git merge-base` (A.117) | `sofia-sm` |
+| `S57-SAISIE-CLAVIER-SANS-CORRECTION` | livree par `theo-archi` avec trois ecarts a mes criteres : `spellcheck` non pose (accepte, c'est son jugement sur le moyen), l'avis mesure sur les deux appareils jamais ecrit (remplace apres coup par la tablette de l'utilisatrice, l'ordinateur non mesure), `ADR-0058` et son index dans le commit | amendement de la story, backlog ; `QP4` a `theo-archi` |
+| `DEC-0124` et `DEC-index.md` | disaient *"non appliquee"* apres l'application | corrige par amendement de `DEC-0124` et nouvelle ligne de statut de l'index |
+| `FRA-CE1-27`, `-29` | restent `non couvrable en l'etat` alors que le produit les a rendues atteignables (A.123) | moi, apres l'annotation de `nadia-prof` |
+| Reserves du palier 3 sans story | `nadia-prof` demande que les reserves de `-06`, `-11` et d'`EMC-CE1-01` deviennent des stories (`verdict-nadia-palier-3-ce1.md`, section 7) : la reponse attendue sous le pli a la revelation (`-06` 14, 16, 19, 20 ; `-11` 13 ; EMC 13), le verdict et l'indice coupes de `-06` 14 apres une erreur, la coupure d'un mot a trait d'union (`-06` 14, EMC 13), l'item 17 d'EMC. **Non ecrites ici** : `preparation-palier-4-camille.md` les compte et demande si elles entrent | moi |
+
+### A.122 Regle de procedure : aucune neuve, et `E5` reste ouverte
+
+**Le palier 3 n'a ecrit aucune regle de procedure neuve** (je n'en trouve aucune dans `planning.md`, `composition-palier-3.md`, les arbitrages et verdicts de `nadia-prof`, ni le releve du `relecteur-pedagogique`), **et je n'en invente pas.** Ce que les fichiers montrent sans l'ecrire comme regle : `DEC-0123` et `DEC-0124` citent chaque reponse de l'utilisatrice entre guillemets, la disent relayee et non lue de sa main, et la lecture que j'en fais est ecrite a cote ; et `nadia-prof` a rectifie le 2026-10-21, sur mon constat que l'attribution ne se retrouvait nulle part, ce qu'elle attribuait a l'utilisatrice (*"le pli et les coupures"*, `verdict-nadia-palier-3-ce1.md`, rectification) : l'utilisatrice avait dit le pli, pas les coupures, et la coupure est une decision de `nadia-prof` sur sa seule autorite.
+
+**`E5` (la regle pour une reponse relayee) est ouverte depuis `cloture-palier-1.md` (2026-10-15), a moi, et l'est encore a la fin du palier 3 : troisieme palier.** C'est un report que je compte ici. Je ne l'ecris pas en regle sur ces cas : trois DEC suivent une meme pratique, c'est un constat, pas un texte a ecrire sans l'utilisatrice.
+
+### A.123 Matrice : rien ne bouge aujourd'hui, un reclassement est annonce
+
+**Etat** : `couvert-valide` 152, `en cours` 5, `non couvert` 43, `non couvrable en l'etat` 77, total 277, denominateur atteignable 200, **152 / 200 = 76,00 %** (commande de la "Methode du compte" de `MATRICE-couverture.md`, lancee ce jour, sortie lue). Compteur de version (`A.32`) : 152 + 5 = 157 / 200 = 78,50 % par la formule. Aucune cellule ne change dans cet amendement.
+
+**Reclassement annonce, decide, non applique.** `FRA-CE1-27` (moitie *ecouter*) et `FRA-CE1-29` (*mots seuls*) sont `non couvrable en l'etat` dans la matrice ; la reponse de l'utilisatrice a `Q-08` (la premisse de l'adulte etendue a ces deux lignes, **une decision de l'utilisatrice**, seul acte que la section "Comment la lire" admet pour une ligne dans cet etat) et l'arbitrage de `nadia-prof` du 2026-10-21 (3.1 et 3.2 : servables, plafond `en cours`) les rendent atteignables. **Je les passe a `non couvert`, une a une, quand `nadia-prof` a annote `TRV-CE1-1` pour elles** (`grep -c "2026-10-21" squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` rend 0 : l'annotation n'existe pas). Chaque passage ajoute 1 au denominateur atteignable, **par le seul effet du denominateur** (precedent : `A.46` a `A.52`) : 201 apres la premiere, 202 apres la seconde, soit 152 / 202 = 75,25 % a numerateur egal, et un maximum de version qui passe de 200 a 202. **L'utilisatrice l'a fixe a 200** (`Q-U10`, `A.38`) : elle doit le savoir avant que je le change, et `preparation-palier-4-camille.md` le lui pose (`QP5`).
+
+### A.124 Palier 4 : renvoi
+
+La proposition de palier 4 (lots candidats, composition a 8,0, ce qui est pret et ce qui exige une reponse de l'utilisatrice, ce qu'il ne faut pas engager) est dans `preparation-palier-4-camille.md`. Les stories manquantes sont a la fin de `docs/backlog/backlog.md` (annotation *"Palier 4 de s57"*), **non engagees, prix de `nadia-prof`**. **Aucun poste n'est engage par cet amendement** : l'engagement est a `sofia-sm`, la capacite et les prix a `nadia-prof`.
+
+### A.125 Routage, ce que cet amendement ne fait pas
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Amender `planning.md` : consommation et reports du palier 3 (A.118, A.119), section 6 du rapport (A.117), `cloture-palier-3.md` ; ouvrir le palier 4 par amendement date avec la composition de `camille-po` et l'arbitrage de `nadia-prof` ; amender `CLAUDE.md` si elle juge que le CE1 doit y figurer (`DEC-0123` 5.4) |
+| `nadia-prof` | Prix de rejeu de `-07` (A.119) ; annotation de `TRV-CE1-1` (A.123) ; arbitrage prealable du palier 4 par instance ; instance de `FRA-CE1-21` ; avis sur la section 3 de la decision de garde CE1 (`CA4`) ; jugement de cousinage de `FRA-CE1-03` si je le demande |
+| `theo-archi` | `QP1`, `QP2`, `QP4` ; avis sur `MAT-CE1-14` (`A3`, un ou deux paquets, cliquet) ; double preuve d'une photographie |
+| `relecteur-pedagogique` | Orthotypographie de cet amendement, des stories du backlog et du fichier de preparation |
+| Utilisatrice | `QP3`, `QP5`, `QP6` et `QP7` de `preparation-palier-4-camille.md` |
+
+- **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, paquet, test, `composition-palier-3.md`, `cloture-palier-3.md`. N'engage aucun poste, ne fixe aucun prix. **Decisions de produit prises ici** : (1) `A.115` rang 2 se lit *"avant tout commit de lot"* ; (2) pour `MAT-CE1-14`, la forme visee est (b), le repli (a) ; (3) l'ecart de `S57-SAISIE-CLAVIER-SANS-CORRECTION` au critere 1 (`spellcheck`) est accepte ; (4) `FRA-CE1-27` et `-29` passent a `non couvert` apres l'annotation de `TRV-CE1-1`. `DEC-0120` reste `Acceptee`.
+- **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison ; ceux qui ne sont pas lances ne sont pas deduits.
+
+## Amendement du 2026-10-21, vingtieme (`camille-po`, consigne de l'utilisatrice sur le seuil du palier 4 : plus de 8,0, jusqu'a trois instances en parallele)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** Arbre : `round-two` a `b52c4ac5`. Ce que je n'ai pas fait : lancer `mvn`, jouer un jar. La borne est une borne de `nadia-prof` : **je ne la change pas, je la lui demande.**
+
+### A.126 La consigne, ses mots, ma lecture
+
+Mots de l'utilisatrice, 2026-10-21, relayes par l'agent lanceur, **non lus de sa main** : *"pour le palier 4 augmente le seuil avec des instances en // jusqu'a 3 si besoin"*. Ma lecture, **a confirmer par elle** :
+
+| Mot | Lecture | Source |
+|---|---|---|
+| *"le seuil"* | la borne de 8,0 d'audit par palier | `PAR-9`, `ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md` 4.3 (`D7`, `O1`), `DEC-0120` A.28 (*"Borne de s57 : 8,0 pour trois instances"*) |
+| *"des instances en //"* | les instances de `nadia-prof`, A, A' et B, qui lisent en parallele | `DEC-0120` A.36 |
+| *"jusqu'a 3 si besoin"* | les trois instances ouvertes, ce qui est deja le cas depuis le palier 1 ; **ou** un plafond de trois instances qu'elle ne veut pas depasser. Les deux lectures donnent la meme composition | A.33 |
+
+### A.127 Ce que disent `PAR-8` et `PAR-9`, et ce que la consigne change
+
+Les mots, sans les reecrire (`ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md`, 11.3 et 4.3) :
+
+- `PAR-8` : *"8,0 a deux ou trois instances, 5,0 a une ; au plus 5,0 et trois lots par instance"*. Par palier : *"Par instance : 5,0 et trois lots par palier, inchanges."*
+- `PAR-9` : *"la somme des budgets egale la borne"*.
+- La borne : *"Decision : O1. La borne de s57 est 8,0, pour trois instances. O2 n'est pas derivable [...] Je ne pose aucun chiffre au-dela de 8,0, ni 12,0 ni un autre."* Un chiffre au-dela de 8,0 *"ne se derive que si trois conditions cumulatives tiennent"* : (i) deux instances remplissent 8,0 et laissent dehors au moins 4,0 de lots instruits prenables par la troisieme ; (ii) le dernier sprint parallele clos est sans occurrence des formes (a), (b), (c) ; (iii) `PAR-13`.
+
+**Ce que la consigne change.** Le plafond **par instance** (5,0 et trois lots) ne bouge pas : sur trois instances, le maximum theorique de `PAR-8` est 15,0 et neuf lots. **La borne `PAR-9` est a `nadia-prof` et vaut 8,0** : relever le seuil, c'est qu'elle ecrive une borne neuve (`O2`) et la capacite de chaque instance dans son arbitrage prealable du palier 4. **Je ne peux pas ecrire cette borne, et je ne la presume pas.**
+
+**Mesure des trois conditions, la seule part qui m'est demandee** (4.3 : *"Le montrer est a `camille-po`"*) :
+
+| Condition | Etat |
+|---|---|
+| (i) | **non montree.** Les lots prets sont six (`LP1` a `LP6`). B et A' en portent cinq (`LP2` a `LP6`) : `LP1` (1,0) reste dehors ; avec `LP7` dans B, `LP1` et `LP8` (2,0). **Moins de 4,0 dans les deux cas.** Les lots qui feraient 4,0 (`MAT-CE1-14` forme (b)) ne sont pas prets |
+| (ii) | **non verifiee par moi** : c'est la lecture de `nadia-prof` des transcriptions du dernier sprint parallele ; `rapport-qualite-palier-3.md` et la section "Obstacles" de la cloture du palier 3 ne sont pas ecrits |
+| (iii) | tenue : aucun terrain neuf dans la composition |
+
+Une consigne de l'utilisatrice n'est pas une des trois conditions, et je ne dis pas qu'elle la remplace : **c'est a `nadia-prof`, sur cette consigne, de dire si elle ecrit `O2`, avec quel chiffre, ou si elle maintient 8,0 et le dit.** Je lui pose la question avec la mesure ci-dessus.
+
+### A.128 Composition maximale defendable, par instance
+
+Prix de `nadia-prof` (arbitrage de preparation du palier 3, section 2 ; arbitrage du 2026-10-21) : arbitrage 0,5 et marge de rejeu 0,5 par instance, lot neuf textuel 1,0, lot illustre 1,5. Trois instances ouvertes : 3,0 fixes. Detail : `preparation-palier-4-camille.md`, sections 5 et 5bis.
+
+| Composition | Total | Lots | A | B | A' | Condition |
+|---|---|---|---|---|---|---|
+| **8,0** (repli, si `nadia-prof` maintient la borne) | 8,0 | 5 | `FRA-CE1-21` | `MAT-CE1-10`, `-11` | `EMC-CE1-02`, `-03` | aucune |
+| **9,0, pret** | **9,0** | **6** | `FRA-CE1-21` (2,0) | `MAT-CE1-10`, `-11` (3,0) | `EMC-CE1-02`, `-03`, `-04` (4,0) | une borne de 9,0 ecrite par `nadia-prof` |
+| **11,5, conditionnel** | 11,5 | 8 | `FRA-CE1-21`, `FRA-CE1-03` (3,0) | `MAT-CE1-10`, `-11`, `MAT-CE1-15` illustre (4,5) | idem (4,0) | `O2` a 11,5 ; cousinage de `FRA-CE1-03` juge par `nadia-prof` ; developpeur et paquet reecrit de `MAT-CE1-15` |
+
+**Le neuvieme lot n'existe pas.** A n'a que deux lignes de francais CE1 recevables (`-21` et, sous reserve, `-03`) : `-08`, `-09` et `-29` sont a s58 (condition 4 et levee de `R6`), `-27` est un terrain neuf. Je n'invente pas un lot pour atteindre 15,0. Le maximum que je defends est **9,0 pour six lots prets**, **11,5 pour huit** si deux conditions se levent ; un `MAT-CE1-14` en forme (b) ferait trois lots dans B au lieu de `MAT-CE1-15`, a 3,0, et attend `theo-archi` et `QP3`. Gain du 9,0, si les verdicts tombent : `couvert-valide` 152 a 156 (78,00 %), `en cours` 5 a 7, compteur 163 / 200 = 81,50 %. Gain du 11,5 : `en cours` 9, compteur 165 / 200 = 82,50 %.
+
+### A.129 Ce qui doit etre amende, par qui
+
+| Qui | Quoi |
+|---|---|
+| `nadia-prof` | **La borne** : `ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md` 4.3 et 11.3 (`D7`, `PAR-9`), par un document date qui ecrit `O2` et son chiffre pour le palier 4, ou qui maintient 8,0 ; la **capacite de chaque instance** dans l'arbitrage prealable du palier 4 ; instance et prix de `FRA-CE1-21` ; cousinage de `FRA-CE1-03` ; confirmation que `PAR-13` tient pour `FRA-CE1-21` |
+| `sofia-sm` | La composition du palier 4 et son amendement de `planning.md` ; les regles d'isolation et de charge (A.130) ; l'ordre de fusion ; `cloture-palier-3.md` |
+| `camille-po` | Cette proposition, les stories (fin de `backlog.md`), la matrice apres chaque verdict, `DEC-0120` |
+| Utilisatrice | Confirmer la lecture de A.126 ; `QP5`, `QP6`, `QP7` de `preparation-palier-4-camille.md` |
+
+**Je n'amende ni `PAR-8`, ni `PAR-9`, ni 4.3 : ils sont a `nadia-prof`.** Cet amendement ne dit pas que la borne est relevee.
+
+### A.130 Le parallele : ce que le palier 3 a mesure, et ce qui est a `sofia-sm`
+
+Fait lus : `rapport-sofia-dev-palier-3.md`, sections 6 a 16. **Chiffres relayes par l'agent lanceur, que je n'ai pas lus dans un fichier** : un `verify` complet a dure 7 h 26 au mur quand quatre agents compilaient ; des arrets du chien de garde de `marc-dev` et de `lea-dev`. Le depot porte, lui, des `verify` de 9 min 30 s a 12 min 40 s sur un worktree propre (sections 8 a 16 du meme rapport).
+
+| Risque | Mesure du palier 3 | Ce qui change avec six ou huit lots |
+|---|---|---|
+| Contention de build | l'ecart de 12 min a 7 h 26 est l'effet de la concurrence, pas du code | trois instances compilent au meme moment ; **`RG4` (un worktree vivant a la fois par developpeur) reste la seule limite**, donc un developpeur de B ou d'A' porte trois lots l'un apres l'autre. Le parallele est **entre** instances, pas dans une instance : la regle de `sofia-sm`, pas la mienne |
+| `catalogue.yaml` et inventaire de `TexteAccentueExposeParLePortEntrantTest` | quatre fusions de lots sur cinq ont eu un conflit (section 6), chacune resolue par ajout des deux cotes, aucune assertion modifiee | sept a huit fusions, autant de conflits attendus, chacune suivie d'un `mvn -B clean verify` entier a la racine : huit fusions a 12 min = 96 min, sans contention |
+| Un seul registre d'identifiants | le `verify` est rouge des qu'un fichier non suivi d'un autre agent ecrit un identifiant non alloue (`PL-1` a `PL-13`, sections 7, 9 et 12 du rapport) | **mes stories n'allouent aucun identifiant** ; chaque developpeur n'en ecrit aucun ; un identifiant neuf est route a `theo-archi` avant d'etre ecrit |
+| Matrice, `DEC-0120`, `DEC-index.md`, backlog | edites par moi seule | huit verdicts arrivent dans le desordre : une seule edition de la matrice par lot de verdicts, la commande de la "Methode du compte" relancee apres chacune, jamais deux branches de `camille-po` en meme temps |
+| Audit | `nadia-prof` lit par instance | trois instances, trois lectures completes avant chaque premier verdict (`LC`) : sa borne est une fenetre d'attention, c'est ce que sa decision porte |
+
+**Ce qui est a `sofia-sm`, que je ne tranche pas** : l'arret et la reprise apres un arret du chien de garde (une branche dont le developpeur est arrete reprend-t-elle sur le meme worktree ?), le nombre de `verify` simultanes, l'ordre de fusion, les lignes de la table d'isolation de trois instances sur plus de lots, la lignee de chaque branche (`verifier-lignee.sh`).
+
+### A.131 Routage, ce que cet amendement ne fait pas
+
+Ne prononce aucun Done, n'engage aucun poste, ne fixe aucune borne ni aucun prix, ne touche ni `PAR-8`, ni `PAR-9`, ni `composition-palier-3.md`, ni `cloture-palier-3.md`, ni la matrice. Aucun identifiant de condition neuf. `DEC-0120` reste `Acceptee`.

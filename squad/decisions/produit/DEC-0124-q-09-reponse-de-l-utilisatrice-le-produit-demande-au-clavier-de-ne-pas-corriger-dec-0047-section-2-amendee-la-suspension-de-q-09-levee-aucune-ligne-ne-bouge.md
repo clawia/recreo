@@ -122,3 +122,11 @@ Consequences pour le produit :
 **Effet** : les sections 3 a 6 qui attendaient l'avis de `nadia-prof` sur `R6` sont rendues. `Q-09` n'est plus *"repondue, avis en cours"* : elle est close. La reserve est reprise dans les quatre cellules de `squad/programme/MATRICE-couverture.md`. **Aucun statut ne change** : `FRA-CP-09` reste `couvert-valide`, les trois autres lignes gardent leur statut et leur plafond. Compteurs inchanges, 152 / 200.
 
 **Ce que cet amendement ne fait pas** : il ne leve pas la limite ecrite par `nadia-prof` (l'ordinateur n'est pas mesure) ; il n'ouvre aucune story ; il ne demande pas la suppression des mots proposes, question qui releve de `theo-archi`. `DEC-0124` reste `Acceptee`.
+
+## Amendement du 2026-10-21, second (`camille-po`) - la decision est appliquee ; la ligne "Non appliquee" de l'entete est perimee
+
+**Faits lus** : `5a0b55f3` (`theo-archi` : `fragments/saisie.html`, `EcranDeSaisieTest`, amendement d'`ADR-0058`), fusionne par `03de0f6d` (`sofia-sm`, porte technique et 2855 tests dans `rapport-sofia-dev-palier-3.md`, section 16). `grep -c 'autocorrect="off"' adapters/adapter-web/src/main/resources/templates/fragments/saisie.html` rend 2 (un commentaire, l'attribut du champ ligne 97). **Le statut de l'entete (*"Non appliquee"*, suivi de *"le changement de code n'a pas de proprietaire avant que `theo-archi` ait rendu son avis"*) etait vrai le 2026-10-21 a 15:45 et ne l'est plus** : la section 6 disait *"cette decision est prise et non appliquee"* tant que la story n'avait pas de proprietaire de code ; elle en a un, la decision est appliquee, et sa propre limite reste ecrite (section 4 : une demande, pas une garantie).
+
+**Ce qui est applique, et ce qui ne l'est pas** : le champ demande `autocorrect="off"` ; `spellcheck` et `autocapitalize` ne sont pas poses (jugement de `theo-archi`, `ADR-0058`, amendement du 2026-10-21, section 2). L'ecart a mon critere 1 de la story et deux autres sont dits dans l'amendement de `S57-SAISIE-CLAVIER-SANS-CORRECTION` (`docs/backlog/backlog.md`, fin de fichier). Le fait que l'utilisatrice a constate sur sa tablette, des mots proposes au-dessus du clavier, est dans l'amendement precedent de ce fichier ; l'ordinateur n'est pas mesure.
+
+`DEC-0124` reste `Acceptee`. `DEC-index.md` porte la nouvelle ligne de statut.
