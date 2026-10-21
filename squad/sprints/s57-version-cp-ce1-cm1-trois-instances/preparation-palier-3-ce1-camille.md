@@ -328,3 +328,38 @@ Lu : `composition-palier-3.md` sections 3, 5, 8 ; l'amendement de `planning.md` 
 **Ordre propose, a engager par `sofia-sm`** : rang 1, `Z1`/`Z2` puis `S57-GARDE-PILE-DE-POLICES` ; rang 2, `RL5` a `RL7` (porte des lots) puis `R6` (porte du premier jar rejoue) ; rang 3, les cinq lots. Rangs 4 et 5 d'`A.115` inchanges, hors palier.
 
 **Ce que je n'ai pas fait.** Pas touche `composition-palier-3.md` ni `planning.md`. Pas ecrit de `DEC-0120` A.117 : si `sofia-sm` veut l'ordre inscrit en `DEC`, c'est un geste suivant, a me demander. Pas juge le texte de remplacement des commentaires de `R6` : il suit la forme de `D5`, ecrit par le developpeur, relu par `relecteur-pedagogique`. Matrice inchangee (148 / 200). Non commite.
+
+## Amendement du 2026-10-21 11:12 (UTC+02:00) : ce que les reponses a `Q-05` a `Q-10` ouvrent pour les paliers suivants
+
+Source : `DEC-0123` (ses mots relayes, non lus de la main de l'utilisatrice ; sa lecture). Arbre : `round-two` a `6927d926`. **Rien n'est engage, aucun prix n'est ecrit** : les prix et les affectations sont a `nadia-prof` (`DEC-0120` A.33, A.36), le moyen d'une grille a `theo-archi`. **La composition (i) de la section 8 ne change pas** : B et A' ont chacun leur lot, A est pleine, et `8.6` disait qu'aucune de ces reponses ne la changerait. Ce qui suit regarde le palier 4 et ceux d'apres.
+
+### Le perimetre apres `Q-06`
+
+38 lignes (section 1.6) moins quatre sorties entieres (`QLM-CE1-09`, `QLM-CE1-11`, `MAT-CE1-02`, `MAT-CE1-09`) : **34**. C'est une soustraction sur la section 1.6, pas une nouvelle mesure `awk`. La moitie textuelle de `QLM-CE1-07` reste dans le perimetre (lot Q7, plafond `en cours`) ; la moitie dessinee en sort.
+
+### Ce que chaque reponse ouvre
+
+| Ligne | Reponse | Ce qui s'ouvre | Lot possible | Ce qui manque avant |
+|---|---|---|---|---|
+| `MAT-CE1-14` | `Q-05` | le refus d'avance sur *"un quadrillage non montre"* cesse d'etre un refus de produit | M5 reformule : story `S57-BR-MAT-CE1-14-GRILLE`, ecrite le meme jour, non engagee | avis de `theo-archi` (`A3` d'`ADR-0080`, cliquet, forme) ; clause `DEP-CE1-2` lue par `nadia-prof` (designation ou simple affichage) ; prix ; la reserve de lecture de `DEC-0123` 2.1 |
+| `FRA-CE1-27` | `Q-08` | la moitie *ecouter* est recevable a plafond `en cours` (avis de `nadia-prof`) | un paquet a ecrire, forme d'un lot `en cours`, instance a dire | amendement de `TRV-CE1-1` par `nadia-prof` ; sa confirmation de recevabilite ; aucun paquet n'existe |
+| `FRA-CE1-29` | `Q-08` | la voix est permise ; **la dictee ne s'ouvre pas** : elle fait ecrire, donc `R6` | aucun | `Q-09` |
+| `FRA-CE1-21` | `Q-09` suspendue | rien | F2 reste plafonne `en cours`, hors X et Y | `Q-09` (`nadia-prof`, puis `theo-archi` si neutralisation) |
+| `FRA-CE1-08`, `-09` | `Q-07` | une question est posee a `nadia-prof` | **aucun avant sa reponse**. Son avis ecrit : *"a s58"*, au plus un des deux par sprint, `-09` d'abord | sa relecture de la condition 4 |
+| `ART-CE1-01`, `-02` | `Q-10` | l'instruction est demandee | aucun lot ; instruction hors des 8,0 | instruction de `nadia-prof` ; droits de `-01` (`theo-archi`, `ART-3`, `ADR-0082`) ; terrains neufs, exclus tant qu'A' existe |
+| `QLM-CE1-09`, `-11`, `QLM-CE1-07` moitie dessinee, `MAT-CE1-02`, `-09` | `Q-06` | rien : ils sortent | aucun | une nouvelle reponse de l'utilisatrice (`DEC-0123` 3.3) |
+
+### Ordre propose pour le palier 4, sans prix ni engagement
+
+1. **Les reponses de `nadia-prof` d'abord** : `Q-07`, `Q-10`, la clause `DEP-CE1-2`, `R6` (`Q-09`), `TRV-CE1-1`. Elles ne coutent aucun poste de `PAR` et conditionnent la liste des lots recevables ; les composer sans elles refait l'ecart que `A.115` dit eviter.
+2. **L'avis de `theo-archi` sur la grille**, avant que `nadia-prof` ne prix `MAT-CE1-14`.
+3. **Les lots deja ecrits et recevables, inchanges** : mathematiques puis EMC puis questionner le monde, comme `Q-02` l'a maintenu (`DEC-0120` A.35) : `MAT-CE1-10`, `-11`, puis `EMC-CE1-02` a `-04`, puis Q1 a Q10. Aucune des six reponses ne reordonne ces lots.
+4. **Les lots que ces reponses ajoutent**, apres ceux du point 3 faute de critere de produit qui les prefere : `MAT-CE1-14` (si l'avis et le prix existent ; rang a donner a la composition, `A.35` ne la range pas) et `FRA-CE1-27` moitie *ecouter* (si `TRV-CE1-1` est amende). Un seul des deux par palier tant qu'une instance sans cousine est ouverte (`PAR-13`) : la question de leur cousinage est a `nadia-prof`, pas a moi.
+5. **A s58 au plus tot** : `FRA-CE1-09` puis `-08`, **si** `nadia-prof` maintient son avis.
+6. **Rien** pour `QLM-CE1-09`, `-11`, `MAT-CE1-02`, `-09`, `FRA-CE1-29`, `-21`, `ART-CE1-01`, `-02` tant que leur obstacle n'a pas de reponse.
+
+**Report, compte.** Aucun lot nouveau n'est ecarte par cette proposition. Les lignes a dessin portent leur propre decompte (`DEC-0123` 3.3, 26 jours depuis `DEC-0099`).
+
+**Identifiants.** Aucun identifiant de condition neuf n'est alloue ici ni dans `DEC-0123` : tous ceux qui sont cites existent deja. La story ecrite en fin de backlog n'emploie aucun identifiant non alloue ; son nom (`S57-BR-MAT-CE1-14-GRILLE`) suit le modele des stories voisines.
+
+Non commite. Matrice (148 / 200) et `planning.md` non touches.
