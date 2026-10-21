@@ -11,6 +11,19 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `theo-archi`, s57, palier 3, le 2026-10-21 (allocation mecanique, clause 2 rouge sur `round-two` apres la fusion de `s57-ines-p3`).**
+Deux identifiants ajoutes, **`PL-9`** et **`PL-10`**, codes de constat de la remesure du pli dans
+`squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md`, ecrits par `ines-design` sans
+allocation. Prefixe `PL` deja alloue (`PL-1` a `PL-8`, note ci-dessous) : numeros suivants. Aucun sens n'est recopie ici
+(clause 4) : il vit dans le tableau de ce fichier. Aucune allocation retiree, aucun autre identifiant manquant ; le rapport
+de `yanis-qa` sur les mutations CSS (`rapport-qualite-palier-3-mutations-css.md`) n'en emploie aucun.
+
+Ligne d'etat courant portee de **994 / 179 a 996 / 179**. **Methode : le chiffre est celui que le garde-fou affiche sur
+mon diff.** `bash outils/mvn-jdk21.sh -B -q -pl bootstrap -am test -Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend : *"declare 994 identifiants
+alloues et 179 prefixes distincts, sa table en porte 996 et 179"*, seul echec des 10 tests. C'est ce **996 / 179** que je
+recopie.
+
 **Note de `theo-archi`, s57, palier 3, le 2026-10-20 (allocation mecanique, clause 2 rouge sur le checkout de `round-two`).**
 Huit identifiants ajoutes, **`PL-1`** a **`PL-8`**, les codes de constat du resume de
 `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md`, ecrits par `ines-design` sans
@@ -917,7 +930,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `994` identifiants alloues, `179` prefixes distincts.
+**Compte courant, verifie par la CI** : `996` identifiants alloues, `179` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2046,6 +2059,8 @@ clause 2 par une exemption.
 | `PL-6` | `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md` |
 | `PL-7` | `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md` |
 | `PL-8` | `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md` |
+| `PL-9` | `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md` |
+| `PL-10` | `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md` |
 | `PLA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
 | `PLU-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `PLU-2` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
