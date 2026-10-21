@@ -2100,3 +2100,116 @@ C'est la forme de l'ecart que la lecon 6 de `retro-palier-2.md` voulait eviter (
 ### 5. Decisions prises
 
 **Aucune `ADR` ni `DEC` creee ou modifiee par cet amendement.** Il ecrit : deux corrections de citation, les mots de la delegation du 2026-10-19 avec leur etat, l'etat des mots de `AD1`, `AD2`, `AD4` au 2026-10-21 17:36, et trois engagements livres sans amendement. Il ne modifie aucun prix, lot, instance ni critere de story.
+
+## Amendement du 2026-10-21 22:13 (UTC+02:00), ouverture du palier 4
+
+Annotation datee, heure lue par `date`, **inscrite avant l'ouverture de tout worktree du palier 4** (`D2` (c), precedent s56 et paliers 1 a 3). **Rien au-dessus n'est reecrit** ; cet amendement ne remplace aucune phrase. Arbre : `round-two` a `eca79363`, `bash outils/verifier-lignee.sh` sort 0, `git status --short` ne montre que `composition-palier-4.md` (non suivi, ecrit pour ce geste) avant ecriture, casquette Scrum Master. Sources, par auteur : `sofia-sm` (`cloture-palier-3.md`, `e4d54795`, sections 8, 9, 13, 14 et amendements ; `retro-palier-3.md`, `456654f8`) ; `nadia-prof` (`arbitrage-nadia-palier-4.md`, `cae06461` puis `f197dc39`, sections 1 a 8) ; `camille-po` (`preparation-palier-4-camille.md` sections 11 a 13 et `DEC-0120` A.145 a A.152, `e573613d` ; amendement de `S57-BR-FRA-CE1-21`, `eca79363`) ; `theo-archi` (`avis-theo-palier-4.md`, `fedaf20f`, sections 1 a 7). **Cet amendement ouvre le palier 4. Il n'ouvre aucun worktree** : `K1 (a)` des stories demande qu'il soit sur `round-two`, et il l'est par le commit qui le porte.
+
+**Mots de l'utilisatrice**, forme 2 de `DEC-0062` (cites mot pour mot, 2026-10-21, `E5` ferme, `squad/README.md` section 2 bis) : *"LP9 oui on peut augmenter le poids des dessins / QP3 plafond accepté / composition de palier 4 OK / pousse après tout ça"* ; *"1 quatre instances"* ; *"QP6 lea dev pour B et sofia pour A'"* ; *"QP7 après un palier 5 voir 6 je ne sais pas encore"* ; *"QP5 oui"* ; *"E5 oui ça vaut pour mes mots"*. Le seuil de 20,0 est quatre instances de 5,0 ; `PAR-8` ne change pas. *"pousse après tout ça"* est un geste de depot, pas une decision de produit : **je ne pousse pas dans ce geste** (voir 11).
+
+### 1. Regle d'ouverture (`D2`), condition par condition
+
+| Condition de `D2` | Preuve lue sur l'arbre | Etat |
+|---|---|---|
+| (a) `cloture-palier-3.md` sur `round-two`, pour toutes les instances | `git show HEAD:<chemin>` sort 0 pour `cloture-palier-3.md` (un seul fichier pour A, A' et B) et pour `retro-palier-3.md` | tenue |
+| (b) arbitrage prealable de `nadia-prof`, chaque instance | meme commande sur `arbitrage-nadia-palier-4.md` : sort 0 ; section 2.5 (capacite A, B, A'), 3 (lots), 8.4 (quatre instances, composition recevable). **Deux reserves de sa main que la composition ne leve pas** : `LP6` (*"je maintiens ma recommandation de 3.3 de ne pas le prendre"* ; la composition le prend sous sa condition) et `LP9` (*"s'il est pret avant l'ouverture"*, il ne l'est pas). Son total au-dela de 8,0 est la decision de l'utilisatrice, ecrite comme telle (8.4) | tenue |
+| (c) composition de `camille-po`, avec la reference de l'arbitrage, heure avant les worktrees | `preparation-palier-4-camille.md` section 11 et `DEC-0120` A.148 : `git show HEAD:<chemin>` sort 0 ; approuvee par *"composition de palier 4 OK"*. Reference de l'arbitrage : `arbitrage-nadia-palier-4.md`. `git worktree list` rend 2 lignes (le checkout et celui de `main`) ; `git branch --list 's57-*'` rend 0 ; aucune branche de la section 6 de `composition-palier-4.md` n'existe | tenue par cet amendement (sections 2 a 4) |
+| (d) table d'isolation du palier, repertoires et ports neufs | `composition-palier-4.md` section 6, commite **avant** cet amendement (premier des trois commits de ce geste). **Meme ecart a la lettre de `D2` (d) qu'au palier 3** (*"l'amendement porte la table"*) : la table est dans ce fichier-la et cet amendement la designe ; je ne la copie pas ici pour qu'elle ne puisse pas deriver en deux endroits. Ports : ceux du palier 3, aucun numero neuf ; une ligne par agent lance, `ines-design` (deux lignes), `yanis-qa`, `nadia-prof` (trois), `camille-po` et `relecteur-pedagogique` compris ; 18522 n'est donne a personne | tenue par `composition-palier-4.md`, designe ici |
+
+Les quatre conditions sont tenues. **Ce que `D2` ne demande pas et qui n'est pas tenu** est dans `composition-palier-4.md` section 8 (OV1 a OV10), nomme pour qu'aucun ne passe pour clos. Ceux qui pesent sur l'ouverture des worktrees ou sur la lecture du palier : **les rapports de `marc-dev` et de `lea-dev` du palier 3** (OV1), le registre de prix (OV3, OV4), les conditions de `LP9` (OV5), la lecture de `nadia-prof` sur l'amendement de `S57-BR-FRA-CE1-21` (OV9).
+
+### 2. Composition portee (`camille-po`), prix de `nadia-prof`
+
+Reprise de `DEC-0120` A.148 et de `arbitrage-nadia-palier-4.md` **sans modifier un prix, un lot ou une instance**. Somme recomptee par `awk` sur treize lignes de prix, sortie lue ce jour : A 2,00 ; A' 4,00 ; B 4,50 ; total 10,50 ; engage 7,50 ; non engage 1,50 ; marges 1,50 ; 7 lots.
+
+| Instance | Total | Engage a l'ouverture | Marge, allouee a aucun poste | Non engage, retenu | Lots |
+|---|---|---|---|---|---|
+| A, `marc-dev` | 2,0 | 1,5 (arbitrage 0,5 ; `LP1` 1,0) | 0,5 | 0 | 1 |
+| B, `lea-dev` | 4,5 | 2,5 (arbitrage 0,5 ; `LP2`, `LP3` 2,0) | 0,5 | 1,5 (`LP9`) | 3 |
+| A', `sofia-sm` | 4,0 | 3,5 (arbitrage 0,5 ; `LP4`, `LP5`, `LP6` 3,0) | 0,5 | 0 | 3 |
+| C | 0 | n'ouvre pas : aucun lot recevable, aucun developpeur distinct, aucun arbitrage | - | - | 0 |
+
+Bornes relues : total 10,5 sur 20,0 (decision de l'utilisatrice, *"1 quatre instances"*) ; plafond de 5,0 par instance et trois lots au plus (`PAR-8`) : B et A' sont au plafond de lots, aucune n'est au plafond de prix ; `PAR-9` a 10,5 sur 20,0 : question a `nadia-prof` (`DEC-0120` A.151 point 3). Ecart a `camille-po` : elle ecrit `engage 9.00` (`LP9` compte engageable) ; j'ecris 7,50 engage et 1,50 non engage, parce que ses conditions (`A.149`) ne sont pas ecrites.
+
+### 3. Ordre et fusion
+
+Ordre produit de `camille-po` (`A.148`, `A.35` : mathematiques, francais, EMC ; `LP9` en dernier dans B, `LP6` en dernier dans A') ; **engage comme ordre de planning**, pas comme decision de produit ou d'architecture. Fusion : premier pret, premier fusionne, une a la fois, **un seul `verify` complet a la fois sur le poste** (jeton), regles `RF1` a `RF13` de `composition-palier-4.md` section 5.2. **Regle des deux casquettes** (section 5.3 du meme fichier) : pendant un lot de A', personne d'autre ne fusionne ; l'agent lanceur ne lance pas un lot de A' tant qu'une branche prete attend sa fusion.
+
+### 4. Postes du palier 4, verification poste par poste (`PAR-16`) : les stories nommees (`K1 (a)`)
+
+Numerotation propre au palier 4. Titres lus par `grep -c "^#\{3,4\} .*<story>" docs/backlog/backlog.md` sur `eca79363`. Le detail (prix, issue de `DEC-0086` section 5, hors composition) est dans `composition-palier-4.md` section 3. **Cette annotation est la ligne de chaque story avant sa fusion** (A-7).
+
+| # | Poste | Story, titres au backlog | Inst. | Agent nominatif | Etat |
+|---|---|---|---|---|---|
+| p4-1 | Arbitrage prealable et lecture complete | `S57-ARB-PALIER-4` : **0** | A, A', B | `nadia-prof` | **engage sans story**, ecart dit (a `camille-po`) ; part ecrite livree |
+| p4-3 | `LP1` `ce1-mots-invariables` en saisie | `S57-BR-FRA-CE1-21` (2) | A | `marc-dev` | **engage** ; worktree sous OV1 |
+| p4-4 | `LP2` `ce1-masses-contenances` | `S57-BR-MAT-CE1-10` (1) | B | `lea-dev` | **engage** ; worktree sous OV1 |
+| p4-5 | `LP3` `ce1-calendrier-dates` | `S57-BR-MAT-CE1-11` (1) | B | `lea-dev` | **engage** ; worktree sous OV1 |
+| p4-6 | `LP9` grille dessinee, forme (a) | `S57-BR-MAT-CE1-14-GRILLE` (6) | B | `lea-dev` | **non engage**, premier report ; engage par un amendement date quand OV5 est ecrit |
+| p4-7 | `LP4` `ce1-emc-regle-sanction` | `S57-BR-EMC-CE1-02` (1) | A' | `sofia-sm`, casquette developpeuse | **engage** |
+| p4-8 | `LP5` `ce1-emc-droit-devoir` | `S57-BR-EMC-CE1-03` (1) | A' | `sofia-sm`, casquette developpeuse | **engage**, apres la fusion de `LP4` |
+| p4-9 | `LP6` `ce1-emc-interet-commun` | `S57-BR-EMC-CE1-04` (1) | A' | `sofia-sm`, casquette developpeuse | **engage sous condition** : verdict de `LP4` ou `LP5` sans refus |
+| p4-10 | Garde de la longueur de partie, liste fermee | `S57-GARDE-NOMBRE-DE-MANCHES` (1) | hors `PAR` | `marc-dev`, apres `LP1` ; forme `theo-archi` ; morsures `yanis-qa` | **engage** |
+
+`p4-2` (les trois marges de 0,5) n'est pas un poste de travail. **Hors composition, non engages, aucun developpeur designe** : `S57-GARDE-CE1-PROPOSITIONS-ET-SUPPORTS` (garde `E3`), `S57-TYP1-TEXTES-DE-GABARIT`, `S57-MESSAGE-PARTIE-PERDUE`, les commentaires de `src/` (ecarts 33, 40 a 44, 37 et 38 pour la part code : aucune story), l'extension de `verifier-chemins.sh` (ecart 39, `theo-archi`), `LP7` et `LP8`.
+
+### 5. Affectations nominatives
+
+`marc-dev` pour `LP1` puis `S57-GARDE-NOMBRE-DE-MANCHES` (`RG1`, `RG3` ; le developpeur de la seconde est designe ici, la story le disait non designe) ; `lea-dev` pour `LP2`, `LP3`, `LP9` (*"lea dev pour B"*) ; `sofia-sm`, casquette developpeuse, pour `LP4`, `LP5`, `LP6` (*"sofia pour A'"*). `RG2` tenue, aucun ecart. **A-5 de `retro-palier-3.md`** (*"Je ne compose pas un poste d'un developpeur dont le rapport du palier precedent manque"*) : `ls squad/sprints/s57-*/rapport-*palier-3.md` ne rend que `rapport-sofia-dev-palier-3.md` et `rapport-qualite-palier-3.md`. **Lecture retenue, dite** : A-5 est une porte d'ouverture de worktree, pas d'engagement ; aucun worktree de `marc-dev` ni de `lea-dev` ne s'ouvre avant son `rapport-<developpeur>-palier-3.md` sur `round-two`. La lecture stricte coute un premier report a quatre postes ; elle est a l'utilisatrice (`composition-palier-4.md` section 9, `AP1`).
+
+### 6. Isolation
+
+`composition-palier-4.md` section 6, designee par la condition (d) : repertoires `s57-p4-<agent>-<instance>`, un port de jeu et un port de debogage par ligne, jeton de `verify` `s57-p4-jeton-verify`, consigne ecrite a repeter en tete du message de lancement de chaque agent, branches et worktrees nommes, aucun n'existe a l'ecriture.
+
+**Mesure de la racine a cet amendement** (A-4), lue a 22:13 dans le scratchpad de la session, commandes sous forme portable, sorties lues :
+
+- `find <racine du scratchpad> -maxdepth 1 -mindepth 1 -type f | wc -l` : **72**
+- `find <racine du scratchpad> -maxdepth 1 -mindepth 1 -type d | wc -l` : **29**, dont `s57-p4-camille-po-t` et `s57-p4-sofia-sm-t`, les deux seuls de la table du palier 4
+- `ls -A <parent des worktrees> | grep -c "^recreo-s57"` : **0**
+- `git worktree list | wc -l` : **2** ; `git branch --list 's57-*' | wc -l` : **0**
+- `netstat -ano | grep -cE ":(185|192)[0-9]{2} "` : **0**
+
+Ces 72 fichiers et ces 27 repertoires hors table datent du palier 3 et d'avant ; aucun n'est attribue ici. La mesure est faite par la session qui ecrit dans ce scratchpad : **conflit d'interet dit**, `nadia-prof` lit la commande et sa sortie (`arbitrage-nadia-palier-4.md` 8.3 point 2).
+
+### 7. Seuil d'alerte de duree (A-9)
+
+Ouverture a **2026-10-21 22:13** ; seuil de `D4` (41 h 38 min) franchi a **2026-10-23 15:51**. Passe cette heure avec un poste engage non audite, je le dis a l'utilisatrice le jour meme dans `alerte-p4.md` d'une ligne datee. Le seuil ne clot rien et ne limite rien. Le palier 3 a dure 43 h 3 min.
+
+### 8. Compte des reports
+
+Regles de `DEC-0120` A.66 a A.73 : un report est un poste retenu par la composition et non engage a l'ouverture, quelle qu'en soit la cause.
+
+| Poste | Etat a l'ouverture | Compte |
+|---|---|---|
+| `LP1` a `LP5` | engages | pas de report ; premier ecartement du palier 3 solde par l'engagement (`A.150`) |
+| `LP6` | engage sous condition | report a la cloture si la condition ne tient pas : deuxieme ecartement |
+| `LP9` | **non engage** | **premier report** ; un troisieme demande une `DEC` ; compte a confirmer par `camille-po` (`composition-palier-4.md` `AP2`) |
+| p4-10 | engage | premiere inscription dans une composition |
+
+### 9. Arrets d'agents (A-1)
+
+**Aucun arret n'est ecrit a l'ouverture** : aucun agent du palier 4 n'est lance. Les arrets de s56 et du palier 3 dont l'utilisatrice a les faits : **faits non fournis**, je n'ecris ni heure ni motif (`DEC-0116`, `Q-U6`, close faute de source). Regle de reprise : `composition-palier-4.md` `RF9`. Chaque arret ecrit ici une ligne datee **au moment ou il survient**, avec ses trois champs : qui, quand, ce que la branche portait.
+
+### 10. A decider
+
+Je classe, je ne reponds a aucune. Le detail est dans `composition-palier-4.md` section 9 : `AP1` (lecture d'A-5), `AP2` (compte de `LP9`), `AP3` (`PAR-9`), `AP4` (story d'`E3`), `AP5` (`DEC` pour les deux stories a leur troisieme non-entree), `AP6` (les quatre decisions de `cloture-palier-2.md` section 13, toujours sans reponse : je n'ai modifie ni `ci.yml` ni `outils/mvn-jdk21-test.sh`).
+
+### 11. Ce que cet amendement ne fait pas
+
+N'ouvre aucun worktree, ne cree aucune branche, ne lance aucun agent, ne fusionne rien, **ne pousse rien** (la poussee demandee par l'utilisatrice est un geste a part, apres ces commits, avec `.env` charge). Ne modifie aucun prix, aucun lot, aucune instance, aucun critere de story. Ne prononce aucun Done, ne juge aucun contenu, ne touche pas la matrice (152 / 202, `camille-po`). Ne modifie aucun fichier signe par un autre agent : `planning.md` s'amende par cette annotation datee (`D2`).
+
+### 12. Jobs de `ci.yml` lances pour ces commits
+
+Lances depuis le checkout, avec `composition-palier-4.md` (non suivi) et les amendements de `planning.md` et de `cloture-palier-3.md` presents, avant tout commit. Sorties dans mon repertoire de scratchpad. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`chemins`** : `bash .github/scripts/verifier-chemins-test.sh` : *"Tous les cas passent : le garde-fou de chemins mord, et sur le bon motif."* ; `git ls-files` (moins le test du garde-fou) plus `composition-palier-4.md` passes a `verifier-chemins.sh` : *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, sortie 0.
+- **`build`, mesure partielle** : `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test` restreint a `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`, `AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest`, `ToutesLesReferencesDeDecisionResolventTest` et `LesGardeFousSontMisALEpreuveTest`, `-am` present, **perimetre ces quatre classes** : `BUILD SUCCESS`, **28 tests** (10, 5, 3, 10), 0 echec, 0 erreur, 22:18 a 22:21 (3 min 11 s). Lance parce que ces tests lisent `squad/` par `Files.walk`, fichiers non suivis compris. **Ce n'est pas le total du depot** : le `verify` complet, l'etape *"Package du fat jar"* et le job `outils` ne sont pas lances, ce changement ne touche ni code ni contenu servi ni outil. Dernier total mesure sur arbre propre : 2855 tests, mesure de `theo-archi` sur `50dbd73f` (`avis-theo-palier-4.md` 3.5), **pas la mienne**.
+- **`prefixes`** : non lance ; il juge les prefixes des commits de ce geste, ecrits `[SOF]`, et ne s'applique qu'une fois les commits faits. **`outils`** : non lance.
+- Lignee : `bash outils/verifier-lignee.sh` sort 0 avant l'ecriture.
+- **Ecrit apres la mesure** : la presente section 12 et la phrase de la ligne `build` qui cite 22:18 ; `verifier-chemins.sh` a ete relance apres elles, sortie 0 ; les quatre classes ne l'ont pas ete.
+
+Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue. **Le Done technique n'est pas prononce par moi.**
+
+### 13. Decisions prises
+
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il ecrit : l'heure d'ouverture du palier 4 ; l'etat des quatre conditions de `D2` ; la composition de `camille-po` portee, sans changement de prix, de lot ni d'instance ; l'ordre engage comme ordre de planning ; les affectations, dont celle de `S57-GARDE-NOMBRE-DE-MANCHES` a `marc-dev` ; la lecture d'A-5 retenue ; la designation de la table d'isolation de `composition-palier-4.md` ; le compte des reports ; l'heure du seuil d'alerte. L'amendement de `DEC-0120` qui porte l'etat d'ouverture est a `camille-po`.
