@@ -11,9 +11,10 @@
 - **Conditions opposables** : `MAS-CE1-1` a `MAS-CE1-6` (`ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md`, 3.4) ;
   `arbitrage-nadia-preparation-palier-3-ce1.md` 4.1 et 4.3 (mention exacte et refus ecrits d'avance) ;
   `arbitrage-nadia-palier-4.md` 3.2.
-- **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-10-22 par `nadia-prof` (s57, palier 4, instance B), ligne
+- **Statut global** : **VALIDE**, prononce au rejeu du 2026-10-22 par `nadia-prof` (s57, palier 4, instance B), sur `c29d1d26` ;
+  VALIDE SOUS RESERVE au premier passage (`fc6ee0a1`), reserves levees. Ligne
   `en cours`. Fiche ouverte le 2026-10-22 par `nadia-prof`.
-- **Derniere mise a jour** : 2026-10-22.
+- **Derniere mise a jour** : 2026-10-22, rejeu.
 
 ---
 
@@ -94,3 +95,44 @@ taille des objets (reserve 2) ; la famille d'un distracteur de conversion ; qu'a
 **lecture complete : ce1-masses-contenances, 21 items lus** - 2026-10-22, 13:23 (UTC+02:00), lu par `date`, sur la branche
 `s57-lea-mat-ce1-10` a `c29d1d26` (`grep -c "bonneReponse:"` rend 21). `git diff --name-only fc6ee0a1 c29d1d26` nomme le paquet :
 le rejeu est du. Lus : les 21 items, l'en-tete, le diff du paquet depuis `fc6ee0a1` (items 11, 14, 15, 16, 18, 19, 21).
+
+### Verdict du rejeu, 2026-10-22 (`nadia-prof`) : **VALIDE**
+
+Le verdict du premier passage reste ecrit au-dessus ; celui-ci s'y ajoute.
+
+**Done pedagogique prononce sur `c29d1d26`**, sommet de `s57-lea-mat-ce1-10`. **La ligne `MAT-CE1-10` reste `en cours`.**
+
+**Commit joue** : `c29d1d26`, jar construit dans un worktree detache de mon cru a ce commit (`-pl bootstrap -am package
+-DskipTests`, mesure partielle), port 18513, *"Tomcat started on port 18513"* et PID lus dans mon journal, arrete par PID. Jeu par
+moi, requetes HTTP : 8 parties de 10 manches, 21 enonces servis sur 21, aucun enonce inconnu du paquet ; les items changes servis
+dans plusieurs ordres de propositions.
+
+**Reserves du premier passage, levees** (verifie) :
+
+1. Item 11 : distracteurs *50 g* (erreur de facteur 10) et *1000 g* (le demi oublie), deux familles de `MAS-CE1-6` ; rang de la
+   bonne reponse au milieu, inchange.
+2. Comparaisons : 14 (lapin 3 kg, chat 4 kg, chiot 2 kg), 15 (livre 600 g plus lourd qu'un oreiller de 400 g), 16 (stylo, feutre,
+   crayon), 18 (pichet, cruche, theiere), 19 (saladier 5 L plus qu'une marmite de 4 L). Au moins 5 comparaisons sur 10 ne se
+   resolvent plus par la taille des objets (12, 13, 14, 15, 16, 19, 20) : la barre que j'avais ecrite est atteinte. L'item 18 se
+   devine encore en partie (une theiere est petite) ; je ne le demande pas, la barre etait la moitie.
+3. Indices des items 18 et 21 : *"L'objet qui a le plus petit nombre contient le moins."*
+
+**Retenu apres le rejeu** : `MAS-CE1-1` (12 masses, 9 contenances) ; `MAS-CE1-2` (*g*, *kg*, *L* majuscule) ; `MAS-CE1-4` (plus
+grand nombre 1000, valeurs plausibles) ; `MAS-CE1-5` ; `MAS-CE1-6`, rangs recomptes a la main sur les 13 items : haut 5 (9, 12,
+15, 17, 19), bas 5 (10, 13, 16, 18, 21), milieu 3 (11, 14, 20). Exactitude des sept items changes recalculee : aucune erreur.
+
+**Pli** : non remesure par moi ni, a ma connaissance, sur ce commit. Au premier passage, `ines-design` mesurait 0 item sur 21
+sous le pli apres une erreur (`089fb477`, sur `fc6ee0a1`) ; les enonces changes ont la meme longueur que ceux qu'ils remplacent.
+Si le releve du commit fusionne montre un indice sous le pli, c'est une reserve non bloquante (4.1 point 4).
+
+**Cellule de matrice** (question routee) : **oui**, la mention exacte est a ecrire par `camille-po` dans la cellule de `MAT-CE1-10`
+avant que la ligne bouge, ou dans le meme commit : *"comparer des masses et des contenances et utiliser le gramme, le kilogramme et
+le litre, par du texte ; 'mesurer' reste non couvert, aucune balance ni aucun recipient gradue n'est rendu"*
+(`arbitrage-nadia-preparation-palier-3-ce1.md` 4.3, critere 5 de la story). Sans elle, ce Done ne fait pas bouger la ligne.
+
+**Marge** : ce rejeu (`RF13`, paquet change apres mon jeu) consomme la marge de B (0,5).
+
+**Je reste la seule garde** : la plausibilite des valeurs ; qu'une comparaison ne se resolve pas par la taille des objets ; la
+famille d'un distracteur de conversion ; qu'aucun item ne serve *mesurer*.
+
+**Signe** : `nadia-prof`, 2026-10-22.
