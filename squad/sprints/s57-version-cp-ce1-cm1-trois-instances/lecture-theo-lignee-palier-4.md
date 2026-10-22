@@ -179,3 +179,87 @@ Compte de regles (methode d'`ADR-0104`) : **41, 38, 16** sur les trois nouveaux 
 - **`build`, mesure partielle** : 6.3, puis les quatre gardes de `squad/` de la section 5 sur ce fichier amende (resultat dans le message de commit).
 - **`chemins`** : ce fichier, avant commit.
 - **`build` complet, `package`, `outils`** : non lances.
+
+## 7. Amendement du 2026-10-22, 14:41 (UTC+02:00) : troisieme passage, `LP1` et `LP4` corriges, branche de `camille-po`
+
+Nouveaux sommets annonces par l'agent lanceur : `LP1` `f8d5d875` (avant `24a9315b`), `LP4` `41203188` (avant `1152fdc9`). `LP2` reste a `c29d1d26`. Branche `s57-camille-p4` a `4a49c3f3`, lue sans rien ecrire. `git rev-parse --short` rend ces quatre sommets, et `round-two` reste a `eb267ba7`. Meme methode et meme isolation qu'en section 6. **Les sections 1 a 6 ne sont pas reecrites.**
+
+### 7.1 Lignee
+
+| Branche | Sommet | `merge-base --is-ancestor eb267ba7` | ancien sommet ancetre | `git log --oneline eb267ba7..<sommet>` |
+|---|---|---|---|---|
+| `LP1` | `f8d5d875` | **0** | 0 (`24a9315b`) | 9 commits `[MARC]` : `f8d5d875`, `8c76b1c7`, puis les 7 de 6.1 |
+| `LP4` | `41203188` | **0** | 0 (`1152fdc9`) | 5 commits `[SOF]` : `41203188`, puis les 4 de 6.1 |
+| `s57-camille-p4` | `4a49c3f3` | **0** | - | 1 commit `[CAM]` : `4a49c3f3` |
+
+### 7.2 Diffs depuis les anciens sommets
+
+- **`LP1`** (`git diff --stat 24a9315b f8d5d875`) : le paquet `ce1-mots-invariables.yaml` (item 12, +7 -7) et son rapport. Aucun fichier Java.
+- **`LP4`** (`git diff --stat 1152fdc9 41203188`) : le paquet, `PaquetCe1EmcRegleSanctionTest.java` (26 lignes Java supprimees, aucun `@Test` supprime) et la fixture `ce1-emc-fautif.yaml`.
+
+Sur les deux sommets, depuis `eb267ba7` : aucun fichier sous `src/main/java`, aucun marqueur ajoute (`@Disabled`, `@Ignore`, `ArchIgnore`, `allowEmptyShould`, `assume`), aucun fichier partage modifie depuis la section 6.
+
+### 7.3 `LP4` : une garantie est perdue, et une seule
+
+Je lis chaque changement du test du lot en me demandant ce qu'il interdisait et ce qu'il interdit maintenant.
+
+| Changement | Avant | Apres | Garantie |
+|---|---|---|---|
+| Chevrons | presents si et seulement si la cible est `regle` | presents dans les 12 enonces de la tache 1, absents des 12 de la tache 2 (forme (a), decision de l'utilisatrice) | **deplacee, pas perdue.** Avant, le chevron designait la cible. Apres, c'est la question qui la designe : `verifierLaQuestionDeLaTache1` exige que la question reprenne la regle citee **si et seulement si** la cible est `regle`. Les deux sens mordent sur des jeux fautifs neufs (`Mila a arrache avec une autre regle`, `Tom a dessine avec la regle dans la question`). L'absence de chevrons en tache 2 reste gardee |
+| Forme de la question de tache 1 | non gardee | `<element>, c'est quoi ?`, sans chevrons, identique pour les trois cibles | **neuve**, deux jeux fautifs |
+| Melange de regles affirmatives et negatives | non garde | entre un quart et trois quarts de regles negatives | **neuve**, un jeu fautif |
+| **Question de cible `sanction`** | le **premier mot entier** de la question est contenu dans la phrase de l'adulte (`verifierQueLaQuestionReprendLeGeste`, supprimee) | les **trois premieres lettres** du premier mot de l'element sont contenues, n'importe ou, dans la phrase de l'adulte | **affaiblie**, voir plus bas |
+| Phrase de l'adulte | `Le maitre` ou `La maitresse`, avec la majuscule | les memes mots, sans tenir compte de la casse, n'importe ou dans l'enonce | elargie de facon necessaire : la tache 1 ecrit *"... : le maitre lui fait ..."* en minuscule |
+| `GESTE_REPARATEUR` | contient la racine `poser` | racine retiree | **plus stricte**, un jeu fautif (`Lina a poser sans reparation`) |
+| `CRITERE_DU_CP`, mots refuses d'avance | | listes allongees (`toutes`, `chaque`, `chacune`, `devant les autres`, `tape`, et d'autres) | **plus stricte**, cinq sondes fautives neuves |
+| Pli de tache 1 | non garde | 112 caracteres au plus par enonce | **neuve**, un jeu fautif |
+| `fautif(debut)` | `startsWith` | `contains` | **sans perte.** Lecture des selecteurs du test contre la fixture commitee : chacun designe le meme nombre d'items qu'avant, sauf ceux de tache 1, qui commencent par un chevron et que `startsWith` ne pouvait pas trouver. `Negatif` designe 4 items, et c'est le but de son test |
+
+**La garantie perdue, mesuree sur le materiau reel.** Copie de `41203188` ou une seule ligne du paquet change (`diff` contre `git show 41203188:<paquet>` : la ligne 83) : *"... le maitre lui fait le recoller. **Recopier** le livre, c'est quoi ?"* au lieu de *"Recoller ..."*. C'est une question de cible `sanction` qui ne reprend pas le geste de l'adulte. Commande : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test -Dtest=PaquetCe1EmcRegleSanctionTest -Dsurefire.failIfNoSpecifiedTests=false`, 14:32:01 a 14:32:49. Resultat : **exit 0, 78 tests, 0 echec**. La racine `rec` se lit dans `recoller`. Sur `1152fdc9`, la clause supprimee comparait le mot entier `recopier` a la phrase de l'adulte et l'aurait refuse. C'est une **lecture du code supprime, non mesuree** : la forme de la question a change entre les deux sommets. La racine n'est en plus ancree a aucun debut de mot, si bien que `ran` se lit dans `grand`.
+
+**Pourquoi trois lettres, et ce qui suffirait.** La cible `faute` reprend un acte conjugue dans l'enonce (`a copie`, puis *"Copier sur Zoe, c'est quoi ?"*) : un mot entier n'y passerait pas, une racine si. La cible `sanction` reprend un infinitif deja present a l'identique dans la phrase de l'adulte : les quatre enonces de cible `sanction` du paquet (`Recoller`, `S'excuser`, `Ramasser`, `Nettoyer`) repetent le mot entier de l'adulte (lecture du paquet a `41203188`). **La correction a le moins de pieces mobiles** : comparer le mot entier pour la cible `sanction`, comme le faisait la clause supprimee, et garder la racine pour `faute` seule, ancree en debut de mot. Elle vaut un jeu fautif, la mutation ci-dessus. **A `sofia-sm` (auteure de `LP4`), avant la fusion de `LP4`** : c'est une assertion de son lot, pas un garde partage, et je ne l'ecris pas dans sa branche.
+
+### 7.4 ArchUnit
+
+Copie propre par `git archive` dans mon repertoire. Commande et perimetre de la section 2, `-am` present. Pour `LP4`, j'ajoute `PaquetCe1EmcRegleSanctionTest` au perimetre. JDK 21.0.10 (`java.version`, une seule valeur dans les 19 et 20 rapports).
+
+| Sommet | Duree | Code | ArchUnit, 15 classes | Gardes partages, 4 classes | Test du lot |
+|---|---|---|---|---|---|
+| `f8d5d875` (`LP1`) | 14:27:03 a 14:29:24 | **0** | **88 tests, 0 echec** | 56, 0 | non lance |
+| `41203188` (`LP4`) | 14:29:24 a 14:32:01 | **0** | **88 tests, 0 echec** | 56, 0 | 78, 0 |
+
+Compte de regles (`ADR-0104`) : **41, 38, 16** sur `f8d5d875`, `41203188` et `4a49c3f3`. `LP2` n'a pas bouge : la mesure de 6.3 vaut pour lui. Ecart 39 : sur les fichiers ajoutes ou modifies de `LP1`, de `LP4` et de `s57-camille-p4`, `git grep` sur le motif de la section 4.3 sort en exit 1. **Ne bloque rien.**
+
+### 7.5 Conflits attendus
+
+Commande : `git merge-tree --write-tree --name-only --merge-base=eb267ba7` sur chaque paire.
+
+| Paire | Code | En conflit |
+|---|---|---|
+| `f8d5d875` x `c29d1d26` | 1 | `catalogue.yaml` |
+| `f8d5d875` x `41203188` | 1 | `catalogue.yaml` ; inventaire de `TexteAccentue...` |
+| `c29d1d26` x `41203188` | 1 | `catalogue.yaml` |
+| `4a49c3f3` x chacun des trois lots | **0** | aucun |
+
+Le resultat est identique a 3.3 et 6.4. La branche de `camille-po` ne touche aucun fichier des lots. Le catalogue compte 158 entrees sur chaque sommet de lot, 160 apres les trois fusions.
+
+### 7.6 Branche `s57-camille-p4` (`4a49c3f3`)
+
+**Fichiers** (`git diff --name-status eb267ba7 4a49c3f3`) : `docs/backlog/backlog.md` (+29), le fichier de `DEC-0120` (amendement A.153 a A.158, +87), `DEC-index.md` (+2), `MATRICE-couverture.md` (+2 -1 : la cellule de `MAT-CE1-10` reste `non couvert`, avec une mention), `registre-prix-palier-4.txt` (neuf, 15 lignes). Aucun fichier Java ni YAML.
+
+**Coherence des gardes de `squad/`.** Copie propre de `4a49c3f3`, `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest,AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest,ToutesLesReferencesDeDecisionResolventTest,LesGardeFousSontMisALEpreuveTest -Dsurefire.failIfNoSpecifiedTests=false`, 14:32:49 a 14:35:16. Resultat : **exit 0, 28 tests, 0 echec**. Aucun identifiant de condition non alloue, aucune reference de decision qui ne resout pas, aucun tableau mal forme. La numerotation de `DEC-0120` suit la base : A.152 est le dernier titre a `eb267ba7`, et l'amendement ouvre A.153 a A.158 sans trou. Job `chemins` sur ses cinq fichiers : exit 0. `prefixes` sur `eb267ba7..4a49c3f3` : exit 0. Je ne lis ni les prix ni le registre de prix : ils sont a `camille-po` et `nadia-prof`.
+
+### 7.7 Les codes `MP4-1` a `MP4-8` d'`ines-design` : rien a allouer, mais quatre autres identifiants le demandent
+
+Le fichier qui les porte est `mesure-ines-palier-4-pli-744x551.md`, sur la branche `s57-ines-p4` a `2c9b2bb5` (descend de `eb267ba7`, exit 0). Il n'est sur aucune des branches lues plus haut.
+
+- **`MP4-1` a `MP4-8` ne sont pas des identifiants de condition au sens du garde.** `IDENTIFIANT` (`ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest.java:120-121`) veut un prefixe de **deux a cinq lettres majuscules** ; `MP4` porte un chiffre. Le garde ne les voit pas : ce sont des reperes de fichier, comme mes `V1` ou `L`. **Je ne les alloue pas** : une allocation au registre pour un repere que le garde ne lit pas serait une ligne qu'aucune regle ne verifie. Si quelqu'un veut en faire des identifiants de condition, il faut d'abord les renommer dans une forme que le garde lit, et c'est alors a l'auteure de la demander.
+- **Ce qui rougit reellement, mesure.** Copie de `2c9b2bb5`, meme commande qu'en 7.6, 14:35:16 a 14:37:45. Resultat : **exit 1, 28 tests, 1 echec**, `leDepotReelEstCoherent`. Le message nomme **les quatre propositions de prefixe `PR`, numeros 1 a 4** (lignes 190 a 193 du fichier), et elles seules : *"ecrit l'identifiant <prefixe PR, numero 1>, que squad/decisions/REGISTRE-identifiants.md n'alloue pas"*. Je ne les recopie pas sous leur forme : ce fichier-ci rougissait le garde a son tour (mesure faite sur ma premiere version de cette section, 14:45, exit 1, ces quatre identifiants et eux seuls). Le prefixe `PR` est absent du registre a `eb267ba7` (`git grep` vide).
+- **Deux issues, a `ines-design` et a moi.** (1) Ces quatre codes sont des propositions de son releve et non des conditions : elle les renomme en reperes que le garde ne lit pas, dans sa branche. (2) Elles doivent rester citables comme conditions : je les alloue, prefixe neuf `PR`, dans un commit sur un arbre qui contient son fichier. C'est RF8 : `sofia-sm` route l'allocation et attend mon commit avant de fusionner. Je n'alloue pas sur `s57-theo-p4` : le fichier n'y existe pas. Le garde exige que l'allocation resolve, et que cette allocation-la soit rouge sans le fichier est **non verifie**. Le choix entre (1) et (2) est a `ines-design`. Je ne decide pas de la nature de ses propositions.
+
+### 7.8 Jobs lances pour cet amendement
+
+- **`build`, mesures partielles** : 7.3, 7.4, 7.6 et 7.7, toutes avec `-am` et leur perimetre nomme. Puis les quatre gardes de `squad/` sur ce fichier amende (resultat dans le message de commit).
+- **`chemins`** : sur ce fichier avant commit, et sur les fichiers de `s57-camille-p4`.
+- **`prefixes`** : sur `s57-camille-p4`, et sur ma branche avant commit.
+- **`build` complet, `package`, `outils`** : non lances.
