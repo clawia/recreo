@@ -100,7 +100,7 @@ items:
     formeDeReference: "Comment"
     formesAcceptees: []
     indice: "Pense au mot qui sert à demander un nom."
-  - enonce: "Ce livre coûte six euros. ___ coûte-t-il ?"
+  - enonce: "Ce livre coûte six euros. Et ce cahier, ___ coûte-t-il ?"
     formeDeReference: "Combien"
     formesAcceptees: []
     indice: "Pense au mot qui sert à demander un prix."
@@ -124,7 +124,7 @@ items:
     formeDeReference: "sous"
     formesAcceptees: []
     indice: "Pense au contraire de « sur »."
-  - enonce: "Il ne reste qu'une goutte d'eau : il y en a ___."
+  - enonce: "Il ne reste qu'une goutte d'eau : il y en a très ___."
     formeDeReference: "peu"
     formesAcceptees: []
     indice: "Pense au contraire de « beaucoup »."
