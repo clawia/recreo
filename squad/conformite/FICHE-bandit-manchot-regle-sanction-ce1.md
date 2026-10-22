@@ -264,3 +264,11 @@ rejoue que l'item 9 s'il est le seul change, et son prix est 0,25. `LP6` reste s
 **Je reste la seule garde** : qu'un acte appele *faute* en soit une ; qu'aucune forme ne donne la reponse ; `NRC-CE1-1`.
 
 **Signe** : `nadia-prof`, 2026-10-22.
+
+---
+
+## Rejeu 4 du 2026-10-22 (`nadia-prof`, s57, palier 4, instance A' ; `DEC-0120` A.159 a A.163)
+
+**lecture complete : ce1-emc-regle-sanction, 24 items lus** - 2026-10-22, 15:15 (UTC+02:00), lu par `date`, sur la branche
+`s57-sofia-emc-ce1-02` a `f36d83bc` (`grep -c "bonneReponse:"` rend 24). Diff du paquet depuis `41203188` : items 4, 6, 9, 10,
+12 de la tache 1 et l'indice de l'item 12 ; tache 2 inchangee. Mots des 12 enonces de la tache 1 recomptes : 18 a 20.
