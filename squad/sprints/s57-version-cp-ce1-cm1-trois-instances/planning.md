@@ -2299,3 +2299,13 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusi
 RF13 : `git diff --name-only 5b9bb648 fdeff890` ne nomme que `PaquetCe1EmcDroitDevoirTest.java`, une fixture de contre-exemple et `rapport-sofia-dev-palier-4-lp5.md` : ni le paquet, ni un gabarit, ni une feuille de style, ni du code sous `src/main`.
 
 **Ecart a `composition-palier-4.md` 5.3 point 3, dit.** La lecture de lignee de `theo-archi` (`lecture-theo-lignee-palier-4-lp3-lp5.md`) et le rapport qualite de `yanis-qa` (`rapport-qualite-palier-4-lp5-lp3.md`) portent sur `db5e0e6d`, sommet de `LP5` avant son rejeu ; le sommet fusionne est `fdeff890` (quatre commits de `sofia-sm` de plus : contenu des items 14 et 24, indice, test de `D15`). Les deux ecrits sont sur leurs branches et pas encore sur `round-two` ; aucun des deux n'a relu le sommet fusionne. La fusion suit l'ordre explicite de l'utilisatrice du 2026-10-22. Le `verify` complet de l'arbre fusionne est le seul jugement technique de ce sommet ; le total de tests apres un lot de A' est a `yanis-qa`. Cet amendement ne prononce aucun Done et ne touche ni la matrice ni un prix. Le resultat du `verify` et le SHA de fusion sont dans `RAPPORT.md` et `cloture-palier-4.md`.
+
+## Amendement du 2026-10-22 (UTC+02:00), palier 4 : ligne de `p4-10` livree (RF11, `composition-palier-4.md` 5.2)
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-marc-garde-nombre-de-manches` dans `round-two` (RF11). Troisieme des cinq fusions demandees par l'utilisatrice le 2026-10-22 (ordre LP3, LP5, p4-10, fiches de LP3 et LP5, branches de documents).
+
+| Story | Instance, developpeur | Engagement | Prix | Sommet |
+|---|---|---|---|---|
+| `S57-GARDE-NOMBRE-DE-MANCHES`, garde `ChaqueJeuDuCatalogueDureDixManchesSaufDerogationNommeeTest` | A, `marc-dev` | engage a l'ouverture (p4-10), hors `PAR` | hors `PAR`, aucun prix | `4ef4ea82` |
+
+Le diff de la branche ne touche que le test, cinq catalogues de contre-exemple et `rapport-marc-dev-palier-4-garde-manches.md` : aucun contenu servi a l'enfant, aucun paquet, aucun gabarit, aucun code sous `src/main`. Aucun jeu de `nadia-prof`, donc RF13 sans objet. Cet amendement ne prononce aucun Done et ne touche ni la matrice ni un prix. Le resultat du `verify` et le SHA de fusion sont dans `RAPPORT.md` et `cloture-palier-4.md`.
