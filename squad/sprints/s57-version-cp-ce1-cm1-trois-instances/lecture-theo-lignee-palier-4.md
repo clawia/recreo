@@ -111,3 +111,71 @@ Le commentaire `:192-195` dit *"Les cinq paquets sont degrades et non branches a
 - **`chemins`** : sur les trois sommets (4.3) ; sur ce fichier, `verifier-chemins.sh` exit 0, *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*
 - **`build` complet, `package`, `prefixes`, `outils`** : non lances par moi pour les lots ; le `verify` complet est la porte de chaque fusion (RF4).
 - **Le Done technique n'est pas prononce par moi.**
+
+## 6. Amendement du 2026-10-22, 13:25 (UTC+02:00) : relecture sur les sommets corriges
+
+Les trois lots ont change de sommet apres leurs corrections (message de l'agent lanceur). **Les sections 1 a 5 restent vraies pour les anciens sommets et ne sont pas reecrites** ; cette section les remplace pour les nouveaux. Meme methode, meme isolation. `git rev-parse --short <branche>` rend les sommets ci-dessous ; `round-two` reste a `eb267ba7`.
+
+### 6.1 Lignee
+
+| Lot | Nouveau sommet | `git merge-base --is-ancestor eb267ba7 <sommet>` | `... <ancien sommet> <sommet>` | `git log --oneline eb267ba7..<sommet>` |
+|---|---|---|---|---|
+| `LP1` | `24a9315b` | **0** | 0 (`56e9fd1b`) | 7 commits `[MARC]` : `24a9315b`, `ea34c750`, puis les 5 de la section 1 |
+| `LP2` | `c29d1d26` | **0** | 0 (`fc6ee0a1`) | 6 commits `[LEA]` : `c29d1d26`, `a733e582`, puis les 4 de la section 1 |
+| `LP4` | `1152fdc9` | **0** | 0 (`9f3fdd4b`) | 4 commits `[SOF]` : `1152fdc9`, puis les 3 de la section 1 |
+
+Les nouveaux sommets descendent des anciens : aucune reecriture d'historique.
+
+### 6.2 Diffs depuis les anciens sommets
+
+`git diff --name-status <ancien> <nouveau>` :
+
+- `LP1` : le paquet `ce1-mots-invariables.yaml`, `PaquetCe1MotsInvariablesTest.java` (+91, 0 ligne Java supprimee), une fixture neuve `ce1-mots-invariables-fautif-espaces.yaml`, la fixture `-fautif.yaml`, son rapport.
+- `LP2` : le paquet `ce1-masses-contenances.yaml`, `PaquetCe1MassesContenancesTest.java`, la fixture `ce1-masses-fautif.yaml`, `rapport-lea-dev-palier-3.md`.
+- `LP4` : le paquet `ce1-emc-regle-sanction.yaml`, `PaquetCe1EmcRegleSanctionTest.java`, la fixture `ce1-emc-fautif.yaml`.
+
+**Aucun fichier partage n'a bouge depuis les anciens sommets** : ni `catalogue.yaml`, ni l'inventaire, ni `LeRang...`, ni `LesFormesAcceptees...`. La section 3.2 vaut donc telle quelle. **Aucune classe de production** : `git diff --name-only eb267ba7 <sommet> -- '*/src/main/java/*'` est vide sur les trois. **Aucun marqueur** : pas de `@Disabled`, `@Ignore`, `ArchIgnore`, `allowEmptyShould` ni `assume` dans les lignes ajoutees depuis `eb267ba7`. **Aucun `@Test` supprime** depuis les anciens sommets.
+
+Lignes Java supprimees depuis l'ancien sommet, lues une a une, toutes dans le test du lot :
+
+- **`LP2`, 8 lignes** : la clause `MAS-CE1-6` sautait l'item du demi-kilogramme (`continue`) ; elle le juge maintenant, en admettant pour lui seul un distracteur au double (`demi && ecrit == 2 * bonne`). Les autres items gardent les memes formes admises. C'est une extension du perimetre, avec un test neuf qui la fait mordre sur le jeu fautif (`...DemiKilogrammeQuiNEstPasUneErreurDeFacteur`). Les autres ajouts sont des gardes neufs (`LON-CE1-1`, `LON-CE1-2`, `TYP-1`). **Non affaibli.**
+- **`LP4`, 24 lignes**, deux natures :
+  - **plus stricte** : le geste reparateur se lit dans la seule phrase de l'adulte, et non plus dans tout l'enonce, avec des racines ancrees en debut de mot (*"`rendr` ne se lit plus dans `prendre`"*). La liste des mots refuses s'allonge. Plusieurs gardes neufs s'ajoutent (la question reprend le geste, l'adulte de l'indice est celui de l'enonce, l'indice ne donne pas le critere du CP, seuils du pli).
+  - **redefinie** : les familles de distracteurs. Les anciennes `(d)` *"changer ou supprimer la regle"* et `(e)` *"cacher l'acte"* sont retirees. Les familles deviennent `(d)` vengeance, `(e)` plaire a l'adulte, `(g)` laisser l'acte de cote, et la cible `faute` est neuve. Les paires admises par cible changent en consequence. Deux racines s'ajoutent aux gestes admis (`relir`, `pos(er|e)`). Le mecanisme reste le meme : un distracteur hors de toute famille rend `'?'` et le test echoue.
+  - **Pas un affaiblissement d'architecture**, puisque c'est le test d'un lot qui suit son contenu corrige. **Que les familles redefinies soient celles du refus de `nadia-prof` (M1 a M5) n'est pas a moi** : c'est elle qui le lit.
+
+### 6.3 ArchUnit par nouveau sommet
+
+Copie propre par `git archive <sommet> | tar -x` dans mon repertoire de scratchpad. **Commande et perimetre identiques a la section 2** (`-pl adapters/adapter-content,adapters/adapter-web,bootstrap -am test`, 15 classes ArchUnit et les 4 gardes partages). Comptes lus dans les `TEST-*.xml`. JDK 21.0.10 (`java.version`, 19 rapports par sommet, une seule valeur).
+
+| Sommet | Duree | Code | ArchUnit, 15 classes | Gardes partages, 4 classes |
+|---|---|---|---|---|
+| `24a9315b` (`LP1`) | 13:16:18 a 13:18:44 | **0**, `BUILD SUCCESS` | **88 tests, 0 echec, 0 erreur** | 56 tests, 0 echec (`LeRang...` 28, `LesFormesAcceptees...` 4, `ChaquePaquetDeMathematiques...` 14, `TexteAccentue...` 10) |
+| `c29d1d26` (`LP2`) | 13:18:44 a 13:20:59 | **0**, `BUILD SUCCESS` | **88, 0, 0** | 56, 0 |
+| `1152fdc9` (`LP4`) | 13:20:59 a 13:23:16 | **0**, `BUILD SUCCESS` | **88, 0, 0** | 56, 0 |
+
+Compte de regles (methode d'`ADR-0104`) : **41, 38, 16** sur les trois nouveaux sommets, ecart nul. `LeRang...` est vert sur `1152fdc9` : le motif de `ce1-emc-regle-sanction` (*"24 items ... 72 propositions"*) vaut toujours le paquet corrige. Les tests de lot ne sont pas lances ici (RF4).
+
+### 6.4 Conflits attendus
+
+`git merge-tree --write-tree --name-only --merge-base=eb267ba7` sur les trois paires de nouveaux sommets donne le meme resultat que la section 3.3 :
+
+| Paire | Code | En conflit | Fusionne seul |
+|---|---|---|---|
+| `24a9315b` x `c29d1d26` | 1 | `catalogue.yaml` | inventaire |
+| `24a9315b` x `1152fdc9` | 1 | `catalogue.yaml` ; inventaire | `LeRang...` |
+| `c29d1d26` x `1152fdc9` | 1 | `catalogue.yaml` | inventaire |
+
+`catalogue.yaml` compte 158 entrees a chaque sommet, **160 apres les trois fusions**. La resolution reste l'ajout des deux cotes (RF3).
+
+### 6.5 Points routes, sur les nouveaux sommets
+
+- **4.1 (`LP1`, `LeRang...`)** : inchange, le fichier n'a pas bouge depuis `56e9fd1b`.
+- **4.2** : inchange, le fichier n'a pas bouge.
+- **4.3 (ecart 39)** : `git grep -E '[\/][A-Za-z]--[0-9A-Za-z]'` sur les fichiers ajoutes ou modifies de chaque lot depuis `eb267ba7` rend exit 1, aucune ligne. `verifier-chemins.sh` sur ces fichiers rend exit 0. **Ne bloque toujours aucune des trois branches.**
+
+### 6.6 Jobs lances pour cet amendement
+
+- **`build`, mesure partielle** : 6.3, puis les quatre gardes de `squad/` de la section 5 sur ce fichier amende (resultat dans le message de commit).
+- **`chemins`** : ce fichier, avant commit.
+- **`build` complet, `package`, `outils`** : non lances.
