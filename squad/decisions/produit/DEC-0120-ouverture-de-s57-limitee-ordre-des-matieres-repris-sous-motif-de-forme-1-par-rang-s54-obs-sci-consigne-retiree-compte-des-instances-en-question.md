@@ -2433,3 +2433,53 @@ Un rejeu n'est pas un lot : le compte de lots de `PAR-8` ne bouge pas. **Registr
 | `marc-dev` | rien de neuf : `LP1` est corrige (`8c76b1c7`), le rejeu est a `nadia-prof` |
 
 **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne fixe aucun prix, n'engage aucun poste, n'amende ni `planning.md` ni `LP9`, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`. **Decisions de produit prises ici** : (1) la mention de `MAT-CE1-10` est ecrite et la ligne ne bouge pas avant la fusion ; (2) les deux rejeux se placent au palier 4, depassement de 1,0 sous 20,0, prix a confirmer par `nadia-prof` ; (3) `S57-ARB-PALIER-4` et le registre du palier 4 sont ecrits. **Changement de code decide** : le contenu de la tache 1 de `ce1-emc-regle-sanction` (forme (a)), proprietaire `sofia-sm`, story engagee. `DEC-0120` reste `Acceptee`. Aucun identifiant de condition neuf : `Q1` a `Q4` et `QU1` n'ont pas de tiret.
+
+
+## Amendement du 2026-10-22, vingt-sixieme (`camille-po`, palier 4 : verdicts du rejeu 3, quatrieme passage de `LP4`, plafond de `PAR-8`, `FRA-CE1-21`)
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; A.155 est **corrige** par A.160 (prix de `nadia-prof` a la place de mon plafond de 0,5). **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : `round-two` a `eb267ba7`, commit `4a49c3f3` de `s57-camille-p4` ; les fiches de `nadia-prof` sont lues sur `s57-nadia-p4-a` et `s57-nadia-p4-ap`, non fusionnees. Ce que je n'ai pas fait : lancer un jar, jouer un contenu, fixer un prix, engager un poste, toucher `planning.md` ou `LP9`.
+
+### A.159 Les mots
+
+Cites tels que l'agent lanceur me les transmet, 2026-10-22 (forme 2 de `DEC-0062` G) : *"1 oui relance et ca reste au palier 4"*, *"2 a traiter dans le meme passage"*, *"on augmente le plafond pour que ca passe"*. La numerotation *"1"* et *"2"* renvoie a des questions de l'agent lanceur que je n'ai pas lues ; **je les lis** comme : *"1"*, le quatrieme passage de `LP4` se place au palier 4 ; *"2"*, la cellule de `FRA-CE1-21` s'ecrit dans le meme passage que celle de `MAT-CE1-10`. Si l'une des deux lectures est fausse, l'utilisatrice le dit.
+
+### A.160 Rejeu 3 : verdicts et prix de `nadia-prof` ; quatrieme passage de `LP4`
+
+| Lot | Verdict du rejeu 3 (fiche) | Prix de `nadia-prof` |
+|---|---|---|
+| `LP1` `FRA-CE1-21` (A) | **VALIDE SOUS RESERVE** sur `8c76b1c7` | **0,25** (*"Un item reecrit et un indice"*) |
+| `LP4` `EMC-CE1-02` (A') | **REFUSE sur l'item 9 seul**, `M1` leve, sur `41203188` | **0,5** (*"12 items reecrits sur 24, l'item 24 et un indice"*) |
+
+**Ses reponses** : `Q1` oui (18 a 20 mots, 3 phrases) ; `Q2` item 24 et indice de l'item 6 leves, pli en reserve ; `Q3` la forme (a) ne vaut pas pour `EMC-CE1-03` et `-04` (y valent `DDE-CE1-1`, `-2`, `INT-CE1-1`, `-2` et le point d'audit commun) ; `Q4` prix ci-dessus. A.157 est donc repondue, sauf `QU1` (A.161).
+
+**Quatrieme passage de `LP4` : place au palier 4, `propose`.** Motif de l'item 9 (ses mots) : *"effacer un calcul n'est pas une faute"*. Elle rejoue *"que l'item 9 s'il est le seul change"*, **0,25**. Prix : le sien, **a corriger a la hausse seulement sur sa parole** si le commit change plus que l'item 9 (ses reserves 1 a 5 sont non bloquantes ; les y mettre elargit le rejeu). Instance A', agent `nadia-prof` (`s57-p4-nadia-prof-ap`, port 18512), correction `sofia-sm`. **C'est le troisieme refus de `LP4`** : un cinquieme passage n'est pas place ; s'il est refuse, la question va a l'utilisatrice avant tout financement.
+
+**Registre** `registre-prix-palier-4.txt` (16 lignes), `awk -F'|'` lance ce jour : `A 2.25`, `Ap 4.75`, `B 4.50`, **`total 11.50`** ; par etat `engage 7.50`, `consomme 1.50`, `non-engage 1.50`, `facture 0.75`, `propose 0.25`. Sans les trois lignes de rejeu : 10.50, la composition de `sofia-sm`. Le total est le meme qu'en A.155 (1,0 de rejeux), repartis autrement : 0,25 + 0,5 + 0,25. Seuil de 20,0 : reste **8,5**.
+
+### A.161 `QU1` : le plafond de 5,0 par instance
+
+Ses mots : *"on augmente le plafond pour que ca passe"* (A.159). **Elle n'a donne aucune valeur.** Condition posee : *"pour que ca passe"*.
+
+| Instance | Compose | Rejeux places | Total | Sous 5,0 |
+|---|---|---|---|---|
+| A | 2,0 | 0,25 | **2,25** | oui, reste 2,75 |
+| A' | 4,0 | 0,5 + 0,25 | **4,75** | oui, reste **0,25** |
+| B | 4,5 | 0 | 4,5 | oui, reste **0,5** |
+
+**Avec les prix de `nadia-prof` (0,25, 0,5, 0,25), les rejeux deja places passent sous 5,0 : le relevement qu'elle demande n'est pas necessaire pour eux.** **Ma proposition de valeur, a confirmer, pas son chiffre : le plafond de `PAR-8` reste 5,0 par instance, aucun relevement n'est ecrit.** La plus petite valeur qui fait passer les rejeux places est 4,75 pour A' (2,25 pour A, 4,5 pour B) ; 5,0 les contient deja, et un plafond ecrit plus bas que 5,0 serait un abaissement. Je n'ecris donc pas *"relevee"* : sa condition est remplie sans le geste. **Portee, ma lecture a confirmer** : si elle veut quand meme relever, *"pour que ca passe"* vise les rejeux places, pas les postes de l'instance : un relevement pour tous les postes (lots compris) n'est pas dit par ses mots et je ne l'ecris pas.
+
+**Ce que cela change pour les lots sans marge de rejeu** (marges de A, A' et B consommees) : `LP3` (B) et `LP9` (B, non engage) se partagent 0,5 : un rejeu a 0,5, ou deux a 0,25. `LP5` et `LP6` (A') se partagent **0,25** : un rejeu a 0,25, aucun a 0,5. Au-dela, le plafond de 5,0 mord ; un relevement serait alors a ecrire pour ce rejeu, sur sa parole d'alors (*"pour que ca passe"*, applique au cas), valeur proposee par moi et a confirmer. Un seul rejeu de 0,5 en A' a partir de maintenant **depasse** 5,0 (5,25). `QU1` est tranchee dans son principe ; la valeur, non.
+
+### A.162 `FRA-CE1-21` : la cellule est ecrite, la ligne ne bouge pas
+
+Verdict du rejeu 3 : **VALIDE SOUS RESERVE** ; `nadia-prof` ecrit que la ligne peut passer a `couvert-valide` avec, dans la cellule, **ecrites le jour du verdict** : *"mots sans accent seuls tant que l'accent est tolere"* (critere 7) et *"sur la tablette, des mots sont proposes au-dessus du clavier ; un enfant qui en touche un n'a pas ecrit le mot"* (critere 12). **Ecrites, mot pour mot**, dans la cellule de `FRA-CE1-21` (`grep -c` de la premiere phrase : 0 avant, 1 apres), avec la reserve du pli. **La ligne reste `non couvert` jusqu'a la fusion du lot** : meme raisons qu'A.154 (le jeu `saisie-mots-invariables-ce1` et la fiche sont sur des branches non fusionnees). Dans le commit de fusion : `couvert-valide` 153, `non couvert` 44. **152 / 202 ne bouge pas** : meme commande, meme sortie avant et apres (152 / 5 / 45 / 75 / 277).
+
+### A.163 Routage, ce que cet amendement ne fait pas
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | l'engagement du quatrieme passage de `LP4` (`planning.md`) ; le changement de l'item 9 de `ce1-emc-regle-sanction` : **proprietaire `sofia-sm` (A'), story `S57-BR-EMC-CE1-02` engagee, critere 8** ; les fusions de `LP1` et `LP2`, ou les cellules passent (A.154, A.162) |
+| `nadia-prof` | son jeu du commit corrige ; la valeur d'un relevement de `PAR-8` si elle veut en confirmer un |
+| l'utilisatrice | confirmer ou corriger la valeur de A.161 (5,0 inchange) |
+
+**Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne fixe aucun prix, n'engage aucun poste, ne touche ni `planning.md`, ni `LP9`, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. **Decisions de produit prises ici** : (1) le quatrieme passage de `LP4` se place au palier 4, 0,25, `propose` ; (2) les prix de rejeu sont ceux de `nadia-prof` ; (3) le plafond de `PAR-8` reste 5,0, proposition a confirmer ; (4) la cellule de `FRA-CE1-21` est ecrite, la ligne ne bouge pas. **Changement de code decide** : l'item 9 de `ce1-emc-regle-sanction`, proprietaire `sofia-sm`. `OV3` et `AP2` restent ouverts. Aucun identifiant de condition neuf.

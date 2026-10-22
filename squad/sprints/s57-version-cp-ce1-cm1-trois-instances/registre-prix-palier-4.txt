@@ -1,13 +1,14 @@
 A|arbitrage prealable|0.50|engage
 A|marge de rejeu, consommee par le rejeu de FRA-CE1-21|0.50|consomme
 A|FRA-CE1-21 lot|1.00|engage
-A|rejeu 3 de FRA-CE1-21, item 12 seul|0.50|propose
+A|rejeu 3 de FRA-CE1-21, item 12 et indice de l'item 18|0.25|facture
 Ap|arbitrage prealable|0.50|engage
 Ap|marge de rejeu, consommee par le rejeu de EMC-CE1-02|0.50|consomme
 Ap|EMC-CE1-02 lot|1.00|engage
 Ap|EMC-CE1-03 lot|1.00|engage
 Ap|EMC-CE1-04 lot|1.00|engage
-Ap|rejeu 3 de EMC-CE1-02, tache 1 seule|0.50|propose
+Ap|rejeu 3 de EMC-CE1-02, 12 items de la tache 1, item 24, indice de l'item 6|0.50|facture
+Ap|rejeu 4 de EMC-CE1-02, item 9 seul|0.25|propose
 B|arbitrage prealable|0.50|engage
 B|marge de rejeu, consommee par le rejeu de MAT-CE1-10|0.50|consomme
 B|MAT-CE1-10 lot|1.00|engage
