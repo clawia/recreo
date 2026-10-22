@@ -2223,3 +2223,13 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusi
 | `S57-BR-MAT-CE1-10`, paquet `ce1-masses-contenances` | `MAT-CE1-10` | B, `lea-dev` | engage a l'ouverture (p4-4) | un rejeu, pris sur la marge de B (0,5) ; aucun rejeu hors marge, aucun depassement | 1,0 | `c29d1d26`, VALIDE (fiche `FICHE-bandit-manchot-masses-contenances-ce1.md`, branche `s57-nadia-p4-b`) |
 
 Cet amendement ne prononce aucun Done et ne touche ni la matrice ni un prix. Le resultat du `verify` et le SHA de fusion sont dans `RAPPORT.md` et `cloture-palier-4.md`, pas ici.
+
+## Amendement du 2026-10-22 16:14 (UTC+02:00), palier 4 : ligne de `LP4` livree (RF11, `composition-palier-4.md` 5.2)
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-sofia-emc-ce1-02` dans `round-two` (RF11). Deuxieme des trois fusions (ordre LP2, LP4, LP1). Le code et le paquet de ce lot sont de `sofia-sm` sous sa casquette developpeuse ; la lignee a ete lue par `theo-archi` (`lecture-theo-lignee-palier-4.md` section 8, exit 0), le rapport qualite est celui de `yanis-qa` seul (`rapport-qualite-palier-4-lp4-sommet-f36d83bc.md`) et le Done pedagogique est a `nadia-prof` (`composition-palier-4.md` 5.3 point 3).
+
+| Story | Competence | Instance, developpeur | Engagement | Rejeux (prix de `nadia-prof`) | Prix du lot | Sommet joue |
+|---|---|---|---|---|---|---|
+| `S57-BR-EMC-CE1-02`, paquet `ce1-emc-regle-sanction` | `EMC-CE1-02` | A', `sofia-sm` (developpeuse) | engage a l'ouverture (p4-7) | rejeu 2 sur la marge de A' (0,5) ; rejeu 3 : 0,5 (depassement place par `DEC-0120` A.155 et A.160) ; rejeu 4 : 0,25 (A.160, prix de la fiche) | 1,0 | `f36d83bc`, VALIDE SOUS RESERVE (fiche `FICHE-bandit-manchot-regle-sanction-ce1.md`, branche `s57-nadia-p4-ap`) |
+
+Total A' : 4,0 compose plus 0,5 plus 0,25 de rejeux factures, soit 4,75, sous le plafond de 5,0 de `PAR-8` (`DEC-0120` A.161). L'etat `propose` du rejeu 4 au registre de prix est a `camille-po`. Cet amendement ne prononce aucun Done et ne touche ni la matrice ni un prix. Le resultat du `verify` et le SHA de fusion sont dans `RAPPORT.md` et `cloture-palier-4.md`.
