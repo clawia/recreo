@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1EmcDroitDevoirTest. Le jeu ne porte que cinq manches, ou DEC-0121 veut dix.
+jeux:
+  - id: bandit-manchot-droit-devoir-fautif
+    titre: "Les droits et les devoirs"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-droit-devoir
+    nombreDeManches: 5

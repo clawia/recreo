@@ -1,0 +1,222 @@
+schema: 1
+id: ce1-emc-droit-devoir
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CE1"
+  domaine: "Acquérir et partager les valeurs de la République"
+  competence: "Associer quelques droits de l'élève à l'école aux devoirs qui les accompagnent (le droit d'apprendre et le devoir de laisser les autres apprendre)."
+lignesDeReferentiel: ["EMC-CE1-03"]
+#
+# S57-BR-EMC-CE1-03 (s57, palier 4, poste p4-8, lot LP5). Paquet ecrit par sofia-sm, casquette
+# developpeuse, dans le lot, sur la competence EMC-CE1-03 (squad/programme/enseignement-moral-et-
+# civique/competences-ce1.md) et les conditions de nadia-prof : DDE-CE1-1 et DDE-CE1-2
+# (ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md, 4.3), communes d'EMC de
+# 4.4 de arbitrage-nadia-preparation-palier-3-ce1.md, point d'audit commun de FICHE-bandit-manchot-
+# regle-sanction-ce1.md (aucune forme - typographie, mot repris, article, negation - ne donne la
+# reponse). La forme (a) de LP4 ne s'applique pas ici. Rien n'est joue : le Done est a nadia-prof.
+#
+# DDE-CE1-1, la liste fermee des couples, a l'ecole (le test du paquet la relit et la recompte) :
+#   couple 1 : apprendre / laisser les autres apprendre
+#   couple 2 : etre respecte / respecter les autres
+#   couple 3 : parler / ecouter quand un autre parle
+#   couple 4 : etre en securite / ne mettre personne en danger
+# Chaque item declare son couple et son sens (droit->devoir : le droit est donne, on demande le
+# devoir ; devoir->droit : le geste du devoir est donne, on demande le droit protege). La bonne
+# reponse est une des formulations de ce couple et de ce cote, ecrites ici et nulle part ailleurs :
+#   couple 1 droit : apprendre en classe | suivre la leçon | travailler au calme
+#   couple 1 devoir : le laisser travailler | la laisser écouter | la laisser réfléchir
+#   couple 2 droit : être respecté | être respectée | être bien traité | être bien traitée | être traité poliment | être traitée poliment
+#   couple 2 devoir : lui parler poliment | bien les traiter | le respecter
+#   couple 3 droit : prendre la parole | dire son idée | donner son avis
+#   couple 3 devoir : l'écouter en silence | écouter jusqu'au bout | écouter celui qui parle
+#   couple 4 droit : être en sécurité | être à l'abri du danger | se sentir en sécurité
+#   couple 4 devoir : faire attention à elle | jouer doucement avec lui | courir avec prudence
+# Aucun distracteur n'est une formulation d'un couple : un distracteur n'est jamais une reponse
+# defendable d'un autre couple. Les deux sens sont servis pour chacun des quatre couples (douze
+# items droit->devoir, douze items devoir->droit : FER-1 et FER-3).
+#
+# DDE-CE1-2, refus d'avance : aucun item ne presente un droit comme gagne en faisant son devoir, ni
+# comme perdu en y manquant. Aucune situation ne decrit une faute ni une sanction : l'enfant qui
+# agit fait son geste, et le droit de l'autre est dit protege, jamais accorde en retour. Garde sur
+# une liste de mots (gagner, meriter, perdre, retirer, enlever, priver, recompenser, condition,
+# echange, retour) ; que le sens d'un item ne dise pas le contraire reste a la lecture de nadia-prof.
+#
+# TRV-CE1-2, les familles de distracteurs (liste fermee, le test relit chaque distracteur dans sa
+# famille, dans l'ordre du fichier) :
+#   famille a : lui dire la réponse | lui prêter son cahier | lui prêter un crayon | l'inviter à jouer | leur offrir ses jeux | lui donner un cadeau | lui répondre vite | finir sa phrase | parler pour lui | lui tenir la main | lui lancer le ballon | la suivre partout
+#   famille b : arriver à l'heure | finir son travail | apporter son cahier | écrire proprement | apporter son stylo
+#   famille c : emprunter un livre | choisir un livre | se reposer | se reposer un peu
+#   famille f : passer en premier | répondre en premier | décider des jeux | parler tout le temps | avoir la meilleure idée | couper la parole | choisir son équipe | choisir sa place | jouer en premier
+# (a) un geste aimable ou un mot que l'enfant croit utile et qui n'est pas le devoir demande ;
+# (b) un devoir de l'eleve qui ne repond a aucun des quatre droits ; (c) un droit de l'eleve hors
+# des quatre couples (propose quand on demande un devoir, il confond les deux notions) ; (f) une envie
+# ou un comportement qui n'est pas un droit. Les items droit->devoir prennent leurs deux distracteurs
+# dans a, b, c ; les items devoir->droit dans b, c, f. Chaque famille sert au moins trois items.
+#
+# Aucune forme ne donne la reponse (point d'audit commun) : les trois propositions d'un item
+# commencent par une minuscule, sans chevrons ni guillemets ; la bonne reponse n'est jamais la seule
+# a reprendre un mot plein de l'enonce, jamais la seule a porter une negation, jamais la seule a
+# commencer par un pronom complement ; elle est strictement la plus
+# longue des trois dans la moitie des items au plus (TRV-CE1-2, caracteres).
+#
+# NRC-CE1-1 : aucune proposition n'est une proposition de cp-emc-droits-enfant ni de cp-emc-regles-
+# de-vie (le test compare les textes) ; chaque item associe un droit et un devoir, jamais un droit
+# seul. nadia-prof relit cette comparaison a l'audit, avec cm1-emc-droit-devoir et cm1-emc-regle-loi.
+#
+# Pli a 744 x 551 (mesure-ines-palier-4-pli-744x551.md, LP4) : l'enonce compte 112 caracteres au
+# plus (trois lignes) et l'indice 46 au plus (une ligne), ce qui donne 550 au pire (trois lignes,
+# trois rangees, une ligne d'indice). Seuils derives de la mesure de LP4, a refaire par ines-design
+# sur ce paquet.
+#
+# TRV-CE1-1, -5, -6, LON-CE1-1, -2, -5, EMC-1, EMC-6 : niveau CE1, aucun texteSupport ni voix, un
+# indice par item (douze mots au plus, une methode, jamais une proposition), enonces de vingt mots
+# et trois phrases au plus, propositions de six mots au plus, quinze prenoms dont sept feminins et
+# huit masculins, aucun lieu de vie, aucune commune, aucun type d'ecole, aucune adresse a l'enfant.
+#
+# TYP-1 (ADR-0067) : l'espace qui precede "?" est insecable. Paquet neuf. FER-2 : vingt-quatre items.
+items:
+  # DDE-CE1-1 couple 1 : droit->devoir
+  # TRV-CE1-2 : a, b
+  - enonce: "Léo a le droit d'apprendre. Quel devoir ont les autres élèves envers lui ?"
+    bonneReponse: "le laisser travailler"
+    distracteurs: ["lui dire la réponse", "finir son travail"]
+    indice: "Que doivent éviter les autres près de Léo ?"
+  # DDE-CE1-1 couple 3 : devoir->droit
+  # TRV-CE1-2 : c, f
+  - enonce: "Mila écoute Noé jusqu'à la fin de sa phrase. Quel droit de Noé est ainsi protégé ?"
+    bonneReponse: "prendre la parole"
+    distracteurs: ["emprunter un livre", "parler tout le temps"]
+    indice: "Que peut faire Noé quand Mila l'écoute ?"
+  # DDE-CE1-1 couple 2 : droit->devoir
+  # TRV-CE1-2 : a, b
+  - enonce: "Noé a le droit d'être respecté. Quel devoir ont les autres élèves envers lui ?"
+    bonneReponse: "lui parler poliment"
+    distracteurs: ["l'inviter à jouer", "apporter son cahier"]
+    indice: "Comment les autres traitent-ils Noé ?"
+  # DDE-CE1-1 couple 4 : devoir->droit
+  # TRV-CE1-2 : c, f
+  - enonce: "Enzo marche doucement près d'Aya dans la cour. Quel droit d'Aya est ainsi protégé ?"
+    bonneReponse: "être en sécurité"
+    distracteurs: ["se reposer un peu", "choisir son équipe"]
+    indice: "Pense à ce qu'Enzo évite à Aya."
+  # DDE-CE1-1 couple 3 : droit->devoir
+  # TRV-CE1-2 : a, c
+  - enonce: "Samir a le droit de dire ce qu'il pense. Quel devoir ont les autres élèves envers lui ?"
+    bonneReponse: "l'écouter en silence"
+    distracteurs: ["lui répondre vite", "choisir un livre"]
+    indice: "Que font les autres quand Samir parle ?"
+  # DDE-CE1-1 couple 1 : devoir->droit
+  # TRV-CE1-2 : c, f
+  - enonce: "Omar laisse Mila travailler au calme. Quel droit de Mila est ainsi protégé ?"
+    bonneReponse: "apprendre en classe"
+    distracteurs: ["se reposer", "passer en premier"]
+    indice: "Que peut faire Mila quand Omar agit ainsi ?"
+  # DDE-CE1-1 couple 4 : droit->devoir
+  # TRV-CE1-2 : a, b
+  - enonce: "Zoé a le droit d'être en sécurité à l'école. Quel devoir ont les autres élèves envers elle ?"
+    bonneReponse: "faire attention à elle"
+    distracteurs: ["lui tenir la main", "écrire proprement"]
+    indice: "Que font les autres quand ils bougent vite ?"
+  # DDE-CE1-1 couple 2 : devoir->droit
+  # TRV-CE1-2 : c, f
+  - enonce: "Aya parle poliment à Tom. Quel droit de Tom est ainsi protégé ?"
+    bonneReponse: "être respecté"
+    distracteurs: ["emprunter un livre", "décider des jeux"]
+    indice: "Pense à la façon dont Aya parle à Tom."
+  # DDE-CE1-1 couple 1 : droit->devoir
+  # TRV-CE1-2 : a, c
+  - enonce: "Aya a le droit de suivre la leçon. Quel devoir ont les autres élèves envers elle ?"
+    bonneReponse: "la laisser écouter"
+    distracteurs: ["lui prêter son cahier", "choisir un livre"]
+    indice: "Que font les autres pendant la leçon ?"
+  # DDE-CE1-1 couple 3 : devoir->droit
+  # TRV-CE1-2 : c, f
+  - enonce: "Maya écoute Omar raconter son idée. Quel droit d'Omar est ainsi protégé ?"
+    bonneReponse: "dire son idée"
+    distracteurs: ["emprunter un livre", "avoir la meilleure idée"]
+    indice: "Que peut faire Omar quand Maya l'écoute ?"
+  # DDE-CE1-1 couple 2 : droit->devoir
+  # TRV-CE1-2 : a, b
+  - enonce: "Maya a le droit qu'on la respecte. Quel devoir a-t-elle envers les autres élèves ?"
+    bonneReponse: "bien les traiter"
+    distracteurs: ["leur offrir ses jeux", "finir son travail"]
+    indice: "Que doit faire Maya avec les autres ?"
+  # DDE-CE1-1 couple 4 : devoir->droit
+  # TRV-CE1-2 : c, f
+  - enonce: "Tom pose les ciseaux sans les pointer vers Lina. Quel droit de Lina est ainsi protégé ?"
+    bonneReponse: "être à l'abri du danger"
+    distracteurs: ["se reposer", "choisir sa place"]
+    indice: "Pense à ce qui pourrait blesser Lina."
+  # DDE-CE1-1 couple 3 : droit->devoir
+  # TRV-CE1-2 : a, b
+  - enonce: "Lina a le droit de prendre la parole. Quel devoir ont les autres élèves envers elle ?"
+    bonneReponse: "écouter jusqu'au bout"
+    distracteurs: ["finir sa phrase", "apporter son stylo"]
+    indice: "Que font les autres quand Lina parle ?"
+  # DDE-CE1-1 couple 1 : devoir->droit
+  # TRV-CE1-2 : c, b
+  - enonce: "Jade laisse Hugo finir son exercice. Quel droit de Hugo est ainsi protégé ?"
+    bonneReponse: "suivre la leçon"
+    distracteurs: ["emprunter un livre", "finir son travail"]
+    indice: "Que peut faire Hugo quand Jade agit ainsi ?"
+  # DDE-CE1-1 couple 4 : droit->devoir
+  # TRV-CE1-2 : a, c
+  - enonce: "Enzo a le droit de ne pas être blessé. Quel devoir ont les autres élèves envers lui ?"
+    bonneReponse: "jouer doucement avec lui"
+    distracteurs: ["lui lancer le ballon", "se reposer"]
+    indice: "Pense à la façon de jouer avec Enzo."
+  # DDE-CE1-1 couple 2 : devoir->droit
+  # TRV-CE1-2 : b, c
+  - enonce: "Samir dit bonjour à Maya avec le sourire. Quel droit de Maya est ainsi protégé ?"
+    bonneReponse: "être bien traitée"
+    distracteurs: ["arriver à l'heure", "choisir un livre"]
+    indice: "Pense à la manière dont Samir salue Maya."
+  # DDE-CE1-1 couple 1 : droit->devoir
+  # TRV-CE1-2 : a, c
+  - enonce: "Inès a le droit de travailler au calme. Quel devoir ont les autres élèves envers elle ?"
+    bonneReponse: "la laisser réfléchir"
+    distracteurs: ["lui prêter un crayon", "choisir un livre"]
+    indice: "Que font les autres quand Inès travaille ?"
+  # DDE-CE1-1 couple 3 : devoir->droit
+  # TRV-CE1-2 : b, f
+  - enonce: "Samir lève la main et attend que Jade ait fini de parler. Quel droit de Jade est ainsi protégé ?"
+    bonneReponse: "donner son avis"
+    distracteurs: ["arriver à l'heure", "couper la parole"]
+    indice: "Pense à ce que Jade peut dire dans la classe."
+  # DDE-CE1-1 couple 2 : droit->devoir
+  # TRV-CE1-2 : a, b
+  - enonce: "Hugo a le droit d'être bien traité. Quel devoir ont les autres élèves envers lui ?"
+    bonneReponse: "le respecter"
+    distracteurs: ["lui donner un cadeau", "arriver à l'heure"]
+    indice: "Pense à l'attitude des autres envers Hugo."
+  # DDE-CE1-1 couple 4 : devoir->droit
+  # TRV-CE1-2 : b, f
+  - enonce: "Adam fait attention à Inès en jouant au ballon. Quel droit d'Inès est ainsi protégé ?"
+    bonneReponse: "se sentir en sécurité"
+    distracteurs: ["écrire proprement", "jouer en premier"]
+    indice: "Pense à la façon dont Adam joue avec Inès."
+  # DDE-CE1-1 couple 3 : droit->devoir
+  # TRV-CE1-2 : a, b
+  - enonce: "Adam a le droit de parler. Quel devoir a-t-il quand un autre élève parle ?"
+    bonneReponse: "écouter celui qui parle"
+    distracteurs: ["parler pour lui", "apporter son cahier"]
+    indice: "Que fait Adam quand c'est au tour d'un autre ?"
+  # DDE-CE1-1 couple 1 : devoir->droit
+  # TRV-CE1-2 : c, f
+  - enonce: "Enzo chuchote pour que Lina puisse se concentrer. Quel droit de Lina est ainsi protégé ?"
+    bonneReponse: "travailler au calme"
+    distracteurs: ["se reposer", "répondre en premier"]
+    indice: "Pense à ce que Lina fait dans la classe."
+  # DDE-CE1-1 couple 4 : droit->devoir
+  # TRV-CE1-2 : a, c
+  - enonce: "Mila a le droit d'être en sécurité dans la cour. Quel devoir ont les autres élèves envers elle ?"
+    bonneReponse: "courir avec prudence"
+    distracteurs: ["la suivre partout", "se reposer un peu"]
+    indice: "Pense à la façon de bouger près d'elle."
+  # DDE-CE1-1 couple 2 : devoir->droit
+  # TRV-CE1-2 : b, f
+  - enonce: "Zoé remercie Adam quand il l'aide. Quel droit d'Adam est ainsi protégé ?"
+    bonneReponse: "être traité poliment"
+    distracteurs: ["apporter son cahier", "passer en premier"]
+    indice: "Que reçoit Adam quand Zoé le remercie ?"

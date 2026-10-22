@@ -960,6 +960,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-emc-regle-sanction
     nombreDeManches: 10
+  - id: bandit-manchot-droit-devoir-ce1
+    titre: "Les droits et les devoirs"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-droit-devoir
+    nombreDeManches: 10
   - id: saisie-mots-invariables-ce1
     titre: "Écris le petit mot"
     consigne: "Lis la phrase, puis écris le mot qui manque."
