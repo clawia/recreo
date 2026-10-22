@@ -2277,3 +2277,13 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusi
 | `S57-ARB-PALIER-4` et registre de prix du palier 4 (`OV4`), amendement de `DEC-0120` A.153 a A.163, mention de `MAT-CE1-10` et cellule de `FRA-CE1-21` en matrice | `camille-po` | 2 commits `[CAM]` | prix de l'arbitrage pris sur le 0,5 de chaque instance, aucun prix neuf |
 
 Etat de la matrice a la fusion : les lignes `MAT-CE1-10`, `FRA-CE1-21` et `EMC-CE1-02` ne bougent pas dans ce commit. Leur passage (`en cours`, `couvert-valide`) est a `camille-po`, apres cette fusion.
+
+## Amendement du 2026-10-22 (UTC+02:00), palier 4 : ligne de `LP3` livree (RF11, `composition-palier-4.md` 5.2)
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-lea-mat-ce1-11` dans `round-two` (RF11). Premiere des cinq fusions demandees par l'utilisatrice le 2026-10-22 (ordre LP3, LP5, p4-10, fiches de LP3 et LP5, branches de documents).
+
+| Story | Competence | Instance, developpeur | Engagement | Rejeux (prix de `nadia-prof`) | Prix du lot | Sommet joue |
+|---|---|---|---|---|---|---|
+| `S57-BR-MAT-CE1-11`, paquet `ce1-calendrier-dates` | `MAT-CE1-11` | B, `lea-dev` | engage a l'ouverture (p4-5) | un refus (motif M1, item 18) puis un rejeu ; prix du rejeu non inscrit a `registre-prix-palier-4.txt` a la date de cet amendement, a `camille-po` | 1,0 | `f863fa7a` (sommet `003fd4fb`), VALIDE SOUS RESERVE (fiche `FICHE-bandit-manchot-calendrier-dates-ce1.md`, branche `s57-nadia-p4-lp3`) |
+
+RF13 : `git diff --name-only f863fa7a 003fd4fb` ne nomme que `rapport-lea-dev-palier-4-lp3.md` : ni le paquet, ni un gabarit, ni une feuille de style, ni du code sous `src/main`. Cet amendement ne prononce aucun Done et ne touche ni la matrice ni un prix. Le resultat du `verify` et le SHA de fusion sont dans `RAPPORT.md` et `cloture-palier-4.md`.

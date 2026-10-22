@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1CalendrierDatesTest. Le titre porte une espace ordinaire devant le point d'interrogation, ou la regle veut U+00A0.
+jeux:
+  - id: bandit-manchot-calendrier-fautif
+    titre: "Quelle date ?"
+    consigne: "Pense au calendrier, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-calendrier-dates
+    nombreDeManches: 10

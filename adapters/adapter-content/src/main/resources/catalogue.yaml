@@ -972,3 +972,9 @@ jeux:
     mecanique: saisie
     paquet: ce1-mots-invariables
     nombreDeManches: 10
+  - id: bandit-manchot-calendrier-dates-ce1
+    titre: "Les dates et le calendrier"
+    consigne: "Pense au calendrier, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-calendrier-dates
+    nombreDeManches: 10
