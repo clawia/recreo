@@ -46,13 +46,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * compris : la commande de la story porte sur le fichier.
  *
  * <p><b>Ce que ce test garde de {@code INT-CE1-1}</b> : la portee declaree de chaque scene (une seule
- * personne, tous) est celle de sa bonne reponse, et la scene la dit par un mot d'une liste fermee
- * ecrite ici (un possessif pour une seule personne, un lieu ou un objet partage pour tous), sans
- * jamais dire les deux ; aucune scene ne met un personnage en balance avec le groupe (conjonction
- * d'opposition) ni ne juge celui qui veut quelque chose pour lui (mots de jugement). <b>Ce qu'il ne
- * garde pas</b> : qu'une scene n'ait qu'une lecture defendable, qu'une scene ne fasse honte a
- * personne par son sens, et que les mots de la liste fermee disent vrai. C'est la lecture de
- * nadia-prof, seule garde de {@code INT-CE1-1} (aucune mesure).
+ * personne, tous) est celle de sa bonne reponse ; l'appartenance de l'objet est declaree a part
+ * (personnel ou partage) et la scene la dit par un mot d'une liste fermee ecrite ici (un possessif
+ * pour un objet personnel, un lieu ou un objet partage pour un objet partage, jamais un possessif).
+ * <b>L'appartenance ne dit pas la portee</b> (fiche de conformite, motif M1) : dans chaque portee, au
+ * moins un tiers des scenes croise les deux, et le test le recompte sur le texte des scenes, en
+ * appliquant la regle de surface qui repondrait <i>une seule personne</i> sur un possessif et
+ * <i>toute la classe</i> sinon. Aucune scene ne met un personnage en balance avec le groupe
+ * (conjonction d'opposition) ni ne juge celui qui veut quelque chose pour lui (mots de jugement).
+ * <b>Ce qu'il ne garde pas</b> : qu'une scene n'ait qu'une lecture defendable, qu'une scene ne
+ * fasse honte a personne par son sens, et que les mots de la liste fermee disent vrai. C'est la
+ * lecture de nadia-prof, seule garde de {@code INT-CE1-1} (aucune mesure).
  *
  * <p><b>Le point d'audit commun</b> (aucune forme ne donne la reponse) est garde plus fort que dans les
  * paquets voisins : aucune proposition ne porte de negation, aucune ne commence par un pronom
@@ -118,9 +122,17 @@ class PaquetCe1EmcInteretCommunTest {
 
     /** INT-CE1-1 : lieux et objets que chacun utilise, liste fermee. */
     private static final Set<String> PARTAGES = Set.of(
-            "tableau", "cour", "ballons", "étagère", "coin", "craies", "jeu", "jeux", "chacun", "salle", "porte");
+            "tableau", "cour", "ballons", "étagère", "coin", "craies", "jeu", "jeux", "chacun", "salle", "porte",
+            "bibliothèque", "robinet");
+
+    private static final String OBJET_PERSONNEL = "personnel";
+
+    /** INT-CE1-1 : dans chaque portee, une scene sur ce nombre au moins croise appartenance et portee. */
+    private static final int UN_TIERS = 3;
 
     private static final Pattern DECLARATION_DE_PORTEE = Pattern.compile("INT-CE1-1 portee : (un|tous)");
+
+    private static final Pattern DECLARATION_D_OBJET = Pattern.compile("INT-CE1-1 objet : (personnel|partage)");
 
     private static final Pattern DECLARATION_DE_FAMILLES = Pattern.compile("TRV-CE1-2 : ([a-z]), ([a-z])");
 
@@ -194,6 +206,14 @@ class PaquetCe1EmcInteretCommunTest {
                     .filter(Matcher::find).toList();
             assertThat(declarations)
                     .as("INT-CE1-1 : '%s' déclare exactement une portée", enonce).hasSize(1);
+            return declarations.get(0).group(1);
+        }
+
+        String objet() {
+            List<Matcher> declarations = commentaires.stream().map(DECLARATION_D_OBJET::matcher)
+                    .filter(Matcher::find).toList();
+            assertThat(declarations)
+                    .as("INT-CE1-1 : '%s' déclare exactement une appartenance d'objet", enonce).hasSize(1);
             return declarations.get(0).group(1);
         }
 
@@ -426,9 +446,16 @@ class PaquetCe1EmcInteretCommunTest {
                 .hasSize(2));
     }
 
+    /** INT-CE1-1 : la regle de surface, qui lit un possessif et ignore le reste de la scene. */
+    private static String porteeQueDonneLePossessif(ItemLu item) {
+        return motsEntiers(scene(item)).stream().anyMatch(POSSESSIFS::contains) ? PORTEE_UN : PORTEE_TOUS;
+    }
+
     /**
-     * INT-CE1-1 : la portee declaree est celle de la bonne reponse, et la scene la dit par un mot de la liste
-     * fermee, sans dire l'autre.
+     * INT-CE1-1 : la portee declaree est celle de la bonne reponse ; l'appartenance declaree de l'objet est
+     * celle que la scene dit par un mot de la liste fermee : un possessif pour un objet personnel, un lieu
+     * ou un objet partage et aucun possessif pour un objet partage. Une scene de portee un dont l'objet est
+     * personnel ne nomme aucun lieu partage.
      */
     private static void verifierLaPortee(List<ItemLu> items) {
         for (ItemLu item : items) {
@@ -438,28 +465,49 @@ class PaquetCe1EmcInteretCommunTest {
                     .as("INT-CE1-1 : '%s' déclare la portée %s, sa bonne réponse n'est pas « %s »",
                             item.enonce(), portee, attendue)
                     .isEqualTo(attendue);
+            String objet = item.objet();
             Set<String> mots = motsEntiers(scene(item));
             boolean possessif = mots.stream().anyMatch(POSSESSIFS::contains);
             boolean partage = mots.stream().anyMatch(PARTAGES::contains);
-            if (portee.equals(PORTEE_UN)) {
+            if (objet.equals(OBJET_PERSONNEL)) {
                 assertThat(possessif)
-                        .as("INT-CE1-1 : la scène de '%s' déclare la portée un et ne porte aucun possessif",
+                        .as("INT-CE1-1 : la scène de '%s' déclare l'objet personnel et ne porte aucun possessif",
                                 item.enonce())
                         .isTrue();
-                assertThat(partage)
-                        .as("INT-CE1-1 : la scène de '%s' déclare la portée un et nomme un lieu ou un objet "
-                                + "partagé", item.enonce())
-                        .isFalse();
+                if (portee.equals(PORTEE_UN)) {
+                    assertThat(partage)
+                            .as("INT-CE1-1 : la scène de '%s' déclare la portée un et l'objet personnel et nomme "
+                                    + "un lieu ou un objet partagé", item.enonce())
+                            .isFalse();
+                }
             } else {
+                assertThat(possessif)
+                        .as("INT-CE1-1 : la scène de '%s' déclare l'objet partagé et porte un possessif",
+                                item.enonce())
+                        .isFalse();
                 assertThat(partage)
-                        .as("INT-CE1-1 : la scène de '%s' déclare la portée tous et ne nomme aucun lieu ni objet "
+                        .as("INT-CE1-1 : la scène de '%s' déclare l'objet partagé et ne nomme aucun lieu ni objet "
                                 + "partagé de la liste", item.enonce())
                         .isTrue();
-                assertThat(possessif)
-                        .as("INT-CE1-1 : la scène de '%s' déclare la portée tous et porte un possessif",
-                                item.enonce())
-                        .isFalse();
             }
+        }
+    }
+
+    /**
+     * INT-CE1-1, motif M1 de la fiche de conformite : l'appartenance de l'objet ne decide pas de la portee.
+     * Dans chaque portee, un tiers des scenes au moins (calcul sur le texte, non sur les declarations) est
+     * une scene ou la regle de surface du possessif se trompe.
+     */
+    private static void verifierQueLAppartenanceNeDecidePasDeLaPortee(List<ItemLu> items) {
+        for (String portee : List.of(PORTEE_UN, PORTEE_TOUS)) {
+            List<ItemLu> deLaPortee = items.stream().filter(item -> item.portee().equals(portee)).toList();
+            long croisees = deLaPortee.stream()
+                    .filter(item -> !porteeQueDonneLePossessif(item).equals(portee)).count();
+            assertThat(UN_TIERS * croisees)
+                    .as("INT-CE1-1 : dans la portée %s, %d scènes sur %d où l'appartenance de l'objet ne décide pas "
+                            + "de la portée, un tiers au moins est exigé : la forme donne la réponse", portee,
+                            croisees, deLaPortee.size())
+                    .isGreaterThanOrEqualTo(deLaPortee.size());
         }
     }
 
@@ -804,6 +852,11 @@ class PaquetCe1EmcInteretCommunTest {
     }
 
     @Test
+    void int1LAppartenanceDeLObjetNeDecidePasDeLaPorteeDansAucuneDesDeuxPortees() {
+        verifierQueLAppartenanceNeDecidePasDeLaPortee(items());
+    }
+
+    @Test
     void int2AucuneExpressionInterditeNEstLueParLEnfantNiEcriteDansLeFichier() {
         verifierLesMotsInterdits(items(), lire(FICHIER_CONTENU));
     }
@@ -996,7 +1049,7 @@ class PaquetCe1EmcInteretCommunTest {
 
         assertThatThrownBy(() -> verifierLaPortee(items))
                 .isInstanceOf(AssertionError.class)
-                .hasMessageContaining("déclare la portée tous et porte un possessif");
+                .hasMessageContaining("déclare l'objet partagé et porte un possessif");
     }
 
     @Test
@@ -1006,6 +1059,37 @@ class PaquetCe1EmcInteretCommunTest {
         assertThatThrownBy(() -> verifierLaPortee(items))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("nomme un lieu ou un objet partagé");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnItemSansDeclarationDAppartenanceDeLObjet() {
+        List<ItemLu> items = fautifs("(sonde 41)");
+
+        assertThatThrownBy(() -> verifierLaPortee(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("déclare exactement une appartenance d'objet");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnePorteeUnOuLePossessifDecideDeToutes() {
+        List<ItemLu> items = fautifs("(sonde 42)");
+
+        assertThat(items).hasSize(3);
+        assertThatThrownBy(() -> verifierQueLAppartenanceNeDecidePasDeLaPortee(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("dans la portée un")
+                .hasMessageContaining("la forme donne la réponse");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnePorteeTousOuLObjetPartageDecideDeToutes() {
+        List<ItemLu> items = fautifs("(sonde 43)");
+
+        assertThat(items).hasSize(3);
+        assertThatThrownBy(() -> verifierQueLAppartenanceNeDecidePasDeLaPortee(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("dans la portée tous")
+                .hasMessageContaining("la forme donne la réponse");
     }
 
     @Test

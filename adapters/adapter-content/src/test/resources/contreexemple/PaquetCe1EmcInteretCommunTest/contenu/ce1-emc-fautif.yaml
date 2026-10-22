@@ -15,42 +15,49 @@ lignesDeReferentiel: ["EMC-CE1-04"]
 #
 items:
   # INT-CE1-1 portee : un
+  # INT-CE1-1 objet : personnel
   # TRV-CE1-2 : a, b
   - enonce: "Léo taille son crayon. (sonde 01) Pour qui est-ce utile ?"
     bonneReponse: "pour quelques élèves"
     distracteurs: ["pour une seule personne", "pour toute la classe"]
     indice: "Qui écrit avec ce crayon  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 02) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour quelques élèves", "pour deux élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Tom range les ballons. (sonde 03) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour quelques élèves", "pour une seule personne"]
     indice: "Qui joue avec les ballons  ?"
   # INT-CE1-1 portee : un
+  # INT-CE1-1 objet : personnel
   # TRV-CE1-2 : a, b
   - enonce: "Aya lace ses chaussures. (sonde 04) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour deux élèves"]
     indice: "Qui porte ces chaussures  ?"
   # INT-CE1-1 portee : un
+  # INT-CE1-1 objet : personnel
   # TRV-CE1-2 : a, b
   - enonce: "Léo taille le crayon. (sonde 05) Pour qui est-ce utile ?"
     bonneReponse: "pour une seule personne"
     distracteurs: ["pour toute la classe", "pour trois élèves"]
     indice: "Qui écrit avec ce crayon  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie son tableau. (sonde 06) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour quelques élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : un
+  # INT-CE1-1 objet : personnel
   # TRV-CE1-2 : a, b
   - enonce: "Aya lace ses chaussures dans la cour. (sonde 07) Pour qui est-ce utile ?"
     bonneReponse: "pour une seule personne"
@@ -62,60 +69,70 @@ items:
     distracteurs: ["pour une seule personne", "pour trois élèves"]
     indice: "Qui va dans la cour  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Jade pense à l'intérêt général de la cour. (sonde 09) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour quelques élèves"]
     indice: "Qui va dans la cour  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Jade ramasse les papiers dans la cour. (sonde 10) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour deux élèves"]
     indice: "Qui protège le bien commun  ?"
   # INT-CE1-1 portee : un
+  # INT-CE1-1 objet : personnel
   # TRV-CE1-2 : a, b
   - enonce: "Tom range son crayon alors que chacun attend. (sonde 11) Pour qui est-ce utile ?"
     bonneReponse: "pour une seule personne"
     distracteurs: ["pour toute la classe", "pour trois élèves"]
     indice: "Qui écrit avec ce crayon  ?"
   # INT-CE1-1 portee : un
+  # INT-CE1-1 objet : personnel
   # TRV-CE1-2 : a, b
   - enonce: "Léo taille son crayon, c'est égoïste. (sonde 12) Pour qui est-ce utile ?"
     bonneReponse: "pour une seule personne"
     distracteurs: ["pour toute la classe", "pour quelques élèves"]
     indice: "Qui écrit avec ce crayon  ?"
   # INT-CE1-1 portee : un
+  # INT-CE1-1 objet : personnel
   # TRV-CE1-2 : a, b
   - enonce: "Mila a honte de son dessin. (sonde 13) Pour qui est-ce utile ?"
     bonneReponse: "pour une seule personne"
     distracteurs: ["pour toute la classe", "pour deux élèves"]
     indice: "Qui a fait ce dessin  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau de la classe. (sonde 14) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour trois élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 15) Pour qui est-ce utile ?"
     bonneReponse: "Pour toute la classe"
     distracteurs: ["pour une seule personne", "pour quelques élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 16) Pour qui est-ce utile ?"
     bonneReponse: "«pour toute la classe»"
     distracteurs: ["pour une seule personne", "pour deux élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 17) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour ne pas perdre"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 18) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
@@ -123,158 +140,232 @@ items:
     indice: "Qui se sert du tableau  ?"
     texteSupport: "Un texte."
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau avant la leçon du matin et puis range les craies sur le bord pour que la salle reste propre. (sonde 19) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour quelques élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie. Elle range. Elle sourit. (sonde 20) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour deux élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 21) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour quelques élèves de la salle de jeux"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 22) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour trois élèves"]
     indice: "Qui se sert du tableau avec un grand soin avant chaque leçon du matin  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 23) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour quelques élèves"]
     indice: "Est-ce pour toute la classe  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 24) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour deux élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Tom range les ballons. (sonde 25) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour trois élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : un
+  # INT-CE1-1 objet : personnel
   # TRV-CE1-2 : a, b
   - enonce: "Léo taille son crayon. (sonde 26) Pour qui est-ce utile ?"
     bonneReponse: "pour une seule personne"
     distracteurs: ["pour toute la classe", "pour deux élèves"]
     indice: "Qui écrit avec ce crayon  ?"
   # INT-CE1-1 portee : un
+  # INT-CE1-1 objet : personnel
   # TRV-CE1-2 : a, b
   - enonce: "Aya lace ses chaussures. (sonde 27) Pour qui est-ce utile ?"
     bonneReponse: "pour une seule personne"
     distracteurs: ["pour toute la classe", "pour deux élèves"]
     indice: "Qui porte ces chaussures  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 28) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour quelques élèves"]
     indice: "Qui se sert du tableau ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau de la maison. (sonde 29) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour deux élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Tu essuies le tableau. (sonde 30) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour trois élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "La planche est essuyée. (sonde 31) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour quelques élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Lina essuie le tableau. (sonde 32) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour deux élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Zoé range les ballons. (sonde 32) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour trois élèves"]
     indice: "Qui joue avec les ballons  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila ramasse les papiers dans la cour. (sonde 32) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour quelques élèves"]
     indice: "Qui va dans la cour  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau avec un chiffon doux avant la leçon du matin pour la salle. (sonde 33) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour deux élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 34) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour trois élèves"]
     indice: "Qui se sert du tableau avec un chiffon doux et propre  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 35) Pour qui est-ce bon ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour quelques élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Tom range les ballons. (sonde 36) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour quelques élèves"]
     indice: "Qui joue avec les ballons  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 36) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour quelques élèves"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Jade ramasse les papiers dans la cour. (sonde 36) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour quelques élèves"]
     indice: "Qui va dans la cour  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Dans la cour, il est interdit de pousser un camarade. Est-ce une règle ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour deux élèves"]
     indice: "Qui va dans la cour ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 38) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "lever la main"]
     indice: "Qui se sert du tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 39) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour trois élèves"]
     indice: "Qui se sert de ton tableau  ?"
   # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
   # TRV-CE1-2 : a, b
   - enonce: "Mila essuie le tableau. (sonde 40) Pour qui est-ce utile ?"
     bonneReponse: "pour toute la classe"
     distracteurs: ["pour une seule personne", "pour une grande foule"]
     indice: "Qui se sert du tableau  ?"
+  # INT-CE1-1 portee : tous
+  # TRV-CE1-2 : a, b
+  - enonce: "Mila essuie le tableau. (sonde 41) Pour qui est-ce utile ?"
+    bonneReponse: "pour toute la classe"
+    distracteurs: ["pour une seule personne", "pour quelques élèves"]
+    indice: "Qui se sert du tableau ?"
+  # INT-CE1-1 portee : un
+  # INT-CE1-1 objet : personnel
+  # TRV-CE1-2 : a, b
+  - enonce: "Léo taille son crayon. (sonde 42) Pour qui est-ce utile ?"
+    bonneReponse: "pour une seule personne"
+    distracteurs: ["pour toute la classe", "pour quelques élèves"]
+    indice: "Qui écrit avec ce crayon ?"
+  # INT-CE1-1 portee : un
+  # INT-CE1-1 objet : personnel
+  # TRV-CE1-2 : a, b
+  - enonce: "Aya lace ses chaussures. (sonde 42) Pour qui est-ce utile ?"
+    bonneReponse: "pour une seule personne"
+    distracteurs: ["pour toute la classe", "pour deux élèves"]
+    indice: "Qui porte ces chaussures ?"
+  # INT-CE1-1 portee : un
+  # INT-CE1-1 objet : personnel
+  # TRV-CE1-2 : a, b
+  - enonce: "Noé efface une erreur dans son cahier. (sonde 42) Pour qui est-ce utile ?"
+    bonneReponse: "pour une seule personne"
+    distracteurs: ["pour toute la classe", "pour trois élèves"]
+    indice: "Qui écrit dans ce cahier ?"
+  # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
+  # TRV-CE1-2 : a, b
+  - enonce: "Mila essuie le tableau. (sonde 43) Pour qui est-ce utile ?"
+    bonneReponse: "pour toute la classe"
+    distracteurs: ["pour une seule personne", "pour quelques élèves"]
+    indice: "Qui se sert du tableau ?"
+  # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
+  # TRV-CE1-2 : a, b
+  - enonce: "Tom range les ballons. (sonde 43) Pour qui est-ce utile ?"
+    bonneReponse: "pour toute la classe"
+    distracteurs: ["pour une seule personne", "pour deux élèves"]
+    indice: "Qui joue avec les ballons ?"
+  # INT-CE1-1 portee : tous
+  # INT-CE1-1 objet : partage
+  # TRV-CE1-2 : a, b
+  - enonce: "Enzo remplit la boîte de craies du tableau. (sonde 43) Pour qui est-ce utile ?"
+    bonneReponse: "pour toute la classe"
+    distracteurs: ["pour une seule personne", "pour trois élèves"]
+    indice: "Qui se sert des craies ?"
