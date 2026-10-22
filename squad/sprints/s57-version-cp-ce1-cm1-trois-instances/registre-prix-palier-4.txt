@@ -8,9 +8,11 @@ Ap|EMC-CE1-02 lot|1.00|engage
 Ap|EMC-CE1-03 lot|1.00|engage
 Ap|EMC-CE1-04 lot|1.00|engage
 Ap|rejeu 3 de EMC-CE1-02, 12 items de la tache 1, item 24, indice de l'item 6|0.50|facture
-Ap|rejeu 4 de EMC-CE1-02, item 9 seul|0.25|propose
+Ap|rejeu 4 de EMC-CE1-02, item 9 seul|0.25|facture
+Ap|rejeu de EMC-CE1-03, items 14 et 24|0.25|propose
 B|arbitrage prealable|0.50|engage
 B|marge de rejeu, consommee par le rejeu de MAT-CE1-10|0.50|consomme
 B|MAT-CE1-10 lot|1.00|engage
 B|MAT-CE1-11 lot|1.00|engage
+B|rejeu de MAT-CE1-11, item 18 et items changes|0.25|propose
 B|MAT-CE1-14 lot|1.50|non-engage
