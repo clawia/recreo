@@ -86,3 +86,11 @@ le releve d'ecran a 744 x 551 (`ines-design`) ; le pli n'est donc pas lu (reserv
 taille des objets (reserve 2) ; la famille d'un distracteur de conversion ; qu'aucun item ne serve *mesurer*.
 
 **Signe** : `nadia-prof`, 2026-10-22.
+
+---
+
+## Rejeu du 2026-10-22 (`nadia-prof`, s57, palier 4, instance B, `RF13`)
+
+**lecture complete : ce1-masses-contenances, 21 items lus** - 2026-10-22, 13:23 (UTC+02:00), lu par `date`, sur la branche
+`s57-lea-mat-ce1-10` a `c29d1d26` (`grep -c "bonneReponse:"` rend 21). `git diff --name-only fc6ee0a1 c29d1d26` nomme le paquet :
+le rejeu est du. Lus : les 21 items, l'en-tete, le diff du paquet depuis `fc6ee0a1` (items 11, 14, 15, 16, 18, 19, 21).
