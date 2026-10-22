@@ -1,0 +1,33 @@
+schema: 1
+id: ce1-emc-fautif-entete
+type: question
+# ADR-0013 obligation 3 : la liste des couples ne porte que trois couples sur quatre.
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CE1"
+  domaine: "Acquérir et partager les valeurs de la République"
+  competence: "Associer quelques droits de l'élève à l'école aux devoirs qui les accompagnent."
+lignesDeReferentiel: ["EMC-CE1-03"]
+#
+#   couple 1 : apprendre / laisser les autres apprendre
+#   couple 2 : etre respecte / respecter les autres
+#   couple 3 : parler / ecouter quand un autre parle
+#   couple 1 droit : apprendre en classe | suivre la leçon | travailler au calme
+#   couple 1 devoir : le laisser travailler | la laisser écouter | la laisser réfléchir
+#   couple 2 droit : être respecté | être respectée | être bien traité | être bien traitée | être traité poliment | être traitée poliment
+#   couple 2 devoir : lui parler poliment | bien les traiter | le respecter
+#   couple 3 droit : prendre la parole | dire son idée | donner son avis
+#   couple 3 devoir : l'écouter en silence | écouter jusqu'au bout | écouter celui qui parle
+#   couple 4 droit : être en sécurité | être à l'abri du danger | se sentir en sécurité
+#   couple 4 devoir : faire attention à elle | jouer doucement avec lui | courir avec prudence
+#   famille a : lui dire la réponse | lui prêter son cahier | lui prêter un crayon | l'inviter à jouer | leur offrir ses jeux | lui donner un cadeau | lui répondre vite | finir sa phrase | parler pour lui | lui tenir la main | lui lancer le ballon | la suivre partout
+#   famille b : arriver à l'heure | finir son travail | apporter son cahier | écrire proprement | apporter son stylo
+#   famille c : emprunter un livre | choisir un livre | se reposer | se reposer un peu
+#   famille f : passer en premier | répondre en premier | décider des jeux | parler tout le temps | avoir la meilleure idée | couper la parole | choisir son équipe | choisir sa place | jouer en premier
+items:
+  # DDE-CE1-1 couple 1 : droit->devoir
+  # TRV-CE1-2 : a, b
+  - enonce: "Léo a le droit d'apprendre. Quel devoir ont les autres élèves envers lui ?"
+    bonneReponse: "le laisser travailler"
+    distracteurs: ["lui dire la réponse", "finir son travail"]
+    indice: "Que doivent éviter les autres près de Léo ?"
