@@ -280,6 +280,42 @@ items:
     bonneReponse: "suivre la leçon"
     distracteurs: ["emprunter un livre", "finir son travail"]
     indice: "Que doivent éviter les autres près de Léo ?"
+  # DDE-CE1-1 couple 2 : droit->devoir
+  # TRV-CE1-2 : a, b
+  - enonce: "Léo a le droit d'apprendre (sonde 48). Quel devoir ont les autres élèves envers lui ?"
+    bonneReponse: "lui parler poliment"
+    distracteurs: ["l'inviter à jouer", "apporter son cahier"]
+    indice: "Que doivent éviter les autres près de Léo ?"
+  # DDE-CE1-1 couple 1 : droit->devoir
+  # TRV-CE1-2 : a, b
+  - enonce: "Léo a le droit d'apprendre (sonde 49) et de parler poliment. Quel devoir ont les autres élèves envers lui ?"
+    bonneReponse: "le laisser travailler"
+    distracteurs: ["lui dire la réponse", "finir son travail"]
+    indice: "Que doivent éviter les autres près de Léo ?"
+  # DDE-CE1-1 couple 3 : droit->devoir
+  # TRV-CE1-2 : a, c
+  - enonce: "Léo a le droit d'apprendre (sonde 50). Quel devoir ont les autres élèves envers lui ?"
+    bonneReponse: "l'écouter en silence"
+    distracteurs: ["lui répondre vite", "choisir un livre"]
+    indice: "Que doivent éviter les autres près de Léo ?"
+  # DDE-CE1-1 couple 1 : droit->devoir
+  # TRV-CE1-2 : a, b
+  - enonce: "Léo a le droit d'apprendre (sonde 51) grâce à son travail. Quel devoir ont les autres élèves envers lui ?"
+    bonneReponse: "le laisser travailler"
+    distracteurs: ["lui dire la réponse", "finir son travail"]
+    indice: "Que doivent éviter les autres près de Léo ?"
+  # DDE-CE1-1 couple 1 : droit->devoir
+  # TRV-CE1-2 : a, b
+  - enonce: "Léo a le droit d'apprendre (sonde 52) seulement si il est sage. Quel devoir ont les autres élèves envers lui ?"
+    bonneReponse: "le laisser travailler"
+    distracteurs: ["lui dire la réponse", "finir son travail"]
+    indice: "Que doivent éviter les autres près de Léo ?"
+  # DDE-CE1-1 couple 1 : droit->devoir
+  # TRV-CE1-2 : a, b
+  - enonce: "Léo a le droit d'apprendre (sonde 53) pour avoir bien fait. Quel devoir ont les autres élèves envers lui ?"
+    bonneReponse: "le laisser travailler"
+    distracteurs: ["lui dire la réponse", "finir son travail"]
+    indice: "Que doivent éviter les autres près de Léo ?"
   # DDE-CE1-1 couple 1 : devoir->droit
   # TRV-CE1-2 : c, f
   - enonce: "Omar laisse Mila travailler au calme (sonde 40). Quel droit de Mila est ainsi protégé ?"

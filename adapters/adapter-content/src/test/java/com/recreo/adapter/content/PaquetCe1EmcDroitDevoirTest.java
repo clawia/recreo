@@ -117,7 +117,7 @@ class PaquetCe1EmcDroitDevoirTest {
 
     /** DDE-CE1-2 : un droit ne se merite pas. Aucun de ces mots dans ce que l'enfant lit. */
     private static final Pattern DROIT_CONDITIONNEL = Pattern.compile(
-            "(?<!\\p{L})(gagn|mérit|perd|retir|enlev|priv|récompens|condition|échange|retour|sinon|reçoi|recev)", FLAGS);
+            "(?<!\\p{L})(gagn|mérit|perd|retir|enlev|priv|récompens|condition|échange|retour|sinon|reçoi|recev|grâce|seulement si|pour avoir)", FLAGS);
 
     /**
      * DDE-CE1-2 : le geste d'une scene devoir->droit ne depend d'aucune action de celui dont le droit est
@@ -542,6 +542,46 @@ class PaquetCe1EmcDroitDevoirTest {
         }
     }
 
+    /**
+     * DDE-CE1-1 : les mots entiers par lesquels la situation d'un item nomme son couple, liste fermee par
+     * couple, ecrite ici. Un item dont la situation ne reprend aucun mot de son couple declare, ou reprend
+     * un mot d'un autre couple, n'a pas relie sa situation a ce qu'il declare.
+     */
+    private static final Map<String, Set<String>> MOTS_DE_LA_SITUATION_PAR_COUPLE = Map.of(
+            "1", Set.of("apprendre", "leçon", "travailler", "exercice", "concentrer", "calme"),
+            "2", Set.of("respecté", "respecte", "traité", "poliment", "bonjour"),
+            "3", Set.of("parole", "écoute", "idée", "raconter", "pense", "phrase", "parler"),
+            "4", Set.of("sécurité", "blessé", "marche", "doucement", "ciseaux", "attention", "ballon", "cour"));
+
+    private static Set<String> motsEntiers(String texte) {
+        Set<String> mots = new TreeSet<>();
+        Matcher mot = Pattern.compile("\\p{L}+", Pattern.UNICODE_CHARACTER_CLASS).matcher(texte);
+        while (mot.find()) {
+            mots.add(mot.group().toLowerCase(Locale.FRENCH));
+        }
+        return mots;
+    }
+
+    /** DDE-CE1-1 : la situation d'un item reprend un mot de son couple declare et d'aucun autre couple. */
+    private static void verifierQueLaSituationNommeLeCoupleDeclare(List<ItemLu> items) {
+        for (ItemLu item : items) {
+            String declare = item.couple();
+            Set<String> mots = motsEntiers(item.enonce());
+            assertThat(mots.stream().anyMatch(MOTS_DE_LA_SITUATION_PAR_COUPLE.get(declare)::contains))
+                    .as("DDE-CE1-1 : la situation de '%s' ne reprend aucun mot du couple %s qu'elle déclare : le "
+                            + "couple est une déclaration, pas une lecture", item.enonce(), declare)
+                    .isTrue();
+            for (Map.Entry<String, Set<String>> autre : new TreeMap<>(MOTS_DE_LA_SITUATION_PAR_COUPLE).entrySet()) {
+                if (!autre.getKey().equals(declare)) {
+                    assertThat(mots.stream().filter(autre.getValue()::contains).toList())
+                            .as("DDE-CE1-1 : la situation de '%s' déclare le couple %s et reprend des mots du couple "
+                                    + "%s", item.enonce(), declare, autre.getKey())
+                            .isEmpty();
+                }
+            }
+        }
+    }
+
     /** DDE-CE1-2 : un droit n'est jamais rendu en retour d'une action de celui qui le detient. */
     private static void verifierQueLeDroitNEstPasRenduEnRetourDUneAction(List<ItemLu> items) {
         for (ItemLu item : items) {
@@ -847,6 +887,11 @@ class PaquetCe1EmcDroitDevoirTest {
     }
 
     @Test
+    void dde1LaSituationDeChaqueItemNommeLeCoupleQuIlDeclare() {
+        verifierQueLaSituationNommeLeCoupleDeclare(items());
+    }
+
+    @Test
     void emc5AucunDistracteurNeDitLaSituationMieuxQueLaBonneReponse() {
         verifierQuAucunDistracteurNeDitLaSituationMieuxQueLaBonneReponse(items());
     }
@@ -1078,6 +1123,47 @@ class PaquetCe1EmcDroitDevoirTest {
     @Test
     void leJeuFautifCommiteEstRefuseSurTroisSondesDeDroitGagneOuPerdu() {
         for (String marqueur : List.of("(sonde 09)", "(sonde 10)", "(sonde 11)")) {
+            List<ItemLu> items = fautifs(marqueur);
+
+            assertThatThrownBy(() -> verifierLesRefusDAvance(items))
+                    .isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("DDE-CE1-2");
+        }
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneSituationSurApprendreDeclareeCoupleDeuxAvecUneReponseDuCoupleDeux() {
+        List<ItemLu> items = fautifs("(sonde 48)");
+
+        assertThat(items).hasSize(1);
+        verifierLesDeclarations(items, enteteFautif());
+        assertThatThrownBy(() -> verifierQueLaSituationNommeLeCoupleDeclare(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("DDE-CE1-1")
+                .hasMessageContaining("ne reprend aucun mot du couple 2");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneSituationQuiMeleLesMotsDeDeuxCouples() {
+        List<ItemLu> items = fautifs("(sonde 49)");
+
+        assertThatThrownBy(() -> verifierQueLaSituationNommeLeCoupleDeclare(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("reprend des mots du couple 2");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneSituationDUnCoupleDeclareeUnAutreAvecSaPropreReponse() {
+        List<ItemLu> items = fautifs("(sonde 50)");
+
+        assertThatThrownBy(() -> verifierQueLaSituationNommeLeCoupleDeclare(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ne reprend aucun mot du couple 3");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurTroisFormulationsDeDroitConditionnel() {
+        for (String marqueur : List.of("(sonde 51)", "(sonde 52)", "(sonde 53)")) {
             List<ItemLu> items = fautifs(marqueur);
 
             assertThatThrownBy(() -> verifierLesRefusDAvance(items))
