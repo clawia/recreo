@@ -2267,3 +2267,13 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusi
 | Poste | Auteur | Contenu | Prix |
 |---|---|---|---|
 | rapport qualite de LP4 seul (`composition-palier-4.md` 5.3 point 3), a trois sommets puis a `f36d83bc` | `yanis-qa` | `rapport-qualite-palier-4-lp4.md` et trois rapports par sommet, 4 commits `[YAN]` | transverse, aucun prix alloue |
+
+## Amendement du 2026-10-22 17:17 (UTC+02:00), palier 4 : ecrits de `camille-po` livres (RF11)
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de `s57-camille-p4` (`064eba49`), derniere de la serie demandee par l'utilisatrice le 2026-10-22. La branche ne touche que `docs/backlog/backlog.md`, `DEC-0120`, `DEC-index.md`, `MATRICE-couverture.md` et `registre-prix-palier-4.txt`. Je ne modifie ni la matrice ni un prix : je fusionne ce que `camille-po` a ecrit.
+
+| Poste | Auteur | Contenu | Prix |
+|---|---|---|---|
+| `S57-ARB-PALIER-4` et registre de prix du palier 4 (`OV4`), amendement de `DEC-0120` A.153 a A.163, mention de `MAT-CE1-10` et cellule de `FRA-CE1-21` en matrice | `camille-po` | 2 commits `[CAM]` | prix de l'arbitrage pris sur le 0,5 de chaque instance, aucun prix neuf |
+
+Etat de la matrice a la fusion : les lignes `MAT-CE1-10`, `FRA-CE1-21` et `EMC-CE1-02` ne bougent pas dans ce commit. Leur passage (`en cours`, `couvert-valide`) est a `camille-po`, apres cette fusion.
