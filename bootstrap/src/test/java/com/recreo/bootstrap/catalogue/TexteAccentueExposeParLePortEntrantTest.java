@@ -473,6 +473,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // contenances et choisir g, kg ou L (squad/conformite/ARBITRAGE-PREALABLE-s43-
             // mathematiques-ce1-lot-2.md, section 3).
             "bandit-manchot-masses-contenances-ce1",
+            // S57-BR-MAT-CE1-11 (s57) : entree neuve, MAT-CE1-11, se reperer dans le calendrier par
+            // la date seule (squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md,
+            // section 4).
+            "bandit-manchot-calendrier-dates-ce1",
             // S57-BR-EMC-CE1-01 (s57) : entree neuve, EMC-CE1-01, les biens de chacun et les biens
             // de tous (squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-
             // et-emc-ce1.md, section 4.1).
@@ -481,6 +485,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-
             // et-emc-ce1.md, section 4.2).
             "bandit-manchot-regle-sanction-ce1",
+            // S57-BR-EMC-CE1-03 (s57) : entree neuve, EMC-CE1-03, les droits et les devoirs
+            // (squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-
+            // et-emc-ce1.md, section 4.3).
+            "bandit-manchot-droit-devoir-ce1",
             // S57-BR-FRA-CE1-21 (s57) : entree neuve, FRA-CE1-21, ecrire un mot invariable (saisie).
             "saisie-mots-invariables-ce1",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
@@ -804,10 +812,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les nombres jusqu'à 1000",
             // S57-BR-MAT-CE1-10 (s57) : titre neuf, sans niveau (ADR-0078).
             "Les masses et les contenances",
+            // S57-BR-MAT-CE1-11 (s57) : titre neuf, sans niveau (ADR-0078).
+            "Les dates et le calendrier",
             // S57-BR-EMC-CE1-01 (s57) : titre neuf, sans niveau (ADR-0078).
             "Les biens de tous",
             // S57-BR-EMC-CE1-02 (s57) : titre neuf, sans niveau (ADR-0078).
             "La règle et la sanction",
+            // S57-BR-EMC-CE1-03 (s57) : titre neuf, sans niveau (ADR-0078).
+            "Les droits et les devoirs",
             // S57-BR-FRA-CE1-21 (s57) : titre neuf, sans niveau (ADR-0078), sans signe double.
             "Écris le petit mot",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
@@ -1144,6 +1156,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien les nombres, puis choisis la bonne réponse.",
             // S57-BR-MAT-CE1-10 (s57) : consigne neuve, sans signe double.
             "Compare les masses et les contenances, ou choisis la bonne unité.",
+            // S57-BR-MAT-CE1-11 (s57) : consigne neuve, generique - elle ne nomme aucune forme
+            // d'item, sans signe double.
+            "Pense au calendrier, puis choisis la bonne réponse.",
             // S51-MAT-MULTIPLICATION (s52) : consigne neuve, generique - elle ne nomme aucun nombre
             // ni aucune forme d'item.
             "Lis bien ou regarde le dessin, puis choisis la bonne écriture.",
@@ -1809,6 +1824,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // sans point final (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-10).
             // Couverture partielle nommee : le paquet ne sert pas "mesurer".
             "Comparer et mesurer des masses et des contenances (gramme, kilogramme, litre)",
+            // S57-BR-MAT-CE1-11 (s57) : competence neuve, MAT-CE1-11, libelle du referentiel copie
+            // sans point final (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-11).
+            // Couverture partielle nommee : le paquet ne sert pas "lire l'heure sur une horloge".
+            "Lire l'heure sur une horloge (heures, demi-heures, quarts d'heure) et se repérer dans le "
+                    + "calendrier (mois, date)",
             // S57-BR-EMC-CE1-01 (s57) : competence neuve, EMC-CE1-01, libelle du referentiel copie
             // (squad/programme/enseignement-moral-et-civique/competences-ce1.md, ligne EMC-CE1-01).
             "Respecter les biens personnels et collectifs : reconnaître ce qui appartient à tous "
@@ -1818,6 +1838,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/enseignement-moral-et-civique/competences-ce1.md, ligne EMC-CE1-02).
             "Distinguer une règle d'une sanction, et dire à quoi sert une sanction "
                     + "(rappeler la règle, réparer le tort fait).",
+            // S57-BR-EMC-CE1-03 (s57) : competence neuve, EMC-CE1-03, libelle du referentiel copie
+            // (squad/programme/enseignement-moral-et-civique/competences-ce1.md, ligne EMC-CE1-03).
+            "Associer quelques droits de l'élève à l'école aux devoirs qui les accompagnent "
+                    + "(le droit d'apprendre et le devoir de laisser les autres apprendre).",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
             // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
             "Trouver un synonyme ou un contraire d'un mot fréquent.",

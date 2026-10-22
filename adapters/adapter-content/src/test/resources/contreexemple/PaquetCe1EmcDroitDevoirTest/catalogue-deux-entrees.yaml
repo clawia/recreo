@@ -1,0 +1,14 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1EmcDroitDevoirTest. Deux entrees servent le meme paquet.
+jeux:
+  - id: bandit-manchot-droit-devoir-fautif
+    titre: "Les droits et les devoirs"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-droit-devoir
+    nombreDeManches: 10
+  - id: bandit-manchot-droit-devoir-fautif-bis
+    titre: "Droits et devoirs"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-droit-devoir
+    nombreDeManches: 10
