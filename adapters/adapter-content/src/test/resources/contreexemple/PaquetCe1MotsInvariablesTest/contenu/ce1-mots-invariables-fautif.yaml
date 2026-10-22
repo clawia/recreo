@@ -1,0 +1,64 @@
+schema: 1
+id: ce1-mots-invariables-fautif
+type: saisie
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Orthographier les mots invariables et les mots fréquents étudiés."
+lignesDeReferentiel: ["FRA-CE1-21"]
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1MotsInvariablesTest. Chaque item viole une seule
+# propriete du paquet : le mot dans l'indice, le mot dans l'enonce, un accent, une forme
+# acceptee qui est une faute, un mot de cp-mot-dicte, un enonce sans trou, une apostrophe sans sa
+# graphie typographique, un indice de seize mots, un renvoi a l'oreille, un mot du lexique exclu et un
+# enonce de vingt-deux mots.
+exigenceDeForme: libre
+items:
+  - enonce: "Le tapis est ___ le chat."
+    formeDeReference: "sous"
+    formesAcceptees: []
+    indice: "Le mot sous est tout petit."
+  - enonce: "Écris le mot souvent : il pleut ___ en novembre."
+    formeDeReference: "souvent"
+    formesAcceptees: []
+    indice: "Pense à tous les hivers de l'année."
+  - enonce: "Il fait ___ chaud."
+    formeDeReference: "très"
+    formesAcceptees: []
+    indice: "Pense au contraire de peu."
+  - enonce: "Tom lit ___ la récréation."
+    formeDeReference: "pendant"
+    formesAcceptees: ["pandant"]
+    indice: "Pense à tout le temps de la récréation."
+  - enonce: "La ___ brille dans le ciel."
+    formeDeReference: "lune"
+    formesAcceptees: []
+    indice: "Pense à l'astre de la nuit."
+  - enonce: "Les enfants jouent dans la cour."
+    formeDeReference: "dehors"
+    formesAcceptees: []
+    indice: "Pense au contraire de dedans."
+  - enonce: "Nous sommes mardi. ___, c'est mardi."
+    formeDeReference: "aujourd'hui"
+    formesAcceptees: []
+    indice: "Ce mot dit le jour où nous sommes."
+  - enonce: "Léa habite à cent kilomètres de l'école, elle habite ___ de l'école."
+    formeDeReference: "loin"
+    formesAcceptees: []
+    indice: "Relis bien toute la phrase avec beaucoup d'attention, puis cherche le petit mot qui manque ici."
+  - enonce: "Le chat dort ___ le canapé."
+    formeDeReference: "sur"
+    formesAcceptees: []
+    indice: "Ouvre bien l'oreille pour trouver ce petit mot."
+  - enonce: "Tom marche derrière Léa. Léa marche ___ Tom."
+    formeDeReference: "devant"
+    formesAcceptees: []
+    indice: "Cherche le complément de lieu."
+  - enonce: "Le petit chat noir et blanc de la voisine dort tranquillement dans son panier bleu pendant que les enfants jouent ___ dans la grande cour."
+    formeDeReference: "dehors"
+    formesAcceptees: []
+    indice: "Pense au contraire de tout proche."
+  - enonce: "Et ce cahier, ___ coûte-t-il ?"
+    formeDeReference: "Combien"
+    formesAcceptees: []
+    indice: "Pense au mot qui sert à demander un prix."

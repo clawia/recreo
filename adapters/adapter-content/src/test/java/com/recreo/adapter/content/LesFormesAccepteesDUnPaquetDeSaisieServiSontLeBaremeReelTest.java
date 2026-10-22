@@ -116,7 +116,10 @@ class LesFormesAccepteesDUnPaquetDeSaisieServiSontLeBaremeReelTest {
             // alphabetique sur cette mecanique). formesAcceptees y est vide sur chaque item - SAI-1,
             // SAI-3 et SAI-4 sont tenues par NormalisationDeSaisie sans forme alternative a enumerer -
             // et cette clause traverse alors formeDeReference seul, ce que le code ci-dessus fait deja.
-            List.of("cp-complements-10-saisie", "cp-mot-dicte");
+            // S57-BR-FRA-CE1-21 : troisieme entree de la liste (critere 11 de la story). Un seul
+            // item porte une forme acceptee, "aujourd'hui" en U+2019 a cote de U+0027 (QP1) ; les
+            // 23 autres la declarent vide.
+            List.of("cp-complements-10-saisie", "cp-mot-dicte", "ce1-mots-invariables");
 
     /**
      * Les formes qu'un item <b>ecrit dans le YAML</b>, lues independamment de la fabrique.

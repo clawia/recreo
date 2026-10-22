@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1MotsInvariablesTest. Le paquet de saisie est servi par le bandit manchot.
+jeux:
+  - id: saisie-mots-invariables-fautif
+    titre: "Écris le petit mot"
+    consigne: "Lis la phrase, puis écris le mot qui manque."
+    mecanique: bandit-manchot
+    paquet: ce1-mots-invariables
+    nombreDeManches: 10

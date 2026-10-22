@@ -1,0 +1,14 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1MotsInvariablesTest. Deux entrees servent le meme paquet.
+jeux:
+  - id: saisie-mots-invariables-fautif
+    titre: "Écris le petit mot"
+    consigne: "Lis la phrase, puis écris le mot qui manque."
+    mecanique: saisie
+    paquet: ce1-mots-invariables
+    nombreDeManches: 10
+  - id: saisie-mots-invariables-fautif-bis
+    titre: "Le petit mot"
+    consigne: "Lis la phrase, puis écris le mot qui manque."
+    mecanique: saisie
+    paquet: ce1-mots-invariables
+    nombreDeManches: 10
