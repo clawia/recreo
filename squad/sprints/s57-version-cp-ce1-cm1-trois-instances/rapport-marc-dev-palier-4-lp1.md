@@ -154,3 +154,25 @@ Je n'ai pas touche `saisie.html`. Mesure par moi sur ce jar, 744 x 551, trois fa
 2. **`nadia-prof`** : l'item 12 reste le plus expose (*en* est un mot que je refuse au jar mais qu'un adulte peut juger possible) ; item 16 : *deja* est refuse au jar, mais *on a déjà tout mangé* reste une phrase qu'un adulte pourrait accepter malgre la miette.
 3. **`nadia-prof`, `ines-design`** : le pli (9.3). Aucune action de ma part.
 4. **`sofia-sm`** : `git diff --name-only ea34c750 HEAD` ne nomme que ce rapport. Aucune question d'architecture ; aucune story, aucun critere modifie.
+
+## 10. Second rejeu : item 12 (refus restant de `nadia-prof`, rejeu sur `ea34c750`)
+
+**Decision de l'utilisatrice** (2026-10-22, citee par le coordinateur) : *"LP1 corrige"*. **Commit** : `8c76b1c7`, base `ea34c750` (sommet precedent `24a9315b`, qui ne differe de `ea34c750` que par le rapport). Un dernier commit porte cette section.
+
+**Le refus** : l'item 12, *Chloé a lu de 10 h à 10 h 10 : elle a lu ___ dix minutes.*, admet *juste* et *exactement* (un verbe de lecture accepte une duree sans preposition ; un adverbe de quantite se place devant le nombre).
+
+**Ce que j'ai cherche avant de remplacer le mot.** Un mot de duree se ferme mal en un mot : devant un nombre, *juste*, *exactement*, *environ* se placent ; devant un nom a determinant (*la recreation*, *ce film*, *mon voyage*), *toute* ou *tout* ; devant *que*, *alors* (*alors que*). Je n'ai pas trouve de phrase ou *pendant* est le seul mot de CE1 qui est juste, vrai dans la phrase et ecrivable, selon le critere ecrit dans la fiche. **Ecart a la consigne : j'ai remplace le mot au lieu de reecrire l'enonce**, et je le dis ici plutot que de livrer une phrase que je sais ouverte.
+
+| Avant | Apres |
+|---|---|
+| item 12, *pendant*, *Chloé a lu de 10 h à 10 h 10 : elle a lu ___ dix minutes.* | item 12, **pour**, *Nina met un pull ___ ne pas avoir froid.* ; indice : *Pense à ce que Nina veut : ne pas avoir froid.* |
+
+Pourquoi *pour* ferme : *ne pas* suit le trou, ce qui exclut *sans* (*sans ne pas avoir froid*), *avant*, *apres*, *par*, *de*, *avec* ; *afin* n'est pas ecrivable par un enfant de CE1 et exigerait *de*. Le prenom *Chloé* (feminin) est remplace par *Nina* (feminin) : cinq et cinq, origines variees, inchanges. Le mot est sans accent, sans `m` devant `b` ou `p`, et n'est pas un mot de `cp-mot-dicte` (garde `nrcCe11...` vert).
+
+**Ce qui change a cote** : l'en-tete du paquet porte *pour* a la place de *pendant* dans la liste de `MIV-CE1-1` et compte **quatorze** mots de S53 remplaces (les treize de la section 9, plus *pendant*). L'indice de l'item 18 est reecrit (*Pense à l'objet qui sert à manger la soupe.*) : l'ancien nommait *pour*, devenu mot cible, et le garde du critere 2 l'a refuse avant le commit. Les items 3, 7, 15, 16, 18, la liste, les indices acceptes et `saisie.html` ne bougent pas. Aucun test ajoute ni modifie : les gardes existants (critere 2, liste d'en-tete, nasale, `TYP-1`) ont tous juge le nouvel item.
+
+**Rejeu sur le jar** : jar de `8c76b1c7`, port **18521** libre avant et apres, PID **16984** lu dans le journal, arret par PID. **65 essais d'un autre mot sur tout le paquet, tous refuses, 0 accepte.** Sur l'item 12 (*pour*) : *sans*, *avant*, *apres*, *afin*, *de*, *par*, *juste*, *exactement*, *environ*, *presque*, *pendant*, *avec*, *toute* : **13 refuses**. Parcours de controle : 20 parties, 200 manches, 24 enonces sur 24 servis, 200 reponses justes sur 200. Les mots *juste*, *exactement*, *environ*, *presque*, *pendant* sont refuses sur la nouvelle phrase ; sur l'ancienne, *juste* et *exactement* etaient acceptes, c'est le refus. **Ce n'est pas le jeu de `nadia-prof`.**
+
+**Tests, jobs** : delta **0** sur la base `ea34c750`, cumul du lot **+40** sur `eb267ba7`. `bash outils/mvn-jdk21.sh -B clean verify`, racine propre, au jeton de `RF1` (acquis 14:00:45, libere 14:07:29) : `BUILD SUCCESS`, 06:38 min, sortie 0, 120 + 31 + 523 + 1834 + 381 + 6 d'integration = 2895, 0 echec, JDK 21.0.10. `prefixes`, `chemins` et `outils` : voir le message de remise. Un seul `verify`.
+
+**Questions routees** : (1) `nadia-prof` : le mot de l'item 12 change (*pendant* devient *pour*) ; si elle veut *pendant*, il faut une phrase que je n'ai pas trouvee, et je ne la cherche pas sans sa decision. (2) `nadia-prof` : *pour* n'a pas d'autre mot ecrivable de CE1 que je connaisse ; *afin* est la seule alternative juste, hors niveau. (3) `camille-po` : la marge de rejeu consommee par ce passage est a elle. (4) Le pli, reserve non bloquante : inchange, 18 items sur 24 depassent de 13 px ; l'item 12 compte 40 caracteres, sous les 47 qui tiennent sur une ligne en 9.3 (non remesure), il devrait donc tenir au pli.
