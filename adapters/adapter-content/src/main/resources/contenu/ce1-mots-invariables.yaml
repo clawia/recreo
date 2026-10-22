@@ -5,12 +5,12 @@
 # Les 24 enonces sont reecrits pour la saisie (amendement de la story, critere 9) : en choix parmi trois graphies le sens
 # n'avait pas a fermer la phrase, en saisie il le doit. Chaque phrase dit ce que le mot veut dire (un contraire, une
 # definition, une reponse, une place dans une suite) pour qu'un seul mot invariable de CE1 la ferme.
-# Treize mots de S53 ne se fermaient pas en saisie et sont remplaces : souvent, maintenant, alors, pourtant, aussi, vraiment,
-# parfois, ensuite, surtout, seulement, ailleurs, dehors, enfin. Les mots essayes et ecartes pour chaque item sont dans le
+# Quatorze mots de S53 ne se fermaient pas en saisie et sont remplaces : souvent, maintenant, alors, pourtant, aussi, vraiment,
+# parfois, ensuite, surtout, seulement, ailleurs, dehors, enfin, pendant. Les mots essayes et ecartes pour chaque item sont dans le
 # rapport du lot.
 #
 # MIV-CE1-1, liste declaree des vingt-quatre mots cibles, distincts : toujours, jamais, aujourd'hui, pourquoi, devant, dedans,
-# moins, partout, autour, loin, tard, pendant, depuis, avant, hier, presque, comment, avec, quand, sans, chez, entre, sous, peu.
+# moins, partout, autour, loin, tard, pour, depuis, avant, hier, presque, comment, avec, quand, sans, chez, entre, sous, peu.
 # Aucun accent (SAI-1 le tolere, mais le point 3 de nadia-prof exclut les mots dont l'orthographe tient a un accent).
 # Exclusions relues mot par mot : aucun mot decide par la regle d'une autre ligne (a et a accent grave, et/est, m devant b ou p,
 # c et c cedille, g/ge/gu). combien, retire au rejeu du 2026-10-22, y tombait (om devant b, FRA-CE1-22).
@@ -79,10 +79,10 @@ items:
     formeDeReference: "tard"
     formesAcceptees: []
     indice: "Pense au contraire de « tôt »."
-  - enonce: "Chloé a lu de 10 h à 10 h 10 : elle a lu ___ dix minutes."
-    formeDeReference: "pendant"
+  - enonce: "Nina met un pull ___ ne pas avoir froid."
+    formeDeReference: "pour"
     formesAcceptees: []
-    indice: "Pense à tout le temps que dure la lecture."
+    indice: "Pense à ce que Nina veut : ne pas avoir froid."
   - enonce: "Il a commencé à pleuvoir ce matin et il pleut encore : il pleut ___ ce matin."
     formeDeReference: "depuis"
     formesAcceptees: []
@@ -106,7 +106,7 @@ items:
   - enonce: "On tient une cuillère dans la main : on mange la soupe ___ cette cuillère."
     formeDeReference: "avec"
     formesAcceptees: []
-    indice: "Pense à ce qu'on utilise pour manger la soupe."
+    indice: "Pense à l'objet qui sert à manger la soupe."
   - enonce: "Mon anniversaire est le douze mai. Et toi, ___ est ton anniversaire ?"
     formeDeReference: "Quand"
     formesAcceptees: []
