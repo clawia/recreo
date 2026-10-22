@@ -36,7 +36,7 @@ Le jugement sur le sens des indices reste a `nadia-prof`.
 
 ## 4. Racine du scratchpad au palier 3
 
-**Non mesurable par cette instance.** La session courante ne porte pas la racine du palier 3. Ce que le depot dit : `cloture-palier-3.md` section 10 lit 23 repertoires et 69 fichiers a la racine, dont `s57-p3-lea-dev-b` et `s57-p3-lea-dev-ap` (table du palier 3). Je ne declare propre ni sale une racine que je n'ai pas listee. La racine du palier 4 est listee dans le rapport du lot LP2 (ligne *"racine : propre"* avec sa commande).
+**Non mesurable par cette instance.** La session courante ne porte pas la racine du palier 3. Ce que le depot dit : `cloture-palier-3.md` section 10 lit 23 repertoires et 69 fichiers a la racine, dont `s57-p3-lea-dev-b` et `s57-p3-lea-dev-ap` (table du palier 3). Je ne declare propre ni sale une racine que je n'ai pas listee. La racine du palier 4 est listee dans le compte rendu de fin de lot de `lea-dev` (ligne *"racine : propre"* avec sa commande), a reprendre dans `rapport-lea-dev-palier-4.md`.
 
 ## 5. Arrets du watchdog
 
@@ -55,7 +55,7 @@ Lances sur la branche `s57-lea-mat-ce1-10` (base `eb267ba7`), a la main, par les
 | `prefixes` | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-garde-fou-accent-test.sh`, puis `verifier-prefixes.sh` sur `eb267ba7..HEAD` plus le sujet du commit de ce rapport, puis `verifier-garde-fou-accent.sh eb267ba7..HEAD` | six sorties 0 ; *"Tous les commits portent un prefixe d'agent connu."* ; *"0 commit(s) le touchent dans la plage, tous [THEO]"* |
 | `chemins` | `verifier-chemins-test.sh`, puis `git ls-files` filtre dans `verifier-chemins.sh` | deux sorties 0 ; *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."* |
 | `outils` | les treize juges (`outils/*-test.sh` 6, `squad/outils/*/*-test.sh` 2, `outils/*-test.py` 5) | treize sorties 0. **Ecart au workflow** : l'interpreteur Python est `python` et non `python3`, qui resout ici vers un faux executable du magasin d'applications |
-| `build` (`mvn -B verify`) | voir la section 8 du rapport du lot ; `bash outils/mvn-jdk21.sh -B clean verify` a la racine du worktree propre, sous le jeton `RF1` | resultat ecrit dans le rapport du lot, **pas ici** : ce fichier est commite avant la mesure qui le porte |
+| `build` (`mvn -B verify`) | `bash outils/mvn-jdk21.sh -B clean verify` a la racine du worktree propre, sous le jeton `RF1` | resultat dans le compte rendu de fin de lot de `lea-dev` a `sofia-sm`, repris par `rapport-lea-dev-palier-4.md` (`K7` du palier 4, pas encore ecrit) ; **pas ici** : ce fichier est commite avant la mesure qui le porte |
 
 Lignee : `bash outils/verifier-lignee.sh` dans le worktree, sortie 0.
 
