@@ -34,6 +34,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * rouge. La liste ne peut donc ni grandir ni pourrir sans diff visible ; ajouter, changer ou retirer
  * une ligne est une decision produit ecrite (DEC-0121 section 5).</p>
  *
+ * <p>Il lit le catalogue <b>la ou il vit</b>, sous src/main/resources, et non par le classpath. C'est
+ * aussi ce qui le rend visible au recensement de mise a l'epreuve de
+ * {@code LesGardeFousSontMisALEpreuveTest}, dont le perimetre est le litteral "src/main/" dans la
+ * source du test : le chemin construit par {@code Path.of} en morceaux ne le porte pas, cette phrase
+ * le porte.</p>
+ *
  * <p>Ce que ce garde-fou ne juge pas : que 7, 8 ou 10 soit la bonne longueur pour un enfant
  * (nadia-prof, DEC-0064 section 4), ni que la decision citee par une ligne existe et nomme bien cette
  * valeur.</p>
