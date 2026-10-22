@@ -2346,3 +2346,90 @@ Arithmetique, treize lignes `instance|poste|prix|etat`, `awk -F'|'` sur le model
 | `camille-po` | l'amendement de `S57-BR-FRA-CE1-21` (A.151, point 1) ; la story de `LP8` si elle entre au palier 5 |
 
 **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne compose pas le palier (`sofia-sm`), n'amende ni `planning.md` ni la matrice (`MAT-CE1-14` reste `non couvert`), ne fixe aucun prix, n'affecte aucune instance. **Decisions de produit prises ici** : (1) la composition est consignee a 10,5 avec ses conditionnels, sur les mots de l'utilisatrice ; (2) la regle d'ordre sur `POIDS_TOTAL_MAXIMUM` (A.149) ; (3) deuxieme ecartement de `LP7` et de `LP8`, ecrit. **Changement de code decide** : les 20 dessins, le test croise et la constante de poids de `LP9`, **proprietaire `lea-dev` (B)**, forme du test par `theo-archi`, engagement par la composition de `sofia-sm` : la decision a un proprietaire, **elle n'est appliquee que par l'engagement de la story**. Aucun identifiant de condition neuf. Non commite.
+
+
+## Amendement du 2026-10-22, vingt-cinquieme (`camille-po`, palier 4 : la mention de matrice de `MAT-CE1-10`, le troisieme rejeu de `LP1` et de `LP4`, `S57-ARB-PALIER-4`)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : `round-two` a `eb267ba7`, ecrit dans un worktree dedie, 14:12 (UTC+02:00), lu par `date`. Ce que je n'ai pas fait : lancer un jar, jouer un contenu, fixer un prix, engager un poste, toucher `planning.md`, `LP9` ou un lot.
+
+### A.153 Les mots, et ce que chacun vaut
+
+Cites tels que l'agent lanceur me les transmet, 2026-10-22 (forme 2 de `DEC-0062` G) : *"LP2 lancer camille"*, *"LP4 M1 a"*, *"LP1 corrige"*.
+
+| Mots | Question a laquelle ils repondent | Ce qu'ils valent |
+|---|---|---|
+| *"LP2 lancer camille"* | le verdict **VALIDE** de `nadia-prof` sur `MAT-CE1-10` (rejeu, `c29d1d26`) demande une mention dans la cellule de la matrice avant ou avec le mouvement de la ligne | la tache est lancee : A.154 |
+| *"LP4 M1 a"* | `nadia-prof`, rejeu de `EMC-CE1-02` : *"c'est a `camille-po` de lui poser la question avec ces deux formes"* (regle citee dans les 12 enonces, forme (a) ; ou sanction aussi entre chevrons, forme (b)) | **forme (a)** pour la tache 1. Critere 7 de `S57-BR-EMC-CE1-02` (backlog). Ce que ces mots laissent ouvert : A.157 |
+| *"LP1 corrige"* | refus maintenu de `nadia-prof` sur l'item 12 de `ce1-mots-invariables` | lu comme un fait : la branche `s57-marc-fra-ce1-21` porte `8c76b1c7` (*"item 12 refait sur pour"*), constate par `git log`, **non joue, non lu par moi**. Si ces mots sont une instruction autre, l'utilisatrice le dit |
+
+Les mots ne disent rien du prix du rejeu ni du palier ou il se place : A.155 les place sur la regle de `nadia-prof` (*"a `camille-po` et `sofia-sm` de le placer"*).
+
+### A.154 `MAT-CE1-10` : la mention est ecrite, la ligne ne bouge pas
+
+**Ecrit.** La cellule de `MAT-CE1-10` (`squad/programme/MATRICE-couverture.md`) porte, mot pour mot, la mention de `nadia-prof` (`arbitrage-nadia-preparation-palier-3-ce1.md` 4.3, reprise dans sa fiche, section *Rejeu du 2026-10-22*) : *"comparer des masses et des contenances et utiliser le gramme, le kilogramme et le litre, par du texte ; 'mesurer' reste non couvert, aucune balance ni aucun recipient gradue n'est rendu"*. `grep -c` de cette phrase dans la matrice : **0 avant, 1 apres** (critere 5 de `S57-BR-MAT-CE1-10`). Une note datee en tete de la matrice porte le compte.
+
+**La ligne ne bouge pas, pour trois motifs lus sur les fichiers.**
+1. **Le jeu n'est pas servi.** Le paquet `ce1-masses-contenances.yaml` existe sur `round-two`, mais `grep -c "paquet: ce1-masses-contenances$"` sur `catalogue.yaml` rend **0**. L'entree est sur la branche `s57-lea-mat-ce1-10`, non fusionnee.
+2. **La fiche et son verdict sont sur `s57-nadia-p4-b`**, non fusionnee : la matrice ne cite pas un Done qui n'est pas sur `round-two`.
+3. **La fusion n'a pas eu lieu** : ni sa CI (tous les jobs de `ci.yml`), ni son ordre dans la file de `composition-palier-4.md`.
+
+**Ecart de mots, dit.** `nadia-prof` ecrit *"La ligne `MAT-CE1-10` reste `en cours`"* ; la matrice dit **`non couvert`** (jeu `-`). La ligne n'a jamais ete `en cours` : *"reste"* designe le plafond. Je garde `non couvert` jusqu'a la fusion ; **dans le commit de fusion du lot**, la ligne passe a `en cours` et le jeu `bandit-manchot-masses-contenances-ce1` est inscrit. Le statut commence par `non couvert` suivi d'une espace : la commande de la "Methode du compte" le compte `nc`.
+
+**Compte.** Commande de la "Methode du compte", lancee avant et apres ce geste, sortie identique : `couvert-valide` 152, `en cours` 5, `non couvert` 45, `non couvrable en l'etat` 75, total 277, **152 / 202 = 75,25 %**. **Le compteur de 152 / 202 ne bouge pas.** Apres la fusion, `en cours` passe a 6 et `non couvert` a 44, `couvert-valide` reste a 152 : `MAT-CE1-10` ne ferme jamais (plafond `en cours`). Compteur de version (A.32) : non calcule, le lot n'est pas fusionne.
+
+### A.155 Le troisieme rejeu de `LP1` et de `LP4` : ou, a quel prix, sous quel seuil
+
+**Les faits.** Les trois marges de rejeu de 0,5 sont consommees, chacune par un seul rejeu, ecrit par `nadia-prof` dans la fiche du lot : A par `FRA-CE1-21` (*"ce rejeu consomme la marge de A (0,5)"*), A' par `EMC-CE1-02` (*"ce rejeu consomme la marge de A' (0,5)"*), B par `MAT-CE1-10` (*"consomme la marge de B (0,5)"*). Ses mots sur la suite : *"Un troisieme passage n'a plus de marge dans la composition : il est a `camille-po` et `sofia-sm` de le placer (palier 4 sur un depassement ecrit, ou palier suivant)"* (A) ; *"Un troisieme passage n'a plus de marge : a `camille-po` et `sofia-sm`. Je le fais sur la tache 1 seule si elle est seule changee"* (A'). Etat : `LP1` refuse maintenu sur l'item 12 seul ; `LP4` refuse maintenu sur `M1` seul.
+
+**Decision : les deux rejeux se placent au palier 4, par un depassement ecrit ici, sur l'instance de leur lot.**
+
+| Poste | Instance | Qui rejoue / qui corrige | Portee, ses mots | Prix | Etat |
+|---|---|---|---|---|---|
+| rejeu 3 de `LP1` `FRA-CE1-21` | A | `nadia-prof` (A : `s57-p4-nadia-prof-a`, port 18511) / `marc-dev` | *"Je rejoue l'item 12 seul s'il est le seul change"* | **0,5 au plus** | **propose** |
+| rejeu 3 de `LP4` `EMC-CE1-02` | A' | `nadia-prof` (A' : `s57-p4-nadia-prof-ap`, port 18512) / `sofia-sm`, casquette developpeuse | *"Je le fais sur la tache 1 seule si elle est seule changee"* | **0,5 au plus** | **propose** |
+
+**Prix.** Le prix est a `nadia-prof` (A.33, A.36) : **0,5 est un plafond, pas un prix**. Motif du plafond : un rejeu vaut 0,5 (`arbitrage-nadia-palier-4.md` section 1, *"c'est un rejeu"* ; A.105). Elle peut ecrire moins (`GNA-CE1-R1` a 0,25 pour 0,5 inscrit, A.105) : la ligne du registre se corrige sur sa valeur. **Je ne le fixe pas.**
+
+**Pourquoi le palier 4 et pas le suivant.** (1) Le seuil le porte : 10,5 compose plus 1,0 = **11,5 sur 20,0**, il reste 8,5 (A.138). (2) `LP6` n'ouvre aucun worktree sans *"un verdict de `LP4` ou `LP5` sans refus"* (A.148) ; `LP4` est refuse deux fois, et un rejeu repousse a un palier 5 laisserait `LP6` bloque. (3) Un lot engage et non audite a la cloture glisse (A.72) : deux glissements de plus, sans motif de capacite.
+
+| Instance | Compose | Rejeu 3 | Nouveau | `PAR-8` (5,0 et trois lots) | Reste sous 5,0 |
+|---|---|---|---|---|---|
+| A | 2,0 | 0,5 | **2,5** | tenu, 1 lot | 2,5 |
+| A' | 4,0 | 0,5 | **4,5** | tenu, 3 lots (plafond de lots) | **0,5** |
+| B | 4,5 | 0 | 4,5 | tenu, 3 lots (plafond de lots) | **0,5** |
+| **Palier** | **10,5** | **1,0** | **11,5** | | 20,0 : reste 8,5 |
+
+Un rejeu n'est pas un lot : le compte de lots de `PAR-8` ne bouge pas. **Registre** : `registre-prix-palier-4.txt` (A.156), `awk -F'|'` lance ce jour, sortie lue : `A 2.50`, `Ap 4.50`, `B 4.50`, `total 11.50` ; par etat `engage 7.50`, `consomme 1.50`, `non-engage 1.50`, `propose 1.00` ; sans les deux lignes `propose`, **10.50**, la composition de `sofia-sm`.
+
+**Ce qui n'est pas decide ici.** L'**engagement** des deux postes est a `sofia-sm` (amendement date de `planning.md`, `RF11` de `composition-palier-4.md`) : tant qu'il n'est pas ecrit, ils sont `propose`. Aucun worktree, aucun agent n'est lance. **Un quatrieme passage n'est pas place** : s'il est refuse au rejeu 3, ni marge ni poste ne l'attendent, et je pose la question a l'utilisatrice (abandon du lot, ou nouveau placement) au lieu de le financer d'office : trois passages refuses sont la forme exacte d'une direction que personne n'a choisie. Aucune ligne neuve de la table d'isolation : les lignes de `nadia-prof` pour A et A' existent.
+
+**Ce qui mord, et qui n'est pas 20,0.** B et A' n'ont chacune que **0,5 sous le plafond de 5,0 par instance** (`PAR-8`, que l'utilisatrice a dit inchange). Les lots sans marge de rejeu, `LP3` (B), `LP5` et `LP6` (A'), et `LP9` (B, non engage), ne peuvent porter qu'**un** rejeu de 0,5 au total dans B et un dans A' : un second rejeu de A' ou de B depasse 5,0. Question a l'utilisatrice : A.157, `QU1`.
+
+### A.156 `S57-ARB-PALIER-4` et `registre-prix-palier-4.txt` : je les ecris
+
+**Decision : je ferme `OV4` de `composition-palier-4.md`.** `PAR-16` demande une story par poste engage ; `p4-1` n'en avait pas (0 titre). **Story** : `S57-ARB-PALIER-4` (backlog, fin de fichier, annotation datee), sur le modele de `S57-ARB-PALIER-3` : transverse, aucune competence, prix aucun (pris sur le 0,5 d'arbitrage de chaque instance), perimetre `LP1` a `LP6`. Criteres : l'arbitrage sur `round-two` (clause, **verte a `eb267ba7`, dite**) ; une ligne datee `lecture complete` par paquet, N egal au compte (24, 21, 25 pour les trois paquets existants ; le compte du paquet livre pour les trois d'EMC) : **0 sur 6 a `eb267ba7`, rouge** ; l'ordre ligne avant verdict ; une ligne avant chaque rejeu. **Registre** : `registre-prix-palier-4.txt` dans le dossier du sprint, quinze lignes `instance|poste|prix|etat`, composition de `sofia-sm` reprise sans changer un prix, un lot ni une instance ; les trois marges sont inscrites `consomme` sur la parole de `nadia-prof` (A.155) ; `LP9` reste **`non-engage`** comme `composition-palier-4.md` le compte. **Je ne tranche pas `AP2`** (premier report ou solde par l'engagement) : la ligne de registre dit l'etat, pas le compte.
+
+**Non fait, hors de la demande** : `OV3` (la ligne de rejeu de `-07` dans `registre-prix-palier-3.txt`, `arbitrage-nadia-palier-4.md` 5.5) reste ouverte ; elle est a moi.
+
+### A.157 Ce que "LP4 M1 a" laisse ouvert, et ce qui reste a decider
+
+| Code | Question | A qui | Sans reponse |
+|---|---|---|---|
+| `Q1` | **La forme (a) tient-elle dans `LON-CE1-1` et `-2` ?** Ses mots : *"`LON-CE1-1` et `-2` a tenir avec la phrase de plus"*. Le garde `AucunEnonceDeCe1NeDepasseVingtMotsNiTroisPhrasesTest` pose 20 mots (cliquet : une dette de 4 enonces de `ce1-longueurs`, qui *"ne remonte jamais sans un diff visible"*) et 3 phrases dont la derniere est la question ; a une lecture grossiere, les 8 items sans chevrons ont deja trois phrases. La citation de la regle ne tient donc que fondue dans une phrase existante, et chaque mot de plus approche les 20. Si elle ne tient pas, **qui cede : la borne ou la forme ?** Les mots de l'utilisatrice (*"M1 a"*) ne le disent pas. Je n'ai pas lance le garde sur un enonce reecrit | `nadia-prof` | `sofia-sm` s'arrete au premier enonce qui ne tient pas (critere 7) ; le rejeu 3 peut etre consomme pour une forme que ses propres bornes refusent |
+| `Q2` | **Le rejeu 3 prend-il les reserves non bloquantes du rejeu** (item 24, indice de l'item 6, pli) ? Elle rejoue *"sur la tache 1 seule si elle est seule changee"* ; l'indice de l'item 6 est dans la tache 1, l'item 24 dans la tache 2 | `nadia-prof` | `sofia-sm` ne sait pas si les corriger dans le meme commit elargit le rejeu |
+| `Q3` | **La forme (a) vaut-elle pour `EMC-CE1-03` et `-04`**, que `sofia-sm` ecrit ensuite ? Les mots de l'utilisatrice portent sur `LP4` | `nadia-prof` | un refus de `LP5` pour la meme forme n'a plus de marge (A.155) |
+| `Q4` | Prix des deux rejeux, 0,5 au plus | `nadia-prof` | le registre garde 0,50 |
+| `QU1` | **Rejeux suivants, `PAR-8` a 5,0 par instance.** Apres ce depassement, B et A' ont 0,5 sous 5,0. Voulez-vous (1) que chaque rejeu se place comme ici, un par un, par amendement date, `PAR-8` inchange (donc au plus un rejeu de plus dans B, un dans A') ; ou (2) relever le plafond de 5,0 pour les rejeux seuls ? Je ne propose pas (2) : elle n'est pas montree necessaire | l'utilisatrice | (1), par defaut |
+
+**Critere 7 de `S57-BR-EMC-CE1-02`** ecrit (backlog, annotation du 2026-10-22), avec les mots de `nadia-prof` et la valeur d'aujourd'hui : **4 enonces sur 12** portent des chevrons sur `1152fdc9` (rouge). `LP1` : le critere 9 de `S57-BR-FRA-CE1-21` porte deja ses mots ; **je n'y ajoute rien** : `nadia-prof` a ecrit ce qu'elle applique (*"un autre mot compte s'il est juste, vrai dans la phrase, et qu'un enfant de CE1 peut l'ecrire"*) et c'est a elle de dire si cela amende le critere.
+
+### A.158 Routage, ce que cet amendement ne fait pas
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | l'engagement des deux rejeux (`planning.md`) ; le changement de contenu de la tache 1 de `ce1-emc-regle-sanction` : **proprietaire `sofia-sm` (A'), story `S57-BR-EMC-CE1-02` engagee, critere 7** : la decision a un proprietaire et une story ; la fusion de `LP2` (la ligne de `MAT-CE1-10` passe a `en cours` dans le commit de fusion, A.154) |
+| `nadia-prof` | `Q1` a `Q4` ; son prix des rejeux ; son jeu du commit corrige |
+| l'utilisatrice | `QU1`, et la suite d'un quatrieme passage s'il vient |
+| `marc-dev` | rien de neuf : `LP1` est corrige (`8c76b1c7`), le rejeu est a `nadia-prof` |
+
+**Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne fixe aucun prix, n'engage aucun poste, n'amende ni `planning.md` ni `LP9`, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`. **Decisions de produit prises ici** : (1) la mention de `MAT-CE1-10` est ecrite et la ligne ne bouge pas avant la fusion ; (2) les deux rejeux se placent au palier 4, depassement de 1,0 sous 20,0, prix a confirmer par `nadia-prof` ; (3) `S57-ARB-PALIER-4` et le registre du palier 4 sont ecrits. **Changement de code decide** : le contenu de la tache 1 de `ce1-emc-regle-sanction` (forme (a)), proprietaire `sofia-sm`, story engagee. `DEC-0120` reste `Acceptee`. Aucun identifiant de condition neuf : `Q1` a `Q4` et `QU1` n'ont pas de tiret.
