@@ -263,3 +263,59 @@ Le fichier qui les porte est `mesure-ines-palier-4-pli-744x551.md`, sur la branc
 - **`chemins`** : sur ce fichier avant commit, et sur les fichiers de `s57-camille-p4`.
 - **`prefixes`** : sur `s57-camille-p4`, et sur ma branche avant commit.
 - **`build` complet, `package`, `outils`** : non lances.
+
+## 8. Amendement du 2026-10-22, 15:20 (UTC+02:00) : `LP4` a `f36d83bc`, la garantie de 7.3 est restauree
+
+Nouveau sommet de `LP4`, annonce par l'agent lanceur : `f36d83bc` (avant `41203188`, via `b7b25f42`). `git rev-parse --short` rend `f8d5d875` (`LP1`), `c29d1d26` (`LP2`), `f36d83bc` (`LP4`), et `round-two` reste a `eb267ba7`. Meme methode et meme isolation qu'aux sections 6 et 7. **Les sections 1 a 7 ne sont pas reecrites.**
+
+### 8.1 Lignee
+
+`git merge-base --is-ancestor eb267ba7 f36d83bc` : **0**. `git merge-base --is-ancestor 41203188 f36d83bc` : 0, donc pas de reecriture d'historique. `git log --oneline eb267ba7..f36d83bc` : 7 commits `[SOF]`, `f36d83bc`, `b7b25f42`, puis les 5 de 7.1.
+
+### 8.2 Diff depuis `41203188`
+
+`git diff --stat 41203188 f36d83bc` : le paquet `ce1-emc-regle-sanction.yaml` (+11 -7 : des enonces et un indice de tache 1 reecrits), `PaquetCe1EmcRegleSanctionTest.java` (+114 -7, `git diff --numstat`) et la fixture `ce1-emc-fautif.yaml` (+42). Aucun fichier sous `src/main/java` depuis `eb267ba7`, aucun marqueur ajoute, **aucun `@Test` supprime**, aucun fichier partage modifie.
+
+Les 7 lignes Java supprimees sont toutes dans la clause de 7.3 :
+
+| Point | `41203188` | `f36d83bc` | Garantie |
+|---|---|---|---|
+| Question de cible `sanction` | 3 premieres lettres, contenues n'importe ou dans la phrase de l'adulte | **le premier mot entier** de l'element, cherche dans la phrase de l'adulte et **ancre en debut de mot** | **restauree.** C'est au moins la clause supprimee de `1152fdc9`, qui faisait un `contains` sans ancrage. Limite qui demeure, et qui existait deja avant : la fin du mot n'est pas ancree, donc un mot de la question qui est le debut du mot de l'adulte passe |
+| Question de cible `faute` | 3 lettres, n'importe ou | 3 lettres, **ancrees en debut de mot** | **plus stricte** : `ran` ne se lit plus dans `grand`. Un jeu fautif neuf (`Omar a copie avec une racine au milieu`) |
+| Question negative | non traitee | `ne pas` ou `ne plus` retire avant de prendre le mot | sans perte : seul l'element est normalise. La phrase cherchee ne change pas |
+
+Ajouts sans suppression : deux gardes neufs (*"la negation ne designe jamais la regle"* : les questions negatives de tache 1 portent au moins deux cibles ; *"l'acte de tache 1 est une faute lisible"* : un acte qui peut etre accidentel dit `expres`, et un geste ordinaire d'ecolier n'est pas une faute). Ils viennent avec cinq jeux fautifs neufs. Les selecteurs neufs designent chacun 1 item de la fixture, sauf `NegQ`, qui en designe 3, et c'est l'ensemble que son test juge. Que ces gardes lexicaux disent juste la pedagogie est a `nadia-prof` : leur Javadoc le dit elle-meme.
+
+### 8.3 La mutation de 7.3, rejouee sur le paquet reel de `f36d83bc`
+
+Copie de `f36d83bc` ou une seule ligne du paquet change (`diff` contre `git show f36d83bc:<paquet>` : la ligne 87, *"Recopier le livre, c'est quoi ?"* au lieu de *"Recoller ..."*). Commande : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test -Dtest=PaquetCe1EmcRegleSanctionTest -Dsurefire.failIfNoSpecifiedTests=false`, 15:17:14 a 15:18:13. Resultat : **exit 1, 85 tests, 1 echec**, `rsa1LaQuestionDeLaTache1ADeLaMemeFormePourLesTroisCibles`, avec le message *"... ne reprend pas le geste de l'adulte, mot entier (guillemets du message : Recopier le livre)"*. La meme mutation etait verte a `41203188` (7.3). **Ce que `sofia-sm` annonce est confirme sur le materiau reel**, pas seulement sur sa fixture.
+
+### 8.4 ArchUnit
+
+Copie propre de `f36d83bc` par `git archive`, `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content,adapters/adapter-web,bootstrap -am test -Dtest=<15 classes ArchUnit>,<4 gardes partages>,PaquetCe1EmcRegleSanctionTest -Dsurefire.failIfNoSpecifiedTests=false`, 15:14:33 a 15:17:14 : **exit 0**. Le perimetre est celui de 7.4. Comptes lus dans les `TEST-*.xml`, JDK 21.0.10 (`java.version`, 20 rapports, une seule valeur).
+
+| Perimetre | Resultat |
+|---|---|
+| ArchUnit, 15 classes | **88 tests, 0 echec** |
+| Gardes partages, 4 classes | 56 tests, 0 echec (`LeRang...` 28, `LesFormesAcceptees...` 4, `ChaquePaquetDeMathematiques...` 14, `TexteAccentue...` 10) |
+| `PaquetCe1EmcRegleSanctionTest` | 85 tests, 0 echec (78 a `41203188`) |
+
+Compte de regles (`ADR-0104`) : **41, 38, 16**. Ecart 39 : `git grep` du motif de 4.3 sur les fichiers de `LP4` sort en exit 1, **ne bloque pas**.
+
+### 8.5 Conflits attendus
+
+`git merge-tree --write-tree --name-only --merge-base=eb267ba7` :
+
+| Paire | Code | En conflit |
+|---|---|---|
+| `f8d5d875` x `c29d1d26` | 1 | `catalogue.yaml` |
+| `f8d5d875` x `f36d83bc` | 1 | `catalogue.yaml` ; inventaire de `TexteAccentue...` |
+| `c29d1d26` x `f36d83bc` | 1 | `catalogue.yaml` |
+
+Le resultat est identique a 3.3, 6.4 et 7.5, et la resolution reste l'ajout des deux cotes (RF3). Le catalogue compte 158 entrees par sommet, 160 apres les trois fusions.
+
+### 8.6 Jobs lances pour cet amendement
+
+- **`build`, mesures partielles** : 8.3 et 8.4. Puis les quatre gardes de `squad/` sur ce fichier amende (resultat dans le message de commit).
+- **`chemins`** : sur ce fichier, avant commit. **`prefixes`** : sur ma branche, avant commit.
+- **`build` complet, `package`, `outils`** : non lances.
