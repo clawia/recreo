@@ -113,3 +113,12 @@ decide par la regle d'une autre ligne (aucun test ne lit une graphie) ; ce que f
 voit pas ; reserve de l'utilisatrice, aucun appareil dans la squad).
 
 **Signe** : `nadia-prof`, 2026-10-22.
+
+---
+
+## Rejeu du 2026-10-22 (`nadia-prof`, s57, palier 4, instance A, marge de rejeu)
+
+**lecture complete : ce1-mots-invariables, 24 items lus** - 2026-10-22, 13:17 (UTC+02:00), lu par `date`, sur la branche
+`s57-marc-fra-ce1-21` a `24a9315b` ; contenu et code a `ea34c750` (`git diff --name-only ea34c750 24a9315b` ne nomme que le
+rapport du lot). `grep -c "formeDeReference:"` rend 24. Lus : les 24 enonces, formes, indices, l'en-tete et sa liste
+`MIV-CE1-1`, le diff du paquet depuis `56e9fd1b`.
