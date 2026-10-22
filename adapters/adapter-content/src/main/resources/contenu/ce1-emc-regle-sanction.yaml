@@ -23,7 +23,11 @@ lignesDeReferentiel: ["EMC-CE1-02"]
 #             question designe l'element sous une forme identique pour les trois cibles, sans chevrons
 #             ("<element>, c'est quoi ?") ; les regles sont affirmatives et negatives melangees (decision de
 #             l'utilisatrice du 2026-10-22 sur M1, forme (a) de nadia-prof). Les trois propositions sont
-#             toujours les memes trois noms : la regle, la sanction, la faute.
+#             toujours les memes trois noms : la regle, la sanction, la faute. Une question qui commence par
+#             "Ne pas" designe la regle dans un item et la faute dans un autre : la negation ne designe pas la
+#             regle (garde). Les trois verbes que nadia-prof a releves comme lisibles en accident (renverser,
+#             mouiller, tacher) portent "expres" ; un geste ordinaire d'ecolier (effacer, gommer) n'est
+#             jamais l'acte d'une faute (garde lexical : le jugement reste a nadia-prof).
 #   tache 2 : a quoi sert la sanction. Douze items, cibles "reparation" (un dommage est decrit, bonne
 #             reponse "a reparer ...") et "rappel" (rien n'est abime, le geste refait correctement ce qui a
 #             ete mal fait, bonne reponse "a rappeler ..."). Les deux buts de la parenthese du referentiel
@@ -92,7 +96,7 @@ items:
     indice: "Est-ce ce qu'Omar a fait, ou ce qu'on lui demande ?"
   # RSA-CE1-1 tache 1 : regle
   # TRV-CE1-2 : c, b
-  - enonce: "« Jouer franc jeu ». Adam a triché aux dés : le maître lui fait rejouer son tour. Jouer franc jeu, c'est quoi ?"
+  - enonce: "« Ne pas tricher ». Adam a triché aux dés : le maître lui fait rejouer son tour. Ne pas tricher, c'est quoi ?"
     bonneReponse: "la règle"
     distracteurs: ["la faute", "la sanction"]
     indice: "Cela dit ce qu'on doit faire, avant que le jeu commence."
@@ -104,7 +108,7 @@ items:
     indice: "Demande-toi ce que la maîtresse attend de Maya ensuite."
   # RSA-CE1-1 tache 1 : faute
   # TRV-CE1-2 : a, b
-  - enonce: "« Faire attention ». Jade a taché un dessin : le maître lui fait en refaire un. Tacher un dessin, c'est quoi ?"
+  - enonce: "« Respecter les dessins ». Jade a taché exprès un dessin : le maître lui fait le refaire. Tacher, c'est quoi ?"
     bonneReponse: "la faute"
     distracteurs: ["la règle", "la sanction"]
     indice: "Cela est arrivé avant que le maître parle."
@@ -122,13 +126,13 @@ items:
     indice: "Pense à ce que le maître demande à Inès ensuite."
   # RSA-CE1-1 tache 1 : faute
   # TRV-CE1-2 : a, b
-  - enonce: "« Ne pas effacer ». Zoé a effacé un calcul : la maîtresse lui fait le réécrire. Effacer un calcul, c'est quoi ?"
+  - enonce: "« Rendre les affaires ». Zoé garde la gomme de Léo : le maître la lui fait rendre. Ne pas rendre, c'est quoi ?"
     bonneReponse: "la faute"
     distracteurs: ["la règle", "la sanction"]
     indice: "Qu'est-ce que Zoé a fait avant que l'adulte parle ?"
   # RSA-CE1-1 tache 1 : regle
   # TRV-CE1-2 : c, b
-  - enonce: "« Ne pas casser ». Hugo a renversé la tour d'Aya : le maître lui fait la refaire. Ne pas casser, c'est quoi ?"
+  - enonce: "« Laisser jouer ». Hugo a démoli la tour d'Aya : le maître lui fait la refaire. Laisser jouer, c'est quoi ?"
     bonneReponse: "la règle"
     distracteurs: ["la faute", "la sanction"]
     indice: "Dit-on cela avant le geste de Hugo, ou après ?"
@@ -140,10 +144,10 @@ items:
     indice: "Cela se passe après ce que Tom a fait."
   # RSA-CE1-1 tache 1 : faute
   # TRV-CE1-2 : b, a
-  - enonce: "« Ne pas mouiller ». Enzo a mouillé le sol : la maîtresse lui fait l'essuyer. Mouiller le sol, c'est quoi ?"
+  - enonce: "« Ne pas mouiller ». Enzo a mouillé exprès le sol : le maître lui fait l'essuyer. Mouiller le sol, c'est quoi ?"
     bonneReponse: "la faute"
     distracteurs: ["la sanction", "la règle"]
-    indice: "Pense à ce qui s'est passé avant que la maîtresse parle."
+    indice: "Pense à ce qui s'est passé avant que le maître parle."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Lina a cassé exprès le jouet de Samir. Le maître lui fait le recoller. À quoi sert cette sanction ?"

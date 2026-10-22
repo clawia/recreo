@@ -389,7 +389,8 @@ class PaquetCe1EmcRegleSanctionTest {
                             : "reprend la règle citée alors que la cible est " + item.cible())
                     .isTrue();
             if (!item.cible().equals("regle")) {
-                String racine = element.split("[\\s\\u00A0]+")[0].toLowerCase();
+                String racine = element.toLowerCase().replaceFirst("^ne (pas|plus)[\\s\\u00A0]+", "")
+                        .split("[\\s\\u00A0]+")[0];
                 racine = racine.substring(0, Math.min(3, racine.length()));
                 String ou = item.cible().equals("sanction") ? phraseDeLAdulte(item).toLowerCase()
                         : item.enonce().substring(0, item.enonce().length() - question.length()).toLowerCase();
@@ -398,6 +399,53 @@ class PaquetCe1EmcRegleSanctionTest {
                                 item.cible().equals("sanction") ? "le geste de l'adulte" : "l'acte de l'énoncé",
                                 element)
                         .contains(racine);
+            }
+        }
+    }
+
+    private static final Pattern ACTE_LISIBLE_EN_ACCIDENT = Pattern.compile("renvers|mouill|tach", FLAGS);
+
+    private static final Pattern GESTE_ORDINAIRE_D_ECOLIER = Pattern.compile("effac|gommer|gommé", FLAGS);
+
+    /**
+     * RSA-CE1-1, reserve de nadia-prof (rejeu 3) : une question qui commence par "Ne pas" ne designe pas
+     * toujours la regle. Garde sur la forme : les questions negatives de la tache 1 portent au moins deux
+     * cibles differentes. Le jugement "aucune forme ne donne la reponse" reste a nadia-prof.
+     */
+    private static void verifierQueLaNegationNeDesigneJamaisLaRegle(List<ItemLu> items) {
+        Set<String> cibles = new TreeSet<>();
+        for (ItemLu item : items) {
+            if (item.tache().equals("1")) {
+                Matcher forme = QUESTION_DE_LA_TACHE_1.matcher(derniereQuestion(item));
+                if (forme.matches() && forme.group(1).toLowerCase().startsWith("ne pas ")) {
+                    cibles.add(item.cible());
+                }
+            }
+        }
+        assertThat(cibles.size() >= 2)
+                .as("RSA-CE1-1 : toutes les questions négatives désignent la même cible, %s : la négation "
+                        + "désigne la règle", cibles)
+                .isTrue();
+    }
+
+    /**
+     * RSA-CE1-1 et EMC-5, rejeu 3 de nadia-prof : en tache 1, un acte que l'enfant peut faire sans le vouloir
+     * (renverser, mouiller, tacher) dit qu'il est voulu, et un geste ordinaire d'ecolier (effacer, gommer)
+     * n'est jamais l'acte d'une faute. Garde lexical sur ces verbes : qu'un acte appele faute en soit une
+     * reste a nadia-prof.
+     */
+    private static void verifierQueLActeDeLaTache1EstUneFauteLisible(List<ItemLu> items) {
+        for (ItemLu item : items) {
+            if (item.tache().equals("1")) {
+                assertThat(!ACTE_LISIBLE_EN_ACCIDENT.matcher(item.enonce()).find()
+                        || ACTE_DELIBERE.matcher(item.enonce()).find())
+                        .as("RSA-CE1-1 : l'acte de '%s' peut se lire comme un accident (renverser, mouiller, "
+                                + "tacher sans exprès)", item.enonce())
+                        .isTrue();
+                assertThat(GESTE_ORDINAIRE_D_ECOLIER.matcher(item.enonce()).find())
+                        .as("RSA-CE1-1 : l'acte de '%s' est un geste ordinaire d'écolier (effacer, gommer), pas "
+                                + "une faute", item.enonce())
+                        .isFalse();
             }
         }
     }
@@ -824,6 +872,16 @@ class PaquetCe1EmcRegleSanctionTest {
     @Test
     void rsa1LaQuestionDeLaTache1ADeLaMemeFormePourLesTroisCibles() {
         verifierLaQuestionDeLaTache1(items());
+    }
+
+    @Test
+    void rsa1LaNegationNeDesigneJamaisLaRegle() {
+        verifierQueLaNegationNeDesigneJamaisLaRegle(items());
+    }
+
+    @Test
+    void rsa1LActeDeLaTache1EstUneFauteLisible() {
+        verifierQueLActeDeLaTache1EstUneFauteLisible(items());
     }
 
     @Test
@@ -1266,6 +1324,33 @@ class PaquetCe1EmcRegleSanctionTest {
         assertThatThrownBy(() -> verifierLaQuestionDeLaTache1(items))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("n'a pas la forme");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneNegationQuiNeDesigneQueLaRegle() {
+        List<ItemLu> items = fautif("NégQ");
+
+        assertThatThrownBy(() -> verifierQueLaNegationNeDesigneJamaisLaRegle(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("la négation désigne la règle");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnActeDeTache1QuiSeLitCommeUnAccident() {
+        List<ItemLu> items = fautif("Enzo a mouillé sans intention");
+
+        assertThatThrownBy(() -> verifierQueLActeDeLaTache1EstUneFauteLisible(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("peut se lire comme un accident");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnGesteOrdinaireDEcolierPrisPourUneFaute() {
+        List<ItemLu> items = fautif("Zoé a effacé un calcul");
+
+        assertThatThrownBy(() -> verifierQueLActeDeLaTache1EstUneFauteLisible(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("geste ordinaire d'écolier");
     }
 
     @Test

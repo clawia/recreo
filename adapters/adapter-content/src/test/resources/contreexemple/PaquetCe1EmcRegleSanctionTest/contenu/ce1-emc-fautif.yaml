@@ -335,3 +335,33 @@ items:
     bonneReponse: "la règle"
     distracteurs: ["la sanction", "la faute"]
     indice: "Chacune doit le savoir."
+  # RSA-CE1-1 tache 1 : regle
+  # TRV-CE1-2 : b, c
+  - enonce: "« Ne pas casser ». NégQ A a cassé : le maître lui fait le recoller. Ne pas casser, c'est quoi ?"
+    bonneReponse: "la règle"
+    distracteurs: ["la sanction", "la faute"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : regle
+  # TRV-CE1-2 : b, c
+  - enonce: "« Ne pas salir ». NégQ B a sali : le maître lui fait le laver. Ne pas salir, c'est quoi ?"
+    bonneReponse: "la règle"
+    distracteurs: ["la sanction", "la faute"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : sanction
+  # TRV-CE1-2 : a, c
+  - enonce: "« Ne pas déchirer ». NégQ C a déchiré : le maître lui fait le recoller. Recoller, c'est quoi ?"
+    bonneReponse: "la sanction"
+    distracteurs: ["la règle", "la faute"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : faute
+  # TRV-CE1-2 : a, b
+  - enonce: "« Ne pas mouiller ». Enzo a mouillé sans intention le sol : le maître lui fait l'essuyer. Mouiller le sol, c'est quoi ?"
+    bonneReponse: "la faute"
+    distracteurs: ["la règle", "la sanction"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : faute
+  # TRV-CE1-2 : a, b
+  - enonce: "« Ne pas effacer ». Zoé a effacé un calcul : la maîtresse lui fait le réécrire. Effacer un calcul, c'est quoi ?"
+    bonneReponse: "la faute"
+    distracteurs: ["la règle", "la sanction"]
+    indice: "Pense au geste."
