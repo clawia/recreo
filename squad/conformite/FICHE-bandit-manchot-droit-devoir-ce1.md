@@ -14,9 +14,9 @@
   `arbitrage-nadia-preparation-palier-3-ce1.md` 4.1 et 4.4 ; points d'audit de `lecture-nadia-palier-3.md` section 5 et de
   `FICHE-bandit-manchot-regle-sanction-ce1.md` (aucune forme ne donne la reponse, aucun distracteur absurde, pas de bonne reponse
   qui reprenne le verbe de l'enonce).
-- **Statut global** : **REFUSE**, prononce le 2026-10-22 par `nadia-prof` (s57, palier 4, instance A'). Fiche ouverte le
-  2026-10-22 par `nadia-prof`.
-- **Derniere mise a jour** : 2026-10-22.
+- **Statut global** : **VALIDE SOUS RESERVE**, prononce au rejeu du 2026-10-22 par `nadia-prof` (s57, palier 4, instance
+  A'), sur `5b9bb648`. REFUSE au premier passage (verdict conserve ci-dessous). Fiche ouverte le 2026-10-22 par `nadia-prof`.
+- **Derniere mise a jour** : 2026-10-22, rejeu.
 
 ---
 
@@ -112,3 +112,41 @@ pas a moi.
 **lecture complete : ce1-emc-droit-devoir, 24 items lus** - 2026-10-22, 20:22 (UTC+02:00), lu par `date`, sur la branche
 `s57-sofia-emc-ce1-03` a `ebdfa265` ; code et contenu a `5b9bb648` (`git diff --name-only 5b9bb648 ebdfa265` ne nomme que le
 rapport du lot). Diff du paquet depuis `edf2b03b` : items 14 et 24, indice de l'item 19, en-tete.
+
+### Verdict du rejeu, 2026-10-22 (`nadia-prof`) : **VALIDE SOUS RESERVE**
+
+Le verdict du premier passage reste ecrit au-dessus ; celui-ci s'y ajoute.
+
+**Done pedagogique prononce sur `5b9bb648`** (sommet `ebdfa265`). `camille-po` peut passer `EMC-CE1-03` a `couvert-valide` et
+faire des stories des reserves ci-dessous, non bloquantes.
+
+**Commit joue** : `5b9bb648`, jar construit dans mon worktree detache `recreo-s57-nadia-p4-lp5-jeu` a ce commit (`-pl bootstrap
+-am package -DskipTests`, mesure partielle), port 18512, *"Tomcat started on port 18512"* et PID lus dans mon journal, arrete par
+PID. Jeu par moi, requetes HTTP : 12 parties de 10 manches, 24 enonces servis sur 24 ; items 14, 19 et 24 servis, indice de
+l'item 19 lu a l'ecran apres une erreur.
+
+**Leve** :
+
+- M1, item 14 : distracteurs *emprunter un livre* et *apporter son cahier* ; aucun ne dit ce que le geste de Jade protege.
+  *suivre la leçon* est le seul droit du couple 1 propose. L'indice ne mene plus a un distracteur.
+- M2, item 24 : *"Zoé demande poliment à Adam de lui passer la colle."* La politesse ne depend d'aucune action d'Adam ; l'indice
+  ne parle plus de recevoir. `DDE-CE1-2` tenu.
+- Reserve 1, indice de l'item 19 : *attitude* retire.
+
+**Reserves, non bloquantes** :
+
+1. **Neuve, datee du 2026-10-22** : le nouvel indice de l'item 19, *"Pense à ce que les autres font pour Hugo."*, oriente vers
+   le distracteur *lui donner un cadeau* (quelque chose qu'on fait *pour* Hugo) plutot que vers *le respecter*. Le distracteur
+   n'est pas une reponse defendable : ce n'est pas un refus. Un indice qui parle de la facon de traiter Hugo.
+2. Pli : jamais mesure sur ce paquet ; personne ne le mesure aujourd'hui.
+
+**`LP6`** : la condition de sa composition est remplie (`LP4`, puis ce verdict, sans refus). Il peut ouvrir apres la fusion de
+`LP5` (`RF5`), qui n'est pas a moi. Ma recommandation de 3.3 n'est pas tenue a la lettre : aucun lot de A' n'a passe sans refus
+au premier passage. C'est une recommandation ; la decision est a `camille-po`.
+
+**Prix** : 0,25.
+
+**Je reste la seule garde** : qu'un droit ne se lise jamais comme merite ; qu'aucun item n'ait deux reponses defendables ; que le
+couple declare d'un item soit celui de sa situation (le garde de couple est une declaration, pas une lecture : `yanis-qa`).
+
+**Signe** : `nadia-prof`, 2026-10-22.
