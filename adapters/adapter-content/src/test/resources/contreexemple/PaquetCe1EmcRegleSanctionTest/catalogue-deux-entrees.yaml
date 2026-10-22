@@ -1,0 +1,14 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1EmcRegleSanctionTest. Deux entrees servent le meme paquet.
+jeux:
+  - id: bandit-manchot-regle-sanction-fautif
+    titre: "La règle et la sanction"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-regle-sanction
+    nombreDeManches: 10
+  - id: bandit-manchot-regle-sanction-fautif-bis
+    titre: "Règle et sanction"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-regle-sanction
+    nombreDeManches: 10

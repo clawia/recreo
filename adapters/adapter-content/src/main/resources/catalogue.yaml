@@ -954,3 +954,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-masses-contenances
     nombreDeManches: 10
+  - id: bandit-manchot-regle-sanction-ce1
+    titre: "La règle et la sanction"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-regle-sanction
+    nombreDeManches: 10
