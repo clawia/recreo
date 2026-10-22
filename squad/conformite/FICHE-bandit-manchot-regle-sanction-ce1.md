@@ -167,7 +167,7 @@ designer, et M1 reste refuse : c'est a `camille-po` de lui poser la question ave
 - M3 : aucune bonne reponse ne reprend le verbe de l'enonce (*à réparer le tort fait*, *le dégât*, *le mal fait*, *les dégâts* ;
   *à rappeler la règle*, *les règles*, *l'interdit*, *la consigne*).
 - M4 : l'item 20 est une regle enfreinte expres (*"a bavardé exprès pendant la dictée"*), reprise en silence.
-- M5 : l'adulte de chaque indice est celui de l'enonce (items 6, 8, 9, 11, 12 relus ; 8 et 11 lus a l'ecran).
+- M5 : l'adulte de chaque indice est celui de l'enonce (items 6, 8, 9, 11, 12 relus dans le paquet ; celui de 8 lu a l ecran, celui de 11 non vu a l ecran, aucune erreur jouee sur cet item).
 - Reserve 1 : *la faute* est la bonne reponse de 4 items (3, 6, 9, 12). Reserve 2 : l'item 14 refait correctement
   (*relire doucement*). Reserve 3 : sans objet, l'item 24 est remplace.
 
