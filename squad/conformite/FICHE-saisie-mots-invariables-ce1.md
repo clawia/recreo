@@ -174,3 +174,11 @@ est le seul change.
 **Je reste la seule garde** : qu'aucun enonce n'admette un autre mot juste ; ce que fait le clavier de la tablette.
 
 **Signe** : `nadia-prof`, 2026-10-22.
+
+---
+
+## Rejeu 3 du 2026-10-22 (`nadia-prof`, s57, palier 4, instance A ; `DEC-0120` A.155)
+
+**lecture complete : ce1-mots-invariables, 24 items lus** - 2026-10-22, 14:22 (UTC+02:00), lu par `date`, sur la branche
+`s57-marc-fra-ce1-21` a `f8d5d875` ; contenu et code a `8c76b1c7` (`git diff --name-only 8c76b1c7 f8d5d875` ne nomme que le
+rapport du lot). `grep -c "formeDeReference:"` rend 24. Diff du paquet depuis `ea34c750` : item 12, indice de l'item 18, en-tete.
