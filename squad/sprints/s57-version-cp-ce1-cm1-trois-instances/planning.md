@@ -2309,3 +2309,7 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusi
 | `S57-GARDE-NOMBRE-DE-MANCHES`, garde `ChaqueJeuDuCatalogueDureDixManchesSaufDerogationNommeeTest` | A, `marc-dev` | engage a l'ouverture (p4-10), hors `PAR` | hors `PAR`, aucun prix | `4ef4ea82` |
 
 Le diff de la branche ne touche que le test, cinq catalogues de contre-exemple et `rapport-marc-dev-palier-4-garde-manches.md` : aucun contenu servi a l'enfant, aucun paquet, aucun gabarit, aucun code sous `src/main`. Aucun jeu de `nadia-prof`, donc RF13 sans objet. Cet amendement ne prononce aucun Done et ne touche ni la matrice ni un prix. Le resultat du `verify` et le SHA de fusion sont dans `RAPPORT.md` et `cloture-palier-4.md`.
+
+## Amendement du 2026-10-22 (UTC+02:00), palier 4 : ecrit de camille-po livre (RF11)
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-camille-p4-b` (52817981) dans `round-two` (RF11). Premiere des quatre des cinq fusions demandees par l'utilisatrice le 2026-10-22 (branches de documents). La branche porte la matrice a 154 / 202, `DEC-0120` A.164 a A.170 (rejeux de `LP3` et `LP5`), le registre de prix et le backlog. Aucune story n'est livree par cette branche, aucun Done n'est prononce, et je ne modifie ni la matrice ni un prix : je fusionne ce que camille-po a ecrit.
