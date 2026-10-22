@@ -13,10 +13,9 @@
   (`ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md`, 2 et 4.2) ; `EMC-1` a `EMC-7` ;
   `arbitrage-nadia-preparation-palier-3-ce1.md` 4.1 et 4.4 ; points d'audit de `lecture-nadia-palier-3.md`, section 5 (la forme
   qui donne la reponse, le distracteur absurde, deux reponses defendables).
-- **Statut global** : **REFUSE**, prononce le 2026-10-22 par `nadia-prof` (s57, palier 4, instance A'), **maintenu au rejeu du
-  2026-10-22** (M1 seul). Fiche ouverte le
-  2026-10-22 par `nadia-prof`.
-- **Derniere mise a jour** : 2026-10-22, rejeu.
+- **Statut global** : **REFUSE**, prononce le 2026-10-22 par `nadia-prof` (s57, palier 4, instance A'), maintenu au rejeu 2,
+  **maintenu au rejeu 3 du 2026-10-22 sur l'item 9 seul** (M1 leve). Fiche ouverte le 2026-10-22 par `nadia-prof`.
+- **Derniere mise a jour** : 2026-10-22, rejeu 3.
 
 ---
 
@@ -199,3 +198,69 @@ une regle enfreinte ; `NRC-CE1-1`.
 **lecture complete : ce1-emc-regle-sanction, 24 items lus** - 2026-10-22, 14:29 (UTC+02:00), lu par `date`, sur la branche
 `s57-sofia-emc-ce1-02` a `41203188` (`grep -c "bonneReponse:"` rend 24 ; `grep -c "«"` rend 12). Diff du paquet depuis
 `1152fdc9` : les 12 items de la tache 1, l'item 24, l'indice de l'item 6. Mots des 12 enonces de la tache 1 recomptes : 18 a 20.
+
+### Verdict du rejeu 3, 2026-10-22 (`nadia-prof`) : **REFUSE**, sur l'item 9 seul
+
+Les verdicts precedents restent ecrits au-dessus ; celui-ci s'y ajoute.
+
+**Commit joue** : `41203188`, jar construit dans mon worktree detache `recreo-s57-nadia-p4-ap-jeu` a ce commit (`-pl bootstrap
+-am package -DskipTests`, mesure partielle), port 18512, *"Tomcat started on port 18512"* et PID lus dans mon journal, arrete par
+PID. Jeu par moi, requetes HTTP : 15 parties de 10 manches en deux series ; les 24 enonces servis sur l'ensemble (l'item 11 dans
+la seconde serie seulement) ; deux erreurs et l'indice lus sur l'item 6.
+
+**M1 leve.** La forme (a) que j'avais ecrite est appliquee : la regle entre chevrons dans les 12 enonces, la question *"<element>,
+c'est quoi ?"* sans chevrons pour les trois cibles, 6 regles affirmatives et 6 negatives. Les chevrons ne designent plus la cible.
+La barre est celle que j'avais ecrite ; elle est atteinte, je la leve.
+
+**Motif du refus, item 9 seul** (exactitude ; `EMC-5`) : *"« Ne pas effacer ». Zoé a effacé un calcul : la maîtresse lui fait le
+réécrire. Effacer un calcul, c'est quoi ?"*, bonne reponse *la faute*. Un enfant de CE1 efface ses calculs tous les jours : ce
+n'est ni une faute ni une regle de la classe. L'item enseigne le contraire de ce qui est vrai. Aux passages precedents, l'acte
+etait *"a effacé exprès le calcul de Léo"* : le travail d'un autre, efface volontairement. Ce qu'il faut : un acte qui est une
+faute (le travail d'un autre, ou un geste interdit), et une regle que cet acte enfreint, dans les 20 mots.
+
+**Leve, verifie** : item 24 (*"Aya a lancé exprès sa trousse. La maîtresse lui fait la reposer doucement."* : un autre objet, un
+geste refait doucement) ; indice de l'item 6 (*"Cela est arrivé avant que le maître parle."*, lu a l'ecran). Tache 2 inchangee
+depuis le rejeu 2 : ce qui y tenait tient. `NRC-CE1-1` : aucune des 12 regles n'est une regle de `cp-emc-regles-de-vie` ni de
+`cp-emc-regle-souhait-loi`. `TRV-CE1-6`, `RSA-CE1-1`, `RSA-CE1-2` : tenus.
+
+**Correction de mes propres constats** : aux deux premiers passages, j'ai accepte *"Noé a sali un mur"* et *"Lina a déchiré une
+page"* sans *exprès*. Je ne fais donc pas de l'intention un motif sur la tache 1 : ce serait relever ma barre apres coup. L'item 9
+n'est pas refuse pour une intention absente, mais parce qu'effacer un calcul n'est pas une faute.
+
+**Reserves nouvelles, datees du 2026-10-22, non bloquantes** :
+
+1. Items 6 (*"Jade a taché un dessin"*), 10 (*"Hugo a renversé la tour d'Aya"*) et 12 (*"Enzo a mouillé le sol"*) portaient
+   *exprès* au rejeu 2 et l'ont perdu pour tenir 20 mots : chacun peut se lire comme un accident. Un acte voulu, ou la mention
+   qu'il l'est.
+2. La question commence par *"Ne pas"* dans 2 items (7, 10), et c'est toujours la regle : aucune question de sanction ni de faute
+   n'est negative. La lettre de ma forme (a) est tenue (6 et 6) ; son but, que la negation ne designe pas la regle, l'est sur 10
+   items sur 12.
+3. Item 10 : *"« Ne pas casser »"* pour une tour renversee ; une regle qui dit le geste fait.
+4. Item 4 : *"Jouer franc jeu"* est une expression que l'enfant de CE1 lit mal seul.
+5. Pli : non remesure sur ce commit (8 items sur 24 sous le pli au premier passage, `ines-design`, `089fb477`).
+
+**Points de `sofia-sm`** :
+
+- **La reponse est-elle redite ?** Non : l'enonce cite la regle entre chevrons sans le mot *règle*, et la question reprend la
+  phrase sans la nommer. Le mot de la bonne reponse n'est ecrit nulle part avant la reponse.
+- ***Être soigneux*, *Faire attention*, *Garder propre*** : recevables. Une regle de classe peut etre generale ; ce que j'exige,
+  c'est qu'elle soit celle que l'acte enfreint. Elle l'est pour ces trois items (2, 6, 8).
+
+**Questions de `camille-po`** :
+
+- **Q1, la forme (a) tient-elle dans 20 mots et 3 phrases, la derniere etant la question ?** Oui : j'ai recompte 18 a 20 mots
+  et 3 phrases dans les 12 enonces. Elle n'y tient qu'en retirant *exprès* (reserve 1) et le proprietaire du calcul (motif).
+- **Q2, le rejeu 3 prend-il les reserves non bloquantes ?** Il a pris l'item 24 et l'indice de l'item 6 : levees. Le pli reste
+  en reserve, a remesurer par `ines-design`.
+- **Q3, la forme (a) vaut-elle pour `EMC-CE1-03` et `-04` ?** Non comme forme : c'est la reponse a M1 de cette ligne, la ou il
+  faut distinguer une regle d'une sanction. Pour `-03` et `-04` valent `DDE-CE1-1`, `-2`, `INT-CE1-1`, `-2`, et le point
+  d'audit commun : aucune forme (typographie, mot repris, article, negation) ne donne la reponse.
+- **Q4, le prix** : 0,5 pour ce rejeu (12 items reecrits sur 24, l'item 24 et un indice : la moitie du paquet relue et
+  rejouee) ; 0,25 pour le rejeu 3 de `LP1` (un item et un indice).
+
+**Ce qui suit** : un quatrieme passage n'a pas de prix dans `DEC-0120` A.155 ; il est a `camille-po` et `sofia-sm`. Je ne
+rejoue que l'item 9 s'il est le seul change, et son prix est 0,25. `LP6` reste sans worktree.
+
+**Je reste la seule garde** : qu'un acte appele *faute* en soit une ; qu'aucune forme ne donne la reponse ; `NRC-CE1-1`.
+
+**Signe** : `nadia-prof`, 2026-10-22.
