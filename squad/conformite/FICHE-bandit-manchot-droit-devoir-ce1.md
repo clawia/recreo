@@ -104,3 +104,11 @@ pas a moi.
 `NRC-CE1-1`.
 
 **Signe** : `nadia-prof`, 2026-10-22.
+
+---
+
+## Rejeu du 2026-10-22 (`nadia-prof`, s57, palier 4, instance A')
+
+**lecture complete : ce1-emc-droit-devoir, 24 items lus** - 2026-10-22, 20:22 (UTC+02:00), lu par `date`, sur la branche
+`s57-sofia-emc-ce1-03` a `ebdfa265` ; code et contenu a `5b9bb648` (`git diff --name-only 5b9bb648 ebdfa265` ne nomme que le
+rapport du lot). Diff du paquet depuis `edf2b03b` : items 14 et 24, indice de l'item 19, en-tete.
