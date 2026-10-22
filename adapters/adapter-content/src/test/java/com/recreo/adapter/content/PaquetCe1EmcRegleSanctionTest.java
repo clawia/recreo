@@ -88,7 +88,8 @@ class PaquetCe1EmcRegleSanctionTest {
             Pattern.compile("^à (changer|supprimer) la règle$", FLAGS);
 
     /** RSA-CE1-1, famille (e) : un but qui cache l'acte ou le fait oublier. */
-    private static final Pattern BUT_QUI_CACHE = Pattern.compile("^à (oublier|cacher) ", FLAGS);
+    private static final Pattern BUT_QUI_CACHE = Pattern.compile(
+            "^à (oublier |cacher |garder le secret$|ne rien dire à personne$)", FLAGS);
 
     /** RSA-CE1-1, famille (f) : l'autre but de la sanction. */
     private static final Pattern BUT_REPARER = Pattern.compile("^à réparer ", FLAGS);

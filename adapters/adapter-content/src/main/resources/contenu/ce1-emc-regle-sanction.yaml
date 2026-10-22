@@ -140,19 +140,19 @@ items:
   # TRV-CE1-2 : f, d
   - enonce: "Hugo a crié pendant la lecture. La maîtresse lui fait reprendre la lecture. À quoi sert cette sanction ?"
     bonneReponse: "à rappeler qu'on ne crie pas"
-    distracteurs: ["à réparer ce qui est abîmé", "à changer la règle"]
+    distracteurs: ["à réparer un objet abîmé", "à changer la règle"]
     indice: "Demande-toi si quelque chose est abîmé dans cette histoire."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : e, d
   - enonce: "Aya a déchiré exprès le dessin de Noé. La maîtresse lui fait en refaire un. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à oublier ce qui s'est passé", "à supprimer la règle"]
+    distracteurs: ["à ne rien dire à personne", "à supprimer la règle"]
     indice: "Demande-toi ce que Noé a perdu, et ce qui lui est rendu."
   # RSA-CE1-1 tache 2 : rappel
   # TRV-CE1-2 : f, e
   - enonce: "Inès a claqué la porte de la classe. Le maître lui fait la fermer doucement. À quoi sert cette sanction ?"
     bonneReponse: "à rappeler la règle"
-    distracteurs: ["à réparer le tort fait", "à oublier ce qui s'est passé"]
+    distracteurs: ["à réparer le tort fait", "à garder le secret"]
     indice: "Pense à ce qu'Inès fait la prochaine fois qu'elle ferme la porte."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
@@ -164,19 +164,19 @@ items:
   # TRV-CE1-2 : d, f
   - enonce: "Enzo s'est balancé sur sa chaise. La maîtresse lui fait la reposer bien droite. À quoi sert cette sanction ?"
     bonneReponse: "à rappeler comment bien s'asseoir"
-    distracteurs: ["à changer la règle", "à réparer ce qui est abîmé"]
+    distracteurs: ["à changer la règle", "à réparer un objet abîmé"]
     indice: "Pense à la prochaine fois qu'Enzo s'assoit sur sa chaise."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : e, d
   - enonce: "Tom a cassé exprès la pointe du crayon d'Inès. Le maître lui fait le tailler. À quoi sert cette sanction ?"
     bonneReponse: "à réparer ce qu'il a cassé"
-    distracteurs: ["à oublier ce qui s'est passé", "à changer la règle"]
+    distracteurs: ["à garder le secret", "à changer la règle"]
     indice: "Pense à ce que ce geste donne à Inès."
   # RSA-CE1-1 tache 2 : rappel
   # TRV-CE1-2 : e, f
   - enonce: "Jade a rendu sa feuille sans son nom. La maîtresse lui fait écrire son nom. À quoi sert cette sanction ?"
     bonneReponse: "à rappeler qu'on écrit son nom"
-    distracteurs: ["à cacher ce qui s'est passé", "à réparer le tort fait"]
+    distracteurs: ["à ne rien dire à personne", "à réparer le tort fait"]
     indice: "Jade a-t-elle abîmé quelque chose ou quelqu'un ?"
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
@@ -188,17 +188,17 @@ items:
   # TRV-CE1-2 : f, d
   - enonce: "Samir a parlé fort à la bibliothèque. Le maître lui fait répéter à voix basse. À quoi sert cette sanction ?"
     bonneReponse: "à rappeler qu'on parle bas"
-    distracteurs: ["à réparer ce qui est abîmé", "à supprimer la règle"]
+    distracteurs: ["à réparer un objet abîmé", "à supprimer la règle"]
     indice: "Qu'est-ce qui est abîmé ou perdu dans cette histoire ?"
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Mila a écrit sur le cahier de Jade sans demander. Le maître lui fait l'effacer. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à cacher ce qui s'est passé"]
+    distracteurs: ["à changer la règle", "à garder le secret"]
     indice: "Compare le cahier de Jade avant et après."
   # RSA-CE1-1 tache 2 : rappel
   # TRV-CE1-2 : e, f
   - enonce: "Aya a lancé un avion en papier. Le maître lui fait reprendre son travail. À quoi sert cette sanction ?"
     bonneReponse: "à rappeler la règle"
-    distracteurs: ["à oublier ce qui s'est passé", "à réparer le tort fait"]
+    distracteurs: ["à ne rien dire à personne", "à réparer le tort fait"]
     indice: "Pense à ce que fera Aya la prochaine fois en leçon."
