@@ -68,3 +68,20 @@ Jar construit sur `8f25fd64` (`-pl bootstrap -am package -DskipTests`, mesure pa
 | Q5 | `TRV-CE1-2` et `TRV-CE1-5` sont des conditions du francais CE1 (s48) que j'applique aussi au paquet de mathematiques, comme `LP2` pour `TRV-CE1-5` : confirmer | `nadia-prof` |
 
 Mention de cellule (`camille-po`, le jour du verdict, `K9`) : non touchee.
+
+## 6. Reprise apres le refus de `nadia-prof` (2026-10-22)
+
+Meme branche, meme worktree. Base de la reprise : `c8404173`. `nadia-prof` a refuse le lot (`FICHE-bandit-manchot-calendrier-dates-ce1.md`, motif M1) ; l'utilisatrice a decide le rejeu au palier 4. K2 est levee pour les items qu'elle a nommes, rien d'autre n'est touche dans le paquet.
+
+| Point de la fiche | Changement | Garde qui mord (jeu fautif) |
+|---|---|---|
+| M1, item 18 (11 avril, 11 mars, 11 juin) | remplace par "Entre le 9 mai, le 26 mai et le 17 mai, quelle date vient la dernière ?", bonne reponse "le 26 mai", distracteurs les deux autres dates, indice "Les dates sont du même mois, regarde les jours." Rang haut, comme l'item remplace | `verifierQueLeJourDecideDansLOrdre` : jamais trois dates du meme jour (jeu fautif : l'item 11 avril, 11 mars, 11 juin) |
+| Reserve 1 (jour qui decide, items 15, 16, 17, 19) | **traitee par le seul item 18 remplace** : c'est maintenant un item d'ordre dont deux dates sont du meme mois. Les items 15, 16, 17 et 19 ne changent pas (aucun item de plus modifie). Si `nadia-prof` veut qu'un de ces quatre-la change, c'est un item de plus | meme verificateur : au moins un item d'ordre compare des jours (jeu fautif : un item aux trois mois differents) |
+| Reserve 2, rang | item 13 : distracteurs "le 1er juin" et "le 29 juin" (le 29 juin est la date donnee moins un jour, famille admise). Sur les 25 items, dates rangees dans l'annee : haut 8, milieu 12 (48 %), bas 5 | `verifierLesTroisRangsSurTousLesItems`, 10 % a 50 % par rang sur les 25 items (nouveau, en plus du garde sur les 7 items de nombre de jours, inchange). Jeux fautifs : trois bonnes reponses au meme rang ; milieu a 3 items sur 5 |
+| Reserve 3, "sauf fevrier" | les quatre indices (janvier, avril, novembre, decembre) deviennent "Poing fermé : les creux ont 30 jours, les bosses 31, sauf février." (12 mots ; "Ferme le poing : les creux comptent 30 jours, les bosses 31, sauf février." en aurait 13 et le garde de douze mots, que je n'affaiblis pas, aurait rougi) | `verifierLesIndices` : un indice qui parle de creux doit nommer fevrier (jeu fautif : l'ancien indice) |
+| Reserve 4, en-tete | le commentaire de `CAL-CE1-4` dit qu'un item ne suppose aucune fete, rentree ni vacances, et que le 1er mai, le 31 aout et le 1er septembre n'apparaissent qu'en distracteur de lendemain ou de veille. Les distracteurs ne changent pas | `DETTE_DE_FETES` inchangee |
+
+- **`DETTE_DE_FAMILLE` et `DETTE_DE_FETES`** : les occurrences ne disparaissent pas (C1, C2 sont jugees recevables, aucun distracteur change), donc les trois entrees restent : "Quelle est la veille du 1er juin ? / le 30 juin", "Quel est le lendemain du 31 mai ? / le 1er mai", "Quelle est la veille du 1er août ? / le 31 août". Leur Javadoc dit maintenant "occurrence admise", plus "dette" (les noms de constantes ne changent pas : aucun diff inutile).
+- **Delta de tests de la reprise** : +7 (57 tests dans `PaquetCe1CalendrierDatesTest`, 50 au premier passage), base de la reprise `c8404173`. Delta du lot sur `51a9d957` : +57. Aucun test affaibli ni retire.
+- **A rejouer par `nadia-prof`** : l'item 18 (nouveau), l'item 13 (lendemain du 30 juin, distracteurs), les indices de janvier, avril, novembre et decembre, l'en-tete du paquet. Six items sont touches (13, 18 et les quatre des indices), les 19 autres sont inchanges.
+- Jobs de `ci.yml`, `verify` complet et racine du scratchpad : dans le compte rendu de fin de reprise de `lea-dev`, pas ici.
