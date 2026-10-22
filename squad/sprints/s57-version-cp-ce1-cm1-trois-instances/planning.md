@@ -2213,3 +2213,13 @@ Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue. **Le 
 ### 13. Decisions prises
 
 **Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il ecrit : l'heure d'ouverture du palier 4 ; l'etat des quatre conditions de `D2` ; la composition de `camille-po` portee, sans changement de prix, de lot ni d'instance ; l'ordre engage comme ordre de planning ; les affectations, dont celle de `S57-GARDE-NOMBRE-DE-MANCHES` a `marc-dev` ; la lecture d'A-5 retenue ; la designation de la table d'isolation de `composition-palier-4.md` ; le compte des reports ; l'heure du seuil d'alerte. L'amendement de `DEC-0120` qui porte l'etat d'ouverture est a `camille-po`.
+
+## Amendement du 2026-10-22 15:58 (UTC+02:00), palier 4 : ligne de `LP2` livree (RF11, `composition-palier-4.md` 5.2)
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-lea-mat-ce1-10` dans `round-two` (RF11 : la ligne s'ecrit avant le commit de fusion). Demande de l'utilisatrice du 2026-10-22 : *"lance la fusion des trois lots"*. Premiere des trois fusions, dans l'ordre LP2, LP4, LP1 (premier pret premier fusionne, RF3).
+
+| Story | Competence | Instance, developpeur | Engagement | Rejeux (prix de `nadia-prof`) | Prix du lot | Sommet joue |
+|---|---|---|---|---|---|---|
+| `S57-BR-MAT-CE1-10`, paquet `ce1-masses-contenances` | `MAT-CE1-10` | B, `lea-dev` | engage a l'ouverture (p4-4) | un rejeu, pris sur la marge de B (0,5) ; aucun rejeu hors marge, aucun depassement | 1,0 | `c29d1d26`, VALIDE (fiche `FICHE-bandit-manchot-masses-contenances-ce1.md`, branche `s57-nadia-p4-b`) |
+
+Cet amendement ne prononce aucun Done et ne touche ni la matrice ni un prix. Le resultat du `verify` et le SHA de fusion sont dans `RAPPORT.md` et `cloture-palier-4.md`, pas ici.
