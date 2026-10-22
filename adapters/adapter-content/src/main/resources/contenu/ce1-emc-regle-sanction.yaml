@@ -102,7 +102,7 @@ items:
     indice: "Cela dit ce qu'on doit faire, avant que le jeu commence."
   # RSA-CE1-1 tache 1 : sanction
   # TRV-CE1-2 : a, c
-  - enonce: "Jade a taché le dessin de Samir. Le maître lui fait présenter ses excuses. Présenter ses excuses, c'est quoi ?"
+  - enonce: "Jade a taché exprès le dessin de Samir. Le maître lui fait présenter ses excuses. Présenter ses excuses, c'est quoi ?"
     bonneReponse: "la sanction"
     distracteurs: ["la règle", "la faute"]
     indice: "Cela répond à ce que Jade a fait au dessin."
@@ -126,13 +126,13 @@ items:
     indice: "Cette phrase parle de tous les élèves, pas d'Inès."
   # RSA-CE1-1 tache 1 : sanction
   # TRV-CE1-2 : a, c
-  - enonce: "Zoé a effacé le calcul de Léo au tableau. La maîtresse lui fait le réécrire. Réécrire le calcul, c'est quoi ?"
+  - enonce: "Zoé a effacé exprès le calcul de Léo. La maîtresse lui fait le réécrire. Réécrire le calcul, c'est quoi ?"
     bonneReponse: "la sanction"
     distracteurs: ["la règle", "la faute"]
     indice: "Qu'est-ce que Zoé doit faire à cause de ce qu'elle a fait ?"
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
-  - enonce: "Lina a cassé le jouet de Samir. Le maître lui fait le recoller. À quoi sert cette sanction ?"
+  - enonce: "Lina a cassé exprès le jouet de Samir. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer ce qu'elle a cassé"
     distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
     indice: "Pense à ce que Samir retrouve grâce à ce geste."
@@ -144,7 +144,7 @@ items:
     indice: "Demande-toi si quelque chose est abîmé dans cette histoire."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : e, d
-  - enonce: "Aya a déchiré le dessin de Noé. La maîtresse lui fait en refaire un. À quoi sert cette sanction ?"
+  - enonce: "Aya a déchiré exprès le dessin de Noé. La maîtresse lui fait en refaire un. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
     distracteurs: ["à oublier ce qui s'est passé", "à supprimer la règle"]
     indice: "Demande-toi ce que Noé a perdu, et ce qui lui est rendu."
@@ -156,7 +156,7 @@ items:
     indice: "Pense à ce qu'Inès fait la prochaine fois qu'elle ferme la porte."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
-  - enonce: "Léo a taché la veste de Samir. Le maître lui fait la nettoyer. À quoi sert cette sanction ?"
+  - enonce: "Léo a taché exprès la veste de Samir. Le maître lui fait la nettoyer. À quoi sert cette sanction ?"
     bonneReponse: "à réparer ce qu'il a taché"
     distracteurs: ["à supprimer la règle", "à cacher ce qui s'est passé"]
     indice: "Compare la veste avant et après ce geste."
@@ -168,7 +168,7 @@ items:
     indice: "Pense à la prochaine fois qu'Enzo s'assoit sur sa chaise."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : e, d
-  - enonce: "Tom a cassé la pointe du crayon d'Inès. Le maître lui fait le tailler. À quoi sert cette sanction ?"
+  - enonce: "Tom a cassé exprès la pointe du crayon d'Inès. Le maître lui fait le tailler. À quoi sert cette sanction ?"
     bonneReponse: "à réparer ce qu'il a cassé"
     distracteurs: ["à oublier ce qui s'est passé", "à changer la règle"]
     indice: "Pense à ce que ce geste donne à Inès."
@@ -180,7 +180,7 @@ items:
     indice: "Jade a-t-elle abîmé quelque chose ou quelqu'un ?"
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
-  - enonce: "Adam a mouillé le cahier de Zoé. La maîtresse lui fait le sécher. À quoi sert cette sanction ?"
+  - enonce: "Adam a mouillé exprès le cahier de Zoé. La maîtresse lui fait le sécher. À quoi sert cette sanction ?"
     bonneReponse: "à réparer ce qu'il a mouillé"
     distracteurs: ["à supprimer la règle", "à oublier ce qui s'est passé"]
     indice: "Que redevient le cahier de Zoé après ce geste ?"
@@ -192,7 +192,7 @@ items:
     indice: "Qu'est-ce qui est abîmé ou perdu dans cette histoire ?"
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
-  - enonce: "Mila a écrit sur le cahier de Jade. Le maître lui fait l'effacer. À quoi sert cette sanction ?"
+  - enonce: "Mila a écrit sur le cahier de Jade sans demander. Le maître lui fait l'effacer. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
     distracteurs: ["à changer la règle", "à cacher ce qui s'est passé"]
     indice: "Compare le cahier de Jade avant et après."
