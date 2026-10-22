@@ -1,0 +1,15 @@
+# Catalogue fautif, jamais servi (ADR-0013 obligation 2, DEC-0121).
+# Une entree ne declare pas nombreDeManches : la derivation est totale, elle n'est pas ignoree.
+schema: 1
+jeux:
+  - id: jeu-fictif-a-dix-manches
+    titre: "Jeu a dix manches"
+    consigne: "Consigne fictive"
+    mecanique: bandit-manchot
+    paquet: paquet-fictif-un
+    nombreDeManches: 10
+  - id: jeu-fictif-sans-valeur
+    titre: "Jeu sans valeur"
+    consigne: "Consigne fictive"
+    mecanique: bandit-manchot
+    paquet: paquet-fictif-deux
