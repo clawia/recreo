@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1EmcInteretCommunTest. Le titre porte le niveau (ADR-0078).
+jeux:
+  - id: bandit-manchot-interet-commun-fautif
+    titre: "Pour un seul ou pour tous au CE1"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-interet-commun
+    nombreDeManches: 10
