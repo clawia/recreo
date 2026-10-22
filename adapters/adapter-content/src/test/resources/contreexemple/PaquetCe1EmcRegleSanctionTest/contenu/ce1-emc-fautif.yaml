@@ -14,25 +14,25 @@ items:
   # TRV-CE1-2 : d, e
   - enonce: "Lina a cassé sans cible le jouet de Samir. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 1 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Tom a cassé dans la mauvaise tâche le crayon d'Inès. Le maître lui fait le tailler. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Mila a cassé avec une mauvaise bonne réponse le jouet de Jade. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à rappeler la règle"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Léo a cassé pour FER-1 le jouet d'Aya. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 1 : regle
   # TRV-CE1-2 : b, c
@@ -47,46 +47,46 @@ items:
     distracteurs: ["la règle", "la faute"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : rappel
-  # TRV-CE1-2 : f, d
+  # TRV-CE1-2 : f, g
   - enonce: "Hugo a cassé un rappel : le jouet de Zoé. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à rappeler la règle"
-    distracteurs: ["à réparer le tort fait", "à changer la règle"]
+    distracteurs: ["à réparer le tort fait", "à occuper Hugo"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Enzo méchant a cassé le jouet de Zoé. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Jade a taché une humiliation : le dessin d'Omar. Le maître lui fait le nettoyer. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à lui faire honte devant toute la classe", "à oublier ce qui s'est passé"]
+    distracteurs: ["à lui faire honte devant toute la classe", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Samir a cassé une privation : le jouet de Mila. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à le laisser sans goûter", "à oublier ce qui s'est passé"]
+    distracteurs: ["à le laisser sans goûter", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Quelqu'un a cassé le jouet. Le maître le lui fait recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Tu as cassé le jouet de Lina. Le maître te fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Lina a cassé chez elle le jouet de Samir. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 1 : regle
   # TRV-CE1-2 : a, c
@@ -98,7 +98,7 @@ items:
   # TRV-CE1-2 : d, f
   - enonce: "Mila a cassé une famille hors cible le jouet de Jade. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à réparer ce qui est abîmé"]
+    distracteurs: ["à venger Jade", "à réparer le tort fait"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 1 : regle
   # TRV-CE1-2 : b, c
@@ -111,61 +111,61 @@ items:
   - enonce: "Léo a cassé avec texte le jouet d'Aya. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     texteSupport: "Léo a cassé le jouet d'Aya."
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Aya a cassé un énoncé beaucoup trop long : le jouet de Samir, que le maître lui fait recoller aujourd'hui avant la récréation du matin. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Zoé a cassé. Quatre phrases. Une de plus. Et une autre."
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Omar a cassé en sept mots le jouet de Lina. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer ce qu'il a cassé avec soin"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Lina a cassé avec un long indice le jouet de Samir. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Regarde bien le jouet avant et après le geste du maître, puis dis ce qui a changé ici."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Tom a cassé avec la réponse le jouet de Jade. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Dis : à réparer le tort fait."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Mila a cassé identique A le jouet de Zoé. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Mila a cassé identique B le jouet de Léo. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Hugo a cassé toujours le plus long le jouet d'Aya. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer ce qu'il a cassé exprès"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Enzo a cassé avec une espace ordinaire le jouet de Zoé. Le maître lui fait le recoller. À quoi sert cette sanction ?"
     bonneReponse: "à réparer le tort fait"
-    distracteurs: ["à changer la règle", "à oublier ce qui s'est passé"]
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Pense au geste."
   # RSA-CE1-1 tache 1 : regle
   # TRV-CE1-2 : b, c
@@ -173,3 +173,69 @@ items:
     bonneReponse: "la règle"
     distracteurs: ["la sanction", "la faute"]
     indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : faute
+  # TRV-CE1-2 : a, b
+  - enonce: "Tom a pris sans rendre le crayon. Le maître lui fait faire dix pompes. Prendre le crayon, c'est quoi ?"
+    bonneReponse: "la faute"
+    distracteurs: ["la règle", "la sanction"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : sanction
+  # TRV-CE1-2 : a, c
+  - enonce: "Tom a dessiné sans geste sur la table. Le maître lui fait faire dix pompes. Nettoyer la table, c'est quoi ?"
+    bonneReponse: "la sanction"
+    distracteurs: ["la règle", "la faute"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : sanction
+  # TRV-CE1-2 : a, c
+  - enonce: "Hugo a renversé sans geste repris la tour. Le maître lui fait la refaire. Rebâtir la tour, c'est quoi ?"
+    bonneReponse: "la sanction"
+    distracteurs: ["la règle", "la faute"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 2 : reparation
+  # TRV-CE1-2 : d, g
+  - enonce: "Hugo a crié avec une oreille exprès. Le maître lui tire l'oreille. À quoi sert cette sanction ?"
+    bonneReponse: "à réparer le tort fait"
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 2 : reparation
+  # TRV-CE1-2 : d, g
+  - enonce: "Enzo a ri avec un dessert exprès. La maîtresse le prive de dessert. À quoi sert cette sanction ?"
+    bonneReponse: "à réparer le tort fait"
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 2 : reparation
+  # TRV-CE1-2 : d, g
+  - enonce: "Léo a ri avec une gronde exprès. Le maître gronde tous les élèves. À quoi sert cette sanction ?"
+    bonneReponse: "à réparer le tort fait"
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 2 : reparation
+  # TRV-CE1-2 : d, g
+  - enonce: "Lina a cassé avec le mauvais adulte le jouet exprès. La maîtresse lui fait le recoller. À quoi sert cette sanction ?"
+    bonneReponse: "à réparer le tort fait"
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
+    indice: "Le maître a vu le jouet."
+  # RSA-CE1-1 tache 1 : regle
+  # TRV-CE1-2 : b, c
+  - enonce: "Noé a sali avec le critère du CP un mur. Le maître lui fait laver le mur. « On ne salit pas les murs », c'est quoi ?"
+    bonneReponse: "la règle"
+    distracteurs: ["la sanction", "la faute"]
+    indice: "Cela vaut pour tous les élèves."
+  # RSA-CE1-1 tache 2 : reparation
+  # TRV-CE1-2 : d, g
+  - enonce: "Mila a cassé un accident le jouet de Jade. Le maître lui fait le recoller. À quoi sert cette sanction ?"
+    bonneReponse: "à réparer le tort fait"
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 2 : reparation
+  # TRV-CE1-2 : d, g
+  - enonce: "Aya a cassé exprès avec des propositions trop longues le jouet. Le maître lui fait le recoller. À quoi sert cette sanction ?"
+    bonneReponse: "à réparer ce qu'elle a cassé"
+    distracteurs: ["à oublier ce qui s'est passé", "à plaire à la maîtresse"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 2 : reparation
+  # TRV-CE1-2 : d, g
+  - enonce: "Aya a cassé exprès avec un indice trop long le jouet. Le maître lui fait le recoller. À quoi sert cette sanction ?"
+    bonneReponse: "à réparer le tort fait"
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
+    indice: "Regarde bien le jouet de Samir avant et après le geste du maître."

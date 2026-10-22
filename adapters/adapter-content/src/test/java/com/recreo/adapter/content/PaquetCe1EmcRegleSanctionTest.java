@@ -73,9 +73,9 @@ class PaquetCe1EmcRegleSanctionTest {
             | Pattern.UNICODE_CHARACTER_CLASS;
 
     private static final Pattern CIBLE =
-            Pattern.compile("RSA-CE1-1 tache ([12]) : (regle|sanction|reparation|rappel)");
+            Pattern.compile("RSA-CE1-1 tache ([12]) : (regle|sanction|faute|reparation|rappel)");
 
-    private static final Pattern FAMILLES = Pattern.compile("TRV-CE1-2 : ([a-f]), ([a-f])");
+    private static final Pattern FAMILLES = Pattern.compile("TRV-CE1-2 : ([a-g]), ([a-g])");
 
     private static final String LA_REGLE = "la règle";
 
@@ -83,23 +83,45 @@ class PaquetCe1EmcRegleSanctionTest {
 
     private static final String LA_FAUTE = "la faute";
 
-    /** RSA-CE1-1, famille (d) : un but qui change ou supprime la regle. */
-    private static final Pattern BUT_QUI_CHANGE_LA_REGLE =
-            Pattern.compile("^à (changer|supprimer) la règle$", FLAGS);
+    /** TRV-CE1-2, famille (d) : un but de vengeance. */
+    private static final Pattern BUT_DE_VENGEANCE = Pattern.compile("^à venger ", FLAGS);
 
-    /** RSA-CE1-1, famille (e) : un but qui cache l'acte ou le fait oublier. */
-    private static final Pattern BUT_QUI_CACHE = Pattern.compile(
-            "^à (oublier |cacher |garder le secret$|ne rien dire à personne$)", FLAGS);
+    /** TRV-CE1-2, famille (e) : un but qui plait a l'adulte. */
+    private static final Pattern BUT_QUI_PLAIT = Pattern.compile("^à plaire ", FLAGS);
 
-    /** RSA-CE1-1, famille (f) : l'autre but de la sanction. */
+    /** TRV-CE1-2, famille (g) : un but qui laisse l'acte de cote. */
+    private static final Pattern BUT_QUI_LAISSE_DE_COTE = Pattern.compile("^à (oublier|occuper) ", FLAGS);
+
+    /** TRV-CE1-2, famille (f) : l'autre but de la sanction. */
     private static final Pattern BUT_REPARER = Pattern.compile("^à réparer ", FLAGS);
 
     private static final Pattern BUT_RAPPELER = Pattern.compile("^à rappeler ", FLAGS);
 
-    /** RSA-CE1-1 : une sanction proposee est une reparation, ou un geste refait comme il faut. */
+    /**
+     * RSA-CE1-1 : une sanction proposee est une reparation, ou un geste refait comme il faut. Chaque
+     * racine est ancree en debut de mot : {@code rendr} ne se lit plus dans "prendre".
+     */
     private static final Pattern GESTE_REPARATEUR = Pattern.compile(
-            "recoll|nettoy|laver|essuy|ramass|rendr|refai|refer|replant|réécri|excus|rejou|reprend|repos"
-                    + "|ferme|écrire|répét|taill|séch|effac", FLAGS);
+            "(?<!\\p{L})(recoll|nettoy|laver|essuy|ramass|rendr|refai|refer|replant|réécri|excus|rejou|reprend"
+                    + "|relir|repos|ferme|écrire|répét|taill|séch|effac|pos(er|e))", FLAGS);
+
+    /** La phrase de l'adulte : c'est la que le geste de la sanction est ecrit. */
+    private static final Pattern PHRASE_DE_L_ADULTE =
+            Pattern.compile("(?:Le maître|La maîtresse)[^.?!]*[.?!]");
+
+    private static final Pattern ADULTE_NOMME = Pattern.compile("(?<!\\p{L})(maîtresse|maître)(?!\\p{L})", FLAGS);
+
+    /** EMC-5 : un acte de la tache 2 qui pourrait se lire comme un accident dit qu'il ne l'est pas. */
+    private static final Pattern ACTE_DELIBERE = Pattern.compile("exprès|sans demander", FLAGS);
+
+    /** M1 de nadia-prof : un indice ne donne pas le critere de cp-emc-regle-souhait-loi. */
+    private static final Pattern CRITERE_DU_CP =
+            Pattern.compile("(?<!\\p{L})(tous|tout le monde|chaque élève|chacun)(?!\\p{L})", FLAGS);
+
+    /** Pli a 744 x 551 (mesure d'ines-design, palier 4) : seuils de la tache 2, derives de la mesure. */
+    private static final int CARACTERES_DES_PROPOSITIONS_POUR_DEUX_RANGEES = 58;
+
+    private static final int CARACTERES_D_UN_INDICE_D_UNE_LIGNE = 46;
 
     /** EMC-5 : une situation de cible reparation decrit ce qui est abime, une situation de rappel non. */
     private static final Pattern CE_QUI_EST_ABIME =
@@ -112,8 +134,10 @@ class PaquetCe1EmcRegleSanctionTest {
      */
     private static final Pattern REFUS_D_AVANCE = Pattern.compile(
             "(?<!\\p{L})(méchan|vilain|honte|humili|punit|puni|punition|frapp|gifl|fess|enferm|privé|privation"
-                    + "|repas|cantine|goûter|déjeuner|idiot|bête|stupide|paresseu|menteu"
-                    + "|toute la classe|toute l'école|devant la classe|devant tout le monde)"
+                    + "|repas|cantine|goûter|déjeuner|dessert|idiot|bête|stupide|paresseu|menteu"
+                    + "|oreille|gronde|gronder|à genoux|au coin|retenue|bonnet"
+                    + "|tous les élèves|toute la classe entière|toute la classe"
+                    + "|toute l'école|devant la classe|devant tout le monde)"
                     + "|(?<!\\p{L})coups?(?!\\p{L})", FLAGS);
 
     /** EMC-1 : l'enfant n'est jamais interroge, aucun mot du foyer ni possessif de deuxieme personne. */
@@ -183,7 +207,7 @@ class PaquetCe1EmcRegleSanctionTest {
                     .map(m -> m.group(1) + m.group(2)).toList();
             assertThat(familles)
                     .as("TRV-CE1-2 : '%s' déclare exactement une paire de familles de distracteurs "
-                            + "(a à f)", enonce)
+                            + "(a à g)", enonce)
                     .hasSize(1);
             return familles.get(0);
         }
@@ -271,7 +295,8 @@ class PaquetCe1EmcRegleSanctionTest {
     /** FER-3 : deux taches, chacune d'au moins trois items, et la cible annoncee est celle de la tache. */
     private static void verifierLesTaches(List<ItemLu> items) {
         for (ItemLu item : items) {
-            String attendue = item.cible().equals("regle") || item.cible().equals("sanction") ? "1" : "2";
+            String attendue = item.cible().equals("regle") || item.cible().equals("sanction") || item.cible().equals("faute")
+                    ? "1" : "2";
             assertThat(item.tache())
                     .as("RSA-CE1-1 : '%s' annonce la tâche %s pour la cible %s, qui relève de la tâche %s",
                             item.enonce(), item.tache(), item.cible(), attendue)
@@ -292,7 +317,7 @@ class PaquetCe1EmcRegleSanctionTest {
      */
     private static void verifierLesBonnesReponsesDeChaqueCible(List<ItemLu> items) {
         Map<String, String> attendue = Map.of("regle", "^" + LA_REGLE + "$", "sanction", "^" + LA_SANCTION + "$",
-                "reparation", BUT_REPARER.pattern(), "rappel", BUT_RAPPELER.pattern());
+                "faute", "^" + LA_FAUTE + "$", "reparation", BUT_REPARER.pattern(), "rappel", BUT_RAPPELER.pattern());
         for (ItemLu item : items) {
             assertThat(Pattern.compile(attendue.get(item.cible()), FLAGS).matcher(item.bonneReponse()).find())
                     .as("RSA-CE1-1 : '%s' est de cible %s, sa bonne réponse « %s » n'est pas celle que la cible "
@@ -301,7 +326,7 @@ class PaquetCe1EmcRegleSanctionTest {
                                     : item.cible().equals("rappel") ? "à rappeler" : "la " + item.cible())
                     .isTrue();
         }
-        for (String cible : List.of("regle", "sanction", "reparation", "rappel")) {
+        for (String cible : List.of("regle", "sanction", "faute", "reparation", "rappel")) {
             assertThat(items.stream().filter(item -> item.cible().equals(cible)).count())
                     .as("FER-1 : au moins trois items de cible %s", cible).isGreaterThanOrEqualTo(3);
         }
@@ -319,13 +344,92 @@ class PaquetCe1EmcRegleSanctionTest {
         }
     }
 
-    /** RSA-CE1-1 : les sanctions des situations sont des reparations. */
+    private static String phraseDeLAdulte(ItemLu item) {
+        Matcher phrase = PHRASE_DE_L_ADULTE.matcher(item.enonce());
+        assertThat(phrase.find())
+                .as("RSA-CE1-1 : '%s' ne porte aucune phrase de l'adulte (Le maître ... ou La maîtresse ...)",
+                        item.enonce())
+                .isTrue();
+        return phrase.group();
+    }
+
+    /** RSA-CE1-1 : les sanctions des situations sont des reparations, lues dans la phrase de l'adulte. */
     private static void verifierQueLesSanctionsSontDesReparations(List<ItemLu> items) {
         for (ItemLu item : items) {
-            assertThat(GESTE_REPARATEUR.matcher(item.enonce()).find())
+            assertThat(GESTE_REPARATEUR.matcher(phraseDeLAdulte(item)).find())
                     .as("RSA-CE1-1 : la sanction de '%s' n'est pas une réparation (recoller, nettoyer, "
                             + "s'excuser, refaire)", item.enonce())
                     .isTrue();
+        }
+    }
+
+    /** RSA-CE1-1 : en cible sanction, le geste demande par l'adulte est repris en tete de la question. */
+    private static void verifierQueLaQuestionReprendLeGeste(List<ItemLu> items) {
+        for (ItemLu item : items) {
+            if (item.cible().equals("sanction")) {
+                String[] phrases = item.enonce().split("(?<=[.?!])[\\s\\u00A0]+");
+                String geste = phrases[phrases.length - 1].split("[\\s\\u00A0,]+")[0].toLowerCase();
+                assertThat(phraseDeLAdulte(item).toLowerCase())
+                        .as("RSA-CE1-1 : la question de '%s' ne reprend pas le geste de l'adulte (« %s »)",
+                                item.enonce(), geste)
+                        .contains(geste);
+            }
+        }
+    }
+
+    /** RSA-CE1-2 : l'adulte que nomme un indice est celui de l'enonce. */
+    private static void verifierQueLAdulteDeLIndiceEstCeluiDeLEnonce(List<ItemLu> items) {
+        for (ItemLu item : items) {
+            Matcher dansLEnonce = ADULTE_NOMME.matcher(item.enonce());
+            assertThat(dansLEnonce.find()).as("'%s' nomme un adulte", item.enonce()).isTrue();
+            String adulte = dansLEnonce.group(1).toLowerCase();
+            Matcher dansLIndice = ADULTE_NOMME.matcher(item.indice());
+            while (dansLIndice.find()) {
+                assertThat(dansLIndice.group(1).toLowerCase())
+                        .as("RSA-CE1-2 : l'indice « %s » nomme un autre adulte que l'énoncé « %s »",
+                                item.indice(), item.enonce())
+                        .isEqualTo(adulte);
+            }
+        }
+    }
+
+    /** M1 de nadia-prof : aucun indice ne donne le critere de cp-emc-regle-souhait-loi. */
+    private static void verifierQueLIndiceNeDonnePasLeCritereDuCp(List<ItemLu> items) {
+        for (ItemLu item : items) {
+            assertThat(CRITERE_DU_CP.matcher(item.indice()).find())
+                    .as("NRC-CE1-1 : l'indice « %s » donne le critère du CP (pour tous, tout le monde)",
+                            item.indice())
+                    .isFalse();
+        }
+    }
+
+    /** EMC-5 : un acte de la tache 2 est delibere, la sanction d'un accident n'enseigne pas la distinction. */
+    private static void verifierQueLActeDeLaTache2EstDelibere(List<ItemLu> items) {
+        for (ItemLu item : items) {
+            if (item.tache().equals("2")) {
+                assertThat(ACTE_DELIBERE.matcher(item.enonce()).find())
+                        .as("EMC-5 : l'acte de '%s' peut se lire comme un accident (ni exprès ni sans demander)",
+                                item.enonce())
+                        .isTrue();
+            }
+        }
+    }
+
+    /** Pli a 744 x 551 : propositions et indice de la tache 2 sous les seuils derives de la mesure d'ines-design. */
+    private static void verifierLePli(List<ItemLu> items) {
+        for (ItemLu item : items) {
+            if (item.tache().equals("2")) {
+                int caracteres = item.propositions().stream().mapToInt(String::length).sum();
+                assertThat(caracteres)
+                        .as("pli : les propositions de '%s' comptent %d caractères, au plus %d pour tenir en "
+                                + "deux rangées", item.enonce(), caracteres,
+                                CARACTERES_DES_PROPOSITIONS_POUR_DEUX_RANGEES)
+                        .isLessThanOrEqualTo(CARACTERES_DES_PROPOSITIONS_POUR_DEUX_RANGEES);
+                assertThat(item.indice().length())
+                        .as("pli : l'indice « %s » compte plus de %d caractères, une ligne au plus",
+                                item.indice(), CARACTERES_D_UN_INDICE_D_UNE_LIGNE)
+                        .isLessThanOrEqualTo(CARACTERES_D_UN_INDICE_D_UNE_LIGNE);
+            }
         }
     }
 
@@ -397,8 +501,9 @@ class PaquetCe1EmcRegleSanctionTest {
             Set<String> admises = switch (item.cible()) {
                 case "regle" -> Set.of("bc");
                 case "sanction" -> Set.of("ac");
-                case "reparation" -> Set.of("de");
-                default -> Set.of("df", "ef");
+                case "faute" -> Set.of("ab");
+                case "reparation" -> Set.of("de", "dg");
+                default -> Set.of("ef", "fg");
             };
             assertThat(admises)
                     .as("TRV-CE1-2 : '%s' (cible %s) déclare les familles « %s », que sa cible n'admet pas",
@@ -425,10 +530,13 @@ class PaquetCe1EmcRegleSanctionTest {
         if (BUT_REPARER.matcher(distracteur).find()) {
             return 'f';
         }
-        if (BUT_QUI_CHANGE_LA_REGLE.matcher(distracteur).find()) {
+        if (BUT_DE_VENGEANCE.matcher(distracteur).find()) {
             return 'd';
         }
-        return BUT_QUI_CACHE.matcher(distracteur).find() ? 'e' : '?';
+        if (BUT_QUI_PLAIT.matcher(distracteur).find()) {
+            return 'e';
+        }
+        return BUT_QUI_LAISSE_DE_COTE.matcher(distracteur).find() ? 'g' : '?';
     }
 
     /** BCO-CE1-1 de nadia-prof (lecture du palier 3) : aucune proposition n'est l'intrus du premier mot. */
@@ -642,6 +750,31 @@ class PaquetCe1EmcRegleSanctionTest {
     @Test
     void rsa1LesSanctionsDesSituationsSontDesReparations() {
         verifierQueLesSanctionsSontDesReparations(items());
+    }
+
+    @Test
+    void rsa1LaQuestionDeCibleSanctionReprendLeGesteDeLAdulte() {
+        verifierQueLaQuestionReprendLeGeste(items());
+    }
+
+    @Test
+    void rsa2LAdulteDeLIndiceEstCeluiDeLEnonce() {
+        verifierQueLAdulteDeLIndiceEstCeluiDeLEnonce(items());
+    }
+
+    @Test
+    void nrc1AucunIndiceNeDonneLeCritereDuCp() {
+        verifierQueLIndiceNeDonnePasLeCritereDuCp(items());
+    }
+
+    @Test
+    void emc5LActeDeLaTache2EstDelibere() {
+        verifierQueLActeDeLaTache2EstDelibere(items());
+    }
+
+    @Test
+    void pliLesPropositionsEtLIndiceDeLaTache2TiennentSousLesSeuilsMesures() {
+        verifierLePli(items());
     }
 
     @Test
@@ -987,6 +1120,90 @@ class PaquetCe1EmcRegleSanctionTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("TYP-1")
                 .hasMessageContaining("chevron");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnePrendreQuiPassePourUnRendre() {
+        List<ItemLu> items = fautif("Tom a pris sans rendre");
+
+        assertThatThrownBy(() -> verifierQueLesSanctionsSontDesReparations(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("pas une réparation");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnGesteQuiNEstQueDansLaQuestion() {
+        List<ItemLu> items = fautif("Tom a dessiné sans geste");
+
+        assertThatThrownBy(() -> verifierQueLesSanctionsSontDesReparations(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("pas une réparation");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneQuestionQuiNeReprendPasLeGeste() {
+        List<ItemLu> items = fautif("Hugo a renversé sans geste repris");
+
+        assertThatThrownBy(() -> verifierQueLaQuestionReprendLeGeste(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ne reprend pas le geste");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurTroisSondesDeFormulation() {
+        for (String debut : List.of("Hugo a crié avec une oreille", "Enzo a ri avec un dessert",
+                "Léo a ri avec une gronde")) {
+            List<ItemLu> items = fautif(debut);
+
+            assertThatThrownBy(() -> verifierLesRefusDAvance(items))
+                    .isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("RSA-CE1-2");
+        }
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnIndiceQuiNommeLAutreAdulte() {
+        List<ItemLu> items = fautif("Lina a cassé avec le mauvais adulte");
+
+        assertThatThrownBy(() -> verifierQueLAdulteDeLIndiceEstCeluiDeLEnonce(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("autre adulte");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnIndiceQuiDonneLeCritereDuCp() {
+        List<ItemLu> items = fautif("Noé a sali avec le critère du CP");
+
+        assertThatThrownBy(() -> verifierQueLIndiceNeDonnePasLeCritereDuCp(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("critère du CP");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnActeQuiPeutSeLireCommeUnAccident() {
+        List<ItemLu> items = fautif("Mila a cassé un accident");
+
+        assertThatThrownBy(() -> verifierQueLActeDeLaTache2EstDelibere(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("accident");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurDesPropositionsTropLonguesPourLePli() {
+        List<ItemLu> items = fautif("Aya a cassé exprès avec des propositions trop longues");
+
+        assertThatThrownBy(() -> verifierLePli(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("deux rangées");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnIndiceTropLongPourLePli() {
+        List<ItemLu> items = fautif("Aya a cassé exprès avec un indice trop long");
+
+        assertThatThrownBy(() -> verifierLePli(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("une ligne au plus");
     }
 
     @Test
