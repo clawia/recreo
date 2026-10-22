@@ -135,6 +135,21 @@ items:
     bonneReponse: "le 13 juin"
     distracteurs: ["le 9 juin", "le 13 mai"]
     indice: "Le lendemain, c'est le jour d'après."
+  # CAL-CE1-1 : trois dates du meme jour, seul l'ordre des mois decide
+  - enonce: "Entre le 11 avril, le 11 mars et le 11 juin, quelle date vient la dernière ?"
+    bonneReponse: "le 11 juin"
+    distracteurs: ["le 11 avril", "le 11 mars"]
+    indice: "Les jours sont les mêmes, regarde les mois."
+  # CAL-CE1-5 : la regle des creux dite sans fevrier, qui a 28 jours
+  - enonce: "Combien de jours a le mois de novembre ?"
+    bonneReponse: "30 jours"
+    distracteurs: ["31 jours", "28 jours"]
+    indice: "Ferme le poing : les creux comptent 30 jours, les bosses 31."
+  # CAL-CE1-5 : une bonne reponse au rang bas
+  - enonce: "Quelle est la veille du 9 octobre ?"
+    bonneReponse: "le 8 octobre"
+    distracteurs: ["le 10 octobre", "le 8 novembre"]
+    indice: "La veille, c'est le jour d'avant."
   # LON-CE1-1 : un enonce de plus de vingt mots
   - enonce: "Marie regarde le calendrier de la classe accroché au mur près de la fenêtre et elle se demande combien de jours a le mois de mars ?"
     bonneReponse: "31 jours"

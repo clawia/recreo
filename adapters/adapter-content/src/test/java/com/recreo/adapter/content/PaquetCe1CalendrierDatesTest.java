@@ -50,7 +50,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *
  * <p>Deux dettes sont nommees dans ce test, chacune avec le motif qui la porte : le paquet est de
  * s53, la story limite son diff aux fichiers de test tant que {@code nadia-prof} ne decide pas une
- * correction (K2), et ces deux ecarts ont ete mesures ici. {@link #DETTE_DE_FAMILLE} et
+ * correction (K2, levee le 2026-10-22 pour les items qu'elle a nommes), et ces deux ecarts ont ete
+ * mesures ici et juges recevables. {@link #DETTE_DE_FAMILLE} et
  * {@link #DETTE_DE_FETES} listent les occurrences connues ; une occurrence nouvelle fait echouer le
  * test, et une entree qui ne designe plus rien aussi : la correction du paquet vide la liste dans le
  * meme commit.
@@ -113,19 +114,21 @@ class PaquetCe1CalendrierDatesTest {
             "vacances|noël|noel|rentrée|rentree|anniversaire|20[0-9][0-9]", FLAGS);
 
     /**
-     * Dette 1, CAL-CE1-5 : le distracteur est d'aucune des trois familles que la condition nomme (le
-     * nombre de jours d'un mois voisin, la date decalee d'un jour, le mois decale d'un rang). Mesure le
-     * 2026-10-22 : une occurrence, dans l'item de la veille du 1er juin. Remplacement que
-     * nadia-prof peut decider : "le 2 juin", decale d'un jour de la date donnee.
+     * Occurrence admise 1, CAL-CE1-5 : le distracteur est d'aucune des trois familles que la condition
+     * nomme (le nombre de jours d'un mois voisin, la date decalee d'un jour, le mois decale d'un rang).
+     * Mesure le 2026-10-22 : une occurrence, dans l'item de la veille du 1er juin. nadia-prof l'a jugee
+     * recevable le meme jour (famille "mois decale" ramenee a une date reelle : le 31 juin n'existe
+     * pas) ; la liste reste pour qu'une occurrence nouvelle echoue.
      */
     private static final Set<String> DETTE_DE_FAMILLE = Set.of(
             "Quelle est la veille du 1er juin ? / le 30 juin");
 
     /**
-     * Dette 2, CAL-CE1-4 : l'en-tete du paquet ecarte 1er janvier, 1er avril, 1er mai, 14 juillet,
-     * 31 octobre, 25 decembre et la fin d'aout. Mesure le 2026-10-22 : deux occurrences, toutes deux
-     * en distracteur. Le 1er septembre, lendemain du 30 septembre, n'est pas dans cette liste : la
-     * question de la rentree est a nadia-prof, non gardee ici.
+     * Occurrences admises 2, CAL-CE1-4 : la liste est 1er janvier, 1er avril, 1er mai, 14 juillet,
+     * 31 octobre, 25 decembre et la fin d'aout. Deux occurrences, toutes deux en distracteur de
+     * lendemain ou de veille. nadia-prof les a jugees recevables le 2026-10-22 : CAL-CE1-4 exclut une
+     * date que l'item suppose, un distracteur n'en suppose aucune ; l'en-tete du paquet le dit
+     * maintenant. Le 1er septembre, recevable aussi, n'est pas dans la liste.
      */
     private static final Set<String> DETTE_DE_FETES = Set.of(
             "Quel est le lendemain du 31 mai ? / le 1er mai",
@@ -553,6 +556,12 @@ class PaquetCe1CalendrierDatesTest {
             assertThat(mots)
                     .as("TRV-CE1-5 : l'indice de '%s' porte %d mots, plus de douze", item.enonce(), mots)
                     .isLessThanOrEqualTo(12L);
+            if (item.indice().orElse("").contains("creux")) {
+                assertThat(item.indice().orElse(""))
+                        .as("CAL-CE1-5 : l'indice de '%s' donne la règle des creux sans février, qui a 28 jours",
+                                item.enonce())
+                        .contains("février");
+            }
             Forme forme = formeDe(item);
             if (forme != null && forme != Forme.NOMBRE_DE_JOURS) {
                 assertThat(item.indice().orElse(""))
@@ -581,16 +590,52 @@ class PaquetCe1CalendrierDatesTest {
         return Integer.parseInt(nombre.group(1));
     }
 
+    /** La valeur d'une proposition : son nombre de jours, ou le rang de sa date dans l'annee. */
+    private static int valeurDe(String proposition) {
+        return NOMBRE_DE_JOURS.matcher(proposition).matches() ? nombreEnTete(proposition)
+                : uneDate(proposition, proposition).rang();
+    }
+
     private static Rang rangDe(Question item) {
-        List<Integer> valeurs = propositions(item).stream().map(PaquetCe1CalendrierDatesTest::nombreEnTete)
+        List<Integer> valeurs = propositions(item).stream().map(PaquetCe1CalendrierDatesTest::valeurDe)
                 .sorted().toList();
-        int position = valeurs.indexOf(nombreEnTete(item.bonneReponse()));
+        int position = valeurs.indexOf(valeurDe(item.bonneReponse()));
         return position == 0 ? Rang.BAS : position == 2 ? Rang.HAUT : Rang.MILIEU;
     }
 
     /** CAL-CE1-5 : chacun des trois rangs de la bonne reponse porte de 10 % a 50 % des items de la forme "nombre de jours". */
     private static void verifierLesTroisRangs(List<Question> items) {
-        List<Question> mesures = deLaForme(items, Forme.NOMBRE_DE_JOURS);
+        verifierLesRangs(deLaForme(items, Forme.NOMBRE_DE_JOURS));
+    }
+
+    /**
+     * CAL-CE1-5, lecture de nadia-prof du 2026-10-22 : le rang compte sur les 25 items, les dates rangees
+     * dans l'ordre du calendrier, chacun des trois rangs de 10 % a 50 %.
+     */
+    private static void verifierLesTroisRangsSurTousLesItems(List<Question> items) {
+        verifierLesRangs(items);
+    }
+
+    /**
+     * CAL-CE1-1 : un item d'ordre compare des nombres, pas seulement des mois (refus de nadia-prof du
+     * 2026-10-22) : jamais trois dates du meme jour ; au moins un item dont deux dates sont du meme mois.
+     */
+    private static void verifierQueLeJourDecideDansLOrdre(List<Question> items) {
+        boolean unJourDecide = false;
+        for (Question item : deLaForme(items, Forme.ORDRE_DE_DATES)) {
+            List<DateDuCalendrier> dates = datesEcrites(item.enonce());
+            assertThat(dates.stream().map(DateDuCalendrier::jour).distinct().count())
+                    .as("CAL-CE1-1 : les trois dates de '%s' ont le même jour, seul l'ordre des mois décide",
+                            item.enonce())
+                    .isGreaterThan(1L);
+            unJourDecide |= dates.stream().map(DateDuCalendrier::mois).distinct().count() < dates.size();
+        }
+        assertThat(unJourDecide)
+                .as("CAL-CE1-1 : aucun item d'ordre ne compare des jours (deux dates du même mois)")
+                .isTrue();
+    }
+
+    private static void verifierLesRangs(List<Question> mesures) {
         for (Rang rang : Rang.values()) {
             long portes = mesures.stream().filter(item -> rangDe(item) == rang).count();
             assertThat(10 * portes)
@@ -770,6 +815,16 @@ class PaquetCe1CalendrierDatesTest {
     @Test
     void cal5ChacunDesTroisRangsDeLaBonneReponsePorteDixACinquantePourCentDesItemsDeNombreDeJours() {
         verifierLesTroisRangs(items());
+    }
+
+    @Test
+    void cal5ChacunDesTroisRangsPorteDixACinquantePourCentDesVingtCinqItemsDatesRangeesDansLAnnee() {
+        verifierLesTroisRangsSurTousLesItems(items());
+    }
+
+    @Test
+    void cal1LeJourDecideDansAuMoinsUnItemDOrdreEtAucunNeAQueLesMoisPourDifference() {
+        verifierQueLeJourDecideDansLOrdre(items());
     }
 
     @Test
@@ -1036,6 +1091,57 @@ class PaquetCe1CalendrierDatesTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("TRV-CE1-2")
                 .hasMessageContaining("plus de la moitié");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurTroisDatesDuMemeJour() {
+        List<Question> items = fautif("Entre le 11 avril");
+
+        assertThatThrownBy(() -> verifierQueLeJourDecideDansLOrdre(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("CAL-CE1-1")
+                .hasMessageContaining("même jour");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurDesItemsDOrdreDontAucunNeCompareDesJours() {
+        List<Question> items = fautif("Entre le 5 mars");
+
+        assertThatThrownBy(() -> verifierQueLeJourDecideDansLOrdre(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("CAL-CE1-1")
+                .hasMessageContaining("compare des jours");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurTroisBonnesReponsesAuMemeRangSurTousLesItems() {
+        List<Question> items = fautif(TRIO_DE_RANG);
+
+        assertThatThrownBy(() -> verifierLesTroisRangsSurTousLesItems(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("CAL-CE1-5")
+                .hasMessageContaining("rang BAS");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneBonneReponseAuMilieuSurPlusDeLaMoitieDesItems() {
+        List<Question> items = fautif("Quel est le lendemain du 14 mars", "Quel est le lendemain du 3 juillet",
+                "Quel est le lendemain du 20 mars", "Entre le 7 juin", "Quelle est la veille du 9 octobre");
+
+        assertThatThrownBy(() -> verifierLesTroisRangsSurTousLesItems(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("CAL-CE1-5")
+                .hasMessageContaining("rang MILIEU porte au plus 50");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurLaRegleDesCreuxSansFevrier() {
+        List<Question> items = fautif("Combien de jours a le mois de novembre");
+
+        assertThatThrownBy(() -> verifierLesIndices(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("CAL-CE1-5")
+                .hasMessageContaining("sans février");
     }
 
     @Test
