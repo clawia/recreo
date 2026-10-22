@@ -262,6 +262,24 @@ items:
     bonneReponse: "le laisser travailler"
     distracteurs: ["lui dire la réponse", "finir son travail"]
     indice: "Que doivent éviter absolument les autres élèves près de Léo ?"
+  # DDE-CE1-1 couple 2 : devoir->droit
+  # TRV-CE1-2 : b, b
+  - enonce: "Zoé remercie Mila quand elle l'aide (sonde 45). Quel droit de Mila est ainsi protégé ?"
+    bonneReponse: "être bien traitée"
+    distracteurs: ["apporter son cahier", "finir son travail"]
+    indice: "Que doivent éviter les autres près de Léo ?"
+  # DDE-CE1-1 couple 2 : devoir->droit
+  # TRV-CE1-2 : c, b
+  - enonce: "Zoé parle à Mila (sonde 46). Quel droit de Mila est ainsi protégé ?"
+    bonneReponse: "être bien traitée"
+    distracteurs: ["emprunter un livre", "apporter son cahier"]
+    indice: "Que reçoit Mila quand Zoé parle ?"
+  # DDE-CE1-1 couple 1 : devoir->droit
+  # TRV-CE1-2 : c, b
+  - enonce: "Jade laisse Maya finir son exercice (sonde 47). Quel droit de Maya est ainsi protégé ?"
+    bonneReponse: "suivre la leçon"
+    distracteurs: ["emprunter un livre", "finir son travail"]
+    indice: "Que doivent éviter les autres près de Léo ?"
   # DDE-CE1-1 couple 1 : devoir->droit
   # TRV-CE1-2 : c, f
   - enonce: "Omar laisse Mila travailler au calme (sonde 40). Quel droit de Mila est ainsi protégé ?"

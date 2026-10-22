@@ -117,7 +117,14 @@ class PaquetCe1EmcDroitDevoirTest {
 
     /** DDE-CE1-2 : un droit ne se merite pas. Aucun de ces mots dans ce que l'enfant lit. */
     private static final Pattern DROIT_CONDITIONNEL = Pattern.compile(
-            "(?<!\\p{L})(gagn|mérit|perd|retir|enlev|priv|récompens|condition|échange|retour|sinon)", FLAGS);
+            "(?<!\\p{L})(gagn|mérit|perd|retir|enlev|priv|récompens|condition|échange|retour|sinon|reçoi|recev)", FLAGS);
+
+    /**
+     * DDE-CE1-2 : le geste d'une scene devoir->droit ne depend d'aucune action de celui dont le droit est
+     * dit protege : aucune subordonnee de condition ou de temps dont il ou elle serait le sujet.
+     */
+    private static final Pattern GESTE_EN_RETOUR_D_UNE_ACTION = Pattern.compile(
+            "(?<!\\p{L})(quand|lorsque|parce que|dès que|après que|si)(?!\\p{L})[^.?!]*(?<!\\p{L})(il|elle)(?!\\p{L})", FLAGS);
 
     /** EMC-1 : l'enonce et les propositions ne s'adressent pas a l'enfant. */
     private static final Pattern DEUXIEME_PERSONNE =
@@ -535,6 +542,35 @@ class PaquetCe1EmcDroitDevoirTest {
         }
     }
 
+    /** DDE-CE1-2 : un droit n'est jamais rendu en retour d'une action de celui qui le detient. */
+    private static void verifierQueLeDroitNEstPasRenduEnRetourDUneAction(List<ItemLu> items) {
+        for (ItemLu item : items) {
+            if (item.sens().equals(DEVOIR_VERS_DROIT)) {
+                String scene = item.enonce().substring(0, item.enonce().length() - derniereQuestion(item).length());
+                assertThat(GESTE_EN_RETOUR_D_UNE_ACTION.matcher(scene).find())
+                        .as("DDE-CE1-2 : dans '%s', le geste dépend d'une action de celui dont le droit est dit "
+                                + "protégé : le droit est rendu en retour", item.enonce())
+                        .isFalse();
+            }
+        }
+    }
+
+    /** EMC-5 : aucun distracteur ne reprend la scene quand la bonne reponse ne la reprend pas. */
+    private static void verifierQuAucunDistracteurNeDitLaSituationMieuxQueLaBonneReponse(List<ItemLu> items) {
+        for (ItemLu item : items) {
+            Set<String> mots = motsPleins(item.enonce());
+            if (motsPleins(item.bonneReponse()).stream().noneMatch(mots::contains)) {
+                for (String distracteur : item.distracteurs()) {
+                    assertThat(motsPleins(distracteur).stream().noneMatch(mots::contains))
+                            .as("EMC-5 : dans '%s', le distracteur « %s » reprend un mot de l'énoncé que la bonne "
+                                    + "réponse « %s » ne reprend pas : il dit la situation mieux que la bonne réponse",
+                                    item.enonce(), distracteur, item.bonneReponse())
+                            .isTrue();
+                }
+            }
+        }
+    }
+
     /** NRC-CE1-1 : aucune proposition n'est une proposition de cp-emc-droits-enfant ou de cp-emc-regles-de-vie. */
     private static void verifierQueRienNEstReprisDuCp(List<ItemLu> items, List<Path> paquetsDuCp) {
         Set<String> reprises = new HashSet<>();
@@ -806,6 +842,16 @@ class PaquetCe1EmcDroitDevoirTest {
     }
 
     @Test
+    void dde2AucunDroitNEstRenduEnRetourDUneActionDeCeluiQuiLeDetient() {
+        verifierQueLeDroitNEstPasRenduEnRetourDUneAction(items());
+    }
+
+    @Test
+    void emc5AucunDistracteurNeDitLaSituationMieuxQueLaBonneReponse() {
+        verifierQuAucunDistracteurNeDitLaSituationMieuxQueLaBonneReponse(items());
+    }
+
+    @Test
     void nrc1AucunePropositionNEstRepriseDuCp() {
         verifierQueRienNEstReprisDuCp(items(), PAQUETS_DU_CP);
     }
@@ -973,7 +1019,9 @@ class PaquetCe1EmcDroitDevoirTest {
     void leJeuFautifCommiteEstRefuseSurUnSensServiParMoinsDeTroisItems() {
         List<ItemLu> items = itemsFautifs().stream()
                 .filter(item -> !item.enonce().contains("(sonde 04)") && !item.enonce().contains("(sonde 43)")
-                        && !item.enonce().contains("(sonde 44)"))
+                        && !item.enonce().contains("(sonde 44)")
+                        && !item.enonce().contains("(sonde 45)") && !item.enonce().contains("(sonde 46)")
+                        && !item.enonce().contains("(sonde 47)"))
                 .toList();
 
         assertThatThrownBy(() -> verifierLesDeuxSens(items))
@@ -1036,6 +1084,36 @@ class PaquetCe1EmcDroitDevoirTest {
                     .isInstanceOf(AssertionError.class)
                     .hasMessageContaining("DDE-CE1-2");
         }
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnDroitRenduEnRetourDUneAction() {
+        List<ItemLu> items = fautifs("(sonde 45)");
+
+        assertThatThrownBy(() -> verifierQueLeDroitNEstPasRenduEnRetourDUneAction(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("DDE-CE1-2")
+                .hasMessageContaining("rendu en retour");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnIndiceQuiDitRecevoir() {
+        List<ItemLu> items = fautifs("(sonde 46)");
+
+        assertThatThrownBy(() -> verifierLesRefusDAvance(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("DDE-CE1-2")
+                .hasMessageContaining("reçoit");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnDistracteurQuiDitLaSituationMieuxQueLaBonneReponse() {
+        List<ItemLu> items = fautifs("(sonde 47)");
+
+        assertThatThrownBy(() -> verifierQuAucunDistracteurNeDitLaSituationMieuxQueLaBonneReponse(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("EMC-5")
+                .hasMessageContaining("dit la situation mieux");
     }
 
     @Test

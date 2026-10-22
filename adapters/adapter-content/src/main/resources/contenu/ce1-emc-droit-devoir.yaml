@@ -40,7 +40,10 @@ lignesDeReferentiel: ["EMC-CE1-03"]
 # comme perdu en y manquant. Aucune situation ne decrit une faute ni une sanction : l'enfant qui
 # agit fait son geste, et le droit de l'autre est dit protege, jamais accorde en retour. Garde sur
 # une liste de mots (gagner, meriter, perdre, retirer, enlever, priver, recompenser, condition,
-# echange, retour) ; que le sens d'un item ne dise pas le contraire reste a la lecture de nadia-prof.
+# echange, retour, recevoir) ; aucune scene devoir->droit ne conditionne le geste a une action de celui
+# dont le droit est dit protege (quand, si, parce que ... il ou elle) ; que le sens d'un item ne dise pas
+# le contraire reste a la lecture de nadia-prof. Aucun distracteur ne reprend un mot de l'enonce que la
+# bonne reponse ne reprend pas (il dirait la situation mieux qu'elle, EMC-5).
 #
 # TRV-CE1-2, les familles de distracteurs (liste fermee, le test relit chaque distracteur dans sa
 # famille, dans l'ordre du fichier) :
@@ -158,8 +161,8 @@ items:
   # TRV-CE1-2 : c, b
   - enonce: "Jade laisse Hugo finir son exercice. Quel droit de Hugo est ainsi protégé ?"
     bonneReponse: "suivre la leçon"
-    distracteurs: ["emprunter un livre", "finir son travail"]
-    indice: "Que peut faire Hugo quand Jade agit ainsi ?"
+    distracteurs: ["emprunter un livre", "apporter son cahier"]
+    indice: "Pense à ce que Hugo fait en classe."
   # DDE-CE1-1 couple 4 : droit->devoir
   # TRV-CE1-2 : a, c
   - enonce: "Enzo a le droit de ne pas être blessé. Quel devoir ont les autres élèves envers lui ?"
@@ -189,7 +192,7 @@ items:
   - enonce: "Hugo a le droit d'être bien traité. Quel devoir ont les autres élèves envers lui ?"
     bonneReponse: "le respecter"
     distracteurs: ["lui donner un cadeau", "arriver à l'heure"]
-    indice: "Pense à l'attitude des autres envers Hugo."
+    indice: "Pense à ce que les autres font pour Hugo."
   # DDE-CE1-1 couple 4 : devoir->droit
   # TRV-CE1-2 : b, f
   - enonce: "Adam fait attention à Inès en jouant au ballon. Quel droit d'Inès est ainsi protégé ?"
@@ -216,7 +219,7 @@ items:
     indice: "Pense à la façon de bouger près d'elle."
   # DDE-CE1-1 couple 2 : devoir->droit
   # TRV-CE1-2 : b, f
-  - enonce: "Zoé remercie Adam quand il l'aide. Quel droit d'Adam est ainsi protégé ?"
-    bonneReponse: "être traité poliment"
-    distracteurs: ["apporter son cahier", "passer en premier"]
-    indice: "Que reçoit Adam quand Zoé le remercie ?"
+  - enonce: "Zoé demande poliment à Adam de lui passer la colle. Quel droit d'Adam est ainsi protégé ?"
+    bonneReponse: "être bien traité"
+    distracteurs: ["apporter son cahier", "jouer en premier"]
+    indice: "Pense à la façon dont Zoé s'adresse à Adam."
