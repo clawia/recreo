@@ -322,3 +322,32 @@ Je propose, je ne tranche pas.
 Memes limites que la section 12. Deux repertoires du scratchpad (`s57-p4-ines-design-t`, `s57-p4-ines-design-t2`), sous-dossiers `v3` ; jars sur 18543 (LP1) et 18544 (LP4), arret par PID (46316, 18504), aucun arret par nom d'image.
 
 **Decisions prises : aucune.**
+
+---
+
+# Troisieme remesure du 2026-10-22 (LP4 `f36d83bc`), 744 x 551
+
+- **Auteure** : `ines-design`. **Date** : 2026-10-22, 15:21 (UTC+02:00), lue par `date`. Des cotes et rien d'autre : aucun Done, aucun gabarit touche, le veto est a `nadia-prof`.
+- **Releve precedent** : le releve sur `41203188` (section S) etait fini avant ce message. Celui-ci est une mesure neuve de `f36d83bc`.
+
+## T1. Sommet, jar, methode
+
+- Branche `s57-sofia-emc-ce1-02`, sommet `f36d83bc`, dernier commit de contenu `b7b25f42`. Jar posterieur a ce commit, SHA-256 `9c3e45d46bba1a32a72e0c82353e23d7f672d6cafa82f05beabbeae22d82637f`. YAML, `catalogue.yaml` et `recreo.css` lus dans le jar egaux a ceux du worktree (SHA-256). Diff de `adapters/adapter-web/src/main` contre `eb267ba7` : 0 ligne.
+- Methode des sections 1 et R1 : 744 x 551, deux erreurs, six ordres, balayage de 720 a 1200 avec et sans barre. 24 items sur 24, 9 parties.
+- Un releve de l'item 22 a manque son premier clic (le DOM n'a pas change, l'indice absent) : les six ordres de l'item 22 ont ete refaits dans une partie a part (jar relance, meme sommet). Cote lue : 484 dans les six ordres. Je le signale parce que le premier releve de cet item etait inutilisable, pas parce que la cote differe.
+
+## T2. Resultat : 0 item sur 24 sous le pli
+
+- Apres une erreur, six ordres : **0 item sur 24 sous le pli**. Bas de `.indice` : 418, 444, 448 ou 484 ; maximum **484** (67 px de marge).
+- Tache 1 (items 1 a 12) : enonces de **107 a 111 caracteres** mesures (le plafond de 112 de sofia n'est atteint par aucun), tous sur 3 lignes, une rangee de propositions (11 caracteres au plus), indice de 42 a 56 caracteres, bas 448 (indice de 2 lignes) ou 418 (items 2, 6, 10, 11).
+- Items modifies : item 9 (*Zoe garde la gomme de Leo*, 110 caracteres, 3 lignes, indice de 51 caracteres, bas 448) ; items 4 et 12 a 448 ; items 6 et 10 a 418.
+- Tache 2 (items 13 a 24) : propositions de 22 caracteres au plus, 2 rangees, bas 484 ; l'item 17 (enonce de 2 lignes) 444.
+- Enonces a 3 lignes : 23 items sur 24 (seul le 17 en a 2).
+- 720 a 768 avec et sans barre, 992 et 1200 : 0 item sous le pli, aucun debordement horizontal. Apres une bonne reponse : signal a 498 au plus. Boutons de reponse : bas 410 au plus, 58 de haut.
+- Seuils estimes par sofia (112 pour la tache 1, 58 et 46 pour la tache 2) : tous respectes avec marge. Je n'ai pas mesure d'item a la valeur du seuil, donc ces seuils ne sont ni confirmes ni infirmes.
+
+## T3. Proposition
+
+Je propose, je ne tranche pas : rien a corriger au pli pour LP4.
+
+**Decisions prises : aucune.** Jar arrete par PID (15020, puis 45912), aucun arret par nom d'image.
