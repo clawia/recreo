@@ -2259,3 +2259,11 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusi
 | Poste | Auteur | Contenu | Prix |
 |---|---|---|---|
 | releves d'ecran au pli 744 x 551 de LP1, LP2 et LP4 (table d'isolation, ligne `ines-design`) | `ines-design` | `mesure-ines-palier-4-pli-744x551.md`, 5 commits `[INES]`, aucun fichier hors `squad/` ; commit `2cbbc1bf` : codes `PR` renommes en *Proposition 1 a 4* | transverse, aucun prix alloue |
+
+## Amendement du 2026-10-22 17:16 (UTC+02:00), palier 4 : ecrit de `yanis-qa` livre (RF11)
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de `s57-yanis-p4` (`2d6a6aef`), troisieme de la serie demandee par l'utilisatrice le 2026-10-22. Les quatre commits propres de la branche ne touchent que des rapports de `squad/` ; ses autres commits sont ceux de LP4, deja fusionnes.
+
+| Poste | Auteur | Contenu | Prix |
+|---|---|---|---|
+| rapport qualite de LP4 seul (`composition-palier-4.md` 5.3 point 3), a trois sommets puis a `f36d83bc` | `yanis-qa` | `rapport-qualite-palier-4-lp4.md` et trois rapports par sommet, 4 commits `[YAN]` | transverse, aucun prix alloue |
