@@ -209,3 +209,70 @@ Deux repertoires du scratchpad (`s57-p4-ines-design-t` et `s57-p4-ines-design-t2
 ## Decisions prises
 
 **Aucune.** Ce fichier ne cree ni n'amende aucune `ADR` ni `DEC`, ne leve aucune reserve et ne prononce aucun Done.
+
+---
+
+# Remesure du 2026-10-22 (apres les corrections des trois lots), 744 x 551
+
+- **Auteure** : `ines-design`. **Date** : 2026-10-22, 13:23 (UTC+02:00), lue par `date`. Cette section complete les sections 1 a 13, qui restent la mesure des sommets `56e9fd1b`, `fc6ee0a1` et `9f3fdd4b`.
+- **Ce que cette section est** : des cotes en pixels et des propositions. Aucun Done, aucun gabarit touche : le veto est a `nadia-prof`.
+
+## R1. Sommets, jars, methode
+
+| Lot | Branche | Sommet | Dernier commit de contenu | SHA-256 du jar |
+|---|---|---|---|---|
+| LP1 | `s57-marc-fra-ce1-21` | `24a9315b` | `ea34c750` | `76e52ea6bffd1ad5008ef23ed21d2a4915d7aa7763e14ffea6be810976815928` |
+| LP2 | `s57-lea-mat-ce1-10` | `c29d1d26` | `a733e582` | `ee6c14db9cd464e703862427ffcd290796c4946df5feca81e029151ca6e90c81` |
+| LP4 | `s57-sofia-emc-ce1-02` | `1152fdc9` | `1152fdc9` | `78c08cd952af21b162d5e8cf5624f331cc03f2d1b295763f253e207ebb4edf6e` |
+
+- Chaque jar est posterieur a son dernier commit de contenu, et le YAML du paquet, `catalogue.yaml` et `recreo.css` lus dans le jar sont egaux a ceux du worktree (SHA-256). `git diff --stat eb267ba7 <sommet> -- adapters/adapter-web/src/main` : 0 ligne pour les trois. Meme feuille, memes gabarits : seul le contenu a change.
+- Methode de la section 1, inchangee : 744 x 551, mauvaise reponse puis deuxieme erreur puis revelation, balayage de 360 a 1200 avec et sans barre, six ordres pour LP2 et LP4. Couverture : LP1 24 items sur 24, LP2 21 sur 21, LP4 24 sur 24 (13 parties).
+
+## R2. LP4 `ce1-emc-regle-sanction`, sommet `1152fdc9` : 0 item sur 24 sous le pli
+
+Apres une erreur, 744 x 551, **six ordres des propositions** : **0 item sur 24 sous le pli**, dans aucun ordre. Bas de `.indice` maximal : **484** (67 px de marge). Avant : 8 items sur 24, 580.
+
+| Items | Lignes enonce | Rangees | Bas de `.indice` |
+|---|---|---|---|
+| 1, 4, 5, 7, 10, 11, 12 | 3 | 1 | 448 |
+| 6 | 3 | 1 | 418 |
+| 3, 8, 9 | 2 | 1 | 408 |
+| 2 | 2 | 1 | 378 |
+| 13 a 16, 18 a 24 (11 items) | 3 | **2** | 484 |
+| 17 | 2 | 2 | 444 |
+
+- **Ce qui a fait baisser la cote** : les items 13 a 24 tiennent sur **deux rangees** (avant : trois pour 7 items), avec des propositions de 20 a 22 caracteres (avant : 22 a 33) et un indice d'une ligne. Les propositions de la tache 1 (items 1 a 12) font 11 caracteres au plus.
+- **Seuils de sofia** : propositions de la tache 2 a 58 caracteres au plus, indice a 46 au plus. Mesure : propositions de la tache 2 **22 caracteres au plus**, indice de la tache 2 **44 au plus** (32 a 44). Les deux seuils sont respectes avec une grande marge. Je n'ai pas mesure un item a 58 caracteres : ce seuil n'est ni confirme ni infirme par ce releve. Le nombre de rangees depend de la largeur de chaque bouton, pas du nombre de caracteres seul.
+- **Enonces** : trois lignes pour **19 items sur 24** ; les items 2, 3, 8, 9 et 17 ont deux lignes. La consigne recue parle de 20 : je mesure 19. Avec des propositions sur deux rangees, trois lignes d'enonce ne font plus passer l'indice sous le pli.
+- Aux largeurs 720, 744 et 768 (avec et sans barre), 992 et 1200 : 0 item sous le pli. A 360 et 600, tous les items sont sous le pli, la reference aussi (section 6).
+- **Apres une bonne reponse** (signal "Bravo !" de la manche suivante) : bas du signal **498 au plus**, 0 item sous le pli (avant : 9 items, 564).
+- Propositions : 58 px de haut, 198 a 680 de large, 8 a 22 caracteres, 2 a 5 mots, 1 a 2 rangees. Tailles, contrastes, boutons, sortie a 58 : identiques a la section 2. Aucun debordement horizontal.
+
+## R3. LP1 `ce1-mots-invariables`, sommet `24a9315b` : 18 items sous le pli a la revelation
+
+La revelation affiche l'indice (decision de l'utilisatrice). Mesure sur les 24 items, 744 x 551, trois erreurs puis revelation :
+
+- **18 items sur 24 ont le bas de `.indice` a 564, soit 13 px sous le pli** : 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 16, 18, 19, 20, 21, 23, 24. Ce sont exactement les 18 items dont l'enonce tient sur deux lignes (bas de l'enonce 266). Les 6 autres (1, 3, 7, 15, 17, 22) ont un enonce d'une ligne et un indice a 516, au-dessus du pli.
+- **Le releve de marc-dev (18 items, 13 px) est le bon pour le jeu d'enonces actuel.** Mes 21 items de la section 4 etaient justes pour l'ancien jeu : l'ancien jeu avait 3 enonces d'une ligne sur 24, le jeu actuel en a 6. Je compare les comptes, pas les enonces un a un.
+- Au-dessus du pli, dans les 24 items : "Continuer" (bas 312 a 360), "Tu as ecrit" et la bonne reponse (32 px, bas 459 a 507).
+- Apres une ou deux erreurs : bas de l'indice 462 ou 510, 0 item sous le pli. Le champ descend de 34 px a la premiere erreur (inchange).
+- Largeurs 720 a 1200, avec et sans barre : 0 item sous le pli apres une erreur. Aucun debordement horizontal.
+
+## R4. LP2 `ce1-masses-contenances`, sommet `c29d1d26` : le contenu n'a pas deplace le pli
+
+Cotes identiques, item par item, a celles de la section 5, y compris pour les comparaisons 14, 15, 16, 18 et 19 : une seule rangee de propositions, bas de `.indice` 408, 408, 378, 408 et 408. Six ordres : 0 item sur 21 sous le pli, maximum 408. Apres une bonne reponse : bas du signal 392 au plus. Aucun debordement horizontal.
+
+## R5. Propositions
+
+Je propose, je ne tranche pas.
+
+- **LP4** : rien a corriger au pli. Marge de 67 px.
+- **LP1** : l'indice reste affiche, 13 px sous le pli pour 18 items, la bonne reponse et le bouton restant visibles. Deux voies : (a) laisser tel quel ; (b) raccourcir les enonces a deux lignes pour qu'ils tiennent sur une, ce qui ramene l'indice a 516 et releve de `nadia-prof` et de `marc-dev`. Je ne propose pas de reduire l'interligne de 48 px de l'enonce en saisie ni un rembourrage : la hierarchie de saillance en depend.
+- **LP2** : rien.
+
+## R6. Limites et isolation
+
+- Meme navigateur, meme police et memes limites que la section 12.
+- Memes deux repertoires du scratchpad (`s57-p4-ines-design-t`, `s57-p4-ines-design-t2`), un jar par port (18543 pour LP1 puis LP4, 18544 pour LP2), arret par PID, aucun arret par nom d'image.
+
+**Decisions prises : aucune.**
