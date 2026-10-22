@@ -60,3 +60,9 @@ Lances sur la branche `s57-lea-mat-ce1-10` (base `eb267ba7`), a la main, par les
 Lignee : `bash outils/verifier-lignee.sh` dans le worktree, sortie 0.
 
 Le job `build` du workflow comporte aussi *"Package du fat jar"* (`mvn -B -pl bootstrap -am package`) : **non lance** a part ; `verify` produit le jar, que le lot a joue.
+
+## 8. Reprise du lot LP2 apres le verdict de `nadia-prof` (2026-10-22)
+
+Le lot LP2 (`S57-BR-MAT-CE1-10`) est valide sous reserve (`FICHE-bandit-manchot-masses-contenances-ce1.md`) ; l'utilisatrice a decide *"LP2 oui correction avant fusion"*. Meme branche, meme worktree. Les trois reserves sont corrigees par `a733e582` (paquet, +6 tests de `PaquetCe1MassesContenancesTest`, gardes `LON-CE1-1`, `LON-CE1-2` et `TYP-1` ajoutes a la classe du lot, avec un item fautif chacun). La cellule de la matrice n'est pas touchee : elle est a `camille-po` au verdict (`K9`).
+
+Jobs de `ci.yml` relances sur `a733e582` : `prefixes` (six sorties 0), `chemins` (deux sorties 0), `outils` (treize juges, sorties 0, `python` au lieu de `python3`), lignee (sortie 0). Le job `build` (`bash outils/mvn-jdk21.sh -B clean verify`, jeton `RF1`) est lance sur le sommet qui porte cette section ; son resultat est dans le compte rendu de fin de reprise de `lea-dev`, pas ici.
