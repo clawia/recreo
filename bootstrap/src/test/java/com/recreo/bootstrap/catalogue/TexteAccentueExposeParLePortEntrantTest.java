@@ -469,6 +469,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // nombres jusqu'a 1000 (squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md,
             // section 2).
             "bandit-manchot-nombres-jusqu-a-1000-ce1",
+            // S57-BR-MAT-CE1-10 (s57) : entree neuve, MAT-CE1-10, comparer des masses et des
+            // contenances et choisir g, kg ou L (squad/conformite/ARBITRAGE-PREALABLE-s43-
+            // mathematiques-ce1-lot-2.md, section 3).
+            "bandit-manchot-masses-contenances-ce1",
             // S57-BR-EMC-CE1-01 (s57) : entree neuve, EMC-CE1-01, les biens de chacun et les biens
             // de tous (squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-
             // et-emc-ce1.md, section 4.1).
@@ -796,6 +800,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Des phrases qui disent non",
             // S57-BR-MAT-CE1-01 (s57) : titre neuf, sans niveau (ADR-0078).
             "Les nombres jusqu'à 1000",
+            // S57-BR-MAT-CE1-10 (s57) : titre neuf, sans niveau (ADR-0078).
+            "Les masses et les contenances",
             // S57-BR-EMC-CE1-01 (s57) : titre neuf, sans niveau (ADR-0078).
             "Les biens de tous",
             // S57-BR-EMC-CE1-02 (s57) : titre neuf, sans niveau (ADR-0078).
@@ -1129,6 +1135,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S51-MAT-COMPARER-RANGER (s52) : consigne neuve, generique - elle ne nomme ni la tache
             // ni aucun nombre d'aucun item.
             "Lis bien les nombres, puis choisis la bonne réponse.",
+            // S57-BR-MAT-CE1-10 (s57) : consigne neuve, sans signe double.
+            "Compare les masses et les contenances, ou choisis la bonne unité.",
             // S51-MAT-MULTIPLICATION (s52) : consigne neuve, generique - elle ne nomme aucun nombre
             // ni aucune forme d'item.
             "Lis bien ou regarde le dessin, puis choisis la bonne écriture.",
@@ -1787,6 +1795,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // partielle nommee (NUM-CE1-2) : le paquet ne sert pas "dénombrer".
             "Dénombrer, lire, écrire et décomposer les nombres jusqu'à 1000 (unités, dizaines, "
                     + "centaines)",
+            // S57-BR-MAT-CE1-10 (s57) : competence neuve, MAT-CE1-10, libelle du referentiel copie
+            // sans point final (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-10).
+            // Couverture partielle nommee : le paquet ne sert pas "mesurer".
+            "Comparer et mesurer des masses et des contenances (gramme, kilogramme, litre)",
             // S57-BR-EMC-CE1-01 (s57) : competence neuve, EMC-CE1-01, libelle du referentiel copie
             // (squad/programme/enseignement-moral-et-civique/competences-ce1.md, ligne EMC-CE1-01).
             "Respecter les biens personnels et collectifs : reconnaître ce qui appartient à tous "

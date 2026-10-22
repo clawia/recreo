@@ -78,7 +78,7 @@ items:
     indice: "Pense au mot kilogramme : que veut dire kilo ?"
   - enonce: "Un demi-kilogramme, combien de g ?"
     bonneReponse: "500 g"
-    distracteurs: ["100 g", "1000 g"]
+    distracteurs: ["50 g", "1000 g"]
     indice: "Un demi, c'est la moitié."
   # Comparaison de masses, en g puis en kg
   - enonce: "Une pomme pèse 150 g, une poire 180 g, une banane 120 g. Quel fruit est le plus lourd ?"
@@ -89,30 +89,30 @@ items:
     bonneReponse: "l'ananas"
     distracteurs: ["le melon", "la pastèque"]
     indice: "Le plus léger a le plus petit nombre."
-  - enonce: "Un chat pèse 4 kg, un chien 20 kg, un lapin 2 kg. Lequel a la masse du milieu ?"
-    bonneReponse: "le chat"
-    distracteurs: ["le chien", "le lapin"]
+  - enonce: "Un lapin pèse 3 kg, un chat 4 kg, un chiot 2 kg. Lequel a la masse du milieu ?"
+    bonneReponse: "le lapin"
+    distracteurs: ["le chat", "le chiot"]
     indice: "Cherche le nombre entre le plus petit et le plus grand."
-  - enonce: "Un cartable pèse 5 kg, une valise 12 kg, un panier 3 kg. Quel objet est le plus lourd ?"
-    bonneReponse: "la valise"
-    distracteurs: ["le cartable", "le panier"]
+  - enonce: "Un livre pèse 600 g, un oreiller 400 g, un ballon 300 g. Quel objet est le plus lourd ?"
+    bonneReponse: "le livre"
+    distracteurs: ["l'oreiller", "le ballon"]
     indice: "Compare bien les trois nombres avant de répondre."
-  - enonce: "Un stylo pèse 10 g, une règle 30 g, une gomme 5 g. Quel objet est le plus léger ?"
-    bonneReponse: "la gomme"
-    distracteurs: ["le stylo", "la règle"]
+  - enonce: "Un stylo pèse 10 g, un feutre 20 g, un crayon 5 g. Quel objet est le plus léger ?"
+    bonneReponse: "le crayon"
+    distracteurs: ["le stylo", "le feutre"]
     indice: "Le plus léger a le plus petit nombre."
   # Comparaison de contenances, en L
   - enonce: "Un seau contient 10 L, un arrosoir 5 L, une bouteille 2 L. Quel objet contient le plus ?"
     bonneReponse: "le seau"
     distracteurs: ["l'arrosoir", "la bouteille"]
     indice: "Compare bien les trois nombres avant de répondre."
-  - enonce: "Une casserole contient 3 L, une marmite 8 L, une gourde 1 L. Quel objet contient le moins ?"
-    bonneReponse: "la gourde"
+  - enonce: "Un pichet contient 2 L, une cruche 3 L, une théière 1 L. Quel objet contient le moins ?"
+    bonneReponse: "la théière"
+    distracteurs: ["le pichet", "la cruche"]
+    indice: "L'objet qui a le plus petit nombre contient le moins."
+  - enonce: "Un saladier contient 5 L, une casserole 3 L, une marmite 4 L. Quel objet contient le plus ?"
+    bonneReponse: "le saladier"
     distracteurs: ["la casserole", "la marmite"]
-    indice: "Le plus petit nombre est celui qui contient le moins."
-  - enonce: "Une baignoire contient 150 L, un aquarium 50 L, un évier 20 L. Quel objet contient le plus ?"
-    bonneReponse: "la baignoire"
-    distracteurs: ["l'aquarium", "l'évier"]
     indice: "Compare bien les trois nombres avant de répondre."
   - enonce: "Un bidon contient 5 L, un seau 10 L, une carafe 2 L. Lequel a la contenance du milieu ?"
     bonneReponse: "le bidon"
@@ -121,4 +121,4 @@ items:
   - enonce: "Un évier contient 20 L, un seau 10 L, un bidon 5 L. Quel objet contient le moins ?"
     bonneReponse: "le bidon"
     distracteurs: ["l'évier", "le seau"]
-    indice: "Le plus petit nombre est celui qui contient le moins."
+    indice: "L'objet qui a le plus petit nombre contient le moins."

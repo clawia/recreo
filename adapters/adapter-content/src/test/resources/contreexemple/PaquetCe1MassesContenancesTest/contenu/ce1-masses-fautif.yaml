@@ -1,0 +1,113 @@
+schema: 1
+id: ce1-masses-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1MassesContenancesTest. Chaque item viole une seule
+# propriete du paquet, et le dernier porte un texteSupport (NB8) que le paquet reel n'a pas.
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Grandeurs et mesures"
+  competence: "Comparer et mesurer des masses et des contenances (gramme, kilogramme, litre)"
+lignesDeReferentiel: ["MAT-CE1-10"]
+items:
+  # MAS-CE1-2 : le litre ecrit en minuscule
+  - enonce: "Un seau contient 10 l, un arrosoir 5 l, une bouteille 2 l. Quel objet contient le plus ?"
+    bonneReponse: "le seau"
+    distracteurs: ["l'arrosoir", "la bouteille"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  # MAS-CE1-2 : une unite que la ligne ne nomme pas (la tonne)
+  - enonce: "Pour peser une voiture, quelle unité choisis-tu ?"
+    bonneReponse: "la tonne"
+    distracteurs: ["le gramme", "le kilogramme"]
+    indice: "Choisis l'unité qui sert à peser."
+  # MAS-CE1-4 : un nombre au-dessus de 1000
+  - enonce: "Un sac pèse 1500 g, une valise 12000 g, un panier 300 g. Quel objet est le plus lourd ?"
+    bonneReponse: "la valise"
+    distracteurs: ["le sac", "le panier"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  # MAS-CE1-4 : une conversion que la ligne n'admet pas (2 kg)
+  - enonce: "2 kg, combien de g ?"
+    bonneReponse: "2000 g"
+    distracteurs: ["200 g", "20 g"]
+    indice: "Cherche ce que veut dire le mot kilo dans le mot kilogramme."
+  # MAS-CE1-3 : une comparaison par la seule nature des objets
+  - enonce: "Une plume ou une brique, quel objet est le plus lourd ?"
+    bonneReponse: "la brique"
+    distracteurs: ["la plume", "le sable"]
+    indice: "Pense à ce que tu soulèves."
+  # MAS-CE1-3 : une bonne reponse qui n'est pas la plus lourde
+  - enonce: "Une pomme pèse 150 g, une poire 180 g, une banane 120 g. Quel fruit est le plus lourd ?"
+    bonneReponse: "la pomme"
+    distracteurs: ["la poire", "la banane"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  # MAS-CE1-3 : une proposition dont l'enonce ne donne pas la masse
+  - enonce: "Un chou pèse 2 kg, un poireau 1 kg, un radis 3 kg. Lequel est le plus lourd ?"
+    bonneReponse: "la courge"
+    distracteurs: ["le chou", "le radis"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  # MAS-CE1-5 : trois valeurs dans deux unites differentes
+  - enonce: "Un chat pèse 4 kg, un chien 20 kg, un lapin 900 g. Lequel est le plus lourd ?"
+    bonneReponse: "le chien"
+    distracteurs: ["le chat", "le lapin"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  # MAS-CE1-5 : un choix d'unite dont une proposition porte un nombre
+  - enonce: "Pour peser une pomme, quelle unité choisis-tu ?"
+    bonneReponse: "le gramme"
+    distracteurs: ["le kilogramme", "10 L"]
+    indice: "Choisis l'unité qui sert à peser."
+  # MAS-CE1-5 : une conversion dont une proposition change d'unite
+  - enonce: "1 kg, combien de g ?"
+    bonneReponse: "1000 g"
+    distracteurs: ["100 g", "10 kg"]
+    indice: "Cherche ce que veut dire le mot kilo dans le mot kilogramme."
+  # MAS-CE1-6 : un distracteur de conversion qui n'est pas une erreur de facteur 10 ou 100
+  - enonce: "1000 g, combien de kg ?"
+    bonneReponse: "1 kg"
+    distracteurs: ["10 kg", "3 kg"]
+    indice: "Pense au mot kilogramme : que veut dire kilo ?"
+  # MAS-CE1-6 : un indice qui fait deduire la masse de la taille
+  - enonce: "Une carotte pèse 80 g, un navet 120 g, un radis 20 g. Quel légume est le plus lourd ?"
+    bonneReponse: "le navet"
+    distracteurs: ["la carotte", "le radis"]
+    indice: "Le plus gros est le plus lourd."
+  # MAS-CE1-6 : trois bonnes reponses au rang haut (rang 1)
+  - enonce: "Un renard pèse 5 kg, un blaireau 9 kg, un hérisson 1 kg. Lequel est le plus lourd ?"
+    bonneReponse: "le blaireau"
+    distracteurs: ["le renard", "le hérisson"]
+    indice: "Le plus lourd a le plus grand nombre."
+  # MAS-CE1-6 : trois bonnes reponses au rang haut (rang 2)
+  - enonce: "Un tigre pèse 6 kg, un ours 8 kg, un singe 2 kg. Lequel est le plus lourd ?"
+    bonneReponse: "l'ours"
+    distracteurs: ["le tigre", "le singe"]
+    indice: "Le plus lourd a le plus grand nombre."
+  # MAS-CE1-6 : trois bonnes reponses au rang haut (rang 3)
+  - enonce: "Un cerf pèse 7 kg, un daim 9 kg, un lièvre 3 kg. Lequel est le plus lourd ?"
+    bonneReponse: "le daim"
+    distracteurs: ["le cerf", "le lièvre"]
+    indice: "Le plus lourd a le plus grand nombre."
+  # MAS-CE1-6 : un distracteur du demi-kilogramme qui n'est ni un facteur 10 ou 100 ni le double
+  - enonce: "Un demi-kilogramme, combien de g ?"
+    bonneReponse: "500 g"
+    distracteurs: ["100 g", "1000 g"]
+    indice: "Un demi, c'est la moitié."
+  # LON-CE1-1 : un enonce de plus de vingt mots
+  - enonce: "Un sac de pommes pèse 5 kg, un sac de poires 4 kg, un sac de noix 3 kg, un sac de raisins 2 kg. Lequel est le plus lourd ?"
+    bonneReponse: "le sac de pommes"
+    distracteurs: ["le sac de poires", "le sac de noix"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  # LON-CE1-2 : un enonce dont la derniere phrase n'est pas la question
+  - enonce: "Un panier pèse 3 kg, un cartable 5 kg, un sac 4 kg. Dis lequel est le plus lourd."
+    bonneReponse: "le cartable"
+    distracteurs: ["le panier", "le sac"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  # TYP-1 : une espace ordinaire devant le point d'interrogation
+  - enonce: "Pour peser un ours, quelle unité choisis-tu ?"
+    bonneReponse: "le kilogramme"
+    distracteurs: ["le gramme", "le litre"]
+    indice: "Choisis l'unité qui sert à peser."
+  # NB8 : un texte support, que le paquet reel n'a pas
+  - enonce: "Pour mesurer l'eau d'un seau, quelle unité choisis-tu ?"
+    texteSupport: "Le seau est posé sur la table."
+    bonneReponse: "le litre"
+    distracteurs: ["le gramme", "le kilogramme"]
+    indice: "Cherche l'unité qui sert à mesurer ce qu'on verse."

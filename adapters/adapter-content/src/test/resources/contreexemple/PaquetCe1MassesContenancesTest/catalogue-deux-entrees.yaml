@@ -1,0 +1,14 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1MassesContenancesTest. Deux entrees servent le meme paquet.
+jeux:
+  - id: bandit-manchot-masses-fautif
+    titre: "Les masses et les contenances"
+    consigne: "Compare les masses et les contenances, ou choisis la bonne unité."
+    mecanique: bandit-manchot
+    paquet: ce1-masses-contenances
+    nombreDeManches: 10
+  - id: bandit-manchot-masses-fautif-bis
+    titre: "Les poids et les volumes"
+    consigne: "Compare les masses et les contenances, ou choisis la bonne unité."
+    mecanique: bandit-manchot
+    paquet: ce1-masses-contenances
+    nombreDeManches: 10

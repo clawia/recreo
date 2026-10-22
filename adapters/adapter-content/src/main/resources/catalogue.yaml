@@ -948,6 +948,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-emc-biens-communs
     nombreDeManches: 10
+  - id: bandit-manchot-masses-contenances-ce1
+    titre: "Les masses et les contenances"
+    consigne: "Compare les masses et les contenances, ou choisis la bonne unité."
+    mecanique: bandit-manchot
+    paquet: ce1-masses-contenances
+    nombreDeManches: 10
   - id: bandit-manchot-regle-sanction-ce1
     titre: "La règle et la sanction"
     consigne: "Lis bien, puis choisis la bonne réponse."
