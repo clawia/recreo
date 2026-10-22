@@ -473,6 +473,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // de tous (squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-
             // et-emc-ce1.md, section 4.1).
             "bandit-manchot-biens-communs-ce1",
+            // S57-BR-EMC-CE1-02 (s57) : entree neuve, EMC-CE1-02, la regle et la sanction
+            // (squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-
+            // et-emc-ce1.md, section 4.2).
+            "bandit-manchot-regle-sanction-ce1",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
             // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 6.3).
@@ -794,6 +798,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les nombres jusqu'à 1000",
             // S57-BR-EMC-CE1-01 (s57) : titre neuf, sans niveau (ADR-0078).
             "Les biens de tous",
+            // S57-BR-EMC-CE1-02 (s57) : titre neuf, sans niveau (ADR-0078).
+            "La règle et la sanction",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
             "Même sens ou sens contraire",
             // S57-BR-FRA-CE1-24 (s57) : titre neuf, sans niveau (ADR-0078).
@@ -1786,6 +1792,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Respecter les biens personnels et collectifs : reconnaître ce qui appartient à tous "
                     + "(matériel de la classe, livres de la bibliothèque, jeux de la cour) et le geste "
                     + "qui le protège.",
+            // S57-BR-EMC-CE1-02 (s57) : competence neuve, EMC-CE1-02, libelle du referentiel copie
+            // (squad/programme/enseignement-moral-et-civique/competences-ce1.md, ligne EMC-CE1-02).
+            "Distinguer une règle d'une sanction, et dire à quoi sert une sanction "
+                    + "(rappeler la règle, réparer le tort fait).",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
             // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
             "Trouver un synonyme ou un contraire d'un mot fréquent.",

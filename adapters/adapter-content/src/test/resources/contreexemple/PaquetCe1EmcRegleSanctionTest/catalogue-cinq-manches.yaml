@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1EmcRegleSanctionTest. Le jeu ne porte que cinq manches, ou DEC-0121 veut dix.
+jeux:
+  - id: bandit-manchot-regle-sanction-fautif
+    titre: "La règle et la sanction"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-regle-sanction
+    nombreDeManches: 5
