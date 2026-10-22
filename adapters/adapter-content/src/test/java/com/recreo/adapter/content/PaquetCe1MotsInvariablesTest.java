@@ -321,6 +321,47 @@ class PaquetCe1MotsInvariablesTest {
     }
 
     /**
+     * TYP-1 (ADR-0067) : l'espace apres une ouverture de chevron, avant une fermeture et avant ?, :, ;
+     * ou ! est insecable. Une espace ordinaire laisse le signe seul en debut de ligne. Mutation L10 de
+     * yanis-qa : une espace ordinaire dans un chevron ne rougissait aucun garde de la saisie.
+     */
+    private static void verifierLesEspacesInsecables(List<ReponseAEcrire> items) {
+        String nbsp = String.valueOf((char) 160);
+        String ouvrant = String.valueOf((char) 171);
+        String fermant = String.valueOf((char) 187);
+        Pattern ordinaire = Pattern.compile(ouvrant + "[^" + nbsp + "]|[^" + nbsp + "]" + fermant
+                + "|[^" + nbsp + "][?:;!]");
+        for (ReponseAEcrire item : items) {
+            for (String texte : List.of(item.enonce(), indice(item))) {
+                assertThat(ordinaire.matcher(texte).find())
+                        .as("TYP-1 : '%s' - '%s' porte une espace ordinaire ou aucune espace dans un chevron ou"
+                                + " devant un signe double", item.enonce(), texte)
+                        .isFalse();
+            }
+        }
+    }
+
+    /** MIV-CE1-1 : aucun mot decide par la regle de FRA-CE1-22 (m devant b ou p : combien, jambe). */
+    private static void verifierQuAucunMotNEstDecideParLaNasale(List<ReponseAEcrire> items) {
+        for (ReponseAEcrire item : items) {
+            assertThat(replier(item.formeDeReference()))
+                    .as("MIV-CE1-1 : '%s' - le mot '%s' est decide par la regle de FRA-CE1-22 (m devant b ou p)",
+                            item.enonce(), item.formeDeReference())
+                    .doesNotContainPattern("m[bp]");
+        }
+    }
+
+    /** MIV-CE1-1 : la liste des mots cibles est ecrite en tete du fichier, pas seulement leur nombre. */
+    private static void verifierQueLEnteteListeLesMots(String contenu, List<String> mots) {
+        String entete = String.join(" ", contenu.lines().takeWhile(ligne -> !ligne.startsWith("schema:")).toList());
+        for (String mot : mots) {
+            assertThat(contientLeMot(entete, mot))
+                    .as("MIV-CE1-1 : le mot '%s' n'est pas dans la liste declaree en tete du fichier", mot)
+                    .isTrue();
+        }
+    }
+
+    /**
      * L'entree du catalogue qui sert le paquet est unique, de mecanique saisie, son titre ne porte pas
      * le niveau (ADR-0078), l'espace avant un signe double est insecable et le jeu se joue en dix
      * manches (DEC-0121, aucune derogation pour ce paquet).
@@ -493,6 +534,22 @@ class PaquetCe1MotsInvariablesTest {
     }
 
     @Test
+    void typ1LesChevronsEtLesSignesDoublesPortentUneEspaceInsecable() {
+        verifierLesEspacesInsecables(items());
+    }
+
+    @Test
+    void miv1AucunMotNEstDecideParLaRegleDeLaNasale() {
+        verifierQuAucunMotNEstDecideParLaNasale(items());
+    }
+
+    @Test
+    void miv1LEnteteListeLesMotsCibles() {
+        verifierQueLEnteteListeLesMots(lire(FICHIER_CONTENU),
+                items().stream().map(ReponseAEcrire::formeDeReference).toList());
+    }
+
+    @Test
     void k3LEntreeDuCatalogueEstUniqueSaMecaniqueEstSaisieSonTitreNePorteNiNiveauNiEspaceOrdinaire() {
         verifierLEntreeDuCatalogue(lire(FICHIER_CATALOGUE));
     }
@@ -649,6 +706,40 @@ class PaquetCe1MotsInvariablesTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("TRV-CE1-4")
                 .hasMessageContaining("Cherche le complément");
+    }
+
+    /** ADR-0013 obligation 3 : le jeu fautif de TYP-1, une espace ordinaire dans un chevron et devant un point d'exclamation. */
+    @Test
+    void leJeuFautifCommiteEstRefuseUneEspaceOrdinaireDansUnChevron() {
+        List<ReponseAEcrire> items = tousLesItems(new YamlContentPackLoader(CONTRE_EXEMPLE_CLASSPATH)
+                .chargerPaquet("ce1-mots-invariables-fautif-espaces"));
+
+        assertThatThrownBy(() -> verifierLesEspacesInsecables(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("TYP-1")
+                .hasMessageContaining("Non, ___");
+    }
+
+    /** ADR-0013 obligation 3 : le jeu fautif de MIV-CE1-1, un mot decide par la regle de FRA-CE1-22. */
+    @Test
+    void leJeuFautifCommiteEstRefuseUnMotDecideParLaNasale() {
+        List<ReponseAEcrire> items = itemsFautifs();
+
+        assertThatThrownBy(() -> verifierQuAucunMotNEstDecideParLaNasale(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("MIV-CE1-1")
+                .hasMessageContaining("Combien");
+    }
+
+    /** ADR-0013 obligation 3 : le jeu fautif de MIV-CE1-1, un en-tete qui n'ecrit pas la liste des mots. */
+    @Test
+    void leJeuFautifCommiteEstRefuseUnEnteteSansLaListeDesMots() {
+        String contenu = lireRessource(FAUTIF_CHOIX);
+
+        assertThatThrownBy(() -> verifierQueLEnteteListeLesMots(contenu, List.of("toujours", "sous")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("MIV-CE1-1")
+                .hasMessageContaining("toujours");
     }
 
     /** ADR-0013 obligation 3 : le catalogue fautif, un titre qui porte le niveau. */

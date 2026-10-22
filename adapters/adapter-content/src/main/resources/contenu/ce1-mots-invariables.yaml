@@ -5,12 +5,15 @@
 # Les 24 enonces sont reecrits pour la saisie (amendement de la story, critere 9) : en choix parmi trois graphies le sens
 # n'avait pas a fermer la phrase, en saisie il le doit. Chaque phrase dit ce que le mot veut dire (un contraire, une
 # definition, une reponse, une place dans une suite) pour qu'un seul mot invariable de CE1 la ferme.
-# Onze mots de S53 ne se fermaient pas et sont remplaces : souvent, maintenant, alors, pourtant, aussi, vraiment, parfois,
-# ensuite, surtout, seulement, ailleurs. Les mots essayes et ecartes pour chaque item sont dans le rapport du lot.
+# Treize mots de S53 ne se fermaient pas en saisie et sont remplaces : souvent, maintenant, alors, pourtant, aussi, vraiment,
+# parfois, ensuite, surtout, seulement, ailleurs, dehors, enfin. Les mots essayes et ecartes pour chaque item sont dans le
+# rapport du lot.
 #
-# MIV-CE1-1 : vingt-quatre mots cibles distincts, aucun accent (SAI-1 le tolere, mais le point 3 de nadia-prof exclut les
-# mots dont l'orthographe tient a un accent). Aucun mot decide par une regle d'une autre ligne (a et a accent grave, et/est,
-# m devant m b p, c et c cedille, g/ge/gu).
+# MIV-CE1-1, liste declaree des vingt-quatre mots cibles, distincts : toujours, jamais, aujourd'hui, pourquoi, devant, dedans,
+# moins, partout, autour, loin, tard, pendant, depuis, avant, hier, presque, comment, avec, quand, sans, chez, entre, sous, peu.
+# Aucun accent (SAI-1 le tolere, mais le point 3 de nadia-prof exclut les mots dont l'orthographe tient a un accent).
+# Exclusions relues mot par mot : aucun mot decide par la regle d'une autre ligne (a et a accent grave, et/est, m devant b ou p,
+# c et c cedille, g/ge/gu). combien, retire au rejeu du 2026-10-22, y tombait (om devant b, FRA-CE1-22).
 # MIV-CE1-3 : chaque mot cible est la reponse d'un seul item ; aucun mot cible ne figure dans l'enonce ni dans l'indice
 # d'un item, le sien ou un autre. Aucune explication.
 # QP1 (backlog, S57-BR-FRA-CE1-21, critere 10) : "aujourd'hui" porte une apostrophe, et un clavier de tablette peut la
@@ -35,12 +38,12 @@ items:
   - enonce: "Le soleil se lève ___ à l'est."
     formeDeReference: "toujours"
     formesAcceptees: []
-    indice: "Pense à chaque matin de l'année : aucun ne fait exception."
+    indice: "Pense à tous les matins de l'année, un par un."
   - enonce: "« As-tu déjà vu un poisson marcher ? » « Non, ___ ! »"
     formeDeReference: "jamais"
     formesAcceptees: []
     indice: "Pense au mot qui veut dire « pas une seule fois »."
-  - enonce: "Hier, c'était lundi, demain ce sera mercredi : ___, c'est mardi."
+  - enonce: "Demain, ce sera mercredi : mardi, c'est ___."
     formeDeReference: "aujourd'hui"
     formesAcceptees: ["aujourd’hui"]
     indice: "Ce mot dit le jour où nous sommes. Il porte une apostrophe."
@@ -56,14 +59,14 @@ items:
     formeDeReference: "dedans"
     formesAcceptees: []
     indice: "Les bonbons sont à l'intérieur : cherche le mot qui le dit."
-  - enonce: "Les enfants sortent de la classe et jouent ___, dans la cour."
-    formeDeReference: "dehors"
+  - enonce: "Cinq billes, c'est ___ que dix billes."
+    formeDeReference: "moins"
     formesAcceptees: []
-    indice: "Les enfants ne sont pas à l'intérieur, ils sont à l'extérieur."
+    indice: "Cinq est un petit nombre, dix est un grand nombre : compare."
   - enonce: "Il y a des feuilles ___ : sur le sol, sur les bancs, sur les murs."
     formeDeReference: "partout"
     formesAcceptees: []
-    indice: "Pense à tous les endroits de la cour, un par un."
+    indice: "Pense à tous les endroits cités, un par un."
   - enonce: "On a planté des fleurs en cercle ___ de l'arbre : elles l'entourent."
     formeDeReference: "autour"
     formesAcceptees: []
@@ -76,10 +79,10 @@ items:
     formeDeReference: "tard"
     formesAcceptees: []
     indice: "Pense au contraire de « tôt »."
-  - enonce: "Chloé lit du début à la fin de la récréation : elle lit ___ la récréation."
+  - enonce: "Chloé a lu de 10 h à 10 h 10 : elle a lu ___ dix minutes."
     formeDeReference: "pendant"
     formesAcceptees: []
-    indice: "Elle lit tout le temps que dure la récréation."
+    indice: "Pense à tout le temps que dure la lecture."
   - enonce: "Il a commencé à pleuvoir ce matin et il pleut encore : il pleut ___ ce matin."
     formeDeReference: "depuis"
     formesAcceptees: []
@@ -88,22 +91,22 @@ items:
     formeDeReference: "avant"
     formesAcceptees: []
     indice: "Pense au contraire de « après »."
-  - enonce: "Après trois heures d'attente, le train arrive ___ !"
-    formeDeReference: "enfin"
+  - enonce: "Nous sommes mercredi : mardi, c'était ___."
+    formeDeReference: "hier"
     formesAcceptees: []
-    indice: "Après une longue attente, on est soulagé : cherche le mot."
-  - enonce: "Il ne manque qu'une goutte pour que le verre soit plein : il est ___ plein."
+    indice: "Pense au contraire de « demain »."
+  - enonce: "Il reste une seule miette de gâteau : on a ___ tout mangé."
     formeDeReference: "presque"
     formesAcceptees: []
-    indice: "Il ne manque qu'une toute petite goutte."
+    indice: "Il ne reste qu'une toute petite miette."
   - enonce: "Je m'appelle Karim. Et toi, ___ t'appelles-tu ?"
     formeDeReference: "Comment"
     formesAcceptees: []
     indice: "Pense au mot qui sert à demander un nom."
-  - enonce: "Ce livre coûte six euros. Et ce cahier, ___ coûte-t-il ?"
-    formeDeReference: "Combien"
+  - enonce: "On tient une cuillère dans la main : on mange la soupe ___ cette cuillère."
+    formeDeReference: "avec"
     formesAcceptees: []
-    indice: "Pense au mot qui sert à demander un prix."
+    indice: "Pense à ce qu'on utilise pour manger la soupe."
   - enonce: "Mon anniversaire est le douze mai. Et toi, ___ est ton anniversaire ?"
     formeDeReference: "Quand"
     formesAcceptees: []
@@ -111,7 +114,7 @@ items:
   - enonce: "Sofia met du sucre dans son thé, Ethan n'en met pas : il boit son thé ___ sucre."
     formeDeReference: "sans"
     formesAcceptees: []
-    indice: "Pense au contraire de « avec »."
+    indice: "Pense à ce qui manque dans son thé."
   - enonce: "Jules n'est pas à l'école, il est ___ lui, dans sa chambre."
     formeDeReference: "chez"
     formesAcceptees: []

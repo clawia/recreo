@@ -1,0 +1,17 @@
+schema: 1
+id: ce1-mots-invariables-fautif-espaces
+type: saisie
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Orthographier les mots invariables et les mots fréquents étudiés."
+lignesDeReferentiel: ["FRA-CE1-21"]
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1MotsInvariablesTest. L'item porte des espaces ordinaires
+# dans les chevrons et devant le point d'exclamation, ou la regle veut U+00A0 (TYP-1).
+exigenceDeForme: libre
+items:
+  - enonce: "« As-tu déjà vu un poisson marcher ? » « Non, ___ ! »"
+    formeDeReference: "jamais"
+    formesAcceptees: []
+    indice: "Pense au mot qui veut dire « pas une seule fois »."

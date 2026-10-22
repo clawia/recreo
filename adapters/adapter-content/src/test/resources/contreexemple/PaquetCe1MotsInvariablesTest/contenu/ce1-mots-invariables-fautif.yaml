@@ -58,3 +58,7 @@ items:
     formeDeReference: "dehors"
     formesAcceptees: []
     indice: "Pense au contraire de tout proche."
+  - enonce: "Et ce cahier, ___ coûte-t-il ?"
+    formeDeReference: "Combien"
+    formesAcceptees: []
+    indice: "Pense au mot qui sert à demander un prix."
