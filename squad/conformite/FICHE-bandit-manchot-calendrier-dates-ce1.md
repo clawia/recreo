@@ -11,9 +11,10 @@
 - **Conditions opposables** : `CAL-CE1-1` a `CAL-CE1-5` (`ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md`, 4.3) ;
   `arbitrage-nadia-preparation-palier-3-ce1.md` 4.1 et 4.3 (mention exacte et refus ecrits d'avance) ; `arbitrage-nadia-palier-4.md`
   3.2.
-- **Statut global** : **REFUSE**, prononce le 2026-10-22 par `nadia-prof` (s57, palier 4, instance B). Fiche ouverte le
-  2026-10-22 par `nadia-prof`.
-- **Derniere mise a jour** : 2026-10-22.
+- **Statut global** : **VALIDE SOUS RESERVE**, prononce au rejeu du 2026-10-22 par `nadia-prof` (s57, palier 4, instance
+  B), sur `f863fa7a`, ligne `en cours`. REFUSE au premier passage (verdict conserve ci-dessous). Fiche ouverte le 2026-10-22 par
+  `nadia-prof`.
+- **Derniere mise a jour** : 2026-10-22, rejeu.
 
 ---
 
@@ -103,3 +104,38 @@ qu'un distracteur soit d'une famille plausible.
 **lecture complete : ce1-calendrier-dates, 25 items lus** - 2026-10-22, 20:22 (UTC+02:00), lu par `date`, sur la branche
 `s57-lea-mat-ce1-11` a `003fd4fb` ; code et contenu a `f863fa7a` (`git diff --name-only f863fa7a 003fd4fb` ne nomme que le
 rapport du lot). Diff du paquet depuis `8f25fd64` : item 18, distracteurs de l'item 13, quatre indices, en-tete.
+
+### Verdict du rejeu, 2026-10-22 (`nadia-prof`) : **VALIDE SOUS RESERVE**
+
+Le verdict du premier passage reste ecrit au-dessus ; celui-ci s'y ajoute.
+
+**Done pedagogique prononce sur `f863fa7a`** (sommet `003fd4fb`). **La ligne `MAT-CE1-11` reste `en cours`.** `camille-po` ne la
+fait bouger qu'avec, dans la cellule, la mention exacte de `arbitrage-nadia-preparation-palier-3-ce1.md` 4.3 : *"se reperer dans le
+calendrier par la date seule ; 'lire l'heure sur une horloge' reste non couvert, et l'ordre des mois est servi par `QLM-CP-13`"*.
+
+**Commit joue** : `f863fa7a`, jar construit dans mon worktree detache `recreo-s57-nadia-p4-lp3-jeu` a ce commit (`-pl bootstrap
+-am package -DskipTests`, mesure partielle), port 18513, *"Tomcat started on port 18513"* et PID lus dans mon journal, arrete par
+PID. Jeu par moi, requetes HTTP : 12 parties de 10 manches, 25 enonces servis sur 25 ; l'item 18 servi dans trois ordres ; le
+nouvel indice des mois lu a l'ecran apres une erreur.
+
+**Leve** :
+
+- M1, item 18 : *"Entre le 9 mai, le 26 mai et le 17 mai, quelle date vient la dernière ?"* : trois dates du meme mois, le
+  numero du jour decide. Indice juste.
+- Reserve 1 (le jour qui decide) : **levee par l'item 18**. Son but etait qu'un item d'ordre fasse comparer des jours ; c'est
+  fait. Je ne demande pas en plus un des items 15, 16, 17 ou 19 : ce serait lire ma reserve plus etroitement que son but.
+- Reserve 2 (rang) : recompte a la main sur les 25 items, haut 8, milieu 12 (48 %), bas 5. Tenu.
+- Reserve 3 (fevrier) : *"Poing fermé : les creux ont 30 jours, les bosses 31, sauf février."* La methode est juste.
+- Reserve 4 (en-tete) : l'en-tete dit maintenant ce que le paquet fait.
+
+**Q1 de `lea-dev`** : *"Poing fermé"* (12 mots) est recevable ; je ne demande pas la forme a l'imperatif et je ne leve aucun garde.
+
+**Reserve, non bloquante** : le pli n'a jamais ete mesure sur ce paquet ; personne ne le mesure aujourd'hui. Un indice sous le
+pli apres une erreur serait une reserve non bloquante (4.1 point 4).
+
+**Prix** : 0,25.
+
+**Je reste la seule garde** : qu'un item d'ordre compare des nombres ; qu'un indice ne dise pas une regle fausse ; la famille d'un
+distracteur de date.
+
+**Signe** : `nadia-prof`, 2026-10-22.
