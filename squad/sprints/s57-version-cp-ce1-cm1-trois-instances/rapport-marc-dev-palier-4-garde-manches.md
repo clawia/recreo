@@ -2,7 +2,7 @@
 
 - **Auteur** : marc-dev (instance A), prefixe `[MARC]`.
 - **Base de mesure** : `51a9d957` (sommet de `round-two` : LP1, LP2 et LP4 fusionnes).
-- **Commit de code et de tests** : `fbe90f8b`. Ce rapport est un second commit, sans code.
+- **Commits** : `fbe90f8b` (code et tests), `1d97832d` (correction demandee par theo-archi : le litteral `src/main/` dans la Javadoc, section 3 bis ; aucune assertion changee). Les commits suivants ne portent que ce rapport.
 - **Version mesuree** : la machine virtuelle des tests rapporte `java.version` 21.0.10 (propriete lue dans `adapters/adapter-content/target/surefire-reports/TEST-...DureDixManchesSaufDerogationNommeeTest.xml`) ; Maven a tourne sur le JDK de la toolchain `jdk 21`, 21.0.10 d'apres `outils/mvn-jdk21.sh`.
 
 ## 1. Ce qui est livre
@@ -36,6 +36,17 @@ Etat de depart, arbre non mute : 7 tests, 0 echec, plus `ChaqueJeuDuCatalogueOff
 
 Jeux fautifs (`ADR-0013` obligation 3), absents de la production, executes par `assertThatThrownBy` sur `AssertionError` avec `hasMessageContaining` du nom de l'entree : `catalogue.yaml` (5 manches hors liste), `valeur-changee/`, `derogation-a-dix/`, `corrige/` avec une derogation de la liste que le catalogue ne porte pas, `sans-valeur/`. Le catalogue `corrige/` avec la liste fictive passe : c'est l'autre borne.
 
+## 3 bis. Mutation G1 : le recensement voit-il le garde ?
+
+Mutation G1 (mesuree par theo-archi, rejouee ici) : les jeux fautifs `adapters/adapter-content/src/test/resources/contreexemple/ChaqueJeuDuCatalogueDureDixManchesSaufDerogationNommeeTest/` supprimes, sur une **copie hors de la branche** (`git archive` du commit dans le repertoire de scratchpad, jamais dans le worktree). Commande, dans chaque copie : `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=LesGardeFousSontMisALEpreuveTest -Dsurefire.failIfNoSpecifiedTests=false` (perimetre : reacteur complet jusqu'a `bootstrap`, 10 tests lances par execution).
+
+| Copie | Resultat | Detail |
+|---|---|---|
+| `fbe90f8b`, jeux fautifs supprimes | **vert**, exit 0, 10 tests, 0 echec | faux vert : le garde n'est pas recense |
+| `1d97832d`, jeux fautifs supprimes | **rouge**, exit 1, 10 tests, 1 echec | `LesGardeFousSontMisALEpreuveTest.aucunGardeFouDeBalayageNEchappeALaMiseALEpreuve` ; liste rendue : `ChaqueJeuDuCatalogueDureDixManchesSaufDerogationNommeeTest` |
+
+Le recensement mord maintenant sur ce garde. La correction est un paragraphe de Javadoc qui porte le litteral, comme `AucuneEntreeDuCatalogueNEnDoubleUneAutreTest` ; la seule garantie est le litteral, que le recensement lit par `contains`.
+
 ## 4. Gates lancees
 
 Sur l'arbre propre au commit `fbe90f8b` (`git status --short` : 0 ligne), JDK 21.0.10.
@@ -55,7 +66,7 @@ Aucun jar joue : aucun ecran, aucun item, aucune valeur du catalogue ne change.
 ## 5. Questions routees (je ne tranche pas)
 
 - **Q1, `theo-archi` : la forme du garde.** J'ai cherche une forme ecrite dans `avis-theo-palier-4.md`, `lecture-theo-lignee-palier-4.md` et `arbitrage-nadia-palier-4.md` (recherches de `manches`, `p4-10`, `liste fermee`, `derogation` : aucun resultat sur le sujet). La story laisse la place de la liste, la lecture et le nom a `theo-archi` et au developpeur. J'ai pris la forme la plus proche du precedent voisin (`AucuneEntreeDuCatalogueNEnDoubleUneAutreTest`) : la liste en constante du test, le catalogue lu en `src/main`. Si la forme attendue est autre (liste dans un YAML de ressources de test, test dans `bootstrap`), le garde et ses cinq catalogues se deplacent sans changer de propriete.
-- **Q2, `theo-archi` : `ADR-0013` obligation 1.** La liste des derogations n'est pas un perimetre, c'est une liste d'exemptions fermee des deux cotes ; son mode de defaillance est un rouge. Je n'ai ajoute le test ni a `DETTE_DE_BALAYAGE` ni a `CRITERES_ENUMERES_DECLARES` : il contient `src/main/`, donc le recensement de `LesGardeFousSontMisALEpreuveTest` le voit, et il a son jeu fautif et son `assertThatThrownBy`. A confirmer a la lecture de lignee.
+- **Q2, `theo-archi` : `ADR-0013` obligation 1.** La liste des derogations n'est pas un perimetre, c'est une liste d'exemptions fermee des deux cotes ; son mode de defaillance est un rouge. Je n'ai ajoute le test ni a `DETTE_DE_BALAYAGE` ni a `CRITERES_ENUMERES_DECLARES` : **correction du 2026-10-22 : mon texte initial affirmait que le recensement de `LesGardeFousSontMisALEpreuveTest` voyait le garde. C'etait faux a `fbe90f8b` : le test construit son chemin par `Path.of("src", "main", ...)` et ne contenait pas le litteral `src/main/` (`grep -c` : 0). Le recensement ne le voyait donc pas (section 3 bis).** Corrige a `1d97832d`. A confirmer a la lecture de lignee.
 - **Q3, `camille-po` : ce que le garde ne juge pas.** Il ne verifie pas que la `DEC` citee par une ligne existe, ni qu'elle nomme cette valeur. La colonne `decision` est une donnee relue par un humain, pas un invariant execute. Si le critere 1 ("le numero de la `DEC` qui nomme son motif") doit etre execute, c'est une clause de plus et un critere a ecrire.
 - **Q4, `sofia-sm`.** La valeur `DEC-0121` portee par `designation-plan-de-la-classe`, `saisie-mot-dicte-cp` et `bandit-manchot-rapprocher-deux-oeuvres-cp` vient de la section 3, de la section 4 et de la section 8 de `DEC-0121`, telles que la story les cite. Je ne les ai pas rouvertes une par une dans les fiches de conformite.
 
