@@ -175,3 +175,42 @@ Ce dernier garde remplace, dans la pratique, la règle symétrique de la section
 **Pli** : toujours non mesuré sur ce paquet (`ines-design` indisponible) ; les seuils de `LP4` sont repris sans mesure, aucune ligne ajoutée. **Jar** : aucun lancé, aucun port utilisé.
 
 Questions routées : aucune neuve. Les trous que `yanis-qa` relèverait dans ces gardes me sont à router après son rapport.
+
+## 12. Commit de test seul : trou D15 de `yanis-qa` (2026-10-22, après le verdict VALIDE SOUS RESERVE sur `5b9bb648`)
+
+Commit **`84064ce9`**, sur `ebdfa265`. `git diff --name-only ebdfa265 84064ce9` :
+
+```
+adapters/adapter-content/src/test/java/com/recreo/adapter/content/PaquetCe1EmcDroitDevoirTest.java
+adapters/adapter-content/src/test/resources/contreexemple/PaquetCe1EmcDroitDevoirTest/contenu/ce1-emc-fautif.yaml
+```
+
+Ni le paquet YAML, ni le catalogue, ni un gabarit, ni `src/main` ne sont touchés. **RF13** : le jar joué par `nadia-prof` (`5b9bb648`) n'est pas concerné, aucun fichier du lot n'est sous `src/main` dans ce commit. Ce rapport est dans le commit suivant, qui ne touche que lui.
+
+**Le trou** : le couple déclaré d'un item était une déclaration, pas une lecture. **Le garde** `dde1LaSituationDeChaqueItemNommeLeCoupleQuIlDeclare` : la situation (l'énoncé) reprend au moins un mot entier de la liste fermée du couple déclaré, écrite dans le test (`MOTS_DE_LA_SITUATION_PAR_COUPLE`), et aucun mot de la liste d'un autre couple. Le paquet réel passe sans changement de contenu.
+
+| Jeu fautif | Ce qu'il mord |
+|---|---|
+| sonde 48 : *"Léo a le droit d'apprendre"* déclarée couple 2, bonne réponse *lui parler poliment* (couple 2) : **la sonde D15**. `verifierLesDeclarations` la laisse passer (le test le prouve), le nouveau garde la refuse | couple 2 sans mot du couple 2 |
+| sonde 49 : couple 1 avec *"et de parler poliment"* | mots d'un autre couple dans la situation |
+| sonde 50 : situation sur *apprendre* déclarée couple 3 avec sa réponse du couple 3 | couple 3 sans mot du couple 3 |
+
+**Preuve que le garde ne refuse aucun item du paquet réel** : `dde1LaSituationDeChaqueItemNommeLeCoupleQuIlDeclare` est vert sur les 24 items.
+
+**Mutation sur le paquet réel, rejouée** : item 1 passé de `couple 1` à `couple 2` et sa bonne réponse de *le laisser travailler* à *lui parler poliment* (la déclaration reste cohérente). `-pl adapters/adapter-content -am -Dtest=PaquetCe1EmcDroitDevoirTest` : **rouge**, un seul échec, `dde1LaSituationDeChaqueItemNommeLeCoupleQuIlDeclare`. Fichier restauré par `git checkout`, `git diff -- adapters/adapter-content/src/main` vide ensuite.
+
+**Fermés en même temps, sans rougir le paquet réel** : la liste lexicale de `DDE-CE1-2` reçoit *grâce*, *seulement si*, *pour avoir* (L04, L05, L08) ; sondes 51, 52, 53. **Laissé en dette dite** : F02 (mot repris de quatre lettres) : le seuil à cinq lettres est inchangé, je n'ai pas tenté de l'abaisser (il demanderait une liste de mots outils et un risque de rouge sur le contenu valide).
+
+**Aucune assertion retirée ni assouplie** : le diff du test ne contient que des ajouts, hormis les trois mots ajoutés à une expression.
+
+**Porte technique** (commit `84064ce9`, arbre propre) :
+
+| Job | Résultat |
+|---|---|
+| `build`, Verify | `bash outils/mvn-jdk21.sh -B clean verify` : **exit 0**, `BUILD SUCCESS`. Jeton RF1 pris à 21:17:39, rendu à 21:25:24 |
+| `build`, "Package du fat jar" | `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package` : **exit 0** |
+| `prefixes`, `chemins`, `outils` | scripts de ci.yml sur `51a9d957..HEAD` : **exit 0** ; 13 juges purs, exit 0 |
+
+Mesure partielle préalable `-pl adapters/adapter-content,bootstrap -am` (ADR-0086 et gardes de `bootstrap`) : 105 et 48 tests, verte.
+
+**Tests** : 120 + 31 + 523 + 2 033 + 381 + 6 = **3 094** (3 089 avant ce commit, +5 : 74 tests dans `PaquetCe1EmcDroitDevoirTest` au lieu de 69 ; un test de paquet et quatre de jeux fautifs). La base n'est pas mesurée par moi.
