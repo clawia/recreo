@@ -1,0 +1,16 @@
+# Catalogue fautif, jamais servi (ADR-0013 obligation 3, DEC-0121).
+# L'entree de la liste des derogations y porte 6 manches, la liste en nomme 7.
+schema: 1
+jeux:
+  - id: jeu-fictif-a-dix-manches
+    titre: "Jeu a dix manches"
+    consigne: "Consigne fictive"
+    mecanique: bandit-manchot
+    paquet: paquet-fictif-un
+    nombreDeManches: 10
+  - id: jeu-fictif-derogatoire
+    titre: "Jeu derogatoire"
+    consigne: "Consigne fictive"
+    mecanique: bandit-manchot
+    paquet: paquet-fictif-deux
+    nombreDeManches: 6
