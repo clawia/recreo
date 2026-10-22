@@ -2483,3 +2483,70 @@ Verdict du rejeu 3 : **VALIDE SOUS RESERVE** ; `nadia-prof` ecrit que la ligne p
 | l'utilisatrice | confirmer ou corriger la valeur de A.161 (5,0 inchange) |
 
 **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne fixe aucun prix, n'engage aucun poste, ne touche ni `planning.md`, ni `LP9`, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. **Decisions de produit prises ici** : (1) le quatrieme passage de `LP4` se place au palier 4, 0,25, `propose` ; (2) les prix de rejeu sont ceux de `nadia-prof` ; (3) le plafond de `PAR-8` reste 5,0, proposition a confirmer ; (4) la cellule de `FRA-CE1-21` est ecrite, la ligne ne bouge pas. **Changement de code decide** : l'item 9 de `ce1-emc-regle-sanction`, proprietaire `sofia-sm`. `OV3` et `AP2` restent ouverts. Aucun identifiant de condition neuf.
+
+
+## Amendement du 2026-10-22, vingt-septieme (`camille-po`, palier 4 : rejeux de `LP3` et de `LP5`, plafond de `PAR-8`, matrice apres fusion, reserves, `LP6`)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : `round-two` a `51a9d957` (`LP1`, `LP2`, `LP4` et `s57-camille-p4` fusionnes). Les fiches de `LP3` et `LP5` sont lues sur `s57-nadia-p4-lp3` et `s57-nadia-p4-lp5`, non fusionnees. Ce que je n'ai pas fait : lancer un jar, jouer un contenu, fixer un prix, engager un poste, toucher `planning.md`, `LP9`.
+
+### A.164 Les mots
+
+Cites tels que l'agent lanceur me les transmet, 2026-10-22 (forme 2 de `DEC-0062` G) : *"lance LP3, LP5 et p4-10 et si besoin releve le plafond"*. Le relevement est **conditionnel** (*"si besoin"*) ; la ligne de `p4-10` n'est pas de mon ressort ici (aucun prix, hors `PAR`). Ses mots ne nomment pas `LP6`.
+
+### A.165 Les rejeux et leurs prix, au registre
+
+| Lot | Verdict de `nadia-prof` | Prix | Etat au registre |
+|---|---|---|---|
+| `LP4` `EMC-CE1-02` (A'), rejeu 4 | **VALIDE SOUS RESERVE** sur `f36d83bc` | 0,25 (A.160 : le prix etait le sien) | `propose` devient **`facture`** |
+| `LP3` `MAT-CE1-11` (B) | **REFUSE** sur l'item 18 : *"l'item ne demande que l'ordre de trois mois"* | **0,25** : *"Prix du rejeu : 0,25 si seuls l'item 18 et des reserves changent"* | rejeu **`propose`** |
+| `LP5` `EMC-CE1-03` (A') | **REFUSE** sur les items 14 et 24 | **0,25** : *"0,25 si seuls les items 14 et 24 changent"* | rejeu **`propose`** |
+
+Les prix sont ceux de `nadia-prof` ; un prix ne monte que sur sa parole si le commit change plus que ces items. `propose` : l'engagement est a `sofia-sm` (`planning.md`, `RF11`). **Registre** `registre-prix-palier-4.txt` (18 lignes), `awk -F'|'` lance ce jour : `A 2.25`, `Ap 5.00`, `B 4.75`, **`total 12.00`** ; par etat `engage 7.50`, `consomme 1.50`, `non-engage 1.50`, `facture 1.00`, `propose 0.50`. Sans les rejeux : 10.50. **Seuil de 20,0 : reste 8,0.** Je n'ai pas fait passer les lots fusionnes d'`engage` a `facture` : c'est un geste de cloture, hors de la demande.
+
+### A.166 Le plafond de 5,0 par instance (`PAR-8`) : le besoin n'existe pas encore
+
+Calcule sur le registre fusionne, marges consommees **comprises** (elles sont dans le compose) :
+
+| Instance | Compose | Rejeux | Total | Plafond 5,0 |
+|---|---|---|---|---|
+| A | 2,0 (arbitrage 0,5 ; marge 0,5 ; `LP1` 1,0) | 0,25 | **2,25** | reste 2,75 |
+| A' | 4,0 (arbitrage 0,5 ; marge 0,5 ; trois lots 3,0) | 0,5 (`LP4` rejeu 3) + 0,25 (`LP4` rejeu 4) + 0,25 (`LP5`) | **5,00** | **reste 0,00** : egal a 5,0, `PAR-8` dit *"au plus 5,0"* |
+| B | 4,5 (arbitrage 0,5 ; marge 0,5 ; `LP2` 1,0 ; `LP3` 1,0 ; `LP9` 1,5) | 0,25 (`LP3`) | **4,75** | reste 0,25 |
+
+**La plus petite valeur qui fait passer les rejeux places, par instance : A 2,25, A' 5,00, B 4,75.** Le plafond actuel (5,0) les contient tous, donc **aucun relevement n'est ecrit** : la condition posee par l'utilisatrice (*"si besoin"*) n'est pas remplie par ce calcul. Je le dis parce que l'agent lanceur ecrit *"il est maintenant besoin"* : l'egalite de A' (5,00) est sous le plafond, pas au-dessus. **Valeur a confirmer par l'utilisatrice, pas son chiffre : 5,0 inchange.**
+
+**Ce qui est vrai quand meme** : A' n'a plus aucune marge sous 5,0. Un rejeu de plus dans A' (deuxieme rejeu de `LP5`, ou rejeu de `LP6`) depasse. Le relevement serait alors necessaire ; ma proposition de valeur, a confirmer, **sans l'ecrire comme relevee** : A' 5,25 pour un passage de 0,25 de plus (5,50 pour deux). B : 0,25 de marge, un passage de 0,25 de plus (`LP3` ou `LP9`) passe a 5,0 ; deux depassent (B 5,25). Portee : *"si besoin"* vise les rejeux, pas les lots, et je ne releve rien pour les lots. Question a l'utilisatrice : `QU2` (A.170).
+
+### A.167 La matrice apres fusion : 152 / 202 devient 154 / 202
+
+`LP1`, `LP2` et `LP4` sont fusionnes ; leurs commits joues sont ancetres de `round-two` (`git merge-base --is-ancestor` sort 0 pour `8c76b1c7`, `c29d1d26` et `f36d83bc`) et leurs paquets sont inchanges depuis (`git diff --stat <commit> HEAD -- <paquet>` : 0 ligne). Les trois entrees sont au catalogue (`saisie-mots-invariables-ce1`, `bandit-manchot-regle-sanction-ce1`, `bandit-manchot-masses-contenances-ce1`). **Mouvements** :
+
+| Ligne | Avant | Apres | Cellule |
+|---|---|---|---|
+| `MAT-CE1-10` | `non couvert` | **`en cours`** | jeu inscrit ; mention exacte de `nadia-prof` conservee (A.154) ; plafond `en cours` ; *"mesurer"* non couvert |
+| `FRA-CE1-21` | `non couvert` | **`couvert-valide`** | mention *"mots sans accent seuls tant que l'accent est tolere"* et reserve du clavier conservees (A.162), jeu inscrit |
+| `EMC-CE1-02` | `non couvert` | **`couvert-valide`** | **VALIDE SOUS RESERVE** au rejeu 4 ; historique des refus ; trois reserves non bloquantes recopiees |
+
+**Commande de la "Methode du compte"** (celle de `MATRICE-couverture.md`, reprise telle quelle, lancee sur `git show HEAD:squad/programme/MATRICE-couverture.md` puis sur le fichier modifie, les deux fois sur une seule commande, sortie lue) : **avant** `cv 152`, `ec 5`, `nc 45`, `ncb 75`, total 277, 152 / 202 = 75,25 % ; **apres** `cv 154`, `ec 6`, `nc 42`, `ncb 75`, total 277, denominateur 202, **154 / 202 = 76,24 %**. Par niveau, atteignables / `couvert-valide` : CE1 64 / 36 (avant 34), CP 59 / 52 et CM1 79 / 66 inchanges. Compteur de version (A.32), second nombre : 154 + 6 = 160 / 202 = 79,21 % **par la formule** ; son critere 2 (CI verte sur l'arbre) n'est pas lu par moi, et le plafond `en cours` de `MAT-CE1-10` exige les cinq criteres de `nadia-prof` que je ne calcule pas. La ligne passe parce que la fusion a eu lieu et que le verdict est sur `round-two`, **pas sur la foi d'une CI** : le Done est a `nadia-prof`.
+
+### A.168 Reserves non bloquantes : stories, et criteres de correction de `LP3` et de `LP5`
+
+Ecrits au backlog (annotation du 2026-10-22, apres `S57-BR-FRA-CE1-21`) :
+- **Criteres de correction avec ses mots et la valeur d'aujourd'hui** : `S57-BR-MAT-CE1-11` critere 6 (item 18, `grep -c` rend 1, rouge) ; `S57-BR-EMC-CE1-03` critere 6 (items 14 et 24, 1 et 1, rouges). Proprietaires : `lea-dev` (B) et `sofia-sm` (A'), stories engagees.
+- **Stories des reserves, non engagees, sans palier, prix a `nadia-prof`** : `S57-EMC-CE1-02-R1` (items 6 et 10 de `ce1-emc-regle-sanction`) ; `S57-PLI-MOTS-INVARIABLES-REVELATION` (`LP1` : 17 items sur 24 sous le pli a la revelation, de 13 px, mesure d'`ines-design` sur `f8d5d875`) ; `S57-SAISIE-MOTS-PROPOSES-PAR-LE-CLAVIER` (`LP1`, reserve du clavier ; `QP4` sans reponse de `theo-archi`).
+- **Pas de story** pour la reserve de pli de `LP2` et de `LP4` : les fiches disent *"non remesure"*, mais `mesure-ines-palier-4-pli-744x551.md` porte la mesure, **sur `round-two`** (`LP2` 0 sur 21, section R4 ; `LP4` 0 sur 24 sur `f36d83bc`, section T2). Elle est a lire par `nadia-prof`.
+
+### A.169 `LP6` : la recommandation de 3.3 n'est pas tenue, la condition de composition l'est
+
+`nadia-prof` (fiche de `LP5`) : la condition de la composition (*"un verdict de `LP4` ou `LP5` sans refus"*) est **remplie par `LP4`** ; sa recommandation de 3.3 (*"tant que A' n'a pas montre un lot ecrit dans le palier sans refus"*) **n'est pas tenue** (`LP4` refuse trois fois, `LP5` une) ; *"c'est une recommandation, pas une condition : la decision est a `camille-po`, et l'ouverture suit la fusion de `LP5` (`RF5`)"*. **Ma decision de produit** : `LP6` reste engage dans la composition (A.148, inchange) ; **je ne le lance pas** : les mots de l'utilisatrice nomment `LP3`, `LP5` et `p4-10`, pas `LP6`. Il suit la fusion de `LP5` (`RF5`, `composition-palier-4.md`, ordre de `sofia-sm`) et son verdict, ce qui est la recommandation de 3.3 appliquee a `LP5` plutot qu'a un lot sans refus. **Si le verdict de `LP5` est un refus de plus, ou si `LP6` ne part pas au palier 4 : deuxieme ecartement** (A.148, A.150), un troisieme demande une `DEC`. **A l'utilisatrice, si elle veut ouvrir `LP6` avant la fusion de `LP5`** : c'est une exception a `RF5` (ordre de `sofia-sm`), non demandee par ses mots. Aucune decision d'ordre technique n'est prise ici.
+
+### A.170 Routage, ce que cet amendement ne fait pas
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | l'engagement des deux rejeux (`LP3`, `LP5`) ; les corrections : `lea-dev` (item 18 de `ce1-calendrier-dates`, critere 6) et `sofia-sm` (items 14 et 24 de `ce1-emc-droit-devoir`, critere 6) ; `LP6` et `RF5` |
+| `nadia-prof` | les rejeux ; lire les releves de pli de `LP2` et `LP4` ; le seuil de `S57-PLI-MOTS-INVARIABLES-REVELATION` |
+| l'utilisatrice | `QU2` : A' est a 5,00 sur 5,0 ; voulez-vous relever le plafond des maintenant pour que le prochain passage de `LP5` ou de `LP6` ne bloque pas, ou le faire cas par cas (defaut) ? Valeur proposee, a confirmer : A' 5,25 |
+| `theo-archi` | `QP4` (attribut contre les mots proposes par le clavier) |
+
+**Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne fixe aucun prix, n'engage aucun poste, n'amende ni `planning.md`, ni `LP9`, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. **Decisions de produit prises ici** : (1) rejeux de `LP3` et `LP5` places, 0,25 chacun, `propose` ; (2) `PAR-8` inchange a 5,0, aucun relevement ecrit, valeurs de repli proposees ; (3) matrice 154 / 202 ; (4) `LP6` non lance. **Changement de code decide** : les items de `LP3` (18) et de `LP5` (14, 24), proprietaires `lea-dev` et `sofia-sm`, stories engagees avec critere. `OV3` et `AP2` restent ouverts. Aucun identifiant de condition neuf : `QU2` n'a pas de tiret.
