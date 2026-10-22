@@ -1,133 +1,137 @@
-# s57, palier 4, poste p4-9 - rapport de `sofia-sm` (casquette développeuse, instance A'), lot `LP6`
+# s57, palier 4, poste p4-9 - rapport de `sofia-sm` (casquette développeuse, instance A'), lot `LP6`, reprise après le REFUSE
 
-- **Story** : `S57-BR-EMC-CE1-04`, paquet `ce1-emc-interet-commun`, ligne `EMC-CE1-04`. **Prix** : 1,0.
+- **Story** : `S57-BR-EMC-CE1-04`, paquet `ce1-emc-interet-commun`, ligne `EMC-CE1-04`. **Prix** : 1,0 au premier passage, reprise estimée 0,5 par `nadia-prof` (non mesuré).
 - **Casquette** : développeuse uniquement. Rien n'est fusionné, aucune lignée n'est jugée, aucun amendement de `planning.md` n'est animé.
-- **Date** : 2026-10-22. **Branche** : `s57-sofia-emc-ce1-04`, worktree `recreo-s57-sofia-emc-ce1-04`.
-- **Base** : `a65341cb` (sommet de `round-two` après la fusion de `LP5`). `git merge-base --is-ancestor a65341cb HEAD` sort 0. Aucune fusion, aucun rebase, aucun reset, aucun push.
-- **Commit de code** : `e85a93fe` (12 fichiers, 1 853 lignes ajoutées, 0 supprimée). **Ce rapport** est un second commit qui ne touche que ce fichier.
-- **Ouverture** : la condition de la composition (*"un verdict de `LP4` ou `LP5` sans refus"*) est remplie d'après `FICHE-bandit-manchot-droit-devoir-ce1.md` (rejeu du 2026-10-22, `LP4` puis `LP5` : VALIDE SOUS RESERVE). La recommandation de `nadia-prof` (`arbitrage-nadia-palier-4.md` 3.3, *"ne pas le prendre"*) est maintenue par elle et **n'est pas levée par moi** : le lot est ouvert sur la demande de l'utilisatrice du 2026-10-22, elle le dit elle-même dans la fiche (*"c'est une recommandation ; la décision est à `camille-po`"*).
+- **Date de la reprise** : 2026-10-22 au soir, 2026-10-23 pour le `verify`. **Branche** : `s57-sofia-emc-ce1-04`, worktree `recreo-s57-sofia-emc-ce1-04`.
+- **Départ de la reprise** : `cbfb152e`, arbre propre (`git status --short` vide), `round-two` toujours à `a65341cb` : aucune fusion n'était à faire. `git merge-base --is-ancestor a65341cb HEAD` sort 0. Aucune fusion, aucun rebase, aucun reset, aucun push.
+- **Commit de code de la reprise** : `ec2d572a` (3 fichiers, 279 lignes ajoutées, 73 supprimées). **Ce rapport** est le commit suivant et ne touche que ce fichier. Le sommet de la branche est donc le commit de ce rapport, lu par `git rev-parse --short HEAD`.
+- **Fiche lue** : `FICHE-bandit-manchot-interet-commun-ce1.md`, commit `705eb2b7` de la branche `s57-nadia-p4-lp6` (non fusionnée), verdict **REFUSE** sur `cbfb152e` : motifs M1 et M2, trois réserves.
 
-## 1. Ce qui est livré
+## 1. Ce qui change
 
-| Fichier | Rôle |
+| Fichier | Changement |
 |---|---|
-| `adapters/adapter-content/src/main/resources/contenu/ce1-emc-interet-commun.yaml` | le paquet : 24 items, type `question`, aucun texte support, aucune voix |
-| `adapters/adapter-content/src/main/resources/catalogue.yaml` | entrée `bandit-manchot-interet-commun-ce1`, titre servi *"Pour un seul ou pour tous"*, consigne de `LP4`/`LP5` reprise, `nombreDeManches: 10` |
-| `PaquetCe1EmcInteretCommunTest.java` + `contreexemple/PaquetCe1EmcInteretCommunTest/` | le test du paquet (65 tests) et ses jeux fautifs (44 items sondés, 2 en-têtes, 4 catalogues) |
-| `TexteAccentueExposeParLePortEntrantTest.java` | trois ajouts (identifiant, titre, compétence), aucun retrait |
-| `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest.java` | une entrée `PAQUETS_HORS_DU_DOMAINE_NUMERIQUE`, aucun retrait |
+| `adapters/adapter-content/src/main/resources/contenu/ce1-emc-interet-commun.yaml` | 24 items, 13 de portée tous et 11 de portée un comme avant ; 9 scènes neuves, 2 scènes déplacées de la cour à la salle, 9 retirées, 13 inchangées ; chaque item déclare une **appartenance d'objet** en plus de sa portée ; en-tête réécrit |
+| `PaquetCe1EmcInteretCommunTest.java` | l'appartenance est déclarée à part de la portée ; un garde neuf ; 4 tests de plus (69 au lieu de 65) |
+| `contreexemple/PaquetCe1EmcInteretCommunTest/contenu/ce1-emc-fautif.yaml` | une déclaration d'objet sur chaque item qui déclare une portée, 7 items neufs pour 3 sondes neuves (41, 42, 43) |
 
-`git diff a65341cb HEAD -- '*Test.java' | grep -c '^-[^-]'` rend 0 : aucune ligne retirée d'un fichier de test, aucune assertion affaiblie. Aucun garde-fou de `bootstrap` n'est modifié. **Aucun identifiant neuf n'est écrit** : `INT-CE1-1`, `INT-CE1-2` sont dans `REGISTRE-identifiants.md` (lignes `INT-CE1-1` et `INT-CE1-2`), le reste est existant (`NRC-CE1-1`, `TRV-CE1-1`, `-2`, `-5`, `-6`, `LON-CE1-1`, `-2`, `-5`, `FER-1`, `FER-2`, `EMC-1`, `EMC-5`, `EMC-6`). Les libellés `portee un` / `portee tous` et `famille a` / `famille b` sont des étiquettes de commentaire du paquet, pas des conditions. `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` est vert. **Rien à router à `theo-archi` pour le registre.**
+Aucun autre fichier. `catalogue.yaml`, `TexteAccentueExposeParLePortEntrantTest`, `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` et les garde-fous de `bootstrap` ne sont pas touchés. Le titre, la consigne et le nombre de manches sont inchangés.
 
-## 2. Le paquet
+## 2. M1 : le possessif ne donne plus la réponse
 
-Une scène d'une phrase, un personnage nommé, une seule action ; la question est toujours *"Pour qui est-ce utile ?"* (espace insécable). Les trois propositions sont : les deux formules de `INT-CE1-2` (*pour une seule personne*, *pour toute la classe*) et un nombre d'élèves entre les deux (*pour quelques élèves*, *pour deux élèves*, *pour trois élèves*). La bonne réponse est l'une des deux formules : **13 items pour toute la classe, 11 pour une seule personne**. Chaque nombre est servi avec les deux bonnes réponses.
+**Répartition des 24 scènes par portée et par appartenance de l'objet** (comptée sur le texte, pas sur les déclarations) :
 
-- **Portée un** (11 items) : une chose qui ne sert qu'à celui qui la fait, la scène porte un possessif (*Léo taille son crayon*, *Aya lace ses chaussures*, *Zoé boit l'eau de sa gourde*).
-- **Portée tous** (13 items) : une chose que chacun utilise, la scène nomme un lieu ou un objet partagé, jamais un possessif (*Mila essuie le tableau avant la leçon*, *Samir remet les chaises en place dans la salle*, *Hugo tient la porte ouverte pour chacun*).
-- Aucune scène ne met un personnage en balance avec le groupe ; aucune ne juge celui qui veut quelque chose pour lui.
-- Aucun adulte n'est nommé, aucun lieu de vie hors de l'école (`EMC-6`), 15 prénoms dont 7 féminins et 8 masculins, les 15 servis.
-- **Voisinage** : `ce1-emc-biens-communs` (`EMC-CE1-01`) sert déjà *"à tout le monde"* et *"à une seule personne"* pour des **objets**. Ici, l'action et celui qu'elle sert, jamais l'objet ni son appartenance. Les scènes de portée un ne reprennent aucun objet de ce paquet (le test `NRC-CE1-1` ne compare pas les paquets de CE1 entre eux : c'est à lire).
+| | objet personnel (possessif) | objet partagé (lieu ou objet commun) | scènes où le possessif se trompe |
+|---|---|---|---|
+| **portée une seule personne** (11) | 7 | **4** | 4 sur 11 (36 %) |
+| **portée toute la classe** (13) | **5** | 8 | 5 sur 13 (38 %) |
 
-## 3. Critères de la story
+Une règle qui répond *une seule personne* sur *son*, *sa*, *ses* et *toute la classe* sinon a bon sur **15 scènes sur 24** (au lieu de 24 sur 24 au premier passage, 30 sur 30 manches jouées par `nadia-prof`). Le seuil de la fiche, un tiers au moins par portée, est tenu avec une marge d'une scène en portée un (4 sur 11 pour 3,67 exigées) et de deux en portée tous (5 sur 13 pour 4,33).
+
+**Scènes neuves, portée une seule personne, objet partagé** (aucun possessif, un lieu ou un objet commun, sans blâme) :
+- *Aya prend un livre de la bibliothèque pour le lire.* (exemple de `nadia-prof`)
+- *Enzo boit au robinet de la cour.* (exemple de `nadia-prof`)
+- *Mila prend des ciseaux dans la boîte du coin dessin pour découper.*
+- *Hugo cherche un mot dans le dictionnaire du coin lecture.*
+
+**Scènes neuves, portée toute la classe, objet personnel** (un possessif, un geste qui sert tous) :
+- *Samir apporte sa plante pour décorer la salle.* (exemple de `nadia-prof`, dont *la classe* est remplacé par *la salle* : *classe* est un mot plein de la proposition *pour toute la classe*, et le garde d'écho refuse qu'une scène le reprenne)
+- *Lina colle son affiche des horaires au mur.*
+- *Maya écrit son annonce de la sortie au tableau.*
+- *Tom essuie les tables de la salle avec son chiffon.*
+- *Omar accroche sa carte au tableau pour la leçon.*
+
+Les sept scènes de portée un et d'objet personnel qui restent sont celles que `nadia-prof` a tenues au premier passage (*Léo taille son crayon*, *Aya lace ses chaussures*, *Noé efface une erreur dans son cahier*, *Samir apprend sa poésie*, *Zoé boit l'eau de sa gourde*, *Adam relit sa dictée*, *Maya met ses lunettes pour lire*), inchangées.
+
+**Clause 1 d'`ADR-0086`** : les deux bonnes réponses sont servies avec chaque nombre d'élèves. Les trois nombres tournent à l'intérieur de chaque portée (`quelques`, `deux`, `trois` pour la portée tous ; `deux`, `trois`, `quelques` pour la portée un), chaque nombre est donc servi avec les deux bonnes réponses. `adr0086ChaqueNombreDEleveSertLesDeuxBonnesReponses` est vert et `LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest` aussi, fichier non modifié.
+
+**Ce que le test fait de nouveau, à faire lire par `theo-archi` (je ne le tranche pas)** :
+
+1. **Une déclaration neuve par item**, `INT-CE1-1 objet : personnel|partage`, à côté de `INT-CE1-1 portee : un|tous` et de `TRV-CE1-2 : a, b`. `verifierLaPortee` garde toujours que la portée déclarée est celle de la bonne réponse, puis, selon l'objet : *personnel* exige un possessif dans la scène ; *partagé* exige un mot de la liste fermée et **aucun** possessif.
+2. **Ce qui est retiré**, et seulement cela : « portée un exige un possessif » et « portée tous exige un mot partagé et aucun possessif ». Ce sont les deux lignes qui enfermaient le paquet dans la forme refusée.
+3. **Ce qui est conservé** : une scène de portée un et d'objet personnel ne nomme toujours aucun lieu ou objet partagé (l'ancienne sonde 07 mord toujours, son message est celui d'avant avec les mots *l'objet personnel* en plus). Un objet partagé n'a jamais de possessif (l'ancienne sonde 06 mord toujours). Une scène de portée tous et d'objet personnel peut nommer un lieu partagé (*apporte sa plante pour décorer la salle*), c'est la seule combinaison que l'ancien test refusait et que la fiche demande.
+4. **La liste fermée** `PARTAGES` gagne deux mots, `bibliothèque` et `robinet`, aucun n'est retiré.
+5. **Le garde neuf** `verifierQueLAppartenanceNeDecidePasDeLaPortee` : dans chacune des deux portées, trois fois le nombre de scènes où la règle du possessif se trompe est supérieur ou égal au nombre de scènes de la portée. Le calcul lit le texte des scènes (`son`, `sa`, `ses`), pas les déclarations d'auteur. Une déclaration peut donc mentir sans le tromper.
+6. **Aucune assertion n'est affaiblie** au sens du dépôt : `git diff a65341cb HEAD -- '*Test.java' | grep -c '^-[^-]'` rend 0 (le test est neuf par rapport à la base). Contre `cbfb152e`, les seules lignes retirées de ce fichier sont les deux conditions de l'item 2 ci-dessus, la liste `PARTAGES` (reprise avec deux mots de plus), le Javadoc, et un message d'assertion de la sonde 06 (`déclare la portée tous et porte un possessif` devient `déclare l'objet partagé et porte un possessif`).
+
+**Mutations sur le paquet réel, rejouées** (`-pl adapters/adapter-content -am -Dtest=PaquetCe1EmcInteretCommunTest`, fichier restauré après chacune, `cmp` identique à la sauvegarde) :
+- **A** : *Aya prend un livre de la bibliothèque pour le lire.* devient *Aya prend son livre pour le lire.*, déclarée objet personnel : la scène de portée un à objet partagé disparaît. **Rouge, un seul échec**, `int1LAppartenanceDeLObjetNeDecidePasDeLaPorteeDansAucuneDesDeuxPortees` : *dans la portée un, 3 scènes sur 11*.
+- **B** : *Maya écrit son annonce...* devient *Maya écrit l'annonce...*, déclarée objet partagé : une scène de portée tous à objet personnel disparaît. **Rouge, un seul échec**, le même test : *dans la portée tous, 4 scènes sur 13*.
+
+**Jeu fautif** (ADR-0013, obligation 3) : sonde 41 (objet non déclaré), 42 (trois scènes de portée un où le possessif décide de toutes), 43 (trois scènes de portée tous où l'objet partagé décide de toutes). Chacune est refusée par son vérificateur et par lui seul.
+
+## 3. M2 : les quatre scènes du CP sont remplacées
+
+Retirées : *Tom range les ballons dans le panier de la cour* (5), *Omar remet les livres sur l'étagère du coin lecture* (7), *Lina remet des feutres dans la boîte du coin dessin* (9), *Samir remet les chaises en place dans la salle* (19). Aucune scène de ranger ou de remettre à sa place ne reste dans le paquet. Sont aussi retirées, pour tenir 13 et 11 sans dépasser les 24 items : *Noé balaie le sol de la salle* (portée tous, un troisième geste de nettoyage), *Inès met son manteau pour sortir*, *Hugo range sa trousse dans son cartable* (la trousse est l'objet de `ce1-emc-biens-communs`), *Lina boutonne sa veste* et *Enzo colorie son dessin* (portée un, objet personnel). **Écart avec le message du commit `ec2d572a`** : il annonce 10 scènes retirées et *une de la cour* ; le compte exact est 9 retirées et 2 déplacées, ci-dessus. Les gestes qui les remplacent sont des gestes que `cp-emc-regles-de-vie` n'enseigne pas : décorer (*plante*), afficher (*affiche des horaires*, *carte*), annoncer (*annonce de la sortie*) et nettoyer avec un objet à soi (*chiffon*). Ils sont les cinq scènes de portée tous à objet personnel de la section 2, qui répondent donc à M1 et à M2 d'un même geste.
+
+## 4. Réserves non bloquantes
+
+1. **Items 3, 5, 23 (la cour)** : traitée **sans toucher à `INT-CE1-2`**. Aucune scène de portée tous ne nomme plus la cour (la 5 est retirée par M2, la 3 et la 23 se passent dans la salle : *Jade ramasse les papiers qui traînent dans la salle*, *Léo apporte la caisse de jeux dans la salle*). La cour n'apparaît que dans *Enzo boit au robinet de la cour*, où la bonne réponse est *une seule personne*. Je n'ai pas ajouté *pour tout le monde* comme formule : `INT-CE1-2` la dit admise, mais elle changerait l'ensemble fermé des formules du test et `ADR-0086` clause 1 sur les propositions ; c'est une question pour `theo-archi` si `nadia-prof` préfère cette variante.
+2. **La troisième proposition** : ce que le paquet dit, c'est que *pour quelques élèves*, *pour deux élèves*, *pour trois élèves* **ne sont jamais la bonne réponse** (en-tête du YAML, famille b), et que chaque nombre est servi avec les deux bonnes réponses. Le test le garde : `verifierLesFormules` exige que la bonne réponse soit l'une des deux formules et que le second distracteur vienne de la famille b. Le motif M1 levé, le choix à deux ne se fait plus à la forme, mais il reste un choix à deux : je ne l'ai pas changé, la fiche dit que la forme est celle de `INT-CE1-2`. Les cinq scènes neuves de portée tous sont écrites pour qu'*aucun nombre ne soit défendable* (le geste sert tous) ; c'est à relire, voir 6.
+3. **Pli** : non mesuré sur ce paquet. Énoncé de 112 caractères au plus, indice de 46 au plus, seuils de `LP4`. Le plus long énoncé neuf est *Mila prend des ciseaux dans la boîte du coin dessin pour découper. Pour qui est-ce utile ?*
+
+## 5. Critères de la story
 
 | Critère | Commande, sortie | Vert |
 |---|---|---|
-| Existence d'abord | `ls adapters/adapter-content/src/main/resources/contenu \| grep -c '^ce1-emc-interet-commun'` : **0** sur `a65341cb` (`git ls-tree -r a65341cb --name-only \| grep -c ...`), **1** sur `e85a93fe` | oui |
-| 1, un paquet pour une ligne | `grep -l 'lignesDeReferentiel: \["EMC-CE1-04"\]' .../contenu/*.yaml \| wc -l` rend 1 ; `grep -c 'bonneReponse:' F` rend 24 | oui |
-| 2, `INT-CE1-2`, mots | `grep -ciE 'intérêt général\|bien commun' F` rend **0** sur le fichier entier, commentaires compris ; le test le garde sur chaque champ lu **et** sur le fichier (`int2AucuneExpressionInterditeNEstLueParLEnfantNiEcriteDansLeFichier`, sondes 09, 10 et un fichier fautif en commentaire) ; `nombre de formules` : les deux formules sont dans chacun des 24 items | oui |
-| 3, `INT-CE1-1` | **non garde sur le fond** : *"une seule lecture defendable"* est lue par `nadia-prof`, aucune mesure. **Gardé** : la portée déclarée de chaque scène est celle de sa bonne réponse, dite par un mot d'une liste fermée écrite dans le test (possessifs ; tableau, cour, ballons, étagère, coin, craies, jeu, jeux, chacun, salle, porte), sans jamais dire les deux ; aucune conjonction d'opposition (*mais*, *alors que*, *tandis que*, *plutôt que*, *au lieu de*, *pourtant*, *contre*) ; aucun mot de jugement (*égoïste*, *honte*, *méchant*, *gentil*, *vilain*, *faute*, *tort*, *gêne*, *dérange*, *jaloux*) | oui pour ce qui se garde |
-| 4, clauses de forme | `grep -vE '^\s*#' F \| grep -cE 'texteSupport\|texteAVoixHaute'` rend 0 ; propositions de six mots au plus (`eb6`) ; indices de douze mots au plus et 46 caractères au plus, **24 distincts sur 24** (`grep '^    indice:' F \| sort -u \| wc -l` rend 24) ; trois propositions distinctes, familles nommées en commentaire à côté de chaque item (`TRV-CE1-2 : a, b`) ; bonne réponse strictement la plus longue dans 11 items sur 24 (garde : 12 au plus) | oui |
-| 5, entrée de catalogue | `grep -c "paquet: ce1-emc-interet-commun$" catalogue.yaml` rend 1 ; `grep -c '^  - id:' catalogue.yaml` rend **163** (162 sur `a65341cb`) ; `nombreDeManches: 10`, titre sans le niveau (`ADR-0078`), espace insécable avant `?` ; `ChaqueJeuDuCatalogueReelEstAtteignableDansLesDeuxVuesDeLAccueilTest` vert, fichier non modifié | oui |
-| 6, Done technique | section 5 | oui, pour les jobs nommés |
+| 1, un paquet pour une ligne | `grep -c 'bonneReponse:' F` rend 24 ; `grep -l 'lignesDeReferentiel: \["EMC-CE1-04"\]' .../contenu/*.yaml \| wc -l` rend 1 | oui |
+| 2, `INT-CE1-2`, mots | `grep -ciE 'intérêt général\|bien commun' F` rend 0 sur le fichier entier ; les deux formules sont dans chacun des 24 items | oui |
+| 3, `INT-CE1-1` | **gardé** : portée déclarée contre bonne réponse, appartenance déclarée contre les mots de la scène, un tiers au moins de scènes qui croisent les deux dans chaque portée, aucune opposition, aucun jugement. **Non gardé** : une seule lecture défendable (`nadia-prof`) | oui pour ce qui se garde |
+| 4, clauses de forme | 24 indices distincts ; propositions de six mots au plus ; bonne réponse strictement la plus longue dans 11 items sur 24 (garde : 12 au plus) | oui |
+| 5, entrée de catalogue | inchangée (`catalogue.yaml` absent du diff) ; `grep -c '^  - id:' catalogue.yaml` rend 163 | oui |
+| 6, Done technique | sections 6 et 7 | oui, pour les jobs nommés |
 
-## 4. Ce que le test garde, et le jeu fautif qui chaque fois le mord
+## 6. Porte technique : jobs de `ci.yml` lancés
 
-| Propriété | Garde | Sonde |
-|---|---|---|
-| Familles du commentaire d'en-tête : la famille a est exactement les deux formules, la famille b des nombres | `verifierLesFamillesDuCommentaire` | deux en-têtes fautifs |
-| Bonne réponse = une formule ; les deux formules dans chaque item ; chaque distracteur dans sa famille déclarée | `verifierLesFormules` | 01, 02, 03, 40 |
-| `FER-1` : chaque formule bonne réponse d'au moins 5 items | `verifierQueLesDeuxFormulesSontEnBonneReponse` | 36 |
-| `ADR-0086` clause 1 : un nombre d'élèves n'est jamais servi avec une seule bonne réponse | `verifierQueChaqueNombreSertLesDeuxReponses` | 36 |
-| `INT-CE1-1` : portée déclarée, mot de la liste fermée, jamais les deux | `verifierLaPortee` | 04, 05, 06, 07, 08, 31 |
-| `INT-CE1-2` : expressions interdites, champs et fichier | `verifierLesMotsInterdits` | 09, 10, fichier fautif |
-| `INT-CE1-1` : aucune mise en balance, aucun jugement | `verifierQueLaSceneNeBlameJamais` | 11, 12, 13 |
-| Point d'audit commun : aucune proposition ne reprend un mot plein de la scène ni de l'indice ; ni négation, ni pronom en tête, ni majuscule, ni chevrons | `verifierQuAucunePropositionNeReprendLaScene`, `verifierLaForme` | 14, 15, 16, 17 |
-| `NRC-CE1-1` : aucune proposition ni aucun énoncé d'un des six paquets (`cp-emc-regles-de-vie`, `cp-emc-regle-souhait-loi`, `cp-emc-droits-enfant`, `cm1-emc-regle-loi`, `cm1-emc-droit-devoir`, `cm1-emc-regles-vie-collective`) | `verifierQueRienNEstReprisDUnPaquetVoisin` | 37 (énoncé), 38 (proposition) |
-| `TRV-CE1-1`, `LON-CE1-1`, `-2`, `-5`, `TRV-CE1-5`, `TYP-1`, `EMC-1`, `TRV-CE1-6`, pli | un verificateur chacun | 18 à 30, 32 à 35, 39 |
-
-**Mutation sur le paquet réel, rejouée** : item 2 passé de *Léo taille son crayon.* à *Léo taille le crayon.* (la déclaration de portée reste *un*). `-pl adapters/adapter-content -am -Dtest=PaquetCe1EmcInteretCommunTest` : **rouge**, un seul échec, `int1LaPorteeDeclareeEstCelleDeLaBonneReponseEtDeLaScene`. Fichier restauré, `git status --short` vide ensuite.
-
-**Contrainte rencontrée en route, tenue par le contenu et non par une exemption** : `ADR-0086` clause 1 rougit un groupe de trois items ou plus aux propositions identiques **et** à la même bonne réponse. Avec deux formules fixes, un nombre d'élèves servi avec une seule bonne réponse le ferait. Les trois nombres tournent (rang modulo 3) et chacun est servi avec les deux bonnes réponses ; clause 2 (amorce de quatre mots) : les nombres tiennent en trois mots, aucune amorce de distracteur n'existe seule. Clause 3 (marqueur *seul*) : le nombre n'en porte pas, donc aucun item n'a *seule* sur tous ses distracteurs et sur aucune part de sa bonne réponse. `LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest` est vert, fichier non modifié, `DETTE_D_AMORCE` non touchée.
-
-## 5. Porte technique : jobs de `ci.yml` lancés
-
-Commit vérifié : `e85a93fe`, arbre propre (`git status --short` vide avant le lancement).
+Commit vérifié : `ec2d572a`, arbre propre (`git status --short` vide avant et après).
 
 | Job | Commande | Sortie |
 |---|---|---|
-| `build`, étape Verify | `bash outils/mvn-jdk21.sh -B clean verify` à la racine du worktree, **jeton RF1 pris à 23:08:14 (aucune attente : `mkdir` a réussi du premier coup) et rendu à 23:20:50** | **exit 0**, 23:08:29 à 23:20:50, `BUILD SUCCESS`, 6 modules |
-| `build`, étape Package du fat jar | `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package -DskipTests` | **exit 0**, `BUILD SUCCESS`, `bootstrap/target/recreo.jar` produit. **Écart avec `ci.yml` (`mvn -B -pl bootstrap -am package`) : j'ai passé `-DskipTests`**, les tests de ce commit sont ceux du Verify ci-dessus |
-| `prefixes` | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `git log --no-merges --format=%s a65341cb..HEAD \| bash .github/scripts/verifier-prefixes.sh`, `verifier-garde-fou-accent-test.sh`, `verifier-garde-fou-accent.sh a65341cb..HEAD` | **exit 0** pour les cinq (sur `e85a93fe`) |
-| `chemins` | `verifier-chemins-test.sh`, puis `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' \| bash .github/scripts/verifier-chemins.sh` | **exit 0**, *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."* |
-| `outils` | balayage `outils/*-test.sh`, `squad/outils/*/*-test.sh`, `outils/*-test.py` | **exit 0**, 13 juges purs exécutés |
+| `build`, étape Verify | `bash outils/mvn-jdk21.sh -B clean verify` à la racine du worktree, **jeton RF1 pris à 00:13:32 et rendu à 00:25:58** (`mkdir` du répertoire `s57-p4-jeton-verify` réussi du premier coup, répertoire absent après coup) | **exit 0**, `BUILD SUCCESS`, 6 modules |
+| `build`, étape Package du fat jar | `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package -DskipTests` | **exit 0**, `BUILD SUCCESS`, `bootstrap/target/recreo.jar` produit. **Écart avec `ci.yml` (`mvn -B -pl bootstrap -am package`) : `-DskipTests`**, les tests de ce commit sont ceux du Verify ci-dessus |
+| `prefixes` | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `git log --no-merges --format=%s a65341cb..HEAD \| bash .github/scripts/verifier-prefixes.sh`, `verifier-garde-fou-accent-test.sh`, `verifier-garde-fou-accent.sh a65341cb..HEAD` | voir section 7 |
+| `chemins` | `verifier-chemins-test.sh`, puis `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' \| bash .github/scripts/verifier-chemins.sh` | voir section 7 |
+| `outils` | balayage `outils/*-test.sh`, `squad/outils/*/*-test.sh`, `outils/*-test.py` | voir section 7 |
 
-Les jobs `build`, `prefixes`, `chemins`, `outils` et l'étape *Package du fat jar* de `ci.yml` sont lancés en local. **Cela ne vaut pas la CI** : celle de GitHub n'a pas tourné sur ce commit (aucun push). `prefixes` et `chemins` sont à relancer sur le commit de ce rapport et sur le commit de fusion.
+**Tests** (surefire sur l'arbre de `ec2d572a`, par module, dans l'ordre du réacteur) : domain 120, application 31, adapter-web 523, adapter-content 2 166, bootstrap 381 plus 6 d'intégration : **3 227**, 0 échec, 0 erreur, 0 ignoré.
 
-**Tests** (surefire sur l'arbre de `e85a93fe`, par module, dans l'ordre du réacteur) : domain 120, application 31, adapter-web 523, adapter-content 2 162, bootstrap 381 plus 6 d'intégration : **3 223**, 0 échec, 0 erreur, 0 ignoré.
+**Provenance du total** : mesuré par moi sur l'arbre de ce commit, pas relayé. Au premier passage (`e85a93fe`) le même décompte rendait 3 223 ; l'écart de 4 est exactement les 4 tests ajoutés (`git diff a65341cb HEAD -- '*Test.java' \| grep -c '^+.*@Test'` rend 69, contre 65 avant). **Le total de la base n'est pas mesuré par moi** : 3 227 moins 69 donne 3 158, une déduction. Le total après fusion est à `yanis-qa`.
 
-**Delta** : **+65** tests, tous dans `PaquetCe1EmcInteretCommunTest` (`git diff a65341cb HEAD -- '*Test.java' | grep -c '^+.*@Test'` rend 65). **Le total de la base n'est pas mesuré par moi** : 3 223 moins 65 donne 3 158, c'est une déduction, pas une mesure. Le total après fusion est à `yanis-qa` (rapport qualité d'un lot de A', `composition-palier-4.md` 5.3 point 3).
-
-**Mesures partielles préalables** (toutes avec `-am`, périmètre nommé) : `-pl adapters/adapter-content -am -Dtest=PaquetCe1EmcInteretCommunTest` : 65 verts ; `-pl bootstrap -am` sur `LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest` (9), `TexteAccentueExposeParLePortEntrantTest` (10), `ChaqueJeuDuCatalogueReelEstAtteignableDansLesDeuxVuesDeLAccueilTest` (4), `AucunEnonceDeCe1NeDepasseVingtMotsNiTroisPhrasesTest` (8), `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` (10), `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` (28) : verts.
+**Mesures partielles** (toutes avec `-am`, périmètre nommé) : `-pl adapters/adapter-content -am -Dtest=PaquetCe1EmcInteretCommunTest` : 69 verts ; `-pl bootstrap -am` sur `LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest` (9), `TexteAccentueExposeParLePortEntrantTest` (10), `ChaqueJeuDuCatalogueReelEstAtteignableDansLesDeuxVuesDeLAccueilTest` (4), `AucunEnonceDeCe1NeDepasseVingtMotsNiTroisPhrasesTest` (8), `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` (10), `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` (28) : verts, avant le commit.
 
 **Jar** : aucun jar n'est lancé, aucun port n'est utilisé.
 
-## 6. Ce que `nadia-prof` doit juger
+## 7. Jobs sans `mvn`, lancés sur le sommet
 
-Aucun compteur ne le voit. `INT-CE1-1` est, de son propre mot, le critère le plus difficile des quatre lignes d'EMC : *"lu par `nadia-prof`, aucune mesure"*.
+Lancés sur l'arbre de `ec2d572a` plus ce rapport (tracé par `git ls-files`), avant le commit de ce rapport :
 
-1. **J1, lecture complète** (`LC`) : `lecture complète : ce1-emc-interet-commun, 24 items lus`, à ses mains. Les 24 scènes, 48 distracteurs, 24 indices, en-tête.
-2. **J2, une seule lecture défendable** (`INT-CE1-1`, `EMC-5`), scène par scène. Les scènes que je lis le plus fragilement : *Samir apprend sa poésie* et *Adam relit sa dictée* (portée un : un enfant peut les lire comme utiles aussi à celui qui écoute ou corrige) ; *Noé balaie le sol de la salle* et *Samir remet les chaises en place dans la salle* (portée tous : le geste sert ceux qui occupent la salle, pas seulement la classe nommée) ; *Hugo tient la porte ouverte pour chacun* ; *Léo porte la caisse de jeux jusqu'à la cour*.
-3. **J3, la troisième proposition** : *pour quelques élèves*, *pour deux élèves*, *pour trois élèves* ne sont jamais la bonne réponse. Elles laissent à l'enfant un choix à deux, deux formules fixes dans chaque item. Est-ce un défaut de la tâche ou sa forme ? Le choix du nombre dit à l'enfant qu'une scène sert *toute la classe* ou *une seule personne*, sans zone intermédiaire : sont-elles assez peu défendables pour qu'aucune scène n'admette *deux élèves* ?
-4. **J4, `TRV-CE1-6`, objet possédé** : les scènes de portée un font dire *son crayon*, *sa gourde*, *son manteau*, *sa trousse*, *son cartable*, *ses lunettes*, *sa veste*. La condition écrit *"rien qui suppose ... un objet possédé"*. Ce sont des objets d'élève à l'école (même régime que *"son cahier"* dans `ce1-emc-droit-devoir`, validé au rejeu) : à elle de dire si cela vaut ici, où le possessif **est** le moyen de dire la portée.
-5. **J5, la question *"Pour qui est-ce utile ?"*** : identique sur les 24 items. *Utile* convient-il à *Mila essuie le tableau* et à *Aya lace ses chaussures* ? Le seuil de lisibilité de CE1 (*traînent*, *essuie*, *balaie*, *boutonne*, *efface*) est à elle.
-6. **J6, `NRC-CE1-1` sur le fond** : mon garde compare les textes avec six paquets, jamais les sujets. `cp-emc-regle-souhait-loi` classe une situation en deux catégories (`DEC-0120`, voisin désigné dans l'instruction) ; ce paquet classe aussi, avec une question différente. Le voisin de CE1, `ce1-emc-biens-communs`, est à elle (section 2).
-7. **J7, les indices** (`TRV-CE1-5`, relus par moi) : 24 questions de méthode du type *Qui se sert du tableau ?*, aucune ne contient une proposition. *Qui s'assoit sur ces chaises ?*, *Qui passe par cette porte ?* disent-elles la portée par leur sujet ? Un indice qui mène à un distracteur est ce qu'`LP5` a perdu au premier passage : je n'en vois pas ici, elle seule le dit.
-8. **J8, aucun blâme** (refus écrit d'avance) : aucun mot de jugement, aucune conjonction d'opposition. Ce que le texte ne dit pas mais fait lire est à elle.
-
-## 7. K8 : chaque point d'audit a un test ou *"non gardé"*
-
-| Point | État |
+| Job | Sortie lue |
 |---|---|
-| `INT-CE1-2`, les mots interdits | **gardé** (champs et fichier entier) |
-| `INT-CE1-2`, les propositions disent les deux formules | **gardé** |
-| `INT-CE1-1`, une seule lecture défendable | **non gardé : le sens** ; gardé : la portée déclarée contre la bonne réponse et contre une liste fermée de mots de la scène |
-| `INT-CE1-1`, aucun blâme | **gardé sur les mots** (opposition, jugement) ; **non gardé : un blâme porté par le sens** |
-| Aucune forme ne donne la réponse | **gardé** : majuscule, chevrons, négation, pronom en tête, mot plein repris de la scène ou de l'indice, longueur ; **non gardé : le sens de la scène lui-même** |
-| `NRC-CE1-1` | **gardé sur l'égalité des textes** (propositions et énoncés) avec six paquets ; **non gardé : le sujet, les paquets de CE1 voisins** |
-| `EMC-1`, `EMC-6` | **gardé** (aucune adresse à l'enfant, aucun mot du foyer, personnage nommé) ; non gardé : aucun lieu de vie hors ce que le texte dit (lecture) |
-| `TRV-CE1-6` | gardé sur l'équilibre des prénoms ; non gardé : les rôles, l'objet possédé |
-| `LON-CE1-1`, `-2`, `-5`, `TRV-CE1-1`, `-5` | **gardés** (test du paquet, et `AucunEnonceDeCe1NeDepasseVingtMotsNiTroisPhrasesTest` vert) |
-| Pli à 744 x 551 | seuils de `LP4` gardés (112, 46) ; **non mesuré** sur ce paquet |
-| Mots de la liste fermée de portée | **déclaration d'auteur** (liste écrite dans le test, comme les mots de couple de `LP5`) : le test prouve la cohérence entre ce que l'item déclare et ce que la liste dit, jamais que la liste dit vrai |
+| `prefixes` | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-garde-fou-accent-test.sh` (21 cas) : exit 0 ; `git log --no-merges --format=%s a65341cb..HEAD \| bash .github/scripts/verifier-prefixes.sh` : *"Tous les commits portent un prefixe d'agent connu."* exit 0 ; `verifier-garde-fou-accent.sh a65341cb..HEAD` : *"0 commit(s) le touchent dans la plage, tous [THEO]."* exit 0 |
+| `chemins` | `verifier-chemins-test.sh` exit 0 ; `verifier-chemins.sh` sur `git ls-files` : *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."* exit 0 |
+| `outils` | 13 juges purs exécutés, aucun rouge |
 
-## 8. Questions routées (RG5)
+**Cela ne vaut pas la CI** : celle de GitHub n'a pas tourné sur ces commits (aucun push). `prefixes` est à relancer sur le commit de ce rapport et sur le commit de fusion.
 
-| Q | Destinataire | Question |
-|---|---|---|
-| Q1 | `nadia-prof` | J2 à J8 ci-dessus, dont J3 (choix à deux) et J4 (objet possédé), les deux où ma lecture est la plus fragile |
-| Q2 | `ines-design` | relevé à 744 x 551 de ce paquet : énoncé de 112 caractères au plus et indice de 46 au plus sont les seuils de `LP4`, pas une mesure d'ici ; les propositions font 16 à 23 caractères |
-| Q3 | `camille-po` | rien à trancher au branchement : la cellule `EMC-CE1-04` de la matrice n'est pas touchée (`git diff a65341cb HEAD --stat -- squad/programme/MATRICE-couverture.md` vide) ; la fiche `FICHE-bandit-manchot-interet-commun-ce1.md` est ouverte par `nadia-prof`. La recommandation de 3.3 (pas de lot `-04` à A') est une décision de `camille-po`, non reprise ici |
-| Q4 | `theo-archi` | aucune question. Lignée de la branche à lire (`git merge-base --is-ancestor a65341cb HEAD` sort 0, seul fait que je pose) ; aucun identifiant neuf, rien à allouer |
+## 8. Ce que chacun doit relire
+
+| Qui | Quoi |
+|---|---|
+| `theo-archi` | Section 2, points 1 à 6 : la déclaration `objet`, les deux conditions retirées, le garde neuf et son calcul sur le texte, les deux mots ajoutés à `PARTAGES`. Question ouverte : la variante *pour tout le monde* (réserve 1) demande-t-elle un ensemble de formules plus large que les deux fixées dans le test ? Lignée de la branche (`git merge-base --is-ancestor a65341cb HEAD` sort 0, seul fait que je pose). |
+| `yanis-qa` | Total de tests après fusion (3 227 sur la branche, base non mesurée par moi) ; les mutations A et B de la section 2 sont rejouables telles qu'écrites ; jeu fautif : sondes 41, 42, 43 et la déclaration d'objet ajoutée aux autres. |
+| `nadia-prof` | Les 9 scènes neuves, en particulier **une seule lecture défendable** sur les cinq scènes de portée tous à objet personnel (*Omar accroche sa carte au tableau pour la leçon*, *Tom essuie les tables de la salle avec son chiffon* et *Lina colle son affiche des horaires au mur* sont celles où je lis le plus fragilement : un enfant peut y voir celui qui agit), et sur les quatre scènes de portée un à objet partagé (*Hugo cherche un mot dans le dictionnaire du coin lecture* : le dictionnaire du coin sert-il *quelques élèves* ?). Les 24 indices, dont les 9 neufs : *Qui peut voir cette plante ?*, *Qui lit cette affiche ?*, *Qui doit lire cette annonce ?*, *Qui s'assoit à ces tables ?*, *Qui regarde cette carte ?*, *Qui va lire ce livre ?*, *Qui a soif ?*, *Qui va découper avec ces ciseaux ?*, *Qui cherche ce mot ?*, *Qui marche dans la salle ?*. `NRC-CE1-1` contre `ce1-emc-biens-communs` : les quatre scènes à objet partagé parlent de la bibliothèque et de la cour, deux lieux que ce paquet voisin emploie pour une autre tâche (savoir à qui est l'objet). Réserve 1 : la cour a quitté les scènes de portée tous. |
+| `ines-design` | Relevé à 744 x 551 de ce paquet, seuils de `LP4` non mesurés ici (réserve 3). |
+| `camille-po` | Rien à trancher au branchement. La cellule `EMC-CE1-04` de la matrice n'est pas touchée. |
 
 ## 9. Ce que je n'ai pas fait
 
 - Je n'ai pas joué le jar, ni lancé de port.
-- Je n'ai pas mesuré le pli, ni lu le paquet avec le regard de `nadia-prof` : `TRV-CE1-5` est relu par moi, `INT-CE1-1`, `EMC-5`, `NRC-CE1-1` sur le fond et le refus *"un personnage mis en balance avec le groupe pour lui faire honte"* sur le sens sont à elle.
-- Je n'ai pas lancé `verifier-lignee.sh` : la lignée est lue par `theo-archi`.
-- Je n'ai ni poussé, ni rebasé, ni fusionné, ni écrit dans `planning.md`, ni touché la matrice, ni écrit de fiche de conformité.
+- Je n'ai pas mesuré le pli.
+- Je n'ai pas lu le paquet avec le regard de `nadia-prof` : `INT-CE1-1` (une seule lecture défendable), `EMC-5`, `NRC-CE1-1` sur le fond sont à elle.
+- Je n'ai pas lancé `verifier-lignee.sh`, ni fusionné, ni poussé, ni rebasé, ni écrit dans `planning.md`, ni touché la matrice, ni écrit dans la fiche de conformité (elle est de `nadia-prof`, sur une branche non fusionnée).
+- Le message du commit `ec2d572a` ne porte pas la ligne de co-signature ; ce rapport et ses commits suivants la portent. Je n'ai pas réécrit le commit pour la lui ajouter (pas de réécriture d'historique).
 - Je n'ai pas relancé `mvn package` sans `-DskipTests` : ce serait un second passage de la suite complète hors jeton.
 
 ## 10. Isolation
 
-Répertoire de scratchpad utilisé : `s57-p4-sofia-lp6` (créé par `mkdir -p` en première commande). Seule exception : le répertoire de jeton RF1 `s57-p4-jeton-verify`, créé par `mkdir` à la racine à 23:08:14 (fichier `sofia-dev-lp6-HHMM.txt`), supprimé à 23:20:50 ; `ls` de la racine après coup ne le liste plus. Rien n'a été écrit hors du répertoire de l'agent, du jeton et du worktree. Les fichiers de scratchpad (scripts de génération du paquet et du jeu fautif, journal du verify) ne sont pas commités.
+Répertoire de scratchpad utilisé : `s57-p4-sofia-lp6-reprise` (scripts de génération du paquet et du jeu fautif, journaux de mutations et de `verify`, ni l'un ni l'autre commités). Seule exception : le répertoire de jeton RF1 `s57-p4-jeton-verify`, que j'ai créé par `mkdir` à 00:13:32 (fichier `sofia-dev-lp6-reprise.txt`) et supprimé à 00:25:58 ; la racine du scratchpad ne le liste plus.
