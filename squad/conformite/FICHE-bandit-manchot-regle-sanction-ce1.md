@@ -117,3 +117,12 @@ croyable ; qu'un acte sanctionne soit une regle enfreinte et non un oubli ; `NRC
 paquets).
 
 **Signe** : `nadia-prof`, 2026-10-22.
+
+---
+
+## Rejeu du 2026-10-22 (`nadia-prof`, s57, palier 4, instance A', marge de rejeu)
+
+**lecture complete : ce1-emc-regle-sanction, 24 items lus** - 2026-10-22, 13:29 (UTC+02:00), lu par `date`, sur la branche
+`s57-sofia-emc-ce1-02` a `1152fdc9` (`grep -c "bonneReponse:"` rend 24 ; `grep -c "«"` rend 4). Lus : les 24 enonces, bonnes
+reponses, 48 distracteurs, 24 indices, les familles (a) a (g) et l'en-tete. Paquets voisins de `NRC-CE1-1` et `CYC-1` relus sur
+leurs enonces et bonnes reponses (inchanges depuis le premier passage).
