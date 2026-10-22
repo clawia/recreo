@@ -4,7 +4,8 @@
 - **Casquette** : développeuse uniquement. Rien n'est fusionné, aucune lignée n'est jugée, aucun amendement de `planning.md` n'est animé, `LP6` n'est pas touché.
 - **Date** : 2026-10-22. **Branche** : `s57-sofia-emc-ce1-03`, worktree `recreo-s57-sofia-emc-ce1-03`.
 - **Base** : `51a9d957` (sommet de `round-two`, avec `LP1`, `LP2` et `LP4` fusionnés). `git merge-base --is-ancestor 51a9d957 HEAD` sort 0.
-- **Commit de code** : `edf2b03b` (14 fichiers, 1 973 lignes ajoutées, 0 supprimée). **Ce rapport** est un second commit, qui ne touche que ce fichier.
+- **Rejeu** : voir la section 11 (commit `5b9bb648`). Les sections 1 à 10 décrivent le premier passage (`edf2b03b`) et ne sont pas réécrites.
+- **Commit de code, premier passage** : `edf2b03b` (14 fichiers, 1 973 lignes ajoutées, 0 supprimée). **Ce rapport** est un second commit, qui ne touche que ce fichier.
 
 ## 1. Ce qui est livré
 
@@ -138,3 +139,39 @@ Aucun compteur ne le voit.
 Répertoire de scratchpad utilisé : `s57-p4-sofia-dev-ap` (créé par `mkdir -p` en première commande, existant avant moi avec des fichiers de mes instances précédentes, que je n'ai ni déplacés ni supprimés). Seule exception : le répertoire de jeton RF1 `s57-p4-jeton-verify`, créé par `mkdir` à la racine à 18:13:24, supprimé à 18:27:26 ; le répertoire qui s'y trouve à la fin de ma lecture appartient à `lea-dev` (fichier `lea-dev-1827.txt`, début 18:27:31).
 
 Listes de fin (`ls -1` de la racine du scratchpad, puis du répertoire parent des worktrees) : voir la réponse de l'agent, qui porte la commande et la sortie (la liste de fin est faite après ce commit). Rien n'a été écrit hors du répertoire de l'agent, du jeton et du worktree.
+
+## 11. Rejeu du 2026-10-22 (refus de `nadia-prof`, M1, M2 et une réserve ; prix 0,25)
+
+Commit de code : **`5b9bb648`**, sur `db5e0e6d`. Il ne change que trois items du paquet (`git diff db5e0e6d 5b9bb648 -- .../ce1-emc-droit-devoir.yaml` : 3 items et 4 lignes de commentaire d'en-tête), le test et ses jeux fautifs. Les 21 autres items sont inchangés, texte pour texte.
+
+| Item (rang dans le fichier) | Avant | Après |
+|---|---|---|
+| 14, M1 | distracteur *finir son travail*, indice *"Que peut faire Hugo quand Jade agit ainsi ?"* | distracteur *apporter son cahier* (famille `b`, devoir hors couples qui ne dit pas la scène), indice *"Pense à ce que Hugo fait en classe."* ; la situation et la bonne réponse (*suivre la leçon*) ne changent pas |
+| 24, M2 | *"Zoé remercie Adam quand il l'aide."*, *être traité poliment*, indice *"Que reçoit Adam quand Zoé le remercie ?"* | *"Zoé demande poliment à Adam de lui passer la colle."*, *être bien traité* (formulation déjà écrite en en-tête), distracteurs *apporter son cahier*, *jouer en premier*, indice *"Pense à la façon dont Zoé s'adresse à Adam."* : le geste ne dépend d'aucune action d'Adam |
+| 19, réserve | indice *"Pense à l'attitude des autres envers Hugo."* | *"Pense à ce que les autres font pour Hugo."* |
+
+**Gardes ajoutés** (aucune assertion retirée ni assouplie ; `git diff` du test : ajouts seuls, plus deux mots dans la liste de `DDE-CE1-2`) :
+
+| Garde | Jeu fautif qui le mord |
+|---|---|
+| `dde2AucunDroitNEstRenduEnRetourDUneActionDeCeluiQuiLeDetient` : une scène `devoir->droit` ne contient aucune subordonnée (*quand*, *lorsque*, *si*, *parce que*, *dès que*, *après que*) dont *il* ou *elle* soit le sujet | sonde 45 : *"Zoé remercie Mila quand elle l'aide"* (c'est la scène de l'item 24 avant correction) |
+| liste de `DDE-CE1-2` étendue à *reçoi* et *recev* | sonde 46 : indice *"Que reçoit Mila quand Zoé parle ?"* |
+| `emc5AucunDistracteurNeDitLaSituationMieuxQueLaBonneReponse` : si la bonne réponse ne reprend aucun mot plein de l'énoncé, aucun distracteur n'en reprend | sonde 47 : l'item 14 avant correction (*finir son exercice* / *finir son travail*) |
+
+Ce dernier garde remplace, dans la pratique, la règle symétrique de la section 4 pour le cas *la bonne réponse ne reprend rien* : le mot repris par un distracteur seul est maintenant refusé. Le paquet le tient sans autre changement que l'item 14 ; l'ancienne règle (la bonne réponse n'est jamais seule à reprendre un mot) reste en place.
+
+**Ce que `nadia-prof` rejoue** : les items **14**, **24** et l'indice de l'item **19** ; rien d'autre n'a bougé. Pour l'item 24, lire si *"demande poliment"* ne fait plus dépendre le droit d'une action d'Adam ; pour l'item 14, que *finir son travail* ne soit plus proposé et que *suivre la leçon* reste la seule lecture.
+
+**Porte technique** (commit `5b9bb648`, arbre propre) :
+
+| Job | Résultat |
+|---|---|
+| `build`, Verify | `bash outils/mvn-jdk21.sh -B clean verify` : **exit 0**, `BUILD SUCCESS`. Jeton RF1 pris à 19:29:46 après attente, rendu à 19:59:35. Une première instance de mon script de lancement avait aussi pris le jeton à 19:16:13 pour le même commit, sans conflit (le jeton a été tenu une fois à la fois) |
+| `build`, "Package du fat jar" | `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package` : **exit 0**, `BUILD SUCCESS` |
+| `prefixes`, `chemins`, `outils` | cinq scripts de `prefixes` sur `51a9d957..HEAD`, `verifier-chemins-test.sh` et `verifier-chemins.sh`, 13 juges purs : tous **exit 0** (à relancer sur le commit de ce rapport et sur la fusion) |
+
+**Tests** : 120 + 31 + 523 + 2 028 + 381 + 6 = **3 089** (3 084 au premier passage). **Delta du lot : +69** (`PaquetCe1EmcDroitDevoirTest` : 69 tests, 26 de paquet et 43 de jeux fautifs). Mesure partielle préalable avec `-am` et `bootstrap` (ADR-0086, `TexteAccentue...`, `ChaqueJeu...`, `AucunEnonceDeCe1...`, `LeRang...`) : verte. La base n'est pas mesurée par moi.
+
+**Pli** : toujours non mesuré sur ce paquet (`ines-design` indisponible) ; les seuils de `LP4` sont repris sans mesure, aucune ligne ajoutée. **Jar** : aucun lancé, aucun port utilisé.
+
+Questions routées : aucune neuve. Les trous que `yanis-qa` relèverait dans ces gardes me sont à router après son rapport.
