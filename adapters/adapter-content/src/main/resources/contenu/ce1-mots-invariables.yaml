@@ -44,11 +44,11 @@ items:
     formeDeReference: "aujourd'hui"
     formesAcceptees: ["aujourd’hui"]
     indice: "Ce mot dit le jour où nous sommes. Il porte une apostrophe."
-  - enonce: "Léa met son manteau parce qu'il fait froid. ___ met-elle son manteau ?"
+  - enonce: "Inès met son manteau parce qu'il fait froid. ___ met-elle son manteau ?"
     formeDeReference: "Pourquoi"
     formesAcceptees: []
     indice: "Pense au mot qui sert à demander la raison."
-  - enonce: "Tom marche derrière Léa, donc Léa marche ___ Tom."
+  - enonce: "Omar marche derrière Mia, donc Mia marche ___ Omar."
     formeDeReference: "devant"
     formesAcceptees: []
     indice: "Pense au contraire de « derrière »."
@@ -64,7 +64,7 @@ items:
     formeDeReference: "partout"
     formesAcceptees: []
     indice: "Pense à tous les endroits de la cour, un par un."
-  - enonce: "Le jardinier plante des fleurs en cercle ___ de l'arbre : elles l'entourent."
+  - enonce: "On a planté des fleurs en cercle ___ de l'arbre : elles l'entourent."
     formeDeReference: "autour"
     formesAcceptees: []
     indice: "Pense à un cercle dessiné tout le tour de l'arbre."
@@ -72,14 +72,14 @@ items:
     formeDeReference: "loin"
     formesAcceptees: []
     indice: "Pense au contraire d'un endroit tout proche."
-  - enonce: "Léa se couche à minuit : elle ne se couche pas tôt, elle se couche ___."
+  - enonce: "Tom se couche à minuit : il ne se couche pas tôt, il se couche ___."
     formeDeReference: "tard"
     formesAcceptees: []
     indice: "Pense au contraire de « tôt »."
-  - enonce: "Tom lit du début à la fin de la récréation : il lit ___ la récréation."
+  - enonce: "Chloé lit du début à la fin de la récréation : elle lit ___ la récréation."
     formeDeReference: "pendant"
     formesAcceptees: []
-    indice: "Tom lit tout le temps que dure la récréation."
+    indice: "Elle lit tout le temps que dure la récréation."
   - enonce: "Il a commencé à pleuvoir ce matin et il pleut encore : il pleut ___ ce matin."
     formeDeReference: "depuis"
     formesAcceptees: []
@@ -108,11 +108,11 @@ items:
     formeDeReference: "Quand"
     formesAcceptees: []
     indice: "Pense au mot qui sert à demander une date."
-  - enonce: "Léa met du sucre dans son thé, Tom n'en met pas : il boit son thé ___ sucre."
+  - enonce: "Sofia met du sucre dans son thé, Ethan n'en met pas : il boit son thé ___ sucre."
     formeDeReference: "sans"
     formesAcceptees: []
     indice: "Pense au contraire de « avec »."
-  - enonce: "Tom n'est pas à l'école, il est ___ lui, dans sa chambre."
+  - enonce: "Jules n'est pas à l'école, il est ___ lui, dans sa chambre."
     formeDeReference: "chez"
     formesAcceptees: []
     indice: "Pense au mot qui dit « dans la maison de »."
