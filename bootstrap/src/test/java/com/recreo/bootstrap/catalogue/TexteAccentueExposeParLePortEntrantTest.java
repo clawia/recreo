@@ -1789,6 +1789,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // partielle nommee (NUM-CE1-2) : le paquet ne sert pas "dénombrer".
             "Dénombrer, lire, écrire et décomposer les nombres jusqu'à 1000 (unités, dizaines, "
                     + "centaines)",
+            // S57-BR-MAT-CE1-10 (s57) : competence neuve, MAT-CE1-10, libelle du referentiel copie
+            // sans point final (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-10).
+            // Couverture partielle nommee : le paquet ne sert pas "mesurer".
+            "Comparer et mesurer des masses et des contenances (gramme, kilogramme, litre)",
             // S57-BR-EMC-CE1-01 (s57) : competence neuve, EMC-CE1-01, libelle du referentiel copie
             // (squad/programme/enseignement-moral-et-civique/competences-ce1.md, ligne EMC-CE1-01).
             "Respecter les biens personnels et collectifs : reconnaître ce qui appartient à tous "
