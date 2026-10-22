@@ -49,17 +49,17 @@ Le recensement mord maintenant sur ce garde. La correction est un paragraphe de 
 
 ## 4. Gates lancees
 
-Sur l'arbre propre au commit `fbe90f8b` (`git status --short` : 0 ligne), JDK 21.0.10.
+Sur l'arbre propre au sommet `fedd3ae9` (`git status --short` : 0 ligne), JDK 21.0.10. Le seul commit qui suit porte ces resultats dans ce rapport, sans autre fichier.
 
 | Job de `ci.yml` | Commande | Sortie |
 |---|---|---|
-| `build` (etape Verify) | `bash outils/mvn-jdk21.sh -B clean verify` a la racine | exit 0, `BUILD SUCCESS` ; reacteur : domain 120, application 31, adapter-web 523, adapter-content 1966, bootstrap 381 puis 6 (integration), 0 echec ; jeton `RF1` `s57-p4-jeton-verify` pris et supprime |
+| `build` (etape Verify) | `bash outils/mvn-jdk21.sh -B clean verify` a la racine | exit 0, `BUILD SUCCESS` ; domain 120, application 31, adapter-web 523, adapter-content 1966, bootstrap 381 puis 6 (integration), 0 echec ; jeton `RF1` `s57-p4-jeton-verify` pris et supprime |
+| "Package du fat jar" | `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package` (perimetre : reacteur jusqu'a `bootstrap`) | exit 0, `BUILD SUCCESS`, `bootstrap/target/recreo.jar` produit |
 | `prefixes` | etapes de `ci.yml` rejouees sur `51a9d957..HEAD` : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-prefixes.sh`, `verifier-garde-fou-accent-test.sh`, `verifier-garde-fou-accent.sh` | tous exit 0 ; 0 commit touche le garde-fou de l'accent |
 | `chemins` | `verifier-chemins-test.sh`, puis `git ls-files` filtre dans `verifier-chemins.sh` | exit 0 ; aucun chemin de poste de travail |
 | `outils` | balayage des trois motifs de `ci.yml` | 13 juges lances (6 + 2 + 5), tous exit 0 |
-| "Package du fat jar" | `mvn -B -pl bootstrap -am package` | **non lance** comme etape distincte. `verify` a produit `bootstrap/target/recreo.jar`, ce qui n'est pas la meme commande. |
 
-Les jobs `prefixes`, `chemins` et `outils` ont ete lances avant l'ecriture de ce rapport ; ils sont a relancer sur le commit du rapport par qui annonce la porte (`chemins` lit ce fichier).
+Delta de tests inchange : +7, aucune assertion ni aucun test change par `1d97832d` (Javadoc seule).
 
 Aucun jar joue : aucun ecran, aucun item, aucune valeur du catalogue ne change.
 
@@ -72,6 +72,6 @@ Aucun jar joue : aucun ecran, aucun item, aucune valeur du catalogue ne change.
 
 ## 6. Isolation
 
-Repertoire de scratchpad : `s57-p4-marc-dev-a`, seul utilise (sorties de mesure, script de mutation, copie du test). Le repertoire de jeton `s57-p4-jeton-verify` a ete cree par `mkdir` puis supprime par `rm -r` apres le `verify`.
+Repertoire de scratchpad : `s57-p4-marc-dev-a`, seul utilise (sorties de mesure, script de mutation, copie du test, copies `g1-avant` et `g1-apres` de G1). Le repertoire de jeton `s57-p4-jeton-verify` a ete cree par `mkdir` puis supprime par `rm -r` apres le `verify`.
 
 Controle de fin (racine du scratchpad, parent des worktrees) : dans le message de retour de marc-dev, avec commande et sortie.
