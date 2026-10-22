@@ -276,3 +276,49 @@ Je propose, je ne tranche pas.
 - Memes deux repertoires du scratchpad (`s57-p4-ines-design-t`, `s57-p4-ines-design-t2`), un jar par port (18543 pour LP1 puis LP4, 18544 pour LP2), arret par PID, aucun arret par nom d'image.
 
 **Decisions prises : aucune.**
+
+---
+
+# Seconde remesure du 2026-10-22 (LP4 forme (a), LP1 item 12 modifie), 744 x 551
+
+- **Auteure** : `ines-design`. **Date** : 2026-10-22, 14:26 (UTC+02:00), lue par `date`. Cette section complete les precedentes, qui restent la mesure de leurs sommets. Des cotes et des propositions : aucun Done, aucun gabarit touche, le veto est a `nadia-prof`.
+
+## S1. Sommets, jars, methode
+
+| Lot | Branche | Sommet | Dernier commit de contenu | SHA-256 du jar |
+|---|---|---|---|---|
+| LP1 | `s57-marc-fra-ce1-21` | `f8d5d875` | `8c76b1c7` | `126203406e6d1c31b5ee7aed653a9f1ad78f0655a63a94f93fdb747572c04de4` |
+| LP4 | `s57-sofia-emc-ce1-02` | `41203188` | `41203188` | `c278ecc69a67f2b5aaf5990f8a63999a193a2e370b842a540377d51528a540df` |
+
+Jars posterieurs a leur dernier commit de contenu ; YAML, `catalogue.yaml` et `recreo.css` lus dans le jar egaux a ceux du worktree (SHA-256) ; diff de `adapters/adapter-web/src/main` contre `eb267ba7` : 0 ligne. Methode des sections 1 et R1. Couverture : 24 items sur 24 pour chacun (10 parties), six ordres pour LP4.
+
+## S2. LP4 `ce1-emc-regle-sanction`, `41203188` : 0 item sur 24 sous le pli
+
+- Apres une erreur, 744 x 551, six ordres : **0 item sur 24 sous le pli**. Bas de `.indice` maximal **484** (67 px de marge) ; minimum 378. Identique a la section R2 pour la tache 2.
+- Tache 1 (items 1 a 12), forme (a) : enonces de **107 a 111 caracteres** mesures dans le rendu, tous sur **3 lignes**, une rangee de propositions (11 caracteres au plus), bas de l'indice 448 (indice de 2 lignes) ou 418 (indice d'une ligne : items 2, 6, 10, 11). Marge : 103 px au pire.
+- Tache 2 (items 13 a 24) : propositions de 22 caracteres au plus, 2 rangees, indice d'une ligne, bas 484 ; l'item 17 (enonce de 2 lignes) 444. L'item 24 change : 3 lignes, 2 rangees, 484 dans les six ordres.
+- Item 6 (indice change) : 1 ligne d'indice, bas 418.
+- Enonces a 3 lignes : **23 items sur 24** (seul l'item 17 en a 2). Les enonces de la tache 2 vont jusqu'a 113 caracteres (item 20), un de plus que le seuil de 112 de sofia pour la tache 1, qui ne vaut pas pour la tache 2 : je ne mesure aucun depassement de seuil sur la tache 1 (111 au plus). Indices : 32 a 56 caracteres (tache 1 jusqu'a 56, tache 2 de 32 a 44).
+- Largeurs 720 a 768 avec et sans barre, 992, 1200 : 0 item sous le pli. Apres une bonne reponse : bas du signal 498 au plus, 0 sous le pli. Boutons de reponse : bas 410 au plus, 58 de haut. Aucun debordement horizontal.
+- Le seuil de 112 de sofia n'est pas ce qui garde le pli : meme a 3 lignes, la cote tient a 448 pour la tache 1. Je n'ai pas mesure d'enonce plus long, donc le seuil n'est ni confirme ni infirme.
+
+## S3. LP1 `ce1-mots-invariables`, `f8d5d875` : 17 items sous le pli a la revelation, de 13 px
+
+- Revelation (indice affiche), 744 x 551, trois erreurs : **17 items sur 24** ont le bas de `.indice` a **564**, soit **13 px sous le pli** : 2, 4, 5, 6, 8, 9, 10, 11, 13, 14, 16, 18, 19, 20, 21, 23, 24. Les 7 autres (1, 3, 7, 12, 15, 17, 22) ont un enonce d'une ligne et l'indice a 516, au-dessus du pli.
+- Item 12, *Nina met un pull ___ ne pas avoir froid.* (40 caracteres) : enonce d'une ligne, indice a 516. Avant : deux lignes, 564. Il explique le passage de 18 a 17.
+- **Lequel est juste** : pour l'avant-derniere version (`24a9315b`), 18 : marc-dev et moi (section R3) comptions la meme liste. Pour `f8d5d875`, **17**. Les 21 de la section 4 valaient pour le premier jeu d'enonces (3 enonces d'une ligne) ; la regle est la meme a chaque jeu : l'indice passe sous le pli exactement pour les items dont l'enonce fait deux lignes (48 px la ligne). Si marc-dev compte encore 18 sur `f8d5d875`, je ne le retrouve pas.
+- A la revelation, "Continuer" (bas 312 a 360), "Tu as ecrit" et la bonne reponse (32 px, bas 507 au plus) sont au-dessus du pli dans les 24 items.
+- Apres une ou deux erreurs : bas de l'indice 462 ou 510, 0 item sous le pli, de 720 a 1200 avec et sans barre. Le champ descend de 34 px a la premiere erreur. Aucun debordement horizontal.
+
+## S4. Propositions
+
+Je propose, je ne tranche pas.
+
+- **LP4** : rien a corriger au pli.
+- **LP1** : l'indice reste affiche a la revelation. 17 items passent de 13 px sous le pli, bonne reponse et bouton visibles. Chaque enonce d'une ligne de plus ramene un item a 516 (l'item 12 l'a fait). Raccourcir les enonces restants releve de `nadia-prof` et de `marc-dev` ; pas de proposition de feuille de style (saillance).
+
+## S5. Limites et isolation
+
+Memes limites que la section 12. Deux repertoires du scratchpad (`s57-p4-ines-design-t`, `s57-p4-ines-design-t2`), sous-dossiers `v3` ; jars sur 18543 (LP1) et 18544 (LP4), arret par PID (46316, 18504), aucun arret par nom d'image.
+
+**Decisions prises : aucune.**
