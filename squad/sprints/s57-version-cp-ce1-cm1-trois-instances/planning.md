@@ -2251,3 +2251,11 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusi
 | Poste | Auteur | Contenu | Prix |
 |---|---|---|---|
 | lecture de lignee de LP1, LP2 et LP4, ArchUnit, conflits attendus (`composition-palier-4.md` 5.3 point 3) | `theo-archi` | `lecture-theo-lignee-palier-4.md`, 4 commits `[THEO]`, aucun fichier hors `squad/` | transverse, aucun prix alloue |
+
+## Amendement du 2026-10-22 17:15 (UTC+02:00), palier 4 : ecrit d'`ines-design` livre (RF11)
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de `s57-ines-p4` (`0cfa32bb`), deuxieme de la serie demandee par l'utilisatrice le 2026-10-22 (*"commence par la branche la plus ancienne et fusionne tout"*). Cette fusion est conditionnee au garde `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` vert sur l'arbre fusionne.
+
+| Poste | Auteur | Contenu | Prix |
+|---|---|---|---|
+| releves d'ecran au pli 744 x 551 de LP1, LP2 et LP4 (table d'isolation, ligne `ines-design`) | `ines-design` | `mesure-ines-palier-4-pli-744x551.md`, 5 commits `[INES]`, aucun fichier hors `squad/` ; commit `2cbbc1bf` : codes `PR` renommes en *Proposition 1 a 4* | transverse, aucun prix alloue |
