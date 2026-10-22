@@ -43,9 +43,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * <p>Ce que ce test ne lit pas : que "mesurer" ne soit servi par aucun item (un test voit un champ,
  * pas un verbe de la ligne), la plausibilite d'une masse ou d'une contenance pour un objet connu
  * d'un enfant de CE1, qu'un indice n'enseigne pas, par un tour qu'un mot ne decele pas, que la
- * taille donne la masse, que les distracteurs soient plausibles. Les deux distracteurs du demi-
- * kilogramme (100 g et 1000 g) ne sont pas des erreurs de facteur 10 : {@code MAS-CE1-6} n'est pas
- * garde sur cet item. Les huit items de choix d'unite sont hors du rang de la bonne reponse, que
+ * taille donne la masse, que les distracteurs soient plausibles, qu'une comparaison ne se resolve pas
+ * par la taille connue des objets (reserve de nadia-prof du 2026-10-22). Les huit items de choix d'unite sont hors du rang de la bonne reponse, que
  * l'en-tete du paquet compte sur les treize items de comparaison et de conversion. Cela reste a la
  * lecture et au jeu de nadia-prof.
  */
@@ -363,17 +362,19 @@ class PaquetCe1MassesContenancesTest {
         }
     }
 
-    /** MAS-CE1-6 : les distracteurs d'une conversion chiffree sont une erreur de facteur 10 ou 100. */
+    /**
+     * MAS-CE1-6 : les distracteurs d'une conversion sont une erreur de facteur 10 ou 100 ; pour le
+     * demi-kilogramme, ou le double (le demi oublie, 1000 g).
+     */
     private static void verifierLesErreursDeFacteur(List<Question> items) {
         for (Question item : conversions(items)) {
-            if (!CONVERSION_CHIFFREE.matcher(item.enonce()).find()) {
-                continue;
-            }
+            boolean demi = !CONVERSION_CHIFFREE.matcher(item.enonce()).find();
             long bonne = nombreEnTete(item.bonneReponse());
             for (String distracteur : item.distracteurs()) {
                 long ecrit = nombreEnTete(distracteur);
                 boolean facteur = ecrit == bonne * 10 || ecrit == bonne * 100
-                        || (ecrit * 10 == bonne) || (ecrit * 100 == bonne);
+                        || (ecrit * 10 == bonne) || (ecrit * 100 == bonne)
+                        || (demi && ecrit == 2 * bonne);
                 assertThat(facteur)
                         .as("MAS-CE1-6 : « %s » (distracteur de '%s') n'est pas une erreur de facteur "
                                 + "10 ou 100 sur %d", distracteur, item.enonce(), bonne)
@@ -433,6 +434,36 @@ class PaquetCe1MassesContenancesTest {
                     .as("MAS-CE1-6 : le rang %s porte au plus 50 %% des %d items (%d portés)",
                             rang, mesures.size(), portes)
                     .isLessThanOrEqualTo(mesures.size());
+        }
+    }
+
+    /** LON-CE1-1 et LON-CE1-2 : vingt mots au plus, trois phrases au plus, la derniere est la question. */
+    private static void verifierLaLongueurDesEnonces(List<Question> items) {
+        for (Question item : items) {
+            long mots = List.of(item.enonce().split("[\\s\\u00A0]+")).stream()
+                    .filter(mot -> mot.matches(".*[\\p{L}\\d].*")).count();
+            assertThat(mots)
+                    .as("LON-CE1-1 : '%s' porte %d mots, plus de vingt", item.enonce(), mots)
+                    .isLessThanOrEqualTo(20L);
+            long phrases = item.enonce().chars().filter(c -> c == '.' || c == '?' || c == '!').count();
+            assertThat(phrases)
+                    .as("LON-CE1-2 : '%s' porte %d phrases, plus de trois", item.enonce(), phrases)
+                    .isLessThanOrEqualTo(3L);
+            assertThat(item.enonce())
+                    .as("LON-CE1-2 : la derniere phrase de '%s' est la question", item.enonce())
+                    .endsWith("?");
+        }
+    }
+
+    /** TYP-1 (ADR-0067) : l'espace avant ?, :, ; ou ! est insecable, dans tout ce que l'enfant lit. */
+    private static void verifierLEspaceInsecable(List<Question> items) {
+        for (Question item : items) {
+            for (String champ : champsLus(item)) {
+                assertThat(champ)
+                        .as("TYP-1 : '%s' porte une espace ordinaire devant un signe double (« %s »)",
+                                item.enonce(), champ)
+                        .doesNotContainPattern("[^\\u00A0] [?:;!]");
+            }
         }
     }
 
@@ -561,6 +592,16 @@ class PaquetCe1MassesContenancesTest {
     }
 
     @Test
+    void lon1LonEtLon2LesEnoncesTiennentVingtMotsEtTroisPhrases() {
+        verifierLaLongueurDesEnonces(items());
+    }
+
+    @Test
+    void typ1LEspaceAvantUnSigneDoubleEstInsecableDansTousLesChampsLus() {
+        verifierLEspaceInsecable(items());
+    }
+
+    @Test
     void mas6ChacunDesTroisRangsDeLaBonneReponsePorteDixACinquantePourCent() {
         verifierLesTroisRangs(items());
     }
@@ -675,6 +716,43 @@ class PaquetCe1MassesContenancesTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("MAS-CE1-6")
                 .hasMessageContaining("3 kg");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnDistracteurDuDemiKilogrammeQuiNEstPasUneErreurDeFacteur() {
+        List<Question> items = fautif("Un demi-kilogramme");
+
+        assertThatThrownBy(() -> verifierLesErreursDeFacteur(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("MAS-CE1-6")
+                .hasMessageContaining("100 g");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnEnonceDeTropDeMots() {
+        List<Question> items = fautif("Un sac de pommes");
+
+        assertThatThrownBy(() -> verifierLaLongueurDesEnonces(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("LON-CE1-1");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnEnonceQuiNeFinitPasParLaQuestion() {
+        List<Question> items = fautif("Un panier pèse 3 kg");
+
+        assertThatThrownBy(() -> verifierLaLongueurDesEnonces(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("LON-CE1-2");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneEspaceOrdinaireDevantLePointDInterrogation() {
+        List<Question> items = fautif("Pour peser un ours");
+
+        assertThatThrownBy(() -> verifierLEspaceInsecable(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("TYP-1");
     }
 
     @Test

@@ -85,6 +85,26 @@ items:
     bonneReponse: "le daim"
     distracteurs: ["le cerf", "le lièvre"]
     indice: "Le plus lourd a le plus grand nombre."
+  # MAS-CE1-6 : un distracteur du demi-kilogramme qui n'est ni un facteur 10 ou 100 ni le double
+  - enonce: "Un demi-kilogramme, combien de g ?"
+    bonneReponse: "500 g"
+    distracteurs: ["100 g", "1000 g"]
+    indice: "Un demi, c'est la moitié."
+  # LON-CE1-1 : un enonce de plus de vingt mots
+  - enonce: "Un sac de pommes pèse 5 kg, un sac de poires 4 kg, un sac de noix 3 kg, un sac de raisins 2 kg. Lequel est le plus lourd ?"
+    bonneReponse: "le sac de pommes"
+    distracteurs: ["le sac de poires", "le sac de noix"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  # LON-CE1-2 : un enonce dont la derniere phrase n'est pas la question
+  - enonce: "Un panier pèse 3 kg, un cartable 5 kg, un sac 4 kg. Dis lequel est le plus lourd."
+    bonneReponse: "le cartable"
+    distracteurs: ["le panier", "le sac"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  # TYP-1 : une espace ordinaire devant le point d'interrogation
+  - enonce: "Pour peser un ours, quelle unité choisis-tu ?"
+    bonneReponse: "le kilogramme"
+    distracteurs: ["le gramme", "le litre"]
+    indice: "Choisis l'unité qui sert à peser."
   # NB8 : un texte support, que le paquet reel n'a pas
   - enonce: "Pour mesurer l'eau d'un seau, quelle unité choisis-tu ?"
     texteSupport: "Le seau est posé sur la table."
