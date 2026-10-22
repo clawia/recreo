@@ -11,9 +11,10 @@
 - **Conditions opposables** : `arbitrage-nadia-q05-q10.md` 4.3, points 1 a 5 ; `MIV-CE1-1` et `MIV-CE1-3`
   (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, 5.12) ; `TRV-CE1-1` a `-7` ; `arbitrage-nadia-preparation-palier-3-ce1.md` 4.1 ;
   `arbitrage-nadia-palier-4.md` 3.1 et 4 (refus ecrit d'avance : *"un item ou un autre mot, bien ecrit, complete la phrase"*).
-- **Statut global** : **REFUSE**, prononce le 2026-10-22 par `nadia-prof` (s57, palier 4, instance A). Fiche ouverte le
+- **Statut global** : **REFUSE**, prononce le 2026-10-22 par `nadia-prof` (s57, palier 4, instance A), **maintenu au rejeu du
+  2026-10-22** (item 12). Fiche ouverte le
   2026-10-22 par `nadia-prof`.
-- **Derniere mise a jour** : 2026-10-22.
+- **Derniere mise a jour** : 2026-10-22, rejeu.
 
 ---
 
@@ -122,3 +123,54 @@ voit pas ; reserve de l'utilisatrice, aucun appareil dans la squad).
 `s57-marc-fra-ce1-21` a `24a9315b` ; contenu et code a `ea34c750` (`git diff --name-only ea34c750 24a9315b` ne nomme que le
 rapport du lot). `grep -c "formeDeReference:"` rend 24. Lus : les 24 enonces, formes, indices, l'en-tete et sa liste
 `MIV-CE1-1`, le diff du paquet depuis `56e9fd1b`.
+
+### Verdict du rejeu, 2026-10-22 (`nadia-prof`) : **REFUSE**, maintenu sur un item
+
+Le verdict du premier passage reste ecrit au-dessus ; celui-ci s'y ajoute.
+
+**Commit joue** : `ea34c750`, jar construit dans un worktree detache de mon cru a ce commit (`-pl bootstrap -am package
+-DskipTests`, mesure partielle), port 18511, *"Tomcat started on port 18511"* et PID lus dans mon journal, arrete par PID. Jeu par
+moi, requetes HTTP : 8 parties de 10 manches, 24 enonces servis sur 24. Joues : sur chaque item change, un autre mot d'abord
+(*maintenant*, *juste*, *déjà*, *avant*, *plus*, *dans*), tous refuses, puis le mot attendu, juste ; *aujourd’hui* en U+2019,
+juste ; trois fautes, revelation avec la forme juste et l'indice.
+
+**Leve** (verifie) :
+
+- M1, items 3, 7, 15, 16 : chaque phrase ne se ferme que par le mot attendu. 3 : *"mardi, c'est ___"* apres *"Demain, ce sera
+  mercredi"* (*maintenant* ne dit pas un jour). 7 : *moins* (*plus* est faux). 15 : *hier* (*avant* ne dit pas le jour).
+  16 : *presque* (*déjà tout mangé* est dementi par la miette qui reste).
+- M2 : *combien* remplace par *avec* (item 18), phrase fermee (*dans* refuse a bon droit).
+- `MIV-CE1-1` : liste des 24 mots ecrite en tete, aucun mot exclu. Reserves 1 et 2 (indices des items 1 et 8) : levees.
+- Exactitude : demain mercredi donc aujourd'hui mardi ; mercredi donc hier mardi ; 10 h a 10 h 10, dix minutes. Aucune erreur.
+
+**Motif du refus, maintenu sur un seul item** (condition 4.3 point 1, refus ecrit d'avance) :
+
+**M1 - item 12** : *"Chloé a lu de 10 h à 10 h 10 : elle a lu ___ dix minutes."* (attendu *pendant*). *Lire* se construit avec une
+duree sans preposition (*elle a lu dix minutes*) : tout adverbe qui precede la duree ferme la phrase. *juste* (joue, refuse) et
+*exactement* sont justes et vrais, et *juste* est un mot qu'un enfant de CE1 ecrit. Ce qu'il faut : une phrase ou le mot attendu
+ne peut pas manquer sans que la phrase devienne fausse ou agrammaticale.
+
+**La lecture que j'applique, dite pour les deux passages** : un autre mot compte s'il est juste, vrai dans la phrase, et qu'un
+enfant de CE1 peut l'ecrire. *durant*, *pratiquement*, *quasiment* ne comptent pas ; *juste*, *toute*, *maintenant* comptent.
+
+**Reponses aux questions de `marc-dev`** :
+
+- ***comment*** (item 17) : recevable. Le *mm* de *comment* ne suit pas une voyelle nasale ; la regle de `FRA-CE1-22` (*m* devant
+  *m*, *b*, *p*) ne le decide pas.
+- **Item 12, *en*** : ne compte pas (*elle a lu en dix minutes* demande un complement : lu quoi ?). L'item reste refuse pour *juste*
+  et *exactement*.
+- **Item 16, *déjà*** : ne compte pas : la miette qui reste dement *tout mangé* ; le mot porte de plus un accent.
+- **Le pli a la revelation** : recevable, **reserve non bloquante, datee du 2026-10-22** (4.1 point 4 : un indice sous le pli
+  apres une erreur est une reserve). A la revelation, la bonne reponse et le bouton *Continuer* restent au-dessus du pli ; seul
+  l'indice passe dessous, de 13 px au plus. Comptes : 21 items sur 24 pour `ines-design` (`mesure-ines-palier-4-pli-744x551.md`,
+  `089fb477`, sur `56e9fd1b`), 18 sur 24 pour `marc-dev` (sur `ea34c750`, enonces changes). Je n'ai mesure ni l'un ni l'autre ;
+  l'ecart vient au moins en partie des enonces reecrits, et c'est a `ines-design` de dire le compte sur le commit fusionne. La
+  decision de l'utilisatrice (l'indice reste affiche a la revelation) n'est pas discutee ici.
+
+**Marge** : ce rejeu consomme la marge de A (0,5). Un troisieme passage n'a plus de marge dans la composition : il est a
+`camille-po` et `sofia-sm` de le placer (palier 4 sur un depassement ecrit, ou palier suivant). Je rejoue l'item 12 seul s'il
+est le seul change.
+
+**Je reste la seule garde** : qu'aucun enonce n'admette un autre mot juste ; ce que fait le clavier de la tablette.
+
+**Signe** : `nadia-prof`, 2026-10-22.
