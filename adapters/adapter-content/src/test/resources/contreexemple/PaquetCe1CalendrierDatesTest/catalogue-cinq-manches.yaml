@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1CalendrierDatesTest. Le jeu ne porte que cinq manches, ou DEC-0121 veut dix.
+jeux:
+  - id: bandit-manchot-calendrier-fautif
+    titre: "Les dates et le calendrier"
+    consigne: "Pense au calendrier, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-calendrier-dates
+    nombreDeManches: 5

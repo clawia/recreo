@@ -13,8 +13,9 @@
 # chiffree et l'inverse, 6 items.
 # CAL-CE1-3 : calendrier reel, fevrier compte 28 jours et aucun item ne porte sur l'annee bissextile ;
 # aucune date fausse, distracteurs compris (jamais un 31 juin, un 31 septembre ni un 32 d'un mois).
-# CAL-CE1-4 : aucune date de fete, de rentree ni de vacances (ni 1er janvier, 1er avril, 1er mai, 14
-# juillet, 31 octobre, 25 decembre, ni fin d'aout), aucune annee.
+# CAL-CE1-4 : aucun item ne suppose une fete, une rentree ni des vacances, aucune annee. Une date de
+# fete ou de fin d'ete n'apparait qu'en distracteur de lendemain ou de veille (le 1er mai, le 31 aout,
+# le 1er septembre) : un distracteur n'en suppose aucune (nadia-prof, 2026-10-22).
 # CAL-CE1-5 : les distracteurs sont le nombre de jours d'un mois voisin, la date decalee d'un jour ou
 # le mois decale ; trois propositions deux a deux distinctes ; l'indice donne une methode. Rang de la
 # bonne reponse sur la forme (i) : 3 hautes (31 jours), 3 intermediaires (30), 1 basse (28).
@@ -35,7 +36,7 @@ items:
   - enonce: "Combien de jours a le mois de janvier ?"
     bonneReponse: "31 jours"
     distracteurs: ["30 jours", "28 jours"]
-    indice: "Ferme le poing : les creux comptent 30 jours, les bosses 31."
+    indice: "Poing fermé : les creux ont 30 jours, les bosses 31, sauf février."
   - enonce: "Combien de jours a le mois de février ?"
     bonneReponse: "28 jours"
     distracteurs: ["30 jours", "31 jours"]
@@ -43,7 +44,7 @@ items:
   - enonce: "Combien de jours a le mois d'avril ?"
     bonneReponse: "30 jours"
     distracteurs: ["31 jours", "28 jours"]
-    indice: "Ferme le poing : les creux comptent 30 jours, les bosses 31."
+    indice: "Poing fermé : les creux ont 30 jours, les bosses 31, sauf février."
   - enonce: "Combien de jours a le mois de juillet ?"
     bonneReponse: "31 jours"
     distracteurs: ["30 jours", "28 jours"]
@@ -51,7 +52,7 @@ items:
   - enonce: "Combien de jours a le mois de novembre ?"
     bonneReponse: "30 jours"
     distracteurs: ["31 jours", "28 jours"]
-    indice: "Ferme le poing : les creux comptent 30 jours, les bosses 31."
+    indice: "Poing fermé : les creux ont 30 jours, les bosses 31, sauf février."
   - enonce: "Combien de jours a le mois de juin ?"
     bonneReponse: "30 jours"
     distracteurs: ["31 jours", "28 jours"]
@@ -59,7 +60,7 @@ items:
   - enonce: "Combien de jours a le mois de décembre ?"
     bonneReponse: "31 jours"
     distracteurs: ["30 jours", "28 jours"]
-    indice: "Ferme le poing : les creux comptent 30 jours, les bosses 31."
+    indice: "Poing fermé : les creux ont 30 jours, les bosses 31, sauf février."
   # (ii) Lendemain ou veille d'une date, y compris au changement de mois
   - enonce: "Quel est le lendemain du 14 mars ?"
     bonneReponse: "le 15 mars"
@@ -83,7 +84,7 @@ items:
     indice: "Pense au dernier jour du mois, puis au mois d'après."
   - enonce: "Quel est le lendemain du 30 juin ?"
     bonneReponse: "le 1er juillet"
-    distracteurs: ["le 1er juin", "le 2 juillet"]
+    distracteurs: ["le 1er juin", "le 29 juin"]
     indice: "Pense au dernier jour du mois, puis au mois d'après."
   - enonce: "Quelle est la veille du 1er août ?"
     bonneReponse: "le 31 juillet"
@@ -102,10 +103,10 @@ items:
     bonneReponse: "le 27 janvier"
     distracteurs: ["le 3 octobre", "le 10 mai"]
     indice: "Classe les trois dates dans l'ordre du calendrier."
-  - enonce: "Entre le 11 avril, le 11 mars et le 11 juin, quelle date vient la dernière ?"
-    bonneReponse: "le 11 juin"
-    distracteurs: ["le 11 avril", "le 11 mars"]
-    indice: "Les jours sont les mêmes, regarde les mois."
+  - enonce: "Entre le 9 mai, le 26 mai et le 17 mai, quelle date vient la dernière ?"
+    bonneReponse: "le 26 mai"
+    distracteurs: ["le 9 mai", "le 17 mai"]
+    indice: "Les dates sont du même mois, regarde les jours."
   - enonce: "Entre le 6 mai, le 18 mars et le 24 juillet, quelle date est au milieu ?"
     bonneReponse: "le 6 mai"
     distracteurs: ["le 18 mars", "le 24 juillet"]

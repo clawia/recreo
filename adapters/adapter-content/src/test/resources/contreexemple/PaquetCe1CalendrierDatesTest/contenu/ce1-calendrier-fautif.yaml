@@ -1,0 +1,173 @@
+schema: 1
+id: ce1-calendrier-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1CalendrierDatesTest. Chaque item viole une seule
+# propriete du paquet, et le dernier porte un texteSupport (NB8) que le paquet reel n'a pas.
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Grandeurs et mesures"
+  competence: "Lire l'heure sur une horloge (heures, demi-heures, quarts d'heure) et se repérer dans le calendrier (mois, date)"
+lignesDeReferentiel: ["MAT-CE1-11"]
+items:
+  # CAL-CE1-5 : trois bonnes reponses au rang haut (rang 1), et trois indices identiques
+  - enonce: "Combien de jours a le mois de janvier ?"
+    bonneReponse: "31 jours"
+    distracteurs: ["30 jours", "28 jours"]
+    indice: "Pense aux poings."
+  # CAL-CE1-5 : trois bonnes reponses au rang haut (rang 2)
+  - enonce: "Combien de jours a le mois de mars ?"
+    bonneReponse: "31 jours"
+    distracteurs: ["30 jours", "28 jours"]
+    indice: "Pense aux poings."
+  # CAL-CE1-5 : trois bonnes reponses au rang haut (rang 3)
+  - enonce: "Combien de jours a le mois de mai ?"
+    bonneReponse: "31 jours"
+    distracteurs: ["30 jours", "28 jours"]
+    indice: "Pense aux poings."
+  # CAL-CE1-3 : septembre compte 30 jours, pas 31
+  - enonce: "Combien de jours a le mois de septembre ?"
+    bonneReponse: "31 jours"
+    distracteurs: ["30 jours", "28 jours"]
+    indice: "Ferme le poing."
+  # CAL-CE1-3 : fevrier compte 28 jours, pas 29
+  - enonce: "Combien de jours a le mois de février ?"
+    bonneReponse: "29 jours"
+    distracteurs: ["28 jours", "30 jours"]
+    indice: "Pense au mois le plus court."
+  # CAL-CE1-5 : un distracteur qui n'est le nombre de jours d'aucun mois
+  - enonce: "Combien de jours a le mois de juin ?"
+    bonneReponse: "30 jours"
+    distracteurs: ["31 jours", "32 jours"]
+    indice: "Ferme le poing."
+  # CAL-CE1-3 : l'annee bissextile nommee dans l'indice
+  - enonce: "Quel est le lendemain du 28 février ?"
+    bonneReponse: "le 1er mars"
+    distracteurs: ["le 27 février", "le 2 mars"]
+    indice: "Pense à l'année bissextile."
+  # CAL-CE1-3 : une date irreelle en distracteur (31 novembre)
+  - enonce: "Quel est le lendemain du 30 novembre ?"
+    bonneReponse: "le 1er décembre"
+    distracteurs: ["le 31 novembre", "le 29 novembre"]
+    indice: "Pense au dernier jour du mois."
+  # CAL-CE1-3 : un lendemain faux (16 mars pour le lendemain du 14)
+  - enonce: "Quel est le lendemain du 14 mars ?"
+    bonneReponse: "le 16 mars"
+    distracteurs: ["le 13 mars", "le 15 mars"]
+    indice: "Le lendemain, c'est le jour d'après."
+  # CAL-CE1-5 : un distracteur d'aucune des trois familles (25 mars)
+  - enonce: "Quel est le lendemain du 20 mars ?"
+    bonneReponse: "le 21 mars"
+    distracteurs: ["le 19 mars", "le 25 mars"]
+    indice: "Le lendemain, c'est le jour d'après."
+  # CAL-CE1-4 : une date de fete (25 decembre)
+  - enonce: "Quel est le lendemain du 24 décembre ?"
+    bonneReponse: "le 25 décembre"
+    distracteurs: ["le 23 décembre", "le 25 novembre"]
+    indice: "Le lendemain, c'est le jour d'après."
+  # CAL-CE1-4 : le mot vacances dans l'indice
+  - enonce: "Quel est le lendemain du 3 juillet ?"
+    bonneReponse: "le 4 juillet"
+    distracteurs: ["le 2 juillet", "le 4 août"]
+    indice: "Pense aux vacances."
+  # CAL-CE1-4 : une annee dans l'enonce
+  - enonce: "Quel est le lendemain du 3 mars 2025 ?"
+    bonneReponse: "le 4 mars"
+    distracteurs: ["le 2 mars", "le 4 avril"]
+    indice: "Le lendemain, c'est le jour d'après."
+  # CAL-CE1-5 : un indice qui donne la reponse
+  - enonce: "Quel est le lendemain du 8 mars ?"
+    bonneReponse: "le 9 mars"
+    distracteurs: ["le 7 mars", "le 9 avril"]
+    indice: "Cherche le 9 mars."
+  # CAL-CE1-3 : une bonne reponse qui n'est pas la premiere date
+  - enonce: "Entre le 5 mars, le 2 mai et le 9 avril, quelle date vient la première ?"
+    bonneReponse: "le 2 mai"
+    distracteurs: ["le 5 mars", "le 9 avril"]
+    indice: "Compare d'abord les mois, puis les jours."
+  # CAL-CE1-3 : une proposition qui n'est pas l'une des trois dates de l'enonce
+  - enonce: "Entre le 7 juin, le 4 avril et le 9 mai, quelle date vient la dernière ?"
+    bonneReponse: "le 7 juin"
+    distracteurs: ["le 4 avril", "le 9 juillet"]
+    indice: "Compare d'abord les mois, puis les jours."
+  # CAL-CE1-3 : une ecriture en chiffres fausse (14 mai pour quinze mai)
+  - enonce: "Écris en chiffres : le quinze mai."
+    bonneReponse: "le 14 mai"
+    distracteurs: ["le 15 juin", "le 5 mai"]
+    indice: "Lis le nombre, puis regarde bien le mois."
+  # CAL-CE1-3 : l'enonce demande les mots et la bonne reponse est en chiffres
+  - enonce: "Lis cette date : le 8 mars."
+    bonneReponse: "le 8 mars"
+    distracteurs: ["le 18 mars", "le 8 mai"]
+    indice: "Dis le jour dans ta tête, puis le mois."
+  # CAL-CE1-5 : un distracteur qui differe par le jour et par le mois
+  - enonce: "Lis cette date : le 5 mars."
+    bonneReponse: "le cinq mars"
+    distracteurs: ["le six mars", "le sept avril"]
+    indice: "Dis le jour dans ta tête, puis le mois."
+  # CAL-CE1-1 : un jour de la semaine
+  - enonce: "Quel jour vient après le lundi ?"
+    bonneReponse: "le mardi"
+    distracteurs: ["le jeudi", "le dimanche"]
+    indice: "Pense à la semaine."
+  # CAL-CE1-1 : une horloge
+  - enonce: "Que marque l'horloge à midi ?"
+    bonneReponse: "12 h"
+    distracteurs: ["6 h", "3 h"]
+    indice: "Regarde les deux aiguilles."
+  # CAL-CE1-1 : l'ordre des mois pour lui-meme, d'aucune des quatre formes
+  - enonce: "Quel mois vient après mars ?"
+    bonneReponse: "avril"
+    distracteurs: ["mai", "février"]
+    indice: "Récite les mois dans l'ordre."
+  # TRV-CE1-5 : un indice de plus de douze mots
+  - enonce: "Combien de jours a le mois d'octobre ?"
+    bonneReponse: "31 jours"
+    distracteurs: ["30 jours", "28 jours"]
+    indice: "Ferme le poing et compte bien tous les mois sur tes doigts un par un, de janvier à octobre."
+  # TRV-CE1-2 : une bonne reponse strictement la plus longue (1)
+  - enonce: "Quel est le lendemain du 10 avril ?"
+    bonneReponse: "le 11 avril"
+    distracteurs: ["le 9 avril", "le 11 mai"]
+    indice: "Le lendemain, c'est le jour d'après."
+  # TRV-CE1-2 : une bonne reponse strictement la plus longue (2)
+  - enonce: "Quel est le lendemain du 12 juin ?"
+    bonneReponse: "le 13 juin"
+    distracteurs: ["le 9 juin", "le 13 mai"]
+    indice: "Le lendemain, c'est le jour d'après."
+  # CAL-CE1-1 : trois dates du meme jour, seul l'ordre des mois decide
+  - enonce: "Entre le 11 avril, le 11 mars et le 11 juin, quelle date vient la dernière ?"
+    bonneReponse: "le 11 juin"
+    distracteurs: ["le 11 avril", "le 11 mars"]
+    indice: "Les jours sont les mêmes, regarde les mois."
+  # CAL-CE1-5 : la regle des creux dite sans fevrier, qui a 28 jours
+  - enonce: "Combien de jours a le mois de novembre ?"
+    bonneReponse: "30 jours"
+    distracteurs: ["31 jours", "28 jours"]
+    indice: "Ferme le poing : les creux comptent 30 jours, les bosses 31."
+  # CAL-CE1-5 : une bonne reponse au rang bas
+  - enonce: "Quelle est la veille du 9 octobre ?"
+    bonneReponse: "le 8 octobre"
+    distracteurs: ["le 10 octobre", "le 8 novembre"]
+    indice: "La veille, c'est le jour d'avant."
+  # LON-CE1-1 : un enonce de plus de vingt mots
+  - enonce: "Marie regarde le calendrier de la classe accroché au mur près de la fenêtre et elle se demande combien de jours a le mois de mars ?"
+    bonneReponse: "31 jours"
+    distracteurs: ["30 jours", "28 jours"]
+    indice: "Ferme le poing."
+  # LON-CE1-2 : un enonce dont la derniere phrase n'est pas la question
+  - enonce: "Regarde le calendrier. Combien de jours a le mois de mars."
+    bonneReponse: "31 jours"
+    distracteurs: ["30 jours", "28 jours"]
+    indice: "Ferme le poing."
+  # TYP-1 : une espace ordinaire devant le point d'interrogation
+  - enonce: "Combien de jours a le mois de décembre ?"
+    bonneReponse: "31 jours"
+    distracteurs: ["30 jours", "28 jours"]
+    indice: "Ferme le poing."
+  # NB8 : un texte support, que le paquet reel n'a pas
+  - enonce: "Combien de jours a le mois de juillet ?"
+    bonneReponse: "31 jours"
+    distracteurs: ["30 jours", "28 jours"]
+    indice: "Ferme le poing."
+    texteSupport: "Le calendrier a douze mois."
