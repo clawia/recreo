@@ -1,6 +1,7 @@
 # [Sprint s57] Rapport de developpeur, palier 4, lot LP1 - `marc-dev`, poste p4-3 (`S57-BR-FRA-CE1-21`)
 
 - **Auteur** : `marc-dev`, instance A. **Date** : 2026-10-22. **Base** : `eb267ba7` (`git log -1 --format=%h` au premier message). Branche `s57-marc-fra-ce1-21`, worktree voisin du checkout. Aucun push, aucun rebase, aucune fusion.
+- **Rejeu du 2026-10-22** : les sections 1 a 8 decrivent le premier jet (`56e9fd1b`) ; la section 9 dit ce que le refus de `nadia-prof` a change et prevaut sur elles (mots, enonces, nombres de tests, jar).
 - **JDK de mesure** : 21.0.10, `java.version` lu dans les 60 rapports Surefire de `bootstrap` ; le `java` du `PATH` n'est pas celui qui a mesure.
 - **Commits du lot** : `c591a49b` (le lot), `3d3d9382` (prenoms, `TRV-CE1-6`), `83035447` (deux enonces resserres), `6554bf87` (critere 11, commentaire seul), puis un dernier commit portant ce rapport et celui du palier 3. Le `verify` complet a ete lance a `83035447` ; les commits suivants ne touchent qu'un commentaire de test et deux fichiers `.md`.
 - **Delta, pas un total** : **+34 tests**, tous dans `PaquetCe1MotsInvariablesTest` (15 gardes du paquet et de la mecanique, 19 jeux fautifs commites : 14 sur le contenu, 5 sur le catalogue), mesure sur la base `eb267ba7` plus ce seul lot. Total de mon reacteur : 2889 (120 + 31 + 523 + 1828 + 381 + 6 d'integration), contre 2855 mesures par `theo-archi` sur arbre propre (`avis-theo-palier-4.md` 3.5) : l'ecart est de 34, il n'est pas verifie par moi sur un arbre fusionne. Le total apres fusion est a `sofia-sm`.
@@ -103,3 +104,53 @@ Repertoire `s57-p4-marc-dev-a`, cree par `mkdir -p` a la premiere commande ; tou
 - Aucune ligne de matrice, aucune fiche, aucune mention de cellule (`K9`).
 - Pas de mesure sur tablette, pas de cote a 720 ou 768, pas de capture des items non vus a l'ecran.
 - Aucun Done : le jeu de `nadia-prof` (critere 13) se fait sur le jar du commit qui sera fusionne, qu'elle nomme dans son verdict (`RF13`).
+
+## 9. Rejeu apres le refus de `nadia-prof` (fiche `FICHE-saisie-mots-invariables-ce1.md` sur `s57-nadia-p4-a`, lue en lecture seule)
+
+**Commit du rejeu** : `ea34c750`, meme branche, meme worktree, base `6554bf87` pour le delta de tests (le sommet etait `56e9fd1b`, qui ne differe de `6554bf87` que par les deux rapports). Un dernier commit porte cette section. `verify` complet a `ea34c750`, voir 9.5.
+
+### 9.1 Ce qui change, par motif
+
+| Motif | Avant | Apres |
+|---|---|---|
+| M1 item 3 (*maintenant*) | Hier, c'était lundi, demain ce sera mercredi : ___, c'est mardi. | **Demain, ce sera mercredi : mardi, c'est ___.** (aujourd'hui) |
+| M1 item 15 (*maintenant*) | enfin, train en retard | **mot remplace** par hier : *Nous sommes mercredi : mardi, c'était ___.* Aucune phrase d'attente ne ferme *enfin* sans laisser *maintenant*, *finalement* ou *voila* |
+| M1 item 7 (*ensemble*, *la*) | dehors, *jouent ___, dans la cour* | **mot remplace** par moins : *Cinq billes, c'est ___ que dix billes.* Un adverbe de lieu en fin de phrase admet toujours *ici* ou *la* |
+| M1 item 12 (*toute*) | pendant, *elle lit ___ la récréation* | *Chloé a lu de 10 h à 10 h 10 : elle a lu ___ dix minutes.* (pendant) |
+| M1 item 16 (*bientot*) | presque, verre plein | *Il reste une seule miette de gâteau : on a ___ tout mangé.* (presque) |
+| M2 item 18 | combien | **avec** : *On tient une cuillère dans la main : on mange la soupe ___ cette cuillère.* L'en-tete ne dit plus que le paquet n'a aucun mot decide par une autre ligne : il dit que *combien* est retire |
+| `MIV-CE1-1` | le nombre des mots | **les 24 mots ecrits en tete**, gardes par `miv1LEnteteListeLesMots` |
+| Reserve, item 1 | indice avec *exception* | *Pense à tous les matins de l'année, un par un.* |
+| Reserve, item 8 | indice avec *la cour* | *Pense à tous les endroits cités, un par un.* |
+
+Mots du paquet apres rejeu : toujours, jamais, aujourd'hui, pourquoi, devant, dedans, moins, partout, autour, loin, tard, pendant, depuis, avant, hier, presque, comment, avec, quand, sans, chez, entre, sous, peu. **Treize** mots de S53 sont remplaces : les onze du premier jet, plus *dehors* et *enfin*. L'indice de l'item 20 (sans) est reecrit (*Pense à ce qui manque dans son thé.*) : l'ancien nommait *avec*, devenu mot cible, et le garde du critere 2 le refusait. Aucun ajout a `formesAcceptees` : 23 vides, 1 non vide (U+2019).
+
+### 9.2 Rejeu sur le jar de chaque mot refuse
+
+Jar du commit `ea34c750`, port **18521** libre avant et apres, *"Tomcat started on port 18521"* et PID **2820** lus dans le journal, arret par PID. Script de jeu HTTP du repertoire de l'instance : **58 essais d'un autre mot, tous refuses** (*"Ce n'est pas ça"*), **0 accepte**. Les mots de `nadia-prof` y sont : item 3 *maintenant*, *hier*, *demain* ; item 15 *avant*, *demain*, *autrefois* ; item 7 *plus*, *mieux*, *autant*, *davantage*, *pire* ; item 12 *toute*, *depuis*, *durant*, *en*, *avant*, *apres* ; item 16 *bientot*, *deja*, *vite*, *bien*, *tout*, *quasiment* ; item 18 *sans*, *sur*, *dans*, *par*, *pour*. Les mots a risque de la section 3 aussi (*ici* et *la* sur dedans et partout, *beaucoup* sur partout, *ou* et *comment* sur quand, *pres* sur autour et devant). Parcours de controle : 20 parties, 200 manches, **24 enonces sur 24 servis**, 200 reponses justes sur 200. **Ce n'est pas le jeu de `nadia-prof`** : un mot que je n'ai pas pense a essayer reste possible.
+
+### 9.3 Le pli a la revelation (l'utilisatrice : l'indice reste affiche)
+
+Je n'ai pas touche `saisie.html`. Mesure par moi sur ce jar, 744 x 551, trois fautes par item, **24 items sur 24** :
+
+- **6 items tiennent au pli** (hauteur du document 551, bas de l'indice 516) : *Le soleil se lève ___ à l'est.* (item 1), *Cinq billes...* (7), *Le mardi est ___...* (22), *Nous sommes mercredi...* (15), *Demain, ce sera mercredi...* (3), *Je m'appelle Karim...* (17).
+- **18 items depassent** : hauteur 596, bas de l'indice 564, **13 px sous le pli** ; *Continuer* (360 px) et la forme juste restent au-dessus. Valeurs identiques sur les 18 : ce sont tous les enonces a deux lignes.
+- **Ce qui ramenerait un item au pli** : un enonce d'une seule ligne, 47 caracteres au plus (le plus long qui tient). Les plus proches : l'item 14 (*Le jour qui vient ___ le mercredi, c'est le mardi.*, 50 caracteres), l'item 5 (*Omar marche derrière Mia, donc Mia marche ___ Omar.*, 51), l'item 24 (*Il ne reste qu'une goutte d'eau : il y en a très ___.*, 53) et l'item 2 (53). **Je n'en ai raccourci aucun** : cela retire du contexte qui ferme la phrase (l'item 5 perdrait *derrière*, l'item 14 *le mardi*, l'item 24 *une goutte d'eau*). Decision a `nadia-prof` et `ines-design`.
+- **Ecart a la mesure d'`ines-design`** (21 sur 24 sous le pli) : j'en mesure 18, sur un jeu d'enonces modifie par ce rejeu (items 3, 7, 12, 15, 16, 18). Je ne dis pas que sa mesure est fausse ; la mienne est celle de ce jar-ci.
+
+### 9.4 Garde `TYP-1` et mutation L10 (`yanis-qa`)
+
+`verifierLesEspacesInsecables` lit l'enonce et l'indice de chaque item : une espace ordinaire, ou aucune, apres `«`, avant `»`, ou avant `?`, `:`, `;`, `!` fait echouer `typ1LesChevronsEtLesSignesDoublesPortentUneEspaceInsecable`. C'est dans le perimetre du lot (son propre test, aucun fichier partage). Jeu fautif commite : `ce1-mots-invariables-fautif-espaces.yaml`. **Mutation** : une espace ordinaire a la place de l'espace insecable dans le chevron de l'indice de l'item 2 ; `PaquetCe1MotsInvariablesTest` : 40 tests, **1 echec**, ce test, avec le message `TYP-1` ; fichier restaure, `cmp` identique a la copie de sauvegarde. Deux autres gardes neufs, chacun avec son jeu fautif : la regle de la nasale (`m` devant `b` ou `p`, mordue par *Combien*) et la liste de l'en-tete.
+
+### 9.5 Tests et jobs
+
+- **Delta du rejeu : +6 tests** (`PaquetCe1MotsInvariablesTest` de 34 a 40), base `6554bf87`. Cumul du lot sur `eb267ba7` : **+40**. Total de mon reacteur : 2895 (120, 31, 523, 1834, 381, 6 d'integration), 0 echec, soit 2855 plus 40, a verifier par `sofia-sm` sur l'arbre fusionne.
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify`, racine d'un worktree propre, au jeton de `RF1` (acquis 12:54:02, libere 12:59:10) : `BUILD SUCCESS`, 05:03 min, sortie 0, JDK 21.0.10. Un seul `verify` pour ce rejeu.
+- **`prefixes`, `chemins`, `outils`** : relances au sommet, voir le message de remise. Mesures partielles (`-pl adapters/adapter-content,bootstrap -am`) avant le verify : trois passes, la derniere verte.
+
+### 9.6 Questions routees
+
+1. **`nadia-prof`** : *comment* (item 17) contient `mm`, ou le son n'est pas la nasale de `FRA-CE1-22` mais un doublement de consonne. Je l'ai lu comme hors de l'exclusion *m devant m, b, p* ; mon garde ne vise que `m` devant `b` ou `p`. **Si elle le lit autrement, c'est un quatrieme remplacement.**
+2. **`nadia-prof`** : l'item 12 reste le plus expose (*en* est un mot que je refuse au jar mais qu'un adulte peut juger possible) ; item 16 : *deja* est refuse au jar, mais *on a déjà tout mangé* reste une phrase qu'un adulte pourrait accepter malgre la miette.
+3. **`nadia-prof`, `ines-design`** : le pli (9.3). Aucune action de ma part.
+4. **`sofia-sm`** : `git diff --name-only ea34c750 HEAD` ne nomme que ce rapport. Aucune question d'architecture ; aucune story, aucun critere modifie.
