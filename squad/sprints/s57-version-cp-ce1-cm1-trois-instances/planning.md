@@ -2321,3 +2321,7 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusi
 ## Amendement du 2026-10-22 (UTC+02:00), palier 4 : ecrit de theo-archi livre (RF11)
 
 Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-theo-p4-lp3-lp5` (d150618a) dans `round-two` (RF11). Troisieme des quatre des cinq fusions demandees par l'utilisatrice le 2026-10-22 (branches de documents). La branche porte `lecture-theo-lignee-palier-4-lp3-lp5.md` (lignee, ArchUnit et conflits de `LP3` et `LP5`), lue a `db5e0e6d` et `c8404173`, sommets de lots anterieurs a leur rejeu. Aucune story n'est livree par cette branche, aucun Done n'est prononce, et je ne modifie ni la matrice ni un prix : je fusionne ce que theo-archi a ecrit.
+
+## Amendement du 2026-10-22 (UTC+02:00), palier 4 : ecrit de yanis-qa livre (RF11)
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-yanis-p4-lp3-lp5` (fc064977) dans `round-two` (RF11). Quatrieme des quatre des cinq fusions demandees par l'utilisatrice le 2026-10-22 (branches de documents). La branche porte `rapport-qualite-palier-4-lp5-lp3.md` (rapport qualite de `LP5` a `db5e0e6d` et de `LP3` a `c8404173`, sommets de lots anterieurs a leur rejeu) ; il ne juge pas les sommets fusionnes `fdeff890` et `003fd4fb`. Aucune story n'est livree par cette branche, aucun Done n'est prononce, et je ne modifie ni la matrice ni un prix : je fusionne ce que yanis-qa a ecrit.
