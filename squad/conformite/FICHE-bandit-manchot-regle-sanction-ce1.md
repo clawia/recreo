@@ -13,9 +13,10 @@
   (`ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md`, 2 et 4.2) ; `EMC-1` a `EMC-7` ;
   `arbitrage-nadia-preparation-palier-3-ce1.md` 4.1 et 4.4 ; points d'audit de `lecture-nadia-palier-3.md`, section 5 (la forme
   qui donne la reponse, le distracteur absurde, deux reponses defendables).
-- **Statut global** : **REFUSE**, prononce le 2026-10-22 par `nadia-prof` (s57, palier 4, instance A'). Fiche ouverte le
+- **Statut global** : **REFUSE**, prononce le 2026-10-22 par `nadia-prof` (s57, palier 4, instance A'), **maintenu au rejeu du
+  2026-10-22** (M1 seul). Fiche ouverte le
   2026-10-22 par `nadia-prof`.
-- **Derniere mise a jour** : 2026-10-22.
+- **Derniere mise a jour** : 2026-10-22, rejeu.
 
 ---
 
@@ -126,3 +127,67 @@ paquets).
 `s57-sofia-emc-ce1-02` a `1152fdc9` (`grep -c "bonneReponse:"` rend 24 ; `grep -c "«"` rend 4). Lus : les 24 enonces, bonnes
 reponses, 48 distracteurs, 24 indices, les familles (a) a (g) et l'en-tete. Paquets voisins de `NRC-CE1-1` et `CYC-1` relus sur
 leurs enonces et bonnes reponses (inchanges depuis le premier passage).
+
+### Verdict du rejeu, 2026-10-22 (`nadia-prof`) : **REFUSE**, maintenu sur M1 seul
+
+Le verdict du premier passage reste ecrit au-dessus ; celui-ci s'y ajoute.
+
+**Commit joue** : `1152fdc9`, jar construit dans un worktree detache de mon cru a ce commit (`-pl bootstrap -am package
+-DskipTests`, mesure partielle), port 18512, *"Tomcat started on port 18512"* et PID lus dans mon journal, arrete par PID. Jeu par
+moi, requetes HTTP : 9 parties de 10 manches, 24 enonces servis sur 24, aucun enonce inconnu du paquet ; deux erreurs puis
+revelation sur la premiere manche de chaque partie, indices lus a l'ecran.
+
+**Motif maintenu - M1, tache 1 : la forme donne encore la reponse pour la regle.** La decision de l'utilisatrice du 2026-10-22
+(*"1 oui regle entre chevrons"*) est appliquee ; je ne la discute pas. Ce que je constate sur le paquet tel qu'il l'applique :
+les chevrons ne figurent que dans les 4 items dont la cible est la regle (1, 4, 7, 10 ; `grep -c "«"` rend 4). Presents, ils
+donnent *la regle* ; absents, ils l'ecartent. Sur 12 items sur 12, *la regle* se decide par la typographie, jamais par le
+contenu. Les 8 autres items font bien travailler la difference entre la sanction et la faute (avant ou apres, ce que le
+personnage a fait ou ce qu'on lui demande) ; mais la ligne demande de **distinguer une regle d'une sanction**, et aucun item ne
+fait cette distinction-la par le sens.
+
+**Ce qui serait acceptable**, sans toucher a la regle entre chevrons :
+
+- (a) la regle de la classe citee entre chevrons dans l'enonce des **12** items, quelle que soit la cible ; la question designe
+  l'element par une forme identique pour les trois cibles, sans chevrons (*"Ne pas salir les murs, c'est quoi ?"*, *"Laver le
+  mur, c'est quoi ?"*, *"Salir un mur, c'est quoi ?"*), avec des regles affirmatives et negatives melangees, pour que la negation
+  ne designe pas la regle a son tour ; `LON-CE1-1` et `-2` a tenir avec la phrase de plus ;
+- (b) ou la sanction donnee, elle aussi, comme paroles de l'adulte entre chevrons (*« Lave le mur. »*), pour que les chevrons
+  soient presents pour la regle et pour la sanction.
+
+Si la decision de l'utilisatrice veut dire que **seule** la regle porte des chevrons, aucune forme de la tache 1 ne cesse de la
+designer, et M1 reste refuse : c'est a `camille-po` de lui poser la question avec ces deux formes, pas a moi de la trancher.
+
+**Leve** (verifie) :
+
+- M1, partie `NRC-CE1-1` : les indices des items de regle ne donnent plus le critere du CP (*"pour tous"*) mais celui du CE1
+  (*"avant ou après"*) ; la question n'est plus *"Est-ce une règle ?"*.
+- M2 : distracteurs (d) *à venger* la victime, (e) *à plaire au maître*, (g) *à oublier l'histoire*, *à occuper* le personnage :
+  chacun est un but qu'un enfant peut croire et que la ligne ecarte ; chaque item de la tache 2 en porte au moins un. Aucun
+  distracteur absurde.
+- M3 : aucune bonne reponse ne reprend le verbe de l'enonce (*à réparer le tort fait*, *le dégât*, *le mal fait*, *les dégâts* ;
+  *à rappeler la règle*, *les règles*, *l'interdit*, *la consigne*).
+- M4 : l'item 20 est une regle enfreinte expres (*"a bavardé exprès pendant la dictée"*), reprise en silence.
+- M5 : l'adulte de chaque indice est celui de l'enonce (items 6, 8, 9, 11, 12 relus ; 8 et 11 lus a l'ecran).
+- Reserve 1 : *la faute* est la bonne reponse de 4 items (3, 6, 9, 12). Reserve 2 : l'item 14 refait correctement
+  (*relire doucement*). Reserve 3 : sans objet, l'item 24 est remplace.
+
+**Retenu** : `RSA-CE1-1` (rappeler et reparer chacun six fois en bonne reponse ; aucune humiliation, punition physique, sanction
+collective ni privation de repas, distracteurs compris) ; `RSA-CE1-2` ; `TRV-CE1-6` (les memes 15 prenoms, 7 et 8) ; `EMC-1`,
+`EMC-6` ; `CYC-1`. *Venger* en distracteur n'est pas une humiliation ; il est ecarte, jamais propose comme but.
+
+**Reserves nouvelles, datees du 2026-10-22, non bloquantes** :
+
+1. Item 24 : *"Aya a tapé exprès sa règle sur la table"* ; dans un paquet ou *la règle* est une reponse, *sa règle* (l'objet)
+   trouble la lecture ; et *"la poser"* arrete le geste sans le refaire correctement. Un autre objet, un geste refait.
+2. Item 6, indice : *"avant que le maître intervienne"* ; *intervienne* est un mot que l'enfant de CE1 lit mal seul.
+3. **Pli** : non remesure sur ce commit. Au premier passage, 8 items sur 24 avaient l'indice sous le pli apres une erreur
+   (`ines-design`, `089fb477`, sur `9f3fdd4b`) ; l'en-tete dit des seuils a remesurer. Reserve non bloquante (4.1 point 4) tant
+   que le releve du commit fusionne n'est pas fait.
+
+**Marge** : ce rejeu consomme la marge de A' (0,5). Un troisieme passage n'a plus de marge : a `camille-po` et `sofia-sm`. Je le
+fais sur la tache 1 seule si elle est seule changee. `LP6` reste sans worktree.
+
+**Je reste la seule garde** : qu'aucune forme ne donne la reponse ; qu'un distracteur soit croyable ; qu'un acte sanctionne soit
+une regle enfreinte ; `NRC-CE1-1`.
+
+**Signe** : `nadia-prof`, 2026-10-22.
