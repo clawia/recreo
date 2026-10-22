@@ -365,3 +365,15 @@ items:
     bonneReponse: "la faute"
     distracteurs: ["la règle", "la sanction"]
     indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : sanction
+  # TRV-CE1-2 : a, c
+  - enonce: "« Soigner les livres ». Lina a déchiré avec recopier un livre : le maître lui fait le recoller. Recopier le livre, c'est quoi ?"
+    bonneReponse: "la sanction"
+    distracteurs: ["la règle", "la faute"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : faute
+  # TRV-CE1-2 : a, b
+  - enonce: "« Travailler seul ». Omar a copié avec une racine au milieu sur Zoé : le maître lui fait refaire l'exercice. Opier, c'est quoi ?"
+    bonneReponse: "la faute"
+    distracteurs: ["la règle", "la sanction"]
+    indice: "Pense au geste."

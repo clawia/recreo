@@ -391,14 +391,18 @@ class PaquetCe1EmcRegleSanctionTest {
             if (!item.cible().equals("regle")) {
                 String racine = element.toLowerCase().replaceFirst("^ne (pas|plus)[\\s\\u00A0]+", "")
                         .split("[\\s\\u00A0]+")[0];
-                racine = racine.substring(0, Math.min(3, racine.length()));
-                String ou = item.cible().equals("sanction") ? phraseDeLAdulte(item).toLowerCase()
-                        : item.enonce().substring(0, item.enonce().length() - question.length()).toLowerCase();
-                assertThat(ou)
+                // sanction : le mot entier, tel que l'adulte le dit ; faute : la racine de trois lettres,
+                // l'acte etant conjugue dans l'enonce. Dans les deux cas ancre en debut de mot.
+                String cherche = item.cible().equals("sanction") ? racine
+                        : racine.substring(0, Math.min(3, racine.length()));
+                String ou = item.cible().equals("sanction") ? phraseDeLAdulte(item)
+                        : item.enonce().substring(0, item.enonce().length() - question.length());
+                assertThat(Pattern.compile("(?<!\\p{L})" + Pattern.quote(cherche), FLAGS).matcher(ou).find())
                         .as("RSA-CE1-1 : la question de '%s' ne reprend pas %s (« %s »)", item.enonce(),
-                                item.cible().equals("sanction") ? "le geste de l'adulte" : "l'acte de l'énoncé",
+                                item.cible().equals("sanction") ? "le geste de l'adulte, mot entier"
+                                        : "l'acte de l'énoncé",
                                 element)
-                        .contains(racine);
+                        .isTrue();
             }
         }
     }
@@ -1279,6 +1283,24 @@ class PaquetCe1EmcRegleSanctionTest {
         assertThatThrownBy(() -> verifierLaQuestionDeLaTache1(items))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("ne reprend pas le geste");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneQuestionDeSanctionDontLeMotNEstQueLaRacineDuGeste() {
+        List<ItemLu> items = fautif("Lina a déchiré avec recopier");
+
+        assertThatThrownBy(() -> verifierLaQuestionDeLaTache1(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("le geste de l'adulte, mot entier");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneRacineDActeQuiNEstPasEnDebutDeMot() {
+        List<ItemLu> items = fautif("Omar a copié avec une racine au milieu");
+
+        assertThatThrownBy(() -> verifierLaQuestionDeLaTache1(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ne reprend pas l'acte");
     }
 
     @Test
