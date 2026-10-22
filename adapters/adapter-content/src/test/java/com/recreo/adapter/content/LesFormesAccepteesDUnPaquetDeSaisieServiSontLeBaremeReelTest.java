@@ -116,7 +116,7 @@ class LesFormesAccepteesDUnPaquetDeSaisieServiSontLeBaremeReelTest {
             // alphabetique sur cette mecanique). formesAcceptees y est vide sur chaque item - SAI-1,
             // SAI-3 et SAI-4 sont tenues par NormalisationDeSaisie sans forme alternative a enumerer -
             // et cette clause traverse alors formeDeReference seul, ce que le code ci-dessus fait deja.
-            // S57-BR-FRA-CE1-21 : ce1-mots-invariables ajoute (critere 11 de la story). Un seul
+            // S57-BR-FRA-CE1-21 : troisieme entree de la liste (critere 11 de la story). Un seul
             // item porte une forme acceptee, "aujourd'hui" en U+2019 a cote de U+0027 (QP1) ; les
             // 23 autres la declarent vide.
             List.of("cp-complements-10-saisie", "cp-mot-dicte", "ce1-mots-invariables");
