@@ -191,3 +191,11 @@ fais sur la tache 1 seule si elle est seule changee. `LP6` reste sans worktree.
 une regle enfreinte ; `NRC-CE1-1`.
 
 **Signe** : `nadia-prof`, 2026-10-22.
+
+---
+
+## Rejeu 3 du 2026-10-22 (`nadia-prof`, s57, palier 4, instance A' ; `DEC-0120` A.155)
+
+**lecture complete : ce1-emc-regle-sanction, 24 items lus** - 2026-10-22, 14:29 (UTC+02:00), lu par `date`, sur la branche
+`s57-sofia-emc-ce1-02` a `41203188` (`grep -c "bonneReponse:"` rend 24 ; `grep -c "«"` rend 12). Diff du paquet depuis
+`1152fdc9` : les 12 items de la tache 1, l'item 24, l'indice de l'item 6. Mots des 12 enonces de la tache 1 recomptes : 18 a 20.
