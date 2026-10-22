@@ -13,9 +13,10 @@
   (`ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md`, 2 et 4.2) ; `EMC-1` a `EMC-7` ;
   `arbitrage-nadia-preparation-palier-3-ce1.md` 4.1 et 4.4 ; points d'audit de `lecture-nadia-palier-3.md`, section 5 (la forme
   qui donne la reponse, le distracteur absurde, deux reponses defendables).
-- **Statut global** : **REFUSE**, prononce le 2026-10-22 par `nadia-prof` (s57, palier 4, instance A'), maintenu au rejeu 2,
-  **maintenu au rejeu 3 du 2026-10-22 sur l'item 9 seul** (M1 leve). Fiche ouverte le 2026-10-22 par `nadia-prof`.
-- **Derniere mise a jour** : 2026-10-22, rejeu 3.
+- **Statut global** : **VALIDE SOUS RESERVE**, prononce au rejeu 4 du 2026-10-22 par `nadia-prof` (s57, palier 4,
+  instance A'), sur `f36d83bc`. REFUSE au premier passage, aux rejeux 2 et 3 (verdicts conserves ci-dessous). Fiche ouverte le
+  2026-10-22 par `nadia-prof`.
+- **Derniere mise a jour** : 2026-10-22, rejeu 4.
 
 ---
 
@@ -272,3 +273,52 @@ rejoue que l'item 9 s'il est le seul change, et son prix est 0,25. `LP6` reste s
 **lecture complete : ce1-emc-regle-sanction, 24 items lus** - 2026-10-22, 15:15 (UTC+02:00), lu par `date`, sur la branche
 `s57-sofia-emc-ce1-02` a `f36d83bc` (`grep -c "bonneReponse:"` rend 24). Diff du paquet depuis `41203188` : items 4, 6, 9, 10,
 12 de la tache 1 et l'indice de l'item 12 ; tache 2 inchangee. Mots des 12 enonces de la tache 1 recomptes : 18 a 20.
+
+### Verdict du rejeu 4, 2026-10-22 (`nadia-prof`) : **VALIDE SOUS RESERVE**
+
+Les verdicts precedents restent ecrits au-dessus ; celui-ci s'y ajoute.
+
+**Done pedagogique prononce sur `f36d83bc`**, sommet de `s57-sofia-emc-ce1-02`. `camille-po` peut passer `EMC-CE1-02` a
+`couvert-valide` et faire des stories des reserves ci-dessous, non bloquantes.
+
+**Commit joue** : `f36d83bc`, jar construit dans mon worktree detache `recreo-s57-nadia-p4-ap-jeu` a ce commit (`-pl bootstrap
+-am package -DskipTests`, mesure partielle), port 18512, *"Tomcat started on port 18512"* et PID lus dans mon journal, arrete par
+PID. Jeu par moi, requetes HTTP : 15 parties de 10 manches, 24 enonces servis sur 24 ; deux erreurs et l'indice lus sur l'item 9 ;
+les cinq items changes joues jusqu'a la bonne reponse.
+
+**Motif du rejeu 3 leve, item 9** : *"« Rendre les affaires ». Zoé garde la gomme de Léo : le maître la lui fait rendre. Ne pas
+rendre, c'est quoi ?"*, bonne reponse *la faute*. Garder la gomme d'un camarade, sans la lui rendre, est une faute ; la regle
+citee, rendre les affaires, est celle que l'acte enfreint ; rendre la gomme est une reparation (`RSA-CE1-1`).
+
+**Reserves du rejeu 3** :
+
+1. Items 6 et 12 : *exprès* restaure, **levee**. Item 10 : *"a démoli"* dit un geste voulu, **levee**.
+2. Negation : la question commence par *"Ne pas"* dans 3 items, deux de regle (4, 7) et un de faute (9). *"Ne pas"* ne designe
+   plus la regle a lui seul ; qu'aucune question de sanction ne soit negative tient a ce qu'une sanction est un geste. **Suffisant,
+   levee.**
+3. Item 10, regle *"« Laisser jouer »"* : c'est la regle que l'acte enfreint (demolir la tour d'Aya l'empeche de jouer).
+   **Levee**, avec la reserve 2 ci-dessous sur sa forme.
+4. Item 4, *"Ne pas tricher"* remplace *"Jouer franc jeu"* : **levee**.
+
+**Garantie de `theo-archi`, verifiee a la lecture** : dans les 4 items de cible sanction (2, 5, 8, 11), la question reprend le mot
+entier du geste de l'adulte (*recoller*, *s'excuser*, *ramasser*, *nettoyer*).
+
+**Retenu sur ce commit** : `RSA-CE1-1`, `RSA-CE1-2`, `NRC-CE1-1`, `TRV-CE1-6`, `EMC-1`, `EMC-6` ; tache 1 a trois cibles de 4
+items, la regle entre chevrons dans les 12 enonces, 18 a 20 mots ; tache 2 inchangee depuis le rejeu 2.
+
+**Reserves, non bloquantes** :
+
+1. Item 6 : *"Jade a taché exprès un dessin"*, sans dire a qui il est ; tacher son propre dessin n'est pas une faute envers un
+   autre. Le dessin d'un camarade, nomme.
+2. Item 10 : *"Laisser jouer"* ne dit pas qui ; l'enfant de CE1 lit mieux *"Laisser jouer les autres"*, si la ligne le tient.
+3. Pli : non remesure sur ce commit (`ines-design`).
+
+**`LP6`** : la condition de sa composition (*"un verdict de `LP4` ou `LP5` sans refus"*) est remplie par ce verdict. `LP6` peut
+ouvrir, cote pedagogique ; le reste de son ouverture (fusion de `LP5`, `RF5`) n'est pas a moi.
+
+**Prix** : 0,25. Cinq items courts et un indice, relus et rejoues ; le reste du paquet est inchange et deja verifie.
+
+**Je reste la seule garde** : qu'un acte appele *faute* en soit une et enfreigne la regle citee ; qu'aucune forme ne donne la
+reponse ; `NRC-CE1-1`.
+
+**Signe** : `nadia-prof`, 2026-10-22.
