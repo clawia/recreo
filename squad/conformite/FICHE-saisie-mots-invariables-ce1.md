@@ -11,10 +11,10 @@
 - **Conditions opposables** : `arbitrage-nadia-q05-q10.md` 4.3, points 1 a 5 ; `MIV-CE1-1` et `MIV-CE1-3`
   (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, 5.12) ; `TRV-CE1-1` a `-7` ; `arbitrage-nadia-preparation-palier-3-ce1.md` 4.1 ;
   `arbitrage-nadia-palier-4.md` 3.1 et 4 (refus ecrit d'avance : *"un item ou un autre mot, bien ecrit, complete la phrase"*).
-- **Statut global** : **REFUSE**, prononce le 2026-10-22 par `nadia-prof` (s57, palier 4, instance A), **maintenu au rejeu du
-  2026-10-22** (item 12). Fiche ouverte le
+- **Statut global** : **VALIDE SOUS RESERVE**, prononce au rejeu 3 du 2026-10-22 par `nadia-prof` (s57, palier 4,
+  instance A), sur `8c76b1c7`. REFUSE au premier passage et au rejeu 2 (verdicts conserves ci-dessous). Fiche ouverte le
   2026-10-22 par `nadia-prof`.
-- **Derniere mise a jour** : 2026-10-22, rejeu.
+- **Derniere mise a jour** : 2026-10-22, rejeu 3.
 
 ---
 
@@ -182,3 +182,35 @@ est le seul change.
 **lecture complete : ce1-mots-invariables, 24 items lus** - 2026-10-22, 14:22 (UTC+02:00), lu par `date`, sur la branche
 `s57-marc-fra-ce1-21` a `f8d5d875` ; contenu et code a `8c76b1c7` (`git diff --name-only 8c76b1c7 f8d5d875` ne nomme que le
 rapport du lot). `grep -c "formeDeReference:"` rend 24. Diff du paquet depuis `ea34c750` : item 12, indice de l'item 18, en-tete.
+
+### Verdict du rejeu 3, 2026-10-22 (`nadia-prof`) : **VALIDE SOUS RESERVE**
+
+**Done pedagogique prononce sur `8c76b1c7`** (sommet `f8d5d875`). `camille-po` peut passer `FRA-CE1-21` a `couvert-valide`,
+avec dans la cellule, ecrites le jour de ce verdict : la mention *"mots sans accent seuls tant que l'accent est tolere"* (critere
+7) et la reserve du clavier dans la formulation de `FICHE-saisie-mot-dicte-cp.md` : *"sur la tablette, des mots sont proposes
+au-dessus du clavier ; un enfant qui en touche un n'a pas ecrit le mot"* (critere 12).
+
+**Commit joue** : `8c76b1c7`, jar construit dans mon worktree detache `recreo-s57-nadia-p4-a-jeu` a ce commit (`-pl bootstrap
+-am package -DskipTests`, mesure partielle), port 18511, *"Tomcat started on port 18511"* et PID lus dans mon journal, arrete
+par PID. Jeu par moi, requetes HTTP : 8 parties de 10 manches, 24 enonces servis sur 24. Item 12 : *afin* joue, refuse ;
+*pour* juste. Item 18 : *dans* refuse, *avec* juste, nouvel indice lu a l'ecran.
+
+**Leve** : M1, item 12. *"Nina met un pull ___ ne pas avoir froid."* : seul *pour* ferme la phrase ; *afin* demande *de*, et
+deux mots ne sont pas un mot. Le changement de mot est permis par `MIV-CE1-1` (au moins quinze mots, liste en tete, a jour avec
+*pour*) ; je ne demande pas *pendant*. *pour* n'est ecrit dans aucun enonce ni aucun indice (`MIV-CE1-3`, `grep -w` rend 0).
+L'indice de l'item 18, *"Pense à l'objet qui sert à manger la soupe."*, dit ou regarder sans ecrire *avec* ni *pour* : tenu.
+
+**Ce qui tient de mes passages precedents, sur ce commit** : les 23 autres items, inchanges depuis `ea34c750` ; points 2 a 5 de
+4.3 ; `QP1` (U+2019 juste, rejoue) ; `TRV-CE1-6` (le prenom *Nina* remplace *Chloé* : 5 et 5 tenus).
+
+**Reserves, non bloquantes** :
+
+1. **Pli a la revelation** (rejeu 2, datee du 2026-10-22) : l'indice passe sous le pli a 744 x 551, la bonne reponse et
+   *Continuer* restent au-dessus. Compte a etablir par `ines-design` sur ce commit.
+2. **Clavier** : la reserve de la cellule ci-dessus. Je reste la seule garde de ce point, avec l'utilisatrice pour l'appareil.
+
+**Prix** : 0,25. Un item reecrit et un indice, relus et rejoues, pas un paquet.
+
+**Je reste la seule garde** : qu'aucun enonce n'admette un autre mot juste ; ce que fait le clavier de la tablette.
+
+**Signe** : `nadia-prof`, 2026-10-22.
