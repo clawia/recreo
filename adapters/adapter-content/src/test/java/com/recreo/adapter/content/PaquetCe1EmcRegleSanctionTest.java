@@ -103,11 +103,11 @@ class PaquetCe1EmcRegleSanctionTest {
      */
     private static final Pattern GESTE_REPARATEUR = Pattern.compile(
             "(?<!\\p{L})(recoll|nettoy|laver|essuy|ramass|rendr|refai|refer|replant|réécri|excus|rejou|reprend"
-                    + "|relir|repos|ferme|écrire|répét|taill|séch|effac|pos(er|e))", FLAGS);
+                    + "|relir|repos|ferme|écrire|répét|taill|séch|effac)", FLAGS);
 
     /** La phrase de l'adulte : c'est la que le geste de la sanction est ecrit. */
     private static final Pattern PHRASE_DE_L_ADULTE =
-            Pattern.compile("(?:Le maître|La maîtresse)[^.?!]*[.?!]");
+            Pattern.compile("(?:le maître|la maîtresse)[^.?!]*[.?!]", FLAGS);
 
     private static final Pattern ADULTE_NOMME = Pattern.compile("(?<!\\p{L})(maîtresse|maître)(?!\\p{L})", FLAGS);
 
@@ -116,12 +116,15 @@ class PaquetCe1EmcRegleSanctionTest {
 
     /** M1 de nadia-prof : un indice ne donne pas le critere de cp-emc-regle-souhait-loi. */
     private static final Pattern CRITERE_DU_CP =
-            Pattern.compile("(?<!\\p{L})(tous|tout le monde|chaque élève|chacun)(?!\\p{L})", FLAGS);
+            Pattern.compile("(?<!\\p{L})(tous|toutes|tout le monde|chaque|chacun|chacune)(?!\\p{L})", FLAGS);
 
     /** Pli a 744 x 551 (mesure d'ines-design, palier 4) : seuils de la tache 2, derives de la mesure. */
     private static final int CARACTERES_DES_PROPOSITIONS_POUR_DEUX_RANGEES = 58;
 
     private static final int CARACTERES_D_UN_INDICE_D_UNE_LIGNE = 46;
+
+    /** Plus long enonce de tache 1 releve a trois lignes (mesure d'ines-design, items du premier passage). */
+    private static final int CARACTERES_D_UN_ENONCE_DE_TROIS_LIGNES = 112;
 
     /** EMC-5 : une situation de cible reparation decrit ce qui est abime, une situation de rappel non. */
     private static final Pattern CE_QUI_EST_ABIME =
@@ -137,8 +140,9 @@ class PaquetCe1EmcRegleSanctionTest {
                     + "|repas|cantine|goûter|déjeuner|dessert|idiot|bête|stupide|paresseu|menteu"
                     + "|oreille|gronde|gronder|à genoux|au coin|retenue|bonnet"
                     + "|tous les élèves|toute la classe entière|toute la classe"
+                    + "|devant les autres|devant ses camarades|dîner|diner|sans manger"
                     + "|toute l'école|devant la classe|devant tout le monde)"
-                    + "|(?<!\\p{L})coups?(?!\\p{L})", FLAGS);
+                    + "|(?<!\\p{L})(coups?|tap(e|ent|er|ée?s?))(?!\\p{L})", FLAGS);
 
     /** EMC-1 : l'enfant n'est jamais interroge, aucun mot du foyer ni possessif de deuxieme personne. */
     private static final Pattern MOTS_DU_FOYER = Pattern.compile(
@@ -275,7 +279,7 @@ class PaquetCe1EmcRegleSanctionTest {
 
     /** L'item fautif dont l'enonce commence par ce debut, seul, pour mordre un verificateur a la fois. */
     private static List<ItemLu> fautif(String debutDEnonce) {
-        return itemsFautifs().stream().filter(item -> item.enonce().startsWith(debutDEnonce)).toList();
+        return itemsFautifs().stream().filter(item -> item.enonce().contains(debutDEnonce)).toList();
     }
 
     private static int mots(String texte) {
@@ -332,16 +336,89 @@ class PaquetCe1EmcRegleSanctionTest {
         }
     }
 
-    /** RSA-CE1-1 : la regle est citee entre chevrons quand elle est la cible, et seulement alors. */
+    /**
+     * RSA-CE1-1 (forme (a) de nadia-prof, decision de l'utilisatrice du 2026-10-22) : la regle de la
+     * classe est citee entre chevrons dans l'enonce des douze items de la tache 1, quelle que soit la
+     * cible, et dans aucun item de la tache 2.
+     */
     private static void verifierQueLaReglePorteLesChevrons(List<ItemLu> items) {
         for (ItemLu item : items) {
             boolean cite = item.enonce().contains("«") && item.enonce().contains("»");
-            assertThat(cite == item.cible().equals("regle"))
-                    .as("RSA-CE1-1 : '%s' (cible %s) %s", item.enonce(), item.cible(),
-                            item.cible().equals("regle") ? "cite la règle entre chevrons"
+            assertThat(cite == item.tache().equals("1"))
+                    .as("RSA-CE1-1 : '%s' (tâche %s) %s", item.enonce(), item.tache(),
+                            item.tache().equals("1") ? "cite la règle entre chevrons"
                                     : "ne cite aucune règle entre chevrons")
                     .isTrue();
         }
+    }
+
+    private static final Pattern REGLE_CITEE = Pattern.compile("«[\\u00A0 ](.+?)[\\u00A0 ]»");
+
+    private static final Pattern QUESTION_DE_LA_TACHE_1 = Pattern.compile("^([^«»]+), c'est quoi\\u00A0\\?$");
+
+    private static String derniereQuestion(ItemLu item) {
+        String[] phrases = item.enonce().split("(?<=[.?!])[\\s\\u00A0]+");
+        return phrases[phrases.length - 1];
+    }
+
+    /**
+     * RSA-CE1-1, forme (a) : la question designe l'element sous une forme identique pour les trois cibles
+     * (« element, c'est quoi ? », sans chevrons) ; en cible regle elle reprend la regle citee, en cible
+     * sanction le geste de l'adulte, en cible faute l'acte decrit dans l'enonce ; elle ne reprend la
+     * regle citee dans aucune autre cible.
+     */
+    private static void verifierLaQuestionDeLaTache1(List<ItemLu> items) {
+        for (ItemLu item : items) {
+            if (!item.tache().equals("1")) {
+                continue;
+            }
+            String question = derniereQuestion(item);
+            Matcher forme = QUESTION_DE_LA_TACHE_1.matcher(question);
+            assertThat(forme.matches())
+                    .as("RSA-CE1-1 : la question de '%s' n'a pas la forme « élément, c'est quoi ? » sans chevrons, "
+                            + "commune aux trois cibles", item.enonce())
+                    .isTrue();
+            String element = forme.group(1).strip();
+            Matcher citee = REGLE_CITEE.matcher(item.enonce());
+            assertThat(citee.find()).as("RSA-CE1-1 : '%s' ne cite aucune règle entre chevrons", item.enonce())
+                    .isTrue();
+            boolean estLaRegle = element.equalsIgnoreCase(citee.group(1).strip());
+            assertThat(estLaRegle == item.cible().equals("regle"))
+                    .as("RSA-CE1-1 : la question de '%s' %s", item.enonce(), item.cible().equals("regle")
+                            ? "ne reprend pas la règle citée entre chevrons"
+                            : "reprend la règle citée alors que la cible est " + item.cible())
+                    .isTrue();
+            if (!item.cible().equals("regle")) {
+                String racine = element.split("[\\s\\u00A0]+")[0].toLowerCase();
+                racine = racine.substring(0, Math.min(3, racine.length()));
+                String ou = item.cible().equals("sanction") ? phraseDeLAdulte(item).toLowerCase()
+                        : item.enonce().substring(0, item.enonce().length() - question.length()).toLowerCase();
+                assertThat(ou)
+                        .as("RSA-CE1-1 : la question de '%s' ne reprend pas %s (« %s »)", item.enonce(),
+                                item.cible().equals("sanction") ? "le geste de l'adulte" : "l'acte de l'énoncé",
+                                element)
+                        .contains(racine);
+            }
+        }
+    }
+
+    /** RSA-CE1-1, forme (a) : regles affirmatives et negatives melangees, pour que la negation ne designe pas la regle. */
+    private static void verifierQueLesReglesMelentAffirmativeEtNegative(List<ItemLu> items) {
+        long citees = 0;
+        long negatives = 0;
+        for (ItemLu item : items) {
+            Matcher citee = REGLE_CITEE.matcher(item.enonce());
+            if (citee.find()) {
+                citees++;
+                if (citee.group(1).strip().toLowerCase().startsWith("ne ")) {
+                    negatives++;
+                }
+            }
+        }
+        assertThat(4 * negatives >= citees && 4 * negatives <= 3 * citees)
+                .as("RSA-CE1-1 : les règles citées ne mêlent pas affirmatif et négatif (%d négatives sur %d)",
+                        negatives, citees)
+                .isTrue();
     }
 
     private static String phraseDeLAdulte(ItemLu item) {
@@ -360,20 +437,6 @@ class PaquetCe1EmcRegleSanctionTest {
                     .as("RSA-CE1-1 : la sanction de '%s' n'est pas une réparation (recoller, nettoyer, "
                             + "s'excuser, refaire)", item.enonce())
                     .isTrue();
-        }
-    }
-
-    /** RSA-CE1-1 : en cible sanction, le geste demande par l'adulte est repris en tete de la question. */
-    private static void verifierQueLaQuestionReprendLeGeste(List<ItemLu> items) {
-        for (ItemLu item : items) {
-            if (item.cible().equals("sanction")) {
-                String[] phrases = item.enonce().split("(?<=[.?!])[\\s\\u00A0]+");
-                String geste = phrases[phrases.length - 1].split("[\\s\\u00A0,]+")[0].toLowerCase();
-                assertThat(phraseDeLAdulte(item).toLowerCase())
-                        .as("RSA-CE1-1 : la question de '%s' ne reprend pas le geste de l'adulte (« %s »)",
-                                item.enonce(), geste)
-                        .contains(geste);
-            }
         }
     }
 
@@ -418,6 +481,12 @@ class PaquetCe1EmcRegleSanctionTest {
     /** Pli a 744 x 551 : propositions et indice de la tache 2 sous les seuils derives de la mesure d'ines-design. */
     private static void verifierLePli(List<ItemLu> items) {
         for (ItemLu item : items) {
+            if (item.tache().equals("1")) {
+                assertThat(item.enonce().length())
+                        .as("pli : l'énoncé « %s » compte plus de %d caractères, trois lignes au plus",
+                                item.enonce(), CARACTERES_D_UN_ENONCE_DE_TROIS_LIGNES)
+                        .isLessThanOrEqualTo(CARACTERES_D_UN_ENONCE_DE_TROIS_LIGNES);
+            }
             if (item.tache().equals("2")) {
                 int caracteres = item.propositions().stream().mapToInt(String::length).sum();
                 assertThat(caracteres)
@@ -743,7 +812,7 @@ class PaquetCe1EmcRegleSanctionTest {
     }
 
     @Test
-    void rsa1LaRegleEstCiteeEntreChevronsQuandElleEstLaCibleEtSeulementAlors() {
+    void rsa1LaRegleEstCiteeEntreChevronsDansLesDouzeEnoncesDeLaTache1EtAucunDeLaTache2() {
         verifierQueLaReglePorteLesChevrons(items());
     }
 
@@ -753,8 +822,13 @@ class PaquetCe1EmcRegleSanctionTest {
     }
 
     @Test
-    void rsa1LaQuestionDeCibleSanctionReprendLeGesteDeLAdulte() {
-        verifierQueLaQuestionReprendLeGeste(items());
+    void rsa1LaQuestionDeLaTache1ADeLaMemeFormePourLesTroisCibles() {
+        verifierLaQuestionDeLaTache1(items());
+    }
+
+    @Test
+    void rsa1LesReglesCiteesMelentAffirmativeEtNegative() {
+        verifierQueLesReglesMelentAffirmativeEtNegative(items());
     }
 
     @Test
@@ -1144,9 +1218,104 @@ class PaquetCe1EmcRegleSanctionTest {
     void leJeuFautifCommiteEstRefuseSurUneQuestionQuiNeReprendPasLeGeste() {
         List<ItemLu> items = fautif("Hugo a renversé sans geste repris");
 
-        assertThatThrownBy(() -> verifierQueLaQuestionReprendLeGeste(items))
+        assertThatThrownBy(() -> verifierLaQuestionDeLaTache1(items))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("ne reprend pas le geste");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneQuestionDeFauteQuiNeReprendPasLActe() {
+        List<ItemLu> items = fautif("Omar a copié sans acte repris");
+
+        assertThatThrownBy(() -> verifierLaQuestionDeLaTache1(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ne reprend pas l'acte");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneQuestionDeReglePasCelleDeLaRegleCitee() {
+        List<ItemLu> items = fautif("Mila a arraché avec une autre règle");
+
+        assertThatThrownBy(() -> verifierLaQuestionDeLaTache1(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ne reprend pas la règle citée");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneQuestionQuiReprendLaReglePourUneAutreCible() {
+        List<ItemLu> items = fautif("Tom a dessiné avec la règle dans la question");
+
+        assertThatThrownBy(() -> verifierLaQuestionDeLaTache1(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("reprend la règle citée alors que la cible est");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneQuestionDUneAutreForme() {
+        List<ItemLu> items = fautif("Adam a triché avec une autre forme");
+
+        assertThatThrownBy(() -> verifierLaQuestionDeLaTache1(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("n'a pas la forme");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneQuestionQuiPorteDesChevrons() {
+        List<ItemLu> items = fautif("Zoé a effacé avec des chevrons dans la question");
+
+        assertThatThrownBy(() -> verifierLaQuestionDeLaTache1(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("n'a pas la forme");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurDesReglesToutesNegatives() {
+        List<ItemLu> items = fautif("Négatif");
+
+        assertThatThrownBy(() -> verifierQueLesReglesMelentAffirmativeEtNegative(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ne mêlent pas affirmatif et négatif");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnEnonceDeTache1TropLongPourLePli() {
+        List<ItemLu> items = fautif("Enzo a mouillé avec un énoncé trop long");
+
+        assertThatThrownBy(() -> verifierLePli(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("trois lignes au plus");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurTroisSondesNeuvesDeFormulation() {
+        for (String debut : List.of("Jade a ri devant les autres", "Léo a ri le maître le tape",
+                "Samir a ri sans dîner")) {
+            List<ItemLu> items = fautif(debut);
+
+            assertThatThrownBy(() -> verifierLesRefusDAvance(items))
+                    .isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("RSA-CE1-2");
+        }
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnePoserQuiNEstPasUneReparation() {
+        List<ItemLu> items = fautif("Lina a poser sans réparation");
+
+        assertThatThrownBy(() -> verifierQueLesSanctionsSontDesReparations(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("pas une réparation");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurDeuxIndicesQuiDonnentLeCritereDuCpSousUneAutreForme() {
+        for (String debut : List.of("Noé a sali avec chaque enfant", "Noé a sali avec chacune")) {
+            List<ItemLu> items = fautif(debut);
+
+            assertThatThrownBy(() -> verifierQueLIndiceNeDonnePasLeCritereDuCp(items))
+                    .isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("critère du CP");
+        }
     }
 
     @Test

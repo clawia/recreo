@@ -18,10 +18,12 @@ lignesDeReferentiel: ["EMC-CE1-02"]
 #
 # RSA-CE1-1, deux taches, chacune annoncee au-dessus de l'item par "RSA-CE1-1 tache N : cible" :
 #   tache 1 : dans une situation, qu'est-ce qui est la regle, la sanction ou la faute (l'acte). Douze items,
-#             cibles "regle", "sanction" et "faute" (le test garde au moins trois de chacune). La regle est
-#             citee entre chevrons quand elle est la cible, et seulement alors (decision de l'utilisatrice du
-#             2026-10-22 sur M1) ; le geste ou l'acte demande est repris, sans chevrons, dans la question.
-#             Les trois propositions sont toujours les memes trois noms : la regle, la sanction, la faute.
+#             cibles "regle", "sanction" et "faute" (le test garde au moins trois de chacune). La regle de la
+#             classe est citee entre chevrons dans l'enonce des douze items, quelle que soit la cible ; la
+#             question designe l'element sous une forme identique pour les trois cibles, sans chevrons
+#             ("<element>, c'est quoi ?") ; les regles sont affirmatives et negatives melangees (decision de
+#             l'utilisatrice du 2026-10-22 sur M1, forme (a) de nadia-prof). Les trois propositions sont
+#             toujours les memes trois noms : la regle, la sanction, la faute.
 #   tache 2 : a quoi sert la sanction. Douze items, cibles "reparation" (un dommage est decrit, bonne
 #             reponse "a reparer ...") et "rappel" (rien n'est abime, le geste refait correctement ce qui a
 #             ete mal fait, bonne reponse "a rappeler ..."). Les deux buts de la parenthese du referentiel
@@ -72,76 +74,76 @@ lignesDeReferentiel: ["EMC-CE1-02"]
 items:
   # RSA-CE1-1 tache 1 : regle
   # TRV-CE1-2 : b, c
-  - enonce: "Lina a déchiré une page. La maîtresse lui fait recoller la page. « On ne déchire pas les livres », c'est quoi ?"
+  - enonce: "« Respecter les murs ». Noé a sali un mur : le maître lui fait laver le mur. Respecter les murs, c'est quoi ?"
     bonneReponse: "la règle"
     distracteurs: ["la sanction", "la faute"]
-    indice: "Demande-toi : est-ce dit avant ou après ce que Lina a fait ?"
+    indice: "Dit-on cela avant ou après que Noé a sali le mur ?"
   # RSA-CE1-1 tache 1 : sanction
   # TRV-CE1-2 : a, c
-  - enonce: "Tom a dessiné sur la table. Le maître lui fait la nettoyer. Nettoyer la table, c'est quoi ?"
+  - enonce: "« Être soigneux ». Lina a déchiré un livre : le maître lui fait le recoller. Recoller le livre, c'est quoi ?"
     bonneReponse: "la sanction"
     distracteurs: ["la règle", "la faute"]
-    indice: "Cela arrive après ce qu'a fait Tom."
+    indice: "Cela arrive après ce qu'a fait Lina."
   # RSA-CE1-1 tache 1 : faute
   # TRV-CE1-2 : b, a
-  - enonce: "Noé a sali un mur. La maîtresse lui fait laver le mur. Salir un mur, c'est quoi ?"
+  - enonce: "« Travailler seul ». Omar a copié sur Zoé : le maître lui fait refaire l'exercice. Copier sur Zoé, c'est quoi ?"
     bonneReponse: "la faute"
     distracteurs: ["la sanction", "la règle"]
-    indice: "Est-ce ce que Noé a fait, ou ce qu'on lui demande ?"
+    indice: "Est-ce ce qu'Omar a fait, ou ce qu'on lui demande ?"
   # RSA-CE1-1 tache 1 : regle
   # TRV-CE1-2 : c, b
-  - enonce: "Omar a pris le stylo de Zoé. Le maître lui fait le rendre. « On demande avant de prendre », c'est quoi ?"
-    bonneReponse: "la règle"
-    distracteurs: ["la faute", "la sanction"]
-    indice: "Dit-on cela avant ou après qu'Omar a pris le stylo ?"
-  # RSA-CE1-1 tache 1 : sanction
-  # TRV-CE1-2 : c, a
-  - enonce: "Hugo a renversé exprès la tour d'Aya. Le maître lui fait la refaire. Refaire la tour, c'est quoi ?"
-    bonneReponse: "la sanction"
-    distracteurs: ["la faute", "la règle"]
-    indice: "Demande-toi : qu'est-ce que Hugo doit faire à cause de son geste ?"
-  # RSA-CE1-1 tache 1 : faute
-  # TRV-CE1-2 : a, b
-  - enonce: "Jade a taché exprès le dessin de Samir. Le maître lui fait présenter ses excuses. Tacher le dessin, c'est quoi ?"
-    bonneReponse: "la faute"
-    distracteurs: ["la règle", "la sanction"]
-    indice: "Cela est arrivé avant que le maître intervienne."
-  # RSA-CE1-1 tache 1 : regle
-  # TRV-CE1-2 : c, b
-  - enonce: "Adam a triché aux dés. Le maître lui fait rejouer son tour. « On ne triche pas au jeu », c'est quoi ?"
+  - enonce: "« Jouer franc jeu ». Adam a triché aux dés : le maître lui fait rejouer son tour. Jouer franc jeu, c'est quoi ?"
     bonneReponse: "la règle"
     distracteurs: ["la faute", "la sanction"]
     indice: "Cela dit ce qu'on doit faire, avant que le jeu commence."
   # RSA-CE1-1 tache 1 : sanction
   # TRV-CE1-2 : c, a
-  - enonce: "Enzo a mouillé le sol exprès. La maîtresse lui fait essuyer le sol. Essuyer le sol, c'est quoi ?"
+  - enonce: "« Ne pas se moquer ». Maya s'est moquée de Léo : la maîtresse lui demande de s'excuser. S'excuser, c'est quoi ?"
     bonneReponse: "la sanction"
     distracteurs: ["la faute", "la règle"]
-    indice: "La maîtresse le demande après ce qu'Enzo a fait."
-  # RSA-CE1-1 tache 1 : faute
-  # TRV-CE1-2 : b, a
-  - enonce: "Inès a jeté un papier par terre. Le maître lui fait le ramasser. Jeter le papier, c'est quoi ?"
-    bonneReponse: "la faute"
-    distracteurs: ["la sanction", "la règle"]
-    indice: "Pense à ce qui s'est passé avant que le maître parle."
-  # RSA-CE1-1 tache 1 : regle
-  # TRV-CE1-2 : b, c
-  - enonce: "Maya s'est moquée du dessin de Léo. La maîtresse lui demande de s'excuser. « On ne se moque pas », c'est quoi ?"
-    bonneReponse: "la règle"
-    distracteurs: ["la sanction", "la faute"]
-    indice: "Est-ce dit avant ou après que Maya se moque ?"
-  # RSA-CE1-1 tache 1 : sanction
-  # TRV-CE1-2 : c, a
-  - enonce: "Mila a arraché la plante de la classe. La maîtresse lui fait la replanter. Replanter la plante, c'est quoi ?"
-    bonneReponse: "la sanction"
-    distracteurs: ["la faute", "la règle"]
-    indice: "Pense à ce que la maîtresse demande à Mila ensuite."
+    indice: "Demande-toi ce que la maîtresse attend de Maya ensuite."
   # RSA-CE1-1 tache 1 : faute
   # TRV-CE1-2 : a, b
-  - enonce: "Zoé a effacé exprès le calcul de Léo. La maîtresse lui fait le réécrire. Effacer le calcul, c'est quoi ?"
+  - enonce: "« Faire attention ». Jade a taché un dessin : le maître lui fait en refaire un. Tacher un dessin, c'est quoi ?"
+    bonneReponse: "la faute"
+    distracteurs: ["la règle", "la sanction"]
+    indice: "Cela est arrivé avant que le maître parle."
+  # RSA-CE1-1 tache 1 : regle
+  # TRV-CE1-2 : b, c
+  - enonce: "« Ne pas arracher ». Mila a arraché une plante : le maître lui fait la replanter. Ne pas arracher, c'est quoi ?"
+    bonneReponse: "la règle"
+    distracteurs: ["la sanction", "la faute"]
+    indice: "Est-ce dit avant ou après que Mila arrache la plante ?"
+  # RSA-CE1-1 tache 1 : sanction
+  # TRV-CE1-2 : c, a
+  - enonce: "« Garder propre ». Inès a jeté un papier : le maître lui fait le ramasser. Ramasser le papier, c'est quoi ?"
+    bonneReponse: "la sanction"
+    distracteurs: ["la faute", "la règle"]
+    indice: "Pense à ce que le maître demande à Inès ensuite."
+  # RSA-CE1-1 tache 1 : faute
+  # TRV-CE1-2 : a, b
+  - enonce: "« Ne pas effacer ». Zoé a effacé un calcul : la maîtresse lui fait le réécrire. Effacer un calcul, c'est quoi ?"
     bonneReponse: "la faute"
     distracteurs: ["la règle", "la sanction"]
     indice: "Qu'est-ce que Zoé a fait avant que l'adulte parle ?"
+  # RSA-CE1-1 tache 1 : regle
+  # TRV-CE1-2 : c, b
+  - enonce: "« Ne pas casser ». Hugo a renversé la tour d'Aya : le maître lui fait la refaire. Ne pas casser, c'est quoi ?"
+    bonneReponse: "la règle"
+    distracteurs: ["la faute", "la sanction"]
+    indice: "Dit-on cela avant le geste de Hugo, ou après ?"
+  # RSA-CE1-1 tache 1 : sanction
+  # TRV-CE1-2 : a, c
+  - enonce: "« Ne pas abîmer ». Tom a dessiné sur la table : le maître lui fait la nettoyer. Nettoyer la table, c'est quoi ?"
+    bonneReponse: "la sanction"
+    distracteurs: ["la règle", "la faute"]
+    indice: "Cela se passe après ce que Tom a fait."
+  # RSA-CE1-1 tache 1 : faute
+  # TRV-CE1-2 : b, a
+  - enonce: "« Ne pas mouiller ». Enzo a mouillé le sol : la maîtresse lui fait l'essuyer. Mouiller le sol, c'est quoi ?"
+    bonneReponse: "la faute"
+    distracteurs: ["la sanction", "la règle"]
+    indice: "Pense à ce qui s'est passé avant que la maîtresse parle."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, e
   - enonce: "Lina a cassé exprès le jouet de Samir. Le maître lui fait le recoller. À quoi sert cette sanction ?"
@@ -210,7 +212,7 @@ items:
     indice: "Compare le cahier de Jade avant et après."
   # RSA-CE1-1 tache 2 : rappel
   # TRV-CE1-2 : f, g
-  - enonce: "Aya a tapé exprès sa règle sur la table. La maîtresse lui fait la poser. À quoi sert cette sanction ?"
+  - enonce: "Aya a lancé exprès sa trousse. La maîtresse lui fait la reposer doucement. À quoi sert cette sanction ?"
     bonneReponse: "à rappeler la consigne"
     distracteurs: ["à réparer le tort fait", "à occuper Aya"]
     indice: "Pense à ce que fera Aya ensuite."

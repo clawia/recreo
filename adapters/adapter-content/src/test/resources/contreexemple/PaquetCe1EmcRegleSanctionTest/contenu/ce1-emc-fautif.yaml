@@ -185,12 +185,6 @@ items:
     bonneReponse: "la sanction"
     distracteurs: ["la règle", "la faute"]
     indice: "Pense au geste."
-  # RSA-CE1-1 tache 1 : sanction
-  # TRV-CE1-2 : a, c
-  - enonce: "Hugo a renversé sans geste repris la tour. Le maître lui fait la refaire. Rebâtir la tour, c'est quoi ?"
-    bonneReponse: "la sanction"
-    distracteurs: ["la règle", "la faute"]
-    indice: "Pense au geste."
   # RSA-CE1-1 tache 2 : reparation
   # TRV-CE1-2 : d, g
   - enonce: "Hugo a crié avec une oreille exprès. Le maître lui tire l'oreille. À quoi sert cette sanction ?"
@@ -239,3 +233,105 @@ items:
     bonneReponse: "à réparer le tort fait"
     distracteurs: ["à venger Samir", "à oublier l'histoire"]
     indice: "Regarde bien le jouet de Samir avant et après le geste du maître."
+  # RSA-CE1-1 tache 1 : sanction
+  # TRV-CE1-2 : a, c
+  - enonce: "« Ne pas casser ». Hugo a renversé sans geste repris la tour : le maître lui fait la refaire. Rebâtir la tour, c'est quoi ?"
+    bonneReponse: "la sanction"
+    distracteurs: ["la règle", "la faute"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : faute
+  # TRV-CE1-2 : a, b
+  - enonce: "« Travailler seul ». Omar a copié sans acte repris sur Zoé : le maître lui fait refaire l'exercice. Voler un stylo, c'est quoi ?"
+    bonneReponse: "la faute"
+    distracteurs: ["la règle", "la sanction"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : regle
+  # TRV-CE1-2 : b, c
+  - enonce: "« Ne pas arracher ». Mila a arraché avec une autre règle une plante : le maître lui fait la replanter. Ne pas cueillir, c'est quoi ?"
+    bonneReponse: "la règle"
+    distracteurs: ["la sanction", "la faute"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : sanction
+  # TRV-CE1-2 : a, c
+  - enonce: "« Ne pas abîmer ». Tom a dessiné avec la règle dans la question : le maître lui fait la nettoyer. Ne pas abîmer, c'est quoi ?"
+    bonneReponse: "la sanction"
+    distracteurs: ["la règle", "la faute"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : sanction
+  # TRV-CE1-2 : a, c
+  - enonce: "« Jouer franc jeu ». Adam a triché avec une autre forme : le maître lui fait rejouer son tour. Quelle est la sanction ?"
+    bonneReponse: "la sanction"
+    distracteurs: ["la règle", "la faute"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : faute
+  # TRV-CE1-2 : a, b
+  - enonce: "« Ne pas effacer ». Zoé a effacé avec des chevrons dans la question : la maîtresse lui fait le réécrire. « Effacer un calcul », c'est quoi ?"
+    bonneReponse: "la faute"
+    distracteurs: ["la règle", "la sanction"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : regle
+  # TRV-CE1-2 : b, c
+  - enonce: "« Ne pas casser ». Négatif A a cassé : le maître lui fait le recoller. Ne pas casser, c'est quoi ?"
+    bonneReponse: "la règle"
+    distracteurs: ["la sanction", "la faute"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : regle
+  # TRV-CE1-2 : b, c
+  - enonce: "« Ne pas salir ». Négatif B a sali : le maître lui fait le laver. Ne pas salir, c'est quoi ?"
+    bonneReponse: "la règle"
+    distracteurs: ["la sanction", "la faute"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : regle
+  # TRV-CE1-2 : b, c
+  - enonce: "« Ne pas déchirer ». Négatif C a déchiré : le maître lui fait le recoller. Ne pas déchirer, c'est quoi ?"
+    bonneReponse: "la règle"
+    distracteurs: ["la sanction", "la faute"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : regle
+  # TRV-CE1-2 : b, c
+  - enonce: "« Ne pas mouiller ». Négatif D a mouillé : le maître lui fait l'essuyer. Ne pas mouiller, c'est quoi ?"
+    bonneReponse: "la règle"
+    distracteurs: ["la sanction", "la faute"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : faute
+  # TRV-CE1-2 : a, b
+  - enonce: "« Ne pas mouiller ». Enzo a mouillé avec un énoncé trop long le sol de la classe entière : la maîtresse lui fait l'essuyer. Mouiller le sol, c'est quoi ?"
+    bonneReponse: "la faute"
+    distracteurs: ["la règle", "la sanction"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 2 : reparation
+  # TRV-CE1-2 : d, g
+  - enonce: "Jade a ri devant les autres exprès. Le maître lui fait le recoller. À quoi sert cette sanction ?"
+    bonneReponse: "à réparer le tort fait"
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 2 : reparation
+  # TRV-CE1-2 : d, g
+  - enonce: "Léo a ri le maître le tape exprès. Le maître lui fait le recoller. À quoi sert cette sanction ?"
+    bonneReponse: "à réparer le tort fait"
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 2 : reparation
+  # TRV-CE1-2 : d, g
+  - enonce: "Samir a ri sans dîner exprès. Le maître lui fait le recoller. À quoi sert cette sanction ?"
+    bonneReponse: "à réparer le tort fait"
+    distracteurs: ["à venger Samir", "à oublier l'histoire"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : faute
+  # TRV-CE1-2 : a, b
+  - enonce: "Lina a poser sans réparation : la maîtresse lui fait poser une question difficile. Poser une question, c'est quoi ?"
+    bonneReponse: "la faute"
+    distracteurs: ["la règle", "la sanction"]
+    indice: "Pense au geste."
+  # RSA-CE1-1 tache 1 : regle
+  # TRV-CE1-2 : b, c
+  - enonce: "Noé a sali avec chaque enfant un mur. Le maître lui fait laver le mur. Ne pas salir, c'est quoi ?"
+    bonneReponse: "la règle"
+    distracteurs: ["la sanction", "la faute"]
+    indice: "Chaque enfant doit le savoir."
+  # RSA-CE1-1 tache 1 : regle
+  # TRV-CE1-2 : b, c
+  - enonce: "Noé a sali avec chacune un mur. Le maître lui fait laver le mur. Ne pas salir, c'est quoi ?"
+    bonneReponse: "la règle"
+    distracteurs: ["la sanction", "la faute"]
+    indice: "Chacune doit le savoir."
