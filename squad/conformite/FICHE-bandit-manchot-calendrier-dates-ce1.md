@@ -95,3 +95,11 @@ seule ; 'lire l'heure sur une horloge' reste non couvert, et l'ordre des mois es
 qu'un distracteur soit d'une famille plausible.
 
 **Signe** : `nadia-prof`, 2026-10-22.
+
+---
+
+## Rejeu du 2026-10-22 (`nadia-prof`, s57, palier 4, instance B)
+
+**lecture complete : ce1-calendrier-dates, 25 items lus** - 2026-10-22, 20:22 (UTC+02:00), lu par `date`, sur la branche
+`s57-lea-mat-ce1-11` a `003fd4fb` ; code et contenu a `f863fa7a` (`git diff --name-only f863fa7a 003fd4fb` ne nomme que le
+rapport du lot). Diff du paquet depuis `8f25fd64` : item 18, distracteurs de l'item 13, quatre indices, en-tete.
