@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1MotsInvariablesTest. Le titre porte une espace ordinaire devant le point d'interrogation, ou la regle veut U+00A0.
+jeux:
+  - id: saisie-mots-invariables-fautif
+    titre: "Quel petit mot ?"
+    consigne: "Lis la phrase, puis écris le mot qui manque."
+    mecanique: saisie
+    paquet: ce1-mots-invariables
+    nombreDeManches: 10

@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1MotsInvariablesTest. Le titre porte le niveau (ADR-0078).
+jeux:
+  - id: saisie-mots-invariables-fautif
+    titre: "Le petit mot du CE1"
+    consigne: "Lis la phrase, puis écris le mot qui manque."
+    mecanique: saisie
+    paquet: ce1-mots-invariables
+    nombreDeManches: 10

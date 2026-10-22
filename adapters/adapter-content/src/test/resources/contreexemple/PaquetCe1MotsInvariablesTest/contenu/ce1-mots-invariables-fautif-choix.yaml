@@ -1,0 +1,19 @@
+# DEGRADE : ligne conservee pour mordre le critere 5. La saisie n'est pas arbitree, le type question sert le choix parmi trois graphies.
+# La question est portee par la consigne du jeu quand l'enonce ne la porte pas.
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1MotsInvariablesTest. Paquet de type question, ses items
+# portent des distracteurs et un champ a voix haute, ou la saisie n'en veut aucun.
+schema: 1
+id: ce1-mots-invariables-fautif-choix
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Orthographier les mots invariables et les mots fréquents étudiés."
+lignesDeReferentiel: ["FRA-CE1-21"]
+items:
+  - enonce: "Le tapis est ___ le chat."
+    bonneReponse: "sous"
+    distracteurs: ["soux", "sout"]
+    indice: "Pense au contraire de « sur »."
+    texteAVoixHaute: "Le tapis est sous le chat."

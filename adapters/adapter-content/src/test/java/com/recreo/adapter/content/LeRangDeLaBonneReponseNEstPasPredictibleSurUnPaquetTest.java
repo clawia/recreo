@@ -360,10 +360,13 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             "20 items sur 20 portent des propositions textuelles : aucune des 60 propositions n'est numerique,"
                     + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
                     + " aucune proposition ne commence par un chiffre"),
+            // S57-BR-FRA-CE1-21 (s57) : le paquet passe en saisie, motif reecrit.
             Map.entry("ce1-mots-invariables",
-            "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
-                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
-                    + " aucune proposition ne commence par un chiffre"),
+            "24 items sur 24 sont des items de saisie : ils ne presentent aucune proposition, donc"
+                    + " aucun rang. Meme motif que cp-mot-dicte (lot 5a de s24, decision 10) - la"
+                    + " propriete decrit une strategie de pression sur des propositions, et en saisie"
+                    + " il n'y a ni bouton ni ordre a exploiter. Mesure du 2026-10-22 sur le paquet"
+                    + " du depot : 24 items, aucun distracteur"),
             Map.entry("ce1-mots-irreguliers",
             "20 items sur 20 portent des propositions textuelles : aucune des 60 propositions n'est numerique,"
                     + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"

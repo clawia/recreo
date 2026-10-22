@@ -473,6 +473,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // de tous (squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-
             // et-emc-ce1.md, section 4.1).
             "bandit-manchot-biens-communs-ce1",
+            // S57-BR-FRA-CE1-21 (s57) : entree neuve, FRA-CE1-21, ecrire un mot invariable (saisie).
+            "saisie-mots-invariables-ce1",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
             // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 6.3).
@@ -794,6 +796,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les nombres jusqu'à 1000",
             // S57-BR-EMC-CE1-01 (s57) : titre neuf, sans niveau (ADR-0078).
             "Les biens de tous",
+            // S57-BR-FRA-CE1-21 (s57) : titre neuf, sans niveau (ADR-0078), sans signe double.
+            "Écris le petit mot",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
             "Même sens ou sens contraire",
             // S57-BR-FRA-CE1-24 (s57) : titre neuf, sans niveau (ADR-0078).
@@ -1114,6 +1118,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // la classe est d'abord la salle) et aucune des cinq classes
             // (squad/conformite/ARBITRAGE-PREALABLE-s55-instance-a-francais-ce1.md, section 5, K5).
             "Lis bien, puis dis quelle sorte de mot est entre guillemets.",
+            // S57-BR-FRA-CE1-21 (s57) : consigne neuve, generique - elle ne nomme aucun mot d'aucun
+            // item, et finit par un point (ADR-0067).
+            "Lis la phrase, puis écris le mot qui manque.",
             // S50-ART (s50) : consigne neuve, generique - elle ne nomme aucun sujet, aucune forme
             // ni aucun materiau d'aucun item.
             "Regarde l'œuvre, puis dis ce que tu vois.",
@@ -1776,6 +1783,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S57-BR-FRA-CE1-11 (s57) : competence neuve, FRA-CE1-11, libelle du referentiel copie
             // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-11).
             "Passer d'une phrase affirmative à une phrase négative (ne... pas) et inversement.",
+            // S57-BR-FRA-CE1-21 (s57) : competence neuve, FRA-CE1-21, libelle du referentiel copie
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-21).
+            "Orthographier les mots invariables et les mots fréquents étudiés.",
             // S57-BR-MAT-CE1-01 (s57) : competence neuve, MAT-CE1-01, libelle du referentiel copie
             // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-01). Couverture
             // partielle nommee (NUM-CE1-2) : le paquet ne sert pas "dénombrer".
