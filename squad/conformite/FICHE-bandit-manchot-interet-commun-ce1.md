@@ -14,8 +14,9 @@
   de `FICHE-bandit-manchot-regle-sanction-ce1.md` (aucune forme ne donne la reponse, aucun distracteur absurde).
 - **Statut global** : **REFUSE**, prononce le 2026-10-22 par `nadia-prof` (s57, palier 4, instance A'), sur `cbfb152e`. Fiche
   ouverte le 2026-10-22 par `nadia-prof`. **Rejeu du 2026-10-23 sur `ebbb2136` : REFUSE** (M1 et M2 leves, motif neuf M3 sur
-  l'item 7), voir le second verdict plus bas.
-- **Derniere mise a jour** : 2026-10-23, rejeu.
+  l'item 7), voir le second verdict plus bas. **Second rejeu du 2026-10-23 sur `c975a7b8` : VALIDE SOUS RESERVE** (M1 et M3
+  leves, reserves 4 et 5 levees, reserves 3, 6, 7 ouvertes), voir le troisieme verdict plus bas.
+- **Derniere mise a jour** : 2026-10-23, second rejeu.
 
 ---
 
@@ -231,5 +232,104 @@ a relire par moi sur l'item 7 et le compte de M1, sans rejeu complet. Les reserv
 partage, pas le sens - il est vert sur l'item 7) ; que le lieu ne decide pas seul de la reponse (le test ne garde que le compte du
 possessif) ; qu'aucun item ne blame ; `NRC-CE1-1` contre le CP et contre `ce1-emc-biens-communs`, qu'aucun garde-fou ne compare
 sur le sujet.
+
+**Signe** : `nadia-prof`, 2026-10-23.
+
+---
+
+## Second rejeu du 2026-10-23
+
+Les verdicts du 2026-10-22 et du 2026-10-23 ci-dessus, leurs motifs et leurs reserves restent tels qu'ecrits. Ce qui suit s'y
+ajoute.
+
+**lecture complete : ce1-emc-interet-commun, 24 items lus** - 2026-10-23, ligne ecrite a 10:25 (UTC+02:00), lu par `date`, sur
+la branche `s57-sofia-emc-ce1-04` a `c975a7b8` ; contenu et code a `53f98a74` (`git diff --name-only 53f98a74 c975a7b8` ne nomme
+que le rapport). Lus : les 24 enonces, bonnes reponses, 48 distracteurs, 24 indices, l'en-tete, `rapport-sofia-dev-palier-4-lp6.md`
+section 11. Relus pour `NRC-CE1-1` : les 24 items de `ce1-emc-biens-communs`, les 11 de `cp-emc-regles-de-vie`. Les numeros
+d'items sont ceux de l'ordre du fichier, inchange depuis `ebbb2136` : 10 scenes changees en place (3, 6, 7, 11, 13, 17, 19, 21,
+22, 24), 5 indices changes (6, 11, 13, 17, 22).
+
+### Verdict du 2026-10-23 (`nadia-prof`, s57, palier 4, second rejeu) : **VALIDE SOUS RESERVE**
+
+**Commit joue** : `c975a7b8`. Jar construit dans mon worktree detache `recreo-s57-nadia-p4-lp6-jeu` place a ce commit
+(`bash outils/mvn-jdk21.sh -B -pl bootstrap -am package -DskipTests`, mesure partielle, aucun `verify`), `BUILD SUCCESS`, JDK
+21.0.10 lu dans le journal. Le YAML embarque dans le jar ne differe du blob de `c975a7b8` que par les fins de ligne
+(`diff --strip-trailing-cr` vide) et il est identique octet pour octet au fichier du worktree (`cmp`). Port 18514, *"Tomcat
+started on port 18514"* et PID 36580 lus dans mon journal, arrete par ce PID. Jeu par moi, requetes HTTP :
+
+- Huit parties en me trompant d'abord a chaque manche (le nombre d'eleves, puis la mauvaise formule) : 24 enonces servis sur
+  24, aucun inconnu du paquet. Huit autres parties ou l'indice affiche apres une erreur est compare a celui du fichier : 0 ecart
+  sur 80 manches, la bonne reponse figure parmi les trois propositions a chaque manche.
+- Manches a trois erreurs : *"Ce n'est pas ça. Appuie sur la bonne réponse : ..."*, indice maintenu. Fin de partie *"C'est
+  fini !"* atteinte.
+- Regles de surface jouees sans lire la scene, trois parties chacune : possessif (*une seule personne* sur *son*, *sa*, *ses*,
+  *toute la classe* sinon) **12 sur 30** ; mots *tableau*, *salle*, *mur* (*toute la classe* s'il y en a un, *une seule personne*
+  sinon) **20 sur 30** ; toujours *pour toute la classe* **13 sur 30**.
+
+Comptees par moi sur le texte des 24 scenes (script de poste, sans lire les declarations ni le rapport) : possessif **11 sur
+24** ; mots *tableau*, *salle*, *mur* **17 sur 24** (fausse sur 6 et 22 en portee *un*, sur 3, 11, 13, 17, 24 en portee *tous*) ;
+constante *toute la classe* **13 sur 24**. Croisees, les deux marques ne font pas mieux que 17 sur 24. Mes chiffres sont ceux du
+rapport de `sofia-sm` (11.3).
+
+**Non fait par moi** : le releve d'ecran a 744 x 551 (`ines-design`). Plus long enonce 90 caracteres, plus long indice 34, 17
+mots au plus (mesures sur le fichier).
+
+**M3 - leve.** L'item 7 est *"Lina colle son affiche des horaires au mur de la salle."*, la phrase que j'avais donnee comme
+suffisante, sans le mot *classe*. Une seule lecture : l'affiche est dans la salle, elle sert ceux qui y sont. *Horaires* reste
+moins accessible, je l'avais ecrit ; ce n'etait pas la condition et je ne l'y ajoute pas.
+
+**M1 - leve dans les deux portees.** Barre : au moins un tiers d'items ou l'appartenance de l'objet ne decide pas. Portee *tous*,
+objet personnel : **7 sur 13** (3, 7, 11, 13, 15, 17, 19), il en fallait 5. Portee *un*, objet partage : **6 sur 11** (4, 6, 10,
+14, 18, 22), il en fallait 4. La regle du possessif tombe a 11 sur 24 sur le fichier et 12 sur 30 jouee, sous la reponse
+constante : le possessif ne dit plus rien de la portee.
+
+**Reserves anterieures, au second rejeu :**
+
+- Reserve 4 : **levee.** Ma barre etait *"deux scenes de portee un dans la salle ou devant le tableau"* : items 6 (*une table de
+  la salle*) et 22 (*la phrase du tableau*). La regle des mots passe de 24 sur 24 a 17 sur 24.
+- Reserve 5 : **levee.** *Chacun* n'est plus dans aucune scene (cherche par moi dans les enonces et les indices, avec *tous*,
+  *toute*, *classe*, *range*, *remet* : aucune occurrence). Items 13, 17, 21, 24 relus ci-dessous.
+- Reserve 3, pli : **maintenue**, non mesure (`ines-design`).
+
+**La question de `sofia-sm` : 17 sur 24 suffit-il ?** Oui pour ce Done : c'est la barre que j'avais ecrite, elle est atteinte,
+et un enfant qui se dit *"c'est au tableau, tout le monde le voit"* fait encore la competence. Je ne la releve pas. **Correction
+de l'affirmation du rapport** (11.3) : abaisser la regle n'oblige pas a reecrire 5, 9, 15 ou 23. Ces quatre items font gagner la
+regle en portee *tous* ; on peut la faire perdre en portee *un*, ou elle ne se trompe que sur 2 items sur 11. Voir reserve 6.
+
+**Reserves nouvelles du 2026-10-23, non bloquantes :**
+
+6. **La regle des mots *tableau*, *salle*, *mur* a encore raison sur 9 items sur 11 en portee *un*.** Mesuree contre la barre de
+   M1 (un tiers par portee), elle passe en portee *tous* (fausse sur 5 sur 13) et non en portee *un* (fausse sur 2 sur 11).
+   Changement precis, sans toucher 5, 9, 15, 23, ni aucune portee ni appartenance : item 10, *"du coin dessin"* devient *"de la
+   salle"* (*"Mila prend des ciseaux dans la boîte de la salle pour découper."*) ; item 18, *"du coin lecture"* devient *"de la
+   salle"* (*"Hugo cherche un mot dans le dictionnaire de la salle."*). La regle tombe a 15 sur 24, fausse sur 4 sur 11 en portee
+   *un*. Les deux phrases gardent une seule lecture.
+7. **Item 13, la recreation.** *"Inès agite sa clochette pour la fin de la récréation."* La fin de la recreation sert toute la
+   cour, souvent toute l'ecole : *pour toute la classe* dit moins que la scene, comme la cour en reserve 1 du 2026-10-22. Le
+   distracteur n'en devient pas juste. A corriger : un but propre a la classe (par exemple *"pour la fin de l'atelier"*), ou la
+   formule *pour tout le monde*, que `INT-CE1-2` admet, sur cet item.
+
+**Une seule lecture defendable, scenes neuves** (`INT-CE1-1`) : 3 (*sa plante pour la leçon de sciences* : la lecon est celle du
+groupe), 6 (s'asseoir pour dessiner sert Zoe), 11 (*son annonce de la sortie à voix haute* : une annonce lue tout haut est faite
+pour etre entendue, et la sortie nomme le groupe), 13 (sonner la fin ne sert pas celle qui sonne ; voir reserve 7), 17
+(*distribue* dit que les fiches vont aux autres, *la dictée* que ce sont tous), 22 (recopier sert celle qui recopie ; le tableau
+est a tous, la copie a Maya : c'est le croisement voulu), 24 (*la file* est le rang de la classe ; *pour quelques élèves* n'y est
+pas defendable). 19 (*au mur pour la leçon*) et 21 (*la date au tableau*) gardent leur lecture. Le nombre d'eleves n'est
+defendable sur aucune des 24.
+
+**Ce qui tient** (verifie au second rejeu) : `INT-CE1-1`, blame (aucune mise en balance, aucun jugement) ; `INT-CE1-2` (les deux
+formules a chaque item, *intérêt général* et *bien commun* absents) ; `NRC-CE1-1` contre `cp-emc-regles-de-vie` (aucun geste de
+rangement ; tenir la porte n'est pas *faire la queue*) et contre `ce1-emc-biens-communs` (6 et 22, comme 4, 10, 14, 18, montrent
+un objet de tous qui ne sert qu'a un : la question reste *a qui sert le geste*, jamais *a qui est l'objet*) ; exactitude, aucune
+erreur dans les 24 situations ; indices, 24 distincts, questions de methode, aucun ne contient une proposition ; `TRV-CE1-6`,
+gestes rendus au groupe par 6 filles et 7 garcons, aucun role par genre ; `EMC-1`, `EMC-6`.
+
+**Done pedagogique prononce** sur `c975a7b8` (contenu `53f98a74`). `camille-po` peut passer `EMC-CE1-04` a `couvert-valide` une
+fois la lignee fusionnee sans changement du paquet, et faire des stories des reserves 3, 6, 7.
+
+**Je reste la seule garde** : qu'une scene n'ait qu'une lecture defendable (le test garde des mots, pas le sens) ; que les mots
+*tableau*, *salle*, *mur* ne decident pas seuls (le garde du lieu compte la liste fermee du test, pas cette regle, et ne rougirait
+pas si la reserve 6 s'aggravait) ; qu'aucun item ne blame ; `NRC-CE1-1` sur le sujet, contre le CP et contre
+`ce1-emc-biens-communs`.
 
 **Signe** : `nadia-prof`, 2026-10-23.
