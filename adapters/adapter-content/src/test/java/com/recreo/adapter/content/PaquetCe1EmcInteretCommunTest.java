@@ -105,9 +105,20 @@ class PaquetCe1EmcInteretCommunTest {
     /** La question de toute scene du paquet, avec l'espace insecable de TYP-1. */
     private static final String QUESTION = "Pour qui est-ce utile ?";
 
-    /** INT-CE1-2 : ce que l'enfant ne lit pas, dans aucun champ et dans aucune ligne du fichier. */
-    private static final Pattern MOTS_INTERDITS =
-            Pattern.compile("(?<!\\p{L})(intérêt\\s+général|bien\\s+commun)(?!\\p{L})", FLAGS);
+    /**
+     * INT-CE1-2 : ce que l'enfant ne lit pas, dans aucun champ et dans aucune ligne du fichier. Le pluriel
+     * et le trait d'union sont le meme terme : biens communs, bien-commun, intérêts généraux. La forme
+     * sans accent n'y est pas : un texte d'enfant sans accents viole deja DEC-0002.
+     */
+    private static final Pattern MOTS_INTERDITS = Pattern.compile(
+            "(?<!\\p{L})(intérêts?[\\s\\u2010\\u2011-]+(général|généraux)"
+                    + "|biens?[\\s\\u2010\\u2011-]+communs?)(?!\\p{L})", FLAGS);
+
+    /**
+     * L'identifiant du paquet voisin, cite par l'en-tete : un nom de fichier, pas un mot lu par l'enfant.
+     * Il est retire de la lecture du fichier entier, et de rien d'autre.
+     */
+    private static final String IDENTIFIANT_DU_PAQUET_DES_BIENS = "ce1-emc-biens-communs";
 
     /** INT-CE1-1 : une scene ne met pas un personnage en balance avec le groupe. */
     private static final Pattern MISE_EN_BALANCE = Pattern.compile(
@@ -120,9 +131,9 @@ class PaquetCe1EmcInteretCommunTest {
     /** INT-CE1-1 : possessifs qui disent qu'une chose ne sert qu'a celui qui la fait. */
     private static final Set<String> POSSESSIFS = Set.of("son", "sa", "ses");
 
-    /** INT-CE1-1 : lieux et objets que chacun utilise, liste fermee. */
+    /** INT-CE1-1 : lieux et objets que tous utilisent, liste fermee, sans mot qui dise la portee. */
     private static final Set<String> PARTAGES = Set.of(
-            "tableau", "cour", "ballons", "étagère", "coin", "craies", "jeu", "jeux", "chacun", "salle", "porte",
+            "tableau", "cour", "ballons", "étagère", "coin", "craies", "jeu", "jeux", "salle", "porte",
             "bibliothèque", "robinet");
 
     private static final String OBJET_PERSONNEL = "personnel";
@@ -451,6 +462,11 @@ class PaquetCe1EmcInteretCommunTest {
         return motsEntiers(scene(item)).stream().anyMatch(POSSESSIFS::contains) ? PORTEE_UN : PORTEE_TOUS;
     }
 
+    /** INT-CE1-1 : la regle de surface symetrique, qui lit un lieu ou un objet partage et ignore le reste. */
+    private static String porteeQueDonneUnMotPartage(ItemLu item) {
+        return motsEntiers(scene(item)).stream().anyMatch(PARTAGES::contains) ? PORTEE_TOUS : PORTEE_UN;
+    }
+
     /**
      * INT-CE1-1 : la portee declaree est celle de la bonne reponse ; l'appartenance declaree de l'objet est
      * celle que la scene dit par un mot de la liste fermee : un possessif pour un objet personnel, un lieu
@@ -511,6 +527,25 @@ class PaquetCe1EmcInteretCommunTest {
         }
     }
 
+    /**
+     * INT-CE1-1, reserve 4 du rejeu de nadia-prof : le lieu ne decide pas non plus de la portee. Meme seuil
+     * que pour le possessif, applique a la regle "un mot de la liste fermee donne toute la classe" : dans
+     * chaque portee, un tiers des scenes au moins est une scene ou cette regle se trompe (calcul sur le
+     * texte, non sur les declarations).
+     */
+    private static void verifierQueLeLieuNeDecidePasDeLaPortee(List<ItemLu> items) {
+        for (String portee : List.of(PORTEE_UN, PORTEE_TOUS)) {
+            List<ItemLu> deLaPortee = items.stream().filter(item -> item.portee().equals(portee)).toList();
+            long croisees = deLaPortee.stream()
+                    .filter(item -> !porteeQueDonneUnMotPartage(item).equals(portee)).count();
+            assertThat(UN_TIERS * croisees)
+                    .as("INT-CE1-1 : dans la portée %s, %d scènes sur %d où un mot de la liste fermée des lieux et "
+                            + "objets partagés ne décide pas de la portée, un tiers au moins est exigé : le lieu "
+                            + "donne la réponse", portee, croisees, deLaPortee.size())
+                    .isGreaterThanOrEqualTo(deLaPortee.size());
+        }
+    }
+
     /** INT-CE1-2 : les deux expressions interdites, dans chaque champ lu et dans le fichier entier. */
     private static void verifierLesMotsInterdits(List<ItemLu> items, String fichier) {
         for (ItemLu item : items) {
@@ -521,7 +556,7 @@ class PaquetCe1EmcInteretCommunTest {
                         .isFalse();
             }
         }
-        assertThat(MOTS_INTERDITS.matcher(fichier).find())
+        assertThat(MOTS_INTERDITS.matcher(fichier.replace(IDENTIFIANT_DU_PAQUET_DES_BIENS, "")).find())
                 .as("INT-CE1-2 : le fichier porte, même en commentaire, une expression que nadia-prof interdit")
                 .isFalse();
     }
@@ -857,6 +892,11 @@ class PaquetCe1EmcInteretCommunTest {
     }
 
     @Test
+    void int1LeLieuNeDecidePasDeLaPorteeDansAucuneDesDeuxPortees() {
+        verifierQueLeLieuNeDecidePasDeLaPortee(items());
+    }
+
+    @Test
     void int2AucuneExpressionInterditeNEstLueParLEnfantNiEcriteDansLeFichier() {
         verifierLesMotsInterdits(items(), lire(FICHIER_CONTENU));
     }
@@ -1093,6 +1133,28 @@ class PaquetCe1EmcInteretCommunTest {
     }
 
     @Test
+    void leJeuFautifCommiteEstRefuseSurUnePorteeUnOuLeLieuDecideDeToutes() {
+        List<ItemLu> items = fautifs("(sonde 44)");
+
+        assertThat(items).hasSize(3);
+        assertThatThrownBy(() -> verifierQueLeLieuNeDecidePasDeLaPortee(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("dans la portée un")
+                .hasMessageContaining("le lieu donne la réponse");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnePorteeTousOuLeLieuDecideDeToutes() {
+        List<ItemLu> items = fautifs("(sonde 45)");
+
+        assertThat(items).hasSize(3);
+        assertThatThrownBy(() -> verifierQueLeLieuNeDecidePasDeLaPortee(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("dans la portée tous")
+                .hasMessageContaining("le lieu donne la réponse");
+    }
+
+    @Test
     void leJeuFautifCommiteEstRefuseSurUnItemSansDeclarationDePortee() {
         List<ItemLu> items = fautifs("(sonde 08)");
 
@@ -1121,6 +1183,30 @@ class PaquetCe1EmcInteretCommunTest {
                     .hasMessageContaining("INT-CE1-2")
                     .hasMessageContaining("nadia-prof interdit");
         }
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurLePlurielLeTraitDUnionEtLesFormesFlechiesDesExpressionsInterdites() {
+        for (String marqueur : List.of("(sonde 46)", "(sonde 47)", "(sonde 48)", "(sonde 49)")) {
+            List<ItemLu> items = fautifs(marqueur);
+
+            assertThat(items).as(marqueur).hasSize(1);
+            assertThatThrownBy(() -> verifierLesMotsInterdits(items, ""))
+                    .as(marqueur)
+                    .isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("INT-CE1-2")
+                    .hasMessageContaining("nadia-prof interdit");
+        }
+    }
+
+    @Test
+    void leFichierQuiCiteLIdentifiantDuPaquetDesBiensNEstPasRefuseEtSonPlurielEcritEnCommentaireLEst() {
+        verifierLesMotsInterdits(List.of(), "# voir " + IDENTIFIANT_DU_PAQUET_DES_BIENS + " pour la ligne voisine.");
+
+        assertThatThrownBy(() -> verifierLesMotsInterdits(List.of(),
+                "# voir " + IDENTIFIANT_DU_PAQUET_DES_BIENS + " et les biens communs."))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("le fichier porte, même en commentaire");
     }
 
     @Test
