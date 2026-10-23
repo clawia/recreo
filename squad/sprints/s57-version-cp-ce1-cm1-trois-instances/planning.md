@@ -2345,3 +2345,7 @@ RF13 : `git diff --name-only c975a7b8` contre le commit de fusion ne nomme que c
 - Survivants G5, G11, LG5, LG11 de `yanis-qa` : ouverts, nommes dans son rapport.
 
 Cet amendement ne prononce aucun Done et ne touche ni la matrice ni un prix.
+
+## Amendement du 2026-10-23 (UTC+02:00), palier 4 : ecrit de nadia-prof livre (RF11)
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-nadia-p4-lp6` (f5ae6d5f) dans `round-two` (RF11). Deuxieme des six fusions demandees par l'utilisatrice le 2026-10-23. La branche porte `FICHE-bandit-manchot-interet-commun-ce1.md` : Done pedagogique de `LP6` **VALIDE SOUS RESERVE** sur `c975a7b8` (le jar de ce commit joue par `nadia-prof`), reserves 3, 6 et 7 ouvertes pour `camille-po`. Aucune story n'est livree par cette branche. Je ne prononce aucun Done : je fusionne ce que `nadia-prof` a ecrit, et je ne modifie ni la matrice ni un prix. Les reserves 3, 6 et 7 et le defaut `T5` restent dans l'etat decrit par l'amendement de `LP6` ci-dessus (ouverts, a `camille-po`).
