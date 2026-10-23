@@ -130,3 +130,13 @@ Repris dans `review.md` a la cloture du sprint. **Un obstacle n'est clos que qua
 | `confirmation-archunit-palier-4.md` absente | technique | `theo-archi` | confirmation | **ouvert** (section 2) |
 | Ecart 24 juges (`yanis-qa`) contre 13 (job `outils`) | qualite | `yanis-qa` | explication | **ouvert** (section 8) |
 | Rapport de tokens | capacite | `sofia-sm` | `RAPPORT-tokens.md` | **a la cloture du sprint** (en-tete) |
+
+## 10. Amendement du 2026-10-23 (UTC+02:00) : le verify rouge de la section 8, sa cause, sa correction
+
+Ecrit par `sofia-sm`, casquette Scrum Master. Il complete les sections 1, 8 et 9 sans les reecrire : ce qu'elles disent du sommet `ad7f8022` reste vrai de `ad7f8022`.
+
+- **Le verify rouge.** Section 8 : `bash outils/mvn-jdk21.sh -B clean verify` a `ad7f8022`, exit 1, 2 echecs de `AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest`, tous deux sur la ligne 2579 de `DEC-0120`.
+- **La cause.** La ligne de la reserve 3 de `LP6` (section A.173) portait 5 cellules sous un en-tete de 4 colonnes. La cellule en trop, *"la fusion"*, n'etait affichee par aucun rendu markdown. Defaut de redaction de `0a51d59c`, a `camille-po`.
+- **La correction.** `camille-po`, branche `s57-camille-p4-cloture-b`, commit `d8ea2a2b` : un commit, une ligne (`git diff --name-only round-two...s57-camille-p4-cloture-b` ne nomme que `DEC-0120`). La cellule en trop est deplacee dans la cellule `Declencheur` (`la fusion` devient la suite de *"fusionner la branche (RF11), la fusion"*). Mesure de `camille-po` : 11 classes de `bootstrap`, 79 tests, verts, en partiel. Cette mesure est partielle, pas un `verify` complet.
+- **La fusion.** `21fcb32f`, precedee de sa ligne RF11 dans `planning.md` (`9a100f04`). **RF10 respecte cette fois** : `bash outils/verifier-lignee.sh` lance dans le worktree de la branche avant la fusion, exit 0, arbre propre. L'ecart a RF10 note en section 1 pour `806bc78a` et `ad7f8022` reste dit : ces deux fusions ont eu leur script apres, pas avant.
+- **L'obstacle de la section 9** (*ligne a 5 cellules dans `DEC-0120` A.173*) : le fichier qui le tranche existe (`d8ea2a2b`, fusionne par `21fcb32f`). Il n'est tenu pour clos qu'avec le `verify` complet de la section 10.1.
