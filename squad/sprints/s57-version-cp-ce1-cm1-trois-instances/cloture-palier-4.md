@@ -153,3 +153,23 @@ Arbre mesure : `38a77bf9` (sommet de `round-two` apres la fusion `21fcb32f` et l
 - **`outils`** : le balayage de `ci.yml` rejoue a la main : `outils/*-test.sh` 6, `squad/outils/*/*-test.sh` 2, `outils/*-test.py` 5, **13 juges purs, 0 rouge**. Ce chiffre est celui du job, pas celui des 24 de `yanis-qa` : l'ecart de la section 8 n'est pas explique ici.
 - **Ce que ce geste ne couvre pas.** La mesure porte sur `38a77bf9`, pas sur le commit qui inscrit cette section : ce commit ne change qu'un fichier de `squad/`, et `prefixes` et `chemins` sont relances sur lui dans le rapport du geste. **Le `verify` complet n'est pas relance sur ce dernier commit.** La CI distante n'est lue par personne : aucun resultat ci-dessus n'est celui de GitHub.
 - **L'obstacle de la section 9** (*ligne a 5 cellules dans `DEC-0120` A.173*) est **clos** : `d8ea2a2b` le tranche, et le `verify` complet vert ci-dessus le confirme.
+
+## 11. Amendement du 2026-10-23 (UTC+02:00) : l'obstacle "confirmation ArchUnit absente" des sections 2 et 9 est clos
+
+Ecrit par `sofia-sm`, casquette Scrum Master. Les sections 2 et 9 ci-dessus disent `confirmation-archunit-palier-4.md` absente et l'obstacle **ouvert** ; elles sont laissees telles quelles, c'est cet amendement qui les corrige.
+
+**Le fichier existe.** `confirmation-archunit-palier-4.md`, ecrit par `theo-archi` sur la branche `s57-theo-p4-archunit` (commit `798de7b3`), fusionne dans `round-two` par `417bfc7c`. Verifie sur disque apres la fusion. **L'obstacle est clos par ce fichier.**
+
+**Ce que le fichier mesure lui-meme.** `M1` : les 15 classes porteuses de regles ArchUnit au sommet `f3b06989`, mesure partielle avec `-am`, sortie 0, **88 tests, 0 echec, 0 erreur, 0 ignore**. Compte de regles par la methode d'`ADR-0104` : 41 declarations `static final ArchRule`, 38 `@ArchTest`, 16 fichiers, identiques a `eb267ba7` et a `f3b06989` (ecart nul sur le palier) ; 39 regles reelles dans 15 fichiers. Aucune regle ajoutee, modifiee ni affaiblie, aucun `ADR` change (`V1` a `V5`).
+
+**Ce qu'il reprend d'un autre rapport, sans le relancer.** `M2` : le `verify` complet de **3232 tests, 0 echec**, mesure par moi a `38a77bf9` (section 8). `theo-archi` ne l'a pas relance et le dit ; il le rend valable pour `f3b06989` par `M3` (`git diff --name-only 38a77bf9 f3b06989` ne rend que `cloture-palier-4.md`). Son fichier ne remplace donc pas un `verify` complet du sommet.
+
+**Dettes d'architecture qu'il nomme, aucune payee, aucune close par moi :**
+
+| Code | Dette | Destinataire |
+|---|---|---|
+| `DA1` | garde generique `E3` non ecrit ; story `S57-GARDE-CE1-PROPOSITIONS-ET-SUPPORTS` reportee | `camille-po`, puis le developpeur engage |
+| `DA6` | recensement d'`ADR-0013` aveugle aux chemins assembles par segments | `theo-archi`, amendement d'`ADR-0013` |
+| `DA7` | `verifier-chemins.sh` ne voit pas la forme `X--...` (ecart 39) | `theo-archi`, amendement d'`ADR-0010` avec son cas de test |
+
+Les fusions des trois ecrits du 2026-10-23 (`s57-theo-p4-archunit`, `s57-theo-p5-dessins`, `s57-camille-p5-proposition`) sont portees par `planning.md` (une ligne RF11 chacune). Les tables des fichiers fusionnes ont ete passees a un scanner de cellules naif (barres non echappees comptees, backticks ignores, hors depot) : 10 fichiers, 334 tables, 1885 lignes de corps, 0 ecart. Le `verify` complet du sommet final, ses etapes et les jobs `prefixes`, `chemins` et `outils` sont lances apres ce commit, sur un worktree detache ; leur resultat est dans le compte rendu de cette fusion et n'est pas recopie ici. Aucun Done n'est prononce par ce fichier.
