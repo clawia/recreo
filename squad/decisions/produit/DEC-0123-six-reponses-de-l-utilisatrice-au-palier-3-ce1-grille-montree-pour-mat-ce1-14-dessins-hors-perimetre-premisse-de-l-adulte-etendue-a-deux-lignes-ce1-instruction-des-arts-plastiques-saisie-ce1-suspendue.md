@@ -265,3 +265,12 @@ La section 7.3 laissait `Q-09` suspendue a l'avis de `nadia-prof` sur `R6`. Cet 
 - **3.2 (motifs)** : le poids et `PAR-13` ne sont ni leves ni reaffirmes. La borne du *oui* sur le poids (septieme amendement : 161 863) tient ; au-dela, la question se repose. `PAR-13` est un jugement de `nadia-prof`.
 - **Septieme amendement, deuxieme puce** : le second triangle rectangle de `MAT-CE1-15` a sa reponse (`D2`) : rotation de l'existant, sans octet. Un fichier neuf demanderait une reponse de plus.
 - **Aucune cellule de matrice ne bouge.** Le changement de code que `D5` appelle n'est pas decide : il n'a pas de proprietaire tant que l'avis de `theo-archi` n'est pas rendu.
+
+## Amendement du 2026-10-23, neuvieme (`camille-po`, `Q-06` : cadence des cinq lignes et sens de `PAR-13`)
+
+**Aucun texte d'origine n'est reecrit.** Statut de `DEC-0123` : `Acceptee`, inchange. Les mots, relayes par l'agent lanceur (forme 2, `DEC-0062` G) : *"Deux lots par palier"* et *"Oui, second fichier SVG"*. Detail : `DEC-0120` A.192 a A.195.
+
+- **3.2 point 1** (*"une seule ligne a dessin par sprint, et pas tant qu'A' existe"*, `PAR-13`) : pour les cinq lignes rouvertes par le huitieme amendement, la reponse choisit **deux lots illustres par palier en B**. Cette cadence ne tient pas avec la phrase citee : son sens change pour ces lignes. **Le texte neuf de `PAR-13` et le sort de la clause *"pas tant qu'A' existe"* sont a confirmer par `nadia-prof`** ; je ne les ecris pas.
+- **Septieme amendement, deuxieme puce** : le second triangle rectangle de `MAT-CE1-15` est un **second fichier SVG** (*"Oui, second fichier SVG"*), qui remplace la rotation sans octet du huitieme amendement. Le *oui* sur le poids couvre ce fichier et lui seul.
+- **Septieme amendement, borne de 161 863** : tient. Les cinq lignes (87 000 a 150 000 octets estimes) restent hors du *oui* ; la question se repose a l'ouverture de chaque lot.
+- **Aucune cellule de matrice ne bouge.**

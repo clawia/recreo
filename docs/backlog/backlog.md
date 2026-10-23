@@ -23959,3 +23959,14 @@ Arbre : `round-two` a `f3b06989`. **Rien au-dessus n'est reecrit.** Aucun identi
 - **Critere neuf** : `planning.md` porte une ligne par lot (lot, commit du premier jet, heure) ecrite avant le premier `verify` complet du paquet. `grep -c "premier jet" squad/sprints/s57-version-cp-ce1-cm1-trois-instances/planning.md` rend **0** aujourd'hui (rouge), au moins 2 apres.
 - **Ce qu'aucune commande ne tient** : que la lecture ait eu lieu **avant** le `verify`. `yanis-qa` compare l'heure de l'ecrit de `nadia-prof` et l'heure de la ligne de `planning.md`.
 - **Prix** : compris dans le prix du lot (1,5), **chiffre par `nadia-prof`**. Le premier jet est le paquet avec ses dessins. `S57-BR-FRA-CE1-03` (paquet ecrit hors sprint) n'est pas concernee, ma lecture a confirmer par `nadia-prof`.
+
+## Annotation du 2026-10-23 (UTC+02:00), troisieme : `LP7`, second fichier SVG (`camille-po`, `DEC-0120` A.192)
+
+**Rien au-dessus n'est reecrit.** Mots de l'utilisatrice (forme 2, `DEC-0062` G) : *"Oui, second fichier SVG"*. Elle remplace la rotation sans octet de l'annotation precedente, qui exigeait du code (avis de `theo-archi`).
+
+### `S57-BR-MAT-CE1-15` : un fichier de plus
+
+- **Critere** : le commit de `LP7` ajoute **exactement un** fichier sous `adapters/adapter-web/src/main/resources/static/illustrations` pour le triangle rectangle, dont la rotation ou les proportions sont dans le dessin. Aujourd'hui : 0 fichier ajoute par `LP7` (rouge) ; 56 fichiers et 69 203 octets dans le repertoire (mesure de `theo-archi`, `f3b06989`). Apres : 57 fichiers avant `LP9`, `POIDS_TOTAL_MAXIMUM` a la valeur que le commit mesure (environ 69 800).
+- **Ne s'ecrit pas avant** la reponse de `nadia-prof` sur l'angle ou les proportions (90, 180 ou 270 degres gardent les sommets dans le cadre, 45 degres en sort) : le fichier n'est pas ecrit, aucun critere de forme n'est invente ici.
+- **Poids** : le *oui* couvre ce fichier et lui seul ; tout autre fichier demande une reponse de plus.
+- **Ordre** : `LP9` fusionne d'abord, `LP7` recalcule le cliquet sur le sommet fusionne.
