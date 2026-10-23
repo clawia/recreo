@@ -2550,3 +2550,90 @@ Ecrits au backlog (annotation du 2026-10-22, apres `S57-BR-FRA-CE1-21`) :
 | `theo-archi` | `QP4` (attribut contre les mots proposes par le clavier) |
 
 **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne fixe aucun prix, n'engage aucun poste, n'amende ni `planning.md`, ni `LP9`, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. **Decisions de produit prises ici** : (1) rejeux de `LP3` et `LP5` places, 0,25 chacun, `propose` ; (2) `PAR-8` inchange a 5,0, aucun relevement ecrit, valeurs de repli proposees ; (3) matrice 154 / 202 ; (4) `LP6` non lance. **Changement de code decide** : les items de `LP3` (18) et de `LP5` (14, 24), proprietaires `lea-dev` et `sofia-sm`, stories engagees avec critere. `OV3` et `AP2` restent ouverts. Aucun identifiant de condition neuf : `QU2` n'a pas de tiret.
+
+
+## Amendement du 2026-10-23, vingt-huitieme (`camille-po`, palier 4 : cloture, ce qui reste ouvert apres la fusion de `LP1` a `LP6` et de `p4-10`)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : `round-two` a `c08e49ab`, tout fusionne. Le detail ligne par ligne est dans `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/arbitrage-camille-cloture-palier-4.md`. Ce que je n'ai pas fait : lancer un jar, jouer un contenu, lever une reserve, fixer un prix, engager un poste, pousser.
+
+### A.171 Les mots, et ce qu'ils m'autorisent
+
+Cites tels que l'agent lanceur me les transmet, 2026-10-23 (forme 2 de `DEC-0062` G, non lus de sa main) : *"clos ou reporte ce qui reste ouvert apres la fusion, ecris la cloture et push round-two"*. Ils m'autorisent a dire, pour chaque point ouvert, **CLOS** (avec la raison) ou **REPORTE** (ou, a qui, quand, quel declencheur). Ils ne m'autorisent pas a lever une reserve (`nadia-prof` seule), a trancher une forme (`theo-archi`), ni a pousser (la poussee est a `sofia-sm`, `A.152`).
+
+### A.172 La matrice apres fusion : 154 / 202 devient 156 / 202
+
+Les trois paquets sont ceux que `nadia-prof` a joues : `git diff <commit joue> HEAD -- <paquet>` rend 0 ligne pour `f863fa7a` (`ce1-calendrier-dates`), `5b9bb648` (`ce1-emc-droit-devoir`) et `c975a7b8` (`ce1-emc-interet-commun`) ; les trois entrees sont au catalogue (`grep -c "paquet: <nom>$"` rend 1 chacune).
+
+| Ligne | Avant | Apres | Cellule |
+|---|---|---|---|
+| `MAT-CE1-11` | `non couvert` | **`en cours`** | VALIDE SOUS RESERVE, plafond `en cours` ; mention de couverture de `nadia-prof` recopiee mot pour mot ; *"lire l'heure sur une horloge"* non couvert |
+| `EMC-CE1-03` | `non couvert` | **`couvert-valide`** | VALIDE SOUS RESERVE au rejeu ; deux reserves non bloquantes recopiees |
+| `EMC-CE1-04` | `non couvert` | **`couvert-valide`** | VALIDE SOUS RESERVE au second rejeu ; historique des deux refus ; reserves 3, 6, 7 recopiees telles que la fiche les formule |
+
+**Commande de la "Methode du compte"** (celle de `MATRICE-couverture.md`, reprise telle quelle, lancee avant puis apres, une commande par etat, sortie lue) : avant `cv 154`, `ec 6`, `nc 42`, `ncb 75`, total 277, 154 / 202 = 76,24 % ; **apres `cv 156`, `ec 7`, `nc 39`, `ncb 75`, total 277, denominateur 202, 156 / 202 = 77,23 %**. Par niveau, atteignables / `couvert-valide` : CP 59 / 52, CE1 64 / 38, CM1 79 / 66. Compteur de version (A.32), second nombre : 156 + 7 = 163 / 202 = 80,69 % par la formule, son critere 2 (CI verte sur l'arbre) non lu par moi ; **A.148 annoncait 164, l'ecart est `LP9`, non engage**. Les lignes passent parce que les lots sont fusionnes et que les verdicts sont sur `round-two`, pas sur la foi d'une CI.
+
+### A.173 `LP6` : les reserves 3, 6 et 7, et la condition de composition
+
+| Reserve | Decision | Raison | Declencheur |
+|---|---|---|---|
+| 3, pli | **CLOS**, aucune story | `ines-design` a mesure 0 element sous le pli a `c975a7b8`, 41 px de marge, sur `round-two`. **`nadia-prof` l'a levee** le 2026-10-23, 11:07 (`5d038278`, branche `s57-nadia-p4-lp6b`, lu par `git log round-two..s57-nadia-p4-lp6b` : un commit, **non fusionne** au moment de cet ecrit). Je ne la leve pas moi-meme : je constate sa levee | `sofia-sm` : fusionner la branche (RF11) | la fusion |
+| 6, item 10 et 18 | **REPORTE** : `S57-EMC-CE1-04-R1`, palier 5 | modifier le paquet change ce qu'elle a joue, c'est un lot neuf ; ses mots : *"La regle tombe a 15 sur 24"* ; elle ecrit de 6 et 7 : *"Elles peuvent etre reportees. Un lot qui les corrige [...] je relis alors les items touches [...] sans rejeu complet"* ; la barre de la fiche est tenue (17 sur 24), reserve non bloquante | composition du palier 5 ; apres `S57-GARDE-PAQUET-INTERET-COMMUN` |
+| 7, item 13 | **REPORTE** : meme story | idem ; ses mots : *"'pour toute la classe' dit moins que la scene"* | idem |
+
+**Condition de composition de `LP6` (point 9), ce que je retiens.** Elle etait **tenue a la lettre** : *"aucun worktree avant un verdict de `LP4` ou `LP5` sans refus"* ; les verdicts VALIDE SOUS RESERVE de `LP4` (rejeu 4, `70470aae`, 2026-10-22 15:18) et de `LP5` (`d5298c19`, 20:26) precedent le premier commit de `LP6` (`e85a93fe`, 23:08). **Elle n'a pas protege ce qu'elle visait** : `nadia-prof` 3.3 recommandait de ne pas prendre `LP6` tant qu'A' n'avait pas montre un lot ecrit dans le palier sans refus ; A.169 l'avait dite non tenue. Les faits : trois paquets ecrits dans le lot en A', trois refus au premier passage (`LP4` trois refus avant son verdict, `LP5` un, `LP6` deux). Sa recommandation s'est verifiee ; la condition que j'avais retenue ne la reproduisait pas. Je n'en tire aucune regle pour le palier 5 sans l'avis de `nadia-prof` et l'utilisatrice : le constat est la ligne suivante.
+
+### A.174 Le defaut `T5` et les survivants de `yanis-qa` : une story, hors `PAR`, prix 0
+
+**REPORTE** : `S57-GARDE-PAQUET-INTERET-COMMUN` (backlog, annotation du 2026-10-23). Elle porte `T5` (mutation M3 de `theo-archi`, 74 tests verts), `G5` et `LG5` (seuil de 3 a 4), `G11` et `LG11` (filtre par portee), et la remarque sur `.as(marqueur)` des sondes 46 a 49. **Aucun de ces points ne touche un paquet** : le Done de `LP6` n'est pas rouvert. Criteres verifies contre l'existant : les cinq mutations sont **vertes aujourd'hui** (74 sur 74), donc les criteres sont rouges ; le critere sur le message est rouge (*"Expecting code to raise a throwable."*). **Proprietaire du code** : `sofia-sm` (auteure du test) ; forme `theo-archi` ; morsures `yanis-qa`. **Je ne decide ni la forme ni le moment dans le palier** (`theo-archi` : *"Le moment [...] est a `sofia-sm`"*). Declencheur : avant `S57-EMC-CE1-04-R1`, parce que cette story retouche des scenes que le garde protege avec une marge nulle en portee *tous* (5 pour 5).
+
+### A.175 Les reserves ouvertes de `LP1`, `LP3`, `LP4`, `LP5` (`LP2` : aucune hors pli)
+
+| Lot | Reserve (mots de la fiche) | Decision | Story | Declencheur |
+|---|---|---|---|---|
+| `LP1` | pli a la revelation, 17 items sur 24 a 13 px sous le pli (mesure `ines-design`, `f8d5d875`) | **REPORTE** | `S57-PLI-MOTS-INVARIABLES-REVELATION` (A.168), report 1 | `nadia-prof` lit la mesure et maintient ou leve ; leve : story fermee sans suite |
+| `LP1` | clavier : un mot propose au-dessus du clavier n'est pas un mot ecrit | **REPORTE** | `S57-SAISIE-MOTS-PROPOSES-PAR-LE-CLAVIER` (A.168), report 1 | reponse de `theo-archi` a `QP4` ; effet verifie par l'utilisatrice sur l'appareil |
+| `LP3` | pli jamais mesure | **REPORTE** | `S57-PLI-LP3-LP5-MESURE` (neuve), report 1 | une mesure d'`ines-design`, puis lecture de `nadia-prof` |
+| `LP4` | items 6 et 10 (`"Jade a taché exprès un dessin"`, `"Laisser jouer"`) | **REPORTE** | `S57-EMC-CE1-02-R1` (A.168), report 1 | composition du palier 5 ; prix a `nadia-prof` |
+| `LP4` | pli non remesure | **CLOS cote produit** (A.168 le disait) | aucune | `ines-design` a mesure 0 sur 24 a `f36d83bc` (section T2) ; la lecture est a `nadia-prof` |
+| `LP5` | indice de l'item 19 vers *lui donner un cadeau* | **REPORTE** | `S57-EMC-CE1-03-R1` (neuve), report 1 | composition du palier 5 ; prix a `nadia-prof` |
+| `LP5` | pli jamais mesure | **REPORTE** | `S57-PLI-LP3-LP5-MESURE` | idem `LP3` |
+| `LP2` | pli non remesure | **CLOS cote produit** | aucune | 0 sur 21 (section R4) ; lecture de `nadia-prof` |
+
+Les criteres correctifs des deux stories neuves ont la valeur d'aujourd'hui a cote (`grep -c "font pour Hugo"` rend 1, `grep -l` des releves de `LP3` et `LP5` rend 0 fichier).
+
+### A.176 Le prix des rejeux de `LP6`, et `PAR-8`
+
+**Registre** `registre-prix-palier-4.txt` (20 lignes) : les lots fusionnes avec un Done passent d'`engage` a `facture` (geste de cloture, A.165 le laissait) ; les rejeux de `LP3` et `LP5` de `propose` a `facture`, au prix de `nadia-prof` (0,25 chacun). **Rejeu 1 de `LP6`, 0,50, `facture`** : son estimation du 2026-10-22 (*"je l'estime a 0,5, ce n'est pas une mesure"*), reprise telle quelle. **Rejeu 2 de `LP6` : `non-chiffre`, 0,00** : elle ecrit *"Je ne l'estime pas en prix : une phrase"* et le commit joue change dix scenes et cinq indices (fiche, second rejeu) ; **je ne fixe pas le prix a sa place**. `awk -F'|'` lance ce jour : `A 2.25`, `Ap 5.50`, `B 4.75`, **`total 12.50`** ; par etat `facture 9.50`, `consomme 1.50`, `non-engage 1.50`, `non-chiffre 0.00`.
+
+**`PAR-8` est depasse en A' : 5,50 sur 5,0**, avant le prix du rejeu 2. A.166 l'annoncait : *"Un rejeu de plus dans A' [...] rejeu de `LP6`, depasse"*. **Aucun relevement n'est ecrit** : les mots *"si besoin releve le plafond"* (A.164) nomment `LP3`, `LP5` et `p4-10`, pas `LP6`. A' = 5,50 plus le prix du rejeu 2 (5,75 a 0,25 ; 6,00 a 0,50). **`QU2` reste ouverte, avec ces valeurs** (A.170 l'avait posee a 5,25 ; le besoin existe maintenant). Le palier est clos : le depassement est un fait comptable, il ne bloque rien, mais il est ecrit comme depassement et non comme relevement. Total du palier 12,50 sur 20,0.
+
+### A.177 Reports a la cloture : `LP9`, `LP7`, `LP8`, stories hors `PAR`
+
+Regle d'A.66 a A.73 et d'A.150. **`AP2` de `composition-palier-4.md` est tranchee** : `LP9` compte pour son **deuxieme ecartement** (premier : palier 3, A.118 ; palier 4 : non engage, les conditions d'A.149 non ecrites a la cloture, `OV5` non tenu). `composition-palier-4.md` l'ecrivait *"premier report"* a l'ouverture ; les deux comptes disent le meme fait, A.150 est le mien et le plus complet.
+
+| Poste | Decision | Raison | Destinataire | Declencheur |
+|---|---|---|---|---|
+| `LP9` `MAT-CE1-14` grille | **REPORTE**, deuxieme ecartement ; **un troisieme demande une `DEC`** (A.150) | aucune des trois conditions d'A.149 n'a ete ecrite pendant le palier ; aucun worktree ouvert, aucun octet de dessin | `nadia-prof` (arbitrage, taille de grille), `ines-design` (glyphes, mesure), `theo-archi` (20 SVG, test croise), `lea-dev` (poids) | **composition du palier 5** : soit les conditions sont ecrites **avant** la composition et le lot est engage, soit une `DEC` avec le motif s'ecrit ; pas de troisieme inscription non engagee sans `DEC` |
+| `LP7` `MAT-CE1-15` | **REPORTE**, deuxieme ecartement (ecrit en A.150) ; un troisieme demande une `DEC` | motif d'A.150 inchange ; paquet a reecrire | `nadia-prof`, `camille-po` | idem |
+| `LP8` `FRA-CE1-03` | **REPORTE**, deuxieme ecartement ; un troisieme demande une `DEC` | **aucune story n'est ecrite** (`grep -c "^### .*FRA-CE1-03" docs/backlog/backlog.md` rend 0) ; je ne l'ecris pas ici, hors de la demande | `camille-po` : la story avant la composition | idem ; premier de la file du palier 5 |
+| `S57-GARDE-NOMBRE-DE-MANCHES` | **CLOS, solde par l'entree** | `p4-10` fusionne (`f9f7f0fc`) | - | - |
+| `S57-TYP1-TEXTES-DE-GABARIT`, `S57-MESSAGE-PARTIE-PERDUE` | **CLOS, retirees** (`DEC-0125`) | troisieme non-entree, A.150 | utilisatrice, pour confirmer | une phrase d'elle, ou une mesure |
+| `S57-GARDE-CE1-PROPOSITIONS-ET-SUPPORTS` | **REPORTE**, report 1 | **ecart entre la story (`CA4` absent) et `theo-archi` (`CA4` fourni)** non tranche par moi ; `nadia-prof` dit si `Q-X1` vaut `CA4` | `nadia-prof` | sa ligne ; puis composition du palier 5 |
+
+Non traites ici, et dits : la story des commentaires de `src/` (ecarts 33, 40 a 44, part code des 37 et 38 : **0 titre au backlog**, a moi) et la story de `LP8`. Les deux sont a ecrire avant la composition du palier 5 ; **je ne les ai pas lues pour les ecrire**.
+
+### A.178 `DEC-0125` et le registre d'identifiants
+
+`DEC-0125` est nee de ce geste (retrait de deux stories, section A.177). **Aucun identifiant de condition ou de reserve n'est alloue** : les stories et les rangs de ce texte (`S57-...`, `A.171`) ne sont pas des identifiants de condition ; `REGISTRE-identifiants.md` n'est pas modifie. `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` est lance sur ce diff (perimetre `-pl bootstrap -am`, nomme dans `arbitrage-camille-cloture-palier-4.md`).
+
+### A.179 Routage
+
+| A qui | Quoi |
+|---|---|
+| `nadia-prof` | lire les releves de pli de `LP2` et `LP4` ; chiffrer le rejeu 2 de `LP6` ; dire si `Q-X1` vaut `CA4` ; dire si une marge de rejeu de 0,50 par instance suffit pour un paquet ecrit dans le lot (A' : 2,00 de rejeux sur trois lots, hors le rejeu 2 de `LP6`) |
+| `sofia-sm` | fusionner `s57-nadia-p4-lp6b` (`5d038278`) ; `S57-GARDE-PAQUET-INTERET-COMMUN` (code, moment), `S57-EMC-CE1-04-R1` et `S57-EMC-CE1-03-R1` (code, apres la garde) ; la composition du palier 5 ; `cloture-palier-4.md` ; la poussee |
+| `theo-archi` | la forme de `T5` ; `QP4` |
+| `ines-design` | `S57-PLI-LP3-LP5-MESURE` |
+| l'utilisatrice | `QU2` (A' a 5,50 sur 5,0 plus le rejeu 2) ; confirmer ou refuser `DEC-0125` ; si le palier 5 s'ouvre (`QP7`) |
+
+**Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne fixe aucun prix (le rejeu 1 est l'estimation de `nadia-prof`, le rejeu 2 n'est pas chiffre), n'engage aucun poste, n'amende ni `planning.md`, ni `composition-palier-4.md`, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni aucun paquet, ni le catalogue. **Decisions de produit prises ici** : (1) matrice **156 / 202** ; (2) reserves 6 et 7 de `LP6`, `T5` et les survivants : stories ecrites, non engagees, ordre garde puis correction ; (3) reserve 3 de `LP6` : close, levee par `nadia-prof` (`5d038278`, a fusionner) ; reserves de pli de `LP2` et `LP4` : closes cote produit, a lever par `nadia-prof` seule ; (4) `LP9`, `LP7`, `LP8` : deuxieme ecartement, un troisieme demande une `DEC` ; (5) deux stories hors `PAR` retirees (`DEC-0125`) ; (6) `AP2` tranchee ; (7) `PAR-8` : depassement ecrit, aucun relevement. **Changements de code decides, avec proprietaire** : `S57-GARDE-PAQUET-INTERET-COMMUN` (`sofia-sm`), `S57-EMC-CE1-04-R1` et `S57-EMC-CE1-03-R1` (`sofia-sm`), tous non engages. **Ouvert** : `QU2`, `OV3`, le prix du rejeu 2 de `LP6`, la story de `LP8`, la story des commentaires de `src/`.
