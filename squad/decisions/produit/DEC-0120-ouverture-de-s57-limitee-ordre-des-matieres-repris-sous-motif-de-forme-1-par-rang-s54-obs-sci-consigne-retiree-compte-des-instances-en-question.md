@@ -2576,7 +2576,7 @@ Les trois paquets sont ceux que `nadia-prof` a joues : `git diff <commit joue> H
 
 | Reserve | Decision | Raison | Declencheur |
 |---|---|---|---|
-| 3, pli | **CLOS**, aucune story | `ines-design` a mesure 0 element sous le pli a `c975a7b8`, 41 px de marge, sur `round-two`. **`nadia-prof` l'a levee** le 2026-10-23, 11:07 (`5d038278`, branche `s57-nadia-p4-lp6b`, lu par `git log round-two..s57-nadia-p4-lp6b` : un commit, **non fusionne** au moment de cet ecrit). Je ne la leve pas moi-meme : je constate sa levee | `sofia-sm` : fusionner la branche (RF11) | la fusion |
+| 3, pli | **CLOS**, aucune story | `ines-design` a mesure 0 element sous le pli a `c975a7b8`, 41 px de marge, sur `round-two`. **`nadia-prof` l'a levee** le 2026-10-23, 11:07 (`5d038278`, branche `s57-nadia-p4-lp6b`, lu par `git log round-two..s57-nadia-p4-lp6b` : un commit, **non fusionne** au moment de cet ecrit). Je ne la leve pas moi-meme : je constate sa levee | `sofia-sm` : fusionner la branche (RF11), la fusion |
 | 6, item 10 et 18 | **REPORTE** : `S57-EMC-CE1-04-R1`, palier 5 | modifier le paquet change ce qu'elle a joue, c'est un lot neuf ; ses mots : *"La regle tombe a 15 sur 24"* ; elle ecrit de 6 et 7 : *"Elles peuvent etre reportees. Un lot qui les corrige [...] je relis alors les items touches [...] sans rejeu complet"* ; la barre de la fiche est tenue (17 sur 24), reserve non bloquante | composition du palier 5 ; apres `S57-GARDE-PAQUET-INTERET-COMMUN` |
 | 7, item 13 | **REPORTE** : meme story | idem ; ses mots : *"'pour toute la classe' dit moins que la scene"* | idem |
 
