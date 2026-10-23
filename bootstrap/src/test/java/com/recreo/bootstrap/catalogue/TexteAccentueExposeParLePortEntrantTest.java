@@ -489,6 +489,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-
             // et-emc-ce1.md, section 4.3).
             "bandit-manchot-droit-devoir-ce1",
+            // S57-BR-EMC-CE1-04 (s57) : entree neuve, EMC-CE1-04, l'interet d'un seul et de tous
+            // (squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-
+            // et-emc-ce1.md, section 4.4).
+            "bandit-manchot-interet-commun-ce1",
             // S57-BR-FRA-CE1-21 (s57) : entree neuve, FRA-CE1-21, ecrire un mot invariable (saisie).
             "saisie-mots-invariables-ce1",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
@@ -820,6 +824,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "La règle et la sanction",
             // S57-BR-EMC-CE1-03 (s57) : titre neuf, sans niveau (ADR-0078).
             "Les droits et les devoirs",
+            // S57-BR-EMC-CE1-04 (s57) : titre neuf, sans niveau (ADR-0078).
+            "Pour un seul ou pour tous",
             // S57-BR-FRA-CE1-21 (s57) : titre neuf, sans niveau (ADR-0078), sans signe double.
             "Écris le petit mot",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
@@ -1842,6 +1848,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/enseignement-moral-et-civique/competences-ce1.md, ligne EMC-CE1-03).
             "Associer quelques droits de l'élève à l'école aux devoirs qui les accompagnent "
                     + "(le droit d'apprendre et le devoir de laisser les autres apprendre).",
+            // S57-BR-EMC-CE1-04 (s57) : competence neuve, EMC-CE1-04, libelle du referentiel copie
+            // (squad/programme/enseignement-moral-et-civique/competences-ce1.md, ligne EMC-CE1-04).
+            "Distinguer, dans une situation simple, ce qui sert l'intérêt d'une seule personne "
+                    + "de ce qui sert l'intérêt de tous.",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
             // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
             "Trouver un synonyme ou un contraire d'un mot fréquent.",

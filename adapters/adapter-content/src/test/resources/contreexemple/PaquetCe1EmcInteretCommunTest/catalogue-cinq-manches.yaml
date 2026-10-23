@@ -1,0 +1,8 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1EmcInteretCommunTest. Le jeu ne porte que cinq manches, ou DEC-0121 veut dix.
+jeux:
+  - id: bandit-manchot-interet-commun-fautif
+    titre: "Pour un seul ou pour tous"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-interet-commun
+    nombreDeManches: 5

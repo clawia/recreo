@@ -2325,3 +2325,23 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusi
 ## Amendement du 2026-10-22 (UTC+02:00), palier 4 : ecrit de yanis-qa livre (RF11)
 
 Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-yanis-p4-lp3-lp5` (fc064977) dans `round-two` (RF11). Quatrieme des quatre des cinq fusions demandees par l'utilisatrice le 2026-10-22 (branches de documents). La branche porte `rapport-qualite-palier-4-lp5-lp3.md` (rapport qualite de `LP5` a `db5e0e6d` et de `LP3` a `c8404173`, sommets de lots anterieurs a leur rejeu) ; il ne juge pas les sommets fusionnes `fdeff890` et `003fd4fb`. Aucune story n'est livree par cette branche, aucun Done n'est prononce, et je ne modifie ni la matrice ni un prix : je fusionne ce que yanis-qa a ecrit.
+
+## Amendement du 2026-10-23 (UTC+02:00), palier 4 : ligne de `LP6` livree (RF11, `composition-palier-4.md` 5.2)
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-sofia-emc-ce1-04` dans `round-two` (RF11). Premiere des six fusions demandees par l'utilisatrice le 2026-10-23 (ordre : le lot, la fiche de `nadia-prof`, les branches de documents de `theo-archi`, `yanis-qa`, `ines-design`).
+
+| Story | Competence | Instance, developpeur | Engagement | Rejeux (prix de `nadia-prof`) | Prix du lot | Sommet joue |
+|---|---|---|---|---|---|---|
+| `S57-BR-EMC-CE1-04`, paquet `ce1-emc-interet-commun` | `EMC-CE1-04` | A', `sofia-sm` (developpeuse) | engage sous condition a l'ouverture (p4-9) ; la condition (verdict de `LP4` ou `LP5` sans refus) est a `camille-po`, je ne la juge pas | deux refus puis un second rejeu ; prix des rejeux non inscrit a `registre-prix-palier-4.txt` a la date de cet amendement, a `camille-po` | 1,0 | `c975a7b8`, VALIDE SOUS RESERVE (fiche `FICHE-bandit-manchot-interet-commun-ce1.md`, branche `s57-nadia-p4-lp6`) |
+
+Ecrits exiges par `composition-palier-4.md` 5.3 point 3, sur le disque, sur leurs branches, tous au sommet `c975a7b8` : lignee de `theo-archi` (branche `s57-theo-p4-lp6`, `lecture-theo-lignee-palier-4-lp6-passe-3.md`, lignee saine, aucun defaut bloquant), rapport qualite de `yanis-qa` (branche `s57-yanis-p4-lp6`, `verify` 3232 vert, survivants G5, G11, LG5, LG11 nommes), Done pedagogique de `nadia-prof` (branche `s57-nadia-p4-lp6`), releve au pli de `ines-design` (branche `s57-ines-p4-lp6`, 0 element sous le pli). **Je n'ai pas juge ma propre branche** : la lignee est lue par `theo-archi`, la qualite par `yanis-qa`, la pedagogie par `nadia-prof` ; ma part est la mecanique de fusion (RF10, RF4, RF8, RF13, RF3), dont les sorties sont dans `RAPPORT.md` et `cloture-palier-4.md`.
+
+RF13 : `git diff --name-only c975a7b8` contre le commit de fusion ne nomme que ce fichier (`planning.md`) : ni le paquet, ni un gabarit, ni une feuille de style, ni du code sous `src/main`. `nadia-prof` a joue le jar de `c975a7b8`.
+
+**Etat des reserves et du defaut, a l'instant de la fusion,, sans en lever aucun :**
+
+- Reserves 3, 6 et 7 de `nadia-prof` : **ouvertes**, pour `camille-po` (stories a ecrire ; la fiche les nomme dans son verdict). Elles sont non bloquantes ; je ne les ai ni levees ni traitees. La reserve 3 (pli) est portee *"maintenue, non mesuree"* dans la fiche ; le releve de `ines-design` (0 element sous le pli) est posterieur et la fiche n'a pas ete amendee : constat, pas levee.
+- Defaut `T5` de `theo-archi` (aucun test n'interdit les mots de portee *chacun*, *tous*, *toute* dans les scenes ; mutation M3 verte) : **ouvert**, non bloquant, **route a `camille-po`** pour une story a ecrire. Aucun test n'est ajoute par cette fusion.
+- Survivants G5, G11, LG5, LG11 de `yanis-qa` : ouverts, nommes dans son rapport.
+
+Cet amendement ne prononce aucun Done et ne touche ni la matrice ni un prix.

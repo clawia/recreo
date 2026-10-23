@@ -1,0 +1,14 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1EmcInteretCommunTest. Deux entrees servent le meme paquet.
+jeux:
+  - id: bandit-manchot-interet-commun-fautif
+    titre: "Pour un seul ou pour tous"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-interet-commun
+    nombreDeManches: 10
+  - id: bandit-manchot-interet-commun-fautif-bis
+    titre: "Un seul ou tous"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-emc-interet-commun
+    nombreDeManches: 10

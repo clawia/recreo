@@ -340,6 +340,10 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
                     + " valeurDe rend null sur chacune. Mesure du 2026-10-22 sur le paquet du depot :"
                     + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-emc-interet-commun",
+            "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-22 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
             Map.entry("ce1-accord-groupe-nominal",
             "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
                     + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
