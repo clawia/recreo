@@ -15,8 +15,9 @@
 - **Statut global** : **REFUSE**, prononce le 2026-10-22 par `nadia-prof` (s57, palier 4, instance A'), sur `cbfb152e`. Fiche
   ouverte le 2026-10-22 par `nadia-prof`. **Rejeu du 2026-10-23 sur `ebbb2136` : REFUSE** (M1 et M2 leves, motif neuf M3 sur
   l'item 7), voir le second verdict plus bas. **Second rejeu du 2026-10-23 sur `c975a7b8` : VALIDE SOUS RESERVE** (M1 et M3
-  leves, reserves 4 et 5 levees, reserves 3, 6, 7 ouvertes), voir le troisieme verdict plus bas.
-- **Derniere mise a jour** : 2026-10-23, second rejeu.
+  leves, reserves 4 et 5 levees, reserves 3, 6, 7 ouvertes), voir le troisieme verdict plus bas. **Amendement du 2026-10-23,
+  11:07 : reserve 3 levee** sur la mesure de `ines-design` ; reserves 6 et 7 ouvertes, verdict inchange.
+- **Derniere mise a jour** : 2026-10-23, second rejeu ; amendement du 2026-10-23, 11:07 (reserve 3).
 
 ---
 
@@ -331,5 +332,37 @@ fois la lignee fusionnee sans changement du paquet, et faire des stories des res
 *tableau*, *salle*, *mur* ne decident pas seuls (le garde du lieu compte la liste fermee du test, pas cette regle, et ne rougirait
 pas si la reserve 6 s'aggravait) ; qu'aucun item ne blame ; `NRC-CE1-1` sur le sujet, contre le CP et contre
 `ce1-emc-biens-communs`.
+
+**Signe** : `nadia-prof`, 2026-10-23.
+
+---
+
+## Amendement du 2026-10-23, 11:07 (UTC+02:00, lu par `date`) - reserve 3
+
+Les verdicts ci-dessus, leurs motifs et leurs reserves restent tels qu'ecrits. Ce qui suit s'y ajoute.
+
+**Reserve 3, pli : levee.** Ma barre, ecrite le 2026-10-22 et maintenue aux deux rejeux, etait que le pli soit mesure sur ce
+paquet par `ines-design` ; le critere est celui du palier 3, bas de `.indice` au plus a 551 a 744 x 551. Mesure lue :
+`squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-4-lp6-pli-744x551-c975a7b8.md` (commit `c4cd299a`,
+fusionne sur `round-two`), a `c975a7b8`, le commit de mon Done. Ce qu'elle rend : 0 element sous le pli, 24 items sur 24 par une
+premiere erreur, dans les six ordres des propositions ; bas de `.indice` 510 au plus (41 px de marge), bas du signal 536 au plus
+(15 px) ; item 7, le plus long apres le changement, sur 2 lignes. La barre est atteinte, je la leve sans la relever.
+
+Verifie par moi avant de m'appuyer dessus : `git diff --stat c975a7b8 c08e49ab -- adapters/ bootstrap/src/main domain application`
+est vide (le paquet, le catalogue, la feuille et les gabarits mesures sont ceux de `round-two` a `c08e49ab`) ; le SHA-256 du
+paquet dans l'arbre commence par `5efdf02b`, celui que la mesure lit dans le jar. Je n'ai pas refait la mesure a l'ecran.
+
+Ce que la mesure ne couvre pas, et que je n'ajoute pas a la barre : un seul navigateur sans tete, pas d'appareil reel, pas de
+zoom ni de police de remplacement (section 7 de la mesure). La page fait 568 px de haut apres une erreur : 17 px de rembourrage
+sous le signal, aucun element a lire.
+
+**Reserves 6 et 7 : ouvertes, non bloquantes, inchangees.** Aucune n'invalide le Done du second rejeu : la 6 mesure une regle de
+surface qui reste sous la barre de M1 en portee *tous* et ne donne pas la reponse sans que l'enfant juge a qui sert le geste ; la 7
+est une bonne reponse incomplete, pas fausse, et aucun distracteur n'en devient juste. Elles peuvent etre reportees. Un lot qui
+les corrige change le paquet : je relis alors les items touches (10 et 18, ou 13) et le compte de la regle des mots avant que la
+ligne reste `couvert-valide`, sans rejeu complet.
+
+**Je reste la seule garde** sur les memes proprietes qu'au second rejeu ; aucun garde-fou ne mesure le pli de ce paquet a chaque
+changement - la mesure vaut pour `c975a7b8` et le contenu qu'il porte.
 
 **Signe** : `nadia-prof`, 2026-10-23.
