@@ -2637,3 +2637,137 @@ Non traites ici, et dits : la story des commentaires de `src/` (ecarts 33, 40 a 
 | l'utilisatrice | `QU2` (A' a 5,50 sur 5,0 plus le rejeu 2) ; confirmer ou refuser `DEC-0125` ; si le palier 5 s'ouvre (`QP7`) |
 
 **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne fixe aucun prix (le rejeu 1 est l'estimation de `nadia-prof`, le rejeu 2 n'est pas chiffre), n'engage aucun poste, n'amende ni `planning.md`, ni `composition-palier-4.md`, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni aucun paquet, ni le catalogue. **Decisions de produit prises ici** : (1) matrice **156 / 202** ; (2) reserves 6 et 7 de `LP6`, `T5` et les survivants : stories ecrites, non engagees, ordre garde puis correction ; (3) reserve 3 de `LP6` : close, levee par `nadia-prof` (`5d038278`, a fusionner) ; reserves de pli de `LP2` et `LP4` : closes cote produit, a lever par `nadia-prof` seule ; (4) `LP9`, `LP7`, `LP8` : deuxieme ecartement, un troisieme demande une `DEC` ; (5) deux stories hors `PAR` retirees (`DEC-0125`) ; (6) `AP2` tranchee ; (7) `PAR-8` : depassement ecrit, aucun relevement. **Changements de code decides, avec proprietaire** : `S57-GARDE-PAQUET-INTERET-COMMUN` (`sofia-sm`), `S57-EMC-CE1-04-R1` et `S57-EMC-CE1-03-R1` (`sofia-sm`), tous non engages. **Ouvert** : `QU2`, `OV3`, le prix du rejeu 2 de `LP6`, la story de `LP8`, la story des commentaires de `src/`.
+
+## Amendement du 2026-10-23, vingt-neuvieme (`camille-po`, palier 5 : les reponses de l'utilisatrice a `D1` a `D5` et aux autres points de la proposition)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : `round-two` a `f3b06989`, branche `s57-camille-p5-proposition`. Le detail et les calculs sont dans `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/proposition-camille-palier-5-ce1.md`. Ce que je n'ai pas fait : prononcer un Done, fixer un prix, engager un poste, ecrire une composition, engager un lot de dessins, chiffrer a la place de `nadia-prof`, creer `registre-prix-palier-5` (il n'existe pas), pousser.
+
+### A.180 Les mots, et ce qu'ils m'autorisent
+
+Cites tels que l'agent lanceur me les transmet, 2026-10-23 (forme 2 de `DEC-0062` G, non lus de sa main). Ils m'autorisent a consigner chaque reponse et a en ecrire les consequences de produit ; ils ne m'autorisent ni a chiffrer, ni a lever un plafond, ni a engager un lot.
+
+| Point | Ses mots | Consigne en |
+|---|---|---|
+| `QU2` | "consigner le depassement" | A.186 |
+| `DEC-0125` | "on retire" | A.187 |
+| `QP7` | "on les compose au palier 5" | A.187 |
+| Regle de `LP6` | "on ajoute", puis "Lecture avant verify" | A.184 |
+| Confirmation d'`ArchUnit` du palier 4 | "theo-archi l'ecrit" | A.187 |
+| s57 | "pas encore ferme" | A.187 |
+| `QP4` | "j'ai teste de mon cote c'est ok" | A.187 |
+| `T5` | "ok" | A.187 |
+| `D1` | "on met la barre a 20" | A.181 |
+| `D2` | "ok pour faire une rotation" | A.182 |
+| `D3` | "on reste dans s57" | A.183 |
+| `D4` | "on prend l'autre option" | A.184 |
+| `D5` | "option 3 et 5 lignes" | A.185 |
+
+### A.181 `D1` : la borne du palier 5 est 20,0
+
+**Decision** : borne de `PAR-9` au palier 5 = **20,0**, comme au palier 4 (*"on monte a 20"*, A.126 a A.131). **Ce que cela change** : le total du palier (7,75 a 8,50 au bareme, 8,05 a 10,24 au surcout mesure de 0,10 a 0,58 par lot, proposition 4.3) ne peut plus depasser la borne ; il en reste 9,76 a 12,25. **Ce que cela ne change pas** : la composition (A : `LP8` ; B : `LP7`, `LP9` ; A' : trois stories de reserve ; C n'ouvre pas, `PAR-13`), le prix d'un lot (bareme et surcout de `nadia-prof`), et `PAR-8` par instance : a trois instances, 3 x 5,0 = 15,0 est le plafond d'instance, sous la borne. B passe 5,0 au-dela de 0,50 de surcout par lot (5,16 a 0,58). **Aucun lot n'est ajoute pour remplir la borne : c'est le stock de lots qui limite** (`nadia-prof`, `arbitrage-nadia-palier-4.md` : *"ce qui limite le palier, c'est le stock de lots, pas la borne"*). Un depassement de `PAR-8` en B s'ecrirait comme depassement, pas comme relevement, sauf mot contraire (`arbitrage-nadia-palier-4.md` 8.4) ; **`D1` ne parle pas de `PAR-8` et je ne l'etends pas**. La capacite de `nadia-prof` n'est pas la borne : elle dit dans son arbitrage prealable du palier 5 si elle tient la composition.
+
+### A.182 `D2` : le second triangle rectangle de `LP7` se tente par rotation, sans octet
+
+**Decision** : on tente la **rotation du dessin existant** (`figure-triangle-rectangle`, 1 fichier aujourd'hui), **sans octet neuf**. `theo-archi` est saisi en parallele (l'agent lanceur) pour dire si elle suffit a la condition de `nadia-prof` (*"au moins deux dessins qui different par l'orientation ou les proportions"*, `arbitrage-nadia-palier-4.md` 3.2). **Ce que la reponse ne couvre pas** : un fichier neuf. Si `theo-archi` juge la rotation insuffisante, le *oui* de l'utilisatrice sur le poids (A.146) ne couvre toujours que `LP9` et la question se repose (proposition, section 9, premiere question). **Changement de code decide, avec proprietaire** : la rotation est faite dans `LP7` par `lea-dev` (B), apres l'avis de `theo-archi` sur sa forme ; la story `S57-BR-MAT-CE1-15` porte le critere (annotation de backlog du 2026-10-23, seconde).
+
+### A.183 `D3` : le palier 6 est dans s57, la consequence est ecrite
+
+**Decision** : s57 reste ouvert apres le palier 5 ; **il n'y a pas de s58 a la cloture du palier 5** ; un palier 6 existe dans s57. **La consequence, dite a l'utilisatrice avant sa reponse et maintenue** : aucune ligne `couvert-valide` n'est possible dans s57 sans la levee des regles de `nadia-prof` (`FRA-CE1-08` et `-09`, questionner le monde, arts plastiques ; elle a refuse d'avance de les lever, et l'utilisatrice ne le lui demande pas) ou sans le materiau de `D5`. **Le contenu du palier 6 est donc a composer a partir de `D5` et des corrections ; je ne l'invente pas.** Gain au plus : s57 clos a 43 / 64 = 67,2 % `couvert-valide` pour le CE1 (CM1 83,5 %, CP 88,1 %), compteur de version 46 / 64 apres le palier 5. **Report compte** : les lignes de questionner le monde sont absentes des compositions des paliers 2, 3 et 4 (`grep -c "QLM-CE1"` rend 0 sur `composition-palier-2.md`, `-3.md`, `-4.md`) et du palier 5 ; leur lot est dit *"non auditable a s57"* par `nadia-prof` (`arbitrage-nadia-preparation-palier-3-ce1.md` 1.3, 2026-10-19). Le palier 6 est le cinquieme palier de s57 sans une seule de ces lignes. **C'est une direction choisie, avec ses mots, et non un report silencieux.** **Ce que `D3` ne dit pas** : combien de paliers apres le 5 ni la borne du palier 6. Je n'ecris ni *"un seul"* ni *"autant que necessaire"* : la question se pose a la composition du palier 6, quand l'avis de `theo-archi` et les prix de `nadia-prof` sont ecrits. **Changement de planning** : `planning.md` n'est pas amende ici ; proprietaire `sofia-sm`, avec la composition du palier 5.
+
+### A.184 `D4` : la regle "Lecture avant verify" vaut pour tout paquet ecrit ou reecrit dans un lot
+
+**Decision** : la regle de `LP6` (A.173, ses mots *"Lecture avant verify"*), qui visait **un lot d'A' sur un paquet neuf**, vaut pour **tout paquet ecrit ou reecrit dans un lot**, toutes instances. **`LP7` (`ce1-figures-planes`, reecrit) et `LP9` (`ce1-deplacements-quadrillage`, neuf avec ses dessins) en relevent** : deux lectures de `nadia-prof` au palier 5, en B. Le contenu de la regle : `nadia-prof` lit le premier jet du paquet **avant** le premier `verify` complet ; elle ecrit les items qu'elle refuserait et leur motif, **sans verdict** ; le developpeur les corrige avant son `verify` ; le Done reste prononce sur le commit joue. **Le prix** : la lecture et la correction qui la suit sont **comprises dans le prix du lot** (1,5 pour `LP7` et `LP9`), pas sur la marge de rejeu ; **le prix est a `nadia-prof`**, elle dit si 1,5 tient. Un refus apres le `verify` se facture comme avant. **Ma lecture, a confirmer par `nadia-prof` dans son arbitrage prealable** : `LP8` (paquet ecrit hors sprint, seulement branche par le lot) et les trois stories de reserve d'A' (corrections d'items de paquets du catalogue, relues *"sans rejeu complet"*, A.173) n'en relevent pas ; le premier jet de `LP7` et de `LP9` est le paquet **avec** ses dessins. **A.173 ecrivait** *"Je n'en tire aucune regle pour le palier 5 sans l'avis de `nadia-prof` et l'utilisatrice"* : l'utilisatrice a repondu, **l'avis de `nadia-prof` sur le prix et la portee fine n'est pas ecrit** ; l'ecart est dit, il se ferme dans son arbitrage prealable. **Changement de code** : aucun. **Changement de processus a proprietaire** : `lea-dev` (declencheur : commit du premier jet et ligne de `planning.md`) ; `sofia-sm` (`planning.md`) ; `nadia-prof` (ecrit `lecture-nadia-premier-jet-<paquet>.md`). Criteres de story : annotation de backlog du 2026-10-23, seconde.
+
+### A.185 `D5` : les dessins sont rouverts pour cinq lignes de mathematiques CE1, sous reserve de l'avis de cout de `theo-archi`
+
+**Decision** : `DEC-0123` 3 (`Q-06`) est **rouverte pour cinq lignes** : `MAT-CE1-01` (denombrer), `-10` (balance, recipient), `-11` (horloge), `-02` (ligne graduee), `-09` (regle graduee). **Sous reserve** de l'avis de cout de `theo-archi`, saisi en parallele : **aucun lot de dessins n'est engage avant lui**, aucune story n'est ecrite pour leur moitie image (leurs criteres dependent de la forme de chaque dessin), aucun prix n'est fixe. **Ce que `D5` ne fait pas** : lever un plafond `en cours` (`nadia-prof` seule, ligne par ligne) ; couvrir `QLM-CE1-09`, `QLM-CE1-11` et la moitie dessinee de `QLM-CE1-07`, qui restent hors perimetre ; poser le poids. **Trois faits que la composition du palier 6 devra regler**, aucun n'est decide ici : (1) `PAR-8` et `PAR-2` : les cinq lignes sont de B seule, trois lots au plus et 5,0 ; deux lots illustres coutent 4,00, trois 5,50 au bareme ; (2) **`PAR-13`**, cite par `DEC-0123` 3.2 point 1 (*"une seule ligne a dessin par sprint, et pas tant qu'A' existe"*) : que les cinq lignes y entrent est un jugement de `nadia-prof` ; si elles y entrent, `D3` et `D5` ne tiennent pas ensemble dans s57 au-dela de la limite qu'elle ecrit ; (3) le poids : la borne du *oui* de `DEC-0123` (septieme amendement) est 161 863 ; si l'avis chiffre au-dela, la question se repose, et sa reponse a `D5` ne cite pas le poids. **Changement de code** : **non decide aujourd'hui**. Il n'a pas de proprietaire tant que l'avis n'est pas rendu, et je l'ecris comme tel : pas une decision appliquee. Au retour de l'avis, j'ecris les stories et la route a `sofia-sm` dans le meme geste ; proprietaire attendu : `lea-dev` (B). Aucun dessin de ces lignes n'est au catalogue : aucun enfant ne peut jouer un contenu non valide dans l'intervalle.
+
+### A.186 `QU2` : le depassement de `PAR-8` en A' est consigne comme relevement, valeur non fermee
+
+**Decision** : le depassement de `PAR-8` en A' au palier 4 est **consigne comme relevement du plafond de A' au palier 4**. **Valeur** : 5,50 plus le prix du rejeu 2 de `LP6`, soit 5,75 a 0,25 ou 6,00 a 0,50 (A.176) ; **la valeur finale s'ecrit quand `nadia-prof` a chiffre le rejeu 2** (la ligne est `non-chiffre`, 0,00, dans `registre-prix-palier-4.txt`) : je ne chiffre pas a sa place et je ne modifie pas le registre ici. **Portee** : A', palier 4, ce depassement. Ni B, ni le palier 5, ni le texte de `PAR-8` (5,0) ne sont touches. Au geste suivant (le chiffre de `nadia-prof`) : la ligne du registre passe a `facture`, et un amendement ecrit la valeur. `QU2` est fermee dans son principe, ouverte dans son chiffre.
+
+### A.187 Les autres reponses
+
+| Point | Consignation |
+|---|---|
+| `QP7` | `LP9`, `LP7`, `LP8` sont **composees au palier 5, sans `DEC` d'ecartement**. C'est la premiere branche de l'alternative d'A.177 (*"soit les conditions sont ecrites avant la composition et le lot est engage, soit une `DEC`"*). **La regle d'A.150 tient** : composer n'est pas engager ; un lot sans ses conditions est un troisieme ecartement de fait. Les conditions sont ecrites en section 6 de la proposition, avec leur proprietaire. La story de `LP8` est ecrite (`S57-BR-FRA-CE1-03`, `e18b13e8`) |
+| `DEC-0125` | **Confirmee** : `S57-TYP1-TEXTES-DE-GABARIT` et `S57-MESSAGE-PARTIE-PERDUE` restent retirees. Aucune regle de `DEC-0125` ne change ; sa section 6 (*"A confirmer par l'utilisatrice"*) est remplie. Annotation ajoutee a la `DEC` |
+| `QP4` | Reponse de l'utilisatrice consignee : `S57-SAISIE-MOTS-PROPOSES-PAR-LE-CLAVIER` est **fermee** (annotation de backlog de `e18b13e8`). Appareil et constat precis non connus de moi ; a redemander a l'entree de `FRA-CE1-29`. A `theo-archi`, facultatif : une ligne qui dit `QP4` sans objet |
+| `T5` | `S57-GARDE-PAQUET-INTERET-COMMUN` est **engagee**, hors `PAR`, prix 0, avant `S57-EMC-CE1-04-R1` : A.174 la disait reportee, elle ne l'est plus. Proprietaire du code : `sofia-sm` ; forme : `theo-archi` ; morsures : `yanis-qa` |
+| Confirmation d'`ArchUnit` du palier 4 | `confirmation-archunit-palier-4.md` n'existe pas (`ls` du dossier du sprint rend `-2` et `-3` seulement) ; elle est a `theo-archi`, au plus tard avant la cloture du palier 5 |
+| s57 | *"pas encore ferme"* : s57 reste ouvert, voir A.183 |
+
+### A.188 Les regles de `DEC-0123`, de `DEC-0125` et de ce texte que ces reponses changent
+
+1. **`DEC-0123` 3.1 et 3.3 (`Q-06`)** : **`MAT-CE1-02` et `MAT-CE1-09` sortent de la liste des lignes hors perimetre**. Leur condition de retour (*"une nouvelle reponse de l'utilisatrice"*) est remplie par `D5`. `MAT-CE1-01`, `-10`, `-11` n'etaient pas sur cette liste ; `D5` les nomme aussi. `QLM-CE1-09`, `QLM-CE1-11` et la moitie dessinee de `QLM-CE1-07` **restent hors perimetre**. Amendement (huitieme) ajoute a `DEC-0123`. Les motifs de 3.2 (poids, `PAR-13`) ne sont ni leves ni reaffirmes (A.185).
+2. **`DEC-0123` septieme amendement, dernier alinea de la deuxieme puce** (*"le second triangle rectangle de `MAT-CE1-15` demande sa propre reponse"*) : repondu par `D2`, sans octet.
+3. **`DEC-0125`** : aucune regle ne change ; confirmation seule. Annotation ajoutee.
+4. **`DEC-0120` A.150 et A.177** (`QP7`) : une branche choisie, la regle du troisieme ecartement inchangee. **A.173, derniere phrase** (aucune regle pour le palier 5 sans l'avis de `nadia-prof` et de l'utilisatrice) : une regle est consignee (A.184), l'avis de `nadia-prof` reste a ecrire. **A.174** (`T5` reportee) : engagee. **A.176** (`QU2` ouverte) : fermee dans son principe (A.186).
+
+### A.189 La matrice
+
+**Aucun statut ne change** : aucun Done pedagogique n'est prononce depuis A.172. `squad/programme/MATRICE-couverture.md` n'est pas modifiee. Les cellules de `MAT-CE1-01`, `-02`, `-09`, `-10`, `-11` ne citent ni `DEC-0123` ni `Q-06` (`grep` sur ces lignes rend 0) : aucune reference de cellule n'est perimee par `D5`. Les chiffres cites (38 `couvert-valide` sur 64, CE1) sont ceux de la proposition, calcules par la commande de la "Methode du compte" a `f3b06989`, non recomptes dans ce geste.
+
+### A.190 Routage
+
+| A qui | Quoi |
+|---|---|
+| `theo-archi` | avis sur la rotation du triangle rectangle (`D2`) ; avis de cout des dessins de `D5` (collection a denombrer, balance et recipient, horloge, ligne graduee, regle graduee) et leur poids ; `confirmation-archunit-palier-4.md` ; la forme de `T5` ; facultatif : `QP4` sans objet |
+| `nadia-prof` | arbitrage prealable du palier 5 : prix, instance B, deux lots illustres dans un palier (`LP7`, `LP9`) ; prix des deux lectures de `D4` et sa portee fine ; chiffre du rejeu 2 de `LP6` (relevement de `QU2`) ; `PAR-13` et les cinq lignes de `D5` ; levee de plafond ligne par ligne, quand le moment vient |
+| `sofia-sm` | composition du palier 5 ; `planning.md` : palier 6 dans s57 (`D3`), ligne de premier jet (`D4`), garde `T5` ; file de fusion |
+| `lea-dev` | `LP7` (rotation, paquet), `LP9` (20 dessins, paquet), declencheur de la lecture avant `verify` |
+| `camille-po` | stories des cinq lignes de `D5` apres l'avis ; relevement chiffre de `QU2` apres `nadia-prof` ; story des commentaires de `src/` (0 titre au backlog, report 1 a ma charge, A.177) |
+| l'utilisatrice | **aucune question aujourd'hui.** Trois questions a declencheur ecrit : un fichier neuf pour `LP7` (si la rotation ne suffit pas) ; le poids des dessins de `D5` (si l'avis depasse 161 863) ; le nombre de paliers de s57 apres le 5 et la borne du palier 6 (a la composition du palier 6) |
+
+**Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne fixe aucun prix, n'engage aucun poste ni lot, n'amende ni `planning.md`, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni paquet, ni catalogue, ni matrice, ni registre de prix. **Decisions de produit prises ici** : (1) borne du palier 5 a 20,0 ; (2) rotation sans octet pour `LP7` ; (3) palier 6 dans s57, pas de s58 a la cloture du palier 5, contenu non invente ; (4) regle "Lecture avant verify" etendue a tout paquet ecrit ou reecrit dans un lot ; (5) dessins rouverts pour cinq lignes, sous reserve de l'avis de `theo-archi`, sans engagement ; (6) `QU2` consigne comme relevement de `PAR-8` en A', valeur a fermer ; (7) `QP7`, `DEC-0125`, `QP4`, `T5` consignes. **Changements de code decides, avec proprietaire** : la rotation de `LP7` (`lea-dev`) ; la garde de `T5` (`sofia-sm`). **Changement de code non decide, dit** : les dessins de `D5`. **Aucun identifiant de condition ou de reserve n'est alloue** : `REGISTRE-identifiants.md` n'est pas modifie.
+
+## Amendement du 2026-10-23, trentieme (`camille-po`, palier 5 : second fichier SVG de `LP7`, cadence de `D5`, fusion sans poussee, avis de `theo-archi` sur les dessins)
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; ce qui corrige A.182, A.185 et A.190 est dit ci-dessous. **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : `round-two` a `f3b06989`. Source technique : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/avis-theo-palier-5-dessins.md` (branche `s57-theo-p5-dessins`, commit `1c7eb423`, **non fusionne** dans la branche de cet amendement). Ce que je n'ai pas fait : fusionner (a `sofia-sm`), pousser, ecrire un nouveau texte de `PAR-13` (a `nadia-prof`), fixer un prix, engager un lot, ecrire une story d'image, modifier la matrice ou le registre.
+
+### A.191 Les mots, et ce qu'ils m'autorisent
+
+Cites tels que l'agent lanceur me les transmet, 2026-10-23, forme 2 de `DEC-0062` G (non lus de sa main).
+
+| Point | Ses mots | Consigne en |
+|---|---|---|
+| `LP7`, second fichier (question 1 de l'avis) | "Oui, second fichier SVG" | A.192 |
+| `D5`, cadence | "Deux lots par palier" | A.193, A.194 |
+| Fusion | "Fusionner sans pousser" | A.196 |
+
+L'avis de `theo-archi` est lu sur la branche `s57-theo-p5-dessins`, dans un autre worktree : je le cite, je ne l'ai pas fusionne. Ses octets par dessin et N = 10 sont ses suppositions ; ses mesures (56 fichiers, 69 203 octets, triangle de 513 octets) sont a `f3b06989`.
+
+### A.192 `LP7` : un second fichier SVG, qui corrige A.182
+
+**A.182 supposait que la rotation se fait sans octet. L'avis dit que non** : une rotation sans fichier neuf exige du code (une cle d'item lue par la fabrique, un champ de `domain`, un attribut de modele, une classe de gabarit, une regle de feuille de style, un amendement d'`ADR-0073` : taille M a L). La forme sans code est **un second fichier dont la rotation est dans le dessin** (precedent : `figure-carre-incline.svg`), environ 500 octets. **Reponse** : *"Oui, second fichier SVG"*. **Ce qu'elle couvre** : le poids de ce fichier, `POIDS_TOTAL_MAXIMUM` de 69 203 a environ 69 800 ; **elle ne couvre que lui** (A.146 point 3 tient pour tout autre fichier). La valeur commitee est celle que le commit de `LP7` mesure, pas l'estimation. **Ce qui reste a `nadia-prof`** : (i) une copie tournee, aux memes proportions, tient-elle sa condition (*"au moins deux dessins qui different par l'orientation ou les proportions"*) ; (ii) l'angle : 90, 180 ou 270 degres gardent les sommets dans le cadre, 45 degres en sort, et aucun garde ne verifie le debordement ; (iii) d'autres proportions au meme cout, si elle les prefere ; (iv) le test facultatif qui compare les deux dessins (angle droit par produit scalaire nul apres le `transform`, taille M, petite). **Le fichier ne s'ecrit pas avant sa reponse sur (i) a (iii)** ; je suppose que son cout ne change pas selon l'angle ou les proportions (avis 1.3). **Changement de code decide, avec proprietaire** : un fichier sous `static/illustrations`, dans le lot `LP7`, `lea-dev` ; constantes qui bougent dans le commit : `POIDS_TOTAL_MAXIMUM`, `FICHIERS_D_ILLUSTRATION` de 56 a 57 avant `LP9`, `ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION`. Ordre : `LP9` fusionne d'abord, `LP7` recalcule le cliquet sur le sommet fusionne (A.149). **Fin de la premiere question de l'utilisatrice d'A.190** (un fichier neuf pour `LP7`).
+
+### A.193 `D5` : deux lots illustres par palier en B, trois paliers
+
+**Reponse** : *"Deux lots par palier"*. **Consequence ecrite** : les cinq lignes (`MAT-CE1-01`, `-11`, `-09`, `-10`, `-02`, dans l'ordre technique de `theo-archi` : `LP9` et `LP7` au palier 5, puis ces cinq) vont a **deux lots illustres par palier en B** (`PAR-8` : trois lots au plus et 5,0 par instance ; `PAR-2` : B seule), soit **2 + 2 + 1, trois paliers**. **Prix** : 10,5 au bareme (7,5 de lots plus 3,0 de fixe) ; 12,4 au surcout mesure de B (0,375 par lot) ; par palier 4,00 / 4,00 / 2,50 au bareme et 4,75 / 4,75 / 2,88 avec surcout, chacun sous 5,0. Chiffres de `theo-archi` (avis 2.3), le bareme est a `nadia-prof`. **Ma lecture, a confirmer** : (i) *"trois paliers"* et *"on reste dans s57"* (`D3`) font aller s57 jusqu'au palier 8 ; elle ne l'a pas ecrit ainsi, et je ne le tiens pas pour sa phrase ; (ii) l'appariement des lignes aux paliers (01 et 11 ; 09 et 10 ; 02) suit l'ordre technique ; **l'ordre de produit est a `camille-po` et `nadia-prof`, l'ordre de fusion a `sofia-sm`**. **Gain** : au plus 40, 42, 43 sur 64 apres les paliers 6, 7, 8 (62,5 %, 65,6 %, 67,2 %) ; s57 clos au plus a 43 / 64, comme A.183, si `nadia-prof` leve chaque plafond. **Tout cela est hypothetique tant que le poids n'est pas reaccorde** (A.195) : aucun palier n'est compose, aucun lot engage, aucune story d'image ecrite. **Corrige A.185**, fait (1) : *"cinq lignes ne tiennent pas dans un palier"* est repondu par trois paliers, sans depassement de `PAR-8`. **Corrige A.190** : la troisieme question de l'utilisatrice (nombre de paliers) est repondue par la cadence, sous ma lecture (i) ; **la borne des paliers 6 a 8 reste non posee**.
+
+### A.194 `PAR-13` : ce que la reponse change, et ce qu'elle ne dit pas
+
+`DEC-0123` 3.2 point 1 cite `PAR-13` ainsi : *"une seule ligne a dessin par sprint, et pas tant qu'A' existe"*. **Deux lots par palier en B pour cinq lignes ne tient pas avec cette lecture** (cinq lignes en cinq sprints, ou une par palier). **Consequence de sa reponse** : elle choisit la cadence de deux lots par palier, donc **le sens de `PAR-13` change pour ces cinq lignes** : il n'est plus *"une ligne a dessin par sprint"*. **Ce qui n'est pas clair, a confirmer par `nadia-prof` (la regle est la sienne ; sa decision pour l'utilisatrice est la cadence, pas le texte de la regle)** : (i) le texte neuf de `PAR-13` : *"deux lots illustres par palier en B"* est ma formule de consequence, **pas un texte que j'ecris dans la regle** ; (ii) la clause *"pas tant qu'A' existe"* : la reponse n'en parle pas ; A' existe au palier 5, je ne sais pas aux paliers 6 a 8 ; (iii) le *"un seul"* lot illustre par palier (`arbitrage-nadia-palier-4.md` 8.4, ecrit pour le palier 4) : il ne tient plus en B, `LP9` et `LP7` etant deux lots illustres au palier 5. **`DEC-0123` est amendee** (neuvieme) : la phrase est citee, non reecrite.
+
+### A.195 Le poids des cinq lignes reste hors de son oui
+
+**Reponse (b), dans les mots relayes** : le poids total des cinq lignes, **87 000 a 150 000 octets estimes (N = 10 dessins par ligne, suppose par `theo-archi`)**, **reste hors de son oui borne a 161 863** (`DEC-0123`, septieme amendement). Repertoire estime avec `LP9` et `LP7` : 202 000 a 281 000 octets. **La question du poids se repose a l'ouverture de chaque lot de `D5`**, avec la valeur que mesure le lot et la somme deja installee. **Declencheur ecrit** : l'ouverture d'un lot de `D5`. **A.185, fait (3)** : precise, jamais leve. `LP9` garde son oui (A.146), `LP7` le sien (A.192).
+
+### A.196 Fusion sans poussee
+
+*"Fusionner sans pousser"* : la fusion des branches du palier est autorisee, **la poussee ne l'est pas**. Je ne fusionne rien : la fusion est a `sofia-sm` (`RF11`, A.152 pour la poussee, qui reste hors de portee tant qu'elle n'est pas autorisee). Les branches concernees a ma connaissance : `s57-camille-p5-proposition` et `s57-theo-p5-dessins`. Aucune ne contient l'autre ; l'avis de `theo-archi` est cite dans cet amendement sans exister sur ma branche, et une reference a un fichier absent de l'arbre tient jusqu'a la fusion.
+
+### A.197 Matrice, routage, ce qui reste a confirmer
+
+**Matrice** : aucun statut ne change, `MATRICE-couverture.md` n'est pas modifiee.
+
+| A qui | Quoi |
+|---|---|
+| `nadia-prof` | angle ou proportions du second triangle, test facultatif (A.192) ; texte et portee de `PAR-13`, clause *"pas tant qu'A' existe"*, *"un seul"* lot illustre par palier (A.194) ; par ligne de `D5` : nombre d'items illustres, forme de `MAT-CE1-10` (balance ou recipient), acceptation de *"placer"* par designation pour `MAT-CE1-02`, condition qui affirme ce que chaque dessin montre ; bareme de 1,5 par lot de `D5` ; levee de plafond ligne par ligne |
+| `sofia-sm` | fusion sans poussee (A.196) ; `planning.md` : paliers 6 a 8 hypothetiques, cadence, ligne de premier jet |
+| `lea-dev` | `LP7` : le fichier, apres la reponse de `nadia-prof` ; recalcul du cliquet apres `LP9` |
+| `ines-design` | glyphes 7, 8 et 9, marque de zone, mesure d'un cadran et d'une regle a 176 px (question 7 de l'avis) |
+| `camille-po` | stories des lignes de `D5` a l'ouverture de chaque lot |
+| l'utilisatrice | **aucune question aujourd'hui.** Deux declencheurs : le poids, a l'ouverture de chaque lot de `D5` ; la borne des paliers 6 a 8, a la composition du palier 6, et le nombre de paliers si elle l'entendait autrement (A.193 i) |
+
+**Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, n'engage aucun poste ni lot, n'amende ni `planning.md`, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni paquet, ni catalogue, ni matrice, ni registre. **Decisions de produit prises ici** : (1) `LP7` ajoute un second fichier SVG, poids couvert pour lui seul ; (2) `D5` : deux lots illustres par palier en B, trois paliers hypothetiques ; (3) le sens de `PAR-13` change pour ces lignes, son texte est a `nadia-prof` ; (4) le poids des cinq lignes reste a reaccorder lot par lot ; (5) fusion autorisee, poussee non. **Changement de code decide, avec proprietaire** : le fichier de `LP7` (`lea-dev`). **Non decide** : les dessins de `D5`. Aucun identifiant de condition alloue.

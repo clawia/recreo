@@ -48,3 +48,7 @@ La story est alors reprise par une annotation datee et compte comme une premiere
 ## 6. Ce que cette DEC ne decide pas
 
 Ne modifie ni code, ni gabarit, ni paquet, ni catalogue. Ne prononce aucun Done, ne juge aucun contenu, ne fixe aucun prix. Ne dit rien d'autre sur la typographie des textes de l'ecran : `ADR-0067` et son garde-fou restent tels quels. **A confirmer par l'utilisatrice** : si elle veut garder l'une de ces deux stories, une phrase suffit (section 4).
+
+## Amendement du 2026-10-23, premier (`camille-po`, confirmation par l'utilisatrice)
+
+Statut de `DEC-0125` : `Acceptee`, inchange. L'utilisatrice a repondu *"on retire"* (forme 2, `DEC-0062` G, relayee par l'agent lanceur, 2026-10-23) a la demande de confirmation de la section 6. **Les deux stories restent retirees ; aucune regle de cette `DEC` ne change** ; la section 4 (ce qui les rouvre) tient. Consigne par `DEC-0120` A.187.
