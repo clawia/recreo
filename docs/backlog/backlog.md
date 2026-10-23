@@ -23912,3 +23912,34 @@ Arbre : `round-two` a `c08e49ab`. **Rien au-dessus n'est reecrit.** Les quatre s
 | `S57-SAISIE-MOTS-PROPOSES-PAR-LE-CLAVIER` (`LP1`, clavier) | non engagee, **report 1** | reponse de `theo-archi` a `QP4` ; l'effet sur l'appareil est verifie par l'utilisatrice |
 | `S57-GARDE-CE1-PROPOSITIONS-ET-SUPPORTS` (`E3`) | non engagee, **report 1** (premiere inscription a la preparation du palier 4, jamais composee) | **ecart non tranche entre la story et `theo-archi`** : le critere 2 dit que l'avis de `nadia-prof` sur les matieres soumises a chaque regle (`CA4`) *"n'existe pas"* ; `avis-theo-palier-4.md` (tableau de la section 4) le cite comme ecrit, `reponses-nadia-questions-stories-palier-3.md`, `Q-X1`, qui donne la liste des regles par matiere. Je ne juge pas si `Q-X1` vaut `CA4` : `nadia-prof` le dit en une ligne ; critere 2 amende en consequence (*"cette ligne existe"*) ; tant qu'elle ne l'a pas dit, la story reste non engagee |
 | `S57-TYP1-TEXTES-DE-GABARIT`, `S57-MESSAGE-PARTIE-PERDUE` | **retirees** par `DEC-0125` (troisieme non-entree) | une phrase de l'utilisatrice, ou une mesure qui montre une coupure a 744 ou 1200 de large |
+
+## Annotation du 2026-10-23 (UTC+02:00), palier 5 : story de `LP8`, correction de `LP7`, deux fermetures (`camille-po`, `proposition-camille-palier-5-ce1.md`)
+
+Arbre : `round-two` a `f3b06989`. **Rien au-dessus n'est reecrit.** Les reponses de l'utilisatrice du 2026-10-23 sont citees dans `proposition-camille-palier-5-ce1.md` section 1. Aucun identifiant de condition ou de reserve neuf n'est alloue : tous ceux qui sont cites existent au registre.
+
+### `S57-BR-FRA-CE1-03` - Brancher `ce1-mots-irreguliers` (`FRA-CE1-03`) - NON ENGAGEE, composee au palier 5 sur la reponse de l'utilisatrice (*"on les compose au palier 5"*)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux trouver, parmi trois mots, celui qui rime avec un mot courant que je ne peux pas lire en le decomposant (*femme*, *monsieur*, *second*), afin de reconnaitre ces mots quand je les rencontre.
+- **Mecanique demandee** : `bandit-manchot`, `type: question`, aucune modification de mecanique ni d'illustration. **Competence programme visee** : francais, CE1, `FRA-CE1-03` (`squad/programme/francais/competences-ce1.md`, ligne `[FRA-CE1-03]`). Ligne `non couvert`. **Plafond : `en cours`**, mention reprise mot pour mot de `ARBITRAGE-COMPLEMENT-s55-instance-a.md` section 3 : *"lecture exacte des mots irreguliers servie ; reconnaissance immediate des mots frequents non servie"*. Cousinage juge recevable par `nadia-prof` (`arbitrage-nadia-palier-4.md` 3.1) : cousine `GRC`, `ce1-graphemes-complexes` (`FRA-CE1-01`, `couvert-valide`).
+- **Paquet** : `ce1-mots-irreguliers` (`F` = `adapters/adapter-content/src/main/resources/contenu/ce1-mots-irreguliers.yaml`), 20 items, ecrit par `lea-dev` hors sprint, **jamais audite, hors catalogue, sans test**. Conditions de `nadia-prof` : `MFR-CE1-1` a `-3` et les sept conditions transverses `TRV-CE1-1` a `-7` (en-tete du paquet ; `ARBITRAGE-PREALABLE-s48-francais-ce1.md` 2 et 3.3).
+- **Criteres d'acceptation**, chacun avec sa valeur d'aujourd'hui :
+  1. **Entree au catalogue.** `grep -c "paquet: ce1-mots-irreguliers$" adapters/adapter-content/src/main/resources/catalogue.yaml` rend **0** aujourd'hui (rouge), 1 apres.
+  2. **Test du paquet.** `git ls-files | grep -c "PaquetCe1MotsIrreguliersTest"` rend **0** aujourd'hui (rouge), 1 apres ; il porte les assertions de `MFR-CE1-1` a `-3` et de `TRV-CE1-2`.
+  3. **Clause, verte aujourd'hui, dite** (`MFR-CE1-1`) : douze mots cibles distincts. `grep -o "# mot=[a-z]*" F | sort -u | wc -l` rend **12** ; il ne baisse pas.
+  4. **Clause, verte aujourd'hui, dite** : vingt items. `grep -c "enonce:" F` rend **20**.
+  5. **Clause, verte aujourd'hui, dite** (`TRV-CE1-1`) : aucun champ a voix haute, aucun texte support. `grep -v "^ *#" F | grep -c "texteAVoixHaute\|texteSupport"` rend **0**.
+  6. **Clause, verte aujourd'hui, dite** (`TRV-CE1-2`) : la bonne reponse est strictement la plus longue dans la moitie des items au plus ; mesure par lecture du YAML (script hors depot, non rejouable par une commande du depot) : **5 items sur 20**.
+  7. **Clause, verte aujourd'hui, dite** (`LON-CE1-5`) : aucune proposition de plus de six mots ; meme mesure : **0**.
+  8. **Ce qu'aucun test ne tient** et que `nadia-prof` garde seule : que le mot cible rime avec exactement une proposition (`MFR-CE1-2`), a lire item par item. L'en-tete `# DEGRADE` du paquet dit deja que la reconnaissance immediate n'est pas servie ; `grep -c "^# DEGRADE" F` rend **1** et ne baisse pas.
+  **Honnetete sur les criteres** : le paquet est ecrit, donc seuls les criteres 1 et 2 sont rouges ; je n'invente pas de critere rouge pour les autres.
+- **Prix, instance, agent** : **1,0** (lot textuel, bareme), instance A, `marc-dev` (`RG1`). **Compteur** : +1 si `en cours`. **Report** : deuxieme ecartement a la cloture du palier 4, **solde par l'engagement**. **Done pedagogique** : `nadia-prof`, jamais `couvert-valide`. **Prealable** : son arbitrage prealable de A au palier 5. **Lien** : `DEC-0120` A.32, A.177 ; `arbitrage-nadia-palier-4.md` 3.1.
+
+### `S57-BR-MAT-CE1-15` : correction d'une valeur et critere neuf
+
+- **Valeur fausse dans la story** : elle ecrit *"`ls adapters/adapter-web/src/main/resources/static/illustrations | grep -c figure-` rend **18**"*. Valeur lue aujourd'hui : **12** (`ls | grep -c "^figure-"`).
+- **Critere neuf, aux mots de `nadia-prof`** (`arbitrage-nadia-palier-4.md` 3.2) : *"Le triangle rectangle est montre dans au moins deux dessins qui different par l'orientation ou les proportions."* `ls adapters/adapter-web/src/main/resources/static/illustrations | grep -c "figure-triangle-rectangle"` rend **1** aujourd'hui (rouge), au moins 2 apres, **ou** une rotation de l'existant que `theo-archi` juge recevable. Un dessin neuf ajoute des octets : le *oui* de l'utilisatrice sur le poids ne couvre que `LP9` (`DEC-0120` A.146), la question se repose (`proposition-camille-palier-5-ce1.md`, D2).
+
+### Fermetures et engagement, sur les mots de l'utilisatrice du 2026-10-23
+
+- **`S57-SAISIE-MOTS-PROPOSES-PAR-LE-CLAVIER` : FERMEE.** Ses mots : *"j'ai teste de mon cote c'est ok"*, reponse a `QP4`. Le critere 3 de la story etait la verification de l'effet sur l'appareil par l'utilisatrice. Criteres 1 et 2 : sans objet, ils ne valaient que *"si un attribut existe"*. A `theo-archi`, facultatif : une ligne qui dit qu'`QP4` est sans objet. Appareil et constat precis non connus de moi ; a redemander a l'entree de `FRA-CE1-29`.
+- **`S57-GARDE-PAQUET-INTERET-COMMUN` : ENGAGEE**, hors `PAR`, prix 0. Ses mots : *"ok"* (`T5`). Avant `S57-EMC-CE1-04-R1`. Developpeuse `sofia-sm`, forme `theo-archi`, morsures `yanis-qa`.
