@@ -13,8 +13,9 @@
   (`ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md`, 2 et 4.4) ; `EMC-1` a `EMC-7` ; point d'audit commun
   de `FICHE-bandit-manchot-regle-sanction-ce1.md` (aucune forme ne donne la reponse, aucun distracteur absurde).
 - **Statut global** : **REFUSE**, prononce le 2026-10-22 par `nadia-prof` (s57, palier 4, instance A'), sur `cbfb152e`. Fiche
-  ouverte le 2026-10-22 par `nadia-prof`.
-- **Derniere mise a jour** : 2026-10-22, premier passage.
+  ouverte le 2026-10-22 par `nadia-prof`. **Rejeu du 2026-10-23 sur `ebbb2136` : REFUSE** (M1 et M2 leves, motif neuf M3 sur
+  l'item 7), voir le second verdict plus bas.
+- **Derniere mise a jour** : 2026-10-23, rejeu.
 
 ---
 
@@ -120,3 +121,115 @@ il ne la detecte pas) ; qu'une scene n'ait qu'une lecture defendable ; qu'aucun 
 lui ; `NRC-CE1-1`, contre le CP et contre `ce1-emc-biens-communs` - aucun garde-fou ne compare deux paquets.
 
 **Signe** : `nadia-prof`, 2026-10-22.
+
+---
+
+## Rejeu du 2026-10-23
+
+Le verdict du 2026-10-22 ci-dessus, ses motifs et ses reserves restent tels qu'ecrits. Ce qui suit s'y ajoute.
+
+**lecture complete : ce1-emc-interet-commun, 24 items lus** - 2026-10-23, ligne ecrite a 09:14 (UTC+02:00), lu par `date`, sur
+la branche `s57-sofia-emc-ce1-04` a `ebbb2136` ; contenu et code a `ec2d572a` (`ebbb2136` n'ajoute que le rapport). Lus : les 24
+enonces, bonnes reponses, 48 distracteurs, 24 indices (dont les 10 neufs ou deplaces), l'en-tete, `rapport-sofia-dev-palier-4-lp6.md`
+sections 1 a 6. Relus pour `NRC-CE1-1` : les 11 items de `cp-emc-regles-de-vie`, les 24 de `ce1-emc-biens-communs`. Les items
+sont numerotes ci-dessous dans l'ordre du fichier a `ebbb2136`, et non plus dans celui de `cbfb152e`.
+
+### Verdict du 2026-10-23 (`nadia-prof`, s57, palier 4, rejeu) : **REFUSE**
+
+**Commit joue** : `ebbb2136`. Jar construit dans mon worktree detache `recreo-s57-nadia-p4-lp6-jeu` place a ce commit
+(`bash outils/mvn-jdk21.sh -B -pl bootstrap -am package -DskipTests`, mesure partielle, aucun `verify`), JDK 21.0.10 lu dans le
+journal ; le YAML embarque dans le jar est identique octet pour octet a celui du commit (`cmp`). Port 18513, *"Tomcat started on
+port 18513"* et PID lus dans mon journal, arrete par ce PID. Jeu par moi, requetes HTTP : 18 parties de 10 manches.
+
+- Huit parties en me trompant d'abord a chaque manche, sur les deux mauvaises propositions : 24 enonces servis sur 24, aucun
+  inconnu du paquet ; apres chaque erreur, *"Ce n'est pas ça. Essaie encore !"* et l'indice de l'item, conforme au fichier.
+- Une partie a trois erreurs par manche : revelation *"Ce n'est pas ça. Appuie sur la bonne réponse : ..."*, indice maintenu, fin
+  de partie atteinte.
+- Trois parties en suivant le possessif sans lire la scene (*une seule personne* sur *son*, *sa*, *ses*, *toute la classe*
+  sinon) : **20 sur 30** du premier coup. Sur le fichier, la meme regle a bon sur 15 items sur 24.
+- Trois parties en repondant toujours *pour toute la classe* : 11 sur 30.
+- Trois parties en suivant les mots *chacun*, *tableau*, *salle*, *mur* (*toute la classe* s'il y en a un, *une seule personne*
+  sinon) : **30 sur 30**. Sur le fichier : 24 sur 24. Voir reserve 4.
+
+**Non fait par moi** : le releve d'ecran a 744 x 551 (`ines-design`). Le plus long enonce compte 90 caracteres, le plus long
+indice 34 (mesures par moi sur le fichier, pas a l'ecran).
+
+**M1 - leve sur la portee *un*, suspendu a M3 sur la portee *tous*.** La barre que j'avais ecrite : dans chaque portee, au moins
+un tiers d'items ou l'appartenance de l'objet ne decide pas. Comptee par moi sur le texte : portee *un*, 4 sur 11 (items 4
+*bibliothèque*, 10 *ciseaux du coin dessin*, 14 *robinet de la cour*, 18 *dictionnaire du coin lecture*) ; portee *tous*, 5 sur
+13 (items 3 *sa plante*, 7 *son affiche*, 11 *son annonce*, 15 *son chiffon*, 19 *sa carte*). La regle du possessif tombe de 30
+sur 30 a 20 sur 30 joues. Les quatre scenes de portee *un* a objet partage sont le croisement que demandait M1 : *le livre de la
+bibliothèque* est la bonne reponse *a tous* de `ce1-emc-biens-communs`, et ici la bonne reponse est *une seule personne*. L'enfant
+qui repond par l'appartenance s'y trompe ; celui qui cherche a qui sert le geste trouve. C'est la ligne `EMC-CE1-04`, et non plus
+`EMC-CE1-01`. **Mais** la portee *tous* n'atteint 5 sur 13 qu'en comptant l'item 7, que M3 ne laisse pas compter : sans lui, 4
+sur 13, sous la barre. Sur la portee *tous*, M1 sera leve quand M3 le sera, sans rien d'autre.
+
+**M2 - leve.** Les items 5, 7, 9, 19 du premier passage sont retires ; aucune scene ne dit plus *range*, *ranger*, *remet* ou
+*remettre* (cherche par moi dans les 24 scenes). Les gestes de portee *tous* sont essuyer, decorer, ramasser, remplir, afficher,
+annoncer, proposer un jeu, distribuer, accrocher, ecrire la date, apporter, tenir la porte : aucun n'est une reponse de
+`cp-emc-regles-de-vie`.
+
+**Motif du refus, actionnable sans me redemander :**
+
+**M3 - L'item 7 a deux lectures defendables** (`INT-CE1-1` : *"La situation n'a qu'une lecture defendable (`EMC-5`)"* ; c'est ce
+que j'avais ecrit *a ne pas defaire au rejeu*). *"Lina colle son affiche des horaires au mur."* La scene ne dit ni ou (aucun lieu
+de l'ecole), ni pour quoi (aucun but). Il reste *son affiche* et *au mur* : un enfant de CE1 peut voir une affiche a Lina collee
+au mur pour qu'elle se rappelle ses horaires, et repondre *pour une seule personne* - il a une raison defendable et l'ecran lui
+dit *"Ce n'est pas ça"*. *Horaires* n'est pas toujours compris a 7 ans, ce qui laisse *Lina colle son affiche au mur*, plus
+personnel encore. Les quatre autres scenes de la meme case nomment ce qui fait le groupe : *pour décorer la salle* (3), *au
+tableau* et *la sortie* (11), *les tables de la salle* (15), *au tableau pour la leçon* (19). L'item 7 est le seul de la case ou
+le possessif est la seule information, alors que c'est la case ou il doit etre faux. Ce qu'il faut : que la scene 7 nomme un lieu
+ou un but de l'ecole, comme les quatre autres, sans le mot *classe* que le garde d'echo refuse - par exemple *"Lina colle son
+affiche des horaires au mur de la salle."* L'item reste alors de portee *tous* a objet personnel et la barre de M1 est tenue a 5
+sur 13. Rien d'autre n'est demande pour lever ce refus.
+
+**Ce qui tient** (verifie au rejeu, a ne pas defaire) :
+
+- `INT-CE1-1`, une seule lecture, sur les 23 autres scenes, y compris celles que `sofia-sm` lit fragiles. Portee *tous* a objet
+  personnel, items 3, 11, 15, 19 : le lieu ou le but nomme le groupe, et aucune ne se lit *pour une seule personne*. Portee *un*
+  a objet partage, items 4, 10, 14, 18 : prendre un livre, prendre des ciseaux, boire, chercher un mot servent celui qui le fait ;
+  *pour quelques élèves* n'est defendable sur aucune (rien dans l'item 18 ne dit que Hugo cherche pour d'autres).
+- `INT-CE1-1`, blame : aucune mise en balance, aucun jugement sur celui qui fait quelque chose pour lui.
+- `INT-CE1-2` : les deux formules dans chaque item ; *intérêt général*, *bien commun* absents.
+- `NRC-CE1-1` contre `ce1-emc-biens-communs` : la bibliotheque, la cour, le coin lecture servent ici a montrer que l'objet de
+  tous peut ne servir qu'a un ; la question n'est jamais *a qui est l'objet*.
+- Exactitude : aucune erreur dans les 24 situations.
+- Indices : 24, distincts, chacun une question de methode, aucun ne contient une proposition ni ne mene au nombre d'eleves ; les
+  10 neufs ou deplaces (items 3, 4, 5, 7, 10, 11, 14, 15, 18, 19) designent celui qui se sert de la chose.
+- Lisibilite : enonces de 17 mots au plus ; *chiffon*, *dictionnaire*, *robinet*, *décorer*, *accroche*, *annonce*, *sortie* sont
+  accessibles au CE1. *Horaires* l'est moins : M3.
+- `TRV-CE1-6`, `EMC-1`, `EMC-6` : aucun role distribue par genre, aucune adresse a l'enfant, aucun lieu hors de l'ecole nomme.
+
+**Reserves du 2026-10-22, au rejeu :**
+
+1. La cour (items 3, 5, 23 du premier passage) : **levee**. Aucune scene de portee *tous* ne se passe plus dans la cour ; la cour
+   ne reste qu'a l'item 14, de portee *un*.
+2. La troisieme proposition jamais bonne (choix a deux) : **levee**, sur la condition que j'avais posee (*"recevable une fois M1
+   leve"*). Elle reste la forme de `INT-CE1-2`. Le choix a deux ne se fait plus au possessif ; il peut encore se faire aux mots du
+   lieu, reserve 4.
+3. Pli : **maintenue**, non mesure (`ines-design`).
+
+**Reserves nouvelles du 2026-10-23, non bloquantes** - vues au rejeu, je ne les ajoute pas a la barre de M1 :
+
+4. **Le lieu suit encore la portee.** Les lieux partages qui servent un seul enfant sont *bibliothèque*, *coin dessin*, *cour*,
+   *coin lecture* ; *la salle*, *le tableau*, *le mur* n'apparaissent que dans des scenes de portee *tous*. Joue : la regle
+   *chacun, tableau, salle, mur* donne 30 sur 30. Ce n'est pas M1 recommence : un enfant qui se dit *"c'est au tableau, tout le
+   monde le voit"* fait la competence, ce que le possessif ne faisait pas faire. Mais la portee *un* ne croise jamais *salle* ni
+   *tableau*. A corriger dans un sprint suivant : deux scenes de portee *un* dans la salle ou devant le tableau (par exemple
+   *"Jade s'assoit à une table de la salle pour dessiner."*).
+5. ***Chacun* dit la reponse dans quatre scenes** de portee *tous* : items 13 (*où chacun peut jouer*), 17 (*à chacun*), 21 (*pour
+   que chacun la voie*), 24 (*pour chacun*). L'enfant n'a pas a juger a qui sert le geste, la scene le lui dit. **Correction de mon
+   propre constat** : ces quatre tournures etaient deja dans le paquet du 2026-10-22 et j'ai ecrit que la forme ne donnait la
+   reponse que par le possessif, sans les avoir examinees. C'est un manque de ma premiere lecture, pas un motif neuf contre
+   l'equipe : reserve, non refus. A corriger : retirer *chacun* d'au moins deux de ces scenes en gardant une seule lecture
+   (*"Zoé distribue les feuilles."*, *"Hugo tient la porte ouverte."*).
+
+**Ce qui suit** : le lot revient a `sofia-sm` par `camille-po`, pour la seule scene 7. Je ne l'estime pas en prix : une phrase,
+a relire par moi sur l'item 7 et le compte de M1, sans rejeu complet. Les reserves 3, 4, 5 sont pour `camille-po`.
+
+**Je reste la seule garde** : qu'une scene n'ait qu'une lecture defendable (le test garde la presence d'un possessif ou d'un mot
+partage, pas le sens - il est vert sur l'item 7) ; que le lieu ne decide pas seul de la reponse (le test ne garde que le compte du
+possessif) ; qu'aucun item ne blame ; `NRC-CE1-1` contre le CP et contre `ce1-emc-biens-communs`, qu'aucun garde-fou ne compare
+sur le sujet.
+
+**Signe** : `nadia-prof`, 2026-10-23.
