@@ -23943,3 +23943,19 @@ Arbre : `round-two` a `f3b06989`. **Rien au-dessus n'est reecrit.** Les reponses
 
 - **`S57-SAISIE-MOTS-PROPOSES-PAR-LE-CLAVIER` : FERMEE.** Ses mots : *"j'ai teste de mon cote c'est ok"*, reponse a `QP4`. Le critere 3 de la story etait la verification de l'effet sur l'appareil par l'utilisatrice. Criteres 1 et 2 : sans objet, ils ne valaient que *"si un attribut existe"*. A `theo-archi`, facultatif : une ligne qui dit qu'`QP4` est sans objet. Appareil et constat precis non connus de moi ; a redemander a l'entree de `FRA-CE1-29`.
 - **`S57-GARDE-PAQUET-INTERET-COMMUN` : ENGAGEE**, hors `PAR`, prix 0. Ses mots : *"ok"* (`T5`). Avant `S57-EMC-CE1-04-R1`. Developpeuse `sofia-sm`, forme `theo-archi`, morsures `yanis-qa`.
+
+## Annotation du 2026-10-23 (UTC+02:00), seconde : `D2` et `D4` sur `LP7` et `LP9` (`camille-po`, `DEC-0120` A.182 et A.184)
+
+Arbre : `round-two` a `f3b06989`. **Rien au-dessus n'est reecrit.** Aucun identifiant de condition ou de reserve neuf. Les mots de l'utilisatrice (forme 2, `DEC-0062` G) : *"ok pour faire une rotation"* (`D2`), *"on prend l'autre option"* (`D4`).
+
+### `S57-BR-MAT-CE1-15` : le second triangle rectangle se tente par rotation (`D2`)
+
+- **Reponse** : rotation de l'existant, **sans octet**. `theo-archi` dit si elle suffit a la condition de `nadia-prof` (*"au moins deux dessins qui different par l'orientation ou les proportions"*). Le critere neuf de l'annotation precedente garde sa branche *"une rotation de l'existant que `theo-archi` juge recevable"* ; sa branche *"au moins 2"* fichiers n'est plus ouverte sans une reponse de plus de l'utilisatrice.
+- **Critere, forme fixee apres l'avis** : la commande de mesure depend de la forme que `theo-archi` ecrit pour la rotation ; je ne l'invente pas. Valeur d'aujourd'hui, qui ne doit pas monter : `ls adapters/adapter-web/src/main/resources/static/illustrations` suivi de `grep -c "^figure-triangle-rectangle"` rend **1**, **verte** aujourd'hui (garde, pas critere correctif).
+
+### `S57-BR-MAT-CE1-15` et `S57-BR-MAT-CE1-14-GRILLE` : lecture avant `verify` (`D4`)
+
+- **Critere neuf, par paquet**, valeur d'aujourd'hui a cote : le dossier du sprint contient `lecture-nadia-premier-jet-ce1-figures-planes.md` (`LP7`), puis `lecture-nadia-premier-jet-ce1-deplacements-quadrillage.md` (`LP9`). `ls squad/sprints/s57-version-cp-ce1-cm1-trois-instances` suivi de `grep -c "lecture-nadia-premier-jet"` rend **0** aujourd'hui (rouge), **2** apres les deux lots. Chaque fichier nomme le commit lu et les items qu'elle refuserait, **sans verdict**.
+- **Critere neuf** : `planning.md` porte une ligne par lot (lot, commit du premier jet, heure) ecrite avant le premier `verify` complet du paquet. `grep -c "premier jet" squad/sprints/s57-version-cp-ce1-cm1-trois-instances/planning.md` rend **0** aujourd'hui (rouge), au moins 2 apres.
+- **Ce qu'aucune commande ne tient** : que la lecture ait eu lieu **avant** le `verify`. `yanis-qa` compare l'heure de l'ecrit de `nadia-prof` et l'heure de la ligne de `planning.md`.
+- **Prix** : compris dans le prix du lot (1,5), **chiffre par `nadia-prof`**. Le premier jet est le paquet avec ses dessins. `S57-BR-FRA-CE1-03` (paquet ecrit hors sprint) n'est pas concernee, ma lecture a confirmer par `nadia-prof`.

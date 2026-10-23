@@ -255,3 +255,13 @@ La section 7.3 laissait `Q-09` suspendue a l'avis de `nadia-prof` sur `R6`. Cet 
 - **`Q-05`** reste `Acceptee`. Le plafond `en cours` de la forme (a) est accepte par ses mots (*"QP3 plafond accepté"*) ; la ligne ne passe pas a `couvert-valide` sur cette forme ; la forme (b) reste retiree.
 - **`Q-06` n'est pas modifiee.** Ses cinq lignes (`QLM-CE1-09`, `QLM-CE1-11`, la moitie dessinee de `QLM-CE1-07`, `MAT-CE1-02`, `MAT-CE1-09`) restent hors perimetre : *"Un oui n'ouvre pas les cinq autres lignes"*. Le motif du poids n'est ni leve ni reaffirme pour elles, il n'a pas ete repose. **3.3** (le report des dessins est une direction qu'elle a choisie) tient. Tout autre dessin, dont le second triangle rectangle de `MAT-CE1-15`, demande sa propre reponse.
 - **Aucune cellule de matrice ne bouge** : `MAT-CE1-14` reste `non couvert`. Le changement de code que `Q-05` appelle (20 dessins, test croise, constante de poids) a un proprietaire, `lea-dev` (B), par la composition du palier 4 (`DEC-0120` A.148, A.152) ; il n'est applique que par l'engagement de la story.
+
+## Amendement du 2026-10-23, huitieme (`camille-po`, `Q-06` : cinq lignes de mathematiques CE1 rouvertes)
+
+**Aucun texte d'origine n'est reecrit.** Statut de `DEC-0123` : `Acceptee`, inchange. Les mots, relayes par l'agent lanceur avec leur date (forme 2, `DEC-0062` G) : *"option 3 et 5 lignes"* (`D5`) et *"ok pour faire une rotation"* (`D2`). Detail : `DEC-0120` A.182, A.185, A.188.
+
+- **3.1 et 3.3 (`Q-06`)** : `MAT-CE1-02` (ligne graduee) et `MAT-CE1-09` (regle graduee) **sortent des lignes hors perimetre**. La condition de retour de 3.3 (*"une nouvelle reponse de l'utilisatrice"*) est remplie. **`MAT-CE1-01`, `-10`, `-11`** n'etaient pas sur la liste de 3.1 ; la reponse les nomme avec les deux autres : cinq lignes au total. **Reserve** : l'avis de cout de `theo-archi` est saisi ; aucun lot de dessins n'est engage avant lui.
+- **Ce qui reste hors perimetre** : `QLM-CE1-09`, `QLM-CE1-11` et la moitie dessinee de `QLM-CE1-07`. La reponse ne les nomme pas.
+- **3.2 (motifs)** : le poids et `PAR-13` ne sont ni leves ni reaffirmes. La borne du *oui* sur le poids (septieme amendement : 161 863) tient ; au-dela, la question se repose. `PAR-13` est un jugement de `nadia-prof`.
+- **Septieme amendement, deuxieme puce** : le second triangle rectangle de `MAT-CE1-15` a sa reponse (`D2`) : rotation de l'existant, sans octet. Un fichier neuf demanderait une reponse de plus.
+- **Aucune cellule de matrice ne bouge.** Le changement de code que `D5` appelle n'est pas decide : il n'a pas de proprietaire tant que l'avis de `theo-archi` n'est pas rendu.

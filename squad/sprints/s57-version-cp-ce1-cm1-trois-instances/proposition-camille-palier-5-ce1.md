@@ -1,10 +1,10 @@
 # s57 - proposition de composition du palier 5, centree sur le CE1 (`camille-po`)
 
-- **Auteure** : `camille-po`, Product Owner, 2026-10-23. Arbre : `round-two` a `f3b06989`, branche `s57-camille-p5-proposition`.
-- **Ce que ce fichier est** : une **proposition**. Ce n'est ni `composition-palier-5.md` (a `sofia-sm`), ni l'arbitrage prealable de `nadia-prof`, ni un amendement de `planning.md`. **Aucun poste n'est engage, aucun prix n'est fixe par moi** : les prix sont ceux du bareme de `nadia-prof` ou des registres, rien d'autre. Il ne touche ni la matrice, ni une `DEC`, ni le registre de prix, ni code, ni paquet.
+- **Auteure** : `camille-po`, Product Owner, 2026-10-23. Arbre : `round-two` a `f3b06989`, branche `s57-camille-p5-proposition`. **Mise a jour du 2026-10-23, apres les reponses `D1` a `D5` de l'utilisatrice** (premiere version : commit `e18b13e8`).
+- **Ce que ce fichier est** : une **proposition**. Ce n'est ni `composition-palier-5.md` (a `sofia-sm`), ni l'arbitrage prealable de `nadia-prof`, ni un amendement de `planning.md`. **Aucun poste n'est engage, aucun prix n'est fixe par moi** : les prix sont ceux du bareme de `nadia-prof` ou des registres, rien d'autre. La mise a jour touche `DEC-0120` (amendement A.180 a A.190), `DEC-0123`, `DEC-0125` et `DEC-index.md` ; elle ne touche ni la matrice (aucun statut ne change), ni le registre de prix (`registre-prix-palier-5` n'existe pas et n'est pas cree), ni code, ni paquet.
 - **Demande** : de l'utilisatrice, relayee par l'agent lanceur : un palier 5 centre sur le CE1, pour rapprocher sa couverture de celle du CP (52 / 59 = 88,1 %) et du CM1 (66 / 79 = 83,5 %).
 - **Convention de lecture** : `[lu]` = lu au disque ou mesure par une commande ecrite a cote, a `f3b06989`. `[suppose]` = ma lecture, non verifiee, dite comme telle. Ce qui n'est marque ni l'un ni l'autre est un calcul sur des chiffres `[lu]`.
-- **Les mots de l'utilisatrice du 2026-10-23** (section 1) sont cites tels que relayes par l'agent lanceur, entre guillemets, avec leur date : forme 2 de `DEC-0062` G. **Aucune `DEC` ne les consigne encore** (section 10).
+- **Les mots de l'utilisatrice du 2026-10-23** (section 1) sont cites tels que relayes par l'agent lanceur, entre guillemets, avec leur date : forme 2 de `DEC-0062` G. Elles sont **consignees par `DEC-0120` A.180 a A.190** (section 10). Les cinq decisions `D1` a `D5` posees par la premiere version sont **fermees** : leurs mots sont en section 1, la section 9 ne garde que ce qui reste ouvert.
 
 ## 1. Ce que l'utilisatrice a tranche le 2026-10-23, et ce que j'en fais
 
@@ -18,6 +18,13 @@
 | `s57` | "pas encore ferme" | s57 reste ouvert. Voir F1 (section 2) : ce que le palier 5 apporte au numerateur | - |
 | `QP4` (clavier de `LP1`) | "j'ai teste de mon cote c'est ok" | Consignee comme **reponse de l'utilisatrice** a `QP4`. La story `S57-SAISIE-MOTS-PROPOSES-PAR-LE-CLAVIER` se ferme sur ce test : son critere 3 etait *"l'utilisatrice le verifie sur l'appareil"*. **Reste a `theo-archi`** : rien d'obligatoire. Ses criteres 1 et 2 (une reponse sourcee, un test d'attribut) n'avaient de sens que *"si un attribut existe"* ; sans attribut a garder, ils tombent. Il peut ecrire une ligne qui dit qu'`QP4` est sans objet. **Non connu de moi** : l'appareil, et ce que "ok" constate [suppose : que le mot propose ne gene pas l'epreuve]. A redemander a l'entree de `FRA-CE1-29` (dictee), ou `nadia-prof` dit que le mot propose est probablement le mot dicte | `theo-archi` (une ligne, facultative), `camille-po` (fermeture au backlog) |
 | `T5` | "ok" | `S57-GARDE-PAQUET-INTERET-COMMUN` est **engagee**, hors `PAR`, prix 0, **placee avant** `S57-EMC-CE1-04-R1` (la story le dit deja : *"Ordre : avant"*). Developpeuse : `sofia-sm` (auteure du test) ; forme : `theo-archi` ; morsures : `yanis-qa` | `sofia-sm`, `theo-archi`, `yanis-qa` |
+| `D1` | "on met la barre a 20" | borne du palier 5 a **20,0** (`PAR-9`). Section 4.4 : elle ne change ni la composition ni le prix d'un lot ; c'est le stock de lots qui limite | `camille-po` (consigne), `nadia-prof` (prix) |
+| `D2` | "ok pour faire une rotation" | second dessin de triangle rectangle de `LP7` : on tente la **rotation de l'existant**, sans octet. `theo-archi` est saisi en parallele pour dire si elle suffit. Section 6.3 | `theo-archi` |
+| `D3` | "on reste dans s57" | **palier 6 dans s57** ; pas de s58 a la cloture du palier 5. Consequence ecrite en section 5.1 | `sofia-sm` (planning), `camille-po` |
+| `D4` | "on prend l'autre option" | la regle *Lecture avant verify* vaut pour **tout paquet ecrit ou reecrit dans un lot** : `LP7` et `LP9` en relevent. Une lecture de plus pour `nadia-prof`, **prix a elle**. Section 7 | `nadia-prof` (lecture, prix) |
+| `D5` | "option 3 et 5 lignes" | **rouvrir les dessins** (`DEC-0123` 3) pour cinq lignes de mathematiques CE1 : `MAT-CE1-01`, `-10`, `-11`, `-02`, `-09`. **Sous reserve de l'avis de cout de `theo-archi`**, saisi en parallele : aucun lot de dessins n'est engage avant lui. Section 5.1 | `theo-archi` (avis), `camille-po` |
+
+Toutes ces reponses sont consignees par `DEC-0120` A.180 a A.190. `QU2` : A.186 ; `DEC-0125`, `QP4`, `T5`, confirmation d'`ArchUnit`, "s57 pas encore ferme" : A.187 ; `D1` : A.181 ; `D2` : A.182 ; `D3` : A.183 ; `D4` : A.184 ; `D5` : A.185.
 
 ## 2. L'etat, et ce que le palier 5 peut et ne peut pas faire
 
@@ -31,9 +38,9 @@
 - `FRA-CE1-08`, `-09` : *"ne sont pas des lots de s57, quelle que soit sa duree"* (`ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md` 11.3, condition 4) ; au plus un des deux par sprint, `-09` d'abord.
 - Questionner le monde CE1 : *"Aucun lot [...] n'est auditable a s57"* (`arbitrage-nadia-preparation-palier-3-ce1.md` 1.3) : B a audite le rejeu d'`ART-CP-10` dans s57, et sa regle dit qu'un premier lot sans cousine *"ne prend pas le sprint"* ou une autre instance en audite un.
 - Arts plastiques CE1, `FRA-CE1-27` : terrains neufs, `PAR-13`, *"pas tant qu'A' existe"* ; au plus une des deux lignes d'arts plastiques par sprint (story).
-- **Lecture pour s58 [suppose]** : la regle "au plus un lot sans cousine par sprint" laisse a s58 **une seule famille** parmi questionner le monde, `FRA-CE1-09` puis `-08`, arts plastiques. Je ne sais pas si elle les autorise ensemble ; question a `nadia-prof` avant s58 (section 9, D3).
+- **Lecture pour s58 [suppose]** : la regle "au plus un lot sans cousine par sprint" laisse a s58 **une seule famille** parmi questionner le monde, `FRA-CE1-09` puis `-08`, arts plastiques. Je ne sais pas si elle les autorise ensemble ; question a `nadia-prof` avant tout s58. **s58 n'est pas ouvert a la cloture du palier 5** (`D3`, section 5.1).
 
-**Conclusion pour la demande** : pour que le CE1 approche le CM1 (54 / 64 = 84,4 %, soit un point au-dessus de 83,5 %) ou le CP (57 / 64 = 89,1 %, car 56 / 64 = 87,5 % reste sous 88,1 %), **il faut s58 et du materiau**. Le palier 5 apporte du compteur et leve trois reports, pas du `couvert-valide`.
+**Conclusion pour la demande** : pour que le CE1 approche le CM1 (54 / 64 = 84,4 %, soit un point au-dessus de 83,5 %) ou le CP (57 / 64 = 89,1 %, car 56 / 64 = 87,5 % reste sous 88,1 %), **il faut s58 et du materiau**. Le palier 5 apporte du compteur et leve trois reports, pas du `couvert-valide`. **L'utilisatrice a decide de rester dans s57 (`D3`) et de rouvrir cinq lignes de dessins (`D5`)** : dans s57, le plafond du CE1 est 43 / 64 = 67,2 % (section 5.1), sous le CM1 et le CP.
 
 ## 3. Par bloc : les lignes, les stories au backlog, l'etat
 
@@ -73,8 +80,8 @@ Le palier 1 n'a pas de fichier de registre [lu : `ls`] ; `cloture-palier-1.md` e
 
 | Regle | Ce qu'elle dit | Effet au palier 5 |
 |---|---|---|
-| `PAR-8` | 5,0 et trois lots au plus par instance ; 8,0 a deux ou trois instances | **Depasse en A' au palier 4 : 5,50** (`QU2`, consigne). Au palier 5, B peut atteindre 5,0 (section 4.3) |
-| `PAR-9` | la somme des budgets egale la borne | la borne du palier 5 n'est pas posee. Au palier 4 l'utilisatrice a ecrit *"on monte a 20"* (`arbitrage-nadia-palier-4.md` 8) ; rien d'equivalent pour le palier 5 (D1) |
+| `PAR-8` | 5,0 et trois lots au plus par instance ; 8,0 a deux ou trois instances | **Depasse en A' au palier 4 : 5,50** (`QU2`, consigne ; relevement ecrit quand `nadia-prof` chiffre le rejeu 2 de `LP6`, `DEC-0120` A.186). **`D1` ne le modifie pas** : a trois instances, 3 x 5,0 = 15,0 est le plafond que `PAR-8` laisse, sous la borne de 20,0. B depasse 5,0 des que le surcout de rejeu atteint plus de 0,50 par lot (section 4.4) |
+| `PAR-9` | la somme des budgets egale la borne | **borne du palier 5 : 20,0**, ses mots *"on met la barre a 20"* (`D1`, 2026-10-23), comme au palier 4 (*"on monte a 20"*, `arbitrage-nadia-palier-4.md` 8) |
 | `PAR-2` | une matiere et un niveau ne sont jamais partages | mathematiques CE1 : B seule (`LP7` et `LP9`) ; francais CE1 : A (accord de s57 seul) ; EMC : A' |
 | `PAR-13` | un terrain neuf par sprint, pas tant qu'A' existe | aucune instance C au palier 5 : questionner le monde, arts plastiques et `FRA-CE1-27` n'y entrent pas |
 | `PAR-16` | une story par poste engage | `LP8` n'en avait pas ; elle est ecrite avec ce fichier |
@@ -99,35 +106,46 @@ Le palier 1 n'a pas de fichier de registre [lu : `ls`] ; `cloture-palier-1.md` e
 
 - **Developpeurs** : ceux de `QP6` (*"lea dev pour B et sofia pour A'"*, 2026-10-21) et de `RG1` pour A [lu].
 - **Trois lots au plus par instance (`PAR-8`)** : A 1, B 2. A' : trois stories de reserve. **Je ne sais pas si `nadia-prof` les compte comme des lots** [suppose : non, ce sont des corrections de paquets deja au catalogue, mais elle a compte les rejeux]. A dire par elle.
-- **Ordre propose** (celui de `DEC-0120` A.35 : mathematiques, francais, puis EMC ; l'ordre de fusion est a `sofia-sm`). A' : `S57-GARDE-PAQUET-INTERET-COMMUN` d'abord, puis `S57-EMC-CE1-04-R1`, puis `-02-R1` et `-03-R1`. B : `LP7` puis `LP9` ; **si les deux installent des octets de dessin, `LP9` fusionne en premier** (`DEC-0120` A.149, regle d'ordre sur `POIDS_TOTAL_MAXIMUM`). A : `LP8`. Il y a **un seul lot illustre par palier** dans la composition de `nadia-prof` du palier 4 (8.4, tableau 3) : **je ne sais pas si sa limite tient au palier 5** ; question D2.
+- **Ordre propose** (celui de `DEC-0120` A.35 : mathematiques, francais, puis EMC ; l'ordre de fusion est a `sofia-sm`). Si `theo-archi` juge la rotation recevable (`D2`), `LP7` n'installe aucun octet et la regle d'ordre sur `POIDS_TOTAL_MAXIMUM` ne la concerne plus. A' : `S57-GARDE-PAQUET-INTERET-COMMUN` d'abord, puis `S57-EMC-CE1-04-R1`, puis `-02-R1` et `-03-R1`. B : `LP7` puis `LP9` ; **si les deux installent des octets de dessin, `LP9` fusionne en premier** (`DEC-0120` A.149, regle d'ordre sur `POIDS_TOTAL_MAXIMUM`). A : `LP8`. Il y a **un seul lot illustre par palier** dans la composition de `nadia-prof` du palier 4 (8.4, tableau 3) : **je ne sais pas si sa limite tient au palier 5** : question a `nadia-prof`, dans son arbitrage prealable (`D2` ecarte la rotation sans octet pour `LP7`, il ne repond pas a cette question).
 - **Le prix du rejeu 2 de `LP6` n'entre pas dans ce tableau** : c'est le palier 4.
+
+### 4.4 Avec la borne de 20,0 (`D1`, *"on met la barre a 20"*)
+
+- **Composition** : inchangee. A : `LP8`. B : `LP7`, `LP9`. A' : trois stories de reserve. C n'ouvre pas (`PAR-13`). Aucun lot n'est ajoute pour remplir la borne.
+- **Total du palier** : inchange, 7,75 a 8,50 au bareme, 8,05 a 10,24 au surcout mesure. Il reste sous la borne de 11,50 a 12,25 au bareme et de 9,76 a 11,95 au surcout mesure (calcul sur les totaux de 4.3).
+- **Prix par lot** : inchange. Le bareme (1,0 textuel, 1,5 illustre) et le surcout de rejeu sont ceux de `nadia-prof` ; une borne n'est pas un prix. Ce que la borne retire : le risque que la somme du palier depasse son plafond (a 8,0, le haut de la fourchette, 10,24, aurait depasse). **Ce qu'elle ne retire pas : `PAR-8` par instance.** Au surcout `s` par lot : B = 4,00 plus 2 fois `s`, donc 5,0 a `s` = 0,50 et 5,16 a 0,58 ; A = 2,00 plus `s` ; A' = 1,75 a 2,50 plus ses rejeux. A trois instances, 3 x 5,0 = 15,0 : la borne de 20,0 n'est pas atteignable par les plafonds d'instance.
+- **Ce que la borne ne change pas : c'est le stock de lots qui limite.** Les lots engageables au palier 5 sont `LP8`, `LP7`, `LP9` et les trois stories de reserve d'A' ; rien d'autre n'entre (F3). Les lignes de `D5` attendent l'avis de `theo-archi`, et elles iraient dans B, deja a deux lots : un troisieme lot illustre porterait B a 1,00 plus 3 x 1,5 = 5,50 au bareme, avant tout surcout, donc au-dessus de `PAR-8` des l'inscription. Je ne l'inscris pas.
 
 ## 5. Le gain de couverture et la courbe cumulee
 
-Denominateur : 64. Chaque ligne du tableau ajoute le lot indique a la ligne precedente. **Prix au bareme, hors surcout de rejeu et hors instruction** ; un lot qui ouvre un terrain neuf ajoute 1,00 de fixe d'instance par palier.
+Denominateur : 64. Chaque ligne du tableau ajoute le lot indique a la ligne precedente. **Prix au bareme, hors surcout de rejeu et hors instruction** ; un lot qui ouvre un terrain neuf ajoute 1,00 de fixe d'instance par palier. Les lignes sous "s58" sont ce qu'un s58 ouvrirait : **aucun s58 n'est ouvert** (`D3`).
 
 | Etape | Lots | `couvert-valide` | cv / 64 | Materiau neuf ? | Prix de l'etape |
 |---|---|---|---|---|---|
 | Aujourd'hui | - | 38 | 59,4 % | - | - |
-| **Palier 5 (decide)** | `LP8`, `LP7`, `LP9` | 38 | 59,4 % | **non** pour `LP8` ; `LP7` : un second dessin de triangle rectangle ; `LP9` : 20 dessins de grille | 4,00 (lots) |
-| s58, bloc questionner le monde, palier a | `QLM-CE1-01` a `-03` | 41 | 64,1 % | non | 3,00 |
-| s58, palier b | `QLM-CE1-04` a `-06` | 44 | 68,8 % | non | 3,00 |
-| s58, palier c | `QLM-CE1-08`, `-10`, `-12` | 47 | 73,4 % | non | 3,00 |
-| s58, `QLM-CE1-07` | moitie textuelle, plafond `en cours` | 47 | 73,4 % | non | 1,00 |
-| s58 ou plus tard | `FRA-CE1-09` | 48 | 75,0 % | non | 1,00 |
-| idem | `FRA-CE1-08` | 49 | 76,6 % | non | 1,00 |
-| **Plafond sans materiau neuf** | | **49** | **76,6 %** | | |
-| Corpus | `ART-CE1-01`, `-02` | 51 | 79,7 % | **oui** : dessins, photographies, paires | 3,00 plus corpus non chiffre |
-| Planisphere | `QLM-CE1-11` | 52 | 81,3 % | **oui** : planisphere ou globe | 1,00 [suppose : plafond `couvert-valide`, aucun plafond n'est ecrit] |
-| Images, 1 ligne levee de `en cours` | l'une des 5 | 53 | 82,8 % | **oui** | non chiffre |
-| Images, 2 lignes | | **54** | **84,4 %** (**CM1 depasse**) | **oui** | non chiffre |
-| Images, 3 lignes | | **55** | **85,9 %** | **oui** | non chiffre |
-| Images, 4 lignes | | 56 | 87,5 % | **oui** | non chiffre |
-| Images, 5 lignes | | **57** | **89,1 %** (**CP depasse**) | **oui** | non chiffre |
+| **Palier 5 (decide)** | `LP8`, `LP7`, `LP9` | 38 | 59,4 % | non pour `LP8` ; `LP7` : rotation de l'existant (`D2`), sans octet si `theo-archi` la juge suffisante ; `LP9` : 20 dessins de grille | 4,00 (lots) |
+| **Palier 6 (`D3`, `D5`), dans s57** | `MAT-CE1-01`, `-10`, `-11`, `-02`, `-09`, **sous reserve** de l'avis de `theo-archi` et de la levee de chaque plafond par `nadia-prof` | 43 au plus | 67,2 % | **oui** : dessins | 1,5 par lot [suppose : bareme du lot illustre], 7,50 pour cinq, non engage |
+| s58 (non ouvert), `QLM-CE1-01` a `-03` | | 46 | 71,9 % | non | 3,00 |
+| s58, `QLM-CE1-04` a `-06` | | 49 | 76,6 % | non | 3,00 |
+| s58, `QLM-CE1-08`, `-10`, `-12` | | 52 | 81,3 % | non | 3,00 |
+| s58, `QLM-CE1-07` | moitie textuelle, plafond `en cours` | 52 | 81,3 % | non | 1,00 |
+| s58 ou plus tard, `FRA-CE1-09` | | 53 | 82,8 % | non | 1,00 |
+| idem, `FRA-CE1-08` | | **54** | **84,4 %** (**CM1 depasse**) | non | 1,00 |
+| Corpus, `ART-CE1-01`, `-02` | | 56 | 87,5 % | **oui** : dessins, photographies, paires | 3,00 plus corpus non chiffre |
+| Planisphere, `QLM-CE1-11` | | **57** | **89,1 %** (**CP depasse**) | **oui** : planisphere ou globe, **hors perimetre** par `DEC-0123` 3 | 1,00 [suppose : plafond `couvert-valide`, aucun plafond n'est ecrit] |
 
-- **Compteur de version** : calcule seulement pour le palier 5 (43 vers 46). Au-dela, je ne l'ai pas recompte ligne a ligne ; lever un plafond `en cours` vers `couvert-valide` ajoute 1 au numerateur et ne change pas le compteur.
-- **Sans materiau neuf, de 38 a 49** : les 11 lots de s58. **Avec materiau**, de 49 a 52 en ajoutant les lignes qui n'ont aucun plafond ecrit (arts plastiques, planisphere). **Pour passer 52, il faut lever les plafonds `en cours` de lignes dont le manque est une image** : `MAT-CE1-01` (collection a denombrer), `-10` (balance, recipient), `-11` (horloge), `-02` (ligne graduee), `-09` (regle) ; les deux dernieres sont hors perimetre par `DEC-0123` 3. **Lever un plafond est le jugement de `nadia-prof`**, pas le mien : une image ne suffit pas a elle seule.
-- **Prix de s58** : les 3 paliers de questionner le monde tiennent a **une seule instance** (`PAR-2` : une matiere et un niveau ne se partagent pas ; `PAR-8` : trois lots par palier). A 1,0 par lot au bareme : 3,00 de lots plus 1,00 de fixe = 4,00 par palier ; au surcout du palier 4 (0,58 par lot), 5,74, au-dessus de 5,0. **Aucune instance de questionner le monde n'a de developpeur designe** (`RG2` demande un developpeur distinct) [lu].
+- **Compteur de version** (`couvert-valide` plus `en cours`) : 43 / 64 aujourd'hui, 46 / 64 = 71,9 % apres le palier 5 si les trois lots obtiennent leur Done. Le palier 6 ne le change pas : les cinq lignes de `D5` comptent deja `en cours` ; en lever une ajoute 1 au numerateur `couvert-valide` seulement.
+- **Sans materiau neuf, de 38 a 49** : les 11 lots d'un s58. **Avec les cinq lignes de `D5`**, de 49 a 54 (ou de 38 a 43 dans s57 seul). Lever un plafond `en cours` est le jugement de `nadia-prof`, pas le mien : une image ne suffit pas a elle seule.
+- **Prix d'un s58** : les 3 paliers de questionner le monde tiennent a **une seule instance** (`PAR-2`, `PAR-8`). A 1,0 par lot au bareme : 3,00 de lots plus 1,00 de fixe = 4,00 par palier ; au surcout du palier 4 (0,58 par lot), 5,74, au-dessus de 5,0. **Aucune instance de questionner le monde n'a de developpeur designe** (`RG2` demande un developpeur distinct) [lu].
+
+### 5.1 Palier 6 dans s57 (`D3`, `D5`)
+
+- **Ses mots.** `D3` : *"on reste dans s57"*. `D5` : *"option 3 et 5 lignes"*.
+- **La consequence, dite avant sa reponse et maintenue.** Aucune ligne `couvert-valide` n'est possible dans s57 sans la levee des regles de `nadia-prof` (F3 : `FRA-CE1-08` et `-09`, questionner le monde, arts plastiques) ou sans le materiau de `D5`. Elle a refuse d'avance de lever ses regles (*"relever ma barre d'un cote et la baisser de l'autre"*) et l'utilisatrice ne le lui demande pas. **Le palier 6 ne peut donc faire bouger le numerateur que par `D5`.**
+- **Contenu du palier 6 : a composer a partir de `D5` et des corrections. Je ne l'invente pas.** Connu aujourd'hui : (i) les cinq lignes de `D5` : aucune story n'existe pour leur moitie manquante (l'image) [lu, section 3, B1] ; elles s'ecrivent apres l'avis de `theo-archi`, parce que leurs criteres dependent de la forme de chaque dessin ; (ii) les corrections que le palier 5 produira (refus, reserves de `LP7`, `LP8`, `LP9` et des trois stories d'A') et les reports de la section 8 non soldes : ils n'existent pas encore, je ne les enumere pas.
+- **Gain** : s57 clos au plus a **43 / 64 = 67,2 %** `couvert-valide`, compteur 46 / 64. Le CM1 est a 83,5 % et le CP a 88,1 % ; le CE1 reste en dessous a la cloture de s57.
+- **Ce que `D5` ne fait pas** : lever aucun plafond (`nadia-prof` seule) ; poser le poids des dessins (section 9) ; rouvrir `QLM-CE1-09`, `QLM-CE1-11` ni la moitie dessinee de `QLM-CE1-07`, que `DEC-0123` 3 laisse hors perimetre (`D5` nomme cinq lignes de mathematiques).
+- **Trois faits de composition que `D5` rend vrais** : (1) **`PAR-8` et `PAR-2`** : les cinq lignes sont de mathematiques CE1, donc dans B seule ; B porte trois lots au plus et 5,0 ; deux lots illustres coutent 4,00, trois 5,50 au bareme. Cinq lignes ne tiennent pas dans un palier sans depassement consigne ; (2) **`PAR-13`**, cite par `DEC-0123` 3.2 point 1 : *"une seule ligne a dessin par sprint, et pas tant qu'A' existe"*. **Que les cinq lignes y entrent est un jugement de `nadia-prof`**, que je ne rends pas ; si elles y entrent, `D3` et `D5` ne tiennent pas ensemble dans s57 au-dela de la limite qu'elle ecrit (une ligne par sprint dans le texte cite ; aucune si `LP9` compte deja pour cette ligne) ; (3) **un seul lot illustre par palier** (section 4.3) : sa limite au palier 5 et au palier 6 est a dire par elle.
 
 ## 6. `LP9`, `LP8`, `LP7` : etat, conditions de composition, ce que demanderait un troisieme ecartement
 
@@ -158,20 +176,20 @@ Denominateur : 64. Chaque ligne du tableau ajoute le lot indique a la ligne prec
 |---|---|---|
 | `camille-po` | la story porte K1 a K10, `FIG-CE1-1` a `-3` et le plafond `en cours` | ecrite. **Une valeur est fausse** : elle ecrit *"18 dessins `figure-*`"* ; `ls ... grep -c "^figure-"` rend **12**. Corrigee dans l'annotation du backlog, avec le critere du second triangle rectangle |
 | `nadia-prof` | **condition neuve du 2026-10-21** (`arbitrage-nadia-palier-4.md` 3.2) : le triangle rectangle est montre dans au moins deux dessins qui different par l'orientation ou les proportions | **non tenue** : `grep -c figure-triangle-rectangle` sur le listing de `static/illustrations` rend 1 |
-| `theo-archi` | un second dessin de triangle rectangle, ou la rotation de l'existant ; si le lot exige un dessin neuf, *"le lot s'arrete"* (story) | **non ecrite** (route de `nadia-prof`, 3.2) |
-| utilisatrice | un dessin neuf ajoute des octets : le *oui* de `LP9` **ne couvre pas** un lot qui n'est pas `LP9` (`DEC-0120` A.146, point 3 ; A.149 regle d'ordre, point 3) | **a poser** : D2 |
+| `theo-archi` | un second dessin de triangle rectangle, ou la rotation de l'existant ; si le lot exige un dessin neuf, *"le lot s'arrete"* (story) | **saisi en parallele le 2026-10-23** pour dire si la rotation suffit (`D2`) ; avis non rendu a la date de cette mise a jour |
+| utilisatrice | un dessin neuf ajoute des octets : le *oui* de `LP9` **ne couvre pas** un lot qui n'est pas `LP9` (`DEC-0120` A.146, point 3 ; A.149 regle d'ordre, point 3) | **repondu** (`D2`) : *"ok pour faire une rotation"*, sans octet. **Ne vaut pas** pour un fichier neuf : si `theo-archi` juge la rotation insuffisante, la question du fichier neuf se repose (section 9) |
 | `nadia-prof` | arbitrage du palier 5 : prix (1,5), instance B, **et si deux lots illustres tiennent dans un palier** (8.4 tableau 3 : *"un seul"*) | **non ecrit** |
 | `lea-dev` | reecrire le paquet avec ses figures : `grep -cE '^\s+illustration:'` rend 0 aujourd'hui (rouge), au moins 20 apres ; l'en-tete `DEGRADE` reecrit | dans le lot |
 
 ## 7. Regle de composition : lecture avant verify
 
-**Ses mots, 2026-10-23, relayes** : *"Lecture avant verify"* : pour un lot de A' sur un paquet neuf, `nadia-prof` lit le premier jet du paquet avant le verify, et le rejeu coute alors dans le lot. **Elle sera consignee par `DEC`** (non ecrite ici). Les alineas ci-dessous sont **ma redaction ; la portee, le declencheur, l'ecrit et le compte du prix sont ma lecture**, a confirmer.
+**Ses mots, 2026-10-23, relayes** : *"Lecture avant verify"* : pour un lot de A' sur un paquet neuf, `nadia-prof` lit le premier jet du paquet avant le verify, et le rejeu coute alors dans le lot. **Consignee par `DEC-0120` A.184.** **Portee : tranchee par `D4`** (*"on prend l'autre option"*). Les alineas ci-dessous sont **ma redaction ; le declencheur, l'ecrit et le compte du prix restent ma lecture**, a confirmer.
 
-1. **Portee.** Ses mots : un lot de A' sur un paquet neuf. **Lecture litterale [suppose]** : A' seule ; **paquet neuf** = un paquet ecrit dans le lot (comme `EMC-CE1-02` a `-04`), pas la correction d'un paquet deja au catalogue. **Consequence a savoir** : au palier 5, A' n'a aucun paquet neuf (trois corrections de reserve) ; **la regle n'y a aucune occurrence**. Elle mord a partir du premier paquet neuf d'A'. `LP7` (paquet reecrit) et `LP9` (paquet neuf avec dessins) sont en B : hors portee litterale. Ce qui est dit ici n'etend la regle a aucune autre instance ; l'etendre est D4.
-2. **Declencheur.** Le developpeur du lot (pour A', `sofia-sm`) commite le premier jet complet du paquet sur sa branche et l'ecrit dans `planning.md` (une ligne : lot, commit, heure) **avant de lancer un `verify` complet**. Pas de `verify` complet sur ce paquet avant la lecture.
+1. **Portee (`D4`).** **Tout paquet ecrit ou reecrit dans un lot**, toutes instances. Au palier 5 : **`LP7`** (paquet reecrit avec ses figures) et **`LP9`** (paquet neuf avec 20 dessins de grille) en relevent : **deux lectures de `nadia-prof`**, toutes deux en B. Son prix est a elle ; la regle ne l'a pas fixe. **Hors portee, ma lecture a confirmer par `nadia-prof`** : `LP8` (le paquet `ce1-mots-irreguliers` a ete ecrit hors sprint, le lot ne fait que le brancher) et les trois stories de reserve d'A' (elles corrigent des items de paquets deja au catalogue, ce qu'elle relit deja *"sans rejeu complet"*, `DEC-0120` A.173). **Condition sur le premier jet** : les items de `LP7` et de `LP9` nomment des dessins (`illustration:`) ; le premier jet a lire est donc le paquet **avec** ses dessins, et la lecture ne peut avoir lieu qu'une fois ceux-ci sur la branche.
+2. **Declencheur.** Le developpeur du lot (pour A', `sofia-sm` ; pour B, `lea-dev`) commite le premier jet complet du paquet sur sa branche et l'ecrit dans `planning.md` (une ligne : lot, commit, heure) **avant de lancer un `verify` complet**. Pas de `verify` complet sur ce paquet avant la lecture.
 3. **Ce que `nadia-prof` produit.** Un ecrit date dans le dossier du sprint, `lecture-nadia-premier-jet-<paquet>.md` : les items qu'elle refuserait et leur motif, **sans verdict**. Ce n'est pas un Done : le Done reste prononce sur le commit joue, apres le `verify` (`CLAUDE.md`, double Done). Aucune fiche de conformite n'est modifiee par cet ecrit.
 4. **Ce que le developpeur fait.** Il corrige les items nommes, puis lance son `verify`. La correction est faite avant le premier `verify`, pas apres un refus.
-5. **Le prix.** La lecture et la correction qui en suit sont **comprises dans le prix du lot** (1,0 au bareme), **pas sur la marge de rejeu, pas en ligne de registre separee**. Ses mots : *"le rejeu coute alors dans le lot"*. **Lecture [suppose]** : "le rejeu" designe la relecture apres le premier jet ; un refus prononce **apres** le `verify` se facture comme avant (marge, puis ligne de rejeu). **Si elle voulait dire autrement, le prix du lot change et c'est `nadia-prof` qui le chiffre**, pas moi.
+5. **Le prix.** La lecture et la correction qui en suit sont **comprises dans le prix du lot** (1,0 au bareme ; 1,5 pour `LP7` et `LP9`), **pas sur la marge de rejeu, pas en ligne de registre separee**. Ses mots : *"le rejeu coute alors dans le lot"*. **Lecture [suppose]** : "le rejeu" designe la relecture apres le premier jet ; un refus prononce **apres** le `verify` se facture comme avant (marge, puis ligne de rejeu). **Si elle voulait dire autrement, le prix du lot change et c'est `nadia-prof` qui le chiffre**, pas moi.
 6. **Ce que la regle ne change pas.** Le plafond de chaque ligne, les conditions de Done, l'audit sur le commit joue, la marge de 0,5 par instance.
 7. **Condition de composition de `LP6`, ancienne** : *"aucune regle neuve sans eux"* (`P9` de `arbitrage-camille-cloture-palier-4.md`) : les verdicts de `nadia-prof` et de l'utilisatrice precedent l'ajout. L'utilisatrice a repondu *"on ajoute"* ; la regle ci-dessus est son choix.
 
@@ -191,50 +209,24 @@ Source : `arbitrage-camille-cloture-palier-4.md`, `cloture-palier-4.md` section 
 | Commentaires de `src/` (ecarts 33, 40 a 44, part code de 37 et 38) | **0 titre au backlog**, premier report a ma charge | **non ecrite ici, non lue ici** : hors de la demande. A ecrire avant la composition ; je la signale comme dette |
 | `confirmation-archunit-palier-4.md` | absente | `theo-archi` (section 1) |
 | Ecart 24 juges (`yanis-qa`) contre 13 (job `outils`) | non explique | `yanis-qa` |
-| Rejeu 2 de `LP6` | `non-chiffre` | `nadia-prof` ; condition du relevement de `PAR-8` en A' (`QU2`) |
+| Rejeu 2 de `LP6` | `non-chiffre` | `nadia-prof` ; condition du relevement de `PAR-8` en A' (`QU2`, consigne par `DEC-0120` A.186) : je ne chiffre pas a sa place |
 | Aucun fichier de palier 5 de `nadia-prof` | absent | arbitrage prealable du palier 5, par instance (0,5 chacune), avant le premier lot ; **il porte la cloture du palier 4** (condition 3 de 11.3) |
 
-## 9. Decisions que seule l'utilisatrice peut prendre
+## 9. Ce qui reste a l'utilisatrice
 
-Les points `QU2`, `DEC-0125`, `QP7`, la regle de `LP6`, `QP4`, `T5` et "s57 pas encore ferme" sont **fermes** par ses reponses du 2026-10-23 (section 1) et ne figurent pas ici.
+`D1` a `D5`, `QU2`, `DEC-0125`, `QP7`, la regle de `LP6`, `QP4`, `T5` et "s57 pas encore ferme" sont **fermes** par ses reponses du 2026-10-23 (section 1). **Je ne pose aucune question aujourd'hui.** Trois questions existent, chacune avec son declencheur ecrit, parce que chacune depend d'un chiffre qui n'est pas ecrit :
 
-### D1. La borne du palier 5
-
-- **Question** : au palier 4 elle a ecrit *"on monte a 20"* (quatre instances a 5,0). Au palier 5, la composition proposee fait 7,75 a 8,50 au bareme et 8,05 a 10,24 au surcout mesure (section 4.3). Quelle borne ?
-- **Mon avis** : garder 8,0 ; si les prix de `nadia-prof` depassent, qu'elle l'ecrive comme sa decision, **ecrit comme depassement, pas comme `O2`** (`arbitrage-nadia-palier-4.md` 8.4). Aucun lot n'est ajoute pour remplir une borne : *"ce qui limite le palier, c'est le stock de lots, pas la borne"*.
-- **Options** : (a) 8,0 : si le surcout se repete, une instance depasse (comme A' au palier 4) ; (b) la borne du palier 4, 20,0 : aucun effet sur le stock, la borne n'est pas la contrainte ; (c) 8,0 plus une ligne ecrite par elle pour le depassement observe : le cout est la ligne.
-
-### D2. Un dessin neuf pour `LP7` (second triangle rectangle) : etendre ou non le *oui* sur le poids
-
-- **Question** : son *oui* sur le poids des dessins ne couvre que les grilles de `LP9`. `LP7` exige, par la condition de `nadia-prof`, deux dessins de triangle rectangle ; il en existe un. Autorise-t-elle les octets d'un second dessin ?
-- **Mon avis** : demander d'abord a `theo-archi` si une rotation de l'existant suffit (aucun octet, aucune question). Ne poser la question a l'utilisatrice que s'il faut un fichier neuf. Je n'ai pas mesure le poids d'un dessin de triangle ; la valeur est de `theo-archi`.
-- **Options** : (a) oui pour ce dessin : `LP7` s'ouvre ; cout : une hausse de `POIDS_TOTAL_MAXIMUM`, et un conflit de constante avec `LP9` (`LP9` fusionne d'abord) ; (b) non : `LP7` reste sans son prealable, **donc non engageable**, ce qui est un troisieme ecartement de fait malgre sa reponse *"pas de DEC"* ; (c) rotation sans octet, si `theo-archi` la juge recevable : aucun cout pour elle.
-
-### D3. Ouvrir s58 avec quelle famille, et quand
-
-- **Question** : tout le `couvert-valide` possible sans materiau (11 lignes) est derriere les regles de `nadia-prof` qui renvoient a s58 (F3). Elle a dit *"pas encore ferme"* pour s57. A la cloture du palier 5, ferme-t-elle s57 pour ouvrir s58 ? Et si oui, quelle famille en premier : questionner le monde (9 lignes `couvert-valide`, une instance, 3 a 4 paliers), `FRA-CE1-09` puis `-08` (1 ligne par sprint), ou arts plastiques (2 lignes, corpus a construire) ?
-- **Mon avis** : fermer s57 a la cloture du palier 5, et ouvrir s58 sur **questionner le monde** : c'est le plus gros stock sans materiau (9 sur 11) et les lots se suivent dans une meme instance. `FRA-CE1-09` ensuite. Arts plastiques apres, parce que le corpus n'existe pas et se travaille a part. **L'ordre est le mien ; l'ouverture d'un sprint est a elle.** Question a `nadia-prof` avant : sa regle laisse-t-elle questionner le monde et `FRA-CE1-09` dans le meme sprint ? Je suppose que non.
-- **Options** : (a) fermer a la cloture du palier 5 : rapport de sprint, retro et rapport de tokens a produire pour un sprint long (aucune mesure de cout ecrite) ; (b) rester dans s57 pour un palier 6 : **aucune ligne `couvert-valide` possible** (F3), sauf si `nadia-prof` leve ses regles, ce qu'elle a refuse d'avance (*"relever ma barre d'un cote et la baisser de l'autre"*) ; (c) fermer plus tot : les trois lots du palier 5 restent non engages, donc un troisieme ecartement.
-
-### D4. La portee de la regle "Lecture avant verify"
-
-- **Question** : la regle vaut-elle pour A' seule, comme ses mots le disent, ou pour tout paquet ecrit ou reecrit dans un lot ?
-- **Mon avis** : litteral pour le palier 5, ce qui veut dire **aucune occurrence** (section 7, alinea 1). Si elle veut qu'elle serve au palier 5, il faut l'etendre a `LP7` (paquet reecrit) et `LP9` (paquet neuf) ; je n'ecris pas cette extension sans son mot.
-- **Options** : (a) A' seule : rien au palier 5, la regle attend un paquet neuf d'A' (s58 et apres) ; cout : aucun ; (b) tout paquet ecrit ou reecrit dans un lot, toutes instances : `LP7` et `LP9` en relevent ; cout : une lecture de plus pour `nadia-prof` avant chaque `verify`, dont le prix est a elle, et elle a dit que 8,0 est sa capacite mesuree.
-
-### D5. Lever, ou non, des plafonds `en cours` par des images
-
-- **Question** : rouvre-t-elle le perimetre des dessins de `DEC-0123` 3 (*"condition de retour : une nouvelle reponse"*) pour les lignes de mathematiques CE1 dont le manque est une image ?
-- **Mon avis** : pas avant l'avis de `theo-archi` sur le cout d'une collection a denombrer, d'une balance et d'un recipient, d'une horloge : aucun avis ecrit [lu : non trouve] ; **puis** la question, ligne par ligne. Sans cela, le plafond de s58 est 52 / 64 (81,3 %) et le CE1 ne depasse ni le CM1 (83,5 %) ni le CP (88,1 %).
-- **Options** : (a) non : plafond 52 apres arts plastiques et planisphere, 49 sans eux ; (b) trois lignes (`MAT-CE1-01`, `-10`, `-11`) : 52 sur la base de 49, 55 avec arts plastiques et planisphere, sous reserve que `nadia-prof` leve chaque plafond ; cout : trois lots illustres a 1,5 plus des dessins, poids du cliquet a nouveau ; (c) cinq lignes (plus `-02` et `-09`) : 54 sur la base de 49, 57 avec arts plastiques et planisphere ; cout : le plus lourd en dessins, deux lignes que `Q-06` a deja sorties.
+1. **Un fichier neuf pour `LP7`.** Declencheur : `theo-archi` juge la rotation insuffisante. *"ok pour faire une rotation"* ne vaut pas oui pour un fichier neuf (les octets d'un second dessin, une hausse de `POIDS_TOTAL_MAXIMUM`, un conflit de constante avec `LP9`) ; je ne l'etends pas.
+2. **Le poids des dessins de `D5`.** Declencheur : l'avis de `theo-archi` chiffre des octets qui portent le total au-dela de 161 863, borne du *oui* de `DEC-0123` (septieme amendement), apres les 20 dessins de `LP9`. Sa reponse a `D5` ne cite pas le poids.
+3. **Le nombre de paliers de s57 apres le palier 5, et la borne du palier 6.** *"On reste dans s57"* ne dit pas combien de paliers ; je n'ecris ni *"un seul"* ni *"autant que necessaire"*. Declencheur : la composition du palier 6, quand l'avis de `theo-archi` et les prix de `nadia-prof` disent combien de lignes de `D5` tiennent dans B (section 5.1, premier fait) et si `PAR-13` les laisse passer. Aucune borne n'est posee pour le palier 6.
 
 ## 10. Ce que ce fichier ne fait pas, et ce qui reste a ecrire
 
-- **Une `DEC` n'est pas ecrite.** Les reponses du 2026-10-23 (`QU2`, `DEC-0125`, `QP7`, regle de lecture, `QP4`, `T5`, s57) demandent un amendement de `DEC-0120` : **il reste a ecrire par `camille-po`, dans un geste suivant**, ce geste-ci ne touchant aucune `DEC`. Tant qu'il n'est pas ecrit, ces reponses sont au depot dans ce fichier seulement. Le relevement de `PAR-8` en A' (`QU2`) y sera ecrit avec le prix du rejeu 2 de `LP6` quand `nadia-prof` l'aura donne.
-- **Aucun prix n'est fixe**, aucun poste engage, aucune ligne de matrice ni de registre modifiee.
+- **Les reponses du 2026-10-23 sont consignees** : `DEC-0120` A.180 a A.190 (`QU2`, `DEC-0125`, `QP7`, regle de lecture, `QP4`, `T5`, s57, `D1` a `D5`), amendements de `DEC-0123` (huitieme) et de `DEC-0125` (premier), ligne de `DEC-index.md`. Le relevement de `PAR-8` en A' (`QU2`) est consigne sans valeur finale : elle s'ecrit quand `nadia-prof` chiffre le rejeu 2 de `LP6`.
+- **Aucun prix n'est fixe**, aucun poste engage, aucune ligne de matrice ni de registre modifiee. **Aucun lot de dessins n'est engage** (`D5`) avant l'avis de `theo-archi`, et aucune story n'est ecrite pour les cinq lignes d'images : elles suivent cet avis.
 - **Ce fichier est avec une annotation de backlog** : la story de `LP8`, la correction de `LP7`, la fermeture de `S57-SAISIE-MOTS-PROPOSES-PAR-LE-CLAVIER` et l'engagement de `S57-GARDE-PAQUET-INTERET-COMMUN`.
 - **A ecrire par d'autres avant la composition** : l'arbitrage prealable du palier 5 de `nadia-prof` (par instance, avec le chiffre du rejeu 2 de `LP6` et sa ligne sur `CA4`) ; la mesure d'`ines-design` sur les etiquettes de grille ; le complement de `theo-archi` (20 SVG, test croise, second triangle rectangle) ; `confirmation-archunit-palier-4.md`.
 
 ## 11. Verifications lancees
 
-Voir le message de livraison de ce geste : tables scannees cellule par cellule, classes de `bootstrap` qui jugent `squad/` et `docs/backlog` lancees en `-pl bootstrap -am`, `prefixes` et `chemins`. Je ne declare pas la porte technique : le `build` complet n'est pas lance.
+Voir le message de livraison de cette mise a jour : tables scannees cellule par cellule, classes de `bootstrap` qui jugent `squad/` et `docs/backlog` lancees en `-pl bootstrap -am`, `prefixes` et `chemins`. Je ne declare pas la porte technique : le `build` complet n'est pas lance.
