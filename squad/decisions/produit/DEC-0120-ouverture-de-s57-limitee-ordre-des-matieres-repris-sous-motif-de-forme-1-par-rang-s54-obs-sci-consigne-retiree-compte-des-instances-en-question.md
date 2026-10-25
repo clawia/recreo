@@ -3163,3 +3163,92 @@ Sa reponse **ne les nomme pas**. La condition 4 de `nadia-prof` (*"`-08` et `-09
 | l'utilisatrice | **aucune question aujourd'hui.** Declencheurs ecrits : la valeur de chaque releve, **a la composition du palier concerne, avec le chiffre** (A.225) ; la borne du palier 6, a sa composition (A.219) ; `PO1`, a l'ouverture de `MAT-CE1-01` (A.213) ; `FRA-CE1-08` et `-09`, seulement si elle les veut (A.226) |
 
 **Decisions de produit prises ici** : (1) `V3` est consigne tel qu'ecrit, sans extension : questionner le monde CE1 entre dans s57 par un depassement ecrit de l'utilisatrice, sous reserve de `PO2` ; (2) le point d'A.218 est ferme dans son principe, `s58` n'est pas ouvert ; (3) trajectoire nominale proposee : depart au palier 6, trois lots par palier, T1 a T4, plafond de `couvert-valide` de s57 **jusqu'a 52 sur 64 (81,3 %)** au lieu de 43 ; (4) aucun releve n'est inscrit, aucune valeur n'est fixee ; (5) `FRA-CE1-08` et `-09` restent hors de s57. **Changement de code decide, avec proprietaire** : aucun. Les paquets de questionner le monde CE1 sont du contenu a ecrire dans des lots qui ne sont pas engages ; **le principe est consigne, l'engagement attend `PO2` et un developpeur designe par `sofia-sm`** (route dans ce meme geste, ligne `sofia-sm` ci-dessus et annotation de backlog). **Non decide, dit** : `PO2` ; la valeur des releves ; la borne du palier 6 ; le palier de depart reel ; l'instance. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, n'engage aucun lot, ne releve aucun plafond, n'amende ni `planning.md`, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni paquet, ni catalogue, ni matrice. Aucun identifiant de condition alloue.
+
+## Amendement du 2026-10-25, trente-quatrieme (`camille-po`, palier 5 : texte des trois voies de la question sur questionner le monde CE1, reponse sur la cadence et le nombre de lots, story des commentaires de `src/`)
+
+Annotation datee. **Rien au-dessus n'est reecrit** : A.220 a A.228 restent tels qu'ils sont ; ce que cet amendement precise dans A.220 est dit en A.229. **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : `round-two` a `077fae0b`, branche `s57-p5-camille-suite`. Sources lues au disque : `arbitrage-nadia-palier-5-qlm-v3.md` (0, 2, 3, 7.3, 10), `DEC-0120` A.216, A.220 a A.228, `releve-relecteur-cloture-palier-3.md` (ecarts 33, 37, 38, 40 a 44), `avis-theo-palier-4.md` (4, 5), `DEC-0124` (0, 4). Ce que je n'ai pas fait : prononcer un Done, fixer un prix, relever un plafond, composer un palier, engager un lot, ecrire une story de questionner le monde, modifier la matrice, `planning.md` ou le code.
+
+### A.229 Le texte des trois voies de la question, reconstitue, et la condition de `nadia-prof`
+
+**Ce que `nadia-prof` exige** (`arbitrage-nadia-palier-5-qlm-v3.md` 2, dernier paragraphe) : que `camille-po` consigne dans `DEC-0120`, a cote des mots de l'utilisatrice et avant l'ouverture du premier lot de questionner le monde CE1, *"le texte de V3 tel qu'il lui a ete presente"*. Elle ecrit en 0 que le depot ne porte aucun V3 sur cette question.
+
+**Ce que je peux consigner, et ce que je ne peux pas.** **Le libelle integral des trois voies, tel qu'il a ete affiche a l'utilisatrice, n'est dans aucun fichier du depot et n'a pas ete conserve.** Ce qui suit est une **reconstitution, faite depuis le message de l'agent lanceur** ; ce n'est pas le libelle affiche a l'utilisatrice. Je n'ai rien ajoute a ces traces. Deux traces existent, et seulement deux : la question en une ligne et la description de `V3`, toutes deux donnees par l'agent lanceur.
+
+| Voie | Trace conservee | Origine de la trace |
+|---|---|---|
+| `V1` | *"ouvrir s58 pour questionner le monde CE1"* | la question en une ligne |
+| `V2` | *"nadia-prof relit sa regle"* | la meme ligne |
+| `V3` | *"depassement ecrit de l'utilisatrice"* dans la meme ligne ; description plus longue : *"un depassement ecrit de l'utilisatrice qui fait entrer questionner le monde CE1 dans s57, comme pour l'horloge MAT-CE1-11 (depassement de PAR-13 ecrit par elle le 2026-10-24)"* | le message de l'agent lanceur, deux formes |
+
+**Question en une ligne, telle que transmise** : *"V1 ouvrir s58 pour questionner le monde CE1 ; V2 nadia-prof relit sa regle ; V3 depassement ecrit de l'utilisatrice"*.
+
+**Ce que la reconstitution ne dit pas** : ni la formulation exacte des voies telle que l'utilisatrice l'a lue, ni leur ordre d'affichage, ni ce qui accompagnait `V1` et `V2` au-dela des quelques mots ci-dessus, ni si la description de `V3` faisait partie de ce qui lui a ete affiche ou si l'agent lanceur l'a ajoutee en me transmettant la question. **Je ne le sais pas et je ne le devine pas.** A.220 portait deja la question en une ligne, de la meme source ; A.229 la reprend avec les traces de `V3` que A.220 ne citait pas.
+
+**Ce que l'utilisatrice peut faire.** Elle relit cette reconstitution. **Elle peut la corriger**, par ses mots, et la correction s'ecrit ici en annotation datee, sans reecrire ce paragraphe.
+
+**Ce que je ne declare pas.** La condition de `nadia-prof` porte sur le texte de `V3` *tel qu'il a ete presente a l'utilisatrice*. La reconstitution ci-dessus est le texte tel que l'agent lanceur l'a transmis, pas le texte presente a l'utilisatrice. **Je ne dis pas que la condition est remplie.** C'est `nadia-prof` qui constate, sur ce paragraphe, si elle l'est ou non (`PO2`, A.222, reste ouvert tant qu'elle n'a pas ecrit). Tant qu'elle n'a rien ecrit, aucun lot de questionner le monde CE1 n'est engage.
+
+### A.230 La reponse de l'utilisatrice sur la cadence et le nombre de lots
+
+**Le point ouvert.** Cadence et couts de questionner le monde CE1 : `nadia-prof` (`arbitrage-nadia-palier-5-qlm-v3.md` 3, 7.1) compte une ligne par lot et **4,33** pour l'instance a deux lots par palier (0,67 de surcout par lot) ; A.224 compte trois lots par palier a **6,00** pour la meme instance et le meme surcout.
+
+**Ses mots, relayes par l'agent lanceur, mot pour mot (forme 2 de `DEC-0062` G, non lus de sa main)**, 2026-10-25 : *"A1 et pour A3 6 lots pour le palier"*.
+
+**Provenance du libelle de `A1` et de `A3`.** Les options `A1` et `A3` de cette question **ne sont ecrites dans aucun fichier du depot** et leur libelle ne m'a pas ete transmis. **Je ne reconstitue pas `A1`** : je n'ai aucune trace de ce qu'elle disait. De `A3`, la phrase elle-meme dit qu'elle porte sur un nombre de lots (*"6 lots pour le palier"*) ; je n'en lis rien de plus.
+
+**Ce que ces mots tranchent.**
+
+1. Elle choisit `A1`, dont le contenu n'est pas dans le depot **[a retrouver par l'agent lanceur : le libelle de la question, pour que `A1` soit consigne a cote de ses mots]**.
+2. Pour `A3`, elle donne un nombre : **six lots pour le palier**. Ce n'est ni les trois lots d'A.224, ni les deux lots de `nadia-prof`.
+
+**Ce que ces mots ne disent pas, et que je ne tranche pas.**
+
+| Ce qui manque | Pourquoi je ne le lis pas |
+|---|---|
+| **Le sens de *"palier"*** | deux lectures possibles. (i) six lots **par palier, toutes matieres et toutes instances confondues**. (ii) six lots **de questionner le monde seul** par palier. Rien dans la phrase ne choisit. **Je ne tranche pas seule** : la question va a l'utilisatrice, par `sofia-sm`, avec les deux lectures ecrites (A.233) |
+| Quels paliers (6 a 10, tous, un seul) | la phrase dit *"le palier"*, au singulier, sans numero |
+| Quelle instance | A.224 et `nadia-prof` (C1) parlent d'une instance unique ; la phrase ne la nomme pas |
+| Si les six comptent les rejeux | les deux comptes existent dans les textes (A.224, `arbitrage-nadia-palier-5-qlm-v3.md` 7.3) ; la phrase ne dit pas lequel |
+| Le prix et le releve | **aucun chiffre pour six lots n'existe dans le depot** : le tableau d'A.224 s'arrete a trois lots. Je n'en fixe aucun ici. Ses mots d'A.220 (*"si besoin au releve"*) restent sans valeur de plafond |
+| Le sort de la regle de `nadia-prof` | la phrase ne nomme ni C3, ni C4, ni R1, ni 7.3 : voir A.231 |
+
+**Compte.** Premiere inscription de ce point : aucun report.
+
+### A.231 Le conflit avec C3, C4, R1 et 7.3 de `nadia-prof`
+
+`nadia-prof` ecrit (`arbitrage-nadia-palier-5-qlm-v3.md`) :
+
+- **C3** : *"Le premier lot de questionner le monde est seul dans son palier pour son instance"*, et jamais dans le palier ou `MAT-CE1-11` est audite ;
+- **C4** : *"Ensuite, deux lots au plus par palier"* ;
+- **R1** et **7.3** : quatre lots au premier audit par palier quand B porte deux lots illustres ; *"Un cinquieme lot dans ce palier [...] depasse ce que je tiens : s'il est ecrit par l'utilisatrice, je l'audite et j'ecris le depassement comme le sien"*.
+
+**Ce que six lots donnent face a ces textes, sans conclure.**
+
+| Lecture de *"palier"* | Face a la regle de `nadia-prof` |
+|---|---|
+| (i) six lots toutes matieres confondues | depasse de deux lots les quatre lots de 7.3 si B y porte deux lots illustres ; contredit C3 pour le premier palier de questionner le monde |
+| (ii) six lots de questionner le monde seul | depasse de quatre lots les deux de C4, et de trois lots les trois lots par instance de `PAR-8` (A.224) ; contredit C3 pour le premier palier |
+
+**Qui peut lever ce plafond** : l'utilisatrice, par un depassement ecrit, ou `nadia-prof`, qui releve sa regle. **Ni les mots d'A.230, ni moi** ne le levons. `nadia-prof` a ecrit qu'elle audite un lot au-dela de son plafond et ecrit le depassement comme celui de l'utilisatrice, **si celle-ci l'ecrit** : la phrase d'A.230 ne nomme ni C3, ni C4, ni R1, ni 7.3. **Je ne lis pas ses mots comme un depassement de ces textes** **[suppose : lecture prudente, ce n'est pas une phrase de `nadia-prof` ni de l'utilisatrice]**.
+
+**Ce que je ne fais pas** : composer un palier, fixer un prix, ecrire une story de questionner le monde, annoncer un calendrier sur six lots.
+
+### A.232 La story des commentaires de `src/` : ecrite
+
+A.216 la disait a ecrire *"avant la composition du palier 5"* (report 1 depuis la cloture du palier 4, P8g, 2026-10-23 ; A.216 annoncait que le deuxieme report serait ecrit comme tel). Le palier 5 a ete compose (A.208) sans elle : **c'est son deuxieme report**, ecrit ici. **Elle est maintenant ecrite** au backlog : `S57-COMMENTAIRES-SRC-RELEVE-P3` (ecarts 33, 40 a 44 du releve de cloture du palier 3, part code des ecarts 37 et 38). Perimetre pris dans `releve-relecteur-cloture-palier-3.md` et `avis-theo-palier-4.md` 4 et 5 ; chaque defaut a ete relu dans le fichier a `077fae0b` avant d'ecrire le critere, et **aucun n'est corrige a cette date**. Prix : 0, hors `PAR`, comme `S57-GARDE-C1-SUJET-HORS-MESSAGE` : aucune ligne `couvert-valide` ne bouge.
+
+### A.233 Matrice, routage, ce qui reste ouvert
+
+**Matrice** : aucun statut ne change, `MATRICE-couverture.md` n'est pas modifiee.
+
+| A qui | Quoi |
+|---|---|
+| l'utilisatrice, par `sofia-sm` | (1) relire la reconstitution d'A.229 et la corriger si elle differe de ce qui lui a ete affiche ; (2) dire ce que *"palier"* designe dans *"6 lots pour le palier"* (A.230, lecture (i) ou (ii)) et, si elle le veut, nommer les paliers et ecrire le depassement de C3, C4, R1 et 7.3 (A.231) |
+| l'agent lanceur | retrouver le libelle de `A1` et de `A3` : il n'est pas dans le depot, et `A1` ne peut pas etre consigne sans lui |
+| `nadia-prof` | constater sur A.229 si la condition *"tel qu'il lui a ete presente"* est remplie ou non ; `PO2` (A.222) ; si l'utilisatrice nomme les paliers : relever ou maintenir C3, C4, R1, 7.3 |
+| `sofia-sm` | router la question a l'utilisatrice ; engager `S57-COMMENTAIRES-SRC-RELEVE-P3` : designer les developpeurs, lot groupe, un seul `verify` (`avis-theo-palier-4.md` 4) ; `planning.md` : la ligne de la story et celle de la reponse d'A.230 |
+| `relecteur-pedagogique` | relire les commits de la story avant leur fusion (`retro-palier-3.md`, A-10) |
+| `theo-archi`, `ines-design`, `lea-dev`, `marc-dev` | `S57-COMMENTAIRES-SRC-RELEVE-P3` seulement, sur engagement de `sofia-sm` |
+| `camille-po` | les stories de questionner le monde CE1 (A.227) restent a ecrire apres `PO2` ; aucun palier n'est compose |
+
+**Decisions de produit prises ici** : (1) la reconstitution de la question est consignee avec sa provenance, **sans declarer la condition de `nadia-prof` remplie** ; (2) la reponse *"A1 et pour A3 6 lots pour le palier"* est consignee telle quelle, **sans lecture du mot *"palier"* et sans chiffre** ; (3) la story des commentaires de `src/` est ecrite, ce qui ferme son deuxieme report. **Non decide, dit** : le sens de *"palier"* ; le contenu d'`A1` ; la levee de C3, C4, R1, 7.3 ; le prix de six lots ; `PO2`. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, n'engage aucun lot, ne releve aucun plafond, ne compose aucun palier, n'amende ni `planning.md`, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni paquet, ni catalogue, ni matrice.
