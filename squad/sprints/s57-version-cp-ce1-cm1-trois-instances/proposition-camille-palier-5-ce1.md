@@ -340,3 +340,8 @@ Repertoire : 69 203 plus 500 (`LP7`) plus 45 540 a 61 200 (`LP9`, prototype de `
 5. Que le depassement de `PAR-13` par l'utilisatrice leve aussi la clause *"pas tant qu'A' existe"* pour `-11`.
 6. Que le surcout du palier 4 se repete aux paliers suivants.
 7. Le cousinage de `nadia-prof` (son jugement, non mesure).
+
+
+## 13. Quatrieme mise a jour du 2026-10-25 : s57 jusqu'a 10 paliers, poids minimise, polygone accepte
+
+Consigne par `DEC-0120` A.210 a A.219. **Corrige le point 1 de 12.7** : s57 ne va plus *"jusqu'au palier 8"* par ma lecture ; l'utilisatrice a ecrit *"jusqu'a 10 paliers"*, un plafond, qui n'oblige a ouvrir aucun palier sans lot instruit. **Le plafond de `couvert-valide` a la cloture de s57 reste 43 sur 64 = 67,2 %** (A.215) : les paliers 9 et 10 n'ont aucun entrant qui ajoute une ligne (A.216). **Ce qui reste a l'utilisatrice** (section 9) : le polygone de `LP7` n'est plus une question (A.211) ; la question du poids de chaque lot de `D5` garde son declencheur, et *"on minimise le poids"* n'est pas lu comme un accord (`PO1`, A.213).

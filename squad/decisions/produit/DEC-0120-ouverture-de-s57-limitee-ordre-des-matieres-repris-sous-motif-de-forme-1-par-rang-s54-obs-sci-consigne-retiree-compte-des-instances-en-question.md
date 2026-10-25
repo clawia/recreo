@@ -2866,3 +2866,117 @@ La proposition (4.1) ecrivait **3,50** de surcout pour 6 lots, soit **0,58** : 1
 | l'utilisatrice | **aucune question aujourd'hui.** Declencheurs ecrits : **le poids de chaque lot de `D5`, a son ouverture** (estimations de `nadia-prof` appliquees a l'avis de `theo-archi` : `-01` 15 000 a 22 000 ; `-02` 12 000 a 21 000 ; `-09` 20 000 a 30 000 ; `-10` 16 000 a 30 000 ; `-11` 31 200 a 39 600 octets, [suppose], hors du *oui* de 161 863 qui ne couvre que `LP9`) ; le polygone de `LP7`, qu'elle peut refuser (A.201) ; le nombre de paliers et la borne du palier 6, a la composition du palier 6 |
 
 **Decisions de produit prises ici** : (1) `PAR-8` en A' au palier 4 releve a 6,00, registre mis a jour ; (2) surcout par lot recompte, bornes 0,42 et 0,67 ; (3) `LP7` : polygone, decision de `nadia-prof`, sauf refus de l'utilisatrice ; (4) `PAR-13` : texte inchange, A.185 et A.194 corriges ; (5) `D5` en cinq lignes dans s57, cadence 6, 7, 8 ; (6) `-11` en depassement de `PAR-13` par l'utilisatrice, palier 8 (mon ordre, a confirmer) ; (7) lecture avant `verify` : portee de `nadia-prof`. **Changement de code decide, avec proprietaire** : le fichier de `LP7` et son test (`lea-dev`). **Non decide, dit** : les dessins de `D5`, `-11` compris, sans proprietaire engage tant que le poids n'est pas repondu lot par lot. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, n'engage aucun lot, n'amende ni `planning.md`, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni paquet, ni catalogue, ni matrice. Aucun identifiant de condition alloue.
+
+## Amendement du 2026-10-25, trente-deuxieme (`camille-po`, palier 5 : polygone de `LP7` accepte, poids minimise, s57 jusqu'a 10 paliers)
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; ce qui corrige A.201, A.206, A.207 et A.209 est dit ci-dessous. **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : `round-two` a `c5d07a4a`, branche `s57-camille-p5-dix-paliers`. Sources lues au disque : `proposition-camille-palier-5-ce1.md` (sections 5 et 12), `arbitrage-nadia-palier-5-lp7-d5.md` (2.3, 6.3), `arbitrage-nadia-palier-4.md` (3.4, 8.2), `arbitrage-nadia-preparation-palier-3-ce1.md` (1.3), `ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md` (11.3), les 68 lignes de CE1 de `MATRICE-couverture.md` (statut lu, lignes non `couvert-valide` listees), les 56 fichiers de `static/illustrations` et la Javadoc du cliquet de poids. Ce que je n'ai pas fait : prononcer un Done, fixer un prix, lever un plafond, accorder un poids, composer les paliers 9 et 10, modifier la matrice, `planning.md` ou le code.
+
+### A.210 Les mots, et ce qu'ils m'autorisent
+
+Message de l'utilisatrice, 2026-10-25, cite mot pour mot par l'agent lanceur (forme 2 de `DEC-0062` G, non lu de sa main) : *"LP7 polygone ok, on minimise le poids, jusqu'a 10 paliers"*. Ils m'autorisent a consigner trois reponses et leurs consequences de produit ; pas a chiffrer un poids, ni a lever un plafond, ni a composer un palier.
+
+| Point | Ce que je consigne | Consigne en |
+|---|---|---|
+| *"LP7 polygone ok"* | elle accepte le polygone de `nadia-prof` (A.201) | A.211 |
+| *"on minimise le poids"* | consigne de conception pour les lots de dessins ; aucune borne chiffree | A.212, A.213 |
+| *"jusqu'a 10 paliers"* | s57 compte au plus 10 paliers | A.214 a A.218 |
+
+### A.211 `LP7` : le polygone est accepte par l'utilisatrice
+
+**Le polygone de sommets (20,57), (80,12), (44,89)**, angle droit exact en (20,57), choisi par `nadia-prof` (A.201), est **accepte** par l'utilisatrice. **Ce que cela ferme** : le point *"l'utilisatrice peut le refuser"* d'A.201, de la ligne `l'utilisatrice` d'A.209 et de l'annotation de backlog de `S57-BR-MAT-CE1-15` (annotation datee du 2026-10-25 ajoutee). **Ce que cela ne change pas** : le fichier est le second fichier SVG, d'environ 500 octets, couvert par son *oui* du 2026-10-23 (A.192) ; `lea-dev` le porte avec son test facultatif ancre sur les items (forme : `theo-archi` et `lea-dev`) ; ce que seule `nadia-prof` tient (l'angle droit incline se voit a 176 px, aucun distracteur ne porte un angle trompeur) reste a elle. **Aucun changement de code neuf** : le proprietaire et le contenu du lot sont ceux d'A.201.
+
+### A.212 *"On minimise le poids"* : une consigne de conception, sans borne
+
+**Ce que dit l'utilisatrice** : *"on minimise le poids"*. Elle ne donne aucun chiffre. **Ce que j'ecris, et rien de plus** : pour les lots de dessins de `D5` (`MAT-CE1-01`, `-02`, `-09`, `-10`, `-11`) **et pour `LP9`**, la conception des dessins vise le **moins d'octets de SVG possible**, par quatre moyens :
+
+1. **moins d'items illustres, jusqu'au minimum de `nadia-prof`** : ses minima par ligne (A.203, A.206, ses conditions de `LP9`) ne baissent pas ; la consigne les prend pour plancher ;
+2. **composants reutilises par `defs` et `use`** ;
+3. **chiffres arrondis** ;
+4. **pas de metadonnees**.
+
+**Ce que je ne decide pas** (les mots ne le disent pas, je ne l'etends pas) : (a) ce que *metadonnees* couvre dans nos fichiers. Mesure d'aujourd'hui : les 56 fichiers de `static/illustrations` portent une declaration XML et un commentaire d'en-tete (`grep -rlF "<!--"` rend 56), aucun ne porte `metadata`, `inkscape` ni `sodipodi` ; le cliquet de poids compte le fichier commite, commentaires compris (Javadoc de `ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTest`, qui nomme les commentaires comme ce qui pese et un commentaire de `figure-carre-droit.svg` qui porte `DES-1` a `DES-3`). Si la consigne vaut pour un commentaire qui porte une regle, le retirer est a `theo-archi` (garde) et a `ines-design` (regle de dessin) ; (b) si arrondir tient les gardes de geometrie : l'angle droit exact de `LP7`, les angles d'aiguilles de `-11` (grande aiguille six fois les minutes), les positions de graduation de `-02` et `-09`. **`theo-archi` le dit, lot par lot** ; un moyen qui ne tient pas une garde est dit a l'ouverture du lot avec son chiffre, il n'est pas applique en silence ; (c) `defs` et `use` : 13 fichiers du repertoire portent deja `defs` ou `use` (`grep -rlE "<defs|<use"`), la faisabilite par lot est a `theo-archi`.
+
+**Pas de critere de backlog pour cette consigne.** Aucune borne n'etant donnee, *"minimise"* n'est pas un resultat observable ; en ecrire un serait l'inventer. Le cliquet existant (`POIDS_TOTAL_MAXIMUM`, 69 203 octets a `c5d07a4a`) mord la borne que l'utilisatrice accorde, pas cette consigne. Les stories de `LP9` et des lots de `D5` la reprennent en **annotation**, a l'ouverture de chaque lot.
+
+### A.213 Ce que *"on minimise le poids"* ne decide pas, et un point ouvert
+
+1. **La borne de 161 863 octets accordee pour `LP9` seul est inchangee** (A.195, septieme amendement de `DEC-0123`). Elle reste un plafond, ni relevee ni baissee.
+2. **Les cinq lignes de `D5` restent hors de ce *oui*.** Estimation de la proposition (12.5), non mesuree : 94 200 a 142 600 octets pour les cinq lignes, [suppose, `theo-archi` et `nadia-prof`]. La question du poids se pose a l'ouverture de chaque lot, avec le chiffre de `theo-archi` pour ce lot et la somme deja installee.
+3. **Point ouvert `PO1`, non tranche : *"on minimise le poids"* vaut-il accord, lot par lot ?** Deux lectures : (a) un accord conditionnel (les lots s'ouvrent sans nouvelle question tant que le poids est minimise) ; (b) une consigne seule (la question se pose a chaque ouverture). **Je ne choisis pas** : le message n'emploie aucun mot d'accord (ses accords precedents, *"oui on peut augmenter le poids des dessins"*, *"Oui, second fichier SVG"*, disent *oui*), et aucune borne ne dit jusqu'ou irait l'accord. **Tant qu'elle ne le dit pas, la lecture (b) s'applique** : la question se pose a l'ouverture de `MAT-CE1-01`, premier lot de `D5`, avec le chiffre de `theo-archi`. Une phrase d'elle la ferme.
+
+### A.214 *"Jusqu'a 10 paliers"* : s57 compte au plus 10 paliers
+
+**Corrige A.206** (*"s57 va donc jusqu'au palier 8"*, [suppose]), le point (i) d'A.193 et le point 1 de 12.7 de la proposition : la lecture du palier 8 etait la mienne, l'utilisatrice ecrit **10**. **Un plafond, pas une obligation** : *"un palier sans lot instruit ne s'ouvre pas"* (`ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md` 11.3, condition 6). Le nombre de paliers qu'une duree porte est a `sofia-sm`, la composition de chaque palier a moi, a son ouverture. **Inchange** : chaque palier tient seul `PAR-8` et `PAR-9`, un palier est clos avant l'ouverture du suivant (11.3, conditions 1 a 3), l'arbitrage prealable de chaque instance precede son premier lot. **Ce que le chiffre ne change pas** : aucune regle de `nadia-prof` (`PAR-13`, condition 4 sur `FRA-CE1-08` et `-09`, `AR1`, la regle de `FRA-CE1-29`) ne compte des paliers ; voir A.216 et A.218.
+
+### A.215 Trajectoire des paliers 5 a 10
+
+Denominateur 64, `couvert-valide` (cv) au plus, si `nadia-prof` leve chaque plafond, ligne par ligne. Le palier 5 n'ajoute que du compteur : 46 sur 64 (71,9 %) des qu'`LP8`, `LP7` et `LP9` ont leur Done, inchange ensuite. Charge de B face a `PAR-8` (5,0 par instance, deux lots illustres au plus par palier) au bareme, puis au surcout haut de 0,67 par lot (A.200). **Les paliers 9 et 10 ne sont pas composes** : la colonne *nominal* n'y met aucun lot parce qu'aucun lot instruit n'y entre (A.216) ; la colonne *repli* est celle d'A.203, quand les glyphes 7, 8 et 9 d'`ines-design` manquent a l'ouverture du palier 6.
+
+| Palier | Nominal : lots de B | cv | cv / 64 | B bareme | B a 0,67 | Repli : lots de B | cv repli | B bareme repli | B a 0,67 repli |
+|---|---|---|---|---|---|---|---|---|---|
+| 5 | `LP7`, `LP9` | 38 | 59,4 % | 4,00 | 5,33 | `LP7`, `LP9` | 38 | 4,00 | 5,33 |
+| 6 | `-01`, `-02` | 40 | 62,5 % | 4,00 | 5,33 | `-01` | 39 | 2,50 | 3,17 |
+| 7 | `-09`, `-10` | 42 | 65,6 % | 4,00 | 5,33 | `-02` | 40 | 2,50 | 3,17 |
+| 8 | `-11` | 43 | 67,2 % | 2,50 | 3,17 | `-09`, `-10` | 42 | 4,00 | 5,33 |
+| 9 | aucun lot instruit | 43 | 67,2 % | - | - | `-11` | 43 | 2,50 | 3,17 |
+| 10 | aucun lot instruit | 43 | 67,2 % | - | - | aucun, reserve d'un glissement | 43 | - | - |
+
+**Lecture.** (1) **Plafond a la cloture de s57 : 43 sur 64 = 67,2 %, quel que soit le nombre de paliers de 8 a 10** ; les paliers 9 et 10 n'ajoutent aucune ligne `couvert-valide` (A.216). CM1 83,5 %, CP 88,1 % : le CE1 reste dessous. (2) **Les 10 paliers laissent deux paliers de reserve a `D5`** : le repli en consomme un, un glissement de plus consomme le second. Un troisieme glissement mettrait `-11` au palier 11, au-dessus du plafond. (3) **Charge** : au bareme, chaque palier de B tient `PAR-8` (la ligne de repli la plus chargee, le palier 8, est a 4,00). A 0,67 par lot, un palier a deux lots depasse 5,0 (5,33), comme en A.207 ; je n'inscris aucun depassement. Un palier qui ne porterait que des rejeux coute 1,0 de fixe plus les rejeux : 5,0 laisse 4,0, soit 8 rejeux a 0,50 [calcul, suppose qu'aucun ne depasse 0,50, le prix du rejeu de `LP6`, le plus haut du palier 4]. (4) **Alternative non choisie** [suppose] : placer `-11` avec `-02` au palier 7 quand les glyphes arrivent au palier 7 (deux lots, 4,00) ramenerait le repli au palier 8 ; c'est l'ordre de produit de `nadia-prof` et l'ordre de fusion de `sofia-sm`, je ne le propose pas.
+
+**Hypotheses [suppose]** : chaque lot de `D5` obtient son Done au premier audit ou dans la marge, et `nadia-prof` leve le plafond de sa ligne (elle n'en a leve aucun) ; le surcout de 0,67 du palier 4 se repete ; le seul prealable de `-09` et `-10` est un Done de `-02` dans un palier clos (A.203) ; les glyphes 7, 8 et 9 sont la seule cause de repli ; l'ordre de `-11` au palier 8 est le mien (A.206), non confirme.
+
+### A.216 Ce qui peut entrer aux paliers 9 et 10, et ce qui ne le peut pas
+
+**Peut entrer, sans violer une regle ecrite : aucune ligne `couvert-valide` de plus.** Seuls entrent des postes dont les lignes comptent deja :
+
+1. **les glissements et rejeux de `D5`** (A.215, colonne repli) et de `LP7`, `LP8`, `LP9`, dont un refus au palier 5 ;
+2. **les reserves non soldees des paliers precedents qui ne sont pas un terrain sans cousine** : `S57-PLI-MOTS-INVARIABLES-REVELATION` (se ferme sans suite si `nadia-prof` leve la reserve), `S57-PLI-LP3-LP5-MESURE` (hors `PAR`, prix 0), les stories de reserve que les refus des paliers 5 a 8 produiront, et **la story des commentaires de `src/`** (ecarts 33, 40 a 44, part code de 37 et 38), **que je dois ecrire : aucun titre `S57-` du backlog ne la porte a `c5d07a4a`**, report 1 a ma charge depuis la cloture du palier 4 (P8g, 2026-10-23), a ecrire avant la composition du palier 5 ; un report se compte a l'ouverture du palier (A.95), le deuxieme sera ecrit comme tel.
+
+**Ne peut pas entrer, par une regle de `nadia-prof` que je ne deplace pas** (gain si la ligne entrait, sur le denominateur 64) :
+
+| Ligne | Gain | Regle ecrite | Source |
+|---|---|---|---|
+| `FRA-CE1-09`, puis `-08` | +1 cv chacune | *"ne sont pas des lots de s57, quelle que soit sa duree"* ; au plus une des deux par sprint, `-09` d'abord | `ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md` 11.3, condition 4 ; `arbitrage-nadia-palier-4.md` 3.4 |
+| `QLM-CE1-01` a `-06`, `-08`, `-10`, `-12` (9 lignes) | +9 cv | *"aucun lot de questionner le monde CE1 n'est auditable a s57"*, premier audit a s58 au plus tot ; un premier lot ne prend pas le sprint ou une autre instance audite un paquet sans cousine | `arbitrage-nadia-preparation-palier-3-ce1.md` 1.3 |
+| `QLM-CE1-07` (moitie textuelle) | +1 compteur, 0 cv | idem | idem |
+| `FRA-CE1-29` | +1 compteur, 0 cv (plafond `en cours`) | *"au plus tot au sprint qui suit la levee de `R6`, soit s58, meme si s57 porte un palier 5 ou 6"* | `arbitrage-nadia-palier-4.md` 8.2 |
+| `FRA-CE1-27` | +1 compteur, 0 cv (plafond `en cours`) | terrain neuf : `PAR-13` et *"pas tant qu'A' existe"* | `arbitrage-nadia-palier-4.md` 8.2 |
+| `ART-CE1-01`, `-02` | +2 cv au plus | memes regles, et un materiau (dessins, photographies) hors du perimetre de `D5` | `arbitrage-nadia-palier-4.md` 3.4 ; `DEC-0123` 3 |
+| `QLM-CE1-09`, `-11` | `-11` : +1 cv | hors perimetre | `DEC-0123` 3.1 |
+
+**Pourquoi le nombre de paliers n'ouvre aucune de ces lignes** : `PAR-13` (*"au plus une instance par sprint prend un terrain dont mes conditions n'ont jamais rencontre de contenu reel"*) compte par sprint, et s57 a deja eu son terrain sans cousine, le rejeu d'`ART-CP-10` (palier 1, B), plus l'horloge, par depassement de l'utilisatrice (A.206). **Ce depassement ne vaut que pour `-11`.** Une entree de l'une de ces lignes dans s57 demanderait une phrase ecrite de `nadia-prof` (elle releve ou relit sa regle ; elle a refuse le 2026-10-19 et le 2026-10-24) ou un depassement ecrit de l'utilisatrice, comme pour `-11`. **Je ne dis pas lequel s'applique a quelle regle** : les regles sont a `nadia-prof`. **Une clause pourrait tomber seule** [suppose] : *"pas tant qu'A' existe"* vise l'instance A' (EMC) ; si A' n'a plus de poste apres le palier 5, la clause perd son objet pour `FRA-CE1-27` et `ART-CE1`, pas `PAR-13`. A confirmer par `nadia-prof` (A.206 posait la meme question pour `-11`). **Hors du denominateur de 64, non examines ici** : les lignes de rang B de CP et de CM1 (A.13), hors de la demande.
+
+### A.217 Ce que chaque ajout donnerait au plafond de s57
+
+Depart : 43 sur 64 (67,2 %) a la cloture du palier 8. Cumul dans l'ordre de `nadia-prof` ; aucun de ces ajouts n'est dans s57 (A.216).
+
+| Ajout | cv apres | cv / 64 |
+|---|---|---|
+| aucun (cloture de s57, paliers 8 a 10) | 43 | 67,2 % |
+| `QLM-CE1-01` a `-03` | 46 | 71,9 % |
+| `QLM-CE1-04` a `-06` | 49 | 76,6 % |
+| `QLM-CE1-08`, `-10`, `-12` | 52 | 81,3 % |
+| `FRA-CE1-09` | 53 | 82,8 % |
+| `FRA-CE1-08` | 54 | 84,4 % (CM1 83,5 % depasse) |
+
+`FRA-CE1-27`, `-29` et `QLM-CE1-07` ajoutent 1 au compteur chacune, 0 a `couvert-valide`. `ART-CE1-01`, `-02` (56, 87,5 %) et `QLM-CE1-11` (57, 89,1 %, CP depasse) exigent un materiau et sortent du perimetre actuel. Chiffres de la proposition (section 5), recomptes a partir de 43 ; le denominateur est celui de la commande de la *Methode du compte*.
+
+### A.218 `s58` pour questionner le monde : ce que disent les textes, sans trancher
+
+**Les regles de `nadia-prof` sont ecrites par sprint, pas par palier** : `AR1` (*"premier audit a s58 au plus tot"*), la condition 4 (*"quelle que soit sa duree"*), `FRA-CE1-29` (*"meme si s57 porte un palier 5 ou 6"*), s58 *"soit les premiers lots de questionner le monde CE1, soit un seul de ces lots"* (6.3). **Lecture** : porter s57 a 10 paliers ne change aucune de ces phrases ; **par ses textes, `s58` reste le sprint distinct ou questionner le monde peut etre audite**, sauf (i) une relecture ecrite de sa regle par `nadia-prof` ou (ii) un depassement ecrit de l'utilisatrice. **Ce que je ne dis pas** : que s58 s'ouvrira (il n'est pas ouvert, A.183), ni lequel de (i) ou (ii) l'utilisatrice voudrait. Ce point n'est pas une question aujourd'hui ; son declencheur est la cloture du palier 8.
+
+### A.219 Matrice, routage, ce qui reste ouvert
+
+**Matrice** : aucun statut ne change, `MATRICE-couverture.md` n'est pas modifiee ; la commande de la *Methode du compte* n'est pas relancee (aucune ligne ne bouge).
+
+| A qui | Quoi |
+|---|---|
+| `nadia-prof` | annotation de `TRV-CE1-1` pour `FRA-CE1-27` et `-29` (promise le 2026-10-21 ; `grep -c "2026-10-2"` sur `ARBITRAGE-PREALABLE-s48-francais-ce1.md` rend 0 au 2026-10-25, premier report) ; arbitrage prealable du palier 5 (0,5 par instance, prix des trois stories d'A') ; ordre de `-11` et clause *"pas tant qu'A' existe"* (A.206) ; sens de *"3 heures pleines, 3 et demie, 3 et quart, 3 moins le quart"* ; double compte du surcout (A.200) ; `-02` : *"au moins 6 dessins"* pour 10 items (A.209) ; **neuf** : si la clause *"pas tant qu'A' existe"* tombe quand A' n'a plus de poste, et si elle relit `AR1` ou la condition 4 (A.216, A.218) |
+| `ines-design` | glyphes 7, 8 et 9 avant le palier 6 (sinon repli d'A.215) ; lisibilite a 176 px ; conditions de `LP9` ; **neuf** : si un commentaire d'en-tete d'un dessin porte une regle de dessin que la consigne de poids ne peut pas retirer (A.212) |
+| `theo-archi` | forme du test de `LP7` (avec `lea-dev`) ; garde M de chaque lot de `D5` ; 20 SVG et test croise de `LP9` ; **neuf** : par lot, si arrondir et `defs` et `use` tiennent les gardes de geometrie, et ce que *metadonnees* couvre dans les fichiers (A.212) ; le chiffre du lot a son ouverture (A.213) |
+| `lea-dev` | `LP7` : le polygone accepte et son test ; les lots de `LP9` et de `D5` portent la consigne de poids en annotation |
+| `sofia-sm` | `planning.md` : paliers 6 a 8 et le plafond de 10 paliers (A.214) ; composition du palier 5 ; critere 2 de `S57-GARDE-CE1-PROPOSITIONS-ET-SUPPORTS` tenu par `Q-X1` |
+| `camille-po` | story des commentaires de `src/` (aucun titre, report 1, A.216) ; stories des lignes de `D5` a l'ouverture de chaque lot, avec la consigne de poids en annotation ; composition des paliers 9 et 10 a leur ouverture, s'ils s'ouvrent |
+| l'utilisatrice | **aucune question aujourd'hui.** Declencheurs ecrits : `PO1` (*"minimise"* vaut-il accord par lot, A.213), a l'ouverture de `MAT-CE1-01` avec le chiffre de `theo-archi` ; la borne du palier 6, a sa composition ; s58 ou un depassement pour questionner le monde, a la cloture du palier 8 (A.218) |
+
+**Decisions de produit prises ici** : (1) le polygone de `LP7` est accepte, A.201 n'est plus refusable ; (2) une consigne de conception de poids pour `LP9` et les lots de `D5`, sans borne, sans critere ; (3) s57 compte au plus 10 paliers, plafond de `couvert-valide` 43 sur 64 inchange. **Changement de code decide, avec proprietaire** : aucun neuf (le fichier de `LP7` et son test, `lea-dev`, d'A.201). **Non decide, dit** : `PO1` ; la portee de *metadonnees* ; les paliers 9 et 10 ; `s58`. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, n'engage aucun lot, n'amende ni `planning.md`, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni paquet, ni catalogue, ni matrice. Aucun identifiant de condition alloue.
