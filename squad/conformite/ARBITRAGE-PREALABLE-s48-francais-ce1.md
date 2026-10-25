@@ -177,6 +177,33 @@ Elles s'ajoutent aux conditions propres à chaque ligne, sans les remplacer.
 > de l'adulte qui lit (`DEC-0046`, `DEC-0068`) n'est arbitrée que pour le CP, et je ne l'étends pas
 > par ce document.
 
+**Annotation du 2026-10-25 (`nadia-prof`, s57, palier 5), sur `TRV-CE1-1`.** Le texte ci-dessus reste
+tel qu'écrit le 2026-10-03. Depuis le 2026-10-21, sa phrase *"Aucun item ne porte de champ à voix
+haute"* souffre **deux exceptions, et deux seulement** : le champ `texteAVoixHaute` est admis sur
+`FRA-CE1-27` (*écouter et comprendre un texte lu par l'adulte*) et sur `FRA-CE1-29` (*écrire sous la
+dictée*). Partout ailleurs au CE1, il reste refusé.
+
+- **Source** : la réponse de l'utilisatrice à `Q-08` (*"oui, prémisse étendue"*), consignée dans
+  `DEC-0123`, section 5, qui limite l'extension à ces deux lignes nommées ; mon arbitrage
+  `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/arbitrage-nadia-q05-q10.md`, section 3, qui
+  a décidé cette modification le 2026-10-21. Je l'écris ici quatre jours plus tard, après deux
+  reports à ma charge (`arbitrage-nadia-palier-4.md`, 8.2 ; `arbitrage-nadia-palier-5-qlm-v3.md`,
+  section 9).
+- **La borne** (`DEC-0068`, A.1) : l'adulte lecteur n'est admis que là où la voix est la compétence.
+  Ces deux lignes la remplissent. L'extension ne vaut pour aucune autre ligne de CE1, ni pour la
+  lisibilité d'aucun paquet : la question et les propositions que l'enfant lit restent sous
+  `LON-CE1-1`, `LON-CE1-2` et `LON-CE1-5`. Une troisième ligne demanderait une nouvelle réponse de
+  l'utilisatrice (`DEC-0123`, section 5).
+- **Ce que l'annotation ne fait pas** : elle n'écrit aucune condition de Done. Celles des deux lignes
+  vivent dans `arbitrage-nadia-q05-q10.md`, 3.1 et 3.2, et dans `arbitrage-nadia-palier-4.md`, 8.2,
+  avec leur plafond `en cours` et ce qui les bloque encore. Elle n'ouvre aucun paquet et ne prononce
+  aucun Done. Elle n'alloue aucun identifiant.
+- **Ce qu'elle rend périmé dans ce document, sans l'effacer** : en section 0.2, *"leur verdict
+  tient"* ne vaut plus pour `FRA-CE1-27` (moitié *écouter*) et `FRA-CE1-29` (mots sous la dictée),
+  passées de `non couvrable en l'état` à `non couvert` le 2026-10-21 (`DEC-0120`, A.135, note de
+  `MATRICE-couverture.md`) ; en section 8, *"Il n'étend pas la prémisse de l'adulte qui lit au CE1"*
+  reste vrai de ce document, l'extension venant de l'utilisatrice et non de lui.
+
 > **`TRV-CE1-2` - propositions.** Trois propositions, ou deux là où la ligne est un choix binaire par
 > nature (`FRA-CE1-02`, `-16`, `-22`, forme déjà servie par `cm1-homophones`). Deux à deux
 > distinctes, **une seule acceptable**. Chaque distracteur appartient à une famille nommée par la
