@@ -17,7 +17,7 @@ fioriture, comme sur un cahier de CE1.
 <path id="g9" d="M20 2 A15 15 0 1 0 20 32 A15 15 0 1 0 20 2 Z M35 17 C35 40 28 54 12 58"/>
 ```
 
-Poids : 31, 96 et 81 octets de definition (une ligne `<path id=` mesure 42 a 68 octets pour
+Poids : 37, 101 et 90 octets de definition (une ligne `<path id=` mesure 42 a 68 octets pour
 les glyphes existants : `g8` et `g9` la depassent).
 
 ## Mesure
