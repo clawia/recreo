@@ -3445,3 +3445,50 @@ Ce n'est pas une decision de produit : ce sont les regles de `nadia-prof`, que j
 **Routage.** l'utilisatrice, par `sofia-sm` : points 1 a 5 ; `nadia-prof` : points 1, 7 et la reponse sur les items ; `sofia-sm` : developpeur, `planning.md` (declencheur de la lecture avant `verify`) ; `camille-po` : composer le palier sous `K1` a `K5` apres ces reponses, sans l'avoir fait ici.
 
 **Decisions de produit prises ici** : la reponse est consignee avec la lecture d'A.242, ce qu'elle ferme est dit (A.243). **Non decide, dit** : C3, C4, 7.3, R1, `PAR-9`, le palier, l'instance, le prix, `-07`, les rejeux. **Changement de code decide** : aucun. **Matrice** : aucun statut ne change. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, n'engage aucun lot, ne compose aucun palier, n'ecrit aucune story, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`.
+
+## Amendement du 2026-10-25, trente-huitieme (`camille-po`, palier 5 : l'utilisatrice leve PAR-9, puis C3, C4, 7.3 et R1 en les nommant)
+
+Annotation datee. **A.242 a A.246 ne sont pas reecrits** : cet amendement dit ce que les deux reponses ferment dans A.240 a A.246 et ce qu'elles laissent ouvert. **Statut de `DEC-0120` : `Acceptee`, inchange.** Sources lues : A.240 a A.246, `arbitrage-nadia-palier-5-qlm-9-lots.md` (3, 4, 5). Ce que je n'ai pas fait : composer un palier, fixer un prix, ecrire une story, modifier la matrice, `planning.md` ou le code.
+
+### A.247 Ses mots, et la lecture consignee
+
+**Ses mots, 2026-10-25, relayes par l'agent lanceur mot pour mot, non lus de sa main (forme 2 de `DEC-0062` G)**, a deux questions de l'agent lanceur :
+
+| Question | Reponse |
+|---|---|
+| `Q1` : leve-t-elle aussi `PAR-9`, la borne de 8,0 par palier ? | *"Q1 oui"* |
+| `Q2` : nomme-t-elle C3, C4, 7.3 et R1 comme leves ? | *"Q2 oui ils sont leves"* |
+
+**Lecture consignee, sans l'etendre** : `PAR-9` est leve ; C3, C4, 7.3 et R1 de `nadia-prof` sont levees **par l'utilisatrice**, par un depassement ecrit nomme (A.240) qui est le sien et que `nadia-prof` audite comme tel (`L1` a `L3` de son arbitrage). **Les libelles de `Q1` et `Q2` sont ceux de l'agent lanceur** ; les reponses de l'utilisatrice portent *"oui"* et *"ils sont leves"*, la liste C3, C4, 7.3, R1 et `PAR-9` vient de ses questions **[suppose : lecture des questions telles que l'agent lanceur les rapporte]**.
+
+**Portee** : ses mots ne disent pas si la levee de C3 vaut pour d'autres paliers que celui des neuf lots, ni si celle de `PAR-9` vaut au-dela. **Je ne l'etends pas** : toutes les levees de cette serie (A.242 a A.247) se lisent **pour le palier des neuf lots seulement**.
+
+### A.248 Ce que cela ferme dans A.240 a A.246
+
+| Point | Etat |
+|---|---|
+| A.240, depassement ecrit nomme de C3, C4, R1, 7.3 | **fait** : les quatre regles sont nommees et levees par l'utilisatrice |
+| A.241 point 3, levee de chaque plafond | **ferme** : `PAR-2`, `PAR-8` (lots et prix), la fenetre de 8,0, `PAR-9`, C3, C4, R1, 7.3 sont tous levees pour ce palier |
+| A.242 (2), `PAR-9` et la double lecture de *"la borne de 8,0"* | **ferme** : `PAR-9` est leve, la fenetre de `nadia-prof` l'etait deja |
+| A.245, C3, C4, 7.3, R1 *"a nommer par l'utilisatrice ou a relever par `nadia-prof`"* | **ferme** : nommees par l'utilisatrice ; `nadia-prof` n'a rien a relever, elle audite le depassement comme le sien |
+| A.246 points 1 et 2 | **fermes** |
+| A.239, tableau des regles depassees | les lignes C3, C4, R1 et 7.3, `PAR-2`, `PAR-8`, fenetre de 8,0 sont des depassements **ecrits** pour ce palier ; le calcul (9 lots, 10,00 au bareme) ne change pas |
+
+### A.249 Ce que la levee ne touche pas, et ce qui reste ouvert
+
+**Maintenues par `nadia-prof`, intactes par toute levee de ses regles de composition (sections 4 et 5 de son arbitrage)** : `M1` a `M6` (une ligne par lot ; lecture avant `verify` de chaque paquet, chaque fait contre sa source ; `-01` lu, corrige, puis audite en premier, puis `-02`, `-03` ; `-04`, `-05` ; `-06`, `-08` ; `-10`, `-12` ; conditions, plafonds et verdict de chaque ligne ; aucun verdict adouci ; prealables) et `K1` a `K5` (une seule instance ; aucune autre instance ne lui soumet de lot dans ce palier ; le palier n'est pas le dernier de s57 ; palier 9 au nominal d'A.215). **`K2` est levable par l'utilisatrice en le nommant** (`L1`, `L3`) : elle ne l'a pas nomme, **je ne le lis pas leve**. La levee de C3 ne ressuscite pas la regle *"le premier lot seul"* : son motif passe dans l'ordre de `M3`.
+
+**Reste ouvert** :
+
+1. **La valeur du relevement de `PAR-8` et la borne du palier** : non fixees. Les chiffres de `nadia-prof` (10,00 au bareme, 16,03 a 0,67 par lot) sont des calculs (A.244). Lever `PAR-9` ne pose aucune borne neuve ; la valeur est a l'utilisatrice et se fixe a la composition, avec le chiffre (A.219, A.225).
+2. **Le palier et l'instance.** `K2` a `K5` bornent le choix de `nadia-prof` ; un palier a cote des lots illustres de B (6, 7, 8) exige que l'utilisatrice nomme `K2`.
+3. **La moitie textuelle de `-07`** : n'entre pas dans les neuf, sauf si elle la nomme (dix lots, 11,00 au bareme).
+4. **Les rejeux** : un dans la marge, les autres au palier suivant (condition de `nadia-prof`) ; la marge de 0,5 est taillee pour trois lots, son dimensionnement est a `camille-po` et a l'utilisatrice.
+5. **Le constat de `nadia-prof` sur A.229 et `PO2`** : non ecrits.
+6. **Sa reponse sur le nombre d'items par paquet et les mots de quantite d'`AIM-CE1-2`**, avant que les neuf stories soient ecrites (A.227, A.246).
+7. Le sort des six lots d'A.235 pour les autres paliers ; le developpeur, distinct de `lea-dev` ; `planning.md`.
+8. **La portee de la levee de C3 et de `PAR-9` hors du palier des neuf lots** (A.247) : non dite, non etendue.
+
+**Routage.** `nadia-prof` : points 5 et 6, `PO2` ; l'utilisatrice, par `sofia-sm` : points 1 a 3 et 8 ; `sofia-sm` : developpeur, `planning.md` ; `camille-po` : les neuf stories apres le point 6, la composition apres les points 1 a 4, sans l'avoir fait ici.
+
+**Decisions de produit prises ici** : les deux reponses sont consignees avec la lecture d'A.247, ce qu'elles ferment est dit (A.248). **Non decide, dit** : valeur du relevement, palier, instance, `-07`, rejeux, portee hors palier. **Changement de code decide** : aucun. **Matrice** : aucun statut ne change. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, n'engage aucun lot, ne compose aucun palier, n'ecrit aucune story, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`.
