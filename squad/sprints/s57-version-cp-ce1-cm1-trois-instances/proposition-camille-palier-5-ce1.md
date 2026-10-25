@@ -345,3 +345,19 @@ Repertoire : 69 203 plus 500 (`LP7`) plus 45 540 a 61 200 (`LP9`, prototype de `
 ## 13. Quatrieme mise a jour du 2026-10-25 : s57 jusqu'a 10 paliers, poids minimise, polygone accepte
 
 Consigne par `DEC-0120` A.210 a A.219. **Corrige le point 1 de 12.7** : s57 ne va plus *"jusqu'au palier 8"* par ma lecture ; l'utilisatrice a ecrit *"jusqu'a 10 paliers"*, un plafond, qui n'oblige a ouvrir aucun palier sans lot instruit. **Le plafond de `couvert-valide` a la cloture de s57 reste 43 sur 64 = 67,2 %** (A.215) : les paliers 9 et 10 n'ont aucun entrant qui ajoute une ligne (A.216). **Ce qui reste a l'utilisatrice** (section 9) : le polygone de `LP7` n'est plus une question (A.211) ; la question du poids de chaque lot de `D5` garde son declencheur, et *"on minimise le poids"* n'est pas lu comme un accord (`PO1`, A.213).
+
+## 14. Cinquieme mise a jour du 2026-10-25 : questionner le monde CE1 entre dans s57 par un depassement ecrit de l'utilisatrice (`V3`)
+
+Consigne par `DEC-0120` A.220 a A.228. Mots de l'utilisatrice, 2026-10-25, relayes (forme 2 de `DEC-0062` G, non lus de sa main) : *"on part sur V3 et si besoin au releve pour absorber le depassement"*. **Lecture sans extension** : questionner le monde CE1 entre dans s57 malgre la regle de `nadia-prof` (1.3 de `arbitrage-nadia-preparation-palier-3-ce1.md`, `AR1`) ; si le cout depasse un plafond de `PAR`, elle accepte de le relever, **sans plafond ni valeur**. **Corrige** : les lignes *"s58 (non ouvert)"* de `QLM-CE1-01` a `-06`, `-08`, `-10`, `-12` du tableau de la section 5 sont les memes lignes que celles d'A.223, **placees dans s57** et non dans un s58 ; les chiffres du tableau (46, 49, 52) sont inchanges.
+
+| Point | Etat | Consigne en |
+|---|---|---|
+| `PO2` : `V3` depasse-t-il une regle pedagogique de `nadia-prof` ou une regle de produit ? | **ouvert** ; `nadia-prof` saisie sur la branche `s57-nadia-p5-c`, aucune reponse a ce jour | A.222 |
+| Depart de `QLM-CE1-01` a `-03` | palier 6 le plus tot que je propose ; palier 5 non retenu ; dernier depart possible : palier 8 (neuf lignes), palier 7 (avec `-07`) | A.223 |
+| Plafond de `couvert-valide` a la cloture de s57 | 43 sur 64 sans `V3`, **jusqu'a 52 sur 64 (81,3 %)** avec ; 46, 49 et 52 aux paliers 6, 7 et 8 | A.223 |
+| Cout d'une instance de questionner le monde CE1 | 4,00 au bareme a trois lots ; 5,13 ; 5,25 ; 6,00 aux surcouts 0,375 ; 0,42 ; 0,67 (**pas 5,33, valeur de deux lots**) ; 3,00 a deux lots, 4,33 au plus | A.224 |
+| Releve | aucun inscrit ; a trois lots, de 0,13 a 1,00 sur le 5,0 de l'instance ; a deux lots, rien ; valeur fixee a la composition du palier concerne | A.225 |
+| `FRA-CE1-08`, `-09` | non nommees par ses mots, hors de s57 | A.226 |
+| Stories | aucune n'existe ; a ecrire avant le premier lot, apres `PO2` | A.227 |
+
+**Ce que ce fichier ne fait pas** : composer un palier, engager un lot, relever un plafond, lever une regle de `nadia-prof`.
