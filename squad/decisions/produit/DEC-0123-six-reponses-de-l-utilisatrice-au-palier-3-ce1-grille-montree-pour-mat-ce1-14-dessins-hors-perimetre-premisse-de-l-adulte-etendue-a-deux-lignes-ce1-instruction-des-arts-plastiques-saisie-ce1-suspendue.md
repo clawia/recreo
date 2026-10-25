@@ -274,3 +274,13 @@ La section 7.3 laissait `Q-09` suspendue a l'avis de `nadia-prof` sur `R6`. Cet 
 - **Septieme amendement, deuxieme puce** : le second triangle rectangle de `MAT-CE1-15` est un **second fichier SVG** (*"Oui, second fichier SVG"*), qui remplace la rotation sans octet du huitieme amendement. Le *oui* sur le poids couvre ce fichier et lui seul.
 - **Septieme amendement, borne de 161 863** : tient. Les cinq lignes (87 000 a 150 000 octets estimes) restent hors du *oui* ; la question se repose a l'ouverture de chaque lot.
 - **Aucune cellule de matrice ne bouge.**
+
+## Amendement du 2026-10-25, dixieme (`camille-po`, `Q-06` : `PAR-13` relu, horloge dans s57)
+
+**Aucun texte d'origine n'est reecrit.** Statut de `DEC-0123` : `Acceptee`, inchange. Mots de l'utilisatrice, relayes par l'agent lanceur, 2026-10-24 (forme 2, `DEC-0062` G) : *"Horloge dans s57, dépassement de PAR-13"*. Source : `arbitrage-nadia-palier-5-lp7-d5.md` (`nadia-prof`, 2026-10-24). Detail : `DEC-0120` A.201 a A.206.
+
+- **3.2 point 1** (*"une seule ligne a dessin par sprint, et pas tant qu'A' existe"*) : **cette citation de `PAR-13` est inexacte.** Le texte de la regle est *"Au plus une instance par sprint prend un terrain dont mes conditions n'ont jamais rencontre de contenu reel"*, juge par cousinage ; *"une ligne a dessin au plus par sprint"* est la consequence que `nadia-prof` en avait tiree pour les trois lignes dessinees de questionner le monde CE1. **Le neuvieme amendement, qui disait que le sens de `PAR-13` change pour les cinq lignes, est corrige** : le texte est inchange, deux lots illustres par palier en B sont recevables, quatre des cinq lignes ont une cousine servie.
+- **`MAT-CE1-11` (horloge)** n'a aucune cousine. L'utilisatrice la met dans s57 : **c'est un depassement de `PAR-13` qui est le sien**, pas une lecture de `nadia-prof`. Palier 8, apres `-09` et `-10` (mon ordre de produit, a confirmer). Ses conditions de Done sont celles de `nadia-prof` (3.5 de son ecrit).
+- **Septieme amendement, deuxieme puce** : le second triangle rectangle de `MAT-CE1-15` est un second fichier SVG, **un polygone de sommets (20,57), (80,12), (44,89)** (decision pedagogique de `nadia-prof`) et non une rotation ; **le *oui* sur le poids couvre ce fichier tel quel** (environ 500 octets). L'utilisatrice peut refuser ce choix et demander la rotation, au meme cout.
+- **Septieme amendement, borne de 161 863** : tient pour `LP9` seule. Les cinq lignes de `D5` restent hors du *oui* ; la question du poids se pose a l'ouverture de chaque lot.
+- **Aucune cellule de matrice ne bouge.**
