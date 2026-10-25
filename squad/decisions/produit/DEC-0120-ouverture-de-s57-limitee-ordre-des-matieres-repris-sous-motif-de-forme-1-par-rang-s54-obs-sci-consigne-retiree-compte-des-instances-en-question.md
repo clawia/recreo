@@ -3314,3 +3314,73 @@ Annotation datee. **A.229 a A.233 ne sont pas reecrits** : A.230 et A.231 resten
 5. *`nadia-prof`* : si elle releve C3, C4, R1, 7.3 ou maintient ; `PO2` (A.222) ; la condition de A.229.
 
 **Ce que je ne fais pas** : composer un palier, fixer un prix, ecrire une story de questionner le monde, engager un lot, lever un plafond. **Matrice** : aucun statut ne change.
+
+## Amendement du 2026-10-25, trente-sixieme (`camille-po`, palier 5 : l'utilisatrice garde neuf lots et les trois refus de `nadia-prof`)
+
+Annotation datee. **A.229 a A.236 ne sont pas reecrits** : cet amendement dit ce qu'il ferme d'A.236 et ce qu'il laisse ouvert. **Statut de `DEC-0120` : `Acceptee`, inchange.** Sources lues : A.229 a A.236, `arbitrage-nadia-palier-5-qlm-v3.md` (3, 7.1, 7.3). Ce que je n'ai pas fait : composer un palier, fixer un prix, ecrire une story de questionner le monde, modifier la matrice, `planning.md` ou le code.
+
+### A.237 Ses mots, et la lecture que j'en consigne
+
+**Ses mots, 2026-10-25, relayes par l'agent lanceur mot pour mot, non lus de sa main (forme 2 de `DEC-0062` G)** : *"on garde 9 lots + les 3 refus de nadia"*. Ils repondent a la question d'A.236 (*six lots ou tout dans un palier ?*).
+
+**Lecture consignee, sans l'etendre** :
+
+1. Les **neuf lignes textuelles** de questionner le monde CE1 (`QLM-CE1-01` a `-06`, `-08`, `-10`, `-12`) entrent dans **un seul palier : neuf lots**, une ligne par lot (`nadia-prof` C5).
+2. Ce nombre **remplace, pour ce palier, le plafond de six lots au total** d'A.235. Il ne dit pas ce qu'il advient des six lots pour les autres paliers.
+3. Les **trois refus de `nadia-prof` restent refuses** : `-09` et `-11` sans materiau (`CON-1`), la moitie dessinee de `-07` (`CIR-CE1-2`) (`arbitrage-nadia-palier-5-qlm-v3.md` 3).
+
+### A.238 Ce que cela ferme dans A.236
+
+| Question d'A.236 | Etat |
+|---|---|
+| 1. Six lots ou tout dans un palier : lequel prime | **fermee** : tout, soit neuf lots. Les deux moities de la phrase d'A.235 ne tenaient pas ensemble ; elle a choisi |
+| 2. Que recouvre "tout" | **fermee pour le perimetre** : les neuf lignes textuelles ; les trois refus de `nadia-prof` maintenus. `FRA-CE1-08` et `-09` ne sont toujours pas des lignes de questionner le monde et restent hors de s57 (A.226, A.236) |
+| 3. Quel palier, quelle instance | **ouverte** |
+| 4. Les plafonds a lever | **ouverte** : aucun n'est nomme (A.239) |
+| 5. `nadia-prof` : relever ou maintenir C3, C4, R1, 7.3 ; `PO2` ; la condition d'A.229 | **ouverte** |
+
+### A.239 Ce que neuf lots depassent : le calcul des regles ecrites
+
+Compte sur les textes ecrits, **sans conclure et sans prix fixe ici** :
+
+| Regle | Ce qu'elle dit | Face a neuf lots dans un palier |
+|---|---|---|
+| `nadia-prof` C3 | le premier lot de questionner le monde est seul dans son palier pour son instance, et `QLM-CE1-01` passe d'abord (C7) | **depassee par construction** : le premier lot n'est plus seul. Le motif de C3 (voir les conditions neuves de la matiere sur un seul paquet avant d'en prendre deux) n'a plus de lot d'avance dans le palier |
+| `nadia-prof` C4 | deux lots au plus par palier ensuite | depassee de 7 lots (9 contre 2) |
+| `nadia-prof` R1 et 7.3 | quatre lots au premier audit par palier quand B porte deux lots illustres ; un cinquieme lot ecrit par l'utilisatrice est audite et le depassement est le sien | depassee de 5 lots si B porte deux lots illustres dans ce palier ; si B n'en porte aucun, 7.3 ne dit pas combien de lots de questionner le monde seule elle tient (C4 en dit deux) |
+| `PAR-8`, lots | trois lots par instance | depasse de 6 lots sur l'instance unique de C1 |
+| `PAR-8`, prix | 5,0 par instance | **[calcul sur le bareme existant, 1,0 de fixe plus 1,0 par lot, pas un prix fixe ici]** 10,00 pour neuf lots dans un palier, avant tout surcout et sans rejeu, soit 5,00 de plus ; `arbitrage-nadia-palier-5-qlm-v3.md` 7.1 chiffre les neuf lots a 14,00 repartis sur cinq paliers, parce que chaque palier portait son fixe |
+| `PAR-2` | questionner le monde CE1 compte avec questionner le monde CP : une seule instance, jamais partage | empeche de repartir les neuf lots entre deux instances pour rester sous `PAR-8` ; la lever n'est pas dit |
+| Fenetre de 8,0 par palier (`nadia-prof` 7.2, criteres 11.3) | borne d'attention | le bareme seul (10,00) la depasse ; la borne des paliers 6 a 10 n'est pas posee (A.219) |
+| C2, C5, C6 | au plus tot le palier 6 ; une ligne par lot ; prealables (V3 consigne, une story par ligne, premier jet, arbitrage prealable de l'instance) | **non touchees** par ses mots. C5 est tenue (neuf lots, neuf lignes) ; C2 et C6 restent des prealables : aucune story n'existe |
+
+**Plafond de `couvert-valide` de s57 sous neuf lots** : 43 + 9 = 52 sur 64 (81,3 %), le plafond arithmetique deja ecrit en A.228. **Ce n'est pas un engagement** (`nadia-prof` 3 : un lot refuse glisse, il ne recoit pas un verdict plus doux).
+
+### A.240 Qui peut lever ces plafonds, et ce que ses mots ne nomment pas
+
+Lever `PAR-2`, `PAR-8`, C3, C4, R1 ou 7.3 releve de **l'utilisatrice, par un depassement ecrit qui nomme la regle**, ou de **`nadia-prof`, qui releve la sienne** (C3, C4, R1, 7.3 seulement : `PAR-2` et `PAR-8` sont des regles de produit). `nadia-prof` a ecrit qu'elle audite un lot au-dela de son plafond si l'utilisatrice l'ecrit, et que le depassement est alors le sien (7.3).
+
+**Ses mots (*"on garde 9 lots + les 3 refus de nadia"*) ne nomment aucune de ces regles. Je ne les considere pas levees** **[suppose : lecture prudente, comme A.231 et A.236]**. Neuf lots dans un palier sont un souhait clair et une demande de composition ; ils ne sont pas, tant qu'elle ne les nomme pas, un depassement de C3, C4, R1, 7.3, `PAR-2` ni `PAR-8`.
+
+**Proposition a l'utilisatrice, pour qu'elle la reprenne, la corrige ou la refuse** : ecrire, en nommant, *"je depasse [liste] pour questionner le monde CE1 dans le palier N, sur l'instance X"*, avec la liste choisie parmi `PAR-2`, `PAR-8` (lots), `PAR-8` (prix, avec le chiffre a la composition, A.225), C3, C4, R1, 7.3, la borne de 8,0 du palier. Elle peut en lever une seule, ou toutes, ou demander a `nadia-prof` de relever les siennes. **Je n'ecris pas cette phrase a sa place** : ce serait ses mots.
+
+### A.241 Ce que ses mots ne disent pas, et que je ne tranche pas
+
+1. **La moitie textuelle de `-07`** (`CIR-CE1-1`, dixieme lot, plafond `en cours`, 0 en `couvert-valide`) : *"9 lots"* ne la compte pas, *"les 3 refus"* ne la nomme pas comme recevable. Elle reste recevable chez `nadia-prof`, apres les neuf (3), sans palier.
+2. **Le palier** (6 au plus tot, C2) et **l'instance** (une seule, ni B, C1 ; le choix est a `camille-po`, avec un developpeur distinct de `lea-dev`).
+3. **La levee de chaque plafond** : `PAR-2`, `PAR-8` en lots, `PAR-8` en prix, C3, C4, R1, 7.3, la borne de 8,0 (A.240).
+4. **Le prix** : aucun chiffre pour neuf lots dans un palier n'existe dans le depot ; le bareme donne 10,00 (A.239), les surcouts mesures ailleurs ne sont pas ceux de cette matiere.
+5. **Les rejeux** : ils comptent ou non dans les neuf, et leur place si un lot est refuse, ne sont pas dits (A.230, A.235).
+6. **L'ordre** : C7 (`-01` seule d'abord) n'a plus de sens dans un palier unique ; l'ordre des neuf lots dans le palier et la lecture avant `verify` de chacun sont a composer.
+7. **Le sort des six lots d'A.235** pour les autres paliers de s57.
+
+**Routage.**
+
+| A qui | Quoi |
+|---|---|
+| l'utilisatrice, par `sofia-sm` | nommer les regles qu'elle depasse, le palier et l'instance (A.240) ; relire A.237, qui consigne ses mots relayes sans les etendre |
+| `nadia-prof` | relever ou maintenir C3, C4, R1, 7.3 ; constater la condition d'A.229 ; `PO2` ; dire si la moitie textuelle de `-07` reste recevable apres les neuf et si ses conditions d'audit tiennent avec neuf lots dans un palier |
+| `sofia-sm` | router la question a l'utilisatrice ; `planning.md` : la reponse d'A.237, sans composition |
+| `camille-po` | les stories de questionner le monde CE1 (A.227) restent a ecrire ; aucun palier n'est compose, aucun prix fixe |
+
+**Decisions de produit prises ici** : la reponse est consignee avec la lecture d'A.237, et ce qu'elle ferme d'A.236 est dit (A.238). **Non decide, dit** : le palier, l'instance, la levee de chaque plafond, la moitie textuelle de `-07`, le prix, les rejeux. **Changement de code decide** : aucun. **Matrice** : aucun statut ne change. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, n'engage aucun lot, ne releve aucun plafond, ne compose aucun palier, n'ecrit aucune story de questionner le monde, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`.
