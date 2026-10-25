@@ -10,8 +10,8 @@ Ap|EMC-CE1-04 lot|1.00|facture
 Ap|rejeu 3 de EMC-CE1-02, 12 items de la tache 1, item 24, indice de l'item 6|0.50|facture
 Ap|rejeu 4 de EMC-CE1-02, item 9 seul|0.25|facture
 Ap|rejeu de EMC-CE1-03, items 14 et 24|0.25|facture
-Ap|rejeu 1 de EMC-CE1-04, apres le refus du 2026-10-22 (M1 et M2), estimation de nadia-prof non mesuree|0.50|facture
-Ap|rejeu 2 de EMC-CE1-04, apres le refus du 2026-10-23 (M3), prix non donne par nadia-prof|0.00|non-chiffre
+Ap|rejeu 1 de EMC-CE1-04, apres le refus du 2026-10-22 (M1 et M2), 11 scenes et 10 indices changes, prix de nadia-prof (PAR-10)|0.50|facture
+Ap|rejeu 2 de EMC-CE1-04, apres le refus du 2026-10-23 (M3), 10 scenes et 5 indices changes, prix de nadia-prof (PAR-10)|0.50|facture
 B|arbitrage prealable|0.50|facture
 B|marge de rejeu, consommee par le rejeu de MAT-CE1-10|0.50|consomme
 B|MAT-CE1-10 lot|1.00|facture
