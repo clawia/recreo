@@ -3252,3 +3252,65 @@ A.216 la disait a ecrire *"avant la composition du palier 5"* (report 1 depuis l
 | `camille-po` | les stories de questionner le monde CE1 (A.227) restent a ecrire apres `PO2` ; aucun palier n'est compose |
 
 **Decisions de produit prises ici** : (1) la reconstitution de la question est consignee avec sa provenance, **sans declarer la condition de `nadia-prof` remplie** ; (2) la reponse *"A1 et pour A3 6 lots pour le palier"* est consignee telle quelle, **sans lecture du mot *"palier"* et sans chiffre** ; (3) la story des commentaires de `src/` est ecrite, ce qui ferme son deuxieme report. **Non decide, dit** : le sens de *"palier"* ; le contenu d'`A1` ; la levee de C3, C4, R1, 7.3 ; le prix de six lots ; `PO2`. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, n'engage aucun lot, ne releve aucun plafond, ne compose aucun palier, n'amende ni `planning.md`, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni paquet, ni catalogue, ni matrice.
+
+## Amendement du 2026-10-25, trente-cinquieme (`camille-po`, palier 5 : l'utilisatrice ferme l'ambiguite de "palier" dans A.230 et exprime un souhait sur tout questionner le monde CE1)
+
+Annotation datee. **A.229 a A.233 ne sont pas reecrits** : A.230 et A.231 restent tels qu'ils sont, et cet amendement dit ce qu'il en ferme ou corrige. **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : `s57-p5-camille-suite` a `df84e67f`. Sources lues : A.229 a A.233, `arbitrage-nadia-palier-5-qlm-v3.md` (3, 7.1, 7.3), `MATRICE-couverture.md` (12 lignes `QLM-CE1-01` a `-12`). Ce que je n'ai pas fait : composer un palier, fixer un prix, ecrire une story de questionner le monde, modifier la matrice, `planning.md` ou le code.
+
+### A.234 Ce que les codes `A1` et `A3` designaient : correction d'A.230 et d'A.233
+
+**Fait nouveau, transmis par l'agent lanceur : `A1` et `A3` etaient les codes de l'agent lanceur dans le chat, pas ceux de `camille-po`.** A.230 les cherchait dans le depot et les disait absents ; ils ne pouvaient pas y etre. Ce que l'agent lanceur en dit :
+
+| Code | Contenu | Etat |
+|---|---|---|
+| `A1` | consigner `V1`, `V2` et `V3` reconstitues | **fait en A.229** |
+| `A3` | l'utilisatrice tranche le point 2, cadence et couts : les 4,33 de `nadia-prof`, les 6,00 de `camille-po`, ou un autre nombre de lots par palier | **repondu en A.235** |
+
+**Ce que cela ferme** : la ligne d'A.233 *"l'agent lanceur : retrouver le libelle de `A1` et de `A3`"* et la reserve d'A.230, point 1 des decisions (*"a retrouver par l'agent lanceur"*). **Ce que cela ne change pas** : A.229 reste une reconstitution depuis le message de l'agent lanceur, que l'utilisatrice relit et peut corriger ; la condition de `nadia-prof` reste a constater par elle, et je ne la declare pas remplie.
+
+### A.235 La lecture de "palier" est tranchee par l'utilisatrice : la lecture (i)
+
+**Ses mots, 2026-10-25, relayes par l'agent lanceur mot pour mot, non lus de sa main (forme 2 de `DEC-0062` G)** : *"6 lots au total dans un palier, mais j'aimerais faire passer tout questionner le monde dans un palier"*.
+
+**Ce que la premiere moitie tranche.** Le point ouvert d'A.230 (*"le sens de palier"*) est **ferme** : c'est la **lecture (i)**, six lots **au total dans un palier, toutes matieres et toutes instances confondues**. La lecture (ii), six lots de questionner le monde seul, **tombe**. Le choix de l'utilisatrice n'est ni les 6,00 d'A.224 (trois lots de questionner le monde par palier), ni les 4,33 de `nadia-prof` (deux lots) : c'est un nombre de lots, six, pour tout le palier. **La table de lecture d'A.231 est corrigee en consequence** : sa ligne (ii) tombe, sa ligne (i) tient.
+
+**Ce que cette moitie ne dit toujours pas** (A.230, lignes non fermees) : quels paliers, quelle instance, si les rejeux comptent dans les six, le prix, le relevement. **Je ne les tranche pas.**
+
+### A.236 Son souhait : tout questionner le monde CE1 dans un seul palier
+
+**Consigne comme un souhait**, par ses mots (*"j'aimerais"*). Ce n'est ni une decision, ni un depassement ecrit de regle.
+
+**Ce que "tout" recouvre.** Les mots ne le disent pas ; je ne le tranche pas. Trois perimetres possibles, comptes sur la matrice et sur `nadia-prof` (`arbitrage-nadia-palier-5-qlm-v3.md` 3) :
+
+| Perimetre | Lignes | Lots (une ligne par lot, `nadia-prof` C5) | Etat chez `nadia-prof` |
+|---|---|---|---|
+| Les neuf lignes textuelles | `-01` a `-06`, `-08`, `-10`, `-12` | **9** | recevables |
+| Plus la moitie textuelle de `-07` | `-07`, `CIR-CE1-1` | **10** | recevable, plafond `en cours`, 0 en `couvert-valide`, apres les neuf |
+| Les 12 lignes `QLM-CE1` de la matrice (12 `non couvert`, relues au disque) | ajoute `-09`, `-11` et la moitie dessinee de `-07` | 12 lignes, mais **3 refusees sans materiau** | `-09` et `-11` refusees sans plan ni dessin ; la moitie dessinee de `-07` refusee (`CIR-CE1-2`) ; hors perimetre de `D5` (`DEC-0123` 3) |
+
+**`FRA-CE1-08` et `-09` ne sont pas des lignes de questionner le monde.** Elles ne sont pas dans les 12 lignes, ni dans les mots de l'utilisatrice, et restent hors de s57 (A.226) ; "tout questionner le monde" ne les recouvre pas.
+
+**Ce qui reste incompatible avec six lots au total dans un palier**, par les textes ecrits, sans conclure :
+
+| Texte | Ce qu'il dit | Face a *"tout dans un palier"* sous six lots au total |
+|---|---|---|
+| Six lots au total (A.235) | six lots, toutes matieres confondues | **9 lots depassent de 3 ; 10 lots depassent de 4.** Les deux moities de la phrase de l'utilisatrice ne tiennent pas ensemble au chiffre : six est inferieur a neuf. **Je ne choisis pas laquelle prime** : si elle veut les neuf lignes dans un palier, le nombre de six ne suffit pas ; si elle tient a six, trois lots au moins vont dans un autre palier |
+| `nadia-prof` C3 | le premier lot de questionner le monde est seul dans son palier pour son instance | **contredite par construction** : tout dans un palier met le premier lot avec les autres |
+| `nadia-prof` C4 | deux lots au plus par palier ensuite | depasse de 4 lots a six, de 7 lots a neuf |
+| `nadia-prof` R1 et 7.3 | quatre lots au premier audit par palier quand B porte deux lots illustres ; un cinquieme lot ecrit par l'utilisatrice est audite et le depassement est le sien | six lots depassent de 2 lots si B porte deux lots illustres au meme palier ; **si B n'a aucun lot** a ce palier, 7.3 ne dit pas combien de lots questionner le monde seul elle tient (elle en tient deux par C4) |
+| `PAR-8`, trois lots par instance | A.224 | depasse de 3 lots a six, de 6 lots a neuf, sur la seule instance qu'`arbitrage-nadia-palier-5-qlm-v3.md` C1 retient |
+| `PAR-2` | questionner le monde CE1 compte avec questionner le monde CP : une seule instance, jamais partage | **empeche d'envoyer les lots en trop a une seconde instance** pour rester sous `PAR-8` ; lever `PAR-8` ou `PAR-2` n'est pas dit |
+| `PAR-8`, 5,0 par instance | bareme de `nadia-prof` : 1,0 plus 1,0 par lot (A.224) | **[calcul sur le bareme existant, pas un prix fixe ici]** 7,00 a six lots, 10,00 a neuf lots, avant tout surcout et sans compter les rejeux |
+| Preconditions de `nadia-prof` (C2, C6) | au plus tot le palier 6 ; aucune story n'existe | non touchees par les mots de l'utilisatrice |
+
+**Ce qui devrait etre leve, et par qui.** Les plafonds ci-dessus sont des regles de produit (`PAR-2`, `PAR-8`) ou des regles de charge de `nadia-prof` (C3, C4, R1, 7.3). **Ils se levent par un depassement ecrit de l'utilisatrice, ou par `nadia-prof` qui releve sa regle.** `nadia-prof` a ecrit qu'elle audite un lot au-dela de son plafond si l'utilisatrice l'ecrit et que le depassement est alors le sien (7.3). **Ni la phrase de l'utilisatrice ni moi ne les levons** : elle dit *"6 lots au total"* et *"j'aimerais"*, aucun des deux ne nomme `PAR-2`, `PAR-8`, C3, C4, R1 ou 7.3 **[suppose : lecture prudente]**.
+
+**Ce qui reste ouvert, a l'utilisatrice, par `sofia-sm`.**
+
+1. *Six lots ou tout dans un palier* : les deux ne tiennent pas ensemble (9 ou 10 lots contre six). Lequel prime ?
+2. *Que recouvre "tout"* : neuf lots, dix, ou les douze lignes, dont trois refusees par `nadia-prof` sans materiau ; et si elle veut `FRA-CE1-08` et `-09`, elle les nomme (A.226).
+3. *Quel palier*, et quelle instance.
+4. *Les plafonds a lever* : `PAR-2`, `PAR-8`, C3, C4, R1, 7.3, un par un si elle le veut, par ses mots ; et la valeur du relevement, avec le chiffre, a la composition (A.225).
+5. *`nadia-prof`* : si elle releve C3, C4, R1, 7.3 ou maintient ; `PO2` (A.222) ; la condition de A.229.
+
+**Ce que je ne fais pas** : composer un palier, fixer un prix, ecrire une story de questionner le monde, engager un lot, lever un plafond. **Matrice** : aucun statut ne change.
