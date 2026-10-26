@@ -2408,7 +2408,7 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusi
 
 ## Amendement du 2026-10-26 (UTC+02:00), palier des neuf lots de questionner le monde CE1 : developpeur designe, declencheur de la lecture avant `verify`, fusions serialisees
 
-Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit `s57-p5-sofia-planning`. Il execute les deux lignes que `DEC-0120` A.262 donne a `sofia-sm` (*"designer le developpeur distinct de `lea-dev` ; `planning.md` : le declencheur de `P0` et les fusions serialisees"*). **Il n'ouvre aucun palier et n'engage aucun lot** : l'ouverture reste soumise a `D2` (cloture du palier precedent, composition portee par un amendement date, table d'isolation). Les choix de l'utilisatrice du 2026-10-26 (`DEC-0120` A.261 : instance neuve, horloge `MAT-CE1-11` avec les neuf lots au palier 9, `K2` nommee, relevement de `PAR-8` a 19,20 en plafond, marge 1,5) sont portes par `camille-po` (A.263) ; je ne les recopie pas et ne fixe aucun prix. `nadia-prof` reexamine sa condition `P3` et `theo-archi` ecrit l'exemption de garde d'`AIM-CE1-2` : je n'ai pas lu leurs fichiers en cours.
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit `s57-p5-sofia-planning`. Il execute les deux lignes que `DEC-0120` A.262 donne a `sofia-sm` (*"designer le developpeur distinct de `lea-dev` ; `planning.md` : le declencheur de `P0` et les fusions serialisees"*). **Il n'ouvre aucun palier et n'engage aucun lot** : l'ouverture reste soumise a `D2` (cloture du palier precedent, composition portee par un amendement date, table d'isolation). Les choix de l'utilisatrice du 2026-10-26 (`DEC-0120` A.261 : instance neuve, horloge `MAT-CE1-11` avec les neuf lots au palier 9, `K2` nommee, relevement de `PAR-8` a 19,20 en plafond, marge 1,5) [CORRIGE le 2026-10-26, amendement "plafond de PAR-8 a 20,20 et portee des rejeux" en fin de fichier : le plafond est 20,20, non 19,20 ; texte d'origine conserve] sont portes par `camille-po` (A.263) ; je ne les recopie pas et ne fixe aucun prix. `nadia-prof` reexamine sa condition `P3` et `theo-archi` ecrit l'exemption de garde d'`AIM-CE1-2` : je n'ai pas lu leurs fichiers en cours.
 
 ### 1. Developpeur designe : `marc-dev`
 
@@ -2469,7 +2469,7 @@ Regles de `P3` reformulee, citees sans reformulation (section 1.3, lignes 60 a 6
 
 1. **Un rejeu au plus par lot dans le palier 9.**
 2. **Aucun rejeu avant le premier audit des dix lots** (les neuf plus l'horloge). Motif de `nadia-prof` : trois rejeux places avant les derniers premiers audits pousseraient l'horloge hors du palier 9 ; *"Je ne fais pas cet echange."*
-3. **Lecture des rejeux de l'horloge** : `nadia-prof` lit les trois rejeux comme ceux de l'instance neuve, l'horloge ayant sa marge dans ses 2,50 (A.215). Si l'utilisatrice veut trois rejeux pour les dix lots, `P3` s'applique pareil, l'horloge comptant comme dixieme lot dans l'ordre de `P2`. **Cette lecture est a consigner par `camille-po`** (reponse, section 4) ; elle n'est pas tranchee ici.
+3. **Lecture des rejeux de l'horloge** : `nadia-prof` lit les trois rejeux comme ceux de l'instance neuve, l'horloge ayant sa marge dans ses 2,50 (A.215). Si l'utilisatrice veut trois rejeux pour les dix lots, `P3` s'applique pareil, l'horloge comptant comme dixieme lot dans l'ordre de `P2`. **Cette lecture est a consigner par `camille-po`** (reponse, section 4) ; elle n'est pas tranchee ici. [CORRIGE le 2026-10-26, meme amendement : l'utilisatrice a repondu, les trois rejeux valent pour les dix lots, horloge comprise ; texte d'origine conserve]
 
 ### 2. Engage du palier 9 : 13,50
 
@@ -2486,4 +2486,20 @@ Source : reponse de `nadia-prof`, section 3 (lignes 139 a 142).
 
 ### Decisions prises
 
-**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** `DEC-0120` A.265 est ecrite par `camille-po` dans sa branche ; elle n'est pas close par cet amendement. Restent ouverts : la lecture des rejeux de l'horloge (section 1, point 3) et l'exemption de garde d'`AIM-CE1-2` de `theo-archi`.
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** `DEC-0120` A.265 est ecrite par `camille-po` dans sa branche ; elle n'est pas close par cet amendement. Restent ouverts : la lecture des rejeux de l'horloge (section 1, point 3) et [CORRIGE le 2026-10-26, meme amendement : la lecture des rejeux de l'horloge n'est plus ouverte ; texte d'origine conserve] ; reste ouverte : l'exemption de garde d'`AIM-CE1-2` de `theo-archi`.
+
+## Amendement du 2026-10-26 (UTC+02:00), palier des neuf lots de questionner le monde CE1 : plafond de PAR-8 a 20,20 et portee des rejeux
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit `s57-p5-sofia-plafond`. Il inscrit deux reponses de l'utilisatrice du 2026-10-26 et corrige, par marqueur et sans effacer le texte d'origine, les passages de ce fichier qu'elles rendent inexacts. `camille-po` les consigne en `DEC-0120` A.266 dans ses fichiers, que cet amendement ne touche pas. **Il n'ouvre aucun palier, n'engage aucun lot, ne calcule aucun prix.**
+
+### 1. Plafond de `PAR-8` : 20,20
+
+L'utilisatrice a repondu que le plafond de `PAR-8` est **20,20**, au lieu de 19,20. Passage corrige : l'amendement du `s57-p5-sofia-planning` (section d'en-tete, `planning.md:2411`), qui portait *"relevement de `PAR-8` a 19,20 en plafond"*. Le `grep -n "19,20" planning.md` ne trouvait que cette ligne avant cet amendement ; elle est marquee. L'amendement `s57-p5-sofia-ordre` (`planning.md:2458` et suivantes) ne porte aucun plafond chiffre.
+
+### 2. Portee des rejeux : les dix lots, horloge comprise
+
+L'utilisatrice a repondu que les trois rejeux de la marge valent pour **les dix lots, horloge comprise**. C'est la seconde lecture que `nadia-prof` avait prevue (`reponse-nadia-palier-5-qlm-marge-instance-neuve-horloge.md:105-108`) : `P3` reformulee s'applique pareil, l'horloge comptant comme dixieme lot dans l'ordre de `P2`. Passages corriges par marqueur : le point 3 de la section 1 de l'amendement `s57-p5-sofia-ordre` (`planning.md:2472`) et la section "Decisions prises" du meme amendement (`planning.md:2489`). Aucune regle n'est ajoutee : l'ordre (neuf premiers audits, horloge, rejeux), un rejeu au plus par lot et aucun rejeu avant le premier audit des dix lots sont inchanges.
+
+### Decisions prises
+
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** `DEC-0120` A.266 est ecrite par `camille-po` dans sa branche ; elle n'est pas close par cet amendement. Reste ouverte : l'exemption de garde d'`AIM-CE1-2` de `theo-archi`.
