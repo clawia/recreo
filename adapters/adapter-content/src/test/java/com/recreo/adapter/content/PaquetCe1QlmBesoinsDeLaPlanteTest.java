@@ -99,7 +99,7 @@ class PaquetCe1QlmBesoinsDeLaPlanteTest {
     private static final Set<String> EFFETS_CONTRAIRES = Set.of(
             "elle grandit plus vite", "elle devient plus verte", "elle devient plus solide",
             "elle pousse plus vite", "elle fait plus de fleurs", "elle devient une plante",
-            "elle donne des fruits", "elle donne des fleurs");
+            "elle germe plus vite", "elle germe tout de suite");
 
     /** BPL-CE1-1 : les quatre mots jamais proposes, sur le texte sans accent. */
     private static final Pattern MOT_JAMAIS_PROPOSE = Pattern.compile(
@@ -129,7 +129,7 @@ class PaquetCe1QlmBesoinsDeLaPlanteTest {
     /** BPL-CE1-2 : la graine et la germination, la lumiere, dans une meme phrase. */
     private static final Pattern GRAINE = Pattern.compile("(?<!\\p{L})(graines?|germ\\p{L}*)", FLAGS);
 
-    private static final Pattern LUMIERE = Pattern.compile("(?<!\\p{L})(lumière|soleil)(?!\\p{L})", FLAGS);
+    private static final Pattern LUMIERE = Pattern.compile("(?<!\\p{L})(lumiere|soleil)(?!\\p{L})", FLAGS);
 
     private static final Pattern FEUILLES = Pattern.compile("(?<!\\p{L})feuilles?(?!\\p{L})", FLAGS);
 
@@ -321,14 +321,15 @@ class PaquetCe1QlmBesoinsDeLaPlanteTest {
     static void verifierQueLaGraineNAPasBesoinDeLumiere(List<Item> items) {
         for (Item item : items) {
             if (GRAINE.matcher(item.enonce() + " " + item.indice()).find()) {
-                assertThat(LUMIERE.matcher(item.bonneReponse()).find())
+                assertThat(LUMIERE.matcher(PaquetLu.sansAccent(item.bonneReponse())).find())
                         .as("BPL-CE1-2 : la bonne réponse « %s » de '%s' donne la lumière à une graine",
                                 item.bonneReponse(), item.enonce())
                         .isFalse();
             }
             for (String champ : item.champsLus()) {
                 for (String phrase : champ.split("(?<=[.?!])[\\s\\u00A0]+")) {
-                    assertThat(GRAINE.matcher(phrase).find() && LUMIERE.matcher(phrase).find())
+                    assertThat(GRAINE.matcher(phrase).find()
+                            && LUMIERE.matcher(PaquetLu.sansAccent(phrase)).find())
                             .as("BPL-CE1-2 : « %s » (champ de '%s') lie la graine à la lumière", phrase,
                                     item.enonce())
                             .isFalse();
@@ -467,6 +468,17 @@ class PaquetCe1QlmBesoinsDeLaPlanteTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("BPL-CE1-2")
                 .hasMessageContaining("lie la graine à la lumière");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneGraineDontLaBonneReponseEstLaLumiereSansAccent() {
+        Paquet fautif = fautif("besoins-fautifs.yaml");
+
+        assertThat(sonde(fautif, "sonde 23")).hasSize(1);
+        assertThatThrownBy(() -> verifierQueLaGraineNAPasBesoinDeLumiere(sonde(fautif, "sonde 23")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("BPL-CE1-2")
+                .hasMessageContaining("donne la lumière à une graine");
     }
 
     @Test

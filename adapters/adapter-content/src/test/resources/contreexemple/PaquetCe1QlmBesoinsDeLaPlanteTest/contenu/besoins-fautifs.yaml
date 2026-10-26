@@ -39,7 +39,7 @@ items:
   - enonce: "De quoi la graine a-t-elle besoin pour germer ?"
     bonneReponse: "de l'eau"
     distracteurs: ["du bruit", "du lait"]
-    indice: "Pense à ce qu'on verse sur une graine semée."
+    indice: "Écarte ce qu'on ne donne jamais à une graine semée."
   # sonde 04
   # BPL-CE1-1 sujet : graine
   # BPL-CE1-1 tache : besoin
@@ -56,7 +56,7 @@ items:
   # TRV-CE1-2 : b, b
   - enonce: "Une graine reste dans le noir. Que lui arrive-t-il ?"
     bonneReponse: "elle ne germe pas"
-    distracteurs: ["elle devient une plante", "elle donne des fruits"]
+    distracteurs: ["elle devient une plante", "elle germe plus vite"]
     indice: "Pense a la graine."
   # sonde 06
   # BPL-CE1-1 sujet : plante
@@ -211,3 +211,12 @@ items:
     bonneReponse: "elle devient pâle et pousse mal"
     distracteurs: ["elle grandit plus vite", "elle devient plus verte"]
     indice: "Pense a la plante."
+  # sonde 23
+  # BPL-CE1-1 sujet : graine
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : lumiere
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi la graine a-t-elle besoin pour germer ?"
+    bonneReponse: "de la lumiere"
+    distracteurs: ["du bruit", "du lait"]
+    indice: "Pense a la graine."

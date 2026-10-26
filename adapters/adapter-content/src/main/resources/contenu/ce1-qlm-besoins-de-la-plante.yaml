@@ -25,13 +25,14 @@ lignesDeReferentiel: ["QLM-CE1-03"]
 #   besoin : de quoi une plante, ou une graine, a besoin pour vivre, grandir ou germer (9 items)
 #   privation : ce qui arrive a une plante, ou a une graine, privee de l'un des trois (5 items)
 #
-# Source (QMT-CE1-2) : le redacteur n'a consulte aucune source externe. Les trois besoins sont
-# ceux de la parenthese du libelle. Les cinq consequences de la tache privation sont celles que
-# le test PaquetCe1QlmBesoinsDeLaPlanteTest ecrit dans sa table CONSEQUENCES, une par couple
-# (sujet, besoin retire) : la plante privee d'eau se fane, la plante a feuilles privee de
-# lumiere devient pale et pousse mal, la plante privee de chaleur (il fait tres froid) arrete de
-# pousser, la graine privee d'eau ne germe pas, la graine privee de chaleur reste une graine.
-# nadia-prof confronte chaque consequence a la sienne (QC9) ; le test relit le paquet sur cette table.
+# Source (QMT-CE1-2) : les trois besoins sont ceux de la parenthese du libelle. Les cinq consequences
+# de la tache privation, une par couple (sujet, besoin retire), sont celles que nadia-prof a relues et
+# tenues pour exactes au CE1 (squad/sprints/s57-version-cp-ce1-cm1-trois-instances/
+# lecture-nadia-premier-jet-ce1-qlm-besoins-de-la-plante.md, section 3, I3) : la plante privee d'eau
+# se fane ; la plante a feuilles privee de lumiere devient pale et pousse mal ; la plante privee de
+# chaleur (il fait tres froid) arrete de pousser ; la graine privee d'eau ne germe pas ; la graine
+# privee de chaleur reste une graine. Le test PaquetCe1QlmBesoinsDeLaPlanteTest les ecrit dans sa
+# table CONSEQUENCES et relit le paquet sur elle.
 #
 # BPL-CE1-2 : aucun item ne dit qu'une graine a besoin de lumiere pour germer. Les items de la
 # graine portent sur l'eau (items besoin et privation) ou la chaleur. La lumiere porte sur une plante
@@ -40,7 +41,9 @@ lignesDeReferentiel: ["QLM-CE1-03"]
 # Familles de distracteurs (liste fermee, le test relit chaque distracteur dans sa famille, dans
 # l'ordre du fichier) :
 #   famille a : une chose dont une plante n'a pas besoin (du sucre, du lait, du bruit)
-#   famille b : une consequence que la privation n'a jamais (contraire ou sans rapport)
+#   famille b : le contraire de la consequence (ce qui arriverait s'il ne manquait rien, ou mieux
+#   encore) ; jamais une consequence que la privation a vraiment ; jamais un effet impossible au
+#   sujet quel que soit le besoin (une graine ne donne ni fleurs ni fruits)
 #
 # CYC-1 : aucun item ne contredit un item de CP ou de CM1 ; aucun paquet de CP ne sert les besoins
 # de la plante (cp-qlm-cycle-de-vie dit seulement qu'une plante vieille meurt et fait des graines).
@@ -76,7 +79,7 @@ items:
   - enonce: "Qu'est-ce qui aide une plante à bien pousser ?"
     bonneReponse: "la chaleur"
     distracteurs: ["le bruit", "le sucre"]
-    indice: "Pense à ce qui réveille les plantes au printemps."
+    indice: "Compare une plante en hiver et la même plante au printemps."
   # BPL-CE1-1 sujet : plante
   # BPL-CE1-1 tache : besoin
   # BPL-CE1-1 besoin : lumiere
@@ -84,7 +87,7 @@ items:
   - enonce: "Une plante a déjà des feuilles. De quoi a-t-elle besoin pour grandir ?"
     bonneReponse: "de la lumière"
     distracteurs: ["du bruit", "du lait"]
-    indice: "Pense à ce que les feuilles reçoivent près d'une fenêtre."
+    indice: "Imagine cette plante dans un placard fermé, puis près d'une fenêtre."
   # BPL-CE1-1 sujet : graine
   # BPL-CE1-1 tache : besoin
   # BPL-CE1-1 besoin : eau
@@ -92,7 +95,7 @@ items:
   - enonce: "De quoi la graine a-t-elle besoin pour germer ?"
     bonneReponse: "de l'eau"
     distracteurs: ["du bruit", "du lait"]
-    indice: "Pense à ce qu'on verse sur une graine semée."
+    indice: "Écarte ce qu'on ne donne jamais à une graine semée."
   # BPL-CE1-1 sujet : plante
   # BPL-CE1-1 tache : privation
   # BPL-CE1-1 prive de : lumiere
@@ -116,14 +119,14 @@ items:
   - enonce: "Il fait très froid autour d'une plante. De quoi a-t-elle besoin pour pousser ?"
     bonneReponse: "de la chaleur"
     distracteurs: ["du lait", "du bruit"]
-    indice: "Pense à ce qui manque quand il fait très froid."
+    indice: "Imagine la même plante un jour d'été."
   # BPL-CE1-1 sujet : graine
   # BPL-CE1-1 tache : privation
   # BPL-CE1-1 prive de : eau
   # TRV-CE1-2 : b, b
   - enonce: "Une graine ne reçoit aucune eau. Que lui arrive-t-il ?"
     bonneReponse: "elle ne germe pas"
-    distracteurs: ["elle devient une plante", "elle donne des fruits"]
+    distracteurs: ["elle devient une plante", "elle germe plus vite"]
     indice: "Imagine une graine que personne n'arrose."
   # BPL-CE1-1 sujet : plante
   # BPL-CE1-1 tache : besoin
@@ -132,7 +135,7 @@ items:
   - enonce: "Une plante a des feuilles vertes. Que lui faut-il pour bien grandir ?"
     bonneReponse: "de la lumière"
     distracteurs: ["du sucre", "du bruit"]
-    indice: "Pense à ce que les feuilles vertes cherchent au soleil."
+    indice: "Compare une plante au soleil et une plante à l'ombre."
   # BPL-CE1-1 sujet : graine
   # BPL-CE1-1 tache : besoin
   # BPL-CE1-1 besoin : chaleur
@@ -156,12 +159,12 @@ items:
   - enonce: "Que faut-il apporter souvent à une plante ?"
     bonneReponse: "de l'eau"
     distracteurs: ["du lait", "du sucre"]
-    indice: "Pense à ce que le jardinier verse avec son arrosoir."
+    indice: "Imagine une plante de la classe oubliée pendant les vacances."
   # BPL-CE1-1 sujet : graine
   # BPL-CE1-1 tache : privation
   # BPL-CE1-1 prive de : chaleur
   # TRV-CE1-2 : b, b
   - enonce: "Une graine reste au grand froid, sans aucune chaleur. Que lui arrive-t-il ?"
     bonneReponse: "elle reste une graine"
-    distracteurs: ["elle donne des fleurs", "elle pousse plus vite"]
+    distracteurs: ["elle germe tout de suite", "elle pousse plus vite"]
     indice: "Imagine une graine gardée dans un endroit glacé."
