@@ -4028,3 +4028,35 @@ Les deux voies tiennent sous 20,20 au cas haut mesure : 18,20 dans les deux cas,
 | `nadia-prof` | confirmer ou contredire par ecrit le point 6 ; son fichier de relecture des trois indices et de la marge, en cours, n'est pas dans `round-two` au moment ou j'ecris et je ne l'ai pas lu |
 
 **Matrice** : aucun statut ne change. **Report** : aucun report de sprint. **Changement de code decide, avec proprietaire** : aucun ; la seule modification a porter est dans `planning.md`, a `sofia-sm`. **Ne fait pas** : ne prononce aucun Done, ne releve aucun plafond, ne change pas l'engage, ne reecrit pas `P3`, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`.
+
+## Amendement du 2026-10-26, quarante-neuvieme (`camille-po`, palier 5 : trois reponses de l'utilisatrice, portee d'A.270, plancher de `QC5`, quatrieme rejeu)
+
+Statut `Acceptee` inchange. Aucun montant ne change : engage 13,50, plafond de `PAR-8` 20,20, marge de l'instance neuve 1,5.
+
+### A.271 Portee d'A.270 confirmee, `QC5` aligne sur A.258, quatrieme rejeu differe
+
+**1. Ses mots, reportes.** Trois reponses de l'utilisatrice du 2026-10-26, relayees par l'agent lanceur (forme 2, `DEC-0062` G), citees et rien d'autre : *"Q2 toute seconde lecture"*, *"Amendement entre 10 et 20"*, *"Q3 a voir apres audit"*.
+
+**2. Q2 : A.270 est confirme tel qu'ecrit.** J'avais etendu au point 4 d'A.270 l'imputation hors marge a toute seconde lecture avant `verify` d'un lot de l'instance neuve (dix lots) et demande si elle preferait la limiter a `-01`. Elle repond : toute seconde lecture. La portee d'A.270 point 4 est donc **toute seconde lecture avant `verify` d'un lot de l'instance neuve**, sans changement. Rien a modifier dans `planning.md` au-dela de ce qu'A.270 a deja route a `sofia-sm`.
+
+**3. *"Amendement entre 10 et 20"* : ma lecture, et ce qu'elle reste.** Je lis : amender le repere `QC5` du bloc commun des neuf stories (`docs/backlog/backlog.md`, annotation du 2026-10-25, cinquieme), qui dit encore *"entre 10 (`FER-2`) et 20"*, pour l'aligner sur A.258, qui l'a remplace par *"entre 11 et 20"*. Verifie avant d'ecrire : A.258 fixe le plancher a **11** (`ChaqueJeuDuCatalogueOffrePlusDItemsQueDeManchesTest`, `ADR-0023`, 10 manches par `DEC-0121`) ; `FER-2` (*"au moins dix items"*) reste la condition de `nadia-prof`, tenue avec un item d'avance, et n'impose pas 10 comme plancher de produit. Ma lecture tient. **Elle ne rouvre pas le choix d'A.258** : l'autre branche (10 items et derogation de manches nommee) reste ouverte a l'utilisatrice par une phrase, et *"entre 10 et 20"* ne la choisit pas ; ses mots, pris a la lettre, reprendraient le 10 que `theo-archi` a mesure refuse au branchement. **Si l'utilisatrice voulait en fait la branche a 10 items, elle le dit, et ce serait une autre decision (derogation, code, proprietaire a designer).**
+
+Occurrences corrigees dans `docs/backlog/backlog.md`, par marqueur *[corrige par A.271]*, texte d'origine conserve :
+
+| Ligne | Passage | Pourquoi |
+|---|---|---|
+| 24067 | `QC5` du bloc commun : *"entre **10** (`FER-2`) et **20**"* | le repere meme |
+| 24052 | puce *"Nombre d'items par paquet"* du bloc commun : *"Entre 10 et 20, le developpeur prend..."* | meme plancher, A.250 que A.258 corrige |
+
+La ligne 24257 (annotation suivante) porte deja *"entre 11 et 20"* et dit que le texte de `QC5` plus haut n'est pas reecrit : cet amendement le reecrit par marqueur. Autres occurrences vues et **non corrigees** : lignes 24171 et 24186 (*"4 sur 10"*, *"3 sur 10"*, comptes de `nadia-prof`, que l'A.258 laisse inchanges), et `planning.md` ligne 2597, qui dit deja 11 et que je ne modifie pas.
+
+**4. Q3 : differee, non tranchee.** Reponse : *"a voir apres audit"*. La question : si l'horloge `MAT-CE1-11` est rejouee sur la marge de 0,5 de B (A.267 : elle consomme d'abord celle-ci) et que **trois** lots de l'instance neuve sont refuses, faut-il un **quatrieme rejeu** ? Le cas precis : le rejeu de l'horloge compte parmi les trois rejeux (A.267, A.270 point 4), donc le troisieme lot refuse n'est pas rejoue, alors que la marge de 1,5 serait entiere (3 fois 0,50, la marge de B ayant paye l'horloge). Le cout le permettrait, la regle `P3` (A.265) ne le permet pas. **Aucune regle ne change, `P3` reste telle qu'ecrite.** A rouvrir **a la fermeture des dix premiers audits** de l'instance neuve (`P3` : aucun rejeu avant eux), avec le nombre de lots refuses observe. **Report : premier report de cette question ; `A.267` et `A.270` l'ont laissee sans la nommer.** Proprietaire de la reouverture : `camille-po`, a la fermeture des dix audits, via `sofia-sm`.
+
+**5. Ce que cet amendement ne change pas.** `P3`, l'engage, le plafond, la marge, l'ordre neuf audits, horloge, puis rejeux.
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | rien de neuf ; la ligne de registre d'A.270 reste a porter dans `planning.md` ; noter la reouverture de Q3 a la fermeture des dix premiers audits |
+| `nadia-prof` | rien |
+
+**Matrice** : aucun statut ne change. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni le fichier du mulot de `cm1-sciences-chaine-alimentaire.yaml` (item deja note, a traiter a part).
