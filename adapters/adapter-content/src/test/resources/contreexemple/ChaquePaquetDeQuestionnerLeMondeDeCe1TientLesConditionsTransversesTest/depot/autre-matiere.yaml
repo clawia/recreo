@@ -1,0 +1,16 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif de la garde transverse."
+lignesDeReferentiel: ["MAT-CE1-01"]
+items:
+  # TRV-CE1-2 : a, b
+  - enonce: "Combien font deux et deux ?"
+    bonneReponse: "quatre"
+    distracteurs: ["trois", "cinq"]
+    indice: "Compte sur tes doigts."
+    texteSupport: "Autre matière."

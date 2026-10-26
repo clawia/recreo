@@ -1,0 +1,20 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif de la garde transverse."
+lignesDeReferentiel: ["QLM-CE1-01"]
+items:
+  # TRV-CE1-2 : a, b
+  - enonce: "Dans la vie de la grenouille qui vit dans la mare près de la grande forêt verte, quelle étape vient juste après l'œuf pondu au printemps (sonde 01) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense à la vie de l'animal."
+  # TRV-CE1-2 : a, b
+  - enonce: "Une phrase. Deux phrases. Trois phrases. Quelle étape vient après (sonde 02) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense à la vie de l'animal."

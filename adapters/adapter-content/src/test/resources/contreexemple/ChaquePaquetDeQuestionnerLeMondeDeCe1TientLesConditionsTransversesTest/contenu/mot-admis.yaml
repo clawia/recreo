@@ -1,0 +1,20 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif de la garde transverse."
+lignesDeReferentiel: ["QLM-CE1-01"]
+items:
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape suit le têtard, la chenille ou la chrysalide (sonde 01) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense à la germination et à la métamorphose."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape suit l'évaporation (sonde 02) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense à la vie de l'animal."
