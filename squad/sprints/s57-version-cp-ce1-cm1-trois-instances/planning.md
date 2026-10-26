@@ -2518,7 +2518,7 @@ Ligne lue sur le disque avant ecriture, par `git log -1 --format='%H %cI' 7c9227
 |---|---|---|---|---|
 | `S57-BR-QLM-CE1-01` | `7c9227869e0c403843428cfe26a166c61a7e2808` (message `[MARC] s57 palier 5: premier jet de S57-BR-QLM-CE1-01 ...`) | 2026-10-26 10:22:24 +01:00 | `marc-dev` | `ce1-qlm-etapes-de-developpement`, 15 items (message du commit) |
 
-Le tableau du point 7 de la section 2 de l'amendement `s57-p5-sofia-planning` (`planning.md:2440` a `2442`) porte les colonnes *heure d'inscription* et *lecture de `nadia-prof`*. Je ne le reecris pas : l'heure d'inscription de cette ligne est celle de l'en-tete de cet amendement, **2026-10-26 10:43 (UTC+01:00)**. La lecture de `nadia-prof` n'existe pas encore : `lecture-nadia-premier-jet-<paquet>.md` n'est pas sur le disque a ce jour.
+Le tableau du point 7 de la section 2 de l'amendement `s57-p5-sofia-planning` (`planning.md:2440` a `2442`) porte les colonnes *heure d'inscription* et *lecture de `nadia-prof`*. Je ne le reecris pas : l'heure d'inscription de cette ligne est celle de l'en-tete de cet amendement, **2026-10-26 10:43 (UTC+01:00)**. La lecture de `nadia-prof` n'existe pas encore : `lecture-nadia-premier-jet-<paquet>.md` n'est pas sur le disque a ce jour. **[corrige le 2026-10-26 13:35 (UTC+01:00), amendement "premiere paire de P1" en fin de fichier : la lecture existe, `lecture-nadia-premier-jet-ce1-qlm-etapes-de-developpement.md`, commit `02add592` ; texte d'origine conserve]**
 
 A lire avec la ligne :
 
@@ -2537,8 +2537,81 @@ Fichier : `reponse-nadia-palier-5-rejeu-horloge-et-double-compte.md`, deja dans 
 
 1. **Rejeu de l'horloge (1.2) :** il consomme d'abord la marge de 0,5 de `B`, comprise dans les 2,50 de l'horloge ; il ne prend sur la marge de 1,5 que si celle de `B` est deja consommee ; dans les deux cas il compte parmi les trois rejeux des dix lots.
 2. **Surcout par lot (2.1) :** **0,42**, mesure sur `registre-prix-palier-4.txt` (2,50 au-dela du bareme sur six lots) ; les 0,67 comptent deux fois la marge consommee ; rien ne mesure une instance neuve ni une marge de 1,5 (2.3).
-3. **Routage a `sofia-sm` (section 4) :** *"la ligne `B` du palier 9 porte la marge de l'horloge ; la ligne de l'instance neuve porte les trois rejeux, sauf celui de l'horloge"*. **Elle n'est pas inscrite ici** : aucun palier n'est ouvert et ce fichier ne porte aucune ligne de registre du palier 9.
+3. **Routage a `sofia-sm` (section 4) :** *"la ligne `B` du palier 9 porte la marge de l'horloge ; la ligne de l'instance neuve porte les trois rejeux, sauf celui de l'horloge"*. **Elle n'est pas inscrite ici** : aucun palier n'est ouvert et ce fichier ne porte aucune ligne de registre du palier 9. **[corrige le 2026-10-26 13:35 (UTC+01:00), amendement "premiere paire de P1" en fin de fichier : la ligne de registre de l'instance neuve est inscrite (section 1) ; la ligne `B` ne l'est pas ; texte d'origine conserve]**
 
 ### Decisions prises
 
-**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** `DEC-0120` A.267 est ecrite par `camille-po` dans sa branche ; elle n'est pas close ici. Restent ouverts : la lecture de `nadia-prof` sur le premier jet de `-01`, la consignation par `camille-po` de la reponse du point 3, la ligne de registre du point 3.3 et l'exemption de garde d'`AIM-CE1-2` de `theo-archi`.
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** `DEC-0120` A.267 est ecrite par `camille-po` dans sa branche ; elle n'est pas close ici. Restent ouverts : la lecture de `nadia-prof` sur le premier jet de `-01`, la consignation par `camille-po` de la reponse du point 3, la ligne de registre du point 3.3 et l'exemption de garde d'`AIM-CE1-2` de `theo-archi`. **[corrige le 2026-10-26 13:35 (UTC+01:00), amendement "premiere paire de P1" en fin de fichier : la lecture de `nadia-prof` sur le premier jet de `-01` est livree et `P0` est close (section 2), la ligne de registre de l'instance neuve est inscrite (section 1) ; reste ouverts : la consignation par `camille-po` de la reponse du point 3, la ligne `B`, l'exemption de garde d'`AIM-CE1-2` de `theo-archi` ; texte d'origine conserve]**
+
+## Amendement du 2026-10-26 13:35 (UTC+01:00), palier des neuf lots de questionner le monde CE1 : ligne de registre de l'instance neuve, cloture de P0 pour -01, premiere paire de P1 (-02, -03)
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit `s57-p5-sofia-p1`. Il execute les lignes que `DEC-0120` A.270 (point 7, ligne `sofia-sm`) et `relecture-nadia-trois-indices-ce1-qlm-etapes-de-developpement.md` (section 6 et amendement A.270, tableau final) lui donnent, et ouvre la premiere paire de `P1`. Lignee verifiee avant ecriture : `bash outils/verifier-lignee.sh` sort 0 dans le worktree de la branche ; le sommet de `round-two` lu par `git rev-parse` est `8b5a719c7256b6c95b8943e92f242cb3b941479b`. **Il n'ouvre aucun palier, n'engage aucun lot de plus, ne calcule aucun prix et ne prononce aucun Done** : le Done pedagogique est a `nadia-prof` seule. Il ne modifie ni `DEC-0120`, ni le backlog, ni le code. Les chiffres ci-dessous sont ceux de `DEC-0120` A.265 a A.270 et de `nadia-prof`, cites, non recalcules.
+
+### 1. Ligne de registre de l'instance neuve
+
+Aucune ligne de registre du palier 9 n'existait dans ce fichier avant cet amendement (l'amendement du 2026-10-26 10:43, section 3, point 3, le disait). Elle est inscrite ici, sources : `DEC-0120` A.270 points 1, 2, 3 et 7 ; relecture de `nadia-prof`, amendement A.270, point 1 (*confirme*).
+
+| Ligne | Imputation de la seconde lecture de `-01` | Marge consommee par cette lecture | Ligne hors marge (A.247) | Marge disponible aux rejeux |
+|---|---|---|---|---|
+| instance neuve (`marc-dev`, les dix lots `S57-BR-QLM-CE1`) | voie (a) d'A.270 : hors marge | **0,00** | **0,50** (seconde lecture de `-01`) | **1,5** : trois rejeux a 0,50 (A.199) |
+
+- **Cout de `P0` lu : 1,5**, soit 1,0 (lot, lecture du premier jet et correction) plus 0,5 (seconde lecture, hors marge) plus 0,0 (arbitrage des trois indices, A.268). Seuil de 1,67 non franchi : **0,17 sous le seuil**. Lu dans `relecture-nadia-trois-indices-ce1-qlm-etapes-de-developpement.md`, section 3 (*"1,5, seuil de 1,67 non franchi"*) et amendement A.270, point 5 (*"inchanges"*). Le chiffre est ecrit avant que `P1` commence, comme l'amendement `s57-p5-sofia-ordre`, section 3, point 2, l'exige : la projection contre le plafond n'est pas a refaire.
+- Engage 13,50 et plafond de `PAR-8` 20,20 inchanges (A.270 point 1). Cas haut mesure : 17,70 plus 0,50 = 18,20, soit 2,00 sous 20,20 (A.270 point 3, cite).
+- **Portee** (A.270 point 4, confirmee par `nadia-prof`, point 2) : l'imputation hors marge vaut pour toute seconde lecture avant `verify` d'un lot de l'instance neuve, dix lots. Chaque seconde lecture d'un autre lot s'inscrira sur la ligne hors marge, par amendement date.
+- **Ce que la ligne ne porte pas** : la ligne `B` du palier 9 (marge de l'horloge `MAT-CE1-11`, routage de `nadia-prof`, reponse `reponse-nadia-palier-5-rejeu-horloge-et-double-compte.md` section 4) n'est pas inscrite ici, personne ne me la demande a cet amendement et aucun palier n'est ouvert.
+
+### 2. Cloture de `P0` pour `S57-BR-QLM-CE1-01`
+
+**`P0` est close pour `S57-BR-QLM-CE1-01`, le 2026-10-26 a 13:35 (UTC+01:00).** Commit de reference : `8b5a719c7256b6c95b8943e92f242cb3b941479b` (`[SOF] s57 palier 5: fusion de s57-p5-nadia-c1c3 ...`, 2026-10-26T13:27:54+01:00, sommet de `round-two` lu sur le disque), qui porte la derniere etape.
+
+Chaine de `P0`, chaque etape lue au disque par `git log` et `git merge-base --is-ancestor 02add592 HEAD` (sort 0) :
+
+| Etape (amendement `s57-p5-sofia-planning`, section 2, point 4) | Commit | Heure du commit |
+|---|---|---|
+| (a) premier jet commite seul | `7c922786` | 2026-10-26T10:22:24+01:00 |
+| (b) ligne inscrite dans ce fichier | `203668a9` (amendement de 10:43) | avant tout `verify` complet |
+| (c) lecture de `nadia-prof`, `lecture-nadia-premier-jet-ce1-qlm-etapes-de-developpement.md` | `02add592` | 2026-10-26T10:57:54+01:00 |
+| (d) correction de `marc-dev` | `47279e05`, puis `5e56ea7e` (trois indices) | 11:19:06 et 13:03:54 |
+| seconde lecture des 15 items corriges | `408fec39` | 11:40:52 |
+| relecture des trois indices, A.270 confirme | `10bc0f8e`, `9e8542e1`, `e299a288` | 13:21:01, 13:21:31, 13:24:27 |
+
+Les conditions d'A.268 (C1, C2, C3) sont lues *vraies* par `nadia-prof` ; `QC7` est tenue pour `-01` : le commit de l'ecrit de lecture (`02add592`) est ancetre de `HEAD`, et aucun autre paquet `ce1-qlm-*` n'existe au depot (`git ls-files | grep -i "ce1-qlm"` ne trouve que le paquet, son test, son contre-exemple et les ecrits de `-01`). **Cette ligne ne prononce aucun Done de `-01`** : l'audit de `P2` n'a pas eu lieu, `QC3` est inchangee (aucune entree `ce1-qlm-*` au catalogue avant un Done). **Non verifie par moi** : qu'aucun `verify` complet de `-01` n'ait ete lance avant la ligne du 10:43 ; le rapport de `marc-dev` m'a ete relaye, pas lu (voir le point 2 de la section 1 de l'amendement du 10:43).
+
+### 3. Premiere paire de `P1` : `S57-BR-QLM-CE1-02` et `S57-BR-QLM-CE1-03`
+
+Source de l'ordre et de la paire : `DEC-0120` A.260 (`P1`) et l'amendement `s57-p5-sofia-planning`, section 2, point 5 (*"par paires dans l'ordre `-02`, `-03` ; `-04`, `-05` ; `-06`, `-08` ; `-10`, `-12`"*).
+
+| Lot | Paquet propose | Ligne | Developpeur |
+|---|---|---|---|
+| `S57-BR-QLM-CE1-02` | `ce1-qlm-ce-que-mangent-les-animaux` | `QLM-CE1-02` | `marc-dev` |
+| `S57-BR-QLM-CE1-03` | `ce1-qlm-besoins-de-la-plante` | `QLM-CE1-03` | `marc-dev` |
+
+**Cette inscription n'est pas la ligne d'un premier jet.** Aucun commit de premier jet de `-02` ou de `-03` n'existe. Tant que `marc-dev` ne m'a pas donne, pour chacun, le lot, le SHA et l'heure, et que je n'ai pas lu le commit sur le disque et ecrit sa ligne par amendement date, **aucun `verify` complet de ce paquet n'est lance, par aucun agent**. La lecture de `nadia-prof` sur la paire precede les premiers jets de la paire suivante (`-04`, `-05`). `RG4` s'applique : un worktree vivant a la fois, `marc-dev` me dit quand il passe de `-02` a `-03`.
+
+**Conditions qui s'appliquent, par source en vigueur** (identifiants et sources, les textes sont dans le backlog et ne sont pas recopies) :
+
+1. **Conditions de ligne de `-02`**, story `S57-BR-QLM-CE1-02` : `RAL-CE1-1` (les trois categories en bonne reponse, source du regime de chaque animal, `FER-1`, `QMT-CE1-2`, `CYC-1`) et `RAL-CE1-2` (quatre animaux exclus, aucun aliment du commerce). Voisin relu : `cm1-sciences-regimes-alimentaires`.
+2. **Conditions de ligne de `-03`**, story `S57-BR-QLM-CE1-03` : `BPL-CE1-1` (eau, lumiere, chaleur en bonne reponse, quatre mots jamais proposes, seconde tache `FER-3`) et `BPL-CE1-2` (aucun item ne dit qu'une graine a besoin de lumiere pour germer). Voisins relus : `cp-qlm-hygiene` et le paquet de `-01`.
+3. **Conditions transverses des neuf stories** (annotation du 2026-10-25, cinquieme, du backlog) : `TRV-CE1-1`, `TRV-CE1-2`, `TRV-CE1-5`, `TRV-CE1-6`, `FER-1`, `FER-2`, `FER-3`, `CYC-1`, `NRC-CE1-1`, `QMT-CE1-1`, `QMT-CE1-2`, avec `LON-CE1-1`, `-2`, `-5`.
+4. **Criteres communs** : `QC1` a `QC9` de l'annotation, dont `QC3` (aucune entree `ce1-qlm-*` au catalogue avant un Done), `QC4` (test du paquet), `QC6` (une sonde refusee par condition transverse negative), `QC7` (lecture avant `verify`, ordre), `QC8` (Done technique : les quatre jobs de `ci.yml`, `build`, `chemins`, `prefixes`, `outils`, nommes). **`QC10`** (annotation du 2026-10-25, compositions) et `DEC-0120` A.259 : l'entree du test de rang `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` est dans le commit du premier jet, avec les totaux exacts de son motif ; une correction qui ajoute ou retire un item recompte le motif dans le meme commit.
+5. **Densite** : `DEC-0120` A.258, plancher de **11** items et plafond de **20** (`QC5` remplace). `FER-2` (*"au moins dix items"*) reste la condition de `nadia-prof`.
+
+**Ordre de fusion serialise** (section 3 de l'amendement `s57-p5-sofia-planning`, `avis-theo-palier-5-neuf-lots-qlm-ce1.md` 3.3 et 3.4) : `-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12`. `-01` est fusionne (premier jet `77fc8f8e`, corrections `648db0f9`, `1db73af8`). La branche de `-02` part du sommet de `round-two` qui porte cette fusion ; celle de `-03` part du sommet qui porte la fusion de `-02`. Je verifie la lignee dans le worktree de chaque branche avant de fusionner et j'etablis le total de tests sur l'arbre fusionne. Un seul test des conditions transverses, ecrit dans `-01` : un lot qui le modifie est signale a `theo-archi`, pas fusionne.
+
+**Aucun rejeu avant les dix premiers audits.** `P3`, texte de `nadia-prof` cite dans l'amendement `s57-p5-sofia-ordre` : *"aucun rejeu avant le premier audit de chacun des dix lots du palier"* ; ordre neuf audits (`P2`), horloge `MAT-CE1-11`, puis rejeux ; un rejeu au plus par lot dans le palier 9. Un lot de la paire refuse n'est donc pas rejoue pendant `P1`.
+
+### 4. Points manquants ou contradictoires, signales et non combles
+
+1. **La liste donnee pour la paire n'est pas celle des stories.** Elle porte `DVP-CE1-1` et `DVP-CE1-2`, qui sont les conditions de ligne de `-01` (story `S57-BR-QLM-CE1-01`), et ne porte ni `RAL-CE1-1`, `RAL-CE1-2` (`-02`) ni `BPL-CE1-1`, `BPL-CE1-2` (`-03`). J'ai inscrit les conditions de la section 3 d'apres les stories, pas d'apres cette liste. `DVP-CE1-2` touche `-03` par un seul point : *"aucun item ne dit qu'une graine a besoin de lumiere pour germer"* est aussi `BPL-CE1-2`, qui est inscrite.
+2. **`AIM-CE1-2` n'est attachee ni a `-02` ni a `-03`.** Condition de `-06` (aimant). `avis-theo-palier-5-exemption-aim-ce1-2.md`, section 5, place la garde dans `PaquetCe1QlmAimantTest`, dans le commit du premier jet de `-06`. Je ne l'inscris pas comme condition de la paire. Si l'intention etait de l'etendre, c'est une decision de `camille-po`, a ecrire.
+3. **La garde de rotation ne s'applique a aucun item de la paire.** `avis-theo-palier-5-garde-rotation-ce1-qlm-01.md` : lieu = *le test du paquet de `-01`, pas le test transverse* (`V3`), et *"seule `-01` porte une tache ordre sur un cycle"*, les autres stories ne demandent aucun ordre. La condition *"sur tout item ordre"* est donc vide pour `-02` et `-03` aujourd'hui. Si un item *ordre* apparait dans un de ces paquets (la seconde tache de `-03` est *"ce qui arrive a une plante privee de l'un des trois"*, pas un ordre), la garde n'y existe pas et je route a `theo-archi` sans la combler.
+4. **Conditions en vigueur absentes de la liste donnee** : `QC1`, `QC2`, `QC5`, `QC7`, `QC8`, `TRV-CE1-6`, `CYC-1`, `FER-2`, `LON-CE1-1/-2/-5`. Elles sont inscrites a la section 3.
+5. **`-02` ne nomme pas sa seconde tache.** `FER-3` (*"au moins deux taches distinctes, la moins servie portant au moins trois items"*) est transverse, et `QC5` demande que le commentaire du paquet nomme ses taches. La story `-02` ne donne que `RAL-CE1-1` et `RAL-CE1-2` : aucune seconde tache, aucune sonde `FER-3`. La story `-03` la nomme (*privee de l'un des trois*, critere 4, au moins 3 items). **Je ne la deduis pas** : a `camille-po` (story) et a `nadia-prof` (condition), avant le premier jet de `-02`, ou a lire par `nadia-prof` a sa lecture avant `verify`.
+
+### 5. Question laissee ouverte par `nadia-prof` (Q3 de sa relecture)
+
+*Horloge rejouee sur la marge de `B`, puis trois lots de l'instance neuve refuses : un quatrieme rejeu sur la marge de 1,5 restee entiere, ou non.* **Ouverte, non tranchee par moi.** Elle est a `camille-po` (relecture de `nadia-prof`, amendement A.270, tableau final), puis a l'utilisatrice si `camille-po` la lui porte. Elle ne mord qu'apres les dix premiers audits et seulement si l'horloge et trois lots hors horloge sont refuses : aucun rejeu n'a lieu avant (`P3`), donc ni `P1`, ni `P2` n'en dependent. Je la remets a la fermeture des dix premiers audits, avec le verdict de l'horloge, et je route a `camille-po` a ce moment si le cas est reel. Elle n'est close que par une `DEC` presente sur le disque.
+
+### Decisions prises
+
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il ecrit : la ligne de registre de l'instance neuve (execution d'A.270), la cloture de `P0` pour `-01`, la premiere paire de `P1` et les cinq points de la section 4. Restent ouverts : la consignation par `camille-po` de la reponse de `nadia-prof` sur le rejeu de l'horloge (amendement du 10:43, section 3), la ligne `B`, l'exemption de garde d'`AIM-CE1-2` (point 2 de la section 4 et avis de `theo-archi`), la seconde tache de `-02` (point 5 de la section 4) et la question Q3 de la section 5. Aucun Done n'est prononce.
