@@ -3740,7 +3740,7 @@ Annotation datee. **A.263 n'est pas reecrit** : trois de ses phrases portent un 
 | l'utilisatrice, par `sofia-sm` | l'engage est-il 12,50 ou 13,50 a marge de 1,5 (ci-dessus) **[repondu par A.265 : 13,50]** |
 | `sofia-sm` | `planning.md` : le palier 9 s'inscrit a 12,50 d'engage **[corrige par A.265 : 13,50]** ; les autres points d'A.263 inchanges |
 
-**Matrice** : aucun statut ne change. **Report** : aucun, premiere inscription. **Changement de code decide, avec proprietaire** : inchange (developpeur a designer par `sofia-sm`, non designe a cette date). **Ne fait pas** : ne prononce aucun Done, ne leve pas `P3`, n'engage aucun lot, ne designe aucun developpeur, ne choisit pas entre 12,50 et 13,50, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
+**Matrice** : aucun statut ne change. **Report** : aucun, premiere inscription. **Changement de code decide, avec proprietaire** : inchange (developpeur a designer par `sofia-sm`, non designe a cette date) **[corrige le 2026-10-26: marc-dev designe, planning.md]**. **Ne fait pas** : ne prononce aucun Done, ne leve pas `P3`, n'engage aucun lot, ne designe aucun developpeur, ne choisit pas entre 12,50 et 13,50, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
 
 ## Amendement du 2026-10-26, quarante-troisieme (`camille-po`, palier 5 : l'utilisatrice tranche l'engage a 13,50, `nadia-prof` reformule `P3`)
 
@@ -3776,15 +3776,15 @@ Annotation datee. **A.264 n'est pas reecrit** : quatre de ses passages portent u
 - **Ce que l'utilisatrice n'a pas dit, non tranche.** `nadia-prof` lit les trois rejeux comme ceux de l'instance neuve, l'horloge ayant sa marge dans ses 2,50, et ecrit que si l'utilisatrice veut dire trois rejeux pour les dix lots, `P3` s'applique pareil, l'horloge etant le dixieme lot de `P2`. Elle demande que je consigne l'une ou l'autre lecture. Les mots de l'utilisatrice ne designent aucune des deux ; **je n'en choisis pas**. Le texte de `P3` ci-dessus vaut pour les deux. **[corrige par A.266 : les trois rejeux valent pour les dix lots, horloge comprise]**
 - **L'ecart de bareme qu'elle signale** (section 2.1) : le palier au bareme avec l'horloge est **13,50** (11,00 plus 2,50), ce que l'utilisatrice vient de dire engager ; 19,20 a ete calcule sur un bareme de 12,50, et *"les deux chiffres rapportes n'ont pas ete calcules sur la meme marge"*. Elle ne releve ni ne conteste le plafond.
 
-**Ce qui n'est pas touche** : `K2` nommee pour l'horloge seule, instance neuve, plafond de 19,20 **[corrige par A.266 : 20,20]**, palier 9 a dix lots, palier 10 libre pour les rejeux hors marge et les glissements, developpeur a designer.
+**Ce qui n'est pas touche** : `K2` nommee pour l'horloge seule, instance neuve, plafond de 19,20 **[corrige par A.266 : 20,20]**, palier 9 a dix lots, palier 10 libre pour les rejeux hors marge et les glissements, developpeur a designer. **[corrige le 2026-10-26: marc-dev designe, planning.md]**
 
 | A qui | Quoi |
 |---|---|
 | l'utilisatrice | le plafond a marge de 1,5 : 19,20 maintenu, ou une autre valeur (1,00 au plus en jeu) **[corrige par A.266 : repondu, 20,20]** |
 | `nadia-prof` | le double compte d'A.200 : 0,42 ou 0,67 par lot ; la lecture des trois rejeux, instance neuve ou dix lots, si l'utilisatrice la donne **[corrige par A.266 : dix lots]** |
-| `sofia-sm` | `planning.md` : le palier 9 s'inscrit a **13,50** d'engage ; l'ordre neuf audits, horloge, rejeux ; `P3` reformulee (trois rejeux, un par lot au plus, aucun avant le premier audit des dix lots) ; designer le developpeur distinct de `lea-dev` |
+| `sofia-sm` | `planning.md` : le palier 9 s'inscrit a **13,50** d'engage ; l'ordre neuf audits, horloge, rejeux ; `P3` reformulee (trois rejeux, un par lot au plus, aucun avant le premier audit des dix lots) ; designer le developpeur distinct de `lea-dev` **[corrige le 2026-10-26: marc-dev designe, planning.md]** |
 
-**Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; la contradiction `P3` d'A.263 est resolue par le texte de `nadia-prof`, l'ecart de 1,00 au plafond reste ouvert depuis A.263 (meme jour). **Changement de code decide, avec proprietaire** : inchange (developpeur a designer par `sofia-sm`, non designe a cette date). **Ne fait pas** : ne prononce aucun Done, ne fixe aucun plafond, ne tranche ni le double compte d'A.200 ni la lecture des trois rejeux, n'engage aucun lot, ne designe aucun developpeur, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
+**Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; la contradiction `P3` d'A.263 est resolue par le texte de `nadia-prof`, l'ecart de 1,00 au plafond reste ouvert depuis A.263 (meme jour). **Changement de code decide, avec proprietaire** : inchange (developpeur a designer par `sofia-sm`, non designe a cette date) **[corrige le 2026-10-26: marc-dev designe, planning.md]**. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun plafond, ne tranche ni le double compte d'A.200 ni la lecture des trois rejeux, n'engage aucun lot, ne designe aucun developpeur, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
 
 ## Amendement du 2026-10-26, quarante-quatrieme (`camille-po`, palier 5 : l'utilisatrice releve le plafond a 20,20 et etend les trois rejeux aux dix lots)
 
@@ -3811,11 +3811,11 @@ Annotation datee. **A.265 n'est pas reecrit** : cinq de ses passages portent un 
 - sur la marge propre de l'horloge : *"l'horloge, lot de B, a sa marge dans ses 2,50 (A.215 : fixe 1,0 dont marge 0,5, lot illustre 1,5)"*.
 Elle n'ecrit pas ce que l'horloge consomme de la marge de 1,5 quand un de ses rejeux s'y prend, ni si la marge de 0,5 de ses 2,50 s'ajoute aux trois rejeux. **Je ne le deduis pas** : c'est une question de chiffres de `nadia-prof`, posee ci-dessous.
 
-**Ce qui n'est pas touche** : l'engage de 13,50, `K2` nommee pour l'horloge seule, instance neuve, `P3` dans le texte de A.265, l'ordre neuf audits / horloge / rejeux, palier 10 libre, developpeur a designer.
+**Ce qui n'est pas touche** : l'engage de 13,50, `K2` nommee pour l'horloge seule, instance neuve, `P3` dans le texte de A.265, l'ordre neuf audits / horloge / rejeux, palier 10 libre, developpeur a designer. **[corrige le 2026-10-26: marc-dev designe, planning.md]**
 
 | A qui | Quoi |
 |---|---|
 | `nadia-prof` | le double compte d'A.200 (0,42 ou 0,67) ; si un rejeu de l'horloge consomme la marge de 1,5 ou la marge de 0,5 de ses 2,50 |
-| `sofia-sm` | `planning.md` : le plafond de `PAR-8` du palier 9 inscrit a **20,20**, les trois rejeux pour les dix lots ; designer le developpeur distinct de `lea-dev` |
+| `sofia-sm` | `planning.md` : le plafond de `PAR-8` du palier 9 inscrit a **20,20**, les trois rejeux pour les dix lots ; designer le developpeur distinct de `lea-dev` **[corrige le 2026-10-26: marc-dev designe, planning.md]** |
 
-**Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; l'ecart de 1,00 au plafond, ouvert depuis A.263 (meme jour), est ferme par R1. **Changement de code decide, avec proprietaire** : inchange (developpeur a designer par `sofia-sm`, non designe a cette date). **Ne fait pas** : ne prononce aucun Done, ne tranche ni le double compte d'A.200 ni la consommation de marge d'un rejeu de l'horloge, n'engage aucun lot, ne designe aucun developpeur, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
+**Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; l'ecart de 1,00 au plafond, ouvert depuis A.263 (meme jour), est ferme par R1. **Changement de code decide, avec proprietaire** : inchange (developpeur a designer par `sofia-sm`, non designe a cette date) **[corrige le 2026-10-26: marc-dev designe, planning.md]**. **Ne fait pas** : ne prononce aucun Done, ne tranche ni le double compte d'A.200 ni la consommation de marge d'un rejeu de l'horloge, n'engage aucun lot, ne designe aucun developpeur, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
