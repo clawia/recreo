@@ -1,0 +1,14 @@
+schema: 1
+id: ce1-hors-population
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Paquet de CE1 que la population de CP ne lit pas."
+lignesDeReferentiel: ["QLM-CE1-01"]
+items:
+  - enonce: "Quelle étape vient après l'œuf (hors population) ?"
+    bonneReponse: "le poussin"
+    distracteurs: ["la fleur", "le fruit"]
+    indice: "Pense à la ferme."

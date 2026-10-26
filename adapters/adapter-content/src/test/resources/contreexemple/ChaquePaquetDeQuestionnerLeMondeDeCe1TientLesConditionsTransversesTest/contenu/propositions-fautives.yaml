@@ -7,6 +7,8 @@ descripteur:
   domaine: "Jeu fautif"
   competence: "Jeu fautif de la garde transverse."
 lignesDeReferentiel: ["QLM-CE1-01"]
+# famille a : une etape de la meme espece, hors de sa place
+# famille b : une etape d'une autre espece
 items:
   # TRV-CE1-2 : a, b
   - enonce: "Quelle étape vient après l'œuf (sonde 01) ?"
@@ -26,4 +28,14 @@ items:
   - enonce: "Quelle étape vient après l'œuf (sonde 04) ?"
     bonneReponse: "la chenille"
     distracteurs: ["le têtard", "une proposition qui compte beaucoup trop de mots pour un enfant de CE1"]
+    indice: "Pense à la vie de l'animal."
+  # TRV-CE1-2 : a et b
+  - enonce: "Quelle étape vient après l'œuf (sonde 05) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense à la vie de l'animal."
+  # TRV-CE1-2 : a, c
+  - enonce: "Quelle étape vient après l'œuf (sonde 06) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
     indice: "Pense à la vie de l'animal."

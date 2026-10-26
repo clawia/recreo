@@ -7,6 +7,8 @@ descripteur:
   domaine: "Jeu fautif"
   competence: "Jeu fautif de la garde transverse."
 lignesDeReferentiel: ["QLM-CE1-01"]
+# famille a : une etape de la meme espece, hors de sa place
+# famille b : une etape d'une autre espece
 items:
   # TRV-CE1-2 : a, b
   - enonce: "Quelle étape vient après l'œuf n°1 ?"

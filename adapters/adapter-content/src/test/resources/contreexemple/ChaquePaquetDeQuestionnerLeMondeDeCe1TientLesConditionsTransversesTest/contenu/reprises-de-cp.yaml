@@ -1,0 +1,25 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif de NRC-CE1-1."
+lignesDeReferentiel: ["QLM-CE1-01"]
+items:
+  # copie de l'enonce d'un paquet de CP que aucune liste ne nomme, casse et blancs changes
+  - enonce: "QUE SORT-IL  de l'œuf de la poule (sonde 01) ?"
+    bonneReponse: "le poussin"
+    distracteurs: ["la fleur", "le fruit"]
+    indice: "Pense à la ferme."
+  # reprise reformulee : un autre enonce, les trois memes propositions
+  - enonce: "Quelle étape vient après l'œuf du papillon (sonde 02) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["la graine", "le têtard"]
+    indice: "Pense au jardin."
+  # une seule proposition en commun avec un item de CP : passe
+  - enonce: "Quelle étape vient après la chenille (sonde 03) ?"
+    bonneReponse: "la chrysalide"
+    distracteurs: ["le têtard", "la fleur"]
+    indice: "Pense au papillon."

@@ -38,12 +38,13 @@ lignesDeReferentiel: ["QLM-CE1-01"]
 # distracteur dans sa famille, dans l'ordre du fichier) :
 #   famille a : une etape de la meme espece, hors de sa place, jamais voisine de la bonne reponse
 #   famille b : une etape d'une autre espece de la liste fermee
-#   famille c : les trois memes etapes, dans un autre ordre
+#   famille c : les trois memes etapes, dans un ordre qui n'est pas celui du cycle, meme en le faisant tourner
 #
 # BPL-CE1-2 : aucun item, aucun indice ne dit ce dont une graine a besoin pour germer.
 # CYC-1 : aucun item ne contredit cm1-sciences-etapes-developpement (meme ordre : oeuf, tetard,
 # grenouille ; oeuf, chenille, papillon ; oeuf, poussin) ni cp-qlm-cycle-de-vie. NRC-CE1-1 : aucun
-# enonce n'est celui d'un item de ces deux paquets ; le sujet reste a la lecture de nadia-prof.
+# enonce ni jeu de trois propositions n'est celui d'un item d'un paquet de CP (garde transverse) ;
+# le sujet reste a la lecture de nadia-prof.
 # QMT-CE1-1 : aucun des quinze mots exclus n'est ecrit ; tetard, chenille et chrysalide sont admis.
 # TRV-CE1-1, -5, -6, LON-CE1-1, -2, -5 : niveau CE1, aucun texteSupport ni voix, un indice par item
 # (une methode, douze mots au plus, indices tous distincts), aucun prenom, aucun lieu de vie.
@@ -66,10 +67,10 @@ items:
     indice: "Suis la vie du papillon pas à pas, vers la suite."
   # DVP-CE1-1 espece : plante
   # DVP-CE1-1 tache : voisine
-  # TRV-CE1-2 : a, b
+  # TRV-CE1-2 : a, a
   - enonce: "Dans la vie d'une plante, quelle étape vient juste après la graine ?"
     bonneReponse: "la jeune pousse"
-    distracteurs: ["le fruit", "le têtard"]
+    distracteurs: ["la fleur", "le fruit"]
     indice: "Suis la vie d'une plante pas à pas, vers la suite."
   # DVP-CE1-1 espece : grenouille
   # DVP-CE1-1 tache : ordre
@@ -87,17 +88,17 @@ items:
     indice: "Remonte la vie du têtard. Que vient avant ?"
   # DVP-CE1-1 espece : poule
   # DVP-CE1-1 tache : voisine
-  # TRV-CE1-2 : b, b
-  - enonce: "Dans la vie de la poule, quelle étape vient juste après l'œuf ?"
-    bonneReponse: "le poussin"
-    distracteurs: ["la chenille", "le têtard"]
-    indice: "Pense à ce qui sort de l'œuf de la poule."
+  # TRV-CE1-2 : a, b
+  - enonce: "Dans la vie de la poule, quelle étape vient juste après le poussin ?"
+    bonneReponse: "la poule"
+    distracteurs: ["l'œuf", "le têtard"]
+    indice: "Le poussin grandit. Que devient-il ?"
   # DVP-CE1-1 espece : plante
   # DVP-CE1-1 tache : voisine
-  # TRV-CE1-2 : a, b
+  # TRV-CE1-2 : a, a
   - enonce: "Dans la vie d'une plante, quelle étape vient juste après la jeune pousse ?"
     bonneReponse: "la plante"
-    distracteurs: ["la graine", "le poussin"]
+    distracteurs: ["la graine", "le fruit"]
     indice: "Continue la vie d'une plante. Que devient la jeune pousse ?"
   # DVP-CE1-1 espece : papillon
   # DVP-CE1-1 tache : ordre
@@ -122,17 +123,17 @@ items:
     indice: "Pense à ce qui sort de l'œuf du papillon."
   # DVP-CE1-1 espece : plante
   # DVP-CE1-1 tache : voisine
-  # TRV-CE1-2 : a, b
+  # TRV-CE1-2 : a, a
   - enonce: "Dans la vie d'une plante, quelle étape vient juste avant la jeune pousse ?"
     bonneReponse: "la graine"
-    distracteurs: ["la fleur", "la chrysalide"]
+    distracteurs: ["la fleur", "le fruit"]
     indice: "Remonte la vie de la plante. Que vient juste avant ?"
   # DVP-CE1-1 espece : plante
   # DVP-CE1-1 tache : ordre
   # TRV-CE1-2 : c, c
   - enonce: "Dans la vie d'une plante, quelle suite est dans le bon ordre ?"
     bonneReponse: "graine, plante, fleur"
-    distracteurs: ["plante, graine, fleur", "fleur, graine, plante"]
+    distracteurs: ["plante, graine, fleur", "graine, fleur, plante"]
     indice: "Raconte la vie de la plante dans l'ordre."
   # DVP-CE1-1 espece : grenouille
   # DVP-CE1-1 tache : voisine
@@ -153,5 +154,5 @@ items:
   # TRV-CE1-2 : c, c
   - enonce: "Dans la vie de la poule, quelle suite est dans le bon ordre ?"
     bonneReponse: "œuf, poussin, poule"
-    distracteurs: ["poussin, œuf, poule", "poule, œuf, poussin"]
+    distracteurs: ["poussin, œuf, poule", "poule, poussin, œuf"]
     indice: "Raconte la vie de la poule dans l'ordre."

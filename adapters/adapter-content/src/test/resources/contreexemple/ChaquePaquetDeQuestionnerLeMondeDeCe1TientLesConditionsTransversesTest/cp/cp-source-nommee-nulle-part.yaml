@@ -1,0 +1,18 @@
+schema: 1
+id: cp-source-nommee-nulle-part
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Jeu fautif"
+  competence: "Source de CP du jeu fautif de NRC-CE1-1, que aucune liste ne nomme."
+lignesDeReferentiel: ["QLM-CP-01"]
+items:
+  - enonce: "Que sort-il de l'œuf de la poule (sonde 01) ?"
+    bonneReponse: "le poussin"
+    distracteurs: ["le têtard", "la chenille"]
+    indice: "Pense à la ferme."
+  - enonce: "Qui sort de l'œuf du papillon (sonde 02) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense au jardin."

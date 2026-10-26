@@ -10,8 +10,11 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -36,7 +39,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * l'item, la longueur de la bonne reponse, la longueur et la distinction des indices, la longueur des
  * enonces, les quinze mots exclus. Il ne lit pas {@code TRV-CE1-5} au-dela de la forme (un indice est
  * une methode et jamais une regle fausse), {@code TRV-CE1-6}, {@code QMT-CE1-2} (la source de chaque
- * fait) ni {@code NRC-CE1-1} : non gardes ici, lus par nadia-prof ({@code QC9}). {@code TRV-CE1-1}
+ * fait) ni {@code NRC-CE1-1} au-dela de sa partie textuelle : non gardes ici, lus par nadia-prof
+ * ({@code QC9}). {@code NRC-CE1-1}, partie textuelle seule : un item dont l'enonce, ou l'ensemble des
+ * trois propositions, est celui d'un item de CP est refuse ; la population de CP est derivee des
+ * descripteurs (tout paquet dont le niveau est CP), jamais enumeree. {@code TRV-CE1-1}
  * est gardee sur ses deux champs interdits, {@code texteSupport} et {@code texteAVoixHaute} : leur
  * presence est refusee, leur contenu n'a pas a etre lu.
  *
@@ -64,8 +70,14 @@ class ChaquePaquetDeQuestionnerLeMondeDeCe1TientLesConditionsTransversesTest {
     /** TRV-CE1-1 : les deux champs dont la presence est refusee. */
     private static final List<String> CHAMPS_INTERDITS = List.of("texteSupport", "texteAVoixHaute");
 
-    /** TRV-CE1-2 : la declaration des familles de distracteurs, a cote de l'item. */
-    private static final Pattern FAMILLES_DECLAREES = Pattern.compile("^TRV-CE1-2 : .+$");
+    /** TRV-CE1-2 : la declaration des familles de distracteurs, a cote de l'item, deux lettres. */
+    private static final Pattern FAMILLES_DECLAREES = Pattern.compile("^TRV-CE1-2 : ([a-z]), ([a-z])$");
+
+    /** TRV-CE1-2 : la ligne de l'en-tete qui dit ce qu'est une famille. */
+    private static final Pattern FAMILLE_DE_L_ENTETE = Pattern.compile("^#\\s+famille ([a-z]) : .+$");
+
+    /** NRC-CE1-1 : le niveau dont les items sont compares, tel que le descripteur l'ecrit une fois normalise. */
+    private static final String NIVEAU_COMPARE = "cp";
 
     private static final Pattern TERMINAISON_DE_PHRASE = Pattern.compile("[.?!](?:[\\s\\u00A0]+|$)");
 
@@ -140,8 +152,18 @@ class ChaquePaquetDeQuestionnerLeMondeDeCe1TientLesConditionsTransversesTest {
         }
     }
 
-    /** TRV-CE1-2 : trois propositions distinctes, familles declarees, la plus longue dans la moitie au plus. */
+    /**
+     * TRV-CE1-2 : trois propositions distinctes, familles declarees au format exact et presentes dans
+     * l'en-tete, la plus longue dans la moitie au plus.
+     */
     static void verifierLesPropositions(Paquet paquet) {
+        Set<String> famillesDeLEntete = new HashSet<>();
+        for (String ligne : paquet.entete().split("\\R")) {
+            Matcher famille = FAMILLE_DE_L_ENTETE.matcher(ligne);
+            if (famille.matches()) {
+                famillesDeLEntete.add(famille.group(1));
+            }
+        }
         for (Item item : paquet.items()) {
             assertThat(item.distracteurs())
                     .as("TRV-CE1-2 : '%s' ne porte pas trois propositions", item.enonce()).hasSize(2);
@@ -149,10 +171,21 @@ class ChaquePaquetDeQuestionnerLeMondeDeCe1TientLesConditionsTransversesTest {
                     .as("TRV-CE1-2 : les propositions de '%s' ne sont pas trois propositions distinctes",
                             item.enonce())
                     .isEqualTo(3);
-            assertThat(item.commentaires().stream().anyMatch(ligne -> FAMILLES_DECLAREES.matcher(ligne).matches()))
-                    .as("TRV-CE1-2 : '%s' ne nomme pas les familles de ses distracteurs à côté de l'item",
-                            item.enonce())
-                    .isTrue();
+            List<String> declarations = item.commentaires().stream()
+                    .filter(ligne -> ligne.startsWith("TRV-CE1-2")).toList();
+            assertThat(declarations)
+                    .as("TRV-CE1-2 : '%s' ne nomme pas les familles de ses distracteurs à côté de l'item, "
+                            + "exactement une fois au format « TRV-CE1-2 : x, y »", item.enonce())
+                    .hasSize(1)
+                    .allMatch(ligne -> FAMILLES_DECLAREES.matcher(ligne).matches());
+            Matcher familles = FAMILLES_DECLAREES.matcher(declarations.get(0));
+            familles.matches();
+            for (int groupe = 1; groupe <= 2; groupe++) {
+                assertThat(famillesDeLEntete)
+                        .as("TRV-CE1-2 : '%s' déclare la famille %s, absente de l'en-tête de %s",
+                                item.enonce(), familles.group(groupe), paquet.fichier())
+                        .contains(familles.group(groupe));
+            }
             for (String proposition : item.propositions()) {
                 assertThat(PaquetLu.mots(proposition))
                         .as("LON-CE1-5 : « %s » (proposition de '%s') compte plus de six mots", proposition,
@@ -219,6 +252,72 @@ class ChaquePaquetDeQuestionnerLeMondeDeCe1TientLesConditionsTransversesTest {
         }
     }
 
+    /** Un item d'un paquet de CP, tel que NRC-CE1-1 le compare : enonce et ensemble de propositions normalises. */
+    record ItemDeCp(String fichier, String enonce, Set<String> propositions) {
+    }
+
+    /** Les items de tout paquet du repertoire dont le descripteur declare le niveau CP, quelle que soit la matiere. */
+    static List<ItemDeCp> itemsDeCp(Path repertoire) {
+        List<ItemDeCp> items = new ArrayList<>();
+        try (Stream<Path> arborescence = Files.walk(repertoire)) {
+            for (Path fichier : arborescence.filter(Files::isRegularFile)
+                    .filter(candidat -> candidat.getFileName().toString().endsWith(".yaml")).sorted().toList()) {
+                if (!(new Yaml().load(PaquetLu.lire(fichier)) instanceof Map<?, ?> corps)
+                        || !(corps.get("descripteur") instanceof Map<?, ?> descripteur)
+                        || !(corps.get("items") instanceof List<?> entrees)
+                        || !UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest
+                                .normalise(String.valueOf(descripteur.get("niveau"))).equals(NIVEAU_COMPARE)) {
+                    continue;
+                }
+                for (Object entree : entrees) {
+                    if (!(entree instanceof Map<?, ?> item) || item.get("enonce") == null) {
+                        continue;
+                    }
+                    Set<String> propositions = new HashSet<>();
+                    if (item.get("bonneReponse") != null && item.get("distracteurs") instanceof List<?> distracteurs) {
+                        propositions.add(normaliseLeTexte(String.valueOf(item.get("bonneReponse"))));
+                        distracteurs.forEach(distracteur ->
+                                propositions.add(normaliseLeTexte(String.valueOf(distracteur))));
+                    }
+                    items.add(new ItemDeCp(fichier.getFileName().toString(),
+                            normaliseLeTexte(String.valueOf(item.get("enonce"))), propositions));
+                }
+            }
+        } catch (IOException echec) {
+            throw new UncheckedIOException(echec);
+        }
+        return items;
+    }
+
+    private static String normaliseLeTexte(String texte) {
+        return texte.replaceAll("[\\s\\u00A0]+", " ").strip().toLowerCase(Locale.FRENCH);
+    }
+
+    /**
+     * NRC-CE1-1, partie textuelle : l'enonce normalise d'un item, ou l'ensemble normalise de ses trois
+     * propositions, n'est pas celui d'un item de CP. Une seule proposition en commun est permise : une
+     * etape de la plante n'est pas un item repris.
+     */
+    static void verifierQueRienNEstReprisDUnItemDeCp(Paquet paquet, List<ItemDeCp> itemsDeCp) {
+        assertThat(itemsDeCp).as("NRC-CE1-1 : aucun item de CP n'est lu, la comparaison ne juge rien")
+                .isNotEmpty();
+        for (Item item : paquet.items()) {
+            String enonce = normaliseLeTexte(item.enonce());
+            Set<String> propositions = new HashSet<>();
+            item.propositions().forEach(proposition -> propositions.add(normaliseLeTexte(proposition)));
+            for (ItemDeCp cp : itemsDeCp) {
+                assertThat(enonce)
+                        .as("NRC-CE1-1 : l'énoncé de '%s' est celui d'un item de CP (%s)", item.enonce(),
+                                cp.fichier())
+                        .isNotEqualTo(cp.enonce());
+                assertThat(propositions)
+                        .as("NRC-CE1-1 : les trois propositions de '%s' sont celles d'un item de CP (%s)",
+                                item.enonce(), cp.fichier())
+                        .isNotEqualTo(cp.propositions());
+            }
+        }
+    }
+
     private static void verifierTout(Paquet paquet) {
         verifierLaDeclarationEtLesChamps(paquet);
         verifierLesPropositions(paquet);
@@ -266,7 +365,52 @@ class ChaquePaquetDeQuestionnerLeMondeDeCe1TientLesConditionsTransversesTest {
                 ::verifierLesMotsExclus);
     }
 
+    @Test
+    void aucunItemDuLotNEstCeluiDUnItemDeCpParSonEnonceOuSesTroisPropositions() {
+        List<ItemDeCp> itemsDeCp = itemsDeCp(CONTENU_SERVI);
+
+        assertThat(itemsDeCp).as("ADR-0051 : la population de CP, derivee des descripteurs, n'est pas vide")
+                .isNotEmpty();
+        paquetsDuLot(CONTENU_SERVI).forEach(paquet -> verifierQueRienNEstReprisDUnItemDeCp(paquet, itemsDeCp));
+    }
+
     // ----- ADR-0013 obligation 3 : un jeu fautif commite mord chaque verificateur
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnEnonceOuTroisPropositionsRepris() {
+        Paquet paquet = fautif("reprises-de-cp.yaml");
+        List<ItemDeCp> itemsDeCp = itemsDeCp(CONTRE_EXEMPLE.resolve("cp"));
+
+        assertThat(itemsDeCp).extracting(ItemDeCp::fichier).containsOnly("cp-source-nommee-nulle-part.yaml");
+        assertThat(sonde(paquet, "(sonde 01)")).hasSize(1);
+        assertThat(sonde(paquet, "(sonde 02)")).hasSize(1);
+        assertThat(sonde(paquet, "(sonde 03)")).hasSize(1);
+        assertThatThrownBy(() -> verifierQueRienNEstReprisDUnItemDeCp(
+                avecItems(paquet, sonde(paquet, "(sonde 01)")), itemsDeCp))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("NRC-CE1-1")
+                .hasMessageContaining("énoncé");
+        assertThatThrownBy(() -> verifierQueRienNEstReprisDUnItemDeCp(
+                avecItems(paquet, sonde(paquet, "(sonde 02)")), itemsDeCp))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("NRC-CE1-1")
+                .hasMessageContaining("trois propositions");
+        verifierQueRienNEstReprisDUnItemDeCp(avecItems(paquet, sonde(paquet, "(sonde 03)")), itemsDeCp);
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneFamilleDeclareeSansLeFormatOuAbsenteDeLEnTete() {
+        Paquet paquet = fautif("propositions-fautives.yaml");
+
+        assertThatThrownBy(() -> verifierLesPropositions(avecItems(paquet, sonde(paquet, "(sonde 05)"))))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("TRV-CE1-2")
+                .hasMessageContaining("au format");
+        assertThatThrownBy(() -> verifierLesPropositions(avecItems(paquet, sonde(paquet, "(sonde 06)"))))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("TRV-CE1-2")
+                .hasMessageContaining("absente de l'en-tête");
+    }
 
     @Test
     void leJeuFautifCommiteEstRefuseSurUnTexteSupportEtSurUnTexteAVoixHaute() {
