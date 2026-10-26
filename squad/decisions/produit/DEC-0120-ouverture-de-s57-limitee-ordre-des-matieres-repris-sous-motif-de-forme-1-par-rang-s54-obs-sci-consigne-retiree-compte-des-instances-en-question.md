@@ -3716,26 +3716,70 @@ Annotation datee. **A.263 n'est pas reecrit** : trois de ses phrases portent un 
 
 ### A.264 L'engage du palier 9 est 12,50, pas 10,00
 
+**[corrige par A.265 : l'engage du palier 9 est 13,50 ; A.264 est conserve tel qu'ecrit le 2026-10-26, a la question du 1,00 de marge pres, que l'utilisatrice a tranchee]**
+
 **Ses mots, reportes** : l'engage du palier 9 est **12,50**, soit neuf lots a 10,00 plus l'horloge `MAT-CE1-11` a 2,50 (A.261, `K5` (b)). **Correction d'A.263** : A.263 consignait *"L'engage reste 10,00"* et ecrivait que l'engage de dix lots n'etait pas dans les mots que j'avais. Il y est, et ce n'est pas 10,00. Les 10,00 etaient l'engage des neuf lots seuls (A.260), vrai avant Q2 (b), faux depuis. La phrase d'A.263 *"12,50 avant marge"* est aussi inexacte : les 10,00 de bareme d'A.260 comptent la marge de 0,5, le 12,50 aussi. **La question que A.263 routait a `sofia-sm` sur l'engage est fermee**, le reste de sa ligne (l'ecart de 1,00) est traite ci-dessous.
 
 **Ce que cela change, au bareme et aux plafonds [calcul].**
 
 | Grandeur | Valeur | Ecart a l'engage de 12,50 | Ecart au plafond de 19,20 |
 |---|---|---|---|
-| engage (dix lots, marge de 0,5 comprise) | 12,50 | 0 | 6,70 sous le plafond |
+| engage (dix lots, marge de 0,5 comprise) **[corrige par A.265 : l'engage est 13,50]** | 12,50 | 0 | 6,70 sous le plafond |
 | bareme a marge de 1,5 (Q4 (c)) : 12,50 plus 1,0 | 13,50 | plus 1,00 | 5,70 sous le plafond |
 | surcouts hauts a marge de 0,5 (A.261, A.215) | 19,20 | plus 6,70 | 0 |
 | surcouts hauts a marge de 1,5 : 19,20 plus 1,0 | 20,20 | plus 7,70 | **plus 1,00 au-dessus** |
 
 - **Le plafond de 19,20 est un plafond, pas l'engage.** Le depassement de l'engage va au registre (A.247) : jusqu'a 6,70 si les surcouts sont ceux du scenario haut a marge de 0,5, tous les surcouts mesures d'A.261 restant sous le plafond. Il n'y a pas d'ecart entre le plafond et l'engage a corriger : A.263 avait ecrit 10,00 par erreur, le plafond est calcule pour dix lots et l'engage l'est aussi.
 - **L'ecart de 1,00 d'A.263 reste entier.** A marge de 1,5, le scenario haut (20,20) depasse le plafond de 1,00. L'engage a 12,50 ne le ferme pas ni ne l'ouvre davantage.
-- **Ce que ses mots ne disent pas, non tranche** : l'engage de 12,50 est le bareme **a marge de 0,5**. A marge de 1,5 (Q4 (c)), le bareme est de 13,50. **Le 1,00 de marge supplementaire est-il dans l'engage (qui deviendrait 13,50) ou hors de lui (la marge de 1,5 serait un plafond de rejeux, pas un engage) ?** Ses mots sur Q3 disent 12,50 ; ses mots sur Q4 disent 1,5. Je n'ecris pas 13,50 pour elle. Tant que ce n'est pas dit, l'engage inscrit est 12,50, et la consommation entre 12,50 et 13,50 est un depassement au registre si les trois rejeux ont lieu. Question routee a `sofia-sm`, qui la lui pose avec la reponse de `nadia-prof` sur `P3` (A.263).
+- **Ce que ses mots ne disent pas, non tranche** : l'engage de 12,50 est le bareme **a marge de 0,5**. A marge de 1,5 (Q4 (c)), le bareme est de 13,50. **Le 1,00 de marge supplementaire est-il dans l'engage (qui deviendrait 13,50) ou hors de lui (la marge de 1,5 serait un plafond de rejeux, pas un engage) ?** Ses mots sur Q3 disent 12,50 ; ses mots sur Q4 disent 1,5. Je n'ecris pas 13,50 pour elle. Tant que ce n'est pas dit, l'engage inscrit est 12,50, et la consommation entre 12,50 et 13,50 est un depassement au registre si les trois rejeux ont lieu. Question routee a `sofia-sm`, qui la lui pose avec la reponse de `nadia-prof` sur `P3` (A.263). **[repondu par A.265 : 13,50, le 1,00 de marge est dans l'engage]**
 
 **Ce qui n'est pas touche** : `P3` reste ouverte (A.263), `K2` nommee pour l'horloge seule, instance neuve, relevement de 19,20, marge de 1,5 sous reserve de `P3`.
 
 | A qui | Quoi |
 |---|---|
-| l'utilisatrice, par `sofia-sm` | l'engage est-il 12,50 ou 13,50 a marge de 1,5 (ci-dessus) |
-| `sofia-sm` | `planning.md` : le palier 9 s'inscrit a 12,50 d'engage ; les autres points d'A.263 inchanges |
+| l'utilisatrice, par `sofia-sm` | l'engage est-il 12,50 ou 13,50 a marge de 1,5 (ci-dessus) **[repondu par A.265 : 13,50]** |
+| `sofia-sm` | `planning.md` : le palier 9 s'inscrit a 12,50 d'engage **[corrige par A.265 : 13,50]** ; les autres points d'A.263 inchanges |
 
 **Matrice** : aucun statut ne change. **Report** : aucun, premiere inscription. **Changement de code decide, avec proprietaire** : inchange (developpeur a designer par `sofia-sm`, non designe a cette date). **Ne fait pas** : ne prononce aucun Done, ne leve pas `P3`, n'engage aucun lot, ne designe aucun developpeur, ne choisit pas entre 12,50 et 13,50, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
+
+## Amendement du 2026-10-26, quarante-troisieme (`camille-po`, palier 5 : l'utilisatrice tranche l'engage a 13,50, `nadia-prof` reformule `P3`)
+
+Annotation datee. **A.264 n'est pas reecrit** : quatre de ses passages portent un marqueur renvoyant ici, le texte d'origine est conserve. **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : base `9bd5778b`, branche `s57-p5-camille-engage`. Sources : le message de l'utilisatrice du 2026-10-26, relaye par l'agent lanceur (forme 2, `DEC-0062` G) ; `reponse-nadia-palier-5-qlm-marge-instance-neuve-horloge.md` (lignes 60 a 85, 89 a 126) ; `DEC-0120` A.200, A.261, A.263, A.264 relus. Les chiffres sont des calculs, marques **[calcul]**.
+
+### A.265 L'engage du palier 9 est 13,50, pas 12,50
+
+**Ses mots, reportes** : l'engage du palier 9 est **13,50**, soit le bareme a marge de 1,5 avec l'horloge : neuf lots a **11,00** plus l'horloge `MAT-CE1-11` a **2,50**. **Correction d'A.264** : A.264 consignait 12,50 et laissait ouverte la question de savoir si le 1,00 de marge supplementaire etait dans l'engage. Il y est. Les 12,50 etaient le bareme a marge de 0,5, vrai avant Q4 (c) d'A.263, faux depuis. **La question qu'A.264 routait a `sofia-sm` est fermee.** A.264 avait ecrit *"Je n'ecris pas 13,50 pour elle"* : elle l'a dit, je l'ecris.
+
+**Ce que cela change aux ecarts [calcul]** (la table d'A.264, recalculee ; plafond de 19,20 inchange, Q3 d'A.263).
+
+| Grandeur | Valeur | Ecart a l'engage de 13,50 | Ecart au plafond de 19,20 |
+|---|---|---|---|
+| engage (neuf lots 11,00 plus horloge 2,50) | 13,50 | 0 | **5,70 sous le plafond** (A.264 : 6,70) |
+| bareme a marge de 0,5 (A.264, ancien engage) | 12,50 | moins 1,00 | 6,70 sous le plafond |
+| surcouts hauts a marge de 0,5 (A.261, A.215) | 19,20 | plus 5,70 | 0 |
+| surcouts hauts a marge de 1,5 : 19,20 plus 1,0 | 20,20 | plus 6,70 | **plus 1,00 au-dessus** |
+
+- **Verification sur mes chiffres.** 19,20 = 16,03 plus 3,17 = 12,50 plus 6,70 (neuf lots a 0,67 plus l'horloge a 0,67, A.200, A.261). A marge de 1,5 le meme calcul donne 13,50 plus 6,70 = **20,20**, soit 1,00 au-dessus de 19,20. Le chiffre de 1,00 d'A.263 et d'A.264 est confirme ; `nadia-prof` obtient aussi 20,20 (*"donneraient 20,20"*, section 2.1).
+- **Le depassement de l'engage, au registre (A.247), est borne par 5,70** au scenario haut a marge de 0,5, et par **6,70** au scenario haut a marge de 1,5 [calcul]. A.264 donnait 6,70 et 7,70.
+- **Ce qui reste ouvert du plafond.** Les 1,00 entre 20,20 et 19,20. Aucune reponse de l'utilisatrice ne releve ni ne confirme 19,20 a marge de 1,5 ; je ne propose pas un autre plafond (A.263). Tant que ce n'est pas dit, le plafond est 19,20 et un depassement de 1,00 au plus, dans le seul scenario haut, va au registre.
+- **Le point de `nadia-prof` sur le double compte d'A.200, laisse a elle.** Elle ecrit qu'une partie des 0,67 est faite de rejeux, que la marge de 1,5 paie maintenant dans le bareme, et que *"l'ecart reel n'est donc pas simplement 1,00"*. A.200 portait deja ma lecture (0,42 contre 0,67), marquee *"non confirmee par `nadia-prof`"*. Je ne dispose d'aucune ligne de registre ni d'aucun audit de l'instance neuve qui departage 0,42 et 0,67 : le trancher serait ecrire un chiffre que rien ne mesure. **Le 1,00 est donc une borne haute, non un ecart mesure.** La valeur est a `nadia-prof` ; le plafond est a l'utilisatrice et a moi (A.244).
+
+**La reformulation de `P3` par `nadia-prof`, consignee sans reinterpretation.** A.263 ecrivait que `P3` (*"un dans la marge"*) etait contredite par la marge de 1,5. Elle a repondu (lignes 60 a 85) et ecrit le texte qui remplace `P3` au 2026-10-26 :
+
+> `P3` - rejeux : **autant que la marge en paie** (trois a 1,5, au prix de 0,50 du rejeu, A.199), attribues aux premiers lots refuses dans l'ordre de `P2` ; **un rejeu au plus par lot dans le palier 9** ; **aucun rejeu avant le premier audit de chacun des dix lots du palier** ; tout rejeu hors marge, et tout second rejeu d'un meme lot, au palier 10 ; au palier 10, un rejeu refuse va a s58.
+
+- **Trois rejeux**, **un par lot au plus**, **aucun avant le premier audit des dix lots** : les clauses sont de `nadia-prof`, les deux dernieres neuves et datees du 2026-10-26 ; elle precise qu'elles *"ne relevent aucune barre que l'equipe aurait deja atteinte : aucun lot n'existe"*.
+- **Ordre** : l'horloge est auditee *"apres les neuf premiers audits de `P2` et avant tout rejeu"* ; soit **neuf audits, horloge, rejeux**. Son motif : trois rejeux avant les derniers premiers audits pousseraient l'horloge hors du palier 9, *"un premier audit perdu pour un second audit gagne. Je ne fais pas cet echange."*
+- **Verdict sur la marge** : *"je ne la refuse pas"*. La marge de 1,5 qu'A.263 tenait *"sous reserve de `P3`"* est tenue avec `P3` ainsi reformulee ; je n'ajoute rien a son texte. `M1` a `M6` inchanges ; un rejeu au palier 9 est audite comme un premier passage.
+- **Ce que l'utilisatrice n'a pas dit, non tranche.** `nadia-prof` lit les trois rejeux comme ceux de l'instance neuve, l'horloge ayant sa marge dans ses 2,50, et ecrit que si l'utilisatrice veut dire trois rejeux pour les dix lots, `P3` s'applique pareil, l'horloge etant le dixieme lot de `P2`. Elle demande que je consigne l'une ou l'autre lecture. Les mots de l'utilisatrice ne designent aucune des deux ; **je n'en choisis pas**. Le texte de `P3` ci-dessus vaut pour les deux.
+- **L'ecart de bareme qu'elle signale** (section 2.1) : le palier au bareme avec l'horloge est **13,50** (11,00 plus 2,50), ce que l'utilisatrice vient de dire engager ; 19,20 a ete calcule sur un bareme de 12,50, et *"les deux chiffres rapportes n'ont pas ete calcules sur la meme marge"*. Elle ne releve ni ne conteste le plafond.
+
+**Ce qui n'est pas touche** : `K2` nommee pour l'horloge seule, instance neuve, plafond de 19,20, palier 9 a dix lots, palier 10 libre pour les rejeux hors marge et les glissements, developpeur a designer.
+
+| A qui | Quoi |
+|---|---|
+| l'utilisatrice | le plafond a marge de 1,5 : 19,20 maintenu, ou une autre valeur (1,00 au plus en jeu) |
+| `nadia-prof` | le double compte d'A.200 : 0,42 ou 0,67 par lot ; la lecture des trois rejeux, instance neuve ou dix lots, si l'utilisatrice la donne |
+| `sofia-sm` | `planning.md` : le palier 9 s'inscrit a **13,50** d'engage ; l'ordre neuf audits, horloge, rejeux ; `P3` reformulee (trois rejeux, un par lot au plus, aucun avant le premier audit des dix lots) ; designer le developpeur distinct de `lea-dev` |
+
+**Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; la contradiction `P3` d'A.263 est resolue par le texte de `nadia-prof`, l'ecart de 1,00 au plafond reste ouvert depuis A.263 (meme jour). **Changement de code decide, avec proprietaire** : inchange (developpeur a designer par `sofia-sm`, non designe a cette date). **Ne fait pas** : ne prononce aucun Done, ne fixe aucun plafond, ne tranche ni le double compte d'A.200 ni la lecture des trois rejeux, n'engage aucun lot, ne designe aucun developpeur, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
