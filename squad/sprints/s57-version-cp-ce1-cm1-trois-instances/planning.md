@@ -2405,3 +2405,52 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusi
 ## Amendement du 2026-10-25 (UTC+02:00), palier 5 : reponse de nadia-prof sur V3 livree, condition de consignation non remplie (RF11)
 
 Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-nadia-p5-c` (3a22f063) dans `round-two` (RF11), seconde et derniere des deux fusions sans poussee demandees par l'utilisatrice le 2026-10-25. Lignee verifiee dans le worktree de la branche (RF10) : `bash outils/verifier-lignee.sh` sort 0, `c5d07a4a` est l'ancetre commun. `git diff --name-only round-two...s57-nadia-p5-c` ne rend qu'un fichier, `arbitrage-nadia-palier-5-qlm-v3.md` : aucun fichier sous adapters, domain, application, bootstrap, outils, .github, aucun paquet. La branche porte la reponse de `nadia-prof` sur V3 : depassement de sa regle admis, audit sous conditions. Sa condition : `camille-po` consigne le texte de V3 mot pour mot dans `DEC-0120` avant le premier lot. **Cette condition n'est pas remplie** : la branche precedente consigne V3, mais elle a ete ecrite avant la reponse de `nadia-prof` (PO2 ouvert), et je n'ai pas verifie qu'elle porte le texte mot pour mot. Je ne clos pas cette condition et je n'ouvre aucun lot de questionner le monde. Aucun Done n'est prononce, je ne modifie ni la matrice, ni une `DEC`, ni un prix. Je fusionne ce que `nadia-prof` a ecrit.
+
+## Amendement du 2026-10-26 (UTC+02:00), palier des neuf lots de questionner le monde CE1 : developpeur designe, declencheur de la lecture avant `verify`, fusions serialisees
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit `s57-p5-sofia-planning`. Il execute les deux lignes que `DEC-0120` A.262 donne a `sofia-sm` (*"designer le developpeur distinct de `lea-dev` ; `planning.md` : le declencheur de `P0` et les fusions serialisees"*). **Il n'ouvre aucun palier et n'engage aucun lot** : l'ouverture reste soumise a `D2` (cloture du palier precedent, composition portee par un amendement date, table d'isolation). Les choix de l'utilisatrice du 2026-10-26 (`DEC-0120` A.261 : instance neuve, horloge `MAT-CE1-11` avec les neuf lots au palier 9, `K2` nommee, relevement de `PAR-8` a 19,20 en plafond, marge 1,5) sont portes par `camille-po` (A.263) ; je ne les recopie pas et ne fixe aucun prix. `nadia-prof` reexamine sa condition `P3` et `theo-archi` ecrit l'exemption de garde d'`AIM-CE1-2` : je n'ai pas lu leurs fichiers en cours.
+
+### 1. Developpeur designe : `marc-dev`
+
+**Designation.** `marc-dev` est le developpeur des neuf lots `S57-BR-QLM-CE1` (`-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12`) et, a ce titre, l'auteur de l'entree du test de rang de chaque paquet dans le commit de son premier jet (`DEC-0120` A.259, `QC10`). Un seul developpeur pour l'instance, comme `K1` de `nadia-prof` et A.260 le posent.
+
+**Motif, chaque terme renvoie a une ligne lue.**
+
+1. **Distinct de `lea-dev`, exigence de A.260 et de `nadia-prof`.** `lea-dev` porte B (`MAT-CE1-01`, `LP2`, `LP3`, `LP9`, lignes p4-4 a p4-6 de ce fichier), et l'horloge `MAT-CE1-11` que l'utilisatrice met avec les neuf lots au palier 9 est une ligne de B. `RG2` (`composition-palier-3.md`, ligne 95) exige des developpeurs distincts sur des instances distinctes, parce que les lots d'un palier partagent `catalogue.yaml` et l'inventaire de `TexteAccentueExposeParLePortEntrantTest` : `lea-dev` sur l'horloge et sur les neuf lots reproduirait l'ecart de `AD1`, que je n'ai aucune decision pour reconduire.
+2. **Charge.** Section "Charge des developpeurs" de ce fichier : `lea-dev` 529 tours a s56 contre 183 pour `marc-dev`. Je n'ai pas refait la mesure (un seul rapport de tokens par sprint, a la review).
+3. **Aucune ligne engagee pour `marc-dev` apres le palier 4.** Ses lignes de palier 4, `LP1` (p4-3) et `S57-GARDE-NOMBRE-DE-MANCHES` (p4-10), sont livrees ; je n'ai trouve aucune autre ligne engagee a son nom dans ce fichier. Je n'ai pas relu les fichiers des autres agents ecrits en parallele.
+4. **`RG1` (aucun lot de francais CE1 pour `lea-dev`) ne s'applique pas** a ces neuf lots, qui sont de questionner le monde : la designation ne s'appuie pas dessus, elle s'appuie sur 1 a 3.
+
+**Raison ecrite contraire : aucune.** `squad/EQUIPE.md` (lignes 73 a 78) donne aux deux developpeurs seniors le meme role, sans specialite de matiere ; aucune ligne du depot lue ne dit que `marc-dev` est indisponible au palier 9. `RG4` (`composition-palier-3.md`, ligne 97) s'applique : un worktree vivant a la fois, il me dit quand il passe d'un lot au suivant.
+
+**Ce que la designation ne fait pas.** Elle ne prononce aucun Done, ne choisit ni le palier ni l'instance (choix de l'utilisatrice), n'engage aucun lot, ne modifie ni la matrice ni un prix. Je reste casquette Scrum Master : je ne porte pas la casquette developpeuse sur ces lots.
+
+### 2. Declencheur de la lecture avant `verify` (`P0`)
+
+Definition source : `DEC-0120` A.260, ligne `P0` (*"`-01` seul : premier jet commite seul, inscrit dans `planning.md` (lot, commit, heure) avant tout `verify` complet ; `lecture-nadia-premier-jet-<paquet>.md` ; correction ; ensuite seulement les huit autres premiers jets"*), et `arbitrage-nadia-palier-5-qlm-neuf-lots-avant-ouverture.md`, point 3 du paragraphe sur l'ordre (*"chaque premier jet est inscrit dans `planning.md` (lot, commit, heure) avant tout `verify` complet du paquet (6.1 de V3, `QC7`)"*).
+
+1. **Le declencheur est une ligne de ce fichier, pas un message.** Tant que la ligne d'un premier jet (lot, commit, heure) n'est pas ecrite dans un amendement date de `planning.md`, **aucun `verify` complet de ce paquet n'est lance**, par aucun agent.
+2. **Qui l'ecrit.** `marc-dev` commite le premier jet seul et me donne le lot, le SHA du commit et l'heure ; **j'ecris la ligne**, dans un commit de `planning.md` qui precede son `verify` complet. Je ne l'ecris pas pour un commit que je n'ai pas lu sur le disque.
+3. **Ce que le commit du premier jet contient.** Le paquet et, des ce commit, l'entree de rang du paquet avec ses totaux exacts dans le motif (A.259). Ce commit n'a donc pas encore passe le `verify` complet : c'est le cas que `P0` prevoit.
+4. **Ordre pour `-01`.** (a) premier jet de `-01` commite seul ; (b) ligne inscrite ici ; (c) `nadia-prof` ecrit `lecture-nadia-premier-jet-<paquet>.md` ; (d) `marc-dev` corrige ; (e) **seulement ensuite** les huit autres premiers jets sont commites. Un correctif qui ajoute ou retire un item recompte le motif de l'entree de rang dans le meme commit (A.259).
+5. **Les huit autres.** Meme declencheur, ligne par ligne, par paires dans l'ordre `-02`, `-03` ; `-04`, `-05` ; `-06`, `-08` ; `-10`, `-12` (`P1`). Chaque paire est inscrite avant le `verify` complet de chacun de ses paquets, et sa lecture de `nadia-prof` precede la paire suivante.
+6. **Audits.** `P2` : dans le meme ordre, `-01` d'abord, chaque lot apres son `verify` ; `QC3` : aucune entree `ce1-qlm-*` au catalogue avant un Done (A.260, `P2`).
+7. **Tableau a remplir, une ligne par premier jet**, ajoutee par amendement date. Il est vide a ce jour.
+
+| Lot | Commit du premier jet | Heure d'inscription | Lecture de `nadia-prof` |
+|---|---|---|---|
+| (aucun premier jet commite) | - | - | - |
+
+### 3. Fusions des neuf lots : serialisees
+
+Source : `avis-theo-palier-5-neuf-lots-qlm-ce1.md` 3.3 et 3.4, repris par `DEC-0120` A.260 (*"serialisees, chaque branche part du sommet qui porte la fusion precedente"*).
+
+1. **Une fusion a la fois, dans l'ordre de `P1` :** `-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12`. Chaque branche de lot part du sommet de `round-two` qui porte la fusion precedente, ou s'y rebase avant de fusionner (`theo-archi` 3.3). La fusion d'un lot ne s'ecrit pas tant que le lot precedent de la liste n'est pas fusionne.
+2. **Motif.** La table du rang, `catalogue.yaml` et l'inventaire du port entrant sont des ajouts en fin de liste : deux branches paralleles y entrent en conflit. Un conflit se resout en gardant les deux entrees, et la clause des comptes reverifie le resultat ; il coute un `verify` de plus, jamais une assertion affaiblie.
+3. **Verification a chaque fusion, par moi.** Lignee par `bash outils/verifier-lignee.sh` dans le worktree de la branche (arbre propre) avant la fusion, `git diff --name-only` contre `round-two` pour borner le perimetre, et total de tests etabli par moi sur l'arbre fusionne, jamais relaye d'un agent. Je nomme les jobs de `ci.yml` lances avant de declarer la porte technique.
+4. **Un seul test des conditions transverses**, ecrit dans `-01` ; les huit autres lots n'ont pas a toucher ce fichier (`theo-archi` 3.4). Un lot qui le modifie est signale a `theo-archi`, pas fusionne.
+5. **Non tranche ici.** `QC3` (aucune entree `ce1-qlm-*` au catalogue avant un Done) et l'ajout en fin de `catalogue.yaml` que `theo-archi` decrit se lisent ensemble : ce que le catalogue contient au moment de chaque fusion est a `theo-archi` et `camille-po`, je ne le tranche pas.
+
+### Decisions prises
+
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il ecrit : la designation de `marc-dev` (execution de `DEC-0120` A.262, ligne `sofia-sm`), le declencheur de `P0` et la serialisation des fusions. Restent ouverts, non clos par cet amendement : l'amendement A.263 de `camille-po`, la condition `P3` de `nadia-prof` et l'exemption de garde d'`AIM-CE1-2` de `theo-archi`.
