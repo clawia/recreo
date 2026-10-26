@@ -1,0 +1,148 @@
+schema: 1
+id: ce1-qlm-ce-que-mangent-les-animaux
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Le vivant, la matière et les objets"
+  competence: "Relier quelques animaux familiers à ce qu'ils mangent (des végétaux, d'autres animaux, ou les deux)."
+lignesDeReferentiel: ["QLM-CE1-02"]
+#
+# S57-BR-QLM-CE1-02 (s57, palier 5, lot des neuf lots de questionner le monde CE1). PREMIER JET,
+# ecrit par marc-dev, commite seul avant la lecture de nadia-prof : rien n'est joue, aucun Done
+# n'est prononce, le paquet n'est pas au catalogue (QC3). Competence : QLM-CE1-02
+# (squad/programme/questionner-le-monde/competences-ce1.md), libelle recopie a l'identique.
+# Conditions : RAL-CE1-1 et RAL-CE1-2 (ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-
+# et-emc-ce1.md, 3.2), critere 6 de la story arbitre par nadia-prof (squad/sprints/s57-version-
+# cp-ce1-cm1-trois-instances/avis-nadia-seconde-tache-ce1-qlm-02.md), conditions transverses de la
+# meme instruction (section 2).
+#
+# Deux taches (FER-3). Le test les recompte sur la bonne reponse de chaque item : une bonne reponse
+# qui est des vegetaux, d'autres animaux ou les deux pose la tache categorie, toute autre la tache
+# aliment. Il relit les deux comptes ci-dessous contre les items.
+#   categorie : quelle categorie de nourriture mange un animal, des vegetaux, d'autres animaux ou les deux (6 items)
+#   aliment : quel aliment nomme un animal mange a l'endroit que l'enonce dit (6 items)
+#
+# RAL-CE1-1, tache categorie : les trois categories sont chacune la bonne reponse d'au moins un
+# item (FER-1), et les trois propositions de chaque item sont les trois categories. Tache aliment :
+# la bonne reponse est un aliment que l'animal mange a cet endroit, les trois propositions sont trois
+# aliments au meme article (des), aucune n'est une categorie. Seuls entrent en tache aliment des
+# animaux dont la source donne une seule categorie (la poule, classee les deux, n'y entre pas). Les
+# deux distracteurs sont des aliments de l'autre categorie que celle de l'animal : aucun n'est mange
+# par lui, et jamais deux aliments que l'animal mange.
+#
+# Liste des animaux : fermee, un animal par ligne avec sa categorie et sa source (QMT-CE1-2 :
+# un fait sans source n'entre pas). Le test relit chaque item contre cette liste : l'animal que
+# l'item declare y figure, et la bonne reponse d'un item categorie est la categorie de la liste.
+# Sources, nommees une fois :
+#   avis-nadia : l'avis de nadia-prof sur la seconde tache (squad/sprints/s57-version-cp-ce1-cm1-
+#     trois-instances/avis-nadia-seconde-tache-ce1-qlm-02.md), section 1, tableau animal par animal
+#   cm1-regimes : cm1-sciences-regimes-alimentaires (CM1) : lapin, vache et chevre herbivores,
+#     sanglier omnivore (herbes, feuilles et racines ; racines, glands, vers de terre et petits animaux)
+#   cm1-chaine : cm1-sciences-chaine-alimentaire (CM1) : la chouette mange le mulot
+# Le redacteur n'a consulte aucune autre source : nadia-prof confronte chaque categorie et chaque
+# aliment a la sienne (QC9).
+#   animal vache : vegetaux ; source : avis-nadia, cm1-regimes
+#   animal mouton : vegetaux ; source : avis-nadia
+#   animal chevre : vegetaux ; source : avis-nadia, cm1-regimes
+#   animal lapin : vegetaux ; source : avis-nadia, cm1-regimes
+#   animal escargot : vegetaux ; source : avis-nadia
+#   animal chenille : vegetaux ; source : avis-nadia
+#   animal chouette : autres animaux ; source : avis-nadia, cm1-chaine
+#   animal grenouille : autres animaux ; source : avis-nadia
+#   animal araignee : autres animaux ; source : avis-nadia
+#   animal hirondelle : autres animaux ; source : avis-nadia
+#   animal poule : les deux ; source : avis-nadia
+#   animal sanglier : les deux ; source : avis-nadia, cm1-regimes
+#
+# RAL-CE1-2 : aucun des quatre animaux exclus (chat, chien, renard, herisson) n'est dans la liste ni
+# dans un item, aucune proposition n'est un aliment du commerce pour animaux, et chaque enonce dit
+# ou l'animal mange (dans la nature ou a la ferme).
+#
+# Familles de distracteurs (liste fermee) :
+#   famille a : tache categorie, les deux autres categories que la bonne reponse
+#   famille b : tache aliment, un aliment de l'autre categorie que celle de l'animal
+#
+# CYC-1 : aucun item ne contredit cm1-sciences-regimes-alimentaires ni cm1-sciences-chaine-alimentaire
+# (meme classement de la vache, du lapin, de la chevre, du sanglier et de la chouette) ; aucun paquet
+# de CP ne demande ce que mange un animal (cp-qlm-cycle-de-vie dit seulement qu'il se nourrit).
+# NRC-CE1-1 : aucun enonce ni jeu de trois propositions n'est celui d'un item de CP (garde
+# transverse) ; le sujet reste a la lecture de nadia-prof.
+# QMT-CE1-1 : aucun des quinze mots exclus n'est ecrit ; vegetaux est admis.
+# TRV-CE1-1, -5, -6, LON-CE1-1, -2, -5 : niveau CE1, aucun texteSupport ni voix, un indice par item
+# (une methode, douze mots au plus, indices tous distincts), aucun prenom, aucun lieu de vie.
+# TYP-1 (ADR-0067) : l'espace qui precede "?" est insecable. FER-2 : plus d'items que de dix
+# manches (plancher de onze, DEC-0120 A.258).
+items:
+  # RAL-CE1-1 animal : vache
+  # TRV-CE1-2 : a, a
+  - enonce: "Que mange la vache dans le pré ?"
+    bonneReponse: "des végétaux"
+    distracteurs: ["d'autres animaux", "les deux"]
+    indice: "Imagine ce que la vache trouve autour d'elle dans le pré."
+  # RAL-CE1-1 animal : escargot
+  # TRV-CE1-2 : b, b
+  - enonce: "Que mange l'escargot dans le jardin ?"
+    bonneReponse: "des feuilles de salade"
+    distracteurs: ["des mouches", "des souris"]
+    indice: "Pense à ce que l'escargot trouve sur le sol du jardin."
+  # RAL-CE1-1 animal : chouette
+  # TRV-CE1-2 : a, a
+  - enonce: "Que mange la chouette la nuit dans la forêt ?"
+    bonneReponse: "d'autres animaux"
+    distracteurs: ["des végétaux", "les deux"]
+    indice: "Pense à ce que la chouette cherche quand elle chasse."
+  # RAL-CE1-1 animal : chevre
+  # TRV-CE1-2 : b, b
+  - enonce: "Que mange la chèvre au bord du chemin ?"
+    bonneReponse: "des herbes"
+    distracteurs: ["des souris", "des mouches"]
+    indice: "Imagine ce que la chèvre a sous le museau en marchant."
+  # RAL-CE1-1 animal : poule
+  # TRV-CE1-2 : a, a
+  - enonce: "Que mange la poule dans la cour de la ferme ?"
+    bonneReponse: "les deux"
+    distracteurs: ["des végétaux", "d'autres animaux"]
+    indice: "Pense à ce que la poule picore dans la cour."
+  # RAL-CE1-1 animal : araignee
+  # TRV-CE1-2 : b, b
+  - enonce: "Que mange l'araignée dans sa toile ?"
+    bonneReponse: "des mouches"
+    distracteurs: ["des graines", "des feuilles"]
+    indice: "Imagine ce qui vient se coller dans sa toile."
+  # RAL-CE1-1 animal : mouton
+  # TRV-CE1-2 : a, a
+  - enonce: "Que mange le mouton dans la prairie ?"
+    bonneReponse: "des végétaux"
+    distracteurs: ["les deux", "d'autres animaux"]
+    indice: "Pense à ce que le mouton trouve sous ses pattes."
+  # RAL-CE1-1 animal : chenille
+  # TRV-CE1-2 : b, b
+  - enonce: "Que mange la chenille sur l'arbre ?"
+    bonneReponse: "des feuilles"
+    distracteurs: ["des mouches", "des vers de terre"]
+    indice: "Pense à ce que la chenille trouve sur sa branche."
+  # RAL-CE1-1 animal : grenouille
+  # TRV-CE1-2 : a, a
+  - enonce: "Que mange la grenouille au bord de la mare ?"
+    bonneReponse: "d'autres animaux"
+    distracteurs: ["les deux", "des végétaux"]
+    indice: "Pense à ce que la grenouille attrape avec sa langue."
+  # RAL-CE1-1 animal : lapin
+  # TRV-CE1-2 : b, b
+  - enonce: "Que mange le lapin dans le potager de la ferme ?"
+    bonneReponse: "des carottes"
+    distracteurs: ["des poissons", "des souris"]
+    indice: "Pense à ce que le lapin trouve dans ce potager."
+  # RAL-CE1-1 animal : sanglier
+  # TRV-CE1-2 : a, a
+  - enonce: "Que mange le sanglier dans la forêt ?"
+    bonneReponse: "les deux"
+    distracteurs: ["des végétaux", "d'autres animaux"]
+    indice: "Pense à ce que le sanglier trouve en fouillant le sol."
+  # RAL-CE1-1 animal : hirondelle
+  # TRV-CE1-2 : b, b
+  - enonce: "Que mange l'hirondelle quand elle vole dans le ciel ?"
+    bonneReponse: "des insectes"
+    distracteurs: ["des graines", "des feuilles"]
+    indice: "Pense à ce que l'hirondelle peut attraper en volant."
