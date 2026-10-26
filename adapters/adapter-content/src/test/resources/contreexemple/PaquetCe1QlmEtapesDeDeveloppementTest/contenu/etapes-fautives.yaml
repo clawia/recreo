@@ -126,3 +126,35 @@ items:
     bonneReponse: "de la lumière"
     distracteurs: ["du sucre", "du lait"]
     indice: "Pense aux feuilles."
+  # sonde 15
+  # DVP-CE1-1 espece : poule
+  # DVP-CE1-1 tache : ordre
+  # TRV-CE1-2 : c, c
+  - enonce: "Dans la vie de la poule, quelle suite est dans le bon ordre ?"
+    bonneReponse: "œuf, poussin, poule"
+    distracteurs: ["poule, œuf, poussin", "poussin, œuf, poule"]
+    indice: "Pense a la vie."
+  # sonde 16
+  # DVP-CE1-1 espece : plante
+  # DVP-CE1-1 tache : ordre
+  # TRV-CE1-2 : c, c
+  - enonce: "Dans la vie d'une plante, quelle suite est dans le bon ordre ?"
+    bonneReponse: "graine, plante, fleur"
+    distracteurs: ["fleur, graine, plante", "plante, graine, fleur"]
+    indice: "Pense a la vie."
+  # sonde 17
+  # DVP-CE1-1 espece : poule
+  # DVP-CE1-1 tache : ordre
+  # TRV-CE1-2 : c, c
+  - enonce: "Dans la vie de la poule, quelle suite est dans le bon ordre ?"
+    bonneReponse: "œuf, poussin, poule"
+    distracteurs: ["poussin, œuf, poule", "poule, poussin, œuf"]
+    indice: "Pense a la vie."
+  # sonde 18
+  # DVP-CE1-1 espece : poule
+  # DVP-CE1-1 tache : ordre
+  # TRV-CE1-2 : c, c
+  - enonce: "Dans la vie de la poule, quelle suite est dans le bon ordre ?"
+    bonneReponse: "œuf, poussin, poule"
+    distracteurs: ["poussin, poule, œuf", "poussin, œuf, poule"]
+    indice: "Pense a la vie."

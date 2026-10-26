@@ -12,6 +12,7 @@ import org.yaml.snakeyaml.Yaml;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -33,9 +34,9 @@ import static org.assertj.core.api.Assertions.fail;
  * paquet {@code ce1-qlm-etapes-de-developpement}, ligne {@code QLM-CE1-01} - ordonner les etapes du
  * developpement d'un animal ou d'une plante familiers. Conditions de nadia-prof
  * ({@code ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md}, section 3.1 :
- * {@code DVP-CE1-1}, {@code DVP-CE1-2} ; section 2 : {@code FER-1}, {@code FER-3}, {@code NRC-CE1-1}).
+ * {@code DVP-CE1-1}, {@code DVP-CE1-2} ; section 2 : {@code FER-1}, {@code FER-3}).
  * Les conditions transverses ({@code TRV-CE1-1}, {@code -2}, {@code -5}, {@code LON-CE1-1}, {@code -2},
- * {@code -5}, {@code QMT-CE1-1}) sont gardees une fois pour les neuf lots par
+ * {@code -5}, {@code QMT-CE1-1}, {@code NRC-CE1-1} sur le texte) sont gardees une fois pour les neuf lots par
  * {@code ChaquePaquetDeQuestionnerLeMondeDeCe1TientLesConditionsTransversesTest}.
  *
  * <p><b>Comment ce test lit {@code DVP-CE1-1}.</b> La liste fermee des quatre especes et de leurs etapes,
@@ -50,14 +51,13 @@ import static org.assertj.core.api.Assertions.fail;
  * la meme espece (famille a), une etape d'une autre espece de la liste (famille b), ou les memes trois
  * etapes dans un autre ordre (famille c). Le classement doit etre celui que l'item declare. <b>Une etape de
  * la meme espece voisine de la bonne reponse est refusee</b> : c'est la forme choisie pour <i>jamais deux
- * etapes defendables</i> (jeune grenouille et grenouille apres le tetard). Elle est plus stricte que la
- * condition, qui ne dit pas jusqu'ou va la voisinage ; la forme de cette garde n'a pas ete donnee par
- * theo-archi (Q6 de son avis) et reste a confirmer.
+ * etapes defendables</i> (jeune grenouille et grenouille apres le tetard) : forme confirmee,
+ * {@code avis-theo-palier-5-premier-jet-ce1-qlm-01.md}, V1.
  *
  * <p><b>Ce que ce test ne garde pas</b> : que chaque ordre soit celui de la source de nadia-prof
- * ({@code QMT-CE1-2}), que le sujet d'un item ne reprenne pas un paquet voisin ({@code NRC-CE1-1}, au-dela de
- * l'egalite des enonces avec {@code cp-qlm-cycle-de-vie} et {@code cm1-sciences-etapes-developpement}),
- * qu'un indice soit une methode, que {@code CYC-1} tienne. Cela reste a la lecture et au jeu de
+ * ({@code QMT-CE1-2}), que le sujet d'un item ne reprenne pas celui d'un item de CP ({@code NRC-CE1-1},
+ * au-dela de l'egalite des enonces et des propositions, gardee par le test transverse), qu'un indice soit
+ * une methode, que {@code CYC-1} tienne. Cela reste a la lecture et au jeu de
  * nadia-prof ({@code QC9}). {@code BPL-CE1-2} est garde sur la phrase qui dit qu'une graine a besoin de
  * lumiere, pas sur ses paraphrases.
  */
@@ -66,11 +66,6 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
     private static final String PAQUET = "ce1-qlm-etapes-de-developpement";
 
     private static final Path FICHIER_CONTENU = Path.of("src/main/resources/contenu/" + PAQUET + ".yaml");
-
-    /** NRC-CE1-1 et CYC-1 : les paquets voisins que nadia-prof relit (story QLM-CE1-01). */
-    private static final List<Path> PAQUETS_VOISINS = List.of(
-            Path.of("src/main/resources/contenu/cp-qlm-cycle-de-vie.yaml"),
-            Path.of("src/main/resources/contenu/cm1-sciences-etapes-developpement.yaml"));
 
     /** ADR-0013 obligation 3 : les jeux fautifs de ce garde-fou. */
     private static final Path CONTRE_EXEMPLE =
@@ -114,8 +109,6 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
     private static final Pattern TACHE_DECLAREE = Pattern.compile("^DVP-CE1-1 tache : (voisine|ordre)$");
 
     private static final Pattern FAMILLES_DECLAREES = Pattern.compile("^TRV-CE1-2 : ([a-z]), ([a-z])$");
-
-    private static final Pattern FAMILLE_DE_L_ENTETE = Pattern.compile("^#\\s+famille ([a-z]) : .+$");
 
     private static final Pattern TACHE_DE_L_ENTETE = Pattern.compile("^#\\s+(voisine|ordre) : .*\\((\\d+) items?");
 
@@ -248,20 +241,11 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
      * DVP-CE1-1 et DVP-CE1-2 : la bonne reponse est l'etape voisine ou la suite croissante, chaque
      * distracteur est classe dans la famille que l'item declare, et aucun n'est defendable.
      */
-    static void verifierLesReponsesEtLesDistracteurs(List<Item> items, String entete) {
-        Set<String> familles = new HashSet<>();
-        for (String ligne : entete.split("\\R")) {
-            Matcher famille = FAMILLE_DE_L_ENTETE.matcher(ligne);
-            if (famille.matches()) {
-                familles.add(famille.group(1));
-            }
-        }
+    static void verifierLesReponsesEtLesDistracteurs(List<Item> items) {
         for (Item item : items) {
             Enonce enonce = analyser(item);
             List<String> etapes = ESPECES.get(enonce.espece());
             List<String> declarees = declarationDesFamilles(item);
-            assertThat(familles).as("TRV-CE1-2 : '%s' déclare une famille absente de l'en-tête du paquet",
-                    item.enonce()).containsAll(declarees);
             List<String> calculees = new ArrayList<>();
             if (enonce.tache().equals(TACHE_VOISINE)) {
                 int rang = rangDans(etapes, enonce.etapeNommee());
@@ -291,6 +275,10 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
                                     + "autre ordre", distracteur, item.enonce())
                             .containsExactlyInAnyOrderElementsOf(bonne)
                             .isNotEqualTo(bonne);
+                    assertThat(rotationsDe(bonne))
+                            .as("DVP-CE1-2 : « %s » (distracteur de '%s') est la bonne suite qu'on fait tourner dans "
+                                    + "le cycle : deux suites défendables", distracteur, item.enonce())
+                            .doesNotContain(autre);
                     calculees.add("c");
                 }
             }
@@ -307,6 +295,16 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
         assertThat(trouvees).as("TRV-CE1-2 : '%s' ne déclare pas exactement une paire de familles",
                 item.enonce()).hasSize(1);
         return List.of(trouvees.get(0).group(1), trouvees.get(0).group(2));
+    }
+
+    private static List<List<String>> rotationsDe(List<String> bonne) {
+        List<List<String>> rotations = new ArrayList<>();
+        for (int pas = 1; pas < bonne.size(); pas++) {
+            List<String> tournee = new ArrayList<>(bonne);
+            Collections.rotate(tournee, pas);
+            rotations.add(tournee);
+        }
+        return rotations;
     }
 
     private static List<Integer> rangsDe(List<String> etapes, List<String> choisies) {
@@ -374,7 +372,7 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
                 .isEqualTo(comptes);
     }
 
-    // ----- BPL-CE1-2 et NRC-CE1-1
+    // ----- BPL-CE1-2
 
     /** BPL-CE1-2 : aucune phrase ne dit qu'une graine a besoin de lumiere, ni une question dont la reponse le dit. */
     static void verifierQueLaGraineNAPasBesoinDeLumiere(List<Item> items) {
@@ -393,26 +391,6 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
                             item.bonneReponse(), item.enonce())
                     .isFalse();
         }
-    }
-
-    /** NRC-CE1-1, partie textuelle : aucun enonce n'est celui d'un item d'un paquet voisin. */
-    static void verifierQueRienNEstReprisDUnPaquetVoisin(List<Item> items, List<Path> voisins) {
-        Set<String> enonces = new HashSet<>();
-        for (Path voisin : voisins) {
-            for (Object entree : (List<?>) ((Map<?, ?>) new Yaml().load(PaquetLu.lire(voisin))).get("items")) {
-                enonces.add(normalise(String.valueOf(((Map<?, ?>) entree).get("enonce"))));
-            }
-        }
-        assertThat(enonces.size()).as("NRC-CE1-1 : les paquets voisins sont lus").isGreaterThan(10);
-        for (Item item : items) {
-            assertThat(enonces)
-                    .as("NRC-CE1-1 : l'énoncé de '%s' est celui d'un item d'un paquet voisin", item.enonce())
-                    .doesNotContain(normalise(item.enonce()));
-        }
-    }
-
-    private static String normalise(String texte) {
-        return texte.replaceAll("[\\s\\u00A0]+", " ").strip().toLowerCase(Locale.FRENCH);
     }
 
     // ----- le paquet
@@ -472,7 +450,7 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
     @Test
     void dvp1EtDvp2LaBonneReponseEstCalculeeSurLaListeEtChaqueDistracteurEstDansSaFamille() {
         Paquet paquet = paquet();
-        verifierLesReponsesEtLesDistracteurs(paquet.items(), paquet.entete());
+        verifierLesReponsesEtLesDistracteurs(paquet.items());
     }
 
     @Test
@@ -489,18 +467,6 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
     @Test
     void bpl2AucuneGraineNAPasBesoinDeLumiere() {
         verifierQueLaGraineNAPasBesoinDeLumiere(paquet().items());
-    }
-
-    @Test
-    void nrc1AucunEnonceNEstCeluiDUnItemDeCpOuDeCm1() {
-        verifierQueRienNEstReprisDUnPaquetVoisin(paquet().items(), PAQUETS_VOISINS);
-    }
-
-    @Test
-    void trv5LesIndicesDuPaquetSontTousDistincts() {
-        List<Item> items = paquet().items();
-        assertThat(items.stream().map(Item::indice).distinct().count())
-                .as("TRV-CE1-5 : un indice est identique sur deux items du paquet").isEqualTo(items.size());
     }
 
     @Test
@@ -554,7 +520,7 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
         Paquet fautif = fautif("etapes-fautives.yaml");
 
         assertThat(sonde(fautif, "sonde 03")).hasSize(1);
-        assertThatThrownBy(() -> verifierLesReponsesEtLesDistracteurs(sonde(fautif, "sonde 03"), fautif.entete()))
+        assertThatThrownBy(() -> verifierLesReponsesEtLesDistracteurs(sonde(fautif, "sonde 03")))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("DVP-CE1-2")
                 .hasMessageContaining("deux étapes défendables");
@@ -564,7 +530,7 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
     void leJeuFautifCommiteEstRefuseSurUneBonneReponseQuiNEstPasLEtapeVoisine() {
         Paquet fautif = fautif("etapes-fautives.yaml");
 
-        assertThatThrownBy(() -> verifierLesReponsesEtLesDistracteurs(sonde(fautif, "sonde 06"), fautif.entete()))
+        assertThatThrownBy(() -> verifierLesReponsesEtLesDistracteurs(sonde(fautif, "sonde 06")))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("n'est pas l'étape qui vient juste après");
     }
@@ -573,7 +539,7 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
     void leJeuFautifCommiteEstRefuseSurUnDistracteurHorsDeLaListeFermee() {
         Paquet fautif = fautif("etapes-fautives.yaml");
 
-        assertThatThrownBy(() -> verifierLesReponsesEtLesDistracteurs(sonde(fautif, "sonde 07"), fautif.entete()))
+        assertThatThrownBy(() -> verifierLesReponsesEtLesDistracteurs(sonde(fautif, "sonde 07")))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("hors de la liste fermée");
     }
@@ -582,7 +548,7 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
     void leJeuFautifCommiteEstRefuseSurUneFamilleDeclareeQuiNEstPasCelleDuDistracteur() {
         Paquet fautif = fautif("etapes-fautives.yaml");
 
-        assertThatThrownBy(() -> verifierLesReponsesEtLesDistracteurs(sonde(fautif, "sonde 08"), fautif.entete()))
+        assertThatThrownBy(() -> verifierLesReponsesEtLesDistracteurs(sonde(fautif, "sonde 08")))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("TRV-CE1-2")
                 .hasMessageContaining("déclare les familles");
@@ -592,12 +558,35 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
     void leJeuFautifCommiteEstRefuseSurUneSuiteQuiNEstPasDansLeBonOrdre() {
         Paquet fautif = fautif("etapes-fautives.yaml");
 
-        assertThatThrownBy(() -> verifierLesReponsesEtLesDistracteurs(sonde(fautif, "sonde 09"), fautif.entete()))
+        assertThatThrownBy(() -> verifierLesReponsesEtLesDistracteurs(sonde(fautif, "sonde 09")))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("n'est pas dans le bon ordre");
-        assertThatThrownBy(() -> verifierLesReponsesEtLesDistracteurs(sonde(fautif, "sonde 10"), fautif.entete()))
+        assertThatThrownBy(() -> verifierLesReponsesEtLesDistracteurs(sonde(fautif, "sonde 10")))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("autre ordre");
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurLaBonneSuiteQuOnFaitTournerDansLeCycle() {
+        Paquet fautif = fautif("etapes-fautives.yaml");
+
+        for (String sonde : List.of("sonde 15", "sonde 16", "sonde 18")) {
+            assertThat(sonde(fautif, sonde)).as(sonde).hasSize(1);
+            assertThatThrownBy(() -> verifierLesReponsesEtLesDistracteurs(sonde(fautif, sonde)))
+                    .as(sonde)
+                    .isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("DVP-CE1-2")
+                    .hasMessageContaining("fait tourner")
+                    .hasMessageNotContaining("deux étapes défendables");
+        }
+    }
+
+    @Test
+    void leJeuFautifCommiteLaisseLesTroisOrdresQuiNeSontPasUneRotationPasser() {
+        Paquet fautif = fautif("etapes-fautives.yaml");
+
+        assertThat(sonde(fautif, "sonde 17")).hasSize(1);
+        verifierLesReponsesEtLesDistracteurs(sonde(fautif, "sonde 17"));
     }
 
     @Test
@@ -660,18 +649,5 @@ class PaquetCe1QlmEtapesDeDeveloppementTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("FER-3")
                 .hasMessageContaining("comptes");
-    }
-
-    @Test
-    void unEnonceCopieMotPourMotDUnPaquetVoisinEstRefuse() {
-        Object premier = ((List<?>) ((Map<?, ?>) new Yaml().load(PaquetLu.lire(PAQUETS_VOISINS.get(0))))
-                .get("items")).get(0);
-        String enonceDuVoisin = String.valueOf(((Map<?, ?>) premier).get("enonce"));
-        Item copie = new Item(enonceDuVoisin, "la chenille", List.of("le têtard", "la graine"), "Pense.",
-                Set.of("enonce", "bonneReponse", "distracteurs", "indice"), List.of());
-
-        assertThatThrownBy(() -> verifierQueRienNEstReprisDUnPaquetVoisin(List.of(copie), PAQUETS_VOISINS))
-                .isInstanceOf(AssertionError.class)
-                .hasMessageContaining("NRC-CE1-1");
     }
 }
