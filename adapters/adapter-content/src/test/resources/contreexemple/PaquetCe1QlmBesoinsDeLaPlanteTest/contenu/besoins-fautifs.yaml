@@ -1,0 +1,213 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif du test du paquet des besoins de la plante."
+lignesDeReferentiel: ["QLM-CE1-03"]
+#
+# Jeu fautif de PaquetCe1QlmBesoinsDeLaPlanteTest : chaque item porte en commentaire le marqueur
+# de la sonde qu'il met a l'epreuve. Les sondes 03 et 04 sont des clauses : elles doivent passer.
+#   famille a : une chose dont une plante n'a pas besoin
+#   famille b : une consequence que la privation n'a jamais
+items:
+  # sonde 01
+  # BPL-CE1-1 sujet : graine
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : lumiere
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi la graine a-t-elle besoin pour germer ?"
+    bonneReponse: "de la lumière"
+    distracteurs: ["du bruit", "du lait"]
+    indice: "Pense a la graine."
+  # sonde 02
+  # BPL-CE1-1 sujet : graine
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi la graine a-t-elle besoin pour germer ?"
+    bonneReponse: "de l'eau"
+    distracteurs: ["du bruit", "du lait"]
+    indice: "La graine a besoin de lumière pour germer."
+  # sonde 03
+  # BPL-CE1-1 sujet : graine
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi la graine a-t-elle besoin pour germer ?"
+    bonneReponse: "de l'eau"
+    distracteurs: ["du bruit", "du lait"]
+    indice: "Pense à ce qu'on verse sur une graine semée."
+  # sonde 04
+  # BPL-CE1-1 sujet : graine
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : chaleur
+  # TRV-CE1-2 : a, a
+  - enonce: "Une graine a déjà de l'eau. De quoi d'autre a-t-elle besoin pour germer ?"
+    bonneReponse: "de la chaleur"
+    distracteurs: ["du bruit", "du sucre"]
+    indice: "Pense à la température d'un endroit où une graine germe."
+  # sonde 05
+  # BPL-CE1-1 sujet : graine
+  # BPL-CE1-1 tache : privation
+  # BPL-CE1-1 prive de : lumiere
+  # TRV-CE1-2 : b, b
+  - enonce: "Une graine reste dans le noir. Que lui arrive-t-il ?"
+    bonneReponse: "elle ne germe pas"
+    distracteurs: ["elle devient une plante", "elle donne des fruits"]
+    indice: "Pense a la graine."
+  # sonde 06
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : lumiere
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi une plante a-t-elle besoin pour grandir ?"
+    bonneReponse: "de la lumière"
+    distracteurs: ["du bruit", "du lait"]
+    indice: "Pense a la plante."
+  # sonde 07
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi une plante a-t-elle besoin pour vivre ?"
+    bonneReponse: "de l'eau"
+    distracteurs: ["de l'air", "du lait"]
+    indice: "Pense a la plante."
+  # sonde 08
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi une plante a-t-elle besoin pour vivre ?"
+    bonneReponse: "de l'air"
+    distracteurs: ["du bruit", "du lait"]
+    indice: "Pense a la plante."
+  # sonde 09
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi une plante a-t-elle besoin pour vivre ?"
+    bonneReponse: "de l'eau"
+    distracteurs: ["de la terre", "du lait"]
+    indice: "Pense a la plante."
+  # sonde 10
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi une plante a-t-elle besoin pour vivre ?"
+    bonneReponse: "de la terre"
+    distracteurs: ["du bruit", "du lait"]
+    indice: "Pense a la plante."
+  # sonde 11
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi une plante a-t-elle besoin pour vivre ?"
+    bonneReponse: "de l'eau"
+    distracteurs: ["de l'engrais", "du lait"]
+    indice: "Pense a la plante."
+  # sonde 12
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi une plante a-t-elle besoin pour vivre ?"
+    bonneReponse: "de l'engrais"
+    distracteurs: ["du bruit", "du lait"]
+    indice: "Pense a la plante."
+  # sonde 13
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi une plante a-t-elle besoin pour vivre ?"
+    bonneReponse: "de l'eau"
+    distracteurs: ["des sels minéraux", "du lait"]
+    indice: "Pense a la plante."
+  # sonde 14
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi une plante a-t-elle besoin pour vivre ?"
+    bonneReponse: "des sels minéraux"
+    distracteurs: ["du bruit", "du lait"]
+    indice: "Pense a la plante."
+  # sonde 15
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi une plante a-t-elle besoin pour vivre ?"
+    bonneReponse: "du lait"
+    distracteurs: ["du bruit", "du sucre"]
+    indice: "Pense a la plante."
+  # sonde 16
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi une plante a-t-elle besoin pour vivre ?"
+    bonneReponse: "de l'eau"
+    distracteurs: ["de la lumière", "du lait"]
+    indice: "Pense a la plante."
+  # sonde 17
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : privation
+  # BPL-CE1-1 prive de : lumiere
+  # TRV-CE1-2 : b, b
+  - enonce: "Une plante a des feuilles et reste dans le noir. Que lui arrive-t-il ?"
+    bonneReponse: "elle devient pâle et pousse mal"
+    distracteurs: ["elle se fane", "elle devient plus verte"]
+    indice: "Pense a la plante."
+  # sonde 18
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, b
+  - enonce: "De quoi une plante a-t-elle besoin pour vivre ?"
+    bonneReponse: "de l'eau"
+    distracteurs: ["du bruit", "du lait"]
+    indice: "Pense a la plante."
+  # sonde 19
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "Une plante est plantée dans la terre. De quoi a-t-elle besoin ?"
+    bonneReponse: "de l'eau"
+    distracteurs: ["du bruit", "du lait"]
+    indice: "Pense a la plante."
+  # sonde 20
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi une plante a-t-elle besoin pour vivre ?"
+    bonneReponse: "de l'eau"
+    distracteurs: ["du bruit", "du lait"]
+    indice: "Pense à l'air autour de la plante."
+  # sonde 21
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : besoin
+  # BPL-CE1-1 besoin : eau
+  # TRV-CE1-2 : a, a
+  - enonce: "De quoi la graine a-t-elle besoin pour germer ?"
+    bonneReponse: "de l'eau"
+    distracteurs: ["du bruit", "du lait"]
+    indice: "Pense a la graine."
+  # sonde 22
+  # BPL-CE1-1 sujet : plante
+  # BPL-CE1-1 tache : privation
+  # BPL-CE1-1 prive de : eau
+  # TRV-CE1-2 : b, b
+  - enonce: "Une plante n'a plus d'eau. Que lui arrive-t-il ?"
+    bonneReponse: "elle devient pâle et pousse mal"
+    distracteurs: ["elle grandit plus vite", "elle devient plus verte"]
+    indice: "Pense a la plante."

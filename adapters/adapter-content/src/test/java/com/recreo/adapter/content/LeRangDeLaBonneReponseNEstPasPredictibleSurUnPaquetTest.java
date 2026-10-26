@@ -1388,6 +1388,11 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             Map.entry("ce1-qlm-etapes-de-developpement",
             "15 items sur 15 portent des propositions textuelles : aucune des 45 propositions n'est"
                     + " numerique, valeurDe rend null sur chacune. Mesure du 2026-10-26 sur le paquet du"
+                    + " depot : aucune proposition ne commence par un chiffre"),
+            // S57-BR-QLM-CE1-03 : deuxieme paquet de questionner le monde CE1, propositions textuelles.
+            Map.entry("ce1-qlm-besoins-de-la-plante",
+            "14 items sur 14 portent des propositions textuelles : aucune des 42 propositions n'est"
+                    + " numerique, valeurDe rend null sur chacune. Mesure du 2026-10-26 sur le paquet du"
                     + " depot : aucune proposition ne commence par un chiffre"));
 
     private enum Rang {
