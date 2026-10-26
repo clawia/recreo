@@ -4060,3 +4060,56 @@ La ligne 24257 (annotation suivante) porte deja *"entre 11 et 20"* et dit que le
 | `nadia-prof` | rien |
 
 **Matrice** : aucun statut ne change. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni le fichier du mulot de `cm1-sciences-chaine-alimentaire.yaml` (item deja note, a traiter a part).
+
+## Amendement du 2026-10-26, cinquantieme (`camille-po`, palier 5 : classement de la relecture des corrections de `-03`, regle pour les lots suivants)
+
+Statut `Acceptee` inchange. Aucun montant d'engage ni de plafond ne change : engage 13,50, plafond de `PAR-8` 20,20, marge de l'instance neuve 1,5. **Aucun passage d'A.268 a A.271 n'est corrige : aucun marqueur *[corrige par A.272]* n'est pose.** Sources lues au disque : `lecture-nadia-premier-jet-ce1-qlm-besoins-de-la-plante.md` (sections 5, 7, 8), `planning.md` (amendement du 2026-10-26 13:35, section 1 et section 3 ; texte de `P3`), A.263 a A.271, et le `git diff` du commit `37f49795` (corrections de `marc-dev`). **Le fichier de relecture des corrections de `-03` (`relecture-nadia-corrections-ce1-qlm-besoins-de-la-plante.md`) n'existe pas dans `round-two` au moment ou j'ecris** : `git log` ne rend que les fichiers de `-01`. Je ne l'ai pas lu. Les chiffres sont des calculs, marques **[calcul]**.
+
+### A.272 La relecture des corrections de `-03` est une seconde lecture : 0,5 hors marge, cout de `-03` 1,5
+
+**La question, et une precision sur sa premiere ligne.** On me demande si la relecture des huit lignes corrigees de `-03` est une seconde lecture (0,5 hors marge, A.270) ou une correction comprise dans le 1,0 *"au meme titre que l'arbitrage des indices de `-01` (A.268)"*. **L'analogue de la relecture de `-03` n'est pas l'arbitrage d'A.268.** A.268 classe un geste qui venait **apres** la seconde lecture de `-01` : le choix entre trois formulations d'indice. La relecture des corrections de `-01` par `nadia-prof` a eu lieu avant cet arbitrage (commit `408fec39`, *"seconde lecture avant verify des corrections de S57-BR-QLM-CE1-01 (15 items justes ...)"*) et a ete comptee **0,5** (table d'A.268, imputation corrigee en A.270 : hors marge). La relecture de `-03` est l'analogue de cette seconde lecture, pas de l'arbitrage.
+
+**Decision de produit.** La relecture par `nadia-prof` des lignes corrigees de `-03` apres sa lecture du premier jet **est une seconde lecture avant `verify`** : **0,5, hors marge, sur la ligne hors marge du registre** (A.270 point 4, confirme par l'utilisatrice en A.271 point 2 : *"toute seconde lecture"*). **La reponse est donc "seconde lecture" ; "non" n'est pas ouverte pour `-03`.**
+
+**Pourquoi "non" n'est pas ouverte, avec les mots d'A.268.** Les trois conditions d'A.268, refaites pour `-03` :
+
+| Condition (repere local a A.268) | Pour `-03` | Etat |
+|---|---|---|
+| C1 : elle lit les lignes corrigees, pas le paquet | sa section 7 : *"si `marc-dev` les applique telles qu'ecrites, une seconde lecture courte suffit"* | a verifier dans son fichier de relecture, qui n'existe pas encore |
+| C2 : la correction ne change que la formulation ; aucune proposition, aucune bonne reponse n'est touchee ; aucun verdict *juste* n'est rouvert | **fausse par construction** : le point 7 de sa section 5 remplace deux **propositions** (item 9, ligne `:126`, *"elle donne des fruits"* devient *"elle germe plus vite"* ; item 14, ligne `:166`, *"elle donne des fleurs"* devient *"elle germe tout de suite"*), et le test du paquet doit admettre ces deux effets | **fausse** |
+| C3 : la correction ne touche que les lignes prescrites | `git diff -U0 37f49795^ 37f49795` sur le paquet : hunks aux lignes 28 a 34, 43, 79, 87, 95, 119, 126, 135, 159, 166 de l'ancien fichier, soit les six indices, les deux distracteurs et les deux commentaires, et rien d'autre dans le YAML du paquet ; le commit touche aussi le test du paquet (point 10, prescrit) et `besoins-fautifs.yaml` (contre-exemple), que je n'ai pas lus ligne a ligne | tenue sur le paquet |
+
+C2 tombe : relire une proposition remplacee, c'est juger un item contre sa liste fermee (`BPL-CE1-1`, `NRC-CE1-1`, plausibilite de chaque distracteur, qu'elle garde seule, section 5 in fine), et non choisir entre formulations. Le point 1 d'A.268 (*"ne juge aucun item"*) ne tient pas ici. **Ce n'est pas une contestation de son bareme : elle a ecrit 1,5 elle-meme, section 7.**
+
+**Le fichier de relecture, quand il existera.** Il ne change pas le classement ; il fixe seulement si le cout reste 1,5. Faits a y lire : (1) les lignes relues ; (2) si un verdict d'un des 14 items est rouvert ; (3) si une correction de `marc-dev` est rejetee ou reformulee. Si (3) est vrai, une seconde correction et une troisieme lecture suivent : **2,0 pour `-03`** [calcul : 1,5 plus 0,5], que **je reclasse a ce moment-la sur ses mots**, sans le declarer couvert d'avance (meme reserve qu'A.269, Q1). **Je ne pose aucun seuil pour `-03`.** Le 1,67 est celui de `nadia-prof` pour `-01` (A.268) ; elle l'a lu par analogie pour `-03` (section 7 de sa lecture), ce que je ne valide ni ne conteste : aucun texte ne pose de seuil pour les autres lots.
+
+### Cout [calcul]
+
+| Ligne | Bareme |
+|---|---|
+| `-03` : lecture du premier jet et correction qui la suit | 1,0 |
+| `-03` : seconde lecture des lignes corrigees, hors marge | 0,5 |
+| **cout de `-03`** | **1,5** |
+
+- **Marge de l'instance neuve : 1,5, entiere** (trois rejeux, `P3`). La ligne hors marge du registre passe de 0,50 (`-01`) a **1,00** [calcul : 0,50 plus 0,50], si la relecture est faite telle que prevue.
+- **Cas haut mesure** (A.270) : 18,20 plus 0,50 = **18,70**, soit **1,50 sous 20,20** [calcul]. Je garde la methode d'A.270 point 3 : je ne retranche pas ce que le lot compte deja dans les 0,42. Il reste **trois** autres secondes lectures a 0,50 avant d'atteindre 20,20 [calcul : 1,50 divise par 0,50] ; la quatrieme depasse le plafond et va au registre (A.247), sans etre une condition de Done (A.268). A.270 en comptait quatre avant `-03`.
+- Le depassement de l'engage au registre, borne a 4,70 par A.270, l'est a **5,20** [calcul] ; le plafond n'est pas atteint.
+- **A la consommation** : non mesure. `nadia-prof` a mesure 22 min 52 s pour sa lecture (section 8) et ecrit qu'aucune regle ne convertit une duree en bareme ; je n'en pose pas.
+
+### La regle, pour les lots suivants (`-02`, `-04` a `-12`)
+
+**Regle generale, sans seuil neuf : c'est A.270 point 4 appliquee, pas une decision nouvelle.**
+
+1. **La relecture par `nadia-prof`, apres la correction de `marc-dev`, des lignes qu'elle a elle-meme prescrites est une seconde lecture avant `verify`** : 0,5, hors marge, pour chaque lot de l'instance neuve, que les lignes soient une ou quinze. Chaque lot l'inscrit sur la ligne hors marge par amendement date de `sofia-sm` (planning, 13:35, section 1, point *Portee*). **La question n'a plus a etre posee par lot.**
+2. **Le classement *non* d'A.268 reste celui d'un seul geste, `-01`, et n'est pas etendu** (A.268 : *"il ne vaut que pour `-01`"*). Un arbitrage d'indices ou de formulation **apres** la seconde lecture d'un autre lot est classe par moi, lot par lot, sur les mots de `nadia-prof`, avec les trois conditions d'A.268 refaites (C1 les lignes seules, C2 la formulation seule sans proposition ni verdict rouvert, C3 le diff limite aux lignes).
+3. **Une troisieme lecture d'un lot** (seconde correction suivie d'une relecture, ou relecture du paquet entier) coute 0,5 de plus [calcul], hors marge, et je la classe quand elle existe. Je ne pose aucun seuil de lot.
+4. **Ce que je n'invente pas** : le cout de la relecture redactionnelle du `relecteur-pedagogique` (A.268 point 2) reste hors de toute lecture de `P0`.
+
+### Routage
+
+| A qui | Quoi |
+|---|---|
+| `nadia-prof` | ecrire dans son fichier de relecture : lignes relues, verdicts rouverts ou non, correction rejetee ou non ; contredire par ecrit le classement s'il n'est pas le sien (son texte l'emporte) |
+| `sofia-sm` | a la lecture de ce fichier, inscrire 0,50 sur la ligne hors marge pour `-03` (1,00 cumule), par amendement date ; **cet amendement ne modifie pas `planning.md`** ; si une troisieme lecture est ecrite, me router le reclassement |
+
+**Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; la question Q3 d'A.271 (quatrieme rejeu) reste differee, inchangee. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne juge aucune formulation ni aucun distracteur, ne pose aucun seuil de lot, ne releve aucun plafond, ne change pas l'engage, ne reecrit pas `P3`, n'amende ni `planning.md`, ni le backlog, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue (C1 a C3 restent des reperes locaux).
