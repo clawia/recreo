@@ -356,7 +356,7 @@ seconde lecture (0,5 hors marge, `DEC-0120` A.270, point 4) : aucun premier jet 
 **Ce qu'il vise, sans promesse** : moins de secondes lectures sur `-04` et `-05` (A.273, point 2). Je n'ecris aucun nombre de
 corrections evitees.
 
-**Duree**, lue par `date` : debut **16:28:17**, fin **16:55:10**, avant le commit, soit **26 min 53 s**, dont trois executions du
+**Duree**, lue par `date` : debut **16:28:17**, fin **16:53:29**, lue au commit `84181353`, soit **25 min 12 s** [corrige le 2026-10-26 : la premiere version portait 16:55:10, heure ecrite avant d'etre lue ; texte d'origine dans `84181353`], dont trois executions du
 garde-fou des identifiants (section 8). Aucun seuil de duree ne s'applique a ce geste.
 
 ## 8. Verifications avant commit
