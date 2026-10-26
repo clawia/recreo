@@ -1,7 +1,11 @@
 # s57 - relecture des trois indices corriges de `ce1-qlm-etapes-de-developpement` (`S57-BR-QLM-CE1-01`, `P0`)
 
 - **Auteure** : `nadia-prof`, professeure des ecoles, seule autorite sur le Done pedagogique.
-- **Date** : 2026-10-26, lecture de 13:11 a 13:16 (UTC+01:00), bornes lues par `date`.
+- **Date** : 2026-10-26 (UTC+01:00), bornes lues par `date` : lecture des trois lignes et du diff de 13:11:12 a 13:12:40 ;
+  redaction et controles jusqu'a 13:20:16.
+- **Controles lances sur ce fichier** : `verifier-chemins.sh` (aucun chemin de poste) ;
+  `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` (`-pl bootstrap -am`) : `Tests run: 10, Failures: 0, Errors: 0, Skipped: 0`.
+  Aucun autre job de la CI n'est lance.
 - **Arbre** : branche `s57-p5-nadia-c1c3`, base `round-two` a `3f4da89d` (contient `5e56ea7e` de `marc-dev`, A.268 et A.269).
 - **Entrees** : DEC-0120 A.268 et A.269 ; mon arbitrage `arbitrage-nadia-indices-ce1-qlm-etapes-de-developpement.md` (sections 4
   et 5) ; les lignes 88, 130 et 151 de `ce1-qlm-etapes-de-developpement.yaml`, et elles seules.
