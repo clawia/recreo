@@ -10,6 +10,7 @@ lignesDeReferentiel: ["QLM-CE1-02"]
 #
 # Jeu fautif de PaquetCe1QlmCeQueMangentLesAnimauxTest : chaque item porte en commentaire le marqueur
 # de la sonde qu'il met a l'epreuve. Les sondes 03 et 04 sont des clauses : elles doivent passer.
+# Les sondes 13 et 14 proposent une paraphrase de categorie (des plantes, de la viande) en tache aliment.
 # La sonde 01 ecrit une categorie avec l'apostrophe typographique, voulue.
 items:
   # sonde 01
@@ -84,3 +85,15 @@ items:
     bonneReponse: "d'autres animaux"
     distracteurs: ["des végétaux", "les deux"]
     indice: "Imagine la vache dans le pré."
+  # sonde 13
+  # RAL-CE1-1 animal : lapin
+  - enonce: "Que mange le lapin dans le potager de la ferme ?"
+    bonneReponse: "des carottes"
+    distracteurs: ["des plantes", "des souris"]
+    indice: "Pense à ce que le lapin trouve dans ce potager."
+  # sonde 14
+  # RAL-CE1-1 animal : chouette
+  - enonce: "Que mange la chouette la nuit dans la forêt ?"
+    bonneReponse: "des mulots"
+    distracteurs: ["de la viande", "des graines"]
+    indice: "Pense aux griffes et au bec de la chouette."

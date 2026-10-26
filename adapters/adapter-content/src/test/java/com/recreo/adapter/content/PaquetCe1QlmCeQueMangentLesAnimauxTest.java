@@ -80,8 +80,14 @@ class PaquetCe1QlmCeQueMangentLesAnimauxTest {
     /** FER-3 : la reconnaissance d'une categorie, cle normalisee vers categorie ecrite. */
     private static final Map<String, String> CATEGORIES = Map.of(
             "vegetaux", "des végétaux",
+            "plantes", "des végétaux",
             "autres animaux", "d'autres animaux",
-            "deux", "les deux");
+            "animaux", "d'autres animaux",
+            "viande", "d'autres animaux",
+            "deux", "les deux",
+            "un peu des deux", "les deux",
+            "deux a la fois", "les deux",
+            "tout", "les deux");
 
     /** FER-3 : un seul article de tete retire, sur une liste fermee, du plus long au plus court. */
     private static final Pattern ARTICLE_DE_TETE = Pattern.compile("^(de la |de l'|des |les |du |de |d'|l'|le |la )");
@@ -409,6 +415,22 @@ class PaquetCe1QlmCeQueMangentLesAnimauxTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("FER-3")
                 .hasMessageContaining("d\u2019autres animaux");
+    }
+
+    @Test
+    void s6UnItemAlimentQuiProposeUneParaphraseDUneCategorieEstRefuse() {
+        Paquet fautif = fautif("animaux-fautifs.yaml");
+        Map<String, String> sondes = Map.of("sonde 13", "des plantes", "sonde 14", "de la viande");
+
+        sondes.forEach((sonde, proposition) -> {
+            assertThat(sonde(fautif, sonde)).as(sonde).hasSize(1);
+            assertThat(tache(sonde(fautif, sonde).get(0))).as(sonde).isEqualTo(ALIMENT);
+            assertThatThrownBy(() -> verifierLesPropositionsDeChaqueTache(sonde(fautif, sonde)))
+                    .as(sonde)
+                    .isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("FER-3")
+                    .hasMessageContaining(proposition);
+        });
     }
 
     @Test

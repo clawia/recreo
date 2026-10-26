@@ -26,7 +26,7 @@ lignesDeReferentiel: ["QLM-CE1-02"]
 # RAL-CE1-1, tache categorie : les trois categories sont chacune la bonne reponse d'au moins un
 # item (FER-1), et les trois propositions de chaque item sont les trois categories. Tache aliment :
 # la bonne reponse est un aliment que l'animal mange a cet endroit, les trois propositions sont trois
-# aliments au meme article (des), aucune n'est une categorie. Seuls entrent en tache aliment des
+# aliments au meme type d'article (du, de la, de l' ou des), aucune n'est une categorie. Seuls entrent en tache aliment des
 # animaux dont la source donne une seule categorie (la poule, classee les deux, n'y entre pas). Les
 # deux distracteurs sont des aliments de l'autre categorie que celle de l'animal : aucun n'est mange
 # par lui, et jamais deux aliments que l'animal mange.
@@ -35,25 +35,27 @@ lignesDeReferentiel: ["QLM-CE1-02"]
 # un fait sans source n'entre pas). Le test relit chaque item contre cette liste : l'animal que
 # l'item declare y figure, et la bonne reponse d'un item categorie est la categorie de la liste.
 # Sources, nommees une fois :
-#   avis-nadia : l'avis de nadia-prof sur la seconde tache (squad/sprints/s57-version-cp-ce1-cm1-
-#     trois-instances/avis-nadia-seconde-tache-ce1-qlm-02.md), section 1, tableau animal par animal
-#   cm1-regimes : cm1-sciences-regimes-alimentaires (CM1) : lapin, vache et chevre herbivores,
-#     sanglier omnivore (herbes, feuilles et racines ; racines, glands, vers de terre et petits animaux)
+#   lecture-nadia : la lecture de nadia-prof du premier jet (squad/sprints/s57-version-cp-ce1-cm1-
+#     trois-instances/lecture-nadia-premier-jet-ce1-qlm-ce-que-mangent-les-animaux.md, section 1),
+#     qui tient chaque categorie de cette liste pour exacte au CE1
+#   cm1-regimes : cm1-sciences-regimes-alimentaires (CM1) : lapin herbivore (herbe, feuilles et
+#     racines ; la carotte est une racine), vache et chevre herbivores, sanglier omnivore (racines,
+#     glands, vers de terre et petits animaux)
 #   cm1-chaine : cm1-sciences-chaine-alimentaire (CM1) : la chouette mange le mulot
 # Le redacteur n'a consulte aucune autre source : nadia-prof confronte chaque categorie et chaque
 # aliment a la sienne (QC9).
-#   animal vache : vegetaux ; source : avis-nadia, cm1-regimes
-#   animal mouton : vegetaux ; source : avis-nadia
-#   animal chevre : vegetaux ; source : avis-nadia, cm1-regimes
-#   animal lapin : vegetaux ; source : avis-nadia, cm1-regimes
-#   animal escargot : vegetaux ; source : avis-nadia
-#   animal chenille : vegetaux ; source : avis-nadia
-#   animal chouette : autres animaux ; source : avis-nadia, cm1-chaine
-#   animal grenouille : autres animaux ; source : avis-nadia
-#   animal araignee : autres animaux ; source : avis-nadia
-#   animal hirondelle : autres animaux ; source : avis-nadia
-#   animal poule : les deux ; source : avis-nadia
-#   animal sanglier : les deux ; source : avis-nadia, cm1-regimes
+#   animal vache : vegetaux ; source : lecture-nadia, cm1-regimes
+#   animal mouton : vegetaux ; source : lecture-nadia
+#   animal chevre : vegetaux ; source : lecture-nadia, cm1-regimes
+#   animal lapin : vegetaux ; source : lecture-nadia, cm1-regimes
+#   animal escargot : vegetaux ; source : lecture-nadia
+#   animal chenille : vegetaux ; source : lecture-nadia
+#   animal chouette : autres animaux ; source : lecture-nadia, cm1-chaine
+#   animal grenouille : autres animaux ; source : lecture-nadia
+#   animal araignee : autres animaux ; source : lecture-nadia
+#   animal hirondelle : autres animaux ; source : lecture-nadia
+#   animal poule : les deux ; source : lecture-nadia
+#   animal sanglier : les deux ; source : lecture-nadia, cm1-regimes
 #
 # RAL-CE1-2 : aucun des quatre animaux exclus (chat, chien, renard, herisson) n'est dans la liste ni
 # dans un item, aucune proposition n'est un aliment du commerce pour animaux, et chaque enonce dit
@@ -84,14 +86,14 @@ items:
   # TRV-CE1-2 : b, b
   - enonce: "Que mange l'escargot dans le jardin ?"
     bonneReponse: "des feuilles de salade"
-    distracteurs: ["des mouches", "des souris"]
+    distracteurs: ["des mouches", "des vers de terre"]
     indice: "Pense à ce que l'escargot trouve sur le sol du jardin."
   # RAL-CE1-1 animal : chouette
   # TRV-CE1-2 : a, a
   - enonce: "Que mange la chouette la nuit dans la forêt ?"
     bonneReponse: "d'autres animaux"
     distracteurs: ["des végétaux", "les deux"]
-    indice: "Pense à ce que la chouette cherche quand elle chasse."
+    indice: "Pense aux griffes et au bec de la chouette."
   # RAL-CE1-1 animal : chevre
   # TRV-CE1-2 : b, b
   - enonce: "Que mange la chèvre au bord du chemin ?"
@@ -109,7 +111,7 @@ items:
   - enonce: "Que mange l'araignée dans sa toile ?"
     bonneReponse: "des mouches"
     distracteurs: ["des graines", "des feuilles"]
-    indice: "Imagine ce qui vient se coller dans sa toile."
+    indice: "Imagine l'araignée qui attend, immobile, au milieu de sa toile."
   # RAL-CE1-1 animal : mouton
   # TRV-CE1-2 : a, a
   - enonce: "Que mange le mouton dans la prairie ?"
@@ -127,12 +129,12 @@ items:
   - enonce: "Que mange la grenouille au bord de la mare ?"
     bonneReponse: "d'autres animaux"
     distracteurs: ["les deux", "des végétaux"]
-    indice: "Pense à ce que la grenouille attrape avec sa langue."
+    indice: "Pense à la longue langue collante de la grenouille."
   # RAL-CE1-1 animal : lapin
   # TRV-CE1-2 : b, b
   - enonce: "Que mange le lapin dans le potager de la ferme ?"
     bonneReponse: "des carottes"
-    distracteurs: ["des poissons", "des souris"]
+    distracteurs: ["des vers de terre", "des souris"]
     indice: "Pense à ce que le lapin trouve dans ce potager."
   # RAL-CE1-1 animal : sanglier
   # TRV-CE1-2 : a, a
@@ -145,4 +147,4 @@ items:
   - enonce: "Que mange l'hirondelle quand elle vole dans le ciel ?"
     bonneReponse: "des insectes"
     distracteurs: ["des graines", "des feuilles"]
-    indice: "Pense à ce que l'hirondelle peut attraper en volant."
+    indice: "Imagine l'hirondelle qui vole le bec grand ouvert."
