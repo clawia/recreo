@@ -2454,3 +2454,36 @@ Source : `avis-theo-palier-5-neuf-lots-qlm-ce1.md` 3.3 et 3.4, repris par `DEC-0
 ### Decisions prises
 
 **Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il ecrit : la designation de `marc-dev` (execution de `DEC-0120` A.262, ligne `sofia-sm`), le declencheur de `P0` et la serialisation des fusions. Restent ouverts, non clos par cet amendement : l'amendement A.263 de `camille-po`, la condition `P3` de `nadia-prof` et l'exemption de garde d'`AIM-CE1-2` de `theo-archi`.
+
+## Amendement du 2026-10-26 (UTC+02:00), palier des neuf lots de questionner le monde CE1 : ordre des audits, engage de 13,50, lecture du cout reel de P0
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit `s57-p5-sofia-ordre`. Il execute la ligne que `reponse-nadia-palier-5-qlm-marge-instance-neuve-horloge.md` (section 4, ligne `sofia-sm`) lui donne : *"dans `planning.md`, l'ordre de 1.3 et de 2 : neuf premiers audits, l'horloge, puis les rejeux"*. Il complete l'amendement du meme jour qui designe `marc-dev` ; il ne le modifie pas. **Il n'ouvre aucun palier et n'engage aucun lot** : l'ouverture reste soumise a `D2`. Il ne recalcule rien de ce que `camille-po` porte : `A.265` de `DEC-0120` est consigne en parallele par elle, dans ses fichiers.
+
+### 1. Ordre des audits et des rejeux, cite de `nadia-prof`
+
+Ordre inscrit : **neuf premiers audits (`P2`, dans l'ordre de `P1`), puis l'horloge `MAT-CE1-11`, puis les rejeux.** Source : la reponse citee, section 2 (*"l'horloge est auditee **apres les neuf premiers audits de `P2` et avant tout rejeu**"*) et section 4.
+
+Regles de `P3` reformulee, citees sans reformulation (section 1.3, lignes 60 a 63 de la reponse) :
+
+> `P3` - rejeux : **autant que la marge en paie** (trois a 1,5, au prix de 0,50 du rejeu, A.199), attribues aux premiers lots refuses dans l'ordre de `P2` ; **un rejeu au plus par lot dans le palier 9** ; **aucun rejeu avant le premier audit de chacun des dix lots du palier** ; tout rejeu hors marge, et tout second rejeu d'un meme lot, au palier 10 ; au palier 10, un rejeu refuse va a s58.
+
+1. **Un rejeu au plus par lot dans le palier 9.**
+2. **Aucun rejeu avant le premier audit des dix lots** (les neuf plus l'horloge). Motif de `nadia-prof` : trois rejeux places avant les derniers premiers audits pousseraient l'horloge hors du palier 9 ; *"Je ne fais pas cet echange."*
+3. **Lecture des rejeux de l'horloge** : `nadia-prof` lit les trois rejeux comme ceux de l'instance neuve, l'horloge ayant sa marge dans ses 2,50 (A.215). Si l'utilisatrice veut trois rejeux pour les dix lots, `P3` s'applique pareil, l'horloge comptant comme dixieme lot dans l'ordre de `P2`. **Cette lecture est a consigner par `camille-po`** (reponse, section 4) ; elle n'est pas tranchee ici.
+
+### 2. Engage du palier 9 : 13,50
+
+L'utilisatrice a fixe le 2026-10-26 l'engage du palier 9 a **13,50** (marge de 1,5, neuf lots plus l'horloge `MAT-CE1-11`). Ce chiffre remplace, pour la lecture de ce fichier, le 12,50 de l'engage precedent (`DEC-0120` A.264). Le calcul de `nadia-prof` (reponse, 2.1 : 11,00 de l'instance neuve plus 2,50 de l'horloge) et le plafond restent a `camille-po` et a l'utilisatrice (A.244) ; **je ne les recalcule pas**. La consignation est `DEC-0120` A.265, ecrite par `camille-po`.
+
+### 3. Cout reel de P0, a lire dans le premier jet de `-01`
+
+Source : reponse de `nadia-prof`, section 3 (lignes 139 a 142).
+
+1. Dans `lecture-nadia-premier-jet-<paquet>.md` de `-01`, `nadia-prof` ecrit le cout reel de `P0` (lecture et correction), au bareme et a la consommation : premiere mesure de l'instance neuve.
+2. **Seuil : 1,67 pour `-01`** (bareme de 1,0 plus 0,67). S'il est depasse, elle l'ecrit **avant que `P1` commence**, pour que la projection contre le plafond soit refaite avant les huit autres lots.
+3. Ce n'est pas une condition de Done : un lot plus cher n'est pas refuse pour ce motif.
+4. Mon role : a la lecture de ce fichier, je verifie que le chiffre y est avant d'inscrire la premiere paire de `P1` dans `planning.md`. Si le seuil est depasse, je route le recalcul de la projection a `camille-po` sans le faire.
+
+### Decisions prises
+
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** `DEC-0120` A.265 est ecrite par `camille-po` dans sa branche ; elle n'est pas close par cet amendement. Restent ouverts : la lecture des rejeux de l'horloge (section 1, point 3) et l'exemption de garde d'`AIM-CE1-2` de `theo-archi`.
