@@ -2503,3 +2503,42 @@ L'utilisatrice a repondu que les trois rejeux de la marge valent pour **les dix 
 ### Decisions prises
 
 **Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** `DEC-0120` A.266 est ecrite par `camille-po` dans sa branche ; elle n'est pas close par cet amendement. Reste ouverte : l'exemption de garde d'`AIM-CE1-2` de `theo-archi`.
+
+## Amendement du 2026-10-26 10:43 (UTC+01:00), palier des neuf lots de questionner le monde CE1 : declencheur de P0 pour -01, plafond de PAR-8 maintenu, reponse de nadia-prof sur le rejeu de l'horloge
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit `s57-p5-sofia-p0`. Il execute le point 2 de la section 2 de l'amendement `s57-p5-sofia-planning` (*"j'ecris la ligne, dans un commit de `planning.md` qui precede son `verify` complet"*) et remplit le tableau du point 7. **Il n'ouvre aucun palier, n'engage aucun lot, ne calcule aucun prix.** `camille-po` ecrit `DEC-0120` A.267 en parallele, dans ses fichiers : cet amendement ne touche pas `DEC-0120`.
+
+### 1. Declencheur de `P0` pour `S57-BR-QLM-CE1-01`
+
+Ligne lue sur le disque avant ecriture, par `git log -1 --format='%H %cI' 7c922786` :
+
+> `7c9227869e0c403843428cfe26a166c61a7e2808 2026-10-26T10:22:24+01:00`
+
+| Lot | Commit du premier jet | Heure du commit | Developpeur | Paquet |
+|---|---|---|---|---|
+| `S57-BR-QLM-CE1-01` | `7c9227869e0c403843428cfe26a166c61a7e2808` (message `[MARC] s57 palier 5: premier jet de S57-BR-QLM-CE1-01 ...`) | 2026-10-26 10:22:24 +01:00 | `marc-dev` | `ce1-qlm-etapes-de-developpement`, 15 items (message du commit) |
+
+Le tableau du point 7 de la section 2 de l'amendement `s57-p5-sofia-planning` (`planning.md:2440` a `2442`) porte les colonnes *heure d'inscription* et *lecture de `nadia-prof`*. Je ne le reecris pas : l'heure d'inscription de cette ligne est celle de l'en-tete de cet amendement, **2026-10-26 10:43 (UTC+01:00)**. La lecture de `nadia-prof` n'existe pas encore : `lecture-nadia-premier-jet-<paquet>.md` n'est pas sur le disque a ce jour.
+
+A lire avec la ligne :
+
+1. **Ce commit est deja fusionne dans `round-two`** (fusion `77fc8f8e`, `[SOF] s57 palier 5: fusion de s57-p5-marc-01`). La ligne est donc ecrite apres la fusion et avant tout `verify` complet, ce que le point 1 de la section 2 exige (*"aucun `verify` complet de ce paquet n'est lance"* tant que la ligne n'est pas ecrite).
+2. **Aucun `verify` complet n'a ete lance.** Le rapport de `marc-dev`, tel qu'il m'est relaye, dit n'avoir lance que des mesures partielles avec `-am`. Je ne l'ai pas relu sur le disque (aucun `rapport-marc-dev-*` du palier 5 n'est dans le dossier du sprint) et je n'en cite aucun chiffre.
+3. **Le commit contient**, d'apres son message : le paquet, l'entree de rang avec ses totaux (15 items, 45 propositions), aucune entree de catalogue (`QC3`), le test des conditions transverses, `PaquetLu` et les jeux fautifs.
+4. **Suite, d'apres le point 4 de la section 2 :** (c) `nadia-prof` ecrit sa lecture, y compris le cout reel de `P0` (section 3 de l'amendement `s57-p5-sofia-ordre`, seuil 1,67) ; (d) `marc-dev` corrige ; (e) seulement ensuite les huit autres premiers jets.
+
+### 2. Plafond de `PAR-8` maintenu a 20,20
+
+L'utilisatrice a maintenu le plafond de `PAR-8` a **20,20** le 2026-10-26. La consignation est `DEC-0120` A.267, ecrite par `camille-po` ; elle n'est pas close par cet amendement. L'amendement `s57-p5-sofia-plafond` (20,20) est inchange.
+
+### 3. Reponse de `nadia-prof` du 2026-10-26
+
+Fichier : `reponse-nadia-palier-5-rejeu-horloge-et-double-compte.md`, deja dans `round-two`. Chiffres cites, non recalcules :
+
+1. **Rejeu de l'horloge (1.2) :** il consomme d'abord la marge de 0,5 de `B`, comprise dans les 2,50 de l'horloge ; il ne prend sur la marge de 1,5 que si celle de `B` est deja consommee ; dans les deux cas il compte parmi les trois rejeux des dix lots.
+2. **Surcout par lot (2.1) :** **0,42**, mesure sur `registre-prix-palier-4.txt` (2,50 au-dela du bareme sur six lots) ; les 0,67 comptent deux fois la marge consommee ; rien ne mesure une instance neuve ni une marge de 1,5 (2.3).
+3. **Routage a `sofia-sm` (section 4) :** *"la ligne `B` du palier 9 porte la marge de l'horloge ; la ligne de l'instance neuve porte les trois rejeux, sauf celui de l'horloge"*. **Elle n'est pas inscrite ici** : aucun palier n'est ouvert et ce fichier ne porte aucune ligne de registre du palier 9.
+
+### Decisions prises
+
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** `DEC-0120` A.267 est ecrite par `camille-po` dans sa branche ; elle n'est pas close ici. Restent ouverts : la lecture de `nadia-prof` sur le premier jet de `-01`, la consignation par `camille-po` de la reponse du point 3, la ligne de registre du point 3.3 et l'exemption de garde d'`AIM-CE1-2` de `theo-archi`.
