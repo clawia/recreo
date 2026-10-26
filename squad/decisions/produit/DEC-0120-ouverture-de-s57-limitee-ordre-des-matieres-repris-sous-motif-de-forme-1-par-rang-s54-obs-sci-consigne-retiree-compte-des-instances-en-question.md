@@ -3896,7 +3896,7 @@ Annotation datee. **Aucun amendement anterieur n'est reecrit** ; aucun texte n'e
 | Ligne | Bareme [calcul] |
 |---|---|
 | lot, lecture du premier jet et correction qui la suit | 1,0 |
-| seconde lecture avant `verify` (les 15 items corriges), sur la marge | 0,5 |
+| seconde lecture avant `verify` (les 15 items corriges), sur la marge **[corrige par A.270 : hors marge, sur la ligne hors marge du registre ; le 0,5 est inchange]** | 0,5 |
 | arbitrage des trois indices | 0,0 (classement ci-dessus) |
 | **cout de `P0`** | **1,5** |
 
@@ -3908,7 +3908,7 @@ Seuil de 1,67 : **non franchi**, 0,17 de reserve [calcul : 1,67 moins 1,5]. Ecar
 
 Classement tenu : **aucune sur les huit autres lots.** `P1` n'est pas arretee par le cout ; elle reste soumise a ce que le planning exige deja (ligne d'inscription, lecture de `nadia-prof` de la paire precedente). Aucune projection n'est refaite.
 
-**Ouvert, non tranche par moi, trouve en lisant.** La seconde lecture de `-01` est inscrite *"sur la marge"* (seconde lecture, section 6). La marge de 1,5 de l'instance neuve paie trois rejeux a 0,50 (A.265, `P3`). **Aucun texte lu ne dit si cette seconde lecture est prise sur ces 1,5.** Si elle l'est, il en reste 1,0 : **deux rejeux, non trois** [calcul]. Pour l'horloge, `nadia-prof` a tranche le cas (1.2 de sa reponse, point 2) ; pour `-01`, personne. **A `nadia-prof`** : `P3` compte-t-elle trois rejeux ou la marge restante ? **A `sofia-sm`** : la ligne de registre de l'instance neuve porte-t-elle ce 0,50 ? Je ne le deduis pas, et je ne tiens pas pour acquise la phrase *"trois rejeux"* d'A.265 et d'A.267. **[corrige par A.269]** Tranche : la seconde lecture de `-01` est prise sur la marge de 1,5, il en reste 1,0 ; les deux lignes de la table ci-dessous qui portent sur la marge (`nadia-prof`, `sofia-sm`) sont traitees en A.269, Q3. Le texte ci-dessus est conserve.
+**Ouvert, non tranche par moi, trouve en lisant.** La seconde lecture de `-01` est inscrite *"sur la marge"* (seconde lecture, section 6). La marge de 1,5 de l'instance neuve paie trois rejeux a 0,50 (A.265, `P3`). **Aucun texte lu ne dit si cette seconde lecture est prise sur ces 1,5.** Si elle l'est, il en reste 1,0 : **deux rejeux, non trois** [calcul]. Pour l'horloge, `nadia-prof` a tranche le cas (1.2 de sa reponse, point 2) ; pour `-01`, personne. **A `nadia-prof`** : `P3` compte-t-elle trois rejeux ou la marge restante ? **A `sofia-sm`** : la ligne de registre de l'instance neuve porte-t-elle ce 0,50 ? Je ne le deduis pas, et je ne tiens pas pour acquise la phrase *"trois rejeux"* d'A.265 et d'A.267. **[corrige par A.269]** Tranche : la seconde lecture de `-01` est prise sur la marge de 1,5, il en reste 1,0 ; les deux lignes de la table ci-dessous qui portent sur la marge (`nadia-prof`, `sofia-sm`) sont traitees en A.269, Q3. Le texte ci-dessus est conserve. **[corrige par A.270]** Cette imputation est elle-meme revoquee : la seconde lecture de `-01` est hors marge, la marge de 1,5 reste entiere et paie trois rejeux (A.270). Le texte ci-dessus est conserve.
 
 | A qui | Quoi |
 |---|---|
@@ -3923,6 +3923,8 @@ Classement tenu : **aucune sur les huit autres lots.** `P1` n'est pas arretee pa
 Annotation datee. **Aucun amendement anterieur n'est reecrit** ; deux passages d'A.268 portent le marqueur *[corrige par A.269]*, texte original conserve. **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : base `5a1a8af8`, branche `s57-p5-camille-269`. Sources, lues au disque : `arbitrage-nadia-indices-ce1-qlm-etapes-de-developpement.md` (sections 1.2, 4, 5, 6), `relecture-nadia-corrections-ce1-qlm-etapes-de-developpement.md` (sections 1, 4, 6), `reponse-nadia-palier-5-rejeu-horloge-et-double-compte.md` (1.1, 1.3), `arbitrage-nadia-palier-5-lp7-d5.md` (ligne 262), A.244, A.265, A.267, A.268. Les chiffres sont des calculs, marques **[calcul]**.
 
 ### A.269 Le verdict de methode corrige sur la ligne 130 : C2 tient, a la lettre ; la marge de 1,5 paie la seconde lecture ; le renvoi A.244
+
+**[corrige par A.270 sur un point : Q3, l'imputation de la seconde lecture de `-01` ; le reste d'A.269 est conserve tel qu'ecrit le 2026-10-26]**
 
 **Le fait.** Pour l'item 11 (ligne 130), `nadia-prof` reformule *"de la plante"* en *"de la jeune pousse"* et ecrit (1.2) que sa phrase de seconde lecture, *"la methode (remonter la vie de l'espece) est juste"*, n'etait pas exacte pour cet indice : il nomme l'espece, qui est elle-meme une etape de la liste (rang 2), et un enfant peut lire *"juste avant la plante"*. Les indices des lignes 88 et 151 sont retenus tels que le relecteur les propose. **Elle n'ecrit nulle part C1, C2 ou C3 vraie ou fausse**, alors qu'A.268 le lui routait : je les lis sur ses textes, et je le dis.
 
@@ -3948,21 +3950,21 @@ Pourquoi C2 tient, avec ses mots et non une propriete plus commode :
 
 #### Q2. Cout de `P0`, et ce que cela fait a `P1`
 
-**Le cout de `P0` reste 1,5** [calcul : 1,0 plus 0,5 de seconde lecture sur la marge, plus 0,0 pour l'arbitrage, A.268], seuil de 1,67 non franchi, 0,17 de reserve [calcul]. Il est **sous C1 et C3, encore a verifier** : si l'une est fausse, 2,0 [calcul : 1,5 plus 0,5], 0,33 au-dessus du seuil [calcul], ecrit par `nadia-prof` avant que `P1` commence (A.268). La table d'A.268 n'est pas corrigee.
+**Le cout de `P0` reste 1,5** [calcul : 1,0 plus 0,5 de seconde lecture sur la marge **[corrige par A.270 : hors marge ; le cout de `P0` reste 1,5]**, plus 0,0 pour l'arbitrage, A.268], seuil de 1,67 non franchi, 0,17 de reserve [calcul]. Il est **sous C1 et C3, encore a verifier** : si l'une est fausse, 2,0 [calcul : 1,5 plus 0,5], 0,33 au-dessus du seuil [calcul], ecrit par `nadia-prof` avant que `P1` commence (A.268). La table d'A.268 n'est pas corrigee.
 
 **Sur `P1`, a mon niveau** : rien ne change a l'ordre ni au contenu de `P1`, et le cout ne l'arrete pas. Le planning exige que `sofia-sm` lise le cout de `P0` avant d'inscrire la premiere paire : ce cout est 1,5 **apres** le commit de `marc-dev` (C3) et la relecture des trois lignes par `nadia-prof` (C1), pas avant. Si elle ecrit 2,0, je refais la projection contre le plafond de 20,20 a partir du cout mesure de `-01` ; je ne releve aucun plafond, ne change pas l'engage de 13,50, ne retire aucun lot.
 
 #### Q3. La seconde lecture de `-01` s'impute-t-elle sur la marge de 1,5 ?
 
-**Oui : 0,50 sur les 1,5, il reste 1,0, soit deux rejeux a 0,50 [calcul].** Je l'ecris comme une lecture des textes de `nadia-prof`, qui ne laissent pas d'autre imputation, et non comme un choix :
+**Oui : 0,50 sur les 1,5, il reste 1,0, soit deux rejeux a 0,50 [calcul].** **[corrige par A.270 : non, la seconde lecture est hors marge, la marge de 1,5 reste entiere, trois rejeux ; texte d'origine conserve]** Je l'ecris comme une lecture des textes de `nadia-prof`, qui ne laissent pas d'autre imputation, et non comme un choix :
 
 - une seconde lecture avant `verify` *"n'est pas dans le lot : elle va sur la marge"* (`arbitrage-nadia-palier-5-lp7-d5.md`, ligne 262) ;
 - *"la marge est celle d'une instance"*, une ligne de marge par instance, consommee par un lot de cette instance (`reponse-nadia-palier-5-rejeu-horloge-et-double-compte.md`, 1.1) ; `-01` est un lot de l'instance neuve, dont la marge est 1,5 (A.265) ;
 - `P3` : *"autant que la marge en paie"*. Le nombre de rejeux est donc la consequence de ce que la marge a deja consomme, et non un nombre pose d'avance.
 
-**Consequence** [calcul] : si l'horloge n'est pas rejouee, deux rejeux sur les neuf lots, un troisieme etant *hors marge* donc au palier 10 (texte de `P3`). Si l'horloge est rejouee avec la marge de B libre, son rejeu prend d'abord les 0,50 de B (A.267), et les trois rejeux restent possibles (deux sur la marge de 1,5, un sur celle de B). Toute autre seconde lecture prise sur la marge de 1,5 retire de meme 0,50. L'engage de 13,50 ne change pas : la marge est dans l'engage, elle est consommee.
+**[corrige par A.270 : la consequence qui suit part d'une marge entamee ; elle ne tient plus]** **Consequence** [calcul] : si l'horloge n'est pas rejouee, deux rejeux sur les neuf lots, un troisieme etant *hors marge* donc au palier 10 (texte de `P3`). Si l'horloge est rejouee avec la marge de B libre, son rejeu prend d'abord les 0,50 de B (A.267), et les trois rejeux restent possibles (deux sur la marge de 1,5, un sur celle de B). Toute autre seconde lecture prise sur la marge de 1,5 retire de meme 0,50. L'engage de 13,50 ne change pas : la marge est dans l'engage, elle est consommee.
 
-**Ce que je ne tranche pas.** `P3` est un texte de `nadia-prof` : je ne le reecris pas. *"Trois rejeux pour les dix lots"* sont les mots de l'utilisatrice (A.266) ; je ne dis pas qu'elle les voulait garantis quand la marge est entamee, et je ne lui pose aucune question aujourd'hui. **Si trois lots sont refuses avec l'horloge hors des trois**, le troisieme rejeu sort de la marge : ce sera a elle de le dire, par `sofia-sm`, a ce moment-la. `nadia-prof` peut contredire cette lecture en l'ecrivant ; son texte l'emporte.
+**Ce que je ne tranche pas.** `P3` est un texte de `nadia-prof` : je ne le reecris pas. *"Trois rejeux pour les dix lots"* sont les mots de l'utilisatrice (A.266) ; je ne dis pas qu'elle les voulait garantis quand la marge est entamee, et je ne lui pose aucune question aujourd'hui. **Si trois lots sont refuses avec l'horloge hors des trois**, le troisieme rejeu sort de la marge : ce sera a elle de le dire, par `sofia-sm`, a ce moment-la. **[corrige par A.270 : elle l'a dit, trois rejeux garantis ; le troisieme rejeu est paye par la marge]** `nadia-prof` peut contredire cette lecture en l'ecrivant ; son texte l'emporte.
 
 #### Q4. Le renvoi *"A.244"*
 
@@ -3979,6 +3981,50 @@ Pourquoi C2 tient, avec ses mots et non une propriete plus commode :
 |---|---|
 | `nadia-prof` | ecrire C1 et C3 vraies ou fausses en relisant les trois lignes sur le commit de `marc-dev` ; contredire par ecrit la lecture de Q3 si elle n'est pas la sienne ; ecrire 2,0 avant `P1` si l'une est fausse |
 | `marc-dev` | les trois lignes du YAML, au texte de la section 4 de l'arbitrage de `nadia-prof`, et elles seules (C3) |
-| `sofia-sm` | lire le cout de `P0` apres le commit de `marc-dev` et la relecture ; la ligne de registre de l'instance neuve porte 0,50 de marge consomme par la seconde lecture de `-01` ; `planning.md` n'est pas modifie par cet amendement |
+| `sofia-sm` | lire le cout de `P0` apres le commit de `marc-dev` et la relecture ; la ligne de registre de l'instance neuve porte 0,50 de marge consomme par la seconde lecture de `-01` **[corrige par A.270 : 0,00 de marge consomme ; le 0,50 va sur la ligne hors marge]** ; `planning.md` n'est pas modifie par cet amendement |
 
 **Matrice** : aucun statut ne change. **Report** : aucun report de sprint. **Changement de code decide, avec proprietaire** : aucun decide ici ; la correction des trois lignes est portee par `marc-dev` sur l'arbitrage de `nadia-prof`, dans le lot `S57-BR-QLM-CE1-01`. **Ne fait pas** : ne prononce aucun Done, ne juge aucune formulation, ne fixe ni ne releve aucun plafond, ne change pas l'engage, ne reecrit pas `P3`, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue (C1 a C3 restent les reperes locaux d'A.268).
+
+## Amendement du 2026-10-26, quarante-huitieme (`camille-po`, palier 5 : l'utilisatrice arbitre "trois rejeux garantis" ; la seconde lecture de `-01` sort de la marge de 1,5)
+
+**Montants, en toutes lettres : l'engage du palier 9 ne change pas. Il etait de 13,50 avant cet amendement, il est de 13,50 apres. Le plafond de `PAR-8` ne change pas : 20,20 avant, 20,20 apres.** La marge de 1,5 de l'instance neuve laissait 1,0 de disponible pour les rejeux apres la seconde lecture de `-01` (A.269) ; elle en laisse **1,5** apres cet amendement. Ce sont les seuls chiffres qui bougent, et ce qui paie la seconde lecture, 0,50, change de ligne : de la marge a la ligne hors marge du registre.
+
+Annotation datee. **Aucun amendement anterieur n'est reecrit** ; les passages d'A.268 et d'A.269 que cet arbitrage revoque portent le marqueur *[corrige par A.270]*, texte original conserve. **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : base `3f4da89d`, branche `s57-p5-camille-270`. Sources, lues au disque : A.265 a A.269 ; `planning.md` (amendements du 2026-10-26 de `sofia-sm`). Les chiffres sont des calculs, marques **[calcul]**.
+
+### A.270 Trois rejeux garantis : la seconde lecture de `-01` est imputee hors marge, A.269 Q3 est revoquee
+
+**1. Ses mots, reportes.** Arbitrage de l'utilisatrice du 2026-10-26, cite et rien d'autre : *"trois rejeux garantis"*. Il tranche la question qu'A.268 avait laissee ouverte et qu'A.269 (Q3) avait fermee par une lecture des textes de `nadia-prof` : la marge de 1,5 de l'instance neuve, entamee de 0,50 par la seconde lecture de `-01`, ne laissait que deux rejeux a 0,50. **Je lis *"garantis"* comme : 1,5 de marge disponible pour les rejeux apres la seconde lecture de `-01`**, soit trois rejeux a 0,50 (A.199), sans condition sur ce que la marge a deja consomme. C'est la lecture de la consigne qui m'a ete transmise ; elle ne dit pas ce que l'utilisatrice pensait de la voie budgetaire.
+
+**2. Deux voies [calcul].**
+
+| Voie | Ce qu'elle fait | Engage | Marge disponible aux rejeux | Cas haut mesure (17,70, A.267) |
+|---|---|---|---|---|
+| (a) seconde lecture hors marge | le 0,50 est impute sur la ligne hors marge du registre, c'est-a-dire le depassement de l'engage (A.247) | **13,50, inchange** | 1,5 | 17,70 plus 0,50 = **18,20**, soit **2,00 sous 20,20** |
+| (b) marge relevee de 0,5 | la marge passe a 2,0, la seconde lecture en prend 0,50, il reste 1,5 | **14,00 (13,50 plus 0,50)** | 1,5 | 14,00 plus 4,20 = **18,20**, soit **2,00 sous 20,20** |
+
+Les deux voies tiennent sous 20,20 au cas haut mesure : 18,20 dans les deux cas, car le cout reel est le meme, seule change la ligne qui le porte. Elles ne se distinguent donc pas par le plafond. **Retenue : (a).**
+
+**Pourquoi (a)** : elle ne change aucun montant que l'utilisatrice a arbitre (engage de 13,50, A.265 ; plafond de 20,20, A.266 et A.267), alors que (b) releverait l'engage de 0,50, et l'utilisatrice n'a demande ni de l'engager davantage ni de toucher a la marge, seulement des rejeux garantis.
+
+**3. Le calcul de la voie (a).**
+
+- Surcout du cas haut mesure : 10 lots a 0,42 = 4,20 ; 13,50 plus 4,20 = 17,70 (A.267). Le 0,50 de la seconde lecture de `-01` s'y ajoute en entier : 17,70 plus 0,50 = **18,20** [calcul]. Je ne retranche pas les 0,42 que `-01` y compte deja (le chiffre serait 17,78) : le 0,50 d'A.268 est l'ecart mesure de `P0` au bareme, et je prends le plus haut des deux chiffres.
+- Ecart au plafond : 20,20 moins 18,20 = **2,00** [calcul], contre 2,50 en A.267. Aucun relevement du plafond.
+- Le depassement de l'engage au registre (A.247), borne a 4,20 en A.267, l'est maintenant a **4,70** [calcul : 4,20 plus 0,50] ; le plafond de 20,20 n'est pas atteint.
+- **Ce que la borne de 0,67 par lot donnerait.** A.267 la tient pour un double compte (13,50 plus 6,70 = 20,20) ; si on la prenait quand meme, 20,20 plus 0,50 = 20,70, soit 0,50 au-dessus du plafond, **dans les deux voies** (14,00 plus 6,70 = 20,70). Je le dis parce que cela ne distingue pas (a) de (b) et que la marge sous le plafond n'est large qu'au cas mesure.
+- **Une autre seconde lecture consomme cette reserve.** Au cas haut mesure, il reste 2,00 sous le plafond, soit **quatre** autres lectures a 0,50 avant d'atteindre 20,20 [calcul : 2,00 divise par 0,50] ; la cinquieme depasse le plafond et va au registre (A.247), sans etre une condition de Done (A.268).
+
+**4. Portee de l'imputation.** Elle vaut pour **toute seconde lecture avant `verify` d'un lot de l'instance neuve** (dix lots), pas seulement `-01` : sinon la garantie tomberait des qu'un autre lot en aurait une. Elle ne touche pas le cas de l'horloge tranche par `nadia-prof` (A.267, 1.2) : le rejeu de l'horloge consomme d'abord les 0,50 de la marge de B, comprise dans ses 2,50, et compte parmi les trois rejeux ; cela ne change pas.
+
+**5. La regle `P3` ne change pas.** Reformulee par `nadia-prof` (A.265) : un rejeu au plus par lot, aucun avant les dix premiers audits, autant de rejeux que la marge en paie. Avec la marge de 1,5 entiere, *"autant que la marge en paie"* vaut trois, ce que l'arbitrage demande. Le texte n'a aucune raison d'etre reecrit et je ne le reecris pas (c'est un texte de `nadia-prof`). L'ordre neuf audits, horloge, puis rejeux est inchange.
+
+**6. Ce que l'imputation contredit dans les textes de `nadia-prof`, non reecrits.** `arbitrage-nadia-palier-5-lp7-d5.md` (ligne 262) et `docs/backlog/backlog.md` (ligne 23991) ecrivent qu'une seconde lecture avant `verify` va sur la marge. Pour l'instance neuve, l'arbitrage de l'utilisatrice l'emporte sur cette imputation ; **je ne modifie aucun de ces deux fichiers**. `nadia-prof` peut contredire cette lecture en l'ecrivant, et la contradiction serait alors a router a l'utilisatrice par `sofia-sm`.
+
+**7. Le cout de `P0` ne change pas** : 1,5 au bareme (1,0 plus 0,5 de seconde lecture plus 0,0 pour l'arbitrage, A.268), seuil de 1,67, 0,17 de reserve. Seule la ligne qui porte le 0,50 change.
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | `planning.md` : la ligne de registre de l'instance neuve porte **0,00** de marge consomme par la seconde lecture de `-01` (et non 0,50, A.269) ; le 0,50 s'inscrit sur la ligne hors marge ; l'engage reste 13,50, la marge 1,5 ; cet amendement ne modifie pas `planning.md` |
+| `nadia-prof` | confirmer ou contredire par ecrit le point 6 ; son fichier de relecture des trois indices et de la marge, en cours, n'est pas dans `round-two` au moment ou j'ecris et je ne l'ai pas lu |
+
+**Matrice** : aucun statut ne change. **Report** : aucun report de sprint. **Changement de code decide, avec proprietaire** : aucun ; la seule modification a porter est dans `planning.md`, a `sofia-sm`. **Ne fait pas** : ne prononce aucun Done, ne releve aucun plafond, ne change pas l'engage, ne reecrit pas `P3`, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`.
