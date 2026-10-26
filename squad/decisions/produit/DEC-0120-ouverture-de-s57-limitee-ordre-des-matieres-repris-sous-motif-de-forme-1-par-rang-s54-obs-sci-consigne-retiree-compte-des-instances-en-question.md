@@ -4011,8 +4011,8 @@ Les deux voies tiennent sous 20,20 au cas haut mesure : 18,20 dans les deux cas,
 - Surcout du cas haut mesure : 10 lots a 0,42 = 4,20 ; 13,50 plus 4,20 = 17,70 (A.267). Le 0,50 de la seconde lecture de `-01` s'y ajoute en entier : 17,70 plus 0,50 = **18,20** [calcul]. Je ne retranche pas les 0,42 que `-01` y compte deja (le chiffre serait 17,78) : le 0,50 d'A.268 est l'ecart mesure de `P0` au bareme, et je prends le plus haut des deux chiffres.
 - Ecart au plafond : 20,20 moins 18,20 = **2,00** [calcul], contre 2,50 en A.267. Aucun relevement du plafond.
 - Le depassement de l'engage au registre (A.247), borne a 4,20 en A.267, l'est maintenant a **4,70** [calcul : 4,20 plus 0,50] ; le plafond de 20,20 n'est pas atteint.
-- **Ce que la borne de 0,67 par lot donnerait.** A.267 la tient pour un double compte (13,50 plus 6,70 = 20,20) ; si on la prenait quand meme, 20,20 plus 0,50 = 20,70, soit 0,50 au-dessus du plafond, **dans les deux voies** (14,00 plus 6,70 = 20,70). Je le dis parce que cela ne distingue pas (a) de (b) et que la marge sous le plafond n'est large qu'au cas mesure.
-- **Une autre seconde lecture consomme cette reserve.** Au cas haut mesure, il reste 2,00 sous le plafond, soit **quatre** autres lectures a 0,50 avant d'atteindre 20,20 [calcul : 2,00 divise par 0,50] ; la cinquieme depasse le plafond et va au registre (A.247), sans etre une condition de Done (A.268).
+- **Ce que la borne de 0,67 par lot donnerait.** A.267 la tient pour un double compte (13,50 plus 6,70 = 20,20) ; si on la prenait quand meme, 20,20 plus 0,50 = 20,70, soit 0,50 au-dessus du plafond, **dans les deux voies** (14,00 plus 6,70 = 20,70). Je le dis parce que cela ne distingue pas (a) de (b) et que la marge sous le plafond n'est large qu'au cas mesure. **[corrige par A.273 : le plafond est 22,20 ; 20,70 serait 1,50 sous lui, non 0,50 au-dessus ; texte d'origine conserve]**
+- **Une autre seconde lecture consomme cette reserve.** Au cas haut mesure, il reste 2,00 sous le plafond, soit **quatre** autres lectures a 0,50 avant d'atteindre 20,20 [calcul : 2,00 divise par 0,50] ; la cinquieme depasse le plafond et va au registre (A.247), sans etre une condition de Done (A.268). **[corrige par A.273 : le plafond est 22,20 ; la regle de depassement au registre vaut au-dela de 22,20 ; le cas haut en vigueur est celui d'A.273, 18,70 ; texte d'origine conserve]**
 
 **4. Portee de l'imputation.** Elle vaut pour **toute seconde lecture avant `verify` d'un lot de l'instance neuve** (dix lots), pas seulement `-01` : sinon la garantie tomberait des qu'un autre lot en aurait une. Elle ne touche pas le cas de l'horloge tranche par `nadia-prof` (A.267, 1.2) : le rejeu de l'horloge consomme d'abord les 0,50 de la marge de B, comprise dans ses 2,50, et compte parmi les trois rejeux ; cela ne change pas.
 
@@ -4092,7 +4092,7 @@ C2 tombe : relire une proposition remplacee, c'est juger un item contre sa liste
 | **cout de `-03`** | **1,5** |
 
 - **Marge de l'instance neuve : 1,5, entiere** (trois rejeux, `P3`). La ligne hors marge du registre passe de 0,50 (`-01`) a **1,00** [calcul : 0,50 plus 0,50], si la relecture est faite telle que prevue.
-- **Cas haut mesure** (A.270) : 18,20 plus 0,50 = **18,70**, soit **1,50 sous 20,20** [calcul]. Je garde la methode d'A.270 point 3 : je ne retranche pas ce que le lot compte deja dans les 0,42. Il reste **trois** autres secondes lectures a 0,50 avant d'atteindre 20,20 [calcul : 1,50 divise par 0,50] ; la quatrieme depasse le plafond et va au registre (A.247), sans etre une condition de Done (A.268). A.270 en comptait quatre avant `-03`.
+- **Cas haut mesure** (A.270) : 18,20 plus 0,50 = **18,70**, soit **1,50 sous 20,20** [calcul]. Je garde la methode d'A.270 point 3 : je ne retranche pas ce que le lot compte deja dans les 0,42. Il reste **trois** autres secondes lectures a 0,50 avant d'atteindre 20,20 [calcul : 1,50 divise par 0,50] ; la quatrieme depasse le plafond et va au registre (A.247), sans etre une condition de Done (A.268). A.270 en comptait quatre avant `-03`. **[corrige par A.273 : le plafond est 22,20 ; 18,70 est 3,50 sous lui, soit sept autres secondes lectures a 0,50 avant de l'atteindre, la huitieme depasse ; texte d'origine conserve]**
 - Le depassement de l'engage au registre, borne a 4,70 par A.270, l'est a **5,20** [calcul] ; le plafond n'est pas atteint.
 - **A la consommation** : non mesure. `nadia-prof` a mesure 22 min 52 s pour sa lecture (section 8) et ecrit qu'aucune regle ne convertit une duree en bareme ; je n'en pose pas.
 
@@ -4113,3 +4113,94 @@ C2 tombe : relire une proposition remplacee, c'est juger un item contre sa liste
 | `sofia-sm` | a la lecture de ce fichier, inscrire 0,50 sur la ligne hors marge pour `-03` (1,00 cumule), par amendement date ; **cet amendement ne modifie pas `planning.md`** ; si une troisieme lecture est ecrite, me router le reclassement |
 
 **Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; la question Q3 d'A.271 (quatrieme rejeu) reste differee, inchangee. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne juge aucune formulation ni aucun distracteur, ne pose aucun seuil de lot, ne releve aucun plafond, ne change pas l'engage, ne reecrit pas `P3`, n'amende ni `planning.md`, ni le backlog, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue (C1 a C3 restent des reperes locaux).
+
+## Amendement du 2026-10-26, cinquante et unieme (`camille-po`, palier 5 : l'utilisatrice releve le plafond de `PAR-8` a 22,20 et demande des premiers jets plus propres)
+
+**Montants, en toutes lettres.** Le plafond de `PAR-8` du palier 9 etait de 20,20 avant cet amendement, il est de **22,20** apres. L'engage du palier 9 etait de 13,50, il reste **13,50** : l'utilisatrice n'a rien dit de l'engage, je ne le change pas. La marge de l'instance neuve etait de 1,5, elle reste **1,5**. Cas haut apres `-03` : **18,70** (A.272). **Projection si chacun des sept lots restants (`-02`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12`) a une seconde lecture a 0,50 hors marge : 18,70 plus 7 fois 0,50 = 22,20, soit pile le plafond, sans reserve** [calcul].
+
+Annotation datee. **Aucun amendement anterieur n'est reecrit** ; les passages qui citent 20,20 comme plafond en vigueur portent le marqueur *[corrige par A.273]*, texte d'origine conserve (point 1, fin). **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : base `1f6af11c`, branche `s57-p5-camille-273`. Sources lues au disque : `DEC-0120` A.263 a A.272 ; `squad/lessons.md` (section "s57 (hors sprint)") ; dans `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/` : `lecture-nadia-premier-jet-ce1-qlm-etapes-de-developpement.md`, `relecture-nadia-corrections-ce1-qlm-etapes-de-developpement.md`, `relecture-nadia-trois-indices-ce1-qlm-etapes-de-developpement.md` (`-01`), `lecture-nadia-premier-jet-ce1-qlm-ce-que-mangent-les-animaux.md` (`-02`), `lecture-nadia-premier-jet-ce1-qlm-besoins-de-la-plante.md` et `relecture-nadia-corrections-ce1-qlm-besoins-de-la-plante.md` (`-03`). Les chiffres sont des calculs, marques **[calcul]**. Aucune mesure n'a ete lancee.
+
+### A.273 Plafond de `PAR-8` a 22,20 ; autocontrole du premier jet
+
+**Ses mots, reportes** (2026-10-26, relayes par l'agent lanceur, forme 2 de `DEC-0062` G, en reponse a la question Q1 que celui-ci lui posait ; trois options : O1 garder 20,20 et laisser au registre, O2 relever a 22,20, O3 demander des premiers jets plus propres) : *"on releve a 22,20 et on demande aussi que les premiers jets soient plus propres"*. Elle retient **O2 et O3**. Le contexte de la question : le cas haut apres `-03` est 18,70, et chaque lot restant peut ajouter une seconde lecture a 0,5 hors marge (A.270, A.272).
+
+#### Point 1. Le plafond passe de 20,20 a 22,20
+
+| Grandeur | Avant | Apres | Ecart au plafond de 22,20 |
+|---|---|---|---|
+| plafond de `PAR-8` du palier 9 | 20,20 | **22,20** | - |
+| engage du palier 9 | 13,50 | **13,50**, inchange | 8,70 |
+| marge de l'instance neuve | 1,5 | **1,5**, inchangee | - |
+| cas haut apres `-03` (A.272) | 18,70, soit 1,50 sous 20,20 | 18,70 | **3,50** sous le plafond |
+| projection, sept secondes lectures de plus | 22,20, soit 2,00 au-dessus de 20,20 | 22,20 | **0** |
+
+Verification sur mes chiffres : 22,20 moins 20,20 = 2,00 ; 18,70 plus 7 fois 0,50 = 18,70 plus 3,50 = 22,20 ; 22,20 moins 13,50 = 8,70 ; 22,20 moins 18,70 = 3,50, soit sept secondes lectures a 0,50.
+
+**(a) C'est une projection, pas une mesure.** Elle suppose une seconde lecture a 0,50 hors marge sur **chacun** des sept lots et aucune troisieme lecture (0,50 de plus chacune, A.272, regle point 3). Elle garde la methode d'A.270 point 3 : je ne retranche pas ce que chaque lot compte deja dans les 0,42, donc le chiffre reel serait plus bas sur ce point. Elle n'est pas une prevision : `-02` a un premier jet lu (6 items a corriger), `-04` et suivants n'ont pas de premier jet. Les deux seules secondes lectures **mesurees** sont celles de `-01` et de `-03`, deja dans les 18,70. **L'horloge `MAT-CE1-11` n'est pas dans les sept** : la projection ne lui compte aucune seconde lecture. Les textes ne disent pas si la seconde lecture de son premier jet va hors marge (A.270 point 4 reserve le "rejeu" de l'horloge a la marge de B, A.267 point 2, et ne parle pas de sa seconde lecture) ; si elle s'y ajoutait a 0,50, la projection serait de 22,70, soit 0,50 au-dessus de 22,20 [calcul]. Question ouverte `Q-273-1` plus bas.
+
+**(b) La regle d'A.270 sur le depassement.** Texte en vigueur (A.270 point 3, A.272) : un cout au-dela du plafond *"va au registre (A.247), sans etre une condition de Done (A.268)"*. Elle ne change pas de nature, **elle change de seuil : elle vaut maintenant au-dela de 22,20**. Un cout qui porte le total au-dela de 22,20 s'inscrit au registre ; il ne bloque le Done d'aucun lot, et `nadia-prof` reste seule a le prononcer.
+
+**(c) Les rejeux de la marge de 1,5 s'ajoutent-ils au cas haut ? Ce que les textes disent, sans extrapoler.**
+- Les trois rejeux a 0,50 sont payes par la marge de 1,5, et **le bareme de 13,50 contient la marge** : *"un bareme qui contient la marge (12,50 et 13,50 la contiennent)"* (A.267 point 2, de `nadia-prof`). Les ajouter a 13,50 serait le **double compte** qu'A.267 a tranche (les 0,67 d'A.200 *"ajoutent la marge consommee (1,50) a un bareme qui la contient deja"*). Elle ecrit aussi, des rejeux : *"au plus 1,50 consomme au palier 9, dans tous les cas"* (A.267 point 3). **Sur ce point, les textes disent non : ils ne s'ajoutent pas au cas haut.**
+- Un rejeu **au-dela des trois** *"sort de la marge et va au palier 10"* (`P3`, A.265 ; A.271 point 4 pour le quatrieme). **Les textes ne disent pas si ce cout compte contre le plafond de `PAR-8` du palier 9 ou contre celui d'un palier 10.** C'est une lacune, pas une lecture.
+- Les 0,42 par lot viennent du registre du palier 4, ou les rejeux etaient factures **hors** marge de 0,5 (A.267 point 2 : 2,50 de rejeux hors marge). Avec une marge de 1,5, une partie de ces rejeux tomberait dans la marge, donc dans les 13,50 : A.267 point 4 l'ecrit (*"des rejeux factures hors marge au palier 4 tomberaient dans une marge de 1,5. Aucun registre ne dit de combien"*). **Je ne sais donc pas si 17,70 compte deux fois ou une fois les rejeux** ; je ne le devine pas.
+
+**Question ouverte `Q-273-1`** (premiere inscription, aucun report) : (i) un rejeu au-dela des trois de la marge compte-t-il contre le plafond de 22,20 du palier 9, ou contre un autre ? (ii) la seconde lecture du premier jet de l'horloge est-elle 0,50 hors marge, comme celle d'un lot de l'instance neuve ? **A qui elle revient** : `nadia-prof` pour (ii) et pour la part de (i) qui est un chiffre du registre (elle tient le bareme et le registre, A.267) ; si sa reponse est que le plafond couvre aussi le palier 10, c'est a l'utilisatrice de dire si 22,20 vaut pour les deux, par `sofia-sm`. Rien ne bloque aujourd'hui : aucun rejeu n'est du, et aucun ne l'est avant la fermeture des dix premiers audits (`P3`).
+
+**Passages anterieurs qui citent 20,20 comme plafond en vigueur : marques *[corrige par A.273]*, texte d'origine conserve.**
+
+| Fichier | Passage | Pourquoi marque |
+|---|---|---|
+| `DEC-0120` A.270 point 3 | puce *"Ce que la borne de 0,67 par lot donnerait"* (20,70, *"0,50 au-dessus du plafond"*) | lit un plafond de 20,20 comme valeur courante |
+| `DEC-0120` A.270 point 3 | puce *"Une autre seconde lecture consomme cette reserve"* (quatre lectures, la cinquieme depasse) | la reserve et le seuil du registre sont calcules sous 20,20 |
+| `DEC-0120` A.272, section Cout | puce *"Cas haut mesure"* (1,50 sous 20,20, trois autres lectures) | meme motif |
+| `DEC-index.md` | ligne d'amendement d'A.272 : *"cas haut 18,70 (1,50 sous 20,20)"* | meme motif |
+
+**Passages historiques, non marques, a dessein.** A.266 et A.267 consignent le plafond **tel qu'il etait fixe a ce moment-la**, avec ses calculs (19,20 puis 20,20) : ce sont des decisions datees, et A.273 en est une autre, pas leur correction. Idem la phrase d'A.270 *"20,20 avant, 20,20 apres"* (elle decrit ce que cet amendement-la ne change pas), les lignes `Statut` d'A.271 et d'A.272, les tables d'A.270 point 2 (calculees quand le plafond etait 20,20) et les lignes d'index d'A.266, A.267 et A.270. Le plafond **en vigueur** est 22,20.
+
+**Hors de ce fichier, a `sofia-sm`** : `planning.md` cite 20,20 (amendement du 2026-10-26 sur le plafond, sections 1 et 2 ; amendement sur le registre, ligne du cas haut) ; `nadia-prof` le cite dans `reponse-nadia-palier-5-rejeu-horloge-et-double-compte.md` et dans `relecture-nadia-trois-indices-ce1-qlm-etapes-de-developpement.md`. **Je ne modifie aucun de ces fichiers** : `planning.md` est a `sofia-sm`, les fichiers de `nadia-prof` sont les siens et datent du moment ou le plafond etait 20,20.
+
+#### Point 2. Des premiers jets plus propres : un autocontrole, pas une porte
+
+**Ce que je traduis.** *"Les premiers jets soient plus propres"* : moins de corrections demandees par `nadia-prof` apres sa lecture du premier jet, donc moins de secondes lectures (0,50 chacune, hors marge). **Je le traduis en une regle de travail et rien d'autre** : aucun cout neuf (l'autocontrole est compris dans le 1,0 du lot, *"lecture avant `verify` et correction qui la suit comprises"*), aucun seuil, aucune ligne de registre, aucun identifiant de condition alloue (les lettres ci-dessous sont des reperes locaux). **Il ne touche pas au pouvoir de `nadia-prof`** : elle seule lit, juge et prononce le Done pedagogique ; je ne pose aucun Done et je ne juge aucun item.
+
+**Les defauts : je n'ecris que ceux qui reviennent sur plus d'un lot.** Source : les verdicts de `nadia-prof` sur les trois premiers jets lus (`-01` : 8 justes, 5 a corriger, 2 refuses en l'etat ; `-03` : 6 justes, 8 a corriger ; `-02` : 6 justes, 6 a corriger). Chaque defaut est cite avec ses mots ; je n'ai pas reformule ses motifs en proprietes plus commodes a tester.
+
+| Repere | Defaut | Lots et items | Source |
+|---|---|---|---|
+| **a** | un **indice qui donne la reponse** au lieu d'une methode (`TRV-CE1-5`), par sa forme ou par son verbe : *"un indice de la forme 'Pense a ce que (ce qui) ...' dont l'objet designe est la bonne reponse est une periphrase de la reponse"* ; *"le verbe porte la categorie par son sens, quel que soit l'animal"* | `-03` : items 3, 4, 5, 8, 10, 13 (six) ; `-02` : items 3, 6, 9, 12 (quatre) | `lecture-nadia-premier-jet-ce1-qlm-besoins-de-la-plante.md` section 2.1 ; `lecture-nadia-premier-jet-ce1-qlm-ce-que-mangent-les-animaux.md` section 2.1 |
+| **b** | un **distracteur que l'enfant ecarte sans la competence visee** : *"un distracteur qui s'ecarte sans la competence en jeu fait de l'item un choix entre deux"*, par la taille, le lieu, ou parce qu'il est impossible pour le sujet | `-01` : items 3, 7, 11 (une etape d'animal dans la vie d'une plante) ; `-03` : items 9, 14 (*elle donne des fruits*, *des fleurs* pour une graine) ; `-02` : item 2 (*des souris*, la taille), item 10 (*des poissons*, le lieu) | `lecture-nadia-premier-jet-ce1-qlm-etapes-de-developpement.md` section 2.1 ; `lecture-nadia-premier-jet-ce1-qlm-besoins-de-la-plante.md` section 2.2 ; `lecture-nadia-premier-jet-ce1-qlm-ce-que-mangent-les-animaux.md` section 2.2 |
+| **c** | une **source declaree qui est circulaire** (`QMT-CE1-2`) : *"fait du test la source de lui-meme"* ; *"fait d'une demande de source sa propre source"* | `-03` : `I3`, point 8 de la section 5 ; `-02` : section 1, point 8 de la section 5 | `lecture-nadia-premier-jet-ce1-qlm-besoins-de-la-plante.md` section 3 (`I3`) ; `lecture-nadia-premier-jet-ce1-qlm-ce-que-mangent-les-animaux.md` section 1 |
+
+**Defauts que je n'ecris pas, avec la raison, verifiee dans ses textes.**
+- *Un compte limite exact (`TRV-CE1-2`)* : aucun lot ne recoit de correction pour ce motif. `-01` : 5 sur 15 (6 apres correction) ; `-02` : 3 sur 12 ; `-03` : 7 sur 14, au plafond, mesure par `marc-dev` (`I5`) et confirme sans correction. Un compte exact n'est pas un defaut recurrent : le premier jet y tient la lettre.
+- *Une condition lue plus strictement ou plus largement que la lettre sans que le developpeur le dise* : dans les trois lots, `marc-dev` **ecrit** ses lectures (4.1 a 4.3 de `-01` ; `I1` a `I6` de `-03` ; `I1` a `I10` de `-02`). `nadia-prof` en reformule quelques-unes (`I1` et `I8` de `-02`, `I2` de `-03`), mais la lecture etait dite : ce n'est pas un defaut d'autocontrole, c'est la procedure qui fonctionne.
+- *Un item resolu avec un paquet de CP* (`NRC-CE1-1`, item 6 de `-01`), *un indice mal construit* (`-01` seul), *la garde `S4` de `-02`* (commit anterieur a sa lecture de `-03`, ce qu'elle ecrit elle-meme) : un seul lot chacun.
+
+**L'autocontrole de `marc-dev`, avant de commiter un premier jet** (lots `-04`, `-05`, `-06`, `-08`, `-10`, `-12` et tout lot dont le premier jet n'est pas encore commite ; `-02` est deja lu et n'est pas concerne). Il **rend compte dans son rapport de premier jet**, en **une ligne par defaut** : *fait* ou *non fait*, et les items sur lesquels il l'a fait.
+
+| Ligne du rapport | Ce que `marc-dev` fait | Ce qu'il ecrit |
+|---|---|---|
+| **a** indices | relire chaque indice du paquet et noter si son objet est la bonne reponse (periphrase) ou si son verbe la porte par son sens | fait / non fait ; les items relus ; les items dont il doute, a lire par `nadia-prof` |
+| **b** distracteurs | relire chaque distracteur et noter si un enfant qui ne sait rien de la competence visee l'ecarterait par la taille, le lieu, ou parce qu'il est impossible pour le sujet | fait / non fait ; les items relus ; les items dont il doute |
+| **c** sources | relire la source citee dans le commentaire du paquet et noter si elle renvoie a autre chose que le test du paquet ou qu'un tableau dont l'en-tete demande lui-meme une source | fait / non fait ; si aucune source hors du paquet et de ses tests n'existe, il l'ecrit en toutes lettres plutot que de citer une source circulaire |
+
+**Ce que cette regle n'est pas.**
+- **Ce n'est pas une porte.** Un premier jet qui echoue a l'autocontrole (une ligne *non fait*, ou un defaut que `marc-dev` signale lui-meme) **n'est pas refuse pour ce motif**, et il n'est lu ni plus vite ni plus lentement. `nadia-prof` lit le premier jet comme elle le lit aujourd'hui ; son jugement sur chaque item est le sien, et *fait* ne vaut jamais *juste*. Elle peut contredire une ligne du rapport en l'ecrivant, sans que ce soit un manquement de `marc-dev`.
+- **Elle ne pose aucun seuil** et ne promet aucun chiffre. L'objectif est de **diminuer le nombre de secondes lectures** ; je n'ecris ni nombre de corrections attendu, ni nombre de secondes lectures evitees. Si les premiers jets de `-04` et suivants ne sont pas plus propres, `nadia-prof` le dit dans ses lectures et le sujet se rouvre a ce moment-la, pas par un compteur.
+- **Elle n'ajoute ni ne retire aucun critere** : les criteres de `nadia-prof` restent ceux de ses textes. Si elle veut ajouter ou retirer un defaut de cette liste, elle l'ecrit ; la liste est celle de ses verdicts sur trois lots, pas un catalogue.
+- **Elle ne remplace ni la relecture redactionnelle** du `relecteur-pedagogique` **ni la porte technique.**
+
+Le rapport de premier jet de `marc-dev` est le seul endroit ou l'autocontrole s'ecrit.
+
+### Routage
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | **inscrire dans `planning.md`** (je ne le fais pas) : (1) le plafond de `PAR-8` du palier 9 a **22,20** (au lieu de 20,20), engage 13,50 et marge 1,5 inchanges, cas haut apres `-03` 18,70, projection a 22,20 sans reserve, la regle de depassement au registre valant au-dela de 22,20 ; (2) la regle d'autocontrole du premier jet ci-dessus, comme etape de `marc-dev` **avant le commit du premier jet** de `-04` et suivants, avec les trois lignes de rapport (a, b, c), en precisant qu'elle n'est pas une porte et n'ajoute aucun cout, aucun seuil, aucun identifiant ; (3) le marqueur *[corrige par A.273]* sur les passages de `planning.md` qui citent 20,20 comme plafond en vigueur, texte d'origine conserve, en distinguant les passages historiques (decisions datees) des passages en vigueur ; (4) router `Q-273-1` a `nadia-prof` ; (5) l'amendement du meme jour sur le registre, que `sofia-sm` ecrit deja, porte ce plafond et ce cas haut |
+| `marc-dev` | appliquer l'autocontrole a chaque premier jet de `-04` et suivants, des qu'il est inscrit au planning par `sofia-sm` ; rendre compte en trois lignes (a, b, c) dans le rapport de premier jet |
+| `nadia-prof` | `Q-273-1` ; contredire par ecrit la liste a, b, c si elle n'est pas fidele a ses verdicts ; rien d'autre : aucun changement a sa lecture |
+| `theo-archi` | rien |
+| `yanis-qa` | rien : l'autocontrole n'est pas un critere d'acceptation, il ne se teste pas |
+
+**Matrice** : aucun statut ne change, `MATRICE-couverture.md` n'est pas modifiee ; aucune ligne ne passe a `couvert-valide`. **Report** : aucun report de sprint ; `Q-273-1` est une premiere inscription. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne juge aucun item ni aucun contenu, ne pose aucun cout ni aucun seuil, ne change ni l'engage ni la marge, ne reecrit pas `P3`, ne fixe aucun nombre de corrections attendu, n'amende ni `planning.md`, ni `backlog.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue (a, b, c et `Q-273-1` sont des reperes locaux).
