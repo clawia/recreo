@@ -1,0 +1,85 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif de la garde transverse."
+lignesDeReferentiel: ["QLM-CE1-01"]
+items:
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape du herbivore vient après l'œuf (sonde 01) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense à la vie de l'animal."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape vient après l'œuf (sonde 02) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense au mot carnivore."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape vient après l'œuf (sonde 03) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le omnivore", "la graine"]
+    indice: "Pense à la vie de l'animal."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape du reproduction vient après l'œuf (sonde 04) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense à la vie de l'animal."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape vient après l'œuf (sonde 05) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense au mot vieillissement."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape vient après l'œuf (sonde 06) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le fusion", "la graine"]
+    indice: "Pense à la vie de l'animal."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape du solidification vient après l'œuf (sonde 07) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense à la vie de l'animal."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape vient après l'œuf (sonde 08) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense au mot vaporisation."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape vient après l'œuf (sonde 09) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le évaporation", "la graine"]
+    indice: "Pense à la vie de l'animal."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape du condensation vient après l'œuf (sonde 10) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense à la vie de l'animal."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape vient après l'œuf (sonde 11) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense au mot conducteur."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape vient après l'œuf (sonde 12) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le isolant", "la graine"]
+    indice: "Pense à la vie de l'animal."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape du larve vient après l'œuf (sonde 13) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense à la vie de l'animal."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape vient après l'œuf (sonde 14) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense au mot plantule."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape vient après l'œuf (sonde 15) ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le légumineuse", "la graine"]
+    indice: "Pense à la vie de l'animal."

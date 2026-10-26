@@ -1,0 +1,20 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif de la garde transverse."
+lignesDeReferentiel: ["QLM-CE1-01"]
+items:
+  # TRV-CE1-2 : a, b
+  - enonce: "Dans la vie du papillon, quelle étape vient après l'œuf ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le têtard", "la graine"]
+    indice: "Pense à la vie de l'animal."
+  # TRV-CE1-2 : a, b
+  - enonce: "Dans la vie de la poule, quelle étape vient avant le poussin ?"
+    bonneReponse: "l'œuf"
+    distracteurs: ["la poule", "le têtard"]
+    indice: "Remonte la vie d'une poule."

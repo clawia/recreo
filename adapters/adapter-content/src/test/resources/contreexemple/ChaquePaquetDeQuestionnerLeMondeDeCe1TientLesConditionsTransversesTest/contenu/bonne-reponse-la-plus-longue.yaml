@@ -1,0 +1,25 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif de la garde transverse."
+lignesDeReferentiel: ["QLM-CE1-01"]
+items:
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape vient après l'œuf n°1 ?"
+    bonneReponse: "la jeune grenouille"
+    distracteurs: ["l'œuf", "le têtard"]
+    indice: "Indice numéro 1."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape vient après l'œuf n°2 ?"
+    bonneReponse: "la jeune grenouille"
+    distracteurs: ["l'œuf", "le têtard"]
+    indice: "Indice numéro 2."
+  # TRV-CE1-2 : a, b
+  - enonce: "Quelle étape vient après l'œuf n°3 ?"
+    bonneReponse: "la jeune grenouille"
+    distracteurs: ["l'œuf", "le têtard"]
+    indice: "Indice numéro 3."

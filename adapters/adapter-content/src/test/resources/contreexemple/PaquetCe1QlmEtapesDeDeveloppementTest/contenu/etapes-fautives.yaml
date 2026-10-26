@@ -1,0 +1,128 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif du test du paquet des etapes de developpement."
+lignesDeReferentiel: ["QLM-CE1-01"]
+#
+# Jeu fautif de PaquetCe1QlmEtapesDeDeveloppementTest : chaque item porte en commentaire le marqueur
+# de la sonde qu'il met a l'epreuve.
+#   famille a : une etape de la meme espece
+#   famille b : une etape d'une autre espece
+#   famille c : les memes etapes dans un autre ordre
+items:
+  # sonde 01
+  # DVP-CE1-1 espece : grenouille
+  # DVP-CE1-1 tache : voisine
+  # TRV-CE1-2 : a, b
+  - enonce: "Dans la vie de la grenouille, quelle est la première étape ?"
+    bonneReponse: "l'œuf"
+    distracteurs: ["la chenille", "le poussin"]
+    indice: "Pense a la vie."
+  # sonde 02
+  # DVP-CE1-1 espece : tortue
+  # DVP-CE1-1 tache : voisine
+  # TRV-CE1-2 : a, b
+  - enonce: "Dans la vie de la tortue, quelle étape vient juste après l'œuf ?"
+    bonneReponse: "la tortue"
+    distracteurs: ["la chenille", "le poussin"]
+    indice: "Pense a la vie."
+  # sonde 03
+  # DVP-CE1-1 espece : grenouille
+  # DVP-CE1-1 tache : voisine
+  # TRV-CE1-2 : a, b
+  - enonce: "Dans la vie de la grenouille, quelle étape vient juste après le têtard ?"
+    bonneReponse: "la jeune grenouille"
+    distracteurs: ["la grenouille", "la chenille"]
+    indice: "Pense a la vie."
+  # sonde 04
+  # DVP-CE1-1 espece : grenouille
+  # DVP-CE1-1 tache : voisine
+  # TRV-CE1-2 : a, b
+  - enonce: "Dans la vie de la grenouille, quelle étape vient juste après la grenouille ?"
+    bonneReponse: "l'œuf"
+    distracteurs: ["la chenille", "le poussin"]
+    indice: "Pense a la vie."
+  # sonde 05
+  # DVP-CE1-1 espece : grenouille
+  # DVP-CE1-1 tache : voisine
+  # TRV-CE1-2 : a, b
+  - enonce: "Dans la vie de la grenouille, quelle étape vient juste avant l'œuf ?"
+    bonneReponse: "la grenouille"
+    distracteurs: ["la chenille", "le poussin"]
+    indice: "Pense a la vie."
+  # sonde 06
+  # DVP-CE1-1 espece : grenouille
+  # DVP-CE1-1 tache : voisine
+  # TRV-CE1-2 : a, b
+  - enonce: "Dans la vie de la grenouille, quelle étape vient juste après le têtard ?"
+    bonneReponse: "l'œuf"
+    distracteurs: ["la chenille", "le poussin"]
+    indice: "Pense a la vie."
+  # sonde 07
+  # DVP-CE1-1 espece : grenouille
+  # DVP-CE1-1 tache : voisine
+  # TRV-CE1-2 : a, b
+  - enonce: "Dans la vie de la grenouille, quelle étape vient juste après le têtard ?"
+    bonneReponse: "la jeune grenouille"
+    distracteurs: ["le dauphin", "la chenille"]
+    indice: "Pense a la vie."
+  # sonde 08
+  # DVP-CE1-1 espece : grenouille
+  # DVP-CE1-1 tache : voisine
+  # TRV-CE1-2 : b, a
+  - enonce: "Dans la vie de la grenouille, quelle étape vient juste après le têtard ?"
+    bonneReponse: "la jeune grenouille"
+    distracteurs: ["l'œuf", "la chenille"]
+    indice: "Pense a la vie."
+  # sonde 09
+  # DVP-CE1-1 espece : poule
+  # DVP-CE1-1 tache : ordre
+  # TRV-CE1-2 : c, c
+  - enonce: "Dans la vie de la poule, quelle suite est dans le bon ordre ?"
+    bonneReponse: "poussin, œuf, poule"
+    distracteurs: ["œuf, poussin, poule", "poule, œuf, poussin"]
+    indice: "Pense a la vie."
+  # sonde 10
+  # DVP-CE1-1 espece : poule
+  # DVP-CE1-1 tache : ordre
+  # TRV-CE1-2 : c, c
+  - enonce: "Dans la vie de la poule, quelle suite est dans le bon ordre ?"
+    bonneReponse: "œuf, poussin, poule"
+    distracteurs: ["poussin, œuf, poule", "œuf, poussin, fleur"]
+    indice: "Pense a la vie."
+  # sonde 11
+  # DVP-CE1-1 espece : plante
+  # DVP-CE1-1 tache : voisine
+  # TRV-CE1-2 : a, b
+  - enonce: "Dans la vie d'une plante, quelle étape vient juste avant la jeune pousse ?"
+    bonneReponse: "la graine"
+    distracteurs: ["la fleur", "la chrysalide"]
+    indice: "Pour germer, la graine a besoin de lumière."
+  # sonde 12
+  # DVP-CE1-1 espece : plante
+  # DVP-CE1-1 tache : voisine
+  # TRV-CE1-2 : a, b
+  - enonce: "Dans la vie d'une plante, quelle étape vient juste avant la jeune pousse ?"
+    bonneReponse: "la graine a besoin de lumière pour germer"
+    distracteurs: ["la fleur", "la chrysalide"]
+    indice: "Pense a la vie."
+  # sonde 13
+  # DVP-CE1-1 espece : plante
+  # DVP-CE1-1 tache : voisine
+  # TRV-CE1-2 : a, b
+  - enonce: "De quoi la graine a-t-elle besoin pour germer ?"
+    bonneReponse: "de la lumière"
+    distracteurs: ["du sucre", "du lait"]
+    indice: "Pense a la vie."
+  # sonde 14
+  # DVP-CE1-1 espece : plante
+  # DVP-CE1-1 tache : voisine
+  # TRV-CE1-2 : a, b
+  - enonce: "De quoi la plante qui a déjà des feuilles a-t-elle besoin ?"
+    bonneReponse: "de la lumière"
+    distracteurs: ["du sucre", "du lait"]
+    indice: "Pense aux feuilles."
