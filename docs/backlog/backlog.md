@@ -24103,11 +24103,35 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
   3. **`RAL-CE1-2`, aucun aliment du commerce.** Entree : un item dont une proposition est *"des croquettes"*, un autre *"de la patee"*. Sortie : refuse. Aujourd'hui : **rouge**.
   4. **`RAL-CE1-2`, *"l'enonce le dit"*** (l'animal mange dans la nature ou a la ferme) : lu par `nadia-prof` a la lecture avant `verify`, aucune sonde ; je ne l'ecris pas comme propriete testable (`QC9`).
   5. **Les mots du CM1.** *herbivore*, *carnivore*, *omnivore* sont des mots exclus de `QMT-CE1-1` : couverts par la sonde de `QC6`, trois des quinze.
-  6. **`FER-3`, deux taches - PROPOSITION, a valider par `nadia-prof` avant le premier jet de `-02`, non tranchee [corrige le 2026-10-26 13:58 (UTC+01:00), amendement F5 de `planning.md` (13:35), section 4 point 5 : la story ne nommait aucune seconde tache ; texte d'origine conserve, critere ajoute]**. Cadre : rien de nouveau, la seconde tache n'utilise que ce que `RAL-CE1-1` autorise deja (*"ou un aliment nomme"*), ses conditions `RAL-CE1-1` et `RAL-CE1-2` et le cadre de la story (animaux de la nature ou de la ferme, aucun aliment du commerce, aucun des quatre animaux exclus). Aucune competence, aucun identifiant, aucune condition nouvelle.
-     - **Tache A, categorie** : *"Que mange la vache dans le pre ?"* appelle *des vegetaux*, *d'autres animaux* ou *les deux* ; elle porte les trois categories de `RAL-CE1-1` (`FER-1`).
-     - **Tache B, aliment nomme** : meme animal, meme enonce de lieu, mais la bonne reponse est un aliment que l'enfant nomme (par exemple *"de l'herbe"* pour la vache), les trois propositions etant des aliments et non des categories. La premiere tache classe, la seconde nomme : ce ne sont pas la meme phrase avec un mot qui change (`FER-3`, ses mots dans `ARBITRAGE-PREALABLE-s28`, section 2).
-     - **Entree / sortie observables** : le commentaire du paquet nomme les deux taches et leur compte (`QC5`) ; la moins servie porte au moins 3 items ; aujourd'hui 0 et 0, **rouge**. Recompte par le test si la forme le permet (`theo-archi`), sinon *"non garde : `FER-3`"* et lu par `nadia-prof`. Sonde : un paquet dont tous les items posent la tache A, ou dont la tache B n'en porte que 2, est refuse.
-     - **Ce que je ne tranche pas et que `nadia-prof` juge** : qu'un aliment nomme soit lisible et sans seconde reponse defendable au CE1 (une vache mange aussi du foin, une poule des graines et des vers : choix des animaux et des distracteurs), que la tache B soit une operation mentale distincte de la tache A (`QC9`), et que cette seconde tache soit la bonne plutot qu'une autre que sa condition `RAL-CE1-1` permettrait. Si elle en prefere une autre, cette proposition est remplacee et le critere 6 reecrit avant le premier jet.
+  6. **`FER-3`, deux taches** [arbitre par `nadia-prof` le 2026-10-26, `avis-nadia-seconde-tache-ce1-qlm-02.md` ; remplace la
+     proposition du meme jour]. Cadre : la seconde tache n'utilise que ce que `RAL-CE1-1` autorise deja (*"ou un aliment nomme"*),
+     ses conditions `RAL-CE1-1` et `RAL-CE1-2` et le cadre de la story. Aucune competence, aucun identifiant, aucune condition
+     nouvelle.
+     - **Tache A, categorie** : l'enonce nomme un animal et le lieu ou il mange (*"Que mange la vache dans le pre ?"*) ; les trois
+       propositions sont *des vegetaux*, *d'autres animaux*, *les deux* ; la tache porte les trois categories en bonne reponse
+       (critere 1, `FER-1`).
+     - **Tache B, aliment nomme** : meme forme d'enonce ; la bonne reponse est un aliment que l'animal mange a ce lieu (*de
+       l'herbe* pour la vache dans le pre) ; les trois propositions sont trois aliments au meme type d'article, et aucune n'est
+       *des vegetaux*, *d'autres animaux* ou *les deux*. N'entrent en tache B que les animaux dont la source donne une seule
+       categorie ; un animal classe *les deux* (la poule) n'y entre pas. Les deux distracteurs sont des aliments de l'autre
+       categorie (pour la vache, des animaux). Jamais deux aliments que l'animal mange (*du foin* a cote de *de l'herbe*).
+     - **Liste des animaux** : fermee, ecrite dans le commentaire du paquet avec, pour chaque animal, sa categorie et sa source
+       (`QMT-CE1-2`) ; aucun des quatre animaux exclus par `RAL-CE1-2`.
+     - **Entree / sortie observables** : le commentaire du paquet nomme les deux taches et leur compte (`QC5`). Le recompte porte
+       sur les items, pas sur le commentaire : un item dont la bonne reponse est *des vegetaux*, *d'autres animaux* ou *les deux*
+       compte pour A, tout autre item pour B ; la moins servie porte au moins 3 items. Aujourd'hui 0 et 0, **rouge**. Sondes : un
+       paquet dont tous les items posent A est refuse ; un paquet dont B ne porte que 2 items est refuse ; un item de B dont une
+       proposition est *des vegetaux*, *d'autres animaux* ou *les deux* est refuse. Forme a `theo-archi` ; si elle n'est pas
+       possible, *"non garde : `FER-3`"* et lu par `nadia-prof`.
+     - **Lu par `nadia-prof`, aucun test** (`QC9`) : que A et B soient deux operations distinctes sur chaque item ; qu'aucun
+       distracteur de B ne soit une seconde reponse defendable ; la categorie de chaque animal contre sa source et contre
+       `cm1-sciences-regimes-alimentaires` (`CYC-1`).
+     - **Proposition remplacee** [corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `avis-nadia-seconde-tache-ce1-qlm-02.md` ; le texte ci-dessus remplace la proposition, dont le texte d'origine est conserve ci-dessous] :
+    6. **`FER-3`, deux taches - PROPOSITION, a valider par `nadia-prof` avant le premier jet de `-02`, non tranchee [corrige le 2026-10-26 13:58 (UTC+01:00), amendement F5 de `planning.md` (13:35), section 4 point 5 : la story ne nommait aucune seconde tache ; texte d'origine conserve, critere ajoute]**. Cadre : rien de nouveau, la seconde tache n'utilise que ce que `RAL-CE1-1` autorise deja (*"ou un aliment nomme"*), ses conditions `RAL-CE1-1` et `RAL-CE1-2` et le cadre de la story (animaux de la nature ou de la ferme, aucun aliment du commerce, aucun des quatre animaux exclus). Aucune competence, aucun identifiant, aucune condition nouvelle.
+       - **Tache A, categorie** : *"Que mange la vache dans le pre ?"* appelle *des vegetaux*, *d'autres animaux* ou *les deux* ; elle porte les trois categories de `RAL-CE1-1` (`FER-1`).
+       - **Tache B, aliment nomme** : meme animal, meme enonce de lieu, mais la bonne reponse est un aliment que l'enfant nomme (par exemple *"de l'herbe"* pour la vache), les trois propositions etant des aliments et non des categories. La premiere tache classe, la seconde nomme : ce ne sont pas la meme phrase avec un mot qui change (`FER-3`, ses mots dans `ARBITRAGE-PREALABLE-s28`, section 2).
+       - **Entree / sortie observables** : le commentaire du paquet nomme les deux taches et leur compte (`QC5`) ; la moins servie porte au moins 3 items ; aujourd'hui 0 et 0, **rouge**. Recompte par le test si la forme le permet (`theo-archi`), sinon *"non garde : `FER-3`"* et lu par `nadia-prof`. Sonde : un paquet dont tous les items posent la tache A, ou dont la tache B n'en porte que 2, est refuse.
+       - **Ce que je ne tranche pas et que `nadia-prof` juge** : qu'un aliment nomme soit lisible et sans seconde reponse defendable au CE1 (une vache mange aussi du foin, une poule des graines et des vers : choix des animaux et des distracteurs), que la tache B soit une operation mentale distincte de la tache A (`QC9`), et que cette seconde tache soit la bonne plutot qu'une autre que sa condition `RAL-CE1-1` permettrait. Si elle en prefere une autre, cette proposition est remplacee et le critere 6 reecrit avant le premier jet.
 - **Voisin que `nadia-prof` relit** : `cm1-sciences-regimes-alimentaires`. **Ordre** : apres `-01`, avec `-03` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### `S57-BR-QLM-CE1-03` - Identifier ce dont une plante a besoin (`QLM-CE1-03`) - NON ENGAGEE, sans palier
