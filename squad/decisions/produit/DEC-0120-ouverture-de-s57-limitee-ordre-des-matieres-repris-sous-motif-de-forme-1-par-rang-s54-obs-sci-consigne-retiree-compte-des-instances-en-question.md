@@ -3863,3 +3863,57 @@ Annotation datee. **A.200, A.265 et A.266 ne sont pas reecrits** : treize de leu
 | `nadia-prof` | la premiere mesure de l'instance neuve (`P0`) et son seuil d'alerte ; aucune autre question ouverte pour elle dans cet amendement |
 
 **Matrice** : aucun statut ne change. **Report** : aucun report de sprint. **Changement de code decide, avec proprietaire** : aucun ; la seule modification a porter est dans `planning.md`, a `sofia-sm`. **Ne fait pas** : ne prononce aucun Done, ne fixe ni ne propose aucun plafond, ne change pas l'engage, n'engage aucun lot, ne fixe aucun prix, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
+
+## Amendement du 2026-10-26, quarante-sixieme (`camille-po`, palier 5 : l'arbitrage des trois indices de `-01` n'est pas une troisieme lecture de `P0`)
+
+Annotation datee. **Aucun amendement anterieur n'est reecrit** ; aucun texte n'est corrige, aucun marqueur *[corrige ...]* n'est pose. **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : base `5e5fdb7c`, branche `s57-p5-camille-268`. Sources, lues au disque : `relecture-nadia-corrections-ce1-qlm-etapes-de-developpement.md` (sections 4, 6 et 8), `relecture-redactionnelle-ce1-qlm-etapes-de-developpement.md` (sections 1, 3 et 4), `lecture-nadia-premier-jet-ce1-qlm-etapes-de-developpement.md` (section 6), `planning.md` (amendements du 2026-10-26 sur `P0`, section 3 de `s57-p5-sofia-ordre`), `docs/backlog/backlog.md` ligne 23991, `reponse-nadia-palier-5-rejeu-horloge-et-double-compte.md` (1.2). Les chiffres sont des calculs, marques **[calcul]**.
+
+### A.268 Classement : non, ce n'est pas une troisieme lecture
+
+**La question, et ou elle est posee.** `nadia-prof` ecrit (seconde lecture, section 6) : *"s'il devait etre compte comme une troisieme lecture du lot, `P0` atteindrait 2,0 et depasserait 1,67. Le classement est a `camille-po` (A.244)"*. **A.244 ne contient pas ce classement** : il dit que la valeur du relevement de `PAR-8` n'est pas fixee. Le renvoi est inexact ; le classement est pris ici et nulle part avant.
+
+**Decision de produit.** L'arbitrage par `nadia-prof` des trois indices *"Que vient (juste) avant ?"* (lignes 88, 130, 151 du paquet), apres la relecture du `relecteur-pedagogique`, **ne compte pas comme une troisieme lecture** dans le cout de `P0`, **a trois conditions**, qui reprennent les mots de `nadia-prof` et non une propriete que j'aurais choisie :
+
+| # | Condition | Source des mots |
+|---|---|---|
+| C1 | `nadia-prof` lit **ces trois lignes, pas le paquet** | seconde lecture, section 6 : *"je le lis sur ces trois lignes, pas sur le paquet"* |
+| C2 | l'arbitrage **ne change que la formulation** des trois indices ; aucun enonce, aucune proposition, aucune bonne reponse, aucun autre indice n'est touche, et aucun des 15 verdicts *juste* n'est rouvert | seconde lecture, section 6 : *"s'il n'en change que la formulation"* ; section 1, 15 items *justes* |
+| C3 | la correction de `marc-dev` **ne touche que ces trois lignes du YAML** (verifiable : le `git diff` du fichier entre `47279e05` et le commit de correction ne montre que les lignes 88, 130, 151) | `relecture-redactionnelle...`, section 4, ligne `marc-dev` : *"appliquer ... les lignes 88, 130, 151"* |
+
+**Si l'une des trois est fausse, le classement s'inverse : troisieme lecture, 2,0, seuil franchi** (ci-dessous). `nadia-prof` est seule a savoir ce qu'elle a lu : si elle ecrit qu'elle a relu le paquet, ou qu'elle change le sens d'un indice, la condition tombe sans que je la conteste.
+
+**Pourquoi non.**
+
+1. **L'unite facturee est une lecture du paquet avant `verify`, pas toute lecture.** Le backlog (ligne 23991) : *"une seconde lecture avant `verify` va sur la marge de 0,5"* ; `nadia-prof` (premier jet, section 6) : *"`P0` ne depasse 1,67 qu'a une troisieme lecture"*. Ses deux lectures ont juge des items contre sa liste fermee (`DVP-CE1-1`) et compte des conditions transverses. Choisir entre des formulations de la meme question, sur trois lignes, ne juge aucun item.
+2. **La relecture redactionnelle n'est pas une lecture de `nadia-prof`.** Elle est du `relecteur-pedagogique` (orthographe, accents, ponctuation, `DEC-0002` amendement du 2026-08-04), `nadia-prof` l'a demandee elle-meme (premier jet, section 2.2) et annoncee avant sa seconde lecture (*"comme prevu"*, section 8). Ce n'est pas une des passes de `P0`, `P1`, `P2` (*"Trois passes au moins avant le premier verdict"*, `arbitrage-nadia-palier-5-qlm-9-lots.md`, ligne 163) : c'est une porte de redaction qui existait deja. **Son cout n'est dans le bareme de personne et n'est pas mesure ; je n'en invente aucun.**
+3. **La correction qui suit une lecture est dans le 1,0.** Son bareme : *"1,0 par lot, lecture avant `verify` et correction qui la suit comprises"*. Appliquer trois lignes arbitrees est cette correction, pas une unite de plus.
+4. **Le classement ne depend pas du seuil.** Question posee sans le seuil : un arbitrage de trois formulations, sans item juge, est-il une passe sur le lot ? Non, par 1 a 3. Le seuil n'a servi qu'a verifier que la question meritait d'etre posee.
+
+**Ce que le classement ne fait pas.** Il ne dit rien de la qualite des trois formulations (`nadia-prof` arbitre) ni de la forme de la correction (`relecteur-pedagogique`, `marc-dev`). Il ne vaut **que pour `-01`**, dont le seuil de 1,67 est celui de `nadia-prof` : aucun seuil n'est pose pour les huit autres lots, je n'etends pas le classement.
+
+### Le cout de `P0`, et le seuil
+
+| Ligne | Bareme [calcul] |
+|---|---|
+| lot, lecture du premier jet et correction qui la suit | 1,0 |
+| seconde lecture avant `verify` (les 15 items corriges), sur la marge | 0,5 |
+| arbitrage des trois indices | 0,0 (classement ci-dessus) |
+| **cout de `P0`** | **1,5** |
+
+Seuil de 1,67 : **non franchi**, 0,17 de reserve [calcul : 1,67 moins 1,5]. Ecart au bareme du lot : 0,50 [calcul], contre 0,42 mesure sur les six lots du palier 4 (A.267) et 0,67 de la borne haute (A.200). **A la consommation** : non mesure ; `nadia-prof` n'ecrit aucun chiffre et aucune regle ne convertit des tokens en bareme (premier jet, section 6) ; je n'en pose pas.
+
+**Si une condition est fausse** : 2,0 [calcul : 1,5 plus 0,5], soit 0,33 au-dessus du seuil [calcul]. `nadia-prof` l'ecrit **avant que `P1` commence** (`s57-p5-sofia-ordre`, section 3 point 2), `sofia-sm` n'inscrit pas la premiere paire de `P1` avant d'avoir lu ce chiffre (meme section, point 4) et me route le recalcul de la projection contre le plafond de 20,20, que je fais a partir du cout mesure de `-01` et non de la borne de 0,67. Un depassement n'est pas une condition de Done (meme section, point 3). Je ne releve aucun plafond, ne change pas l'engage de 13,50, ne retire aucun lot.
+
+### Consequence sur la suite, dans mon perimetre
+
+Classement tenu : **aucune sur les huit autres lots.** `P1` n'est pas arretee par le cout ; elle reste soumise a ce que le planning exige deja (ligne d'inscription, lecture de `nadia-prof` de la paire precedente). Aucune projection n'est refaite.
+
+**Ouvert, non tranche par moi, trouve en lisant.** La seconde lecture de `-01` est inscrite *"sur la marge"* (seconde lecture, section 6). La marge de 1,5 de l'instance neuve paie trois rejeux a 0,50 (A.265, `P3`). **Aucun texte lu ne dit si cette seconde lecture est prise sur ces 1,5.** Si elle l'est, il en reste 1,0 : **deux rejeux, non trois** [calcul]. Pour l'horloge, `nadia-prof` a tranche le cas (1.2 de sa reponse, point 2) ; pour `-01`, personne. **A `nadia-prof`** : `P3` compte-t-elle trois rejeux ou la marge restante ? **A `sofia-sm`** : la ligne de registre de l'instance neuve porte-t-elle ce 0,50 ? Je ne le deduis pas, et je ne tiens pas pour acquise la phrase *"trois rejeux"* d'A.265 et d'A.267.
+
+| A qui | Quoi |
+|---|---|
+| `nadia-prof` | C1 a C3 : les ecrire vraies ou fausses dans son arbitrage des trois indices ; la question de la marge ci-dessus |
+| `marc-dev` | C3 : ne modifier que les lignes 88, 130, 151 du YAML |
+| `sofia-sm` | lire le cout de `P0` (1,5, ou 2,0 si une condition est fausse) avant d'inscrire la premiere paire de `P1` ; la ligne de registre de la marge |
+
+**Matrice** : aucun statut ne change. **Report** : aucun report de sprint. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne juge aucune formulation, ne modifie ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue (C1 a C3 sont des reperes locaux a cet amendement).
