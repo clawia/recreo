@@ -3679,14 +3679,14 @@ Annotation datee. **A.256 a A.262 ne sont pas reecrits.** Cet amendement consign
 |---|---|---|
 | Q1 instance | **neuve** : ni A ni A' | aucune mesure ; le premier lot sert de mesure ; developpeur distinct de `lea-dev`, designe par `sofia-sm` (`K1`) |
 | Q2 `K5` | **option (b)** d'A.261 : l'horloge `MAT-CE1-11` avec les neuf lots au palier 9, `K2` nommee par l'utilisatrice | dix lots pour `nadia-prof`, l'horloge auditee apres les neuf ; palier 10 libre pour les rejeux des deux |
-| Q3 relevement de `PAR-8` | **19,20**, valeur hors de la liste d'A.261 | issue de Q2 (b) : l'enveloppe pour dix lots, soit le haut de la fourchette d'A.261 (16,03 plus 3,17 pour l'horloge). **L'engage reste 10,00 ; le relevement est un plafond ; le depassement va au registre** (A.247, A.261) |
+| Q3 relevement de `PAR-8` | **19,20**, valeur hors de la liste d'A.261 | issue de Q2 (b) : l'enveloppe pour dix lots, soit le haut de la fourchette d'A.261 (16,03 plus 3,17 pour l'horloge). **L'engage reste 10,00 [corrige par A.264 : 12,50] ; le relevement est un plafond ; le depassement va au registre** (A.247, A.261) |
 | Q4 marge | **1,5** : trois rejeux dans le palier 9 | option (c) d'A.261 |
 
 **Ce que Q1 change.** A.261 donnait pour une instance neuve : *"inconnu avant le premier lot"*. Il le reste : aucun surcout n'est connu, aucun n'est suppose ici. `nadia-prof` applique un surcout a une instance neuve dont elle n'a pas ecrit la valeur (A.228) ; cette valeur n'existe toujours pas. Le premier lot de la passe `P0` (`-01`, seul, A.260) est donc la premiere mesure de l'instance, pas la confirmation d'une mesure. **Une instance neuve n'a pas d'historique de refus** : la fourchette de 0,25 a 0,67 par lot d'A.261 vient des instances A et A', et rien ne dit qu'elle borne celle-ci. 19,20 couvre cette fourchette (A.261), pas un surcout au-dela.
 
 **Ce que Q2 change.** `K2` (*"Aucune autre instance ne me soumet de lot dans ce palier"*, `nadia-prof`, ligne 139) est **levee par l'utilisatrice, nommee**, pour `MAT-CE1-11` seule. Elle ne l'est pas pour B, A ou A' : `K2` est *"levable par elle en le nommant"*, et je n'etends pas la levee a une instance qu'elle n'a pas nommee. `L1` (ligne 101, l'horloge hors du palier) : `nadia-prof` ecrit *"si elle l'y met en le nommant, j'audite"* ; la reponse Q2 (b) est cette nomination, et l'ordre interne (`P0` a `P2`, `-01` d'abord) place l'horloge **apres les neuf**, comme A.261 l'ecrit. Le palier 10 ne s'ouvre que s'il porte un poste (A.260, condition 6 d'A.214) : rejeux hors marge ou glissements. `K3` est tenue.
 
-**Ce que Q3 change.** Le relevement n'est plus a choisir parmi (a) a (d) d'A.261 : il est de 19,20, plafond pour dix lots. **L'engage reste 10,00**, mot de l'utilisatrice transmis par l'agent lanceur. **Dit, non tranche** : 10,00 est le prix des neuf lots au bareme (A.260) ; avec l'horloge le palier au bareme est de 12,50 avant marge (A.261, `K5` (b)). Ce que l'engage designe pour dix lots, 10,00 ou 12,50, **n'est pas ecrit dans les mots que j'ai** ; je consigne 10,00 tel qu'il m'est donne et je route la question a `sofia-sm` (tableau plus bas).
+**Ce que Q3 change.** Le relevement n'est plus a choisir parmi (a) a (d) d'A.261 : il est de 19,20, plafond pour dix lots. **L'engage reste 10,00 [corrige par A.264 : l'engage est 12,50 ; cette ligne et la suivante sont conservees telles qu'ecrites le 2026-10-26 au matin]**, mot de l'utilisatrice transmis par l'agent lanceur. **Dit, non tranche** : 10,00 est le prix des neuf lots au bareme (A.260) ; avec l'horloge le palier au bareme est de 12,50 avant marge (A.261, `K5` (b)). Ce que l'engage designe pour dix lots, 10,00 ou 12,50, **n'est pas ecrit dans les mots que j'ai** ; je consigne 10,00 tel qu'il m'est donne et je route la question a `sofia-sm` (tableau plus bas).
 
 **Ce que Q4 change, au bareme [calcul].** La marge passe de 0,5 a 1,5 (plus 1,0). Palier 9 des neuf lots seuls : 10,00 plus 1,0 = **11,00**, chiffre d'A.261 option (c). Avec l'horloge (Q2 b) : 12,50 plus 1,0 = **13,50**. Aux surcouts hauts : 19,20 (A.261, A.215) plus 1,0 = **20,20**, soit **1,00 de plus que le plafond de 19,20** de Q3. **Le plafond de Q3 ne couvre donc pas, a marge de 1,5, le scenario des surcouts hauts** : les 19,20 d'A.261 sont calcules sur une marge de 0,5. C'est un ecart entre deux reponses que le depot rend visible ; le depassement possible (jusqu'a 1,00 [calcul]) va au registre, comme Q3 le dit. Je ne propose pas un autre plafond.
 
@@ -3704,8 +3704,38 @@ Annotation datee. **A.256 a A.262 ne sont pas reecrits.** Cet amendement consign
 | A qui | Quoi |
 |---|---|
 | `nadia-prof` | la question `P3` ci-dessus ; la lecture de `K2` nommee pour l'horloge seule ; si l'instance neuve (Q1) change une de ses conditions |
-| `sofia-sm` | designer le developpeur distinct de `lea-dev` (Q1) ; router a l'utilisatrice **ce que l'engage de 10,00 designe pour dix lots** et l'ecart de 1,00 entre 20,20 et 19,20 ; `planning.md` : le declencheur de `P0`, les fusions serialisees, la composition du palier 9 a dix lots (A.260 est ecrite pour neuf) |
+| `sofia-sm` | designer le developpeur distinct de `lea-dev` (Q1) ; router a l'utilisatrice **ce que l'engage designe pour dix lots [repondu par A.264 : 12,50]** et l'ecart de 1,00 entre 20,20 et 19,20 ; `planning.md` : le declencheur de `P0`, les fusions serialisees, la composition du palier 9 a dix lots (A.260 est ecrite pour neuf) |
 | `theo-archi` | la forme des gardes (A.262), inchangee ; ce que le dixieme lot (l'horloge) change a la serialisation des fusions (A.260, fusions) |
 | `yanis-qa` | rien de neuf ; `QC5` et `QC10` inchanges |
 
 **Matrice** : aucun statut ne change, `MATRICE-couverture.md` n'est pas modifiee ; les douze lignes `QLM-CE1` restent `non couvert`, `MAT-CE1-11` aussi. **Plafond de `couvert-valide`** : 52 sur 64 (A.260), 53 si l'horloge obtient son Done [calcul, suppose : chaque lot obtient son Done], arithmetique et non engagement. **Fermes** : l'instance (neuve), le palier (9, avec l'horloge), le relevement (19,20). **Fermee sous reserve de `P3`** : la marge. **Non fermes** : `P3`, l'engage pour dix lots, le developpeur. **Report** : premiere inscription de la contradiction `P3` et de l'ecart de 1,00 ; aucun report. **Changement de code decide, avec proprietaire** : inchange par rapport a A.262 (paquets, gardes, entrees de rang, par le developpeur que `sofia-sm` designe, **non designe a cette date**). Tant qu'il ne l'est pas, rien n'est engage, le catalogue est inchange. **Ne fait pas** : ne prononce aucun Done, ne leve pas `P3`, ne fixe aucun prix, ne choisit pas l'engage de dix lots, n'engage aucun lot, ne designe aucun developpeur, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
+
+## Amendement du 2026-10-26, quarante-deuxieme (`camille-po`, palier 5 : l'utilisatrice repond a la question 3 d'A.263, l'engage du palier 9 est 12,50)
+
+Annotation datee. **A.263 n'est pas reecrit** : trois de ses phrases portent un marqueur renvoyant ici, le texte d'origine est conserve. **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : base `f2e45aac`, branche `s57-p5-camille-choix`. Source : le message de l'utilisatrice du 2026-10-26, relaye par l'agent lanceur (forme 2, `DEC-0062` G) ; `DEC-0120` A.260, A.261, A.263 relus. Les chiffres sont des calculs, marques **[calcul]**.
+
+### A.264 L'engage du palier 9 est 12,50, pas 10,00
+
+**Ses mots, reportes** : l'engage du palier 9 est **12,50**, soit neuf lots a 10,00 plus l'horloge `MAT-CE1-11` a 2,50 (A.261, `K5` (b)). **Correction d'A.263** : A.263 consignait *"L'engage reste 10,00"* et ecrivait que l'engage de dix lots n'etait pas dans les mots que j'avais. Il y est, et ce n'est pas 10,00. Les 10,00 etaient l'engage des neuf lots seuls (A.260), vrai avant Q2 (b), faux depuis. La phrase d'A.263 *"12,50 avant marge"* est aussi inexacte : les 10,00 de bareme d'A.260 comptent la marge de 0,5, le 12,50 aussi. **La question que A.263 routait a `sofia-sm` sur l'engage est fermee**, le reste de sa ligne (l'ecart de 1,00) est traite ci-dessous.
+
+**Ce que cela change, au bareme et aux plafonds [calcul].**
+
+| Grandeur | Valeur | Ecart a l'engage de 12,50 | Ecart au plafond de 19,20 |
+|---|---|---|---|
+| engage (dix lots, marge de 0,5 comprise) | 12,50 | 0 | 6,70 sous le plafond |
+| bareme a marge de 1,5 (Q4 (c)) : 12,50 plus 1,0 | 13,50 | plus 1,00 | 5,70 sous le plafond |
+| surcouts hauts a marge de 0,5 (A.261, A.215) | 19,20 | plus 6,70 | 0 |
+| surcouts hauts a marge de 1,5 : 19,20 plus 1,0 | 20,20 | plus 7,70 | **plus 1,00 au-dessus** |
+
+- **Le plafond de 19,20 est un plafond, pas l'engage.** Le depassement de l'engage va au registre (A.247) : jusqu'a 6,70 si les surcouts sont ceux du scenario haut a marge de 0,5, tous les surcouts mesures d'A.261 restant sous le plafond. Il n'y a pas d'ecart entre le plafond et l'engage a corriger : A.263 avait ecrit 10,00 par erreur, le plafond est calcule pour dix lots et l'engage l'est aussi.
+- **L'ecart de 1,00 d'A.263 reste entier.** A marge de 1,5, le scenario haut (20,20) depasse le plafond de 1,00. L'engage a 12,50 ne le ferme pas ni ne l'ouvre davantage.
+- **Ce que ses mots ne disent pas, non tranche** : l'engage de 12,50 est le bareme **a marge de 0,5**. A marge de 1,5 (Q4 (c)), le bareme est de 13,50. **Le 1,00 de marge supplementaire est-il dans l'engage (qui deviendrait 13,50) ou hors de lui (la marge de 1,5 serait un plafond de rejeux, pas un engage) ?** Ses mots sur Q3 disent 12,50 ; ses mots sur Q4 disent 1,5. Je n'ecris pas 13,50 pour elle. Tant que ce n'est pas dit, l'engage inscrit est 12,50, et la consommation entre 12,50 et 13,50 est un depassement au registre si les trois rejeux ont lieu. Question routee a `sofia-sm`, qui la lui pose avec la reponse de `nadia-prof` sur `P3` (A.263).
+
+**Ce qui n'est pas touche** : `P3` reste ouverte (A.263), `K2` nommee pour l'horloge seule, instance neuve, relevement de 19,20, marge de 1,5 sous reserve de `P3`.
+
+| A qui | Quoi |
+|---|---|
+| l'utilisatrice, par `sofia-sm` | l'engage est-il 12,50 ou 13,50 a marge de 1,5 (ci-dessus) |
+| `sofia-sm` | `planning.md` : le palier 9 s'inscrit a 12,50 d'engage ; les autres points d'A.263 inchanges |
+
+**Matrice** : aucun statut ne change. **Report** : aucun, premiere inscription. **Changement de code decide, avec proprietaire** : inchange (developpeur a designer par `sofia-sm`, non designe a cette date). **Ne fait pas** : ne prononce aucun Done, ne leve pas `P3`, n'engage aucun lot, ne designe aucun developpeur, ne choisit pas entre 12,50 et 13,50, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
