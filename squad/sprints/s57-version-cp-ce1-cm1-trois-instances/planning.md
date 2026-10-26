@@ -2408,7 +2408,7 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusi
 
 ## Amendement du 2026-10-26 (UTC+02:00), palier des neuf lots de questionner le monde CE1 : developpeur designe, declencheur de la lecture avant `verify`, fusions serialisees
 
-Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit `s57-p5-sofia-planning`. Il execute les deux lignes que `DEC-0120` A.262 donne a `sofia-sm` (*"designer le developpeur distinct de `lea-dev` ; `planning.md` : le declencheur de `P0` et les fusions serialisees"*). **Il n'ouvre aucun palier et n'engage aucun lot** : l'ouverture reste soumise a `D2` (cloture du palier precedent, composition portee par un amendement date, table d'isolation). Les choix de l'utilisatrice du 2026-10-26 (`DEC-0120` A.261 : instance neuve, horloge `MAT-CE1-11` avec les neuf lots au palier 9, `K2` nommee, relevement de `PAR-8` a 19,20 en plafond, marge 1,5) [CORRIGE le 2026-10-26, amendement "plafond de PAR-8 a 20,20 et portee des rejeux" en fin de fichier : le plafond est 20,20, non 19,20 ; texte d'origine conserve] sont portes par `camille-po` (A.263) ; je ne les recopie pas et ne fixe aucun prix. `nadia-prof` reexamine sa condition `P3` et `theo-archi` ecrit l'exemption de garde d'`AIM-CE1-2` : je n'ai pas lu leurs fichiers en cours.
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit `s57-p5-sofia-planning`. Il execute les deux lignes que `DEC-0120` A.262 donne a `sofia-sm` (*"designer le developpeur distinct de `lea-dev` ; `planning.md` : le declencheur de `P0` et les fusions serialisees"*). **Il n'ouvre aucun palier et n'engage aucun lot** : l'ouverture reste soumise a `D2` (cloture du palier precedent, composition portee par un amendement date, table d'isolation). Les choix de l'utilisatrice du 2026-10-26 (`DEC-0120` A.261 : instance neuve, horloge `MAT-CE1-11` avec les neuf lots au palier 9, `K2` nommee, relevement de `PAR-8` a 19,20 en plafond, marge 1,5) [CORRIGE le 2026-10-26, amendement "plafond de PAR-8 a 20,20 et portee des rejeux" en fin de fichier : le plafond est 20,20, non 19,20 ; texte d'origine conserve] [corrige par A.273 : plafond de `PAR-8` du palier 9 releve a 22,20 le 2026-10-26 ; texte d'origine conserve] sont portes par `camille-po` (A.263) ; je ne les recopie pas et ne fixe aucun prix. `nadia-prof` reexamine sa condition `P3` et `theo-archi` ecrit l'exemption de garde d'`AIM-CE1-2` : je n'ai pas lu leurs fichiers en cours.
 
 ### 1. Developpeur designe : `marc-dev`
 
@@ -2494,7 +2494,7 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit `s57-p5-sofia-plafo
 
 ### 1. Plafond de `PAR-8` : 20,20
 
-L'utilisatrice a repondu que le plafond de `PAR-8` est **20,20**, au lieu de 19,20. Passage corrige : l'amendement du `s57-p5-sofia-planning` (section d'en-tete, `planning.md:2411`), qui portait *"relevement de `PAR-8` a 19,20 en plafond"*. Le `grep -n "19,20" planning.md` ne trouvait que cette ligne avant cet amendement ; elle est marquee. L'amendement `s57-p5-sofia-ordre` (`planning.md:2458` et suivantes) ne porte aucun plafond chiffre.
+L'utilisatrice a repondu que le plafond de `PAR-8` est **20,20**, au lieu de 19,20. Passage corrige : l'amendement du `s57-p5-sofia-planning` (section d'en-tete, `planning.md:2411`), qui portait *"relevement de `PAR-8` a 19,20 en plafond"*. Le `grep -n "19,20" planning.md` ne trouvait que cette ligne avant cet amendement ; elle est marquee. L'amendement `s57-p5-sofia-ordre` (`planning.md:2458` et suivantes) ne porte aucun plafond chiffre. [corrige par A.273 : plafond de `PAR-8` du palier 9 releve a 22,20 le 2026-10-26 ; texte d'origine conserve]
 
 ### 2. Portee des rejeux : les dix lots, horloge comprise
 
@@ -2529,7 +2529,7 @@ A lire avec la ligne :
 
 ### 2. Plafond de `PAR-8` maintenu a 20,20
 
-L'utilisatrice a maintenu le plafond de `PAR-8` a **20,20** le 2026-10-26. La consignation est `DEC-0120` A.267, ecrite par `camille-po` ; elle n'est pas close par cet amendement. L'amendement `s57-p5-sofia-plafond` (20,20) est inchange.
+L'utilisatrice a maintenu le plafond de `PAR-8` a **20,20** le 2026-10-26. La consignation est `DEC-0120` A.267, ecrite par `camille-po` ; elle n'est pas close par cet amendement. L'amendement `s57-p5-sofia-plafond` (20,20) est inchange. [corrige par A.273 : plafond de `PAR-8` du palier 9 releve a 22,20 le 2026-10-26 ; texte d'origine conserve]
 
 ### 3. Reponse de `nadia-prof` du 2026-10-26
 
@@ -2645,10 +2645,10 @@ Sources : `DEC-0120` A.270 points 1 a 4 et 7, A.272 (cout et regle) ; `relecture
 |---|---|---|---|
 | instance neuve (`marc-dev`, les dix lots `S57-BR-QLM-CE1`) | **0,00** | **1,00** : `-01` 0,50 (`408fec39`) plus `-03` 0,50 (`dddd54b3`, A.272) [corrige : l'amendement du 13:35 portait 0,50 ; texte d'origine conserve] | **1,5** : trois rejeux a 0,50 |
 
-- **Engage 13,50, marge 1,5 : inchanges.** Plafond de `PAR-8` **en vigueur dans `round-two` : 20,20** (A.270, A.272).
+- **Engage 13,50, marge 1,5 : inchanges.** Plafond de `PAR-8` **en vigueur dans `round-two` : 20,20** (A.270, A.272). [corrige par A.273 : plafond de `PAR-8` du palier 9 releve a 22,20 le 2026-10-26 ; texte d'origine conserve]
 - **Cout de `-03` : 1,5** [calcul : 1,0 plus 0,5, A.272]. `nadia-prof` ecrit (relecture, section 4) : *"Aucune"* ouverture, *"pas de deuxieme tour d'arbitrage a classer"*. Le cas a 2,0 d'A.272 (correction rejetee ou verdict rouvert) n'est pas celui qui est ecrit.
-- **Cas haut selon A.272 : 18,70** [calcul : 17,70 plus 0,50 de `-01` plus 0,50 de `-03`], soit **1,50 sous 20,20** [calcul : 20,20 moins 18,70] [corrige : l'amendement du 13:35 portait 18,20 ; texte d'origine conserve].
-- **Secondes lectures encore possibles avant d'atteindre 20,20 : trois** [calcul : 1,50 divise par 0,50]. La quatrieme depasse 20,20 et va au registre (A.247), sans etre une condition de Done (A.270 point 3, dernier point ; A.272 ; A.268).
+- **Cas haut selon A.272 : 18,70** [calcul : 17,70 plus 0,50 de `-01` plus 0,50 de `-03`], soit **1,50 sous 20,20** [calcul : 20,20 moins 18,70] [corrige : l'amendement du 13:35 portait 18,20 ; texte d'origine conserve]. [corrige par A.273 : plafond de `PAR-8` du palier 9 releve a 22,20 le 2026-10-26 ; texte d'origine conserve]
+- **Secondes lectures encore possibles avant d'atteindre 20,20 : trois** [calcul : 1,50 divise par 0,50]. La quatrieme depasse 20,20 et va au registre (A.247), sans etre une condition de Done (A.270 point 3, dernier point ; A.272 ; A.268). [corrige par A.273 : plafond de `PAR-8` du palier 9 releve a 22,20 le 2026-10-26 ; texte d'origine conserve]
 - Depassement de l'engage au registre, borne a **5,20** [calcul : 4,20 plus 0,50 plus 0,50], cite d'A.272.
 - **`-02`, faits seuls.** Premier jet fusionne (`ebc274b1`), lecture faite (`388cb638`), corrections en cours (section 1). **Rien n'est impute a `-02` sur la ligne hors marge** : l'ecrit de `nadia-prof` conditionne la seconde lecture a l'application de ses corrections (*"si `marc-dev` les applique telles qu'ecrites"*, section 8), elle n'existe pas encore. Je l'inscris a la lecture du fichier de relecture des corrections, par amendement date.
 - **Regle d'A.272 pour `-02` et `-04` a `-12`** : toute relecture par `nadia-prof`, apres correction, des lignes qu'elle a prescrites vaut 0,5 hors marge. Un arbitrage apres seconde lecture est classe par `camille-po` lot par lot ; une troisieme lecture coute 0,5 de plus et est reclassee par elle.
@@ -2704,3 +2704,66 @@ Source : `lecture-nadia-premier-jet-ce1-qlm-ce-que-mangent-les-animaux.md`, sect
 ### Decisions prises
 
 **Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il ecrit : la ligne hors marge a 1,00 (execution d'A.272), l'etat des lots, le rappel de l'ordre de fusion et son ecart, la projection a 22,20 contre les deux plafonds, le constat de l'intrus de `-02` route a `camille-po`. Restent ouverts : l'inscription du plafond decide par l'utilisatrice (A.273, `camille-po`), le constat de l'intrus (`camille-po`), l'ecart d'ordre de fusion (`theo-archi`), Q3 d'A.271 (a la fermeture des dix premiers audits). Aucun Done n'est prononce.
+
+## Amendement du 2026-10-26 16:25 (UTC+01:00), palier des neuf lots de questionner le monde CE1 : plafond de PAR-8 a 22,20 (A.273), autocontrole du premier jet, Q-273-1, etat des lots
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit de la branche `s57-p5-sofia-p3` (base `round-two` a `1706a40b`, lu par `git rev-parse`). Il execute les lignes `sofia-sm` du routage d'A.273 (`DEC-0120`, `camille-po`, fusionnee dans `1706a40b`), que je ne modifie pas. **Il n'ouvre aucun palier, n'engage aucun lot, ne calcule aucun prix, ne prononce aucun Done.** Les chiffres sont ceux d'A.273 et d'A.272, cites ; les sommes sont des calculs, marques **[calcul]**. Aucune mesure n'a ete lancee.
+
+### 1. Plafond de PAR-8 du palier 9 : 22,20
+
+Source : `DEC-0120` A.273, point 1 (decision de l'utilisatrice du 2026-10-26, options O2 et O3 retenues : *"on releve a 22,20 et on demande aussi que les premiers jets soient plus propres"*).
+
+| Grandeur | Avant | Apres |
+|---|---|---|
+| plafond de `PAR-8` du palier 9 | 20,20 | **22,20** |
+| engage du palier 9 | 13,50 | **13,50**, inchange |
+| marge de l'instance neuve | 1,5 | **1,5**, inchangee |
+| cas haut apres `-03` (A.272) | 18,70, soit 1,50 sous 20,20 | 18,70, soit **3,50 sous 22,20** [calcul : 22,20 moins 18,70] |
+| projection, sept secondes lectures de plus (`-02`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12`) | 22,20, soit 2,00 au-dessus de 20,20 | 22,20, soit **0,00 de reserve** [calcul : 18,70 plus 7 fois 0,50 = 22,20] |
+
+- **Depassement au registre.** La regle d'A.270 point 3 et d'A.272 ne change pas de nature, elle change de seuil : un cout qui porte le total au-dela de **22,20** va au registre (A.247), sans etre une condition de Done (A.268). `nadia-prof` reste seule a prononcer le Done.
+- **La projection est une projection, pas une mesure** (A.273 point 1 (a)). Elle suppose une seconde lecture a 0,50 hors marge sur chacun des sept lots et aucune troisieme lecture. Elle ne compte aucune seconde lecture a l'horloge `MAT-CE1-11` : voir la question `Q-273-1`, section 3.
+- **Passages de ce fichier marques `[corrige par A.273]`**, texte d'origine conserve, six : `planning.md:2411` (marqueur du plafond a 20,20, amendement `s57-p5-sofia-planning`), section 1 puis section 2 de l'amendement "plafond de PAR-8 a 20,20" (`planning.md:2497` et `planning.md:2532`), et, dans l'amendement du 16:09, la ligne du plafond en vigueur (`planning.md:2648`), la ligne du cas haut (`planning.md:2650`) et la ligne des secondes lectures avant d'atteindre 20,20 (`planning.md:2651`). A.273 en liste deux (le plafond, sections 1 et 2, et la ligne du cas haut du 16:09) ; j'ai cherche "20,20" dans tout le fichier et marque en plus trois passages qui le donnent comme plafond **en vigueur** (`2411`, `2648`, `2651`).
+- **Passages non marques, a dessein** : les titres des amendements et de leurs sections 1 et 2 (`2491`, `2495`, `2530`), qui nomment la decision du moment ; la puce du cas haut de l'amendement A.270 (`planning.md:2559`), qui cite A.270 point 3 tel qu'il etait ecrit et porte deja son marqueur du 16:09 ; la ligne du tableau de projection "20,20, en vigueur dans round-two" et la phrase *"Tant qu'A.273 n'est pas sur le disque, le plafond en vigueur de ce fichier est 20,20"* (`planning.md:2686`, `planning.md:2691`), qui decrivent l'etat du disque a 16:09 sous condition d'A.273. Le plafond **en vigueur** est 22,20.
+
+### 2. Autocontrole du premier jet par marc-dev : une etape, pas une porte
+
+Source : `DEC-0120` A.273, point 2 (texte du tableau reporte tel quel). Elle vaut pour le premier jet de **`-04`, `-05`, `-06`, `-08`, `-10`, `-12`** et tout lot dont le premier jet n'est pas encore commite. `-02` est deja lu et n'est pas concerne.
+
+**Etape ajoutee a la tache de `marc-dev`, avant le commit du premier jet.** Il rend compte dans son rapport de premier jet, en **une ligne par defaut**, de *fait* ou *non fait* et des items sur lesquels il l'a fait.
+
+| Ligne du rapport | Ce que `marc-dev` fait | Ce qu'il ecrit |
+|---|---|---|
+| **a** indices | relire chaque indice du paquet et noter si son objet est la bonne reponse (periphrase) ou si son verbe la porte par son sens | fait / non fait ; les items relus ; les items dont il doute, a lire par `nadia-prof` |
+| **b** distracteurs | relire chaque distracteur et noter si un enfant qui ne sait rien de la competence visee l'ecarterait par la taille, le lieu, ou parce qu'il est impossible pour le sujet | fait / non fait ; les items relus ; les items dont il doute |
+| **c** sources | relire la source citee dans le commentaire du paquet et noter si elle renvoie a autre chose que le test du paquet ou qu'un tableau dont l'en-tete demande lui-meme une source | fait / non fait ; si aucune source hors du paquet et de ses tests n'existe, il l'ecrit en toutes lettres plutot que de citer une source circulaire |
+
+**Pas une porte, aucun cout, aucun seuil, aucun chiffre promis, `nadia-prof` seule juge.** Un premier jet dont une ligne est *non fait*, ou dont `marc-dev` signale un defaut, n'est pas refuse pour ce motif. *Fait* ne vaut jamais *juste*. L'etape est comprise dans le 1,0 du lot, n'ajoute aucune ligne de registre et n'alloue aucun identifiant de condition (a, b, c sont des reperes locaux d'A.273). `nadia-prof` lit comme aujourd'hui et peut contredire une ligne du rapport par ecrit, ou ajouter ou retirer un defaut de la liste. `yanis-qa` et `theo-archi` : rien. Le rapport de premier jet de `marc-dev` est le seul endroit ou l'autocontrole s'ecrit.
+
+### 3. Question ouverte Q-273-1, routee a nadia-prof
+
+Source : `DEC-0120` A.273, point 1 (c). **Routee, non tranchee par moi.**
+
+- **(i)** Un rejeu au-dela des trois de la marge de 1,5 compte-t-il contre le plafond de 22,20 du palier 9, ou contre celui d'un palier 10 ? Part chiffre du registre : `nadia-prof`. Si sa reponse est que le plafond couvre aussi le palier 10, c'est a l'utilisatrice de dire si 22,20 vaut pour les deux, par `sofia-sm`.
+- **(ii)** La seconde lecture du premier jet de l'horloge `MAT-CE1-11` est-elle 0,50 hors marge, comme celle d'un lot de l'instance neuve ? **Si elle compte, la projection passe de 22,20 a 22,70, soit 0,50 au-dessus de 22,20** [calcul : 22,20 plus 0,50].
+- **Rien ne la bloque avant la fermeture des dix premiers audits** (`P3`) : aucun rejeu n'est du. Elle reste ouverte tant qu'un ecrit de `nadia-prof` n'est pas sur le disque ; le fichier de reponse n'existe pas a la date de cet amendement. Q3 d'A.271 (quatrieme rejeu) reste differee a la meme echeance, proprietaire `camille-po` via `sofia-sm`.
+
+### 4. Ecart d'ordre de fusion, connu
+
+L'ecart deja constate dans l'amendement du 16:09 (section 4) est inscrit comme **ecart connu** : le premier jet de `-03` (`ccfd1a0c`) a ete fusionne avant celui de `-02` (`7c2b448c`), alors que l'ordre ecrit est `-01`, `-02`, `-03`. **Je ne rouvre rien.** Le point adresse a `theo-archi` (point 2 de la section 7 de l'amendement du 16:09) reste tel quel. Les fusions depuis cet amendement (`a284c398`, `cbb984e1`, `1706a40b`) sont passees sans conflit, d'apres le compte rendu de l'agent lanceur ; je ne l'ai pas rejoue.
+
+### 5. Etat des lots, lu sur disque (git log de round-two)
+
+| Lot | Etat |
+|---|---|
+| `S57-BR-QLM-CE1-01` | premier jet, lecture, corrections, seconde lecture et relecture des trois indices faits ; audit `P2` non fait |
+| `S57-BR-QLM-CE1-03` | premier jet, lecture, corrections et relecture des corrections faits ; audit `P2` non fait |
+| `S57-BR-QLM-CE1-02` | premier jet et lecture faits ; **corrections appliquees par `marc-dev` (`f7c6bc7d`), fusionnees (`cbb984e1`)** ; relecture des corrections par `nadia-prof` **en cours** : aucun fichier de relecture de `-02` n'existe sur le disque |
+| `-04`, `-05`, `-06`, `-08`, `-10`, `-12` | pas commences : `git ls-files` ne trouve que trois paquets `ce1-qlm-*` |
+
+- **Ligne hors marge de l'instance neuve : inchangee a 1,00** (`-01` 0,50 plus `-03` 0,50). **Rien n'est impute a `-02` avant la relecture.** Si elle a lieu, A.272 la compte 0,5 hors marge, et la ligne passe a 1,50 par amendement date, a la lecture du fichier de relecture. Cout de `-02` : 1,0 au bareme, 1,5 si la relecture a lieu.
+- `QC3` inchange : aucune entree `ce1-qlm-*` au catalogue avant un Done. **Aucune ligne de Done n'est inscrite.**
+
+### Decisions prises
+
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il inscrit l'execution d'A.273 : plafond a 22,20, regle d'autocontrole, routage de `Q-273-1`, ecart d'ordre de fusion, etat des lots. Restent ouverts : `Q-273-1` (`nadia-prof`, et l'utilisatrice si le plafond couvre un palier 10), Q3 d'A.271 (fermeture des dix premiers audits), le constat de l'intrus de `-02` (`camille-po`), l'ecart d'ordre de fusion (`theo-archi`). Aucun Done n'est prononce.
