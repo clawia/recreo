@@ -11,7 +11,7 @@
 - **Lu** : l'avis de `theo-archi` ; ma `reponse-nadia-aim-ce1-2-q1-q2.md` ; `QuestionContentSourceFactory.java`
   (lignes 99-127) ; `ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` (1.3, 2, 3.6) ;
   `ARBITRAGE-PREALABLE-s48-francais-ce1.md` (`TRV-CE1-1` et son annotation du 2026-10-25) ; `DEC-0123` section 5 ;
-  `CLAUDE.md`, section *"L'enfant de CP n'est jamais seul"* ; story `S57-BR-QLM-CE1-06` et `QC4`
+  `CLAUDE.md`, section *"L'enfant de CP n'est jamais seul"* ; story `S57-BR-QLM-CE1-06`, `QC4` et `QC6`
   (`docs/backlog/backlog.md`) ; `PaquetCe1EmcInteretCommunTest.java` (lignes 667-673).
 
 ## Reponse
@@ -30,7 +30,7 @@ leur seule presence. Lire le contenu d'un champ qui doit etre absent ne garderai
 3. **Mon instruction de questionner le monde CE1** reprend `TRV-CE1-1` sur les dix-sept lignes, *"aucun champ a voix
    haute ; aucun `texteSupport` sur ces lignes"* (section 2), et section 1.3 : *"aucune des dix-sept lignes ne demande une
    voix, et aucun item n'en portera"*.
-4. **`QC4`** (`docs/backlog/backlog.md`, ligne 24069) demande deja au test de chaque paquet : *"un item portant un champ
+4. **`QC6`** (`docs/backlog/backlog.md`, ligne 24069) demande deja au test de chaque paquet (`QC4`, ligne 24066) : *"un item portant un champ
    `texteSupport` est refuse ; un item portant un champ `texteAVoixHaute` est refuse"*. Le precedent de forme existe :
    `PaquetCe1EmcInteretCommunTest.java`, lignes 667-673, asserte l'ensemble exact des cles servies.
 
@@ -41,8 +41,8 @@ arbitree pour le CP seul"*. C'etait exact a sa date ; depuis le 2026-10-21 elle 
 ## 2. Motif
 
 - **La presence est refusee, le contenu n'a pas a etre lu.** Une garde de contenu sur ces deux champs, appliquee a un
-  paquet ou `QC4` les refuse, ne lirait jamais rien : verte sur tout materiau reel, elle donnerait l'apparence d'une
-  couverture sans en fournir. La garde utile est celle de `QC4`, plus forte : *"l'aimant attire les metaux"* ne peut
+  paquet ou `QC6` les refuse, ne lirait jamais rien : verte sur tout materiau reel, elle donnerait l'apparence d'une
+  couverture sans en fournir. La garde utile est celle de `QC6`, plus forte : *"l'aimant attire les metaux"* ne peut
   pas etre lue a l'enfant par ce canal si le canal est interdit.
 - **Je n'elargis pas ma condition.** `AIM-CE1-2` nomme enonce, indice et explication ; `Q2` y a ajoute la bonne reponse
   par l'exactitude et `AIM-CE1-1`, sans la reecrire. L'etendre ici n'apporterait rien et deplacerait un poteau.
@@ -60,8 +60,8 @@ arbitree pour le CP seul"*. C'etait exact a sa date ; depuis le 2026-10-21 elle 
 | `explication` | **oui** (texte de la condition), si le paquet en porte | garde de `theo-archi`, section 1 |
 | `bonneReponse` | **oui, en paire avec l'`enonce`**, par l'exactitude et `AIM-CE1-1` (`Q2`), pas par une condition neuve | garde de `theo-archi`, section 1 |
 | `distracteurs` | non | moi seule, item par item, a la lecture avant `verify` (`QC9`) |
-| `texteAVoixHaute` | non : **sa presence est refusee** (`TRV-CE1-1`) | test du paquet, `QC4` |
-| `texteSupport` | non : **sa presence est refusee** (`TRV-CE1-1`, instruction section 2) | test du paquet, `QC4` |
+| `texteAVoixHaute` | non : **sa presence est refusee** (`TRV-CE1-1`) | test du paquet (`QC4`), sonde de `QC6` |
+| `texteSupport` | non : **sa presence est refusee** (`TRV-CE1-1`, instruction section 2) | test du paquet (`QC4`), sonde de `QC6` |
 | `partDesignee`, `illustration`, `illustrationTexteAlternatif`, `tableauSupport` | hors de `Q7`, non tranches ici | tout texte que l'enfant lit ou entend reste sous ma lecture (`QC9`) |
 
 ## 4. Ce que cela demande, et a qui
@@ -69,11 +69,13 @@ arbitree pour le CP seul"*. C'etait exact a sa date ; depuis le 2026-10-21 elle 
 | Qui | Quoi |
 |---|---|
 | `theo-archi` | rien de neuf : la garde de la section 1 de son avis lit les champs marques **oui** ci-dessus, et seulement eux |
-| developpeur de `S57-BR-QLM-CE1-06` | les deux sondes de `TRV-CE1-1` deja ecrites en `QC4` (ligne 24069), dans `PaquetCe1QlmAimantTest`. **Sans elles, la reponse de cette page ne tient pas** : l'exclusion des deux champs de la garde d'`AIM-CE1-2` repose sur leur refus par presence |
+| developpeur de `S57-BR-QLM-CE1-06` | les deux sondes de `TRV-CE1-1` deja ecrites en `QC6` (ligne 24069), dans `PaquetCe1QlmAimantTest`. **Sans elles, la reponse de cette page ne tient pas** : l'exclusion des deux champs de la garde d'`AIM-CE1-2` repose sur leur refus par presence |
 | `camille-po` | au critere 2 de `-06` (`docs/backlog/backlog.md`, ligne 24169), remplacer *"`Q7` [...] est ouverte, a `nadia-prof`"* par un renvoi a ce fichier |
 
 **Ce que je garde seule, inchange** : les distracteurs et les quatre cas de ma section 3 de
 `reponse-nadia-aim-ce1-2-q1-q2.md` (paraphrases sans *attirer*, metaux nommes presentes comme attires, designation hors
 des quatre formes, negation fausse sans designation).
+
+**Correction du 2026-10-26, 09:28 (UTC+01:00)** : les sondes de `TRV-CE1-1` (ligne 24069) sont dans `QC6`, pas dans `QC4` (ligne 24066, le test du paquet en general) ; ecart trouve par `camille-po`, mentions corrigees, verdict et motif inchanges.
 
 **Signe** : `nadia-prof`, s57, palier 5, 2026-10-26.
