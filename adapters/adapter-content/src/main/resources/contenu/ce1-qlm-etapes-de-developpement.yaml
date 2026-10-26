@@ -85,7 +85,7 @@ items:
   - enonce: "Dans la vie de la grenouille, quelle étape vient juste avant le têtard ?"
     bonneReponse: "l'œuf"
     distracteurs: ["la grenouille", "la chrysalide"]
-    indice: "Remonte la vie du têtard. Que vient avant ?"
+    indice: "Remonte la vie du têtard. Qu'est-ce qui vient avant ?"
   # DVP-CE1-1 espece : poule
   # DVP-CE1-1 tache : voisine
   # TRV-CE1-2 : a, b
@@ -127,7 +127,7 @@ items:
   - enonce: "Dans la vie d'une plante, quelle étape vient juste avant la jeune pousse ?"
     bonneReponse: "la graine"
     distracteurs: ["la fleur", "le fruit"]
-    indice: "Remonte la vie de la plante. Que vient juste avant ?"
+    indice: "Remonte la vie de la jeune pousse. Qu'est-ce qui vient juste avant ?"
   # DVP-CE1-1 espece : plante
   # DVP-CE1-1 tache : ordre
   # TRV-CE1-2 : c, c
@@ -148,7 +148,7 @@ items:
   - enonce: "Dans la vie du papillon, quelle étape vient juste avant le papillon ?"
     bonneReponse: "la chrysalide"
     distracteurs: ["l'œuf", "le têtard"]
-    indice: "Remonte la vie du papillon. Que vient juste avant ?"
+    indice: "Remonte la vie du papillon. Qu'est-ce qui vient juste avant ?"
   # DVP-CE1-1 espece : poule
   # DVP-CE1-1 tache : ordre
   # TRV-CE1-2 : c, c
