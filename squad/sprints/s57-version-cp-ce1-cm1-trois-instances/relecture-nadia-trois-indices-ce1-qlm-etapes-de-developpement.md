@@ -23,7 +23,7 @@
 | C3 | **vraie** |
 | Cout de `P0` | **1,5**, seuil de 1,67 non franchi |
 | Formulation rouverte | **aucune** ; pas de second arbitrage |
-| Marge (A.269, Q3) | **confirmee** : la seconde lecture de `-01` prend 0,50 sur la marge de 1,5, il reste 1,0 |
+| Marge (A.269, Q3) | **confirmee** : la seconde lecture de `-01` prend 0,50 sur la marge de 1,5, il reste 1,0 **[corrige le 2026-10-26 par l'amendement ci-dessous, sur A.270 : hors marge, la marge de 1,5 reste entiere, trois rejeux]** |
 
 ## 1. Les trois lignes
 
@@ -69,7 +69,7 @@ Les trois conditions sont vraies : le classement d'A.268 tient, l'arbitrage comp
 | Ligne | Bareme [calcul] |
 |---|---|
 | lot, lecture du premier jet et correction qui la suit | 1,0 |
-| seconde lecture avant `verify`, sur la marge | 0,5 |
+| seconde lecture avant `verify`, sur la marge **[corrige par A.270 : hors marge, sur la ligne hors marge du registre ; le 0,5 est inchange]** | 0,5 |
 | arbitrage des trois indices | 0,0 |
 | relecture des trois lignes (le present fichier) | 0,0 : c'est la verification de C1, pas une lecture du paquet |
 | **cout de `P0`** | **1,5** |
@@ -77,6 +77,9 @@ Les trois conditions sont vraies : le classement d'A.268 tient, l'arbitrage comp
 Seuil de 1,67 non franchi, 0,17 de reserve [calcul]. Ce chiffre est ecrit avant que `P1` commence, comme A.268 le demande.
 
 ## 4. La marge
+
+**[corrige par A.270, amendement du 2026-10-26 ci-dessous]** Cette section est revoquee pour l'instance neuve : la seconde lecture
+de `-01` est hors marge, la marge de 1,5 reste entiere et paie trois rejeux. Le texte d'origine est conserve.
 
 **Je confirme A.269, Q3.** La seconde lecture de `-01` est prise sur la marge de 1,5 de l'instance neuve : 0,50, il reste 1,0, soit
 deux rejeux a 0,50 [calcul]. A.269 a lu mes textes comme je les ai ecrits, et j'ai verifie ses deux citations au disque :
@@ -109,7 +112,50 @@ mots, a la limite) est au test transverse que `marc-dev` lance ; je ne l'ai pas 
 
 | A qui | Quoi |
 |---|---|
-| `sofia-sm` | lire le cout de `P0` : 1,5 ; la ligne de registre de l'instance neuve porte 0,50 de marge consomme par la seconde lecture de `-01`, reste 1,0 |
+| `sofia-sm` | lire le cout de `P0` : 1,5 ; la ligne de registre de l'instance neuve porte 0,50 de marge consomme par la seconde lecture de `-01`, reste 1,0 **[corrige par A.270 : 0,00 de marge consomme, reste 1,5 ; le 0,50 va sur la ligne hors marge]** |
 | `camille-po` | rien a reclasser : pas de second arbitrage ; C1 et C3, que A.269 laissait a verifier, sont vraies |
+
+**Signe** : `nadia-prof`, s57, palier 5, 2026-10-26.
+
+## Amendement du 2026-10-26 (`nadia-prof`) : A.270, trois rejeux garantis
+
+- **Ecrit** : 13:22:20 a 13:24:06 (UTC+01:00), bornes lues par `date`. A.270 lu dans `round-two` a `edd7df90` (`git show`), sans integrer
+  `round-two` a cette branche : entre `3f4da89d` et `edd7df90`, seuls `DEC-0120` et `DEC-index.md` changent.
+- **Origine** : la section 4 ci-dessus est ecrite avant A.270. L'utilisatrice a arbitre *"trois rejeux garantis"* (A.270, point 1).
+  Son arbitrage l'emporte sur mes textes. Les passages revoques portent le marqueur *[corrige par A.270]*, texte conserve.
+
+| # | Point d'A.270 | Position |
+|---|---|---|
+| 1 | seconde lecture de `-01` **hors marge**, sur la ligne hors marge du registre (voie a) ; marge disponible 1,5 ; engage 13,50 et plafond 20,20 inchanges | **confirme** |
+| 2 | **portee** : toute seconde lecture avant `verify` d'un lot de l'instance neuve, les dix lots | **confirme** |
+| 3 | `P3` : *"trois a 1,5"* de nouveau exact ; texte non reecrit | **confirme** |
+| 4 | contradiction de `arbitrage-nadia-palier-5-lp7-d5.md` ligne 262 et `docs/backlog/backlog.md` ligne 23991, pour l'instance neuve | **confirme**, fichiers non modifies |
+| 5 | C1, C2, C3 et cout de `P0` | **inchanges** : 1,5, seuil 1,67, 0,17 de reserve (A.270, point 7) |
+
+**Point 1.** Je ne contredis pas. Ma regle *"une seconde lecture avant `verify` va sur la marge"* n'avait qu'un objet : que le lot ne
+la cache pas dans son 1,0. La voie (a) tient cet objet, puisque le 0,50 reste compte, sur une autre ligne. A.269, Q3, que j'avais
+confirmee dans la section 4, etait une lecture de mes textes ; elle n'avait pas l'arbitrage de l'utilisatrice, qui la remplace.
+
+**Point 2.** Je confirme, pour le motif qu'A.270 donne : sans cette portee, la seconde lecture d'un autre lot de l'instance
+neuve ramenerait la marge a 1,0 et la garantie tomberait. Le prix de cette garantie se voit au plafond et non a la marge : au cas haut
+mesure, il reste 2,00 sous 20,20, soit quatre autres secondes lectures a 0,50 (A.270, point 3) [calcul repris, non refait].
+
+**Point 3.** Je confirme. Avec la marge entiere, *"autant que la marge en paie"* vaut trois, et la parenthese *"(trois a 1,5, au prix
+de 0,50 du rejeu, A.199)"* redevient le compte courant. Un rejeu au plus par lot, aucun avant le premier audit de chacun des dix lots,
+l'ordre neuf audits, horloge, rejeux : inchanges. Je ne releve ni n'abaisse aucune barre.
+
+**Point 4.** Je confirme pour l'instance neuve : la seconde lecture avant `verify` d'un de ses lots ne va pas sur la marge. Pour les
+autres instances, A.270 ne dit rien et ma regle reste celle de la ligne 262. La ligne 23991 du backlog n'est pas de ma main ; elle
+reprend ma regle, et je n'y touche pas (`camille-po`).
+
+**Ce que je ne tranche pas.** A.270, point 4, compte le rejeu de l'horloge, paye par la marge de B, parmi les trois. A.270 ne dit
+pas si, dans ce cas, la marge de 1,5 restee entiere paierait un quatrieme rejeu. *"Autant que la marge en paie"* le permettrait ;
+*"trois rejeux pour les dix lots"* ne le demande pas. La question ne se pose que si l'horloge et trois lots de l'instance neuve sont
+refuses ; elle est a `camille-po`, a ce moment-la.
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | ligne de registre de l'instance neuve : 0,00 de marge consomme par la seconde lecture de `-01`, reste 1,5 ; le 0,50 sur la ligne hors marge ; cout de `P0` : 1,5 |
+| `camille-po` | rien a router a l'utilisatrice : je ne contredis pas A.270 ; la question du quatrieme rejeu ci-dessus, si elle se pose |
 
 **Signe** : `nadia-prof`, s57, palier 5, 2026-10-26.
