@@ -3550,3 +3550,119 @@ Au backlog, annotation du 2026-10-25, cinquieme, fin de `docs/backlog/backlog.md
 **Reste ouvert** : le palier et l'instance ; la valeur du relevement et la borne ; la moitie textuelle de `-07` ; les rejeux (un dans la marge, les autres au palier suivant, condition de `nadia-prof`) ; la portee des levees ; le sort des six lots d'A.235 pour les autres paliers ; le developpeur ; le premier jet de `-01` commite seul ; l'arbitrage prealable de l'instance ; la forme des gardes.
 
 **Decisions de produit prises ici** : (1) au moins 10 et au plus 20 items par paquet (A.250) ; (2) A.227 point 4 et A.249 point 5 corriges ; (3) le constat de `nadia-prof` sur A.229 et sa reponse sur `AIM-CE1-2` sont consignes sans etre requalifies ; (4) la liste de mots de quantite d'A.227 est retiree ; (5) neuf stories ecrites au backlog, non engagees. **Changement de code decide, avec proprietaire** : les neuf paquets, leurs tests et leurs gardes sont du code et du contenu a ecrire ; **proprietaire : le developpeur que `sofia-sm` designe (A.255, ligne `sofia-sm`), non designe a cette date**. Tant qu'il ne l'est pas, rien n'est engage, le catalogue est inchange, et aucun enfant ne peut jouer un contenu de questionner le monde CE1 qui n'existe pas. **Report** : premiere inscription des neuf stories, aucun report. **Matrice** : aucun statut ne change, les douze lignes `QLM-CE1` restent `non couvert`. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, n'engage aucun lot, ne compose aucun palier, ne designe aucun developpeur, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
+
+## Amendement du 2026-10-25, quarantieme (`camille-po`, palier 5 : sonde remplacee de `-12`, `FER-1` de `-05`, plancher de 11 items, entree du test de rang des le premier jet, composition proposee du palier des neuf lots)
+
+Annotation datee. **A.250 a A.255 ne sont pas reecrits** : cet amendement corrige deux de leurs phrases (A.258, A.259) et pose une proposition de composition que l'utilisatrice n'a pas tranchee (A.260, A.261). **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : base `2616a0ba`, branche `s57-p5-camille-compo`. Sources lues au disque : `arbitrage-nadia-palier-5-qlm-neuf-lots-avant-ouverture.md` (1, 2, 4, 5, 7), `arbitrage-nadia-palier-5-qlm-9-lots.md` (2 a 5), `arbitrage-nadia-palier-5-qlm-v3.md` (3), `avis-theo-palier-5-neuf-lots-qlm-ce1.md` (0 a 5), les neuf stories `S57-BR-QLM-CE1` et `QC1` a `QC9` du backlog, `DEC-0120` A.199, A.200, A.214, A.215, A.223 a A.225, A.237 a A.255, `composition-palier-4.md` (1, 2), `planning.md` (lecture seule : les amendements du 2026-10-23 au 2026-10-25, sections lues de la ligne 2330 a la fin ; aucune ouverture de palier 5 ni de palier 9, aucune ligne pour les neuf lots). Le shell etait indisponible : aucune commande n'a ete lancee ; les valeurs d'aujourd'hui sont des `Glob` (aucun fichier `ce1-qlm-*` dans le repertoire de contenu) ou des lectures. Ce que je n'ai pas fait : prononcer un Done, designer un developpeur, choisir l'instance ou le palier, fixer un prix, engager un lot, modifier la matrice, `planning.md` ou le code.
+
+### A.256 La sonde remplacee de `S57-BR-QLM-CE1-12`, critere 2
+
+**Ce que `nadia-prof` ecrit** (`arbitrage-nadia-palier-5-qlm-neuf-lots-avant-ouverture.md` 1) : sur dix-sept sondes marquees *proposee*, **seize validees, une remplacee, zero refusee**. La remplacee est celle de `-12`, critere 2 : *l'ecole* est aussi un evenement d'une vie que `GEN-CE1-1` demande (*entree a l'ecole*), et une garde construite sur ma sonde risquait de refuser un item juste.
+
+**Reporte, ses mots** : **doit etre refuse** un item qui ordonne *le reveil*, *le dejeuner*, *le coucher* ; **doit passer** un item qui ordonne *la naissance*, *l'entree a l'ecole*, *le premier emploi*. Ma sonde (*le petit-dejeuner*, *l'ecole*, *le diner*) est retiree. **Valeurs d'aujourd'hui** : la clause de refus est **rouge** (aucune garde) ; la clause *doit passer* est **verte aujourd'hui** (aucune garde ne refuse rien), dite comme telle, et elle mord le jour ou une garde trop large est ecrite. La forme de la garde est a `theo-archi` (sa question `Q6` : `GEN-CE1-1` n'est pas traite), sinon *"non garde : `GEN-CE1-1`"* et `nadia-prof` lit (`QC9`). **Les seize autres sondes** ne sont plus *proposee* : elles sont validees par elle. Les textes des stories ne sont pas reecrits.
+
+### A.257 `FER-1` sur `-05` : la marque *[suppose]* est levee
+
+**Sa lecture est la mienne** (`arbitrage-nadia-palier-5-qlm-neuf-lots-avant-ouverture.md` 2) : `FER-1` porte sur le libelle entier, **cinq elements** (*glace*, *eau liquide*, *vapeur d'eau*, *la fonte*, *le gel*), chacun en bonne reponse d'au moins un item. *La temperature* n'est pas un element a donner en reponse : c'est la relation qu'`ETE-CE1-1` impose. **Comment elle compte** (ses mots, resumes) : *la fonte* et *le gel* sont en bonne reponse dans un item ou la temperature est la donnee, **un item qui demande seulement le nom du changement ne compte pas** ; *la glace* et *l'eau liquide* de meme, jamais *"solide ou liquide ?"* seul. Qu'un item depasse ce que le paquet de CP a appris se juge a sa lecture, item par item, **sans garde**. **Valeur d'aujourd'hui** du critere 2 : 0 sur 5, rouge, inchangee ; la lecture levee ne le rend pas vert. Au plancher de 11 items (A.258) : 4 items a la vapeur d'eau (un tiers de 11, arrondi au-dessus) plus un item pour chacun des quatre autres elements font 8 sur 11 **[calcul]**.
+
+### A.258 Plancher d'items : 11, pas 10 (corrige A.250 et `QC5`)
+
+**Le constat de `theo-archi`** (`avis-theo-palier-5-neuf-lots-qlm-ce1.md` 3.2, lu par lui au disque, non relu par moi dans le test) : `ChaqueJeuDuCatalogueOffrePlusDItemsQueDeManchesTest` (`ADR-0023`) exige **strictement plus** d'items que de manches pour toute entree du catalogue ; a dix manches (`DEC-0121`), un paquet de 10 items est rouge au branchement. **`QC5` (*"entre 10 et 20"*) tenait donc a son plancher un paquet que la CI refuse au branchement (`QC3`)** : deux criteres qui ne se tenaient pas ensemble. C'est le controle d'un critere contre l'existant, et il etait le mien ; `theo-archi` l'a mesure.
+
+**Decision de produit** : le plancher est **11 items**, le plafond de 20 d'A.250 est inchange. `QC5` devient *"entre 11 et 20"*. Motifs : aucune regle a amender (`DEC-0121` reconduit 10 manches comme exigence de produit, `ADR-0023` tient) ; aucune derogation a nommer ; aucun code ; `FER-2` (*"au moins dix items"*) reste la condition de `nadia-prof`, tenue. **Le 11 est un plancher de produit, pas une condition pedagogique.** A 11 items les proportions de `nadia-prof` demandent 4 items a la vapeur d'eau (`ETE-CE1-1`, un tiers) et 3 items a cible metallique non attiree (`AIM-CE1-2`, un quart) **[calcul]** : les nombres 4 et 3 des stories ne changent pas.
+
+**L'autre branche, 10 items et une derogation de manches nommee** (dans `ChaqueJeuDuCatalogueDureDixManchesSaufDerogationNommeeTest`, nom lu chez `theo-archi`), je ne la prends pas : elle toucherait une exigence que `DEC-0121` vient de reconduire et un verdict qui est a `nadia-prof`. Elle reste ouverte a l'utilisatrice, par une phrase. Consequence de chaque branche :
+
+| Branche | `FER-2`, au moins dix items | Pour `nadia-prof` | Pour le produit |
+|---|---|---|---|
+| 11 items au moins, retenue | tenue avec un item d'avance | 99 items a lire contre leur source au plancher (9 fois 11) contre 90 ; un item refuse a la lecture avant `verify` ne fait pas tomber le paquet sous `FER-2` | aucune derogation, aucun code, 10 manches |
+| 10 items et une derogation de manches par paquet | tenue sans marge : un item refuse fait tomber le paquet a 9, son remplacement est un item neuf a lire | 90 items au plancher ; elle juge en plus la longueur de chaque partie raccourcie (`DEC-0121` lui laisse ce verdict) | neuf derogations nommees dans une `DEC`, a ajouter au test de derogation (code, proprietaire a designer), une exception de plus a `DEC-0121` |
+
+### A.259 L'entree du test de rang est exigee des le premier jet (corrige A.254, dernier paragraphe)
+
+**Ce qu'A.254 ecrivait** : le developpeur *"le constate a son premier `verify` et l'ecrit"*. **Inexact** : `theo-archi` (avis 2, `T2`, mecanisme lu aux lignes 1393-1408, 1745-1800 et 1835-1876 du test) montre que l'entree de `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` est **certaine** des que les propositions sont du texte, ce que les neuf stories demandent : le commit qui depose le YAML est rouge sans elle. **Remplace** : *"le developpeur ecrit l'entree dans le commit du premier jet"*, avec les totaux exacts dans le motif ; **toute correction qui ajoute ou retire un item recompte le motif dans le meme commit**, sinon le test des comptes est rouge. Un paquet dont certains items portent trois nombres (des ages en *"X ans"* sur `-12`, exemple de `theo-archi`) sort de ce cas : pas d'entree, la declaration est dans `PAQUETS_A_ITEMS_ECARTES`. Critere `QC10` au backlog. **Changement de code decide, avec proprietaire** : l'entree de chaque paquet, ecrite par le developpeur que `sofia-sm` designe, dans le commit de chaque premier jet.
+
+### A.260 Composition proposee du palier des neuf lots : proposition, non decidee
+
+Rien ici n'est engage : **D2** de `planning.md` (cloture du palier precedent, arbitrage prealable de l'instance, composition portee par un amendement date de `planning.md`, table d'isolation) s'applique a l'ouverture du palier. Prix : bareme de `nadia-prof` (arbitrage prealable 0,5, marge 0,5, lot 1,0) et surcouts mesures ailleurs (A.200, A.244) ; **aucun n'est une mesure de questionner le monde, aucun n'est un prix fixe ici.**
+
+| Element | Proposition | Source |
+|---|---|---|
+| Palier | 9, au nominal d'A.215 : B n'a aucun lot aux paliers 9 et 10 | `K3`, `K4` ; A.215 |
+| Palier plus tot | non propose : un palier 6, 7 ou 8 met les neuf lots a cote des lots illustres de B, `K2` tombe et l'utilisatrice devrait le nommer | `K2` ; arbitrage 5.1 |
+| Instance | une seule, pas B ; developpeur distinct de `lea-dev`, designe par `sofia-sm` ; recommandation en A.261 | `K1`, C1, `RG2` |
+| Lots | neuf, une ligne par lot : `-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12` | A.237, `M1` |
+| Hors du palier | `-07` moitie textuelle (palier 10 si place, sinon s58) ; `-09`, `-11`, moitie dessinee de `-07` refusees. Nommer `-07` parmi les neuf : dix lots, 11,00 au bareme, en dernier | A.241, arbitrage 5.2 |
+| Prix au bareme | 10,00 : fixe 1,0 plus 9 fois 1,0, lecture avant `verify` comprise | arbitrage 9 lots 2.1 |
+| Plafond de `couvert-valide` | 43 plus 9 = 52 sur 64 (81,3 %), compteur de version 55 ; arithmetique, pas un engagement | A.239, A.223, `M5` |
+
+**Ordre** (`M3`, `P0` a `P3` de `nadia-prof`, un seul developpeur) :
+
+| Passe | Lots | Ce qui precede la suite |
+|---|---|---|
+| `P0` | `-01` seul | premier jet commite seul, inscrit dans `planning.md` (lot, commit, heure) avant tout `verify` complet ; `lecture-nadia-premier-jet-<paquet>.md` ; correction ; ensuite seulement les huit autres premiers jets |
+| `P1` | `-02`, `-03` ; `-04`, `-05` ; `-06`, `-08` ; `-10`, `-12` | premiers jets puis lecture, par paires dans cet ordre |
+| `P2` | audits des neuf | joues dans le meme ordre, `-01` d'abord, chaque lot apres son `verify` ; aucune entree `ce1-qlm-*` au catalogue avant un Done (`QC3`) |
+| `P3` | rejeux | le premier lot refuse dans l'ordre de `P2` est rejoue dans la marge du palier 9 ; les autres au palier 10 ; un lot non audite a la cloture glisse au palier 10 et y passe avant tout lot neuf |
+
+**Fusions** (avis de `theo-archi` 3.3 et 3.4, a `sofia-sm` pour `planning.md`) : serialisees, chaque branche part du sommet qui porte la fusion precedente, parce que la table du rang, `catalogue.yaml` et l'inventaire du port entrant sont des ajouts en fin de liste et que deux branches paralleles y entrent en conflit ; un seul test des conditions transverses, ecrit dans `-01`, que les huit autres lots n'ont pas a toucher.
+
+**Palier 10.** Il s'ouvre **seulement s'il porte un poste** (A.214, condition 6 : un palier sans lot instruit ne s'ouvre pas) : rejeux hors marge, lots glisses avant tout lot neuf, puis `-07` moitie textuelle si place (`CIR-CE1-1`, plafond `en cours`, 0 en `couvert-valide`, 2,00 au bareme, A.223). Un refus au palier 10 va a s58, ecrit d'avance (`K3`) ; s58 n'est pas ouvert (A.183). Prix : fixe 1,0 plus 0,50 par rejeu (A.199) plus 1,0 par lot glisse ou `-07` **[calcul sur le bareme]**. **Si rien ne glisse, il ne s'ouvre pas.** **Ce que la composition du palier 10 rencontre** : les levees d'A.247 valent pour le palier des neuf lots seulement ; au palier 10, C4 (deux lots), `PAR-8` (trois lots, 5,0) et `PAR-9` (8,0) s'appliquent de nouveau sauf phrase de l'utilisatrice. Des rejeux ne sont pas des lots (le compte de lots de `PAR-8` ne bouge pas, deja ecrit au palier 4) ; plus de deux lots glisses seraient concernes. Question deja ouverte (A.247, A.249 point 8, A.255).
+
+### A.261 Ce que l'utilisatrice doit trancher : options, consequences, recommandation
+
+Aucune de ces reponses n'est la mienne. Les chiffres sont des calculs sur le bareme et sur des surcouts d'autres matieres.
+
+**Instance (la lettre)** : une seule, pas B, developpeur distinct de `lea-dev`.
+
+| Option | Ce que le depot en dit | Palier 9 si le surcout se repete sur 9 lots |
+|---|---|---|
+| A, francais CE1 (`marc-dev` au palier 4) | 2,25 contre 2,00 au bareme au palier 4, soit plus 0,25 sur un lot (A.200) ; sans poste apres le palier 5 (A.223) | 12,25 ; echantillon d'un seul lot |
+| A', EMC CE1 (`sofia-sm` au palier 4) | 6,00 contre 4,00, soit plus 2,00 sur trois lots, 0,67 par lot, trois refus (A.199, A.200) ; ses paquets sont le precedent de forme que `theo-archi` cite (`PaquetCe1EmcInteretCommunTest`) | 16,03 |
+| neuve | aucune mesure ; `nadia-prof` applique un surcout a une instance neuve dont elle n'a pas ecrit la valeur (A.228) | inconnu avant le premier lot |
+
+**Recommandation : A.** C'est le surcout mesure le plus bas des deux instances qui ont un historique, et elle n'a pas de poste au palier 9. Reserves : un lot mesure ne dit pas neuf lots, et la lettre ne designe pas le developpeur, qui est a `sofia-sm`.
+
+**`K5`, si le repli d'A.215 a lieu** (`MAT-CE1-11` au palier 9 ; il se constate a l'ouverture du palier 6, `glyphes-7-8-9-ines.md` etant une proposition soumise a `nadia-prof`, pas un Done). Meme question si un rejeu ou un glissement de B tombe au palier 9 au nominal.
+
+| Option | Consequence | Palier au bareme |
+|---|---|---|
+| (a) les neuf lots au palier 10 | dernier palier de s57, `K3` non tenue : tout refus au-dela de la marge, tout lot non audite et `-07` vont a s58, non ouvert ; l'horloge au palier 9 n'a pas de palier pour son rejeu (`K2` l'interdit avec les neuf) | 10,00 au palier 10 ; 2,50 pour l'horloge au palier 9 (A.215) |
+| (b) l'horloge avec les neuf lots au palier 9, `K2` nommee par l'utilisatrice | dix lots pour `nadia-prof`, l'horloge auditee apres les neuf ; palier 10 libre pour les rejeux des deux, `K3` tenue | 12,50 (10,00 plus 2,50) ; 19,20 aux surcouts hauts (16,03 plus 3,17, A.215) |
+
+**Recommandation : (b).** C'est la seule branche ou un refus de l'horloge ou d'un des neuf lots a un palier pour son rejeu dans s57. Son prix : un lot de plus pour `nadia-prof`, qu'elle audite si `K2` est nommee (arbitrage `K5`).
+
+**Valeur du relevement de `PAR-8` en prix, pour le palier des neuf lots seulement** (A.247). L'engage reste 10,00 ; le relevement est un plafond, la consommation au-dela du bareme va au registre.
+
+| Option | Valeur | Ce qu'elle couvre | Si le surcout la depasse |
+|---|---|---|---|
+| (a) le bareme | 10,00 | rien au-dela | tout surcout est un depassement, consigne a la cloture avec son chiffre (A.225) |
+| (b) surcout de A | 12,25 | plus 0,25 par lot | depassement consigne |
+| (c) surcout moyen du palier 4 | 13,78 | plus 0,42 par lot (A.200, borne basse) | depassement consigne |
+| (d) surcout de A' | 16,03 | plus 0,67 par lot, borne haute de `nadia-prof` | aucun surcout mesure ne la depasse |
+
+**Recommandation : (d).** Les trois surcouts mesures vont de 0,25 a 0,67 ; seul 16,03 couvre l'ecart sans demander une decision a la cloture. Ce n'est pas un engagement : l'engage est 10,00.
+
+**Taille de la marge** (A.244, A.249 point 4) : 0,50 par rejeu (A.199).
+
+| Option | Marge | Rejeux dans le palier 9 | Palier au bareme |
+|---|---|---|---|
+| (a) | 0,5 | un, comme `P3` de `nadia-prof` | 10,00 |
+| (b) | 1,0 | deux | 10,50 |
+| (c) | 1,5 | trois ; au palier 4, deux lots sur six ont demande au moins un rejeu (`arbitrage-nadia-palier-5-qlm-9-lots.md` 1), soit trois sur neuf a ce rythme **[calcul]** | 11,00 |
+
+**Recommandation : (a).** `nadia-prof` place un rejeu dans la marge et les autres au palier 10 ; une marge plus grande deplace les rejeux vers le palier ou elle audite deja neuf lots, sans reduire sa charge. Le palier 10 porte le reste a 1,0 plus 0,50 par rejeu.
+
+### A.262 Matrice, routage, ce qui reste ouvert
+
+**Matrice** : aucun statut ne change, `MATRICE-couverture.md` n'est pas modifiee ; les douze lignes `QLM-CE1` restent `non couvert`.
+
+| A qui | Quoi |
+|---|---|
+| l'utilisatrice, par `sofia-sm` | l'instance, `K5`, le relevement, la marge (A.261) ; la portee des levees au palier 10 (A.247) ; la correction d'A.229 si elle differe |
+| `nadia-prof` | `Q1` (*"L'aimant n'attire pas tous les metaux."* doit-elle passer) et `Q2` (une bonne reponse *"les metaux"* est-elle refusee) de `theo-archi`, sans reponse dans le depot ; si 11 items change une de ses conditions |
+| `theo-archi` | la forme des gardes de `DVP-CE1-2`, de *pile*, de `DEL-CE1-2` et de `GEN-CE1-1` dont la clause *doit passer* (A.256) |
+| `sofia-sm` | designer le developpeur distinct de `lea-dev` ; `planning.md` : le declencheur de `P0` et les fusions serialisees ; router la question a l'utilisatrice |
+| `yanis-qa` | tirer de `QC5` (11 a 20) et de `QC10` leurs tests |
+
+**Decisions de produit prises ici** : (1) la sonde de `-12` critere 2 est remplacee, `FER-1` de `-05` est levee de son *[suppose]* (A.256, A.257) ; (2) plancher de 11 items, `QC5` remplace (A.258) ; (3) l'entree du test de rang est exigee dans le commit du premier jet, `QC10` (A.259) ; (4) une composition est proposee, **sans etre decidee** (A.260, A.261). **Non decide, dit** : l'instance, `K5`, le relevement, la marge, la portee au palier 10, `-07`. **Changement de code decide, avec proprietaire** : l'entree de rang de chaque paquet (A.259), le developpeur que `sofia-sm` designe, non designe a cette date ; le plancher de 11 n'en demande aucun. **Report** : premiere inscription d'A.256 a A.259. Le palier et l'instance sont ouverts depuis A.236 et repetes en A.241, A.246, A.249 et A.255, le meme jour : ce n'est pas encore un report de sprint, mais c'est une question que cet amendement ne ferme pas. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, n'engage aucun lot, ne designe aucun developpeur, ne choisit ni le palier ni l'instance, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
