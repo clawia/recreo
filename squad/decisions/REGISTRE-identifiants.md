@@ -11,6 +11,15 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s57, palier 5, le 2026-10-27 (Done pedagogique de `QLM-CE1-08`, VALIDE SOUS RESERVE).** Un
+identifiant ajoute, une reserve : **`DEL-CE1-R1`**, ecrit dans `squad/conformite/FICHE-ce1-qlm-08.md`. **Forme copiee** de
+`SYC-CE1-R1` : trois segments, niveau au milieu, marqueur `R` dans le dernier (`ADR-0100`). **Aucun prefixe neuf** :
+`DEL-CE1-1` et `-2` etaient alloues ; `DEL-CE1-R1` etait absent de la section 4 avant d'ecrire. Ligne de la section 4 dans
+le meme diff que la fiche. Ligne d'etat courant portee de **999 / 179 a 1000 / 179**, recopiee du garde-fou lance sur mon
+diff avant la mise a jour de la ligne : *"declare 999 identifiants alloues et 179 prefixes distincts, sa table en porte 1000
+et 179"*, seul echec des 10 tests. Base `round-two` a `d6f2e007` : d'autres audits du palier allouent en parallele, et le
+compte se reverifie a chaque fusion (`ADR-0085`, clause 5).
+
 **Note de `theo-archi`, s57, palier 3, le 2026-10-21 (allocation mecanique, clause 2 rouge sur `round-two` apres la fusion de `s57-ines-p3-b383`).**
 Trois identifiants ajoutes, **`PL-11`**, **`PL-12`** et **`PL-13`**, ecrits par `ines-design` sans allocation dans
 `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/mesure-ines-palier-3-pli-744x551.md`. Prefixe `PL` deja alloue (`PL-1`
@@ -942,7 +951,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `999` identifiants alloues, `179` prefixes distincts.
+**Compte courant, verifie par la CI** : `1000` identifiants alloues, `179` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2510,6 +2519,7 @@ clause 2 par une exemption.
 | `CIR-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
 | `DEL-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
 | `DEL-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `DEL-CE1-R1` | `squad/conformite/FICHE-ce1-qlm-08.md` |
 | `PLG-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
 | `PLG-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
 | `PAY-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
