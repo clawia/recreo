@@ -68,7 +68,7 @@ items:
   # TRV-CE1-2 : a, c
   - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
     bonneReponse: "ne pas toucher le fil"
-    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    distracteurs: ["réparer le fil avec du scotch", "ne pas en parler"]
     indice: "Regarde le plastique qui entoure le fil."
   # DEL-CE1-1 tache : geste
   # DEL-CE1-1 situation : prise
@@ -89,7 +89,7 @@ items:
   # TRV-CE1-2 : a, c
   - enonce: "Le grille-pain est branché au bord de l'évier. Que doit faire Léa ?"
     bonneReponse: "ne pas toucher l'appareil"
-    distracteurs: ["le débrancher en tirant le fil", "ne rien dire à un adulte"]
+    distracteurs: ["le débrancher en tirant le fil", "ne pas déranger un adulte"]
     indice: "Regarde ce qui se trouve à côté du grille-pain."
   # DEL-CE1-1 tache : geste
   # DEL-CE1-1 situation : eau

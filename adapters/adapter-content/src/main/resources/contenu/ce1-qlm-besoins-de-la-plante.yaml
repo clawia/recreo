@@ -70,7 +70,7 @@ items:
   # TRV-CE1-2 : b, b
   - enonce: "Une plante n'a plus d'eau. Que lui arrive-t-il ?"
     bonneReponse: "elle se fane"
-    distracteurs: ["elle grandit plus vite", "elle devient plus verte"]
+    distracteurs: ["elle reste bien droite", "elle devient plus verte"]
     indice: "Imagine une plante que personne n'arrose pendant longtemps."
   # BPL-CE1-1 sujet : plante
   # BPL-CE1-1 tache : besoin
@@ -150,7 +150,7 @@ items:
   # TRV-CE1-2 : b, b
   - enonce: "Une plante manque de chaleur, car il fait très froid. Que lui arrive-t-il ?"
     bonneReponse: "elle arrête de pousser"
-    distracteurs: ["elle pousse plus vite", "elle fait plus de fleurs"]
+    distracteurs: ["elle continue de pousser", "elle fait plus de fleurs"]
     indice: "Imagine une plante qui reste dehors en plein hiver."
   # BPL-CE1-1 sujet : plante
   # BPL-CE1-1 tache : besoin
