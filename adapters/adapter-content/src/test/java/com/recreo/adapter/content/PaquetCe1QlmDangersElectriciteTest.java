@@ -39,7 +39,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * {@code arbitrage-nadia-dernier-lot-ce1-qlm-04-a-12.md}). Les formes des gardes sont celles de
  * theo-archi ({@code avis-theo-palier-5-gardes-ce1-qlm-06-08.md}, ajuste par
  * {@code avis-theo-palier-5-ajustements-gardes-ce1-qlm-06-08.md} et
- * {@code avis-theo-palier-5-dernier-ajustement-gardes-ce1-qlm-05-a-12.md}). Les conditions transverses
+ * {@code avis-theo-palier-5-dernier-ajustement-gardes-ce1-qlm-05-a-12.md} et
+ * {@code avis-theo-palier-5-gardes-apres-lecture-ce1-qlm-05-08.md}, section -08). Les conditions transverses
  * sont gardees une fois pour les neuf lots par
  * {@code ChaquePaquetDeQuestionnerLeMondeDeCe1TientLesConditionsTransversesTest}.
  *
@@ -61,13 +62,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * distracteurs negatifs ne se repartissent pas en signe du bon geste ; une abstention ecrite hors de ses
  * cinq formes ou apres le debut de la proposition ; qu'un enonce {@code eau} dise <i>deja branche</i> sous
  * {@code ne pas toucher l'appareil} et <i>veut poser</i> sous {@code ne pas l'approcher de l'eau} ; qu'un
- * indice soit une methode, qu'il ne nomme ni le geste ni l'etat dangereux ; les traits partages par deux
- * distracteurs de la tache danger ; une alerte a un adulte ecrite autrement que par ses trois formes ; un
- * personnage nomme blesse par une periphrase ; {@code TRV-CE1-6} au-dela de ses quatre mots.
- *
- * <p><b>Une lecture a confirmer.</b> La garde des cinq abstentions ({@code G3}) lit {@code attendre} en
- * egalite et non en debut de proposition : en debut de proposition elle refuserait
- * <i>attendre sans rien dire</i>, que la regle de nadia-prof admet comme refus de signaler.
+ * indice soit une methode, qu'il ne designe pas la bonne reponse par un autre mot que ceux des deux listes
+ * de {@link #verifierLesIndices} ; les traits partages par deux distracteurs de la tache danger hors du mot
+ * ({@link #verifierQueLesDeuxDistracteursDeDangerNePartagentPasDeMot} ne lit que les mots) ; une alerte a
+ * quelqu'un d'autre qu'un adulte, ou apres un debut en {@code ne} ; un personnage nomme blesse par une
+ * periphrase ; {@code TRV-CE1-6} au-dela de ses quatre mots.
  */
 class PaquetCe1QlmDangersElectriciteTest {
 
@@ -170,16 +169,20 @@ class PaquetCe1QlmDangersElectriciteTest {
     /** TRV-CE1-6 : les quatre mots refuses. */
     private static final Pattern VECU_DE_L_ENFANT = motif("chez toi|ta maison|ta chambre|baignoires?");
 
-    /** Regle 2 : aucune alerte a un adulte n'est une proposition ; l'alerte niee commence par ne et passe. */
-    private static final Pattern ALERTE = Pattern.compile("^(?:prevenir|appeler|le dire a) un adulte(?!\\p{L})",
-            FLAGS);
+    private static final Pattern ADULTE = motif("adultes?");
 
-    /**
-     * Regle 3 : les cinq abstentions, au debut de la proposition. {@code attendre} se lit en egalite : suivi
-     * d'un refus de signaler (attendre sans rien dire) il est un distracteur negatif admis.
-     */
-    private static final Pattern ABSTENTION = Pattern.compile("^(?:(?:s'eloigner|ne rien toucher"
-            + "|ne pas s'approcher|continuer a jouer ailleurs)(?!\\p{L})|attendre[.!]?$)", FLAGS);
+    private static final Pattern NE_DEBUT = Pattern.compile("^ne(?!\\p{L})", FLAGS);
+
+    /** Regle 3 : les cinq abstentions, au debut de la proposition, {@code attendre} compris. */
+    private static final Pattern ABSTENTION = Pattern.compile("^(?:s'eloigner|attendre|ne rien toucher"
+            + "|ne pas s'approcher|continuer a jouer ailleurs)(?!\\p{L})", FLAGS);
+
+    /** Regle 4, ce que l'indice d'un item geste ne nomme pas : le geste et l'adulte. {@code sech} exclut le seche-cheveux. */
+    private static final Pattern INDICE_DE_GESTE = motif("touch\\p{L}*|approch\\p{L}*|branch\\p{L}*"
+            + "|sech\\p{L}*(?!-cheveux)|prev(?:en|ien)\\p{L}*|adultes?");
+
+    /** Regle 4, ce que l'indice d'un item danger ne nomme pas : l'etat dangereux et l'eau. */
+    private static final Pattern INDICE_DE_DANGER = motif("abim\\p{L}*|cass(?:e|es|ee|ees|er|ent)|eaux?");
 
     private static final Pattern NE_EN_TETE = Pattern.compile("^ne (?:pas|rien|jamais)(?!\\p{L})", FLAGS);
 
@@ -468,11 +471,15 @@ class PaquetCe1QlmDangersElectriciteTest {
 
     // ----- les propositions
 
-    /** Regle 2 : aucune alerte a un adulte, ni en bonne reponse ni en distracteur (NRC-CE1-1). */
+    /**
+     * Regle 2 : aucune alerte a un adulte, ni en bonne reponse ni en distracteur (NRC-CE1-1) : toute
+     * proposition qui nomme un adulte sans commencer par ne est refusee, le refus de signaler commence par ne.
+     */
     static void verifierQueAucuneAlerteNEstUneProposition(List<Item> items) {
         for (Item item : items) {
             for (String proposition : item.propositions()) {
-                assertThat(ALERTE.matcher(plat(proposition)).find())
+                String plat = plat(proposition);
+                assertThat(ADULTE.matcher(plat).find() && !NE_DEBUT.matcher(plat).find())
                         .as("NRC-CE1-1 : « %s » (proposition de '%s') est une alerte à un adulte, la bonne réponse "
                                 + "de cp-emc-alerte", proposition, item.enonce())
                         .isFalse();
@@ -522,6 +529,51 @@ class PaquetCe1QlmDangersElectriciteTest {
                     .as("DEL-CE1-1 : l'énoncé de '%s' porte les repères de plusieurs situations : %s, une seule "
                             + "situation par énoncé", item.enonce(), portees)
                     .isLessThanOrEqualTo(1);
+        }
+    }
+
+    /**
+     * Regle 4, partie lexicale : l'indice ne nomme ni le geste (item geste) ni l'etat dangereux (item danger),
+     * selon la tache declaree par l'item.
+     */
+    static void verifierLesIndices(List<Item> items) {
+        for (Item item : items) {
+            Pattern interdits = estUnItem(item, GESTE) ? INDICE_DE_GESTE : INDICE_DE_DANGER;
+            Matcher trouve = interdits.matcher(plat(item.indice()));
+            boolean refuse = trouve.find();
+            assertThat(refuse)
+                    .as("TRV-CE1-5 : l'indice '%s' de '%s' nomme %s", item.indice(), item.enonce(),
+                            refuse ? trouve.group() : "")
+                    .isFalse();
+        }
+    }
+
+    private static Set<String> mots(String proposition) {
+        Set<String> mots = new TreeSet<>();
+        for (String segment : egalite(proposition).split(" ")) {
+            if (segment.chars().anyMatch(Character::isLetterOrDigit)) {
+                mots.add(segment);
+            }
+        }
+        return mots;
+    }
+
+    /**
+     * Regle 3 en tache danger : un mot commun aux deux distracteurs et absent de la bonne reponse les
+     * designe tous deux comme faux ; les articles comptent. La tache geste n'est pas lue.
+     */
+    static void verifierQueLesDeuxDistracteursDeDangerNePartagentPasDeMot(List<Item> items) {
+        for (Item item : items) {
+            if (!estUnItem(item, DANGER)) {
+                continue;
+            }
+            Set<String> communs = new TreeSet<>(mots(item.distracteurs().get(0)));
+            communs.retainAll(mots(item.distracteurs().get(1)));
+            communs.removeAll(mots(item.bonneReponse()));
+            assertThat(communs)
+                    .as("TRV-CE1-2 : les deux distracteurs de '%s' ont en commun %s, que la bonne réponse n'a pas",
+                            item.enonce(), communs)
+                    .isEmpty();
         }
     }
 
@@ -648,6 +700,16 @@ class PaquetCe1QlmDangersElectriciteTest {
     @Test
     void trv2AucunDistracteurNeNieUneFormeDeLaRegle2() {
         verifierQuAucunDistracteurNeNieUneForme(paquet().items());
+    }
+
+    @Test
+    void trv5AucunIndiceNeNommeLeGesteNiLEtatDangereux() {
+        verifierLesIndices(paquet().items());
+    }
+
+    @Test
+    void trv2LesDeuxDistracteursDUnItemDangerNePartagentAucunMotAbsentDeLaBonneReponse() {
+        verifierQueLesDeuxDistracteursDeDangerNePartagentPasDeMot(paquet().items());
     }
 
     @Test
@@ -802,12 +864,23 @@ class PaquetCe1QlmDangersElectriciteTest {
     }
 
     @Test
-    void leJeuFautifCommiteLaisseLAlerteNieePasserEtNeRefuseQueLAlerteDuDebut() {
+    void leJeuFautifCommiteEstRefuseSurToutAdulteSansNeEnTeteEnBonneReponseOuEnDistracteur() {
+        for (String sonde : List.of("sonde 89", "sonde 90", "sonde 91", "sonde 92", "sonde 93")) {
+            estRefusee(sonde, PaquetCe1QlmDangersElectriciteTest::verifierQueAucuneAlerteNEstUneProposition,
+                    "NRC-CE1-1", "est une alerte à un adulte");
+        }
+        estRefusee("sonde 91", PaquetCe1QlmDangersElectriciteTest::verifierQuAucuneAbstentionNEstUnDistracteur,
+                "est une abstention");
+    }
+
+    @Test
+    void leJeuFautifCommiteLaisseLesRefusDeSignalerQuiNommentUnAdultePasserEnCommencantParNe() {
         passe("sonde 57", PaquetCe1QlmDangersElectriciteTest::verifierQueAucuneAlerteNEstUneProposition,
                 PaquetCe1QlmDangersElectriciteTest::verifierLesGestes,
                 PaquetCe1QlmDangersElectriciteTest::verifierLaGrammaire);
         passe("sonde 58", PaquetCe1QlmDangersElectriciteTest::verifierQueAucuneAlerteNEstUneProposition,
                 PaquetCe1QlmDangersElectriciteTest::verifierQuAucunDistracteurNeNieUneForme);
+        passe("sonde 94", PaquetCe1QlmDangersElectriciteTest::verifierQueAucuneAlerteNEstUneProposition);
     }
 
     @Test
@@ -827,7 +900,7 @@ class PaquetCe1QlmDangersElectriciteTest {
 
     @Test
     void leJeuFautifCommiteEstRefuseSurChacuneDesCinqAbstentionsEnDistracteur() {
-        sontRefusees(List.of("sonde 62", "sonde 63", "sonde 64", "sonde 65", "sonde 66", "sonde 67"),
+        sontRefusees(List.of("sonde 62", "sonde 63", "sonde 64", "sonde 65", "sonde 66", "sonde 67", "sonde 71"),
                 PaquetCe1QlmDangersElectriciteTest::verifierQuAucuneAbstentionNEstUnDistracteur,
                 "est une abstention");
         passe("sonde 62", PaquetCe1QlmDangersElectriciteTest::verifierUnSeulGeste,
@@ -837,8 +910,8 @@ class PaquetCe1QlmDangersElectriciteTest {
     }
 
     @Test
-    void leJeuFautifCommiteLaisseLesRefusDeSignalerLAbstentionHorsDuDebutEtAttendreSuiviDUnRefusPasser() {
-        for (String sonde : List.of("sonde 68", "sonde 69", "sonde 70", "sonde 71")) {
+    void leJeuFautifCommiteLaisseLesRefusDeSignalerLAbstentionHorsDuDebutEtAttendrirPasser() {
+        for (String sonde : List.of("sonde 68", "sonde 69", "sonde 70")) {
             passe(sonde, PaquetCe1QlmDangersElectriciteTest::verifierQuAucuneAbstentionNEstUnDistracteur,
                     PaquetCe1QlmDangersElectriciteTest::verifierUnSeulGeste,
                     PaquetCe1QlmDangersElectriciteTest::verifierLaGrammaire);
@@ -862,6 +935,39 @@ class PaquetCe1QlmDangersElectriciteTest {
         for (String sonde : List.of("sonde 75", "sonde 76")) {
             passe(sonde, PaquetCe1QlmDangersElectriciteTest::verifierQuAucunDistracteurNeNieUneForme,
                     PaquetCe1QlmDangersElectriciteTest::verifierQuAucuneAbstentionNEstUnDistracteur);
+        }
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnIndiceQuiNommeLeGesteOuLEtatDangereux() {
+        for (String sonde : List.of("sonde 78", "sonde 79", "sonde 80", "sonde 81", "sonde 82", "sonde 83")) {
+            estRefusee(sonde, PaquetCe1QlmDangersElectriciteTest::verifierLesIndices, "TRV-CE1-5", "nomme");
+        }
+    }
+
+    @Test
+    void leJeuFautifCommiteLaisseUnIndiceSansLeGesteNiLEtatDangereuxPasser() {
+        passe("sonde 84", PaquetCe1QlmDangersElectriciteTest::verifierLesIndices);
+        passe("sonde 85", PaquetCe1QlmDangersElectriciteTest::verifierLesIndices);
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnMotCommunAuxDeuxDistracteursDUnItemDanger() {
+        estRefusee("sonde 86",
+                PaquetCe1QlmDangersElectriciteTest::verifierQueLesDeuxDistracteursDeDangerNePartagentPasDeMot,
+                "TRV-CE1-2", "ont en commun [loin]");
+        estRefusee("sonde 87",
+                PaquetCe1QlmDangersElectriciteTest::verifierQueLesDeuxDistracteursDeDangerNePartagentPasDeMot,
+                "TRV-CE1-2", "ont en commun [debranche]");
+        estRefusee("sonde 88",
+                PaquetCe1QlmDangersElectriciteTest::verifierQueLesDeuxDistracteursDeDangerNePartagentPasDeMot,
+                "TRV-CE1-2", "ont en commun [un]");
+    }
+
+    @Test
+    void leJeuFautifCommiteLaisseUnMotCommunAuxDeuxDistracteursPasserEnTacheGeste() {
+        for (String sonde : List.of("sonde 54", "sonde 55")) {
+            passe(sonde, PaquetCe1QlmDangersElectriciteTest::verifierQueLesDeuxDistracteursDeDangerNePartagentPasDeMot);
         }
     }
 

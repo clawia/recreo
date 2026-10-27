@@ -75,7 +75,7 @@ items:
   # TRV-CE1-2 : a, c
   - enonce: "La prise du salon est cassée. Que doit faire Sami ?"
     bonneReponse: "ne pas toucher la prise"
-    distracteurs: ["la réparer avec un tournevis", "ne pas déranger un adulte"]
+    distracteurs: ["réparer la prise avec un tournevis", "ne pas déranger un adulte"]
     indice: "Regarde l'endroit où il manque un morceau."
   # DEL-CE1-1 tache : danger
   # DEL-CE1-1 situation : fil
@@ -93,17 +93,17 @@ items:
     indice: "Regarde ce qui se trouve à côté du grille-pain."
   # DEL-CE1-1 tache : geste
   # DEL-CE1-1 situation : eau
-  # TRV-CE1-2 : b, a
+  # TRV-CE1-2 : b, b
   - enonce: "Zoé a les mains mouillées et veut brancher la lampe. Que doit-elle faire ?"
     bonneReponse: "attendre d'avoir les mains sèches"
-    distracteurs: ["brancher la lampe tout de suite", "changer l'ampoule de la lampe"]
-    indice: "Regarde bien l'état de ses mains."
+    distracteurs: ["brancher la lampe tout de suite", "secouer ses mains puis l'allumer"]
+    indice: "Pense à l'eau qui reste sur sa peau."
   # DEL-CE1-1 tache : danger
   # DEL-CE1-1 situation : eau
   # TRV-CE1-2 : d, d
   - enonce: "Dans la cuisine de Maya, laquelle de ces situations est dangereuse ?"
     bonneReponse: "une lampe branchée près de l'évier"
-    distracteurs: ["une lampe branchée loin de l'évier", "une lampe débranchée loin de l'évier"]
+    distracteurs: ["une lampe branchée loin de l'évier", "une lampe débranchée près de l'évier"]
     indice: "Compare les trois lampes, une par une."
   # DEL-CE1-1 tache : geste
   # DEL-CE1-1 situation : fil
@@ -115,28 +115,28 @@ items:
   # DEL-CE1-1 tache : geste
   # DEL-CE1-1 situation : eau
   # TRV-CE1-2 : b, c
-  - enonce: "Hugo veut poser la radio au bord de l'évier. Un adulte lave la vaisselle. Que doit-il faire ?"
+  - enonce: "Hugo veut poser la radio branchée au bord de l'évier. Que doit-il faire ?"
     bonneReponse: "ne pas l'approcher de l'eau"
-    distracteurs: ["la poser près du robinet ouvert", "ne pas déranger un adulte"]
-    indice: "Pense à ce qui coule près de la radio."
+    distracteurs: ["la poser près du robinet ouvert", "ne rien dire à personne"]
+    indice: "Pense à ce qui peut éclabousser la radio."
   # DEL-CE1-1 tache : geste
   # DEL-CE1-1 situation : prise
   # TRV-CE1-2 : a, c
   - enonce: "Noé joue près d'une prise abîmée dans le couloir. Que doit-il faire ?"
     bonneReponse: "ne rien mettre dans la prise"
-    distracteurs: ["la nettoyer avec un chiffon", "ne pas en parler"]
+    distracteurs: ["nettoyer la prise avec un chiffon", "ne pas en parler"]
     indice: "Pense à ce qui se trouve à l'intérieur de la prise."
   # DEL-CE1-1 tache : danger
   # DEL-CE1-1 situation : eau
   # TRV-CE1-2 : d, d
   - enonce: "Chez Adam, quelle situation est dangereuse ?"
     bonneReponse: "un sèche-cheveux branché près du lavabo"
-    distracteurs: ["un sèche-cheveux débranché près du lavabo", "un sèche-cheveux débranché loin du lavabo"]
-    indice: "Imagine ce qui se trouve autour de chaque appareil."
+    distracteurs: ["un sèche-cheveux débranché près du lavabo", "un sèche-cheveux branché loin du lavabo"]
+    indice: "Le danger vient de deux choses à la fois."
   # DEL-CE1-1 tache : geste
   # DEL-CE1-1 situation : eau
   # TRV-CE1-2 : b, a
   - enonce: "Nina a les mains mouillées et veut utiliser le mixeur. Que doit-elle faire ?"
     bonneReponse: "se sécher d'abord les mains"
-    distracteurs: ["l'utiliser sans plus attendre", "tirer sur le fil du mixeur"]
-    indice: "Pense à ce que Nina vient de faire."
+    distracteurs: ["l'utiliser avec les mains mouillées", "tirer sur le fil du mixeur"]
+    indice: "Pense aux gouttes d'eau sur ses doigts."
