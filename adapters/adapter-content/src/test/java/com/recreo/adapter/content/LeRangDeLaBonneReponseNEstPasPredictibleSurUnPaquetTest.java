@@ -1398,7 +1398,12 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             Map.entry("ce1-qlm-ce-que-mangent-les-animaux",
             "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est"
                     + " numerique, valeurDe rend null sur chacune. Mesure du 2026-10-26 sur le paquet du"
-                    + " depot : aucune proposition ne commence par un chiffre"));
+                    + " depot : aucune proposition ne commence par un chiffre"),
+            // S57-BR-QLM-CE1-04 : quatrieme paquet de questionner le monde CE1, propositions textuelles.
+            Map.entry("ce1-qlm-familles-d-aliments",
+            "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est"
+                    + " numerique, valeurDe rend null sur chacune (familles d'aliments et menus). Mesure du"
+                    + " 2026-10-27 sur le paquet du depot : aucune proposition ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

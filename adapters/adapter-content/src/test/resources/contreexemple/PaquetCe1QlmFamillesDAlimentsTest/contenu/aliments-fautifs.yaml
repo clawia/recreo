@@ -1,0 +1,197 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif du test du paquet des familles d'aliments."
+lignesDeReferentiel: ["QLM-CE1-04"]
+#
+# Jeu fautif de PaquetCe1QlmFamillesDAlimentsTest : chaque item porte en commentaire le marqueur
+# de la sonde qu'il met a l'epreuve. Les sondes dites 'passe' sont des clauses : elles doivent
+# passer. La liste ci-dessous est celle de ces sondes, avec une source qui passe le refus d'un
+# fichier du depot. Aucun item n'est un contenu servi.
+#   aliment pomme de terre : feculents ; source : Alimentarium, Les groupes alimentaires
+#   aliment pates : feculents ; source : Alimentarium, Les groupes alimentaires
+#   aliment pain : feculents ; source : Alimentarium, Les groupes alimentaires
+#   aliment riz : feculents ; source : Alimentarium, Les groupes alimentaires
+#   aliment yaourt : produits laitiers ; source : Alimentarium, Les groupes alimentaires
+#   aliment fromage : produits laitiers ; source : Alimentarium, Les groupes alimentaires
+#   aliment lait : produits laitiers ; source : Alimentarium, Les groupes alimentaires
+#   aliment poulet : viande, poisson et oeufs ; source : Alimentarium, Les groupes alimentaires
+#   aliment poisson : viande, poisson et oeufs ; source : Alimentarium, Les groupes alimentaires
+#   aliment pomme : fruits et legumes ; source : Alimentarium, Les groupes alimentaires
+#   aliment banane : fruits et legumes ; source : Alimentarium, Les groupes alimentaires
+#   aliment carottes : fruits et legumes ; source : Alimentarium, Les groupes alimentaires
+#   aliment gateau : produits sucres ; source : Alimentarium, Les groupes alimentaires
+#   aliment confiture : produits sucres ; source : Alimentarium, Les groupes alimentaires
+#   aliment chocolat : produits sucres ; source : Alimentarium, Les groupes alimentaires
+items:
+  # sonde 01 ni classement ni menu
+  - enonce: "Lequel de ces aliments est un féculent ?"
+    bonneReponse: "les pâtes"
+    distracteurs: ["le yaourt", "la pomme"]
+    indice: "Pense au riz."
+  # sonde 02 une proposition est un aliment
+  # FAL-CE1-1 aliment : yaourt
+  - enonce: "Dans quelle famille d'aliments se range le yaourt ?"
+    bonneReponse: "produits laitiers"
+    distracteurs: ["féculents", "le fromage"]
+    indice: "Compare-le avec le fromage."
+  # sonde 03 aliment absent
+  # FAL-CE1-1 aliment : aubergine
+  - enonce: "Dans quelle famille d'aliments se range l'aubergine ?"
+    bonneReponse: "fruits et légumes"
+    distracteurs: ["féculents", "produits laitiers"]
+    indice: "Pense à la carotte."
+  # sonde 04 bonne reponse hors liste
+  # FAL-CE1-1 aliment : yaourt
+  - enonce: "Dans quelle famille d'aliments se range le yaourt ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Compare-le avec le fromage."
+  # sonde 05 menu, element absent
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, aubergine, yaourt"
+    distracteurs: ["pâtes, pain, poulet, pomme", "pâtes, pain, carottes, fromage"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 06 d
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, carottes"
+    distracteurs: ["pâtes, pain, poulet", "pain, carottes, fromage"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 07 e
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, pain, poulet, pomme", "yaourt, fromage, lait, pâtes, pain, riz"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 08 f
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, pain, riz, pomme", "pâtes, pain, carottes, pomme"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 09 g
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, poulet, gâteau, pain", "pomme, fromage, confiture, carottes"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 10 F5 menu tout sucre
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "pâtes, yaourt, gâteau"
+    distracteurs: ["gâteau, confiture, chocolat", "pain, riz, fromage"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 11 passe
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, pain, poulet, pomme", "pâtes, pain, carottes, fromage"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 12 X1
+  - enonce: "La cantine propose trois menus. Lequel a le plus de familles ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, pain, poulet, pomme", "pâtes, pain, carottes, fromage"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 13 pourquoi manger varie
+  # FAL-CE1-1 aliment : riz
+  - enonce: "Pourquoi manger varié ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense au riz."
+  # sonde 14 mauvais
+  - enonce: "Quel menu est mauvais pour la santé ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, pain, poulet, pomme", "pâtes, pain, carottes, fromage"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 15 BIA-4 enonce
+  - enonce: "Qu'as-tu mangé ce midi ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, pain, poulet, pomme", "pâtes, pain, carottes, fromage"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 16 BIA-4 indice
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, pain, poulet, pomme", "pâtes, pain, carottes, fromage"]
+    indice: "Pense à ce que tu manges à midi."
+  # sonde 17 passe
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, pain, poulet, pomme", "pâtes, pain, carottes, fromage"]
+    indice: "Compte dans ta tête les familles de chaque menu."
+  # sonde 18 mot de famille poisson
+  # FAL-CE1-1 aliment : poisson
+  - enonce: "Dans quelle famille d'aliments se range le poisson ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense au riz."
+  # sonde 19 mot de famille oeuf
+  # FAL-CE1-1 aliment : oeuf
+  - enonce: "Dans quelle famille d'aliments se range l'œuf ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense au riz."
+  # sonde 20 mot de famille lait
+  # FAL-CE1-1 aliment : lait
+  - enonce: "Dans quelle famille d'aliments se range le lait ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense au riz."
+  # sonde 21 mot de famille viande
+  # FAL-CE1-1 aliment : viande
+  - enonce: "Dans quelle famille d'aliments se range la viande ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense au riz."
+  # sonde 22 passe
+  # FAL-CE1-1 aliment : pomme
+  - enonce: "Dans quelle famille d'aliments se range la pomme ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense aux pâtes et au pain."
+  # sonde 23 passe
+  # FAL-CE1-1 aliment : carottes
+  - enonce: "Dans quelle famille d'aliments se range les carottes ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense aux pâtes et au pain."
+  # sonde 24 passe
+  # FAL-CE1-1 aliment : pomme de terre
+  - enonce: "Dans quelle famille d'aliments se range la pomme de terre ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense aux pâtes et au pain."
+  # sonde 25 passe
+  # FAL-CE1-1 aliment : riz
+  - enonce: "Dans quelle famille d'aliments se range le riz ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense aux pâtes et au pain."
+  # sonde 26 mot de famille sucre
+  # FAL-CE1-1 aliment : sucre
+  - enonce: "Dans quelle famille d'aliments se range le sucre ?"
+    bonneReponse: "produits sucrés"
+    distracteurs: ["féculents", "fruits et légumes"]
+    indice: "Pense au gâteau."
+  # sonde 27 indice mot de famille
+  # FAL-CE1-1 aliment : yaourt
+  - enonce: "Dans quelle famille d'aliments se range le yaourt ?"
+    bonneReponse: "produits laitiers"
+    distracteurs: ["féculents", "fruits et légumes"]
+    indice: "Pense au lait."
+  # sonde 28 passe
+  # FAL-CE1-1 aliment : pomme de terre
+  - enonce: "Dans quelle famille d'aliments se range la pomme de terre ?"
+    bonneReponse: "féculents"
+    distracteurs: ["fruits et légumes", "produits laitiers"]
+    indice: "Pense aux pâtes et au riz."
+  # sonde 29 X3
+  # FAL-CE1-1 aliment : yaourt
+  - enonce: "Dans quelle famille d'aliments se range le yaourt ?"
+    bonneReponse: "produits laitiers"
+    distracteurs: ["féculents", "fruits et légumes"]
+    indice: "Compare le yaourt avec le fromage."
+  # sonde 30 passe
+  # FAL-CE1-1 aliment : yaourt
+  - enonce: "Dans quelle famille d'aliments se range le yaourt ?"
+    bonneReponse: "produits laitiers"
+    distracteurs: ["féculents", "fruits et légumes"]
+    indice: "Compare-le avec le fromage."

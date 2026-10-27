@@ -1,0 +1,85 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif du test du paquet des familles d'aliments."
+lignesDeReferentiel: ["QLM-CE1-04"]
+#
+# Jeu fautif de PaquetCe1QlmFamillesDAlimentsTest : chaque item porte en commentaire le marqueur
+# de la sonde qu'il met a l'epreuve. Les sondes dites 'passe' sont des clauses : elles doivent
+# passer. La liste ci-dessous est celle de ces sondes, avec une source qui passe le refus d'un
+# fichier du depot. Aucun item n'est un contenu servi.
+items:
+  # sonde 01
+  - enonce: "Dans quelle famille d'aliments se range les lentilles ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense au riz."
+  # sonde 02
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, pois chiches, poulet, pomme", "pâtes, pain, carottes, fromage"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 03
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, maïs, poulet, pomme", "pâtes, pain, carottes, fromage"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 04
+  - enonce: "Dans quelle famille d'aliments se range le riz ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense aux petits pois."
+  # sonde 05
+  - enonce: "Dans quelle famille d'aliments se range l'avocat ?"
+    bonneReponse: "fruits et légumes"
+    distracteurs: ["féculents", "produits laitiers"]
+    indice: "Pense au riz."
+  # sonde 06
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, olives, poulet, pomme", "pâtes, pain, carottes, fromage"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 07
+  - enonce: "Dans quelle famille d'aliments se range le riz ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense aux fruits à coque."
+  # sonde 08
+  - enonce: "Dans quelle famille d'aliments se range le beurre ?"
+    bonneReponse: "produits laitiers"
+    distracteurs: ["féculents", "fruits et légumes"]
+    indice: "Pense au riz."
+  # sonde 09
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, crème, poulet, pomme", "pâtes, pain, carottes, fromage"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 10
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, jus de fruits, poulet, pomme", "pâtes, pain, carottes, fromage"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 11
+  - enonce: "Dans quelle famille d'aliments se range la pizza ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense au riz."
+  # sonde 12
+  - enonce: "Dans quelle famille d'aliments se range le riz ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense au sandwich."
+  # sonde 13
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, gratin, poulet, pomme", "pâtes, pain, carottes, fromage"]
+    indice: "Compte les familles de chaque menu."
+  # sonde 14 passe la conjonction mais
+  - enonce: "Que dit la fée ? Elle le sait, mais elle se tait."
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Compte les pâtes, mais pas le riz."
