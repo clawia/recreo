@@ -24204,6 +24204,13 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
 
      **Regle 3, inchangee** : le refus *"aucun n'est fait seulement de produits sucres"* vaut aussi quand le menu attendu contient des
      produits sucres.
+
+     **Dernier lot de `nadia-prof` du 2026-10-27, reporte tel quel** [corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-dernier-lot-ce1-qlm-04-a-12.md`, section 6.1 ; texte copie par script depuis ce fichier, non retape ; il remplace ou complete les regles nommees du critere ci-dessus et du bloc precedent, dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu ; texte d'origine conserve] :
+
+     **Regle 6, phrase ajoutee le 2026-10-27, remplacee.** *"La liste des mots est fermee."* devient : Les mots refuses sont ceux des
+     cinq noms de famille, avec leurs formes de genre et de nombre (*feculent*, *laitier*, *laitière*, *sucrée*, *poisson*, *œuf*...) ;
+     la parenthese en donne des exemples. La regle ne porte que sur les mots, jamais sur le sens : un aliment dont le nom ne porte
+     aucun de ces mots (*la pomme*, *la carotte*) est admis en enonce de A, meme s'il est un fruit ou un legume.
 - **Voisins que `nadia-prof` relit** : `cp-qlm-hygiene`, `cp-qlm-matiere` **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-04-05.md` ; critere 11, dernier point, et 1.4 (`N04-4`) : `cm1-sciences-corps` est ajoute ; `cm1-sciences-nutrition` ne l'est pas, ses items ne portent que sur des organes ; texte d'origine conserve]**. **Ordre** : apres `-01`, avec `-05` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### `S57-BR-QLM-CE1-05` - L'eau sous ses trois etats, la fonte et le gel relies a la temperature (`QLM-CE1-05`) - NON ENGAGEE, sans palier
@@ -24268,6 +24275,17 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
 
      **Critere 6, phrase remplacee.** *"0 degre ne figure que dans un item de fonte ou de gel"* devient : 0 degre ne figure que dans un
      item de la tache B.
+
+     **Dernier lot de `nadia-prof` du 2026-10-27, reporte tel quel** [corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-dernier-lot-ce1-qlm-04-a-12.md`, section 6.2 ; texte copie par script depuis ce fichier, non retape ; il remplace ou complete les regles nommees du critere ci-dessus et du bloc precedent, dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu ; texte d'origine conserve] :
+
+     **Regle 2, derniere phrase, remplacee.** *"Aucune proposition n'est un changement que l'etat decrit rend impossible."* devient :
+     Aucune proposition de B n'est le changement d'une matiere que l'enonce ne decrit pas (*l'eau gèle* sans eau liquide decrite,
+     *la glace fond* ou *le glaçon fond* sans glace decrite). Le changement que la temperature de l'enonce empeche (*le glaçon fond*
+     sous 0 degre) est un distracteur attendu.
+
+     **Regle 2, phrase ajoutee.** Sous 0 degre s'ecrit *sous 0 degré*, *en dessous de 0 degré* ou *au-dessous de 0 degré*. Dans un
+     item dont la bonne reponse est *rien ne change*, l'enonce n'emploie pas le mot *eau*, meme pour de l'eau gelee (*un glaçon*, pas
+     *une bouteille d'eau gelée*).
 - **Voisins que `nadia-prof` relit** : `cp-qlm-etats-eau`, `cm1-sciences-etats-matiere`. **Ordre** : apres `-01`, avec `-04` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### `S57-BR-QLM-CE1-06` - Reconnaitre ce qu'un aimant attire et n'attire pas (`QLM-CE1-06`) - NON ENGAGEE, sans palier
@@ -24374,6 +24392,16 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      Un groupe porte au plus six mots (`LON-CE1-5`, compte de `PaquetLu.mots`) : *"fil de fer, fil de cuivre, clou"* (7)
      est refuse, *"fil de fer, papier d'aluminium, clou"* (6) passe [ajoute le 2026-10-27, `nadia-prof`,
      `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 1.6].
+
+     **Dernier lot de `nadia-prof` du 2026-10-27, reporte tel quel** [corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-dernier-lot-ce1-qlm-04-a-12.md`, section 6.3 ; texte copie par script depuis ce fichier, non retape ; il remplace ou complete les regles nommees du critere ci-dessus et du bloc precedent, dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu ; texte d'origine conserve] :
+
+     **Regle 1, phrase ajoutee.** Tout item de B compte pour le quart. Au moins un item de A compte aussi pour le quart : A n'est
+     jamais fait que d'items que la croyance *l'aimant attire les metaux* resout.
+
+     **Regle 2, tache B, phrase ajoutee.** Le bon groupe n'est le seul plus court des trois, en mots (`PaquetLu.mots`), que dans la
+     moitie des items de B au plus. Dans les autres, il porte *fil de fer* et un groupe distracteur a autant de mots que lui ou
+     moins (bonne reponse *"fil de fer, clou, agrafe"* ; distracteurs *"fil de fer, épingle, papier d'aluminium"*, *"clou, épingle,
+     fil de cuivre"*). Le developpeur signale dans son rapport, pour chaque item de B, le nombre de groupes qui portent *fil de fer*.
 - **Voisins que `nadia-prof` relit** : `cp-qlm-matiere`, `cm1-sciences-melanges`. **Ordre** : apres `-01`, avec `-08` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### `S57-BR-QLM-CE1-08` - Connaitre les dangers de l'electricite de la maison et les gestes qui les evitent (`QLM-CE1-08`) - NON ENGAGEE, sans palier
@@ -24488,6 +24516,27 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      blesse* ni ne *se fait mal*, a aucun temps (*"Lina se blesse avec le fil."* est refuse). Le present generique (*"on se
      blesse"*, *"on peut se faire mal"*) et l'infinitif (*"pour ne pas se blesser"*) passent [ajoute le 2026-10-27,
      `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 2.6].
+
+     **Dernier lot de `nadia-prof` du 2026-10-27, reporte tel quel** [corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-dernier-lot-ce1-qlm-04-a-12.md`, section 6.4 ; texte copie par script depuis ce fichier, non retape ; il remplace ou complete les regles nommees du critere ci-dessus et du bloc precedent, dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu ; texte d'origine conserve] :
+
+     **Regle 1, tache B, phrase ajoutee.** Chacun des trois gestes est la bonne reponse d'au moins un item de B : *ne pas toucher*
+     (*"ne pas toucher le fil"*, *"laisser le fil sans le toucher"*, *"ne pas toucher la prise"*, *"ne rien mettre dans la prise"*,
+     *"ne pas toucher l'appareil"*) ; *ne pas approcher de l'eau* (*"ne pas l'approcher de l'eau"*) ; *ne pas brancher avec les mains
+     mouillees* (*"attendre d'avoir les mains sèches"*, *"se sécher d'abord les mains"*, *"ne pas brancher la lampe"*). B porte au
+     moins 4 items.
+
+     **Regle 3, phrase remplacee.** La definition de l'abstention par *"laisse l'enfant hors du danger"* devient : une abstention est
+     une conduite qu'un adulte attendrait de l'enfant (*s'éloigner*, *attendre*, *ne rien toucher*, *ne pas s'approcher*, *continuer
+     à jouer ailleurs*) ; elle est refusee en distracteur.
+
+     **Regle 3, phrase ajoutee.** Un distracteur negatif admis refuse de signaler le danger : *"ne rien dire à un adulte"*, *"ne pas
+     déranger un adulte"*, *"ne rien dire à personne"*, *"ne pas en parler"*. Une proposition qui nomme l'imprudence par un mot de
+     jugement (*"ne pas faire attention"*, *"être imprudent"*) est refusee : personne ne la choisit. Le developpeur repartit les
+     distracteurs negatifs et signale dans son rapport combien de fois chacun revient.
+
+     **Regle 5, phrase remplacee.** *"Un personnage nomme ne se blesse ni ne se fait mal, a aucun temps"* est complete : le present
+     generique avec *on*, *on ne* ou *personne ne* (*"on se blesse"*, *"pour que personne ne se blesse"*) et l'infinitif passent ; un
+     sujet qui designe une personne de la scene (*"Lina se blesse"*, *"Un élève se blesse"*) est refuse, a tout temps.
 - **Voisin que `nadia-prof` relit** : `cp-eps-regles-de-securite` ; la frontiere avec `-07` (aucune pile). **Ordre** : apres `-01`, avec `-06` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### `S57-BR-QLM-CE1-10` - Identifier un paysage par ses elements (`QLM-CE1-10`) - NON ENGAGEE, sans palier
@@ -24584,6 +24633,16 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      **`R10-5`, derniere phrase [corrige le 2026-10-27 par `nadia-prof`, meme fichier, `C4` ; texte d'origine : *"Une taille n'en est pas
      un (une grande ville)."*].** Une taille n'est pas un jugement, mais elle n'est pas admise pour autant : **aucun adjectif** n'accompagne
      un element ou un paysage dans un enonce ou une proposition (ni *un grand champ*, ni *une grande ville*, ni *un haut sommet*).
+
+     **Dernier lot de `nadia-prof` du 2026-10-27, reporte tel quel** [corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-dernier-lot-ce1-qlm-04-a-12.md`, section 6.5 ; texte copie par script depuis ce fichier, non retape ; il remplace ou complete les regles nommees du critere ci-dessus et du bloc precedent, dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu ; texte d'origine conserve] :
+
+     **`R10-4`, tache A, phrase ajoutee.** L'indice de A ne nomme aucun element propre d'un des trois paysages proposes : nommer
+     *la mer* quand *le littoral* est un distracteur l'ecarte, ce qui est une demi-reponse.
+
+     **`R10-4`, phrase ajoutee.** *Littoral* n'est ecrit dans aucun indice d'un item B dont le lieu n'est pas le littoral.
+
+     **`R10-5`, derniere phrase, completee.** Aucun adjectif n'accompagne un element ou un paysage, dans l'enonce, une proposition
+     ou l'indice (ni *"par exemple la grande mer"*).
 - **Voisin que `nadia-prof` relit** : `cm1-histoire-geographie-nommer-en-geographie` **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-10-12.md` ; critere 9, dernier point, `N10-9` et `N10-4` : `cp-qlm-modes-de-vie` est ajoute ; `cm1-histoire-geographie-carte-et-planisphere` n'est pas ajoute (ecarte, aucun lieu reel nomme) ; texte d'origine conserve]**. **Ordre** : apres `-01`, avec `-12` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### `S57-BR-QLM-CE1-12` - Situer les generations d'une famille et les evenements d'une vie (`QLM-CE1-12`) - NON ENGAGEE, sans palier
@@ -24842,6 +24901,31 @@ Aucun lot n'impose plus de 11 items, aucun ne depasse 20.
 - `Q9-2` (`-08`) : six des neuf formes commencent par *ne pas* ou *ne rien*, et la regle 3 veut un second *ne ...* dans l'item ; les distracteurs negatifs nommes sont deux refus d'alerte (*"ne rien dire a un adulte"*, *"ne pas deranger un adulte"*). Un distracteur negatif qui refuse une precaution sans nommer d'adulte est-il admis (par exemple *"ne pas faire attention"*) ?
 - `Q9-3` (`-05`) : la regle 2 de B refuse *"un changement que l'etat decrit rend impossible"* ; son exemple (glacon sous 0 degre) a pour distracteur *le glacon fond*, que cet etat rend impossible a la lettre. Lecture voulue : *impossible* vise le changement sans objet (*l'eau gele* sans eau liquide), pas la fonte erronee ?
 - `Q9-4` (`-06`) : par la regle 1 corrigee, les items de B (tous objets en metal, premisse dite, un objet en aluminium ou en cuivre dans chaque groupe distracteur) comptent pour le quart. Le quart peut donc etre tenu sans aucun item de A, bien que leur bonne reponse (trois objets en fer) ne soit pas l'objet metallique non attire d'`AIM-CE1-2`. Voulu ?
-- `Q9-5` (`-06`) : dans B, chaque groupe distracteur porte un objet de trois mots (*papier d'aluminium*, *barquette en aluminium*, *fil de cuivre*) et `LON-CE1-5` (6 mots) interdit *fil de fer* dans un distracteur : la bonne reponse est le groupe le plus court en mots dans tout item dont le bon groupe n'a pas *fil de fer*. La regle 3 de B ne lit que le partage d'objets, `TRV-CE1-2` que la proposition la plus longue. Ce trait de longueur est-il a lire par elle ?
+- `Q9-5` (`-06`) : dans B, chaque groupe distracteur porte un objet de trois mots (*papier d'aluminium*, *barquette en aluminium*, *fil de cuivre*) et `LON-CE1-5` (6 mots) interdit *fil de fer* dans un distracteur **[corrige par `nadia-prof` le 2026-10-27, `arbitrage-nadia-dernier-lot-ce1-qlm-04-a-12.md`, section 4.2 : `LON-CE1-5` n'interdit pas *fil de fer* dans un distracteur, *"fil de fer, papier d'aluminium, clou"* fait 6 mots et passe, seuls *fil de fer* avec *barquette en aluminium* ou *fil de cuivre* font 7 ; texte d'origine conserve]** : la bonne reponse est le groupe le plus court en mots dans tout item dont le bon groupe n'a pas *fil de fer*. La regle 3 de B ne lit que le partage d'objets, `TRV-CE1-2` que la proposition la plus longue. Ce trait de longueur est-il a lire par elle ?
 
 **Dit pour memoire, sans question** : `-12`, une suite de trois prenoms en B tient a 20 mots exactement (*"Ali est le papa de Sara. Sara est la maman de Lina. Quel ordre, du plus age au plus jeune ?"* : 6 + 6 + 8), sans marge sous `LON-CE1-1` ; `-05`, un item *rien ne change* cite 0 degre sans fonte ni gel, ce que `ETE-CE1-2` (*"0 degre pour la fonte et le gel"*) ne dit pas a la lettre et que `nadia-prof` lit comme admis (1.3 de son fichier) ; `-10`, la derogation a `QMT-CE1-1` est la sienne, limitee aux items B *sur le littoral*.
+
+## Annotation du 2026-10-27, dixieme : dernier lot de `nadia-prof` reporte dans `-04`, `-05`, `-06`, `-08`, `-10`, et planchers (`camille-po`)
+
+Arbre : branche `s57-p5-camille-stories4`, base `round-two`. Les textes de la section 6 de `arbitrage-nadia-dernier-lot-ce1-qlm-04-a-12.md` sont copies par script dans un bloc *"Dernier lot de `nadia-prof` du 2026-10-27"* de chaque story, sous le bloc de la neuvieme annotation ; aucun texte d'origine n'est reecrit. `-12` et `-01` : rien a reporter (section 6.6). Le passage de la neuvieme annotation qui disait que `LON-CE1-5` interdit *fil de fer* en distracteur (`Q9-5`) porte la marque *[corrige par `nadia-prof`]*, sans reecriture.
+
+**Planchers apres ce lot, calcul a la main** (plancher effectif 11, `DEC-0120` A.258) :
+
+| Lot | Items imposes | Ce qui change dans ce lot | Effectif |
+|---|---|---|---|
+| `-04` | 8 (A au moins 5, B au moins 3) | rien (la regle 6 ne porte que sur des mots) | 11 |
+| `-05` | 8, 9 si *rien ne change* est employe | rien (les phrases ajoutees ne portent que sur le contenu) | 11 |
+| `-06` | 6 (A au moins 3, B au moins 3) | au moins un item de A compte pour le quart ; B au plus 1 item sur 2 ou le bon groupe est seul plus court, donc au moins 2 items de B sur 3 dont le bon groupe porte *fil de fer* | 11 |
+| `-08` | 7 (A au moins 3, B au moins 4) | B passe de 3 a 4 : *ne pas toucher* (`fil` ou `prise`), *ne pas approcher de l'eau* et *ne pas brancher avec les mains mouillees* chacun bonne reponse d'un item, et les trois situations en B | 11 |
+| `-10` | 7 (A au moins 4, B au moins 3) | rien (trois phrases de contenu) | 11 |
+| `-12` | 7 (A au moins 4, B au moins 3) | rien | 11 |
+
+`-08` a 4 items de B est tenu sans marge : `fil`, `prise`, `eau` avec *ne pas l'approcher de l'eau*, `eau` avec les mains mouillees, un item par geste. Le quart de `-06` a 11 items vaut 3 : les 3 items de B comptent et au moins un item de A s'y ajoute, soit 4 au moins. Aucun lot n'impose plus de 9 items, aucun ne depasse 20, aucun plancher de 11 n'est intenable.
+
+**Questions residuelles, non tranchees :**
+
+- `R1` (`-06`, A comptant pour le quart) : par la regle 1, un item compte pour le quart quand l'enonce dit la premisse (*"Ces trois objets sont en métal."*). La forme de A (regle 2) ne contient aucune premisse, et la regle 1 refuse tout enonce hors des formes jusqu'a l'accord ecrit de `nadia-prof`. Un item de A qui compte pour le quart porte donc une premisse que la forme de A ne prevoit pas. La premisse devant la question de A est-elle admise ?
+- `R2` (`-06`, mots) : la neuvieme annotation compte *papier d'aluminium* comme un objet de trois mots ; le compte de `nadia-prof` (6 mots pour *"fil de fer, papier d'aluminium, clou"*) le fait tenir a deux. La ligne que `nadia-prof` n'a pas corrigee reste telle quelle.
+- `R3` (`-06`, neuvieme annotation) : le tableau des planchers y disait que le quart de `-06` est tenu par les 3 items de B seuls ; la section 4.1 de `nadia-prof` ajoute un item de A. Ligne non reecrite, remplacee par le tableau ci-dessus.
+- `R4` (`-04`, regle 6) : la parenthese d'origine nomme *lait* parmi les mots refuses ; le texte reporte donne *laitier* et *laitière* comme exemples et dit que la parenthese en donne. Le mot *lait* seul, en enonce de A, est-il refuse ?
+- `R5` (`-10`, `R10-4`) : l'indice de A ne nomme aucun element propre d'un des trois paysages proposes. Un element partage par la bonne reponse et un distracteur (`R10-2`) n'est pas dit propre ou non.
