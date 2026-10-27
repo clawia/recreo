@@ -26,7 +26,8 @@ lignesDeReferentiel: ["QLM-CE1-12"]
 #   enfants. Elles sont toujours vues depuis le personnage nomme, qui est de la generation des
 #   enfants. Un mot de parente (la grand-mere, le papa) vit dans l'enonce, jamais dans une
 #   proposition ; un prenom n'est jamais une proposition d'une tache voisin.
-#   Evenements d'une vie : naissance, entree a l'ecole, entree au college (admise, pas demandee),
+#   Evenements d'une vie : naissance, entree a l'ecole, entree au college (admise ; dans chaque item voisin d'evenements,
+#   dans aucune suite),
 #   premier emploi, naissance de son enfant. Aucun autre evenement : ni mariage, ni deces, ni
 #   demenagement. La naissance du personnage s'ecrit "sa naissance", celle de son enfant "la
 #   naissance de son enfant", jamais "la naissance d'un enfant".
@@ -37,16 +38,17 @@ lignesDeReferentiel: ["QLM-CE1-12"]
 #   voisin : quelle generation ou quel evenement, juste avant, juste apres ou "de quelle generation" (8 items)
 #   ordre : quelle suite de trois generations, de trois prenoms ou de trois evenements, dans le bon ordre (4 items)
 #
-# Tache voisin. Les generations sont toujours "celle des ..." et se jouent sur "de quelle generation",
-# depuis un personnage nomme ; la famille est decrite dans l'enonce. La proposition "celle des enfants"
-# n'est jamais un distracteur : elle est la generation du personnage nomme, c'est-a-dire l'element
-# de reference de l'enonce (R12-5). Les evenements se jouent sur les quatre seules questions de R12-6
-# (juste apres sa naissance, juste avant l'entree a l'ecole, juste apres l'entree a l'ecole, juste avant
-# l'entree au college), et leurs propositions sont fixees par la table de R12-5 : la bonne reponse est
-# un moment d'enfance, un distracteur est l'autre moment d'enfance que ni la reference ni la bonne
-# reponse n'occupent (l'entree au college est donc dans chaque item d'evenements), l'autre est un
-# moment d'adulte au choix. Aucun item ne repond grace a l'ordre du premier emploi et de la naissance
-# de son enfant, que la vie ne fixe pas (R12-6, GEN-CE1-2).
+# Tache voisin. Les generations sont toujours "celle des ..." et se jouent sur "de quelle
+# generation", depuis un personnage nomme ; la famille est decrite dans l'enonce. La proposition
+# "celle des enfants" est la generation du personnage nomme ; elle est admise en bonne reponse (lien
+# frere ou soeur) comme en distracteur : l'element de reference de R12-5 est celui que l'enonce
+# nomme apres "juste avant" ou "juste apres". Les evenements se jouent sur les quatre seules
+# questions de R12-6 (juste apres sa naissance, juste avant l'entree a l'ecole, juste apres l'entree
+# a l'ecole, juste avant l'entree au college), et leurs propositions sont fixees par la table de
+# R12-5 : la bonne reponse est un moment d'enfance, un distracteur est l'autre moment d'enfance que
+# ni la reference ni la bonne reponse n'occupent (l'entree au college est donc dans chaque item
+# d'evenements), l'autre est un moment d'adulte au choix. Aucun item ne repond grace a l'ordre du
+# premier emploi et de la naissance de son enfant, que la vie ne fixe pas (R12-6, GEN-CE1-2).
 #
 # Tache ordre. L'enonce dit le sens : "du plus age au plus jeune" (generations et prenoms), "du
 # premier au dernier" (une vie). Les distracteurs sont les trois memes elements dans un autre ordre :
@@ -68,7 +70,7 @@ lignesDeReferentiel: ["QLM-CE1-12"]
 #
 # DVP-CE1-2 et TRV-CE1-2, les familles de distracteurs (liste fermee, declarees a cote de chaque item,
 # dans l'ordre du fichier ; le test transverse relit leur format) :
-#   famille a : tache voisin, une autre generation que la bonne reponse, jamais celle des enfants
+#   famille a : tache voisin, une autre generation que la bonne reponse
 #   famille b : tache voisin, un moment d'enfance, celui que la table de R12-5 impose
 #   famille c : tache voisin, un moment d'adulte, premier emploi ou naissance de son enfant, au choix de la table
 #   famille d : tache ordre, les trois memes elements avec deux voisins echanges
@@ -115,7 +117,7 @@ items:
   - enonce: "Tom est le fils de Nora. Mia est la fille de Nora. Pour Mia, de quelle génération est Tom ?"
     bonneReponse: "celle des enfants"
     distracteurs: ["celle des parents", "celle des grands-parents"]
-    indice: "Regarde de qui chacun est le fils ou la fille."
+    indice: "Pars de Mia et suis les liens jusqu'à Tom."
   # GEN-CE1-1 moitie : evenements
   # GEN-CE1-1 tache : voisin
   # TRV-CE1-2 : b, c
@@ -136,7 +138,7 @@ items:
   - enonce: "Rose est la maman d'Hugo. Hugo est le papa d'Inès. Pour Inès, de quelle génération est Rose ?"
     bonneReponse: "celle des grands-parents"
     distracteurs: ["celle des arrière-grands-parents", "celle des parents"]
-    indice: "Compte les liens entre Rose et Inès."
+    indice: "Pars d'Inès et remonte d'une génération à la fois."
   # GEN-CE1-1 moitie : evenements
   # GEN-CE1-1 tache : voisin
   # TRV-CE1-2 : b, c
@@ -154,7 +156,7 @@ items:
   # GEN-CE1-1 moitie : evenements
   # GEN-CE1-1 tache : ordre
   # TRV-CE1-2 : d, e
-  - enonce: "Dans la vie de Jade, quelle suite va du premier au dernier moment ?"
+  - enonce: "Dans la vie de Jade, quelle suite range les moments du premier au dernier ?"
     bonneReponse: "naissance, entrée à l'école, premier emploi"
     distracteurs: ["entrée à l'école, naissance, premier emploi", "premier emploi, naissance, entrée à l'école"]
-    indice: "Raconte la vie de Jade, du début jusqu'à la fin."
+    indice: "Compare deux moments à la fois, puis le troisième."

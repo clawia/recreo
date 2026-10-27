@@ -11,7 +11,7 @@ lignesDeReferentiel: ["QLM-CE1-12"]
 # Jeu fautif de PaquetCe1QlmGenerationsTest : chaque item porte en commentaire le marqueur de la sonde
 # qu'il met a l'epreuve. Une sonde dite "passe" est un item que la garde nommee doit laisser passer.
 # Les sondes 05 a 15 sont celles de G12-2, 16 a 29 de G12-3, 30 a 44 de G12-4, 45 a 49 de G12-5, 50 a
-# 58 de G12-6, 59 a 67 de R12-7 (verificateur de l'indice de G12-6) ; 01 a 04 sont celles de G12-1.
+# 58 de G12-6, 59 a 67 de R12-7 (verificateur de l'indice de G12-6), 68 a 73 de G12-3 (X1, naissance en dernier) ; 01 a 04 sont celles de G12-1.
 items:
   # sonde 01
   - enonce: "Dans la vie de Jade, quelle suite va du premier au dernier moment ?"
@@ -348,3 +348,33 @@ items:
     bonneReponse: "grands-parents, parents, enfants"
     distracteurs: ["parents, grands-parents, enfants", "parents, enfants, grands-parents"]
     indice: "Pense aux parents puis aux enfants."
+  # sonde 68
+  - enonce: "Dans la vie de Jade, quelle suite range les moments du premier au dernier ?"
+    bonneReponse: "naissance, entrée à l'école, premier emploi"
+    distracteurs: ["entrée à l'école, naissance, premier emploi", "entrée à l'école, premier emploi, naissance"]
+    indice: "Compare deux moments à la fois, puis le troisième."
+  # sonde 69
+  - enonce: "Dans la vie de Jade, quelle suite range les moments du premier au dernier ?"
+    bonneReponse: "naissance, entrée à l'école, premier emploi"
+    distracteurs: ["entrée à l'école, premier emploi, naissance", "entrée à l'école, naissance, premier emploi"]
+    indice: "Compare deux moments à la fois, puis le troisième."
+  # sonde 70
+  - enonce: "Dans la vie de Jade, quelle suite range les moments du premier au dernier ?"
+    bonneReponse: "naissance, entrée à l'école, premier emploi"
+    distracteurs: ["naissance, premier emploi, entrée à l'école", "entrée à l'école, premier emploi, naissance"]
+    indice: "Compare deux moments à la fois, puis le troisième."
+  # sonde 71
+  - enonce: "Dans la vie de Jade, quelle suite va du premier au dernier moment ?"
+    bonneReponse: "naissance, entrée à l'école, premier emploi"
+    distracteurs: ["entrée à l'école, naissance, premier emploi", "premier emploi, naissance, entrée à l'école"]
+    indice: "Raconte la vie de Jade, du début jusqu'à la fin."
+  # sonde 72
+  - enonce: "Dans la vie de Jade, quelle suite range les moments du premier au dernier ?"
+    bonneReponse: "naissance, entrée à l'école, premier emploi"
+    distracteurs: ["entrée à l'école, naissance, premier emploi", "premier emploi, naissance, entrée à l'école"]
+    indice: "Compare deux moments à la fois, puis le troisième."
+  # sonde 73
+  - enonce: "Dans la vie de Jade, quelle suite range les moments du premier au dernier ?"
+    bonneReponse: "naissance, entrée à l'école, premier emploi"
+    distracteurs: ["naissance, premier emploi, entrée à l'école", "premier emploi, naissance, entrée à l'école"]
+    indice: "Compare deux moments à la fois, puis le troisième."

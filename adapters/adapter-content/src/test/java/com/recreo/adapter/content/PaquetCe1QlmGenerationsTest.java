@@ -138,6 +138,9 @@ class PaquetCe1QlmGenerationsTest {
     /** T1 : les permutations lues sur les rangs de la bonne suite. */
     private static final List<Integer> ORDRE_INVERSE = List.of(2, 1, 0);
 
+    /** X1 : "entree a l'ecole, premier emploi, naissance", ou naissance se lit comme celle de son enfant. */
+    private static final List<Integer> NAISSANCE_EN_DERNIER = List.of(1, 2, 0);
+
     private static final Set<List<Integer>> LES_DEUX_ECHANGES_DE_VOISINS =
             Set.of(List.of(1, 0, 2), List.of(0, 2, 1));
 
@@ -402,6 +405,13 @@ class PaquetCe1QlmGenerationsTest {
                         .as("G12-3 : « %s » (distracteur de '%s') est l'ordre inverse de la bonne suite",
                                 distracteur, item.enonce())
                         .isNotEqualTo(ORDRE_INVERSE);
+                if (groupe.equals(EVT)) {
+                    assertThat(permutation)
+                            .as("G12-3 (R12-2 B) : « %s » (distracteur de '%s') met naissance en dernier, juste "
+                                    + "après le premier emploi, où elle se lit comme la naissance de son enfant",
+                                    distracteur, item.enonce())
+                            .isNotEqualTo(NAISSANCE_EN_DERNIER);
+                }
                 permutations.add(permutation);
             }
             assertThat(permutations)
@@ -784,6 +794,18 @@ class PaquetCe1QlmGenerationsTest {
         Paquet fautif = fautif("generations-fautives.yaml");
 
         for (String sonde : List.of("sonde 22", "sonde 23", "sonde 24")) {
+            laisse(PaquetCe1QlmGenerationsTest::verifierLesSuites, fautif, sonde);
+        }
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUneSuiteDEvenementsQuiMetNaissanceEnDernierEtLaisseLesAutresRotationsPasser() {
+        Paquet fautif = fautif("generations-fautives.yaml");
+
+        for (String sonde : List.of("sonde 68", "sonde 69", "sonde 70")) {
+            refuse(PaquetCe1QlmGenerationsTest::verifierLesSuites, fautif, sonde, "G12-3", "met naissance en dernier");
+        }
+        for (String sonde : List.of("sonde 71", "sonde 72", "sonde 73")) {
             laisse(PaquetCe1QlmGenerationsTest::verifierLesSuites, fautif, sonde);
         }
     }
