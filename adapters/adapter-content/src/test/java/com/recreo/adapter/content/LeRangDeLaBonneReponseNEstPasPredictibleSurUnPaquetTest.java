@@ -1399,6 +1399,13 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est"
                     + " numerique, valeurDe rend null sur chacune. Mesure du 2026-10-26 sur le paquet du"
                     + " depot : aucune proposition ne commence par un chiffre"),
+            // S57-BR-QLM-CE1-12 : paquet de questionner le monde CE1 sur les generations et les evenements
+            // d'une vie, propositions textuelles (A.259, R12-4 : aucun nombre, aucune exception d'age).
+            Map.entry("ce1-qlm-generations",
+            "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est"
+                    + " numerique, valeurDe rend null sur chacune (generations, evenements d'une vie,"
+                    + " suites de trois elements et de trois prenoms). Mesure du 2026-10-27 sur le paquet"
+                    + " du depot : aucune proposition ne commence par un chiffre"),
             // S57-BR-QLM-CE1-04 : quatrieme paquet de questionner le monde CE1, propositions textuelles.
             Map.entry("ce1-qlm-familles-d-aliments",
             "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est"

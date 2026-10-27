@@ -1,0 +1,160 @@
+schema: 1
+id: ce1-qlm-generations
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Se situer dans le temps"
+  competence: "Situer sur une frise les générations d'une famille (enfants, parents, grands-parents) et quelques événements de la vie d'un personnage."
+lignesDeReferentiel: ["QLM-CE1-12"]
+#
+# S57-BR-QLM-CE1-12 (s57, palier 5, lot des neuf lots de questionner le monde CE1). PREMIER JET,
+# ecrit par marc-dev, commite seul avant la lecture de nadia-prof : rien n'est joue, aucun Done
+# n'est prononce, le paquet n'est pas au catalogue (QC3). Competence : QLM-CE1-12
+# (squad/programme/questionner-le-monde/competences-ce1.md), libelle recopie a l'identique.
+# Conditions : GEN-CE1-1, GEN-CE1-2 et BIA-4 (ARBITRAGE-PREALABLE-s57-instruction-questionner-le-
+# monde-et-emc-ce1.md, 3.12), regles R12-1 a R12-9 de nadia-prof (squad/sprints/s57-version-cp-ce1-
+# cm1-trois-instances/arbitrage-nadia-premiers-jets-ce1-qlm-10-12.md, section 2.1, corrigees par
+# arbitrage-nadia-contradictions-ce1-qlm-10-12.md, section 2.1), conditions transverses de la meme
+# instruction (section 2).
+#
+# Listes fermees (R12-1). Source unique : le jugement de nadia-prof, qui tient ces listes et
+# l'ordre de leurs elements pour exacts au CE1 (arbitrage-nadia-premiers-jets-ce1-qlm-10-12.md,
+# section 2, R12-9, QMT-CE1-2). Le redacteur n'a consulte aucune source externe, et ce fichier ne
+# cite ni le test ni la story comme source.
+#   Generations, du plus age au plus jeune : arriere-grands-parents, grands-parents, parents,
+#   enfants. Elles sont toujours vues depuis le personnage nomme, qui est de la generation des
+#   enfants. Un mot de parente (la grand-mere, le papa) vit dans l'enonce, jamais dans une
+#   proposition ; un prenom n'est jamais une proposition d'une tache voisin.
+#   Evenements d'une vie : naissance, entree a l'ecole, entree au college (admise, pas demandee),
+#   premier emploi, naissance de son enfant. Aucun autre evenement : ni mariage, ni deces, ni
+#   demenagement. La naissance du personnage s'ecrit "sa naissance", celle de son enfant "la
+#   naissance de son enfant", jamais "la naissance d'un enfant".
+#
+# Deux taches (FER-3). La tache d'un item est une fonction de sa seule bonne reponse : une seule
+# generation ou un seul evenement est la tache voisin, une suite de trois elements est la tache
+# ordre. Le test relit les deux comptes ci-dessous contre les items.
+#   voisin : quelle generation ou quel evenement, juste avant, juste apres ou "de quelle generation" (8 items)
+#   ordre : quelle suite de trois generations, de trois prenoms ou de trois evenements, dans le bon ordre (4 items)
+#
+# Tache voisin. Les generations sont toujours "celle des ..." et se jouent sur "de quelle generation",
+# depuis un personnage nomme ; la famille est decrite dans l'enonce. La proposition "celle des enfants"
+# n'est jamais un distracteur : elle est la generation du personnage nomme, c'est-a-dire l'element
+# de reference de l'enonce (R12-5). Les evenements se jouent sur les quatre seules questions de R12-6
+# (juste apres sa naissance, juste avant l'entree a l'ecole, juste apres l'entree a l'ecole, juste avant
+# l'entree au college), et leurs propositions sont fixees par la table de R12-5 : la bonne reponse est
+# un moment d'enfance, un distracteur est l'autre moment d'enfance que ni la reference ni la bonne
+# reponse n'occupent (l'entree au college est donc dans chaque item d'evenements), l'autre est un
+# moment d'adulte au choix. Aucun item ne repond grace a l'ordre du premier emploi et de la naissance
+# de son enfant, que la vie ne fixe pas (R12-6, GEN-CE1-2).
+#
+# Tache ordre. L'enonce dit le sens : "du plus age au plus jeune" (generations et prenoms), "du
+# premier au dernier" (une vie). Les distracteurs sont les trois memes elements dans un autre ordre :
+# un echange de deux voisins ou une rotation, jamais l'echange du premier et du dernier (l'ordre
+# inverse), jamais les deux echanges de voisins ensemble (la proposition la plus ressemblante aux deux
+# autres serait la bonne reponse). Seule suite d'evenements admise : naissance, entree a l'ecole,
+# premier emploi (6 mots, LON-CE1-5). Une suite de prenoms est celle de trois prenoms de l'enonce,
+# chacun d'une generation differente.
+#
+# Aucun nombre (R12-4, A.259) : aucun age, aucune annee, aucun chiffre. Aucun evenement d'une journee
+# (GEN-CE1-1, QLM-CP-14) et rien sur ce qu'une generation faisait autrefois (R12-8, NRC-CE1-1). Aucun
+# item ne dit qui vit avec qui, aucun ne demande sa famille a l'enfant (GEN-CE1-2, BIA-4).
+# Un indice est une methode (TRV-CE1-5, R12-7) : il ne contient ni la bonne reponse d'une tache voisin,
+# ni le premier element d'une suite, ni ton, ta, tes suivi d'un mot de parente.
+# CYC-1 : cp-frise-de-la-journee et cp-qlm-autrefois-aujourdhui sont les voisins que nadia-prof relit.
+# QMT-CE1-1 : aucun des quinze mots exclus n'est ecrit. TRV-CE1-1, -6, LON-CE1-1, -2, -5 : niveau CE1,
+# aucun texteSupport ni voix, prenoms et roles varies. TYP-1 (ADR-0067) : l'espace qui precede "?" est
+# insecable. FER-2 : plus d'items que de dix manches (plancher de onze, DEC-0120 A.258).
+#
+# DVP-CE1-2 et TRV-CE1-2, les familles de distracteurs (liste fermee, declarees a cote de chaque item,
+# dans l'ordre du fichier ; le test transverse relit leur format) :
+#   famille a : tache voisin, une autre generation que la bonne reponse, jamais celle des enfants
+#   famille b : tache voisin, un moment d'enfance, celui que la table de R12-5 impose
+#   famille c : tache voisin, un moment d'adulte, premier emploi ou naissance de son enfant, au choix de la table
+#   famille d : tache ordre, les trois memes elements avec deux voisins echanges
+#   famille e : tache ordre, les trois memes elements en rotation
+items:
+  # GEN-CE1-1 moitie : generations
+  # GEN-CE1-1 tache : voisin
+  # TRV-CE1-2 : a, a
+  - enonce: "Sara est la maman de Lina. Ali est le papa de Sara. Pour Lina, de quelle génération est Ali ?"
+    bonneReponse: "celle des grands-parents"
+    distracteurs: ["celle des parents", "celle des arrière-grands-parents"]
+    indice: "Pars de Lina et suis les liens un par un."
+  # GEN-CE1-1 moitie : evenements
+  # GEN-CE1-1 tache : voisin
+  # TRV-CE1-2 : b, c
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["l'entrée au collège", "le premier emploi"]
+    indice: "Remets la vie de Sara dans l'ordre, moment après moment."
+  # GEN-CE1-1 moitie : generations
+  # GEN-CE1-1 tache : ordre
+  # TRV-CE1-2 : d, e
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "grands-parents, parents, enfants"
+    distracteurs: ["parents, grands-parents, enfants", "parents, enfants, grands-parents"]
+    indice: "Compare deux générations à la fois, puis la troisième."
+  # GEN-CE1-1 moitie : generations
+  # GEN-CE1-1 tache : voisin
+  # TRV-CE1-2 : a, a
+  - enonce: "Léo est le fils de Jade. Jade est la fille de Max. Pour Léo, de quelle génération est Jade ?"
+    bonneReponse: "celle des parents"
+    distracteurs: ["celle des grands-parents", "celle des arrière-grands-parents"]
+    indice: "Écris les noms en colonne, les plus âgés en haut."
+  # GEN-CE1-1 moitie : evenements
+  # GEN-CE1-1 tache : voisin
+  # TRV-CE1-2 : b, c
+  - enonce: "Dans la vie de Malik, quel moment vient juste avant l'entrée à l'école ?"
+    bonneReponse: "sa naissance"
+    distracteurs: ["l'entrée au collège", "la naissance de son enfant"]
+    indice: "Range dans l'ordre les moments de la vie de Malik."
+  # GEN-CE1-1 moitie : generations
+  # GEN-CE1-1 tache : voisin
+  # TRV-CE1-2 : a, a
+  - enonce: "Tom est le fils de Nora. Mia est la fille de Nora. Pour Mia, de quelle génération est Tom ?"
+    bonneReponse: "celle des enfants"
+    distracteurs: ["celle des parents", "celle des grands-parents"]
+    indice: "Regarde de qui chacun est le fils ou la fille."
+  # GEN-CE1-1 moitie : evenements
+  # GEN-CE1-1 tache : voisin
+  # TRV-CE1-2 : b, c
+  - enonce: "Dans la vie de Léa, quel moment vient juste après l'entrée à l'école ?"
+    bonneReponse: "l'entrée au collège"
+    distracteurs: ["sa naissance", "le premier emploi"]
+    indice: "Suis la vie de Léa, du plus tôt au plus tard."
+  # GEN-CE1-1 moitie : generations
+  # GEN-CE1-1 tache : ordre
+  # TRV-CE1-2 : d, e
+  - enonce: "Dans la famille de Samir, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "arrière-grands-parents, grands-parents, parents"
+    distracteurs: ["arrière-grands-parents, parents, grands-parents", "parents, arrière-grands-parents, grands-parents"]
+    indice: "Cherche qui est né avant qui dans la famille."
+  # GEN-CE1-1 moitie : generations
+  # GEN-CE1-1 tache : voisin
+  # TRV-CE1-2 : a, a
+  - enonce: "Rose est la maman d'Hugo. Hugo est le papa d'Inès. Pour Inès, de quelle génération est Rose ?"
+    bonneReponse: "celle des grands-parents"
+    distracteurs: ["celle des arrière-grands-parents", "celle des parents"]
+    indice: "Compte les liens entre Rose et Inès."
+  # GEN-CE1-1 moitie : evenements
+  # GEN-CE1-1 tache : voisin
+  # TRV-CE1-2 : b, c
+  - enonce: "Dans la vie de Paul, quel moment vient juste avant l'entrée au collège ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["sa naissance", "le premier emploi"]
+    indice: "Imagine la vie de Paul sur une frise, de gauche à droite."
+  # GEN-CE1-1 moitie : generations
+  # GEN-CE1-1 tache : ordre
+  # TRV-CE1-2 : d, e
+  - enonce: "Omar a une fille, Julie. Julie a un fils, Noé. Quelle suite va du plus âgé au plus jeune ?"
+    bonneReponse: "Omar, Julie, Noé"
+    distracteurs: ["Julie, Omar, Noé", "Noé, Omar, Julie"]
+    indice: "Suis les liens de la famille, d'un prénom au suivant."
+  # GEN-CE1-1 moitie : evenements
+  # GEN-CE1-1 tache : ordre
+  # TRV-CE1-2 : d, e
+  - enonce: "Dans la vie de Jade, quelle suite va du premier au dernier moment ?"
+    bonneReponse: "naissance, entrée à l'école, premier emploi"
+    distracteurs: ["entrée à l'école, naissance, premier emploi", "premier emploi, naissance, entrée à l'école"]
+    indice: "Raconte la vie de Jade, du début jusqu'à la fin."
