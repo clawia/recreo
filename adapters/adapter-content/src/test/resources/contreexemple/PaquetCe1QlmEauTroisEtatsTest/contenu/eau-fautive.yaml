@@ -279,3 +279,23 @@ items:
     bonneReponse: "elle devient de la vapeur d'eau"
     distracteurs: ["elle disparaît", "elle devient de la buée"]
     indice: "Le froid fait geler l'eau."
+  # sonde 54 en vapeur avec ebullition, un distracteur qui est ce que l'eau qui bout produit (item 8 du premier jet)
+  - enonce: "L'eau bout dans une casserole. Le niveau de l'eau baisse. Que devient l'eau qui manque ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle n'existe plus", "elle devient un nuage"]
+    indice: "Compare le niveau de l'eau avant et après."
+  # sonde 55 en vapeur avec ebullition, la fumee pour une casserole qui bout
+  - enonce: "L'eau bout dans une casserole. Le niveau de l'eau baisse. Que devient l'eau qui manque ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle n'existe plus", "elle devient de la fumée"]
+    indice: "Compare le niveau de l'eau avant et après."
+  # sonde 56 en temperature, la bonne reponse est la fonte et un distracteur dit que la glace disparait (item 12 du premier jet)
+  - enonce: "Des glaçons flottent dans un pichet d'eau. Le pichet reste au soleil. Que se passe-t-il ?"
+    bonneReponse: "les glaçons fondent"
+    distracteurs: ["l'eau gèle", "les glaçons disparaissent"]
+    indice: "Compare le pichet au soleil et le pichet au congélateur."
+  # sonde 57 en temperature, la glace qui fond et la glace qui disparait
+  - enonce: "Une mare est gelée en surface. Le soleil la réchauffe au-dessus de 0 degré. Que se passe-t-il ?"
+    bonneReponse: "la glace fond"
+    distracteurs: ["l'eau gèle", "la glace disparaît"]
+    indice: "Compare une mare en hiver et une mare en été."

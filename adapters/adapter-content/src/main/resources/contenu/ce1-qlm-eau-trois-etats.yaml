@@ -89,9 +89,9 @@ items:
     indice: "Compare un miroir sec et un miroir couvert de buée."
   # QMT-CE1-2 : instruction 3.5 (ETE-CE1-2) ; cm1-sciences-etats-matiere (l'eau qui s'evapore devient un gaz, la vapeur d'eau)
   # TRV-CE1-2 : a, b
-  - enonce: "Une flaque est dehors. Le soleil brille toute la journée. Que devient l'eau de la flaque ?"
+  - enonce: "Une flaque est dans la cour. Le soleil brille toute la journée. Que devient l'eau de la flaque ?"
     bonneReponse: "elle devient de la vapeur d'eau"
-    distracteurs: ["elle n'existe plus", "elle devient du brouillard"]
+    distracteurs: ["elle n'existe plus", "elle devient de la buée"]
     indice: "Compare la flaque du matin et celle du soir."
   # QMT-CE1-2 : instruction 3.5 (ETE-CE1-1, ETE-CE1-2) : l'eau gele quand il fait tres froid, la glace fond quand on la chauffe, 0 degre
   # TRV-CE1-2 : d, e
@@ -115,7 +115,7 @@ items:
   # TRV-CE1-2 : a, b
   - enonce: "L'eau bout dans une casserole. Le niveau de l'eau baisse. Que devient l'eau qui manque ?"
     bonneReponse: "elle devient de la vapeur d'eau"
-    distracteurs: ["elle n'existe plus", "elle devient un nuage"]
+    distracteurs: ["elle n'existe plus", "elle devient du brouillard"]
     indice: "Compare le niveau de l'eau avant et après."
   # QMT-CE1-2 : instruction 3.5 (ETE-CE1-1, ETE-CE1-2) : l'eau gele quand il fait tres froid, la glace fond quand on la chauffe, 0 degre
   # TRV-CE1-2 : f, f
@@ -136,8 +136,8 @@ items:
     distracteurs: ["le glaçon fond", "le glaçon disparaît"]
     indice: "Compare le glaçon dehors un jour d'été et un jour d'hiver."
   # QMT-CE1-2 : instruction 3.5 (ETE-CE1-1, ETE-CE1-2) : l'eau gele quand il fait tres froid, la glace fond quand on la chauffe, 0 degre
-  # TRV-CE1-2 : d, f
+  # TRV-CE1-2 : d, e
   - enonce: "Des glaçons flottent dans un pichet d'eau. Le pichet reste au soleil. Que se passe-t-il ?"
     bonneReponse: "les glaçons fondent"
-    distracteurs: ["l'eau gèle", "les glaçons disparaissent"]
+    distracteurs: ["l'eau gèle", "rien ne change"]
     indice: "Compare le pichet au soleil et le pichet au congélateur."
