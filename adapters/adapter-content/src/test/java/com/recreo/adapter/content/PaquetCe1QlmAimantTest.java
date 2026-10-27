@@ -554,6 +554,30 @@ class PaquetCe1QlmAimantTest {
         }
     }
 
+    // ----- g12 : le papier d'aluminium ne donne pas la reponse
+
+    /**
+     * g12 : en A au negatif, la bonne reponse n'est pas le papier d'aluminium ; en B, les deux groupes
+     * distracteurs ne portent pas tous deux le papier d'aluminium. Egalite sur la liste fermee.
+     */
+    static void verifierQueLePapierDAluminiumNeDonnePasLaReponse(List<Item> items) {
+        for (Item item : items) {
+            if (estA(item) && !demandeLAttire(item)) {
+                assertThat(nomsDe(item, item.bonneReponse()))
+                        .as("AIM-CE1-2 (g12) : '%s' demande ce que l'aimant n'attire pas et sa bonne réponse est le "
+                                + "papier d'aluminium", item.enonce())
+                        .doesNotContain("papier d'aluminium");
+            }
+            if (estB(item)) {
+                assertThat(item.distracteurs().stream()
+                        .allMatch(distracteur -> nomsDe(item, distracteur).contains("papier d'aluminium")))
+                        .as("AIM-CE1-2 (g12) : les deux groupes distracteurs de '%s' portent le papier d'aluminium",
+                                item.enonce())
+                        .isFalse();
+            }
+        }
+    }
+
     // ----- g10 : AIM-CE1-2, la phrase interdite
 
     private static String neutralise(String texte) {
@@ -986,6 +1010,29 @@ class PaquetCe1QlmAimantTest {
         verifierQueLaPremisseEstVraie(List.of(sondeDuJeu("sonde 44")));
         verifierQueLaPremisseEstVraie(List.of(sondeDuJeu("sonde 21")));
         assertThat(compte(sondeDuJeu("sonde 44"))).isTrue();
+    }
+
+    // g12
+
+    @Test
+    void g12LePapierDAluminiumNeDonnePasLaReponseDansLePaquet() {
+        verifierQueLePapierDAluminiumNeDonnePasLaReponse(paquet().items());
+    }
+
+    @Test
+    void s23LePapierDAluminiumBonneReponseAuNegatifOuDansLesDeuxGroupesDistracteursEstRefuse() {
+        refuse(() -> verifierQueLePapierDAluminiumNeDonnePasLaReponse(List.of(sondeDuJeu("sonde 55"))), "g12",
+                "sa bonne réponse est le papier d'aluminium");
+        refuse(() -> verifierQueLePapierDAluminiumNeDonnePasLaReponse(List.of(sondeDuJeu("sonde 54"))), "g12",
+                "les deux groupes distracteurs");
+        refuse(() -> verifierQueLePapierDAluminiumNeDonnePasLaReponse(List.of(sondeDuJeu("sonde 56"))), "g12",
+                "les deux groupes distracteurs");
+    }
+
+    @Test
+    void p10LePapierDAluminiumDansUnSeulGroupeDistracteurOuEnDistracteurDeAPasse() {
+        verifierQueLePapierDAluminiumNeDonnePasLaReponse(List.of(sondeDuJeu("sonde 57")));
+        verifierQueLePapierDAluminiumNeDonnePasLaReponse(List.of(sondeDuJeu("sonde 19")));
     }
 
     // g10 : G10, la longueur du bon groupe

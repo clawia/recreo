@@ -110,12 +110,12 @@ items:
   # TRV-CE1-2 : d, d
   - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
     bonneReponse: "fil de fer, trombone, aiguille"
-    distracteurs: ["trombone, épingle, papier d'aluminium", "aiguille, clou, papier d'aluminium"]
+    distracteurs: ["trombone, épingle, papier d'aluminium", "aiguille, épingle, fil de cuivre"]
     indice: "Imagine l'aimant près de chaque objet du groupe."
   # TRV-CE1-2 : c, c
   - enonce: "Ces trois objets sont en métal. Lequel l'aimant n'attire-t-il pas ?"
-    bonneReponse: "le papier d'aluminium"
-    distracteurs: ["le clou", "le trombone"]
+    bonneReponse: "la barquette en aluminium"
+    distracteurs: ["le fil de fer", "l'épingle"]
     indice: "Teste chaque objet avec l'aimant, en pensée, un par un."
   # TRV-CE1-2 : b, b
   - enonce: "Tous ces objets sont en métal. Lequel l'aimant attire-t-il ?"
@@ -131,7 +131,7 @@ items:
   - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
     bonneReponse: "épingle, agrafe, trombone"
     distracteurs: ["épingle, clou, barquette en aluminium", "trombone, clou, fil de cuivre"]
-    indice: "Passe en revue les trois objets de chaque groupe."
+    indice: "Regarde les trois objets de chaque groupe, un par un."
   # TRV-CE1-2 : a, a
   - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
     bonneReponse: "l'épingle"
@@ -145,5 +145,5 @@ items:
   # TRV-CE1-2 : d, d
   - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
     bonneReponse: "aiguille, agrafe, épingle"
-    distracteurs: ["aiguille, fil de fer, papier d'aluminium", "agrafe, trombone, papier d'aluminium"]
+    distracteurs: ["aiguille, trombone, fil de cuivre", "agrafe, trombone, papier d'aluminium"]
     indice: "Essaie chaque objet avec l'aimant, groupe par groupe."
