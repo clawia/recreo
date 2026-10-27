@@ -328,3 +328,58 @@ items:
     bonneReponse: "la montagne"
     distracteurs: ["la campagne", "le littoral"]
     indice: "Cherche et regarde."
+  # sonde 70 (G10-2 refusee : le port est un partage que la montagne ne porte pas (T1))
+  - enonce: "On voit un sommet et un port. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la ville", "la campagne"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 71 (G10-2 refusee : le littoral et la ville proposes ensemble, item 3 du premier jet (T2))
+  - enonce: "On voit une plage et un port. Quel est ce paysage ?"
+    bonneReponse: "le littoral"
+    distracteurs: ["la ville", "la montagne"]
+    indice: "Pour chaque paysage, regarde si on y voit tous les mots."
+  # sonde 72 (G10-2 refusee : le littoral et la ville proposes ensemble, item 6 du premier jet (T2))
+  - enonce: "On voit des immeubles et un port. Quel est ce paysage ?"
+    bonneReponse: "la ville"
+    distracteurs: ["le littoral", "la campagne"]
+    indice: "Écarte les paysages où l'on ne voit pas tous les mots."
+  # sonde 73 (G10-4 B refusee : la neige dans l'indice d'un item a la montagne (T3))
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la mer"
+    distracteurs: ["le sommet", "la forêt"]
+    indice: "Pense à la neige."
+  # sonde 74 (G10-4 B refusee : la neige hors de l'exemple, sur le littoral (T3))
+  - enonce: "Lequel ne voit-on pas sur le littoral ?"
+    bonneReponse: "les pistes de ski"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Sur le littoral, il y a par exemple la mer. Pense à la neige."
+  # sonde 75 (G10-4 B refusee : les pistes dans l'indice d'un item en ville (T3, T5))
+  - enonce: "Lequel ne voit-on pas en ville ?"
+    bonneReponse: "le sommet"
+    distracteurs: ["les immeubles", "la neige"]
+    indice: "Pense aux pistes."
+  # sonde 76 (G10-4 refusee : le pluriel campagnes dans l'indice de A (T4))
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Compare les campagnes."
+  # sonde 77 (G10-4 refusee : le pluriel littoraux dans l'indice de A (T4))
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Pense aux littoraux."
+  # sonde 78 (G11 refusee : pistes dans l'indice de A (T5))
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Regarde s'il y a des pistes."
+  # sonde 79 (G11 refusee : ski dans l'indice de A (T5))
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Pense au ski."
+  # sonde 80 (G10-1 refusee : pistes n'est pas admis dans un enonce (T5))
+  - enonce: "On voit des pistes et une ferme. Dans quel paysage est-on ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "le littoral"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
