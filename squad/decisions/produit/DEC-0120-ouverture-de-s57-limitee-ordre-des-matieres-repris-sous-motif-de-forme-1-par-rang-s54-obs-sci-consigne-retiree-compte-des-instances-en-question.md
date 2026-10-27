@@ -4523,3 +4523,63 @@ Methode : celle d'A.270 point 3, reprise par A.272, A.273 point 1 (a) et A.277 ;
 | tous | rien d'autre |
 
 **Matrice** : aucun statut ne change. **Report** : `Q-273-1`, septieme mention, sans autre report neuf. **Changement de code decide** : aucun. **Ne fait pas** : ne prononce aucun Done, ne juge aucune formulation, ne releve aucun plafond, ne change ni l'engage ni la marge, ne pose aucun seuil, n'amende ni `planning.md`, ni `backlog.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`.
+
+## Amendement du 2026-10-27, cinquante-huitieme (`camille-po`, palier 5 : l'utilisatrice repond a `Q1` (Done technique par lot), `Q2` (nom des fiches) et leve le plafond pour la seconde lecture de l'horloge et le quatrieme rejeu ; neuf fiches ouvertes)
+
+Annotation datee. **Chiffres avant / apres, en toutes lettres : plafond de `PAR-8` du palier 9 22,20 avant, 22,20 apres (non modifie : l'utilisatrice n'a pas dit de chiffre, voir point 3) ; engage 13,50 avant, 13,50 apres (inchange) ; marge de l'instance neuve 1,5 avant, 1,5 apres (inchangee) ; cas haut des neuf secondes lectures 22,20 avant, 22,20 apres (inchange) ; cas haut avec les deux gestes forces 23,20 (borne, point 3) ; ligne hors marge 4,50 avant, 4,50 apres (aucun des deux gestes n'existe).** **Statut de `DEC-0120` : `Acceptee`, inchange.** **Aucun passage n'est corrige** ; une phrase du backlog est dite depassee au point 5, sans etre reecrite. Arbre : base `round-two` a `a1bb9e53`, branche `s57-p5-camille-280`. Sources lues au disque : `DEC-0120` A.267, A.270 a A.279 ; `planning.md` (amendement du 2026-10-27 15:40, sections 5 et 6) ; `squad/lessons.md` ; `docs/backlog/backlog.md` (bloc commun des neuf stories, `QC3`, `QC8`) ; `.github/workflows/ci.yml` ; `squad/conformite/FICHE-bandit-manchot-pronoms-ce1.md` (modele). Les chiffres sont des calculs, marques **[calcul]**. Aucune mesure n'a ete lancee pour les chiffres.
+
+### A.280 Done technique juge par lot, fiches `FICHE-ce1-qlm-<lot>.md`, plafond leve pour la seconde lecture de l'horloge et le quatrieme rejeu
+
+**1. Ses mots, reportes.** Reponse de l'utilisatrice du 2026-10-27, relayee par l'agent lanceur (forme 2, `DEC-0062` G), citee mot pour mot et rien d'autre : *"Q1 O1 / Q2 ok / On force l'audit de l'horloge et le quatrieme rejeu"*. Je n'ai pas lu dans le depot le texte des options de `Q1` ni celui de `Q2` : ce que `O1` et `ok` recouvrent est **tel que l'agent lanceur me l'a transmis** (points 2 et 5). Si l'utilisatrice les lisait autrement, sa phrase l'emporte.
+
+**2. `Q1`, `O1` : le Done technique se juge par lot, puis a la cloture.** Tel que transmis :
+
+- **Par lot** : un `mvn verify` complet, avant l'audit a l'ecran de `nadia-prof` de ce lot.
+- **A la cloture du palier** : un passage CI complet, soit les quatre jobs de `ci.yml` (`prefixes`, `chemins`, `outils`, `build`).
+- **Annonce** : chaque annonce de porte nomme les jobs lances (`CLAUDE.md`, "Double Done").
+- **Forme des garde-fous** : `verifier-chemins.sh` se lance dans la forme de la CI, `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' | bash .github/scripts/verifier-chemins.sh`, **jamais avec `< /dev/null`** : la sortie y est celle d'une liste vide (`Aucun chemin de poste de travail ...`, code 0), **faux vert** (`planning.md` 15:40, P7 et C5). `verifier-prefixes.sh` se lance de meme sur une entree reelle : `git log --no-merges --format=%s <plage> | bash .github/scripts/verifier-prefixes.sh` (`ci.yml`, ligne 44).
+
+Ce que cela ferme au `planning.md` du 15:40 : **C1** (comment le `verify` de chaque lot et la CI entiere se composent), **C5** (la forme du garde-fou des chemins), et la moitie d'**E1** (si le Done technique se juge par lot ou une fois). **Ce qu'elle ne dit pas, et que je ne decide pas** : qui lance le `verify` complet de chaque lot ; qui sert le jar a l'audit (E2) ; si un lot dont le `verify` est rouge est audite quand meme. Ce sont des questions de process technique, routees a `sofia-sm`. Le `verify` par lot est un `mvn -B clean verify` sur la racine, reacteur complet ; une mesure partielle porterait `-am` (`CLAUDE.md`, "Prerequis de build"). **Aucun cout n'est ecrit pour ces `verify`** : aucune regle lue ne chiffre un `verify` au bareme, **non chiffre**.
+
+**3. L'utilisatrice leve le plafond de 22,20 pour deux gestes : chiffrage par les regles ecrites.**
+
+Ses mots : *"On force l'audit de l'horloge et le quatrieme rejeu"*. La consigne qui m'a ete transmise les lit comme **la levee du plafond de 22,20 pour (a) la seconde lecture de l'horloge `MAT-CE1-11` (`Q-273-1` (ii)) et (b) le quatrieme rejeu (Q3 d'A.271)**. Je retiens cette lecture. **Elle ne donne aucun chiffre de plafond et ne dit pas si le quatrieme rejeu est du : je lis "force" comme "le cout est admis au-dela de 22,20", pas comme "le rejeu est decide".** Ce que cela ne change pas est au point 4.
+
+| Geste | Cout | Regle qui le donne | Etat |
+|---|---|---|---|
+| (a) seconde lecture de l'horloge | **0,50** [calcul], hors marge | A.273 point 1 (a) : *"si elle s'y ajoutait a 0,50, la projection serait de 22,70"* ; A.272, regle point 1 (0,5 par seconde lecture) | hypothese d'A.273 retenue par la levee ; `nadia-prof` n'a pas repondu `Q-273-1` (ii) |
+| (b) quatrieme rejeu, cas de Q3 d'A.271 (marge de 1,5 entiere, trois lots refuses, l'horloge ayant pris la marge de B) | **0,50 pris dans la marge de 1,5, soit 0,00 de plus** que le cas haut [calcul] | A.271 point 4 (*"le cout le permettrait"*) ; A.273 point 1 (c) : le bareme de 13,50 contient la marge | derive de deux textes, pas d'une ligne qui le dise |
+| (b) quatrieme rejeu, marge de 1,5 deja consommee | **0,50** [calcul], hors marge | prix d'un rejeu, A.267 point 3 (*"trois rejeux a 0,50"*, A.199) ; A.273 point 1 (c) : *"sort de la marge"* | **on ne sait pas contre quel plafond il compte** : `Q-273-1` (i) reste ouverte (A.273 (c), lacune) |
+| lecture par `nadia-prof` du quatrieme rejeu, au-dela du 0,50 du rejeu | **non chiffre** | aucune regle lue ne dit si les 0,50 d'un rejeu comprennent la relecture | je ne devine pas |
+| audit a l'ecran de l'horloge | **non chiffre** | il est dans les 2,50 de `MAT-CE1-11` (A.267 point 2) ; aucune regle ne chiffre un audit a l'ecran en plus | je ne devine pas |
+
+**Cas haut recalcule** (methode d'A.270 point 3, reprise par A.272, A.273 point 1 (a), A.277 et A.278 : chaque lecture s'ajoute en entier, sans retrancher les 0,42, borne haute et non consommation) :
+
+- 22,20 plus 0,50 (a) = **22,70** [calcul].
+- 22,70 plus 0,50 (b, marge deja consommee, le cas le plus haut) = **23,20** [calcul]. Verification par un autre chemin : 17,70 plus 9 fois 0,50 plus 2 fois 0,50 = 17,70 plus 5,50 = 23,20 [calcul].
+- Si (b) se produit dans le seul cas de Q3 d'A.271, il ajoute 0,00 : le cas haut est 22,70 [calcul].
+- **Reserve : 0,00 a 23,20**, comme a 22,20 (`squad/lessons.md`, s57 : *"Une projection qui tombe pile sur le plafond n'est pas une reserve"*). Une troisieme lecture d'un lot (0,50, A.272 regle point 3) n'est pas couverte par la levee, qui ne nomme que deux gestes : 23,70 [calcul : 23,20 plus 0,50].
+- Ligne hors marge de l'instance neuve, si les deux gestes ont lieu : 4,50 plus 0,50 plus 0,50 = **5,50** [calcul]. (a) est celle de l'horloge, instance B (`lea-dev`), et `Q-273-1` (ii) ne dit pas sur quelle ligne elle s'inscrit : **je ne tranche pas la ligne**, le 5,50 est une borne. Depassement de l'engage borne : 23,20 moins 13,50 = **9,70** [calcul], contre 8,70.
+
+**Le plafond propose, sans le decider : 23,20.** C'est le cas haut des deux gestes, reserve nulle, et c'est un chiffre que l'utilisatrice n'a pas donne. **Question `Q-280-1`** (repere local, aucun identifiant alloue), a elle par `sofia-sm` : le plafond de `PAR-8` du palier 9 devient-il 23,20, ou reste-t-il 22,20 avec ces deux gestes inscrits au registre comme levee nommee ? **Tant qu'elle n'a pas repondu, le plafond ecrit reste 22,20** (je ne le releve pas ; A.273 (b) : un cout au-dela s'inscrit au registre sans bloquer le Done de personne) et la levee est ecrite sous la forme de ce tableau. Aucun des deux gestes n'existe a ce jour.
+
+**4. Ce que la levee ne change pas.**
+
+- **`P3`** (A.265, texte de `nadia-prof`) n'est pas reecrite : aucun rejeu avant les dix premiers audits, un par lot au plus, l'ordre neuf audits, horloge, rejeux. Les mots de l'utilisatrice ne datent aucun geste. **Q3 d'A.271** garde sa regle de reouverture (a la fermeture des dix audits, avec le nombre de lots refuses observe) ; ce qui est leve est son **prix**, pas son calendrier. Si l'utilisatrice voulait dire que le quatrieme rejeu est decide ou que l'audit de l'horloge passe avant les neuf, elle le dit, et ce sera un autre amendement.
+- **`Q-273-1`** : **huitieme mention** (inscrite en A.273, septieme en A.279). (ii) n'a toujours pas de reponse de `nadia-prof` : la levee admet le cout, elle ne classe pas la seconde lecture de l'horloge. (i) reste ouverte, voir le tableau. Aucune des deux n'est fermee par cet amendement.
+- Le Done pedagogique reste a `nadia-prof` seule ; la levee du plafond n'est pas une condition de Done (A.268, A.273 (b)).
+
+**5. `Q2`, `ok` : une fiche par lot, `squad/conformite/FICHE-ce1-qlm-<lot>.md`.** Tel que transmis : fiche nommee `FICHE-ce1-qlm-<lot>.md` (exemple `FICHE-ce1-qlm-01.md`), **ouverte par `camille-po`, remplie par `nadia-prof`**. Cela ferme **C3** du `planning.md` du 15:40 (nom de la fiche) et la moitie d'E3. **Neuf fiches sont ouvertes dans cette livraison** : `FICHE-ce1-qlm-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12`. Chacune porte : mecanique, paquet (nombre d'items relu par `grep -c "bonneReponse:"`), absence d'entree de catalogue (`grep -c "ce1-qlm"` sur `catalogue.yaml` : 0), ligne, story, decisions, competence (citation du referentiel, reprise de la story), parcours du lot (quatre SHA de `planning.md` 15:40, dont j'ai verifie l'existence par `git cat-file -e`), etat de la porte technique (aucun `verify` complet, regle d'`O1`), ce que `nadia-prof` garde seule, et un **bloc de validation vide**. **Je n'ai recopie aucun critere ni aucune condition** : les fiches renvoient a la story et a `QC1` a `QC9`, parce que les copier ferait deriver la fiche de sa source ; je n'ai ecrit aucun contenu pedagogique et aucun verdict.
+
+**Phrase du backlog depassee, non reecrite.** Le bloc commun des neuf stories (annotation du 2026-10-25, cinquieme, puce *Plafond*) dit que le Done est prononce *"dans `FICHE-bandit-manchot-<id>.md` que j'ouvre au branchement, pas avant"*. Depuis `Q2`, le nom est `FICHE-ce1-qlm-<lot>.md` et la fiche est ouverte avant le branchement, qui n'a lieu qu'apres un Done (`QC3`). C'est ce qui est ecrit ici qui est en vigueur ; je ne pose pas de marqueur dans `backlog.md`.
+
+### Routage
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | inscrire dans `planning.md` (non modifie par cet amendement) : `O1` (Done technique par lot, CI complete a la cloture, annonce qui nomme les jobs), la forme CI de `verifier-chemins.sh` et de `verifier-prefixes.sh`, le nom des fiches, la levee du plafond pour les deux gestes avec le tableau du point 3 ; **designer qui lance le `verify` complet de chaque lot** et qui sert le jar a l'audit ; documenter la forme de lancement des deux garde-fous la ou un agent la lira (P7) ; porter `Q-280-1` a l'utilisatrice ; mettre a jour E1 (moitie), E3 (moitie), C1, C3 et C5 |
+| `nadia-prof` | remplir le bloc de validation de chaque fiche a son audit ; `Q-273-1` (ii) et la part chiffre de (i), toujours sans reponse ; contredire par ecrit le chiffrage du tableau du point 3 si elle le lit autrement (son texte l'emporte) |
+| `yanis-qa` | rien de neuf (le `verify` par lot n'est pas un critere d'acceptation) |
+| `theo-archi` | rien |
+
+**Matrice** : aucun statut ne change, `MATRICE-couverture.md` n'est pas modifiee. **Report** : `Q-273-1`, huitieme mention ; Q3 d'A.271, son prix est leve, son calendrier est inchange ; pas d'autre report. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne remplit aucun bloc de validation, ne releve aucun plafond, ne change ni l'engage ni la marge, ne reecrit pas `P3`, ne decide pas que le quatrieme rejeu est du, n'amende ni `planning.md`, ni `backlog.md`, ni `CLAUDE.md`, ni `squad/README.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue (`Q-280-1` est un repere local).
