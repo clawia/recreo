@@ -100,7 +100,7 @@ class PaquetCe1QlmBesoinsDeLaPlanteTest {
             "elle grandit plus vite", "elle devient plus verte", "elle devient plus solide",
             "elle pousse plus vite", "elle fait plus de fleurs", "elle devient une plante",
             "elle germe plus vite", "elle germe tout de suite",
-            "elle reste bien droite", "elle continue de pousser");
+            "elle reste bien droite", "elle continue de pousser", "elle pousse tres bien");
 
     /** BPL-CE1-1 : les quatre mots jamais proposes, sur le texte sans accent. */
     private static final Pattern MOT_JAMAIS_PROPOSE = Pattern.compile(

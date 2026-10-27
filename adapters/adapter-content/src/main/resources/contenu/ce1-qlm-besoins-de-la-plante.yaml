@@ -102,7 +102,7 @@ items:
   # TRV-CE1-2 : b, b
   - enonce: "Une plante a des feuilles et reste dans le noir. Que lui arrive-t-il ?"
     bonneReponse: "elle devient pâle et pousse mal"
-    distracteurs: ["elle devient plus verte", "elle devient plus solide"]
+    distracteurs: ["elle devient plus verte", "elle pousse très bien"]
     indice: "Imagine une plante enfermée dans un endroit tout noir."
   # BPL-CE1-1 sujet : plante
   # BPL-CE1-1 tache : besoin
