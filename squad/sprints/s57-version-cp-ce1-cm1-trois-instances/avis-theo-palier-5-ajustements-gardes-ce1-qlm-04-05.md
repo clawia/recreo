@@ -12,7 +12,7 @@
 |---|---|---|---|
 | `F1` | `T05-1` | une etape de plus : bonne reponse egale a *rien ne change* (apres `plat` et retrait d'un `.` ou `!` final) : **temperature** ; les autres etapes et le tiers ne changent pas | test du paquet de `-05` |
 | `F2` | regle 4 de `-05` | methode a part, un message par paquet : refus si au moins une proposition distracteur est *rien ne change* et si aucune bonne reponse ne l'est, par la meme egalite | test du paquet de `-05` |
-| `F3` | regle 2 de `-05` | pour un item a bonne reponse *rien ne change* : refus si l'enonce n'a pas `(sous|en dessous de) (0|zero) degre`, refus si l'enonce contient le mot `eau` ; le reste de *glace seule* est *non garde : `ETE-CE1-2`* | test du paquet de `-05` |
+| `F3` | regle 2 de `-05` | pour un item a bonne reponse *rien ne change* : refus si l'enonce n'a pas `(sous\|en dessous de) (0\|zero) degre`, refus si l'enonce contient le mot `eau` ; le reste de *glace seule* est *non garde : `ETE-CE1-2`* | test du paquet de `-05` |
 | `F4` | `T05-3f` | rien a changer ; avec `F1`, l'item de 1.2 est de temperature et passe (critere 6 corrige) | test du paquet de `-05` |
 | `F5` | `T04-2` | assertion propre : aucun des trois menus n'a pour ensemble de familles *produits sucres* seul | test du paquet de `-04` |
 | `F6` | `X2` | dans le test de `-04` seul, lu sur la source brute, `Test` sensible a la casse ; une source du depot nommee sans extension ni *nadia* est *non garde : `QMT-CE1-2`* | test du paquet de `-04` |
