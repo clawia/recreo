@@ -1,0 +1,144 @@
+schema: 1
+id: ce1-qlm-paysages
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Se situer dans l'espace"
+  competence: "Identifier quelques paysages (littoral, montagne, campagne, ville) à partir de leurs éléments caractéristiques."
+lignesDeReferentiel: ["QLM-CE1-10"]
+#
+# S57-BR-QLM-CE1-10 (s57, palier 5, lot des neuf lots de questionner le monde CE1). PREMIER JET,
+# ecrit par marc-dev, commite seul avant la lecture de nadia-prof : rien n'est joue, aucun Done
+# n'est prononce, le paquet n'est pas au catalogue (QC3). Competence : QLM-CE1-10
+# (squad/programme/questionner-le-monde/competences-ce1.md), libelle recopie a l'identique.
+# Conditions : PAY-CE1-1 et PAY-CE1-2 (ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-
+# et-emc-ce1.md, 3.10), critere 9 de la story arbitre par nadia-prof (squad/sprints/s57-version-
+# cp-ce1-cm1-trois-instances/arbitrage-nadia-premiers-jets-ce1-qlm-10-12.md, section 1.1, corrige
+# par arbitrage-nadia-contradictions-ce1-qlm-10-12.md, arbitrage-nadia-dernier-lot-ce1-qlm-04-a-12.md
+# section 6.5 et arbitrage-nadia-trois-points-ce1-qlm-04-06-10.md section 5.3), conditions
+# transverses de la meme instruction (section 2). Pas d'image : le paysage se joue par les elements
+# que l'enonce nomme.
+#
+# Deux taches (FER-3). Le test les recompte sur la bonne reponse de chaque item : une bonne reponse
+# qui est l'un des quatre paysages pose la tache paysage, une bonne reponse qui est un element des
+# listes ci-dessous pose la tache element. Il relit les deux comptes ci-dessous contre les items.
+#   paysage : identifier le paysage a partir de ses elements (8 items)
+#   element : l'element qui n'appartient pas a un paysage nomme (5 items)
+#
+# R10-1, listes fermees : aucun autre element n'entre dans un enonce ou une proposition. Article et
+# nombre libres (une foret, des champs) : c'est le nom qui compte.
+#   Elements propres : littoral : la plage, la mer, le phare ; montagne : le sommet, les pistes de
+#     ski ; campagne : le champ, le ble ; ville : les immeubles, le metro.
+#   Elements partages, avec leurs paysages : la foret (littoral, montagne, campagne) ; la riviere
+#     (montagne, campagne, ville) ; la neige (montagne, campagne, ville) ; le port (littoral, ville) ;
+#     le village (littoral, montagne, campagne) ; la falaise (littoral, montagne) ; la ferme (montagne,
+#     campagne) ; la rue (les quatre).
+# Source des deux listes et de la table de la tache element : squad/sprints/s57-version-cp-ce1-cm1-
+# trois-instances/arbitrage-nadia-premiers-jets-ce1-qlm-10-12.md, section 1 (R10-8), qui tient chaque
+# element pour exact au CE1. Le redacteur n'a consulte aucune autre source : nadia-prof confronte
+# chaque element et chaque phrase a la sienne (QC9). Ni le test du paquet ni la story ne sont une source.
+#
+# Tache paysage : l'enonce nomme au moins deux elements, dont au moins un element propre du paysage
+# attendu et aucun element propre d'un autre paysage ; pour chaque element partage nomme, au moins un
+# distracteur est un paysage de cet element. Les propositions sont trois des quatre paysages. Chaque
+# paysage est la bonne reponse de deux items (FER-1).
+# Tache element : l'enonce nomme un seul paysage, sans autre element ("Lequel ne voit-on pas a la
+# montagne ?"). La bonne reponse est un element propre d'un autre paysage, dans un couple de la table
+# de R10-3 ; les deux distracteurs sont un element propre du paysage nomme et un element partage entre
+# le paysage nomme et celui de la bonne reponse. Le littoral et la ville ne sont jamais le couple d'un
+# item. Un seul item est "sur le littoral" : la table n'y admet que les pistes de ski.
+#
+# Indices : une methode (TRV-CE1-5). En tache paysage, aucun indice ne nomme un des quatre paysages ni
+# un element des listes, propre ou partage, a aucun article ni nombre. En tache element, aucun indice
+# ne nomme une proposition ni le mot littoral, sauf l'item "sur le littoral" : QMT-CE1-1 y est servi
+# par un indice qui nomme le littoral et donne un exemple apres "par exemple" (derogation limitee de
+# nadia-prof, arbitrage-nadia-contradictions-ce1-qlm-10-12.md, Q8-5). Dans les items de tache paysage
+# ou le littoral est une proposition, il n'est pas explique.
+#
+# PAY-CE1-2 : aucun jugement de valeur sur un paysage, aucun adjectif sur un element ou un paysage,
+# aucun lieu reel, aucun "tu", "toi", "ton", "ta", "tes", aucun item sur l'endroit ou vit l'enfant
+# ni sur ses vacances.
+#
+# Familles de distracteurs (liste fermee) :
+#   famille a : tache paysage, un paysage qui porte un element partage nomme par l'enonce
+#   famille b : tache paysage, un paysage qui ne porte aucun des elements partages nommes
+#   famille c : tache element, un element propre du paysage nomme
+#   famille d : tache element, un element partage entre le paysage nomme et celui de la bonne reponse
+#
+# CYC-1 : cm1-histoire-geographie-nommer-en-geographie classe un port dans un village de peche et
+# des maisons individuelles dans l'espace periurbain : aucun item ne le contredit, aucune maison n'est
+# un element, port et village sont partages. cp-qlm-modes-de-vie dit "en ville, on prend le metro et
+# a la campagne, la voiture" et demande pourquoi un mode de vie : aucun item ne demande pourquoi.
+# NRC-CE1-1 : aucun enonce ni jeu de trois propositions n'est celui d'un item de CP (garde
+# transverse) ; le sujet reste a la lecture de nadia-prof.
+# TRV-CE1-1, -5, -6, LON-CE1-1, -2, -5 : niveau CE1, aucun texteSupport ni voix, un indice par item
+# (une methode, douze mots au plus, indices tous distincts), aucun prenom, aucun lieu de vie.
+# TYP-1 (ADR-0067) : l'espace qui precede "?" est insecable. FER-2 : plus d'items que de dix
+# manches (plancher de onze, DEC-0120 A.258).
+items:
+  # TRV-CE1-2 : a, a
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # TRV-CE1-2 : c, d
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la mer"
+    distracteurs: ["le sommet", "la forêt"]
+    indice: "Lis les trois choix, puis pense au paysage de l'énoncé."
+  # TRV-CE1-2 : a, b
+  - enonce: "On voit une plage et un port. Quel est ce paysage ?"
+    bonneReponse: "le littoral"
+    distracteurs: ["la ville", "la montagne"]
+    indice: "Pour chaque paysage, regarde si on y voit tous les mots."
+  # TRV-CE1-2 : a, a
+  - enonce: "On voit un champ et une rivière. Quel est ce paysage ?"
+    bonneReponse: "la campagne"
+    distracteurs: ["la montagne", "la ville"]
+    indice: "Compare chaque mot de l'énoncé avec les trois paysages."
+  # TRV-CE1-2 : c, d
+  - enonce: "Lequel ne voit-on pas sur le littoral ?"
+    bonneReponse: "les pistes de ski"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Sur le littoral, il y a par exemple la mer."
+  # TRV-CE1-2 : a, b
+  - enonce: "On voit des immeubles et un port. Quel est ce paysage ?"
+    bonneReponse: "la ville"
+    distracteurs: ["le littoral", "la campagne"]
+    indice: "Écarte les paysages où l'on ne voit pas tous les mots."
+  # TRV-CE1-2 : a, a
+  - enonce: "On voit la mer et un village. Dans quel paysage est-on ?"
+    bonneReponse: "le littoral"
+    distracteurs: ["la montagne", "la campagne"]
+    indice: "Pense d'abord au mot qu'un seul paysage possède."
+  # TRV-CE1-2 : c, d
+  - enonce: "Lequel ne voit-on pas à la campagne ?"
+    bonneReponse: "le phare"
+    distracteurs: ["le blé", "le village"]
+    indice: "Compare chaque choix avec le paysage de l'énoncé."
+  # TRV-CE1-2 : a, b
+  - enonce: "On voit des pistes de ski et une ferme. Dans quel paysage est-on ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "le littoral"]
+    indice: "Cherche d'abord un mot qui ne se trouve pas partout."
+  # TRV-CE1-2 : c, d
+  - enonce: "Lequel ne voit-on pas en ville ?"
+    bonneReponse: "le sommet"
+    distracteurs: ["les immeubles", "la neige"]
+    indice: "Pour chaque choix, cherche si on le voit dans ce paysage."
+  # TRV-CE1-2 : a, b
+  - enonce: "On voit du blé et une ferme. Dans quel paysage est-on ?"
+    bonneReponse: "la campagne"
+    distracteurs: ["la montagne", "la ville"]
+    indice: "Prends les mots un par un et cherche où on les voit."
+  # TRV-CE1-2 : c, d
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "le métro"
+    distracteurs: ["les pistes de ski", "la rivière"]
+    indice: "Pense à ce qu'on voit dans le paysage de l'énoncé."
+  # TRV-CE1-2 : a, a
+  - enonce: "On voit des immeubles, une rue et de la neige. Dans quel paysage est-on ?"
+    bonneReponse: "la ville"
+    distracteurs: ["la montagne", "la campagne"]
+    indice: "Cherche où l'on voit chacun des mots de l'énoncé."
