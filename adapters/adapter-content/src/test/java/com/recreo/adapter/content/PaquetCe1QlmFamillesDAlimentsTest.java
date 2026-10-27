@@ -44,6 +44,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * {@code T04-1}). La tache d'un item est calculee sur ses trois propositions, jamais declaree : trois
  * familles = classement, trois menus (au moins deux aliments separes par des virgules) = menu, tout autre
  * item est refuse. Les deux lignes de compte de l'en-tete sont relues contre le calcul.
+ * <b>Ecart a la lettre de {@code T04-1}</b> (point {@code I4} de la lecture de nadia-prof) : un menu est
+ * lu comme menu des qu'il a au moins deux elements separes par des virgules, sans verifier que chacun
+ * est dans la liste des aliments. Un element absent de la liste est refuse plus loin, par
+ * {@link #verifierLesAlimentsDesItems} (sonde 05), qui ne change que le message du refus ; la forme est
+ * a theo-archi.
  *
  * <p><b>Comment ce test lit {@code FAL-CE1-1} et {@code FAL-CE1-2}</b> ({@code T04-2}, {@code T04-3}). La
  * liste fermee des aliments est dans l'en-tete, un aliment par ligne avec sa famille et sa source ; les
@@ -136,7 +141,7 @@ class PaquetCe1QlmFamillesDAlimentsTest {
 
     /** Regle 6 : les mots des cinq noms de famille et leurs formes de genre et de nombre. */
     private static final Pattern MOT_DE_FAMILLE = Pattern.compile("(?<!\\p{L})(poissons?|oeufs?|viandes?|laits?"
-            + "|laitiers?|laitieres?|fruits?|legumes?|sucres?|sucrees?|feculents?)(?!\\p{L})", FLAGS);
+            + "|laitiers?|laitieres?|fruits?|legumes?|sucres?|sucrees?|feculents?|feculentes?|produits?)(?!\\p{L})", FLAGS);
 
     /** Regle 7 : un motif par famille attendue, des formes et non des racines (laitue est un legume). */
     private static final Map<String, Pattern> MOT_DE_LA_FAMILLE_ATTENDUE = Map.of(
@@ -873,7 +878,8 @@ class PaquetCe1QlmFamillesDAlimentsTest {
     @Test
     void s21UnEnonceDeClassementQuiPorteUnMotDeFamilleEstRefuseEtLaPommeLaCarotteLeRizPassent() {
         Paquet fautif = fautif("aliments-fautifs.yaml");
-        List<String> refusees = List.of("sonde 18", "sonde 19", "sonde 20", "sonde 21", "sonde 26");
+        List<String> refusees = List.of("sonde 18", "sonde 19", "sonde 20", "sonde 21", "sonde 26",
+                "sonde 31", "sonde 32");
 
         for (String marqueur : refusees) {
             assertThatThrownBy(() -> verifierLesFormes(List.of(uneSonde(fautif, marqueur))))
