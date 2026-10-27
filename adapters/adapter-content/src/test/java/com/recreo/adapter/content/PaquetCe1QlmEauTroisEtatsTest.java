@@ -24,6 +24,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * S57-BR-QLM-CE1-05, le paquet {@code ce1-qlm-eau-trois-etats}, ligne {@code QLM-CE1-05} - reconnaitre
@@ -684,6 +685,16 @@ class PaquetCe1QlmEauTroisEtatsTest {
         List<Item> reste = items.stream().filter(aRetirer.negate()).toList();
         assertThat(reste).hasSizeLessThan(items.size());
         return reste;
+    }
+
+    @Test
+    void leJeuFautifFaitRougirLaGardeDeLaTacheQuiLaissePasseLePaquetReel() {
+        List<String> defauts = new ArrayList<>();
+        fautif().items().forEach(item -> defauts.addAll(defautsDeLaTache(item)));
+
+        assertThat(defautsDeTousLesItems(PaquetCe1QlmEauTroisEtatsTest::defautsDeLaTache)).isEmpty();
+        assertThatThrownBy(() -> assertThat(defauts).isEmpty()).isInstanceOf(AssertionError.class)
+                .hasMessageContaining("FER-3");
     }
 
     @Test
