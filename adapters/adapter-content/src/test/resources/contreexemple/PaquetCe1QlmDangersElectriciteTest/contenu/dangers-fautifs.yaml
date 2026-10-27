@@ -504,7 +504,7 @@ items:
     bonneReponse: "laisser le fil sans le toucher"
     distracteurs: ["attendrir le fil", "toucher le fil pour voir"]
     indice: "Regarde bien la scène."
-  # sonde 71 (marc-dev) passe : attendre suivi d'un refus de signaler (attendre en egalite)
+  # sonde 71 (marc-dev, retournee par nadia-prof et theo-archi) abstention : attendre suivi d'un refus de signaler
   # DEL-CE1-1 tache : geste
   # DEL-CE1-1 situation : fil
   - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
@@ -552,4 +552,123 @@ items:
   - enonce: "Inès a les mains mouillées et veut brancher le grille-pain. Que doit-elle faire ?"
     bonneReponse: "ne pas brancher la lampe"
     distracteurs: ["brancher le grille-pain tout de suite", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 78 (theo-archi 08-T3) indice de B : ne touche a rien
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Ne touche à rien."
+  # sonde 79 (theo-archi 08-T3) indice de B : un adulte
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Pense à un adulte."
+  # sonde 80 (theo-archi 08-T3) indice de A : l'eau
+  # DEL-CE1-1 tache : danger
+  # DEL-CE1-1 situation : prise
+  - enonce: "Dans la maison de Jade, quelle situation est dangereuse ?"
+    bonneReponse: "une prise cassée"
+    distracteurs: ["une prise bien fixée", "une lampe allumée"]
+    indice: "Regarde ce qui est près de l'eau."
+  # sonde 81 (marc-dev 08-T3) indice de B : seche-toi, le trait d'union ne sauve que seche-cheveux
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Sèche-toi bien."
+  # sonde 82 (marc-dev 08-T3) indice de B : branche
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Ne le branche pas."
+  # sonde 83 (marc-dev 08-T3) indice de A : cassee
+  # DEL-CE1-1 tache : danger
+  # DEL-CE1-1 situation : prise
+  - enonce: "Dans la maison de Jade, quelle situation est dangereuse ?"
+    bonneReponse: "une prise cassée"
+    distracteurs: ["une prise bien fixée", "une lampe allumée"]
+    indice: "Cherche la prise cassée."
+  # sonde 84 (marc-dev 08-T3) passe : le seche-cheveux n'est pas le geste
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Le sèche-cheveux est branché au bord du lavabo. Que doit faire Lina ?"
+    bonneReponse: "ne pas toucher l'appareil"
+    distracteurs: ["le débrancher en tirant le fil", "ne rien dire à un adulte"]
+    indice: "Regarde ce qui est à côté du sèche-cheveux."
+  # sonde 85 (marc-dev 08-T3) passe : eau n'est refuse que dans l'indice de A
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Zoé a les mains mouillées et veut brancher la lampe. Que doit-elle faire ?"
+    bonneReponse: "attendre d'avoir les mains sèches"
+    distracteurs: ["brancher la lampe tout de suite", "secouer ses mains puis l'allumer"]
+    indice: "Pense à l'eau qui reste sur sa peau."
+  # sonde 86 (theo-archi 08-T4) le premier jet de Maya : loin est commun
+  # DEL-CE1-1 tache : danger
+  # DEL-CE1-1 situation : eau
+  - enonce: "Dans la cuisine de Maya, laquelle de ces situations est dangereuse ?"
+    bonneReponse: "une lampe branchée près de l'évier"
+    distracteurs: ["une lampe branchée loin de l'évier", "une lampe débranchée loin de l'évier"]
+    indice: "Compare les trois lampes, une par une."
+  # sonde 87 (theo-archi 08-T4) le premier jet d'Adam : debranche est commun
+  # DEL-CE1-1 tache : danger
+  # DEL-CE1-1 situation : eau
+  - enonce: "Chez Adam, quelle situation est dangereuse ?"
+    bonneReponse: "un sèche-cheveux branché près du lavabo"
+    distracteurs: ["un sèche-cheveux débranché près du lavabo", "un sèche-cheveux débranché loin du lavabo"]
+    indice: "Imagine ce qui se trouve autour de chaque appareil."
+  # sonde 88 (theo-archi 08-T4) l'article compte : un est commun, la bonne reponse dit une
+  # DEL-CE1-1 tache : danger
+  # DEL-CE1-1 situation : prise
+  - enonce: "Dans la maison de Jade, quelle situation est dangereuse ?"
+    bonneReponse: "une prise cassée"
+    distracteurs: ["un fil rangé", "un appareil éteint"]
+    indice: "Regarde bien la scène."
+  # sonde 89 (theo-archi 08-T2) distracteur : aller voir un adulte
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["aller voir un adulte", "réparer le fil avec du scotch"]
+    indice: "Regarde bien la scène."
+  # sonde 90 (theo-archi 08-T2) distracteur : avertir un adulte sans attendre
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["avertir un adulte sans attendre", "réparer le fil avec du scotch"]
+    indice: "Regarde bien la scène."
+  # sonde 91 (theo-archi 08-T2) distracteur : attendre un adulte, aussi une abstention
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["attendre un adulte", "réparer le fil avec du scotch"]
+    indice: "Regarde bien la scène."
+  # sonde 92 (theo-archi 08-T2) bonne reponse : aller voir un adulte
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "aller voir un adulte"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 93 (theo-archi 08-T2) adulte hors du debut, ne n'est pas en tete
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["demander à un adulte de ne pas toucher", "réparer le fil avec du scotch"]
+    indice: "Regarde bien la scène."
+  # sonde 94 (theo-archi 08-T2) passe : deux refus de signaler qui nomment un adulte
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : prise
+  - enonce: "La prise du salon est cassée. Que doit faire Sami ?"
+    bonneReponse: "ne pas toucher la prise"
+    distracteurs: ["ne pas déranger un adulte", "Ne pas prévenir un adulte."]
     indice: "Regarde bien la scène."
