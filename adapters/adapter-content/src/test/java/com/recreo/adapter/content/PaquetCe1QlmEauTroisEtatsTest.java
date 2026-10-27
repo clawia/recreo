@@ -96,6 +96,10 @@ class PaquetCe1QlmEauTroisEtatsTest {
 
     private static final Pattern MOT_BUEE = motif("buees?|nuages?|brouillards?|fumees?");
 
+    private static final Pattern NUAGE_OU_FUMEE = motif("nuages?|fumees?");
+
+    private static final Pattern MOT_DISPARITION = motif("dispar(?:ai|u|ition)\\p{L}*");
+
     private static final Pattern MOT_FONTE = motif("fond|fondent|fondre|fondu|fondue|fondus|fondues|fonte|fondra"
             + "|fondait");
 
@@ -476,6 +480,34 @@ class PaquetCe1QlmEauTroisEtatsTest {
                 : List.of();
     }
 
+    /** Regle 3 : sous une ebullition, le nuage et la fumee sont ce que l'eau qui bout produit, jamais un distracteur. */
+    static List<String> defautsDeLaFumeeQuiBout(Item item) {
+        List<String> defauts = new ArrayList<>();
+        if (tache(item).equals(Optional.of(VAPEUR)) && contient(BOUILLIR, item.enonce())) {
+            for (String distracteur : item.distracteurs()) {
+                if (contient(NUAGE_OU_FUMEE, distracteur)) {
+                    defauts.add("regle 3 : '" + distracteur + "' est ce que l'eau qui bout produit, distracteur de '"
+                            + item.enonce() + "'");
+                }
+            }
+        }
+        return defauts;
+    }
+
+    /** TRV-CE1-2 : quand la bonne reponse est la fonte, disparaitre est vrai de la glace, jamais un distracteur. */
+    static List<String> defautsDeLaDisparitionDeLaGlace(Item item) {
+        List<String> defauts = new ArrayList<>();
+        if (tache(item).equals(Optional.of(TEMPERATURE)) && contient(MOT_FONTE, item.bonneReponse())) {
+            for (String distracteur : item.distracteurs()) {
+                if (contient(MOT_DISPARITION, distracteur)) {
+                    defauts.add("TRV-CE1-2 : '" + distracteur + "' est vrai quand la glace fond, distracteur de '"
+                            + item.enonce() + "'");
+                }
+            }
+        }
+        return defauts;
+    }
+
     /**
      * Regle 5, T05-3h et X4 : en vapeur, aucun indice ne dit que la vapeur d'eau est invisible ou ne se voit
      * pas ; en temperature, aucun indice n'enonce le sens de la temperature (le froid fait geler, la chaleur
@@ -612,6 +644,16 @@ class PaquetCe1QlmEauTroisEtatsTest {
     }
 
     @Test
+    void ete2AucunItemDeVapeurQuiBoutNePorteLeNuageOuLaFumeeEnDistracteur() {
+        assertThat(defautsDeTousLesItems(PaquetCe1QlmEauTroisEtatsTest::defautsDeLaFumeeQuiBout)).isEmpty();
+    }
+
+    @Test
+    void trv2AucunItemDeFonteNePorteLaDisparitionEnDistracteur() {
+        assertThat(defautsDeTousLesItems(PaquetCe1QlmEauTroisEtatsTest::defautsDeLaDisparitionDeLaGlace)).isEmpty();
+    }
+
+    @Test
     void ete2LesIndicesNeDisentNiQueLaVapeurEstInvisibleNiLeSensDeLaTemperature() {
         assertThat(defautsDeTousLesItems(PaquetCe1QlmEauTroisEtatsTest::defautsDesIndices)).isEmpty();
     }
@@ -744,7 +786,7 @@ class PaquetCe1QlmEauTroisEtatsTest {
     void s12LePaquetReelPriveDeSesItemsARienNeChangeEstRefuse() {
         List<Item> sans = sans(paquet().items(), item -> rienNeChange(item.bonneReponse()));
 
-        assertUnSeulDefaut(defautsDeLaRegleQuatre(sans), "S3", "regle 4 : rien ne change est distracteur de 2");
+        assertUnSeulDefaut(defautsDeLaRegleQuatre(sans), "S3", "regle 4 : rien ne change est distracteur de 3");
     }
 
     @Test
@@ -880,5 +922,25 @@ class PaquetCe1QlmEauTroisEtatsTest {
     void s26UnIndiceDeTemperatureQuiEnonceLeSensDeLaTemperatureEstRefuseSeulEtPasseEnVapeur() {
         assertUnSeulDefaut(defautsDesIndices(uneSonde("sonde 52")), "sonde 52", "X4");
         assertAucunDefaut(PaquetCe1QlmEauTroisEtatsTest::defautsDesIndices, "sonde 53", "sonde 05");
+    }
+
+    @Test
+    void s27LeNuageOuLaFumeeEnDistracteurSousUneEbullitionSontRefusesSeulsEtLeReelPasse() {
+        assertUnSeulDefaut(defautsDeLaFumeeQuiBout(uneSonde("sonde 54")), "sonde 54",
+                "regle 3 : 'elle devient un nuage'");
+        assertUnSeulDefaut(defautsDeLaFumeeQuiBout(uneSonde("sonde 55")), "sonde 55",
+                "regle 3 : 'elle devient de la fumée'");
+        assertThat(paquet().items()).filteredOn(item -> contient(NUAGE_OU_FUMEE, String.join(" ", item.distracteurs())))
+                .isNotEmpty().allSatisfy(item -> assertThat(defautsDeLaFumeeQuiBout(item)).isEmpty());
+    }
+
+    @Test
+    void s28LaDisparitionEnDistracteurDUnItemDeFonteEstRefuseeSeuleEtLesItemsReelsPassent() {
+        assertUnSeulDefaut(defautsDeLaDisparitionDeLaGlace(uneSonde("sonde 56")), "sonde 56",
+                "TRV-CE1-2 : 'les glaçons disparaissent'");
+        assertUnSeulDefaut(defautsDeLaDisparitionDeLaGlace(uneSonde("sonde 57")), "sonde 57",
+                "TRV-CE1-2 : 'la glace disparaît'");
+        assertThat(paquet().items()).filteredOn(item -> contient(MOT_DISPARITION, String.join(" ", item.distracteurs())))
+                .isNotEmpty().allSatisfy(item -> assertThat(defautsDeLaDisparitionDeLaGlace(item)).isEmpty());
     }
 }
