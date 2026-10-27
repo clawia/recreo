@@ -4241,7 +4241,7 @@ Verification : 22,20 plus 6 fois 0,25 = 23,70 ; plus 6 fois 0,50 = 25,20 ; plus 
 **Questions.**
 
 - **`Q-274-1`, a `nadia-prof`** (premiere inscription, aucun report ; elle tient le bareme et le registre, A.267, et chiffre ses arbitrages, `cloture-nadia.md` de s56, section 6) : (i) un arbitrage avant premier jet a-t-il un prix, lequel ; (ii) l'unite est-elle le fichier (trois, un par paire) ou le lot (six) ; (iii) est-il compris dans le 1,0 du lot, comme A.268 point 3 le dit d'une correction, ou hors du lot, et hors marge ou dans la marge ; (iv) meme reponse pour l'avis de `-02`, et le 1,00 des lots du registre du palier 4 absorbait-il des gestes de cette famille. Ses mots font foi ; **je classe sur ses mots**, comme A.268, et je recalcule la projection. **[corrige par A.275 : elle a repondu dans les trois fichiers d'arbitrage : aucun prix, deux lectures possibles qu'elle ne tranche pas, le classement renvoye a `camille-po` ; (i) a (iii) restent sans prix et le second membre de (iv) n'est traite par aucun des trois fichiers ; classement en A.275 ; texte d'origine conserve]**
-- **`Q-274-2`, a l'utilisatrice, par `sofia-sm`, conditionnelle** : ne se pose que si la reponse a `Q-274-1` donne un prix superieur a zero **et** que la projection recalculee depasse 22,20. Elle porte alors : laisser le depassement au registre (regle en vigueur, rien a changer), ou fixer un autre plafond (A.244 : la valeur est a elle). Les chiffres sans reserve seraient 23,70 (0,25 par arbitrage, six) et 25,20 (0,50) ; **ils ne sont pas proposes**.
+- **`Q-274-2`, a l'utilisatrice, par `sofia-sm`, conditionnelle** : ne se pose que si la reponse a `Q-274-1` donne un prix superieur a zero **et** que la projection recalculee depasse 22,20. Elle porte alors : laisser le depassement au registre (regle en vigueur, rien a changer), ou fixer un autre plafond (A.244 : la valeur est a elle). Les chiffres sans reserve seraient 23,70 (0,25 par arbitrage, six) et 25,20 (0,50) ; **ils ne sont pas proposes**. **[corrige par A.276 : la condition n'est pas remplie, la question ne se pose pas, voir A.276 ; texte d'origine conserve]**
 
 **Passages marques *[corrige par A.274]*, texte d'origine conserve :**
 
@@ -4258,7 +4258,7 @@ Verification : 22,20 plus 6 fois 0,25 = 23,70 ; plus 6 fois 0,50 = 25,20 ; plus 
 | A qui | Quoi |
 |---|---|
 | `nadia-prof` | `Q-274-1` : le prix, l'unite, le rattachement au 1,0 du lot, l'avis de `-02` **[corrige par A.275 : rendue sans prix, voir A.275 ; texte d'origine conserve]** |
-| `sofia-sm` | **n'inscrire aucun cout d'arbitrage avant premier jet au registre avant sa reponse** ; si une ligne est utile avant, la forme existante est *0.00, non chiffre* ; router `Q-274-2` a l'utilisatrice si sa condition est remplie ; cet amendement ne modifie pas `planning.md` |
+| `sofia-sm` | **n'inscrire aucun cout d'arbitrage avant premier jet au registre avant sa reponse** ; si une ligne est utile avant, la forme existante est *0.00, non chiffre* ; router `Q-274-2` a l'utilisatrice si sa condition est remplie ; cet amendement ne modifie pas `planning.md` **[corrige par A.276 : la reponse est donnee, la forme *0.00, non chiffre* s'inscrit, voir A.276 ; texte d'origine conserve]** |
 | `theo-archi` | rien |
 | `yanis-qa` | rien |
 
@@ -4284,7 +4284,7 @@ Annotation datee. **Aucun montant ne change** : engage 13,50, plafond de `PAR-8`
 
 - **(a) compris dans le 1,0 : pas etabli.** Le bareme du lot nomme deux gestes, *"lecture avant `verify` et correction qui la suit comprises"*. `nadia-prof` ecrit que l'arbitrage avant premier jet n'est aucun des gestes qu'elle liste. A.268 point 3 (la correction qui suit une lecture est dans le 1,0) parle d'un geste qui suit une lecture ; celui-ci la precede. A.273 point 2 met l'autocontrole de `marc-dev` dans le 1,0 : c'est un geste de `marc-dev`, pas de `nadia-prof`.
 - **(b) hors bareme avec un prix : pas etabli.** Aucune ligne de `planning.md` ne le fixe (recherche faite, aucun resultat) ; `registre-prix-palier-4.txt` porte des lignes d'arbitrage prealable (une par instance, 0.50), de marge, de lot (1.00, une a 1.50 non engagee) et de rejeu (0.25 ou 0.50) : aucune ligne d'arbitrage avant premier jet. Un prix n'existe que s'il est ecrit par qui tient le bareme ; elle ne l'a pas ecrit et dit pourquoi : *"aucune regle"*.
-- **Un geste qui n'a ni (a) ni (b) est une lacune, pas un zero.** Le poser a 0,00 serait lire (a) sans texte ; le poser a 0,25 ou 0,50 serait inventer un prix que A.244 et A.268 m'interdisent. Je ne pose ni l'un ni l'autre.
+- **Un geste qui n'a ni (a) ni (b) est une lacune, pas un zero.** Le poser a 0,00 serait lire (a) sans texte ; le poser a 0,25 ou 0,50 serait inventer un prix que A.244 et A.268 m'interdisent. Je ne pose ni l'un ni l'autre. **[corrige par A.276 : l'utilisatrice a pose 0,00, non chiffre, dans le 1,0, voir A.276 ; texte d'origine conserve]**
 
 **3. Qui peut combler la lacune.** A.274 la routait a `nadia-prof`. Elle a repondu, avec un motif ecrit (aucun texte, pas une seconde lecture), et renvoie le classement a `camille-po`, qui renvoie le prix faute de texte. **Le prix et l'unite d'un geste qu'aucun texte ne nomme sont un arbitrage de valeur, pas un fait que l'un des deux agents detient : ils reviennent a l'utilisatrice, qui a fixe l'engage (13,50) et le plafond (22,20), par `sofia-sm`.** C'est ma lecture de la repartition, non un texte : A.244 dit que la valeur du relevement du plafond est a elle, et A.267 que `nadia-prof` tient le bareme ; aucun ne dit qui fixe le prix d'un poste neuf. `nadia-prof` peut la contredire en l'ecrivant.
 
@@ -4307,8 +4307,8 @@ Verification : 22,20 plus 6 fois 0,25 = 23,70 ; plus 6 fois 0,50 = 25,20 ; plus 
 
 **6. Questions.**
 
-- **`Q-275-1`, a l'utilisatrice, par `sofia-sm`, non posee par cet amendement** : un arbitrage de `nadia-prof` avant premier jet a-t-il un prix, lequel, et l'unite est-elle le fichier ou le lot ; est-il dans le 1,0 du lot ou hors lot, et hors marge ou dans la marge ; meme reponse pour l'avis de `-02`. Premiere inscription pour l'utilisatrice. `Q-274-1` a `nadia-prof` est revenue sans prix (trois fichiers, un meme motif) et n'est pas reposee a `nadia-prof`.
-- **`Q-274-2`, rappel, a l'utilisatrice, par `sofia-sm`, toujours conditionnelle et non posee** : elle ne se pose que si la reponse a `Q-275-1` donne un prix superieur a zero et que la projection recalculee depasse 22,20 (laisser le depassement au registre, regle en vigueur, ou fixer un autre plafond, A.244). Les chiffres sans reserve sont ceux du tableau ci-dessus ; **ils ne sont pas proposes. Je ne releve aucun plafond.**
+- **`Q-275-1`, a l'utilisatrice, par `sofia-sm`, non posee par cet amendement** : un arbitrage de `nadia-prof` avant premier jet a-t-il un prix, lequel, et l'unite est-elle le fichier ou le lot ; est-il dans le 1,0 du lot ou hors lot, et hors marge ou dans la marge ; meme reponse pour l'avis de `-02`. Premiere inscription pour l'utilisatrice. `Q-274-1` a `nadia-prof` est revenue sans prix (trois fichiers, un meme motif) et n'est pas reposee a `nadia-prof`. **[corrige par A.276 : elle a repondu le 2026-10-27 : 0,00, non chiffre, fermee, voir A.276 ; texte d'origine conserve]**
+- **`Q-274-2`, rappel, a l'utilisatrice, par `sofia-sm`, toujours conditionnelle et non posee** : elle ne se pose que si la reponse a `Q-275-1` donne un prix superieur a zero et que la projection recalculee depasse 22,20 (laisser le depassement au registre, regle en vigueur, ou fixer un autre plafond, A.244). Les chiffres sans reserve sont ceux du tableau ci-dessus ; **ils ne sont pas proposes. Je ne releve aucun plafond.** **[corrige par A.276 : condition non remplie, ne se pose pas, voir A.276 ; texte d'origine conserve]**
 
 **Passages marques *[corrige par A.275]*, texte d'origine conserve :**
 
@@ -4323,8 +4323,46 @@ Verification : 22,20 plus 6 fois 0,25 = 23,70 ; plus 6 fois 0,50 = 25,20 ; plus 
 
 | A qui | Quoi |
 |---|---|
-| `sofia-sm` | **n'inscrire aucun cout d'arbitrage avant premier jet au registre** ; si une ligne est utile, la forme existante est *0.00, non chiffre* ; decider quand router `Q-275-1` a l'utilisatrice ; cet amendement ne modifie pas `planning.md` |
+| `sofia-sm` | **n'inscrire aucun cout d'arbitrage avant premier jet au registre** ; si une ligne est utile, la forme existante est *0.00, non chiffre* ; decider quand router `Q-275-1` a l'utilisatrice ; cet amendement ne modifie pas `planning.md` **[corrige par A.276 : `Q-275-1` est repondue, rien a router, voir A.276 ; texte d'origine conserve]** |
 | `nadia-prof` | rien de neuf ; elle peut contredire par ecrit la lecture du point 3 ou du point 2 si elle estime qu'un texte nomme ce geste |
 | `theo-archi`, `yanis-qa` | rien |
 
 **Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; `Q-275-1` est une premiere inscription ; `Q-273-1` (ii), Q3 d'A.271 et `Q-274-2` restent differees, inchangees. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix ni aucune unite, ne convertit aucune duree, ne releve aucun plafond, ne change ni l'engage ni la marge, ne reecrit pas `P3`, n'amende ni `planning.md`, ni `backlog.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue (`Q-275-1` est un repere local).
+
+## Amendement du 2026-10-27, cinquante-quatrieme (`camille-po`, palier 5 : l'utilisatrice repond a `Q-275-1`, les arbitrages avant premier jet valent 0,00 non chiffre)
+
+Annotation datee. **Chiffres avant / apres, en toutes lettres : projection d'A.273 22,20 avant, 22,20 apres (inchangee) ; plafond de `PAR-8` du palier 9 22,20 avant, 22,20 apres (inchange) ; engage 13,50 avant, 13,50 apres (inchange) ; marge de l'instance neuve 1,5 avant, 1,5 apres (inchangee) ; ligne hors marge inchangee.** **Statut de `DEC-0120` : `Acceptee`, inchange.** Six passages d'A.274 et d'A.275 (`Q-274-2` et ligne `sofia-sm` du routage d'A.274 ; point 2, `Q-275-1`, `Q-274-2` rappel et ligne `sofia-sm` du routage d'A.275) portent le marqueur *[corrige par A.276]*, texte d'origine conserve, ainsi que les lignes d'index d'A.274 et d'A.275. Sources lues au disque : `DEC-0120` A.268 a A.275 ; `DEC-index.md`.
+
+### A.276 Les arbitrages de `nadia-prof` avant premier jet valent 0,00, non chiffre, dans le 1,0 du lot
+
+**La reponse de l'utilisatrice, le 2026-10-27, mot pour mot :** *"pour Q1, on va sur 0,00 avec Projection inchangee a 22,20"*. Elle retient l'option O1 de ma proposition : 0,00, non chiffre ; ces arbitrages sont compris dans le 1,0 du lot, parce qu'ils remplacent la correction qu'on aurait faite apres le premier jet ; remesure en fin de palier avec les durees reelles ; la projection reste 22,20.
+
+**1. Ce qui est acte.**
+
+- Le prix d'un arbitrage de `nadia-prof` avant premier jet est **0,00, non chiffre**. Il est **dans le 1,0 du lot** (`-04` a `-12`), **hors ligne hors marge** : aucune ligne n'est ajoutee, aucun montant n'est retire de la marge.
+- **L'avis de `nadia-prof` sur la seconde tache de `-02` est compris** dans cette reponse : meme prix, meme rattachement.
+- L'unite (le fichier ou le lot) n'a plus d'effet : a 0,00, les quatre lignes du tableau d'A.275 point 4 donnent 22,20. Les hypotheses 0,25 et 0,50 d'A.274 et d'A.275 ne sont pas retenues ; leurs totaux (22,95 a 25,70) ne decrivent aucun etat du produit.
+- La lacune (c) d'A.275 est comblee par l'utilisatrice, qui tient la valeur du bareme (A.244). Je n'ai pas fixe ce prix.
+
+**2. Ce qui est ferme.**
+
+- **`Q-275-1` : fermee**, repondue.
+- **`Q-274-1` : fermee.** `nadia-prof` n'a plus a chiffrer ses arbitrages.
+- **`Q-274-2` : ne se pose pas.** Sa condition (prix superieur a zero **et** projection recalculee au-dessus de 22,20) n'est pas remplie : le prix est 0,00 et la projection 22,20.
+
+**3. Ce qui reste ouvert, et a qui.**
+
+- **La remesure en fin de palier.** `nadia-prof` donne les durees reelles ; `sofia-sm` les inscrit au registre. On compare le **nombre de secondes lectures** des lots arbitres avant premier jet (`-04` a `-12`) au nombre de secondes lectures des trois premiers lots, sans arbitrage (`-01`, `-02`, `-03` : une seconde lecture chacun). **Aucun seuil et aucun objectif chiffre ne sont poses** : l'utilisatrice n'en a donne aucun, et je n'en invente pas.
+- **Une seconde lecture demandee sur un lot reste a 0,50 hors marge**, selon A.272 (et A.270 point 4). L'arbitrage a 0,00 ne l'absorbe pas et ne la modifie pas.
+- **Second membre de `Q-274-1` (iv)** : le 1,00 des lots du registre du palier 4 absorbait-il des gestes de cette famille ? Il reste **sans reponse**. **Aucun chiffre n'en depend** (les 0,42 d'A.267 ne changent pas, la projection ne change pas). **Elle n'est pas rouverte, sauf demande.**
+- `Q-273-1` (ii) et Q3 d'A.271 : inchangees, non traitees ici.
+
+### Routage
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | inscrire dans `planning.md` la decision : arbitrages de `nadia-prof` avant premier jet 0,00 dans le 1,0 du lot, projection 22,20, sous la forme existante *0.00, non chiffre* ; inscrire la ligne hors marge a 1,50 pour la relecture des corrections de `-02` par `nadia-prof` (A.272) ; inscrire au registre, en fin de palier, les durees que `nadia-prof` donne ; cet amendement ne modifie pas `planning.md` |
+| `nadia-prof` | en fin de palier, donner les durees reelles et le nombre de secondes lectures par lot ; rien d'autre |
+| `theo-archi`, `yanis-qa` | rien |
+
+**Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; la remesure est une premiere inscription. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne pose aucun seuil ni objectif chiffre, ne releve aucun plafond, ne change ni l'engage ni la marge, n'amende ni `planning.md`, ni `backlog.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue.
