@@ -99,7 +99,8 @@ class PaquetCe1QlmBesoinsDeLaPlanteTest {
     private static final Set<String> EFFETS_CONTRAIRES = Set.of(
             "elle grandit plus vite", "elle devient plus verte", "elle devient plus solide",
             "elle pousse plus vite", "elle fait plus de fleurs", "elle devient une plante",
-            "elle germe plus vite", "elle germe tout de suite");
+            "elle germe plus vite", "elle germe tout de suite",
+            "elle reste bien droite", "elle continue de pousser");
 
     /** BPL-CE1-1 : les quatre mots jamais proposes, sur le texte sans accent. */
     private static final Pattern MOT_JAMAIS_PROPOSE = Pattern.compile(
