@@ -1,0 +1,281 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif du test du paquet de l'eau sous ses trois états."
+lignesDeReferentiel: ["QLM-CE1-05"]
+#
+# Jeu fautif de PaquetCe1QlmEauTroisEtatsTest : chaque item porte en commentaire le marqueur de la
+# sonde qu'il met a l'epreuve. Les sondes dites 'passe' sont des clauses : elles doivent passer.
+# Les phrases de nadia-prof (arbitrage-nadia-premiers-jets-ce1-qlm-04-05.md, 2.2 et 2.4 ;
+# arbitrage-nadia-contradictions-ce1-qlm-04-05-et-02.md, 1.2) sont ecrites a l'identique. Aucun item
+# n'est un contenu servi.
+items:
+  # sonde 01 de l'eau liquide sans element de la buee ni temperature dans l'enonce
+  - enonce: "Un verre contient de l'eau. Que trouve-t-on dans le verre ?"
+    bonneReponse: "de l'eau liquide"
+    distracteurs: ["de la glace", "de la vapeur d'eau"]
+    indice: "Compare un verre plein et un verre vide."
+  # sonde 02 la bonne reponse est la vapeur d'eau : tache vapeur, jamais temperature
+  - enonce: "On chauffe l'eau de la casserole. Que devient-elle ?"
+    bonneReponse: "de la vapeur d'eau"
+    distracteurs: ["de la glace", "de la buée"]
+    indice: "Compare la casserole avant et après."
+  # sonde 03 une paraphrase de rien ne change n'est ni vapeur ni temperature
+  - enonce: "Un glaçon est posé dehors. Toute la journée, il fait sous 0 degré. Que se passe-t-il ?"
+    bonneReponse: "il ne se passe rien"
+    distracteurs: ["le glaçon fond", "le glaçon disparaît"]
+    indice: "Compare le glaçon dehors un jour d'été et un jour d'hiver."
+  # sonde 04 passe : rien ne change avec son point final, a l'identique pour la regle 4
+  - enonce: "Un glaçon est posé dehors. Toute la journée, il fait sous 0 degré. Que se passe-t-il ?"
+    bonneReponse: "Rien ne change."
+    distracteurs: ["le glaçon fond", "le glaçon disparaît"]
+    indice: "Compare le glaçon dehors un jour d'été et un jour d'hiver."
+  # sonde 05 passe : le premier exemple de nadia-prof, rien ne change en distracteur
+  - enonce: "Un glaçon flotte dans un verre d'eau. On met le verre au congélateur. Que se passe-t-il ?"
+    bonneReponse: "l'eau gèle"
+    distracteurs: ["le glaçon fond", "rien ne change"]
+    indice: "Compare le congélateur et une journée d'été."
+  # sonde 06 passe : le second exemple de nadia-prof, rien ne change en distracteur
+  - enonce: "La mare est gelée en surface. Le soleil la réchauffe au-dessus de 0 degré. Que se passe-t-il ?"
+    bonneReponse: "la glace fond"
+    distracteurs: ["l'eau gèle", "rien ne change"]
+    indice: "Compare une mare en hiver et une mare en été."
+  # sonde 07 la forme equivalente de rien ne change : elle ne tient pas lieu de bonne reponse
+  - enonce: "Un glaçon est posé dehors. Toute la journée, il fait sous 0 degré. Que se passe-t-il ?"
+    bonneReponse: "il reste de la glace"
+    distracteurs: ["le glaçon fond", "le glaçon disparaît"]
+    indice: "Compare le glaçon dehors un jour d'été et un jour d'hiver."
+  # sonde 08 passe : l'exemple de nadia-prof dont la bonne reponse est rien ne change
+  - enonce: "Un glaçon est posé dehors. Toute la journée, il fait sous 0 degré. Que se passe-t-il ?"
+    bonneReponse: "rien ne change"
+    distracteurs: ["le glaçon fond", "le glaçon disparaît"]
+    indice: "Compare le glaçon dehors un jour d'été et un jour d'hiver."
+  # sonde 09 rien ne change sans sous 0 degre dans l'enonce
+  - enonce: "Un glaçon est posé dehors. Toute la journée, il fait très froid. Que se passe-t-il ?"
+    bonneReponse: "rien ne change"
+    distracteurs: ["le glaçon fond", "le glaçon disparaît"]
+    indice: "Compare le glaçon dehors un jour d'été et un jour d'hiver."
+  # sonde 10 rien ne change au-dessus de 0 degre
+  - enonce: "Un glaçon est posé dehors. Toute la journée, il fait au-dessus de 0 degré. Que se passe-t-il ?"
+    bonneReponse: "rien ne change"
+    distracteurs: ["le glaçon fond", "le glaçon disparaît"]
+    indice: "Compare le glaçon dehors un jour d'été et un jour d'hiver."
+  # sonde 11 rien ne change et le mot eau dans l'enonce
+  - enonce: "Un glaçon flotte dans un verre d'eau. Toute la journée, il fait sous 0 degré. Que se passe-t-il ?"
+    bonneReponse: "rien ne change"
+    distracteurs: ["le glaçon fond", "le glaçon disparaît"]
+    indice: "Compare le verre dehors un jour d'été et un jour d'hiver."
+  # sonde 12 passe : eau liquide decrite sans le mot eau, reste non garde (ETE-CE1-2)
+  - enonce: "Une flaque est dehors. Toute la journée, il fait sous 0 degré. Que se passe-t-il ?"
+    bonneReponse: "rien ne change"
+    distracteurs: ["la flaque gèle", "la flaque disparaît"]
+    indice: "Compare la flaque un jour d'été et un jour d'hiver."
+  # sonde 13 passe : en dessous de 0 degre
+  - enonce: "Un glaçon est posé dehors. Toute la journée, il fait en dessous de 0 degré. Que se passe-t-il ?"
+    bonneReponse: "rien ne change"
+    distracteurs: ["le glaçon fond", "le glaçon disparaît"]
+    indice: "Compare le glaçon dehors un jour d'été et un jour d'hiver."
+  # sonde 14 passe : sous zero degre
+  - enonce: "Un glaçon est posé dehors. Toute la journée, il fait sous zéro degré. Que se passe-t-il ?"
+    bonneReponse: "rien ne change"
+    distracteurs: ["le glaçon fond", "le glaçon disparaît"]
+    indice: "Compare le glaçon dehors un jour d'été et un jour d'hiver."
+  # sonde 15 passe : au-dessous de 0 degre (arbitrage du dernier lot, 2.3)
+  - enonce: "Un glaçon est posé dehors. Toute la journée, il fait au-dessous de 0 degré. Que se passe-t-il ?"
+    bonneReponse: "rien ne change"
+    distracteurs: ["le glaçon fond", "le glaçon disparaît"]
+    indice: "Compare le glaçon dehors un jour d'été et un jour d'hiver."
+  # sonde 16 une bouteille d'eau gelee : le mot eau pour de la glace seule
+  - enonce: "Une bouteille d'eau gelée est posée dehors. Toute la journée, il fait sous 0 degré. Que se passe-t-il ?"
+    bonneReponse: "rien ne change"
+    distracteurs: ["la glace fond", "la glace disparaît"]
+    indice: "Compare la bouteille un jour d'été et un jour d'hiver."
+  # sonde 17 le glacon fond sans glace decrite
+  - enonce: "Un verre d'eau est posé au congélateur. Que se passe-t-il ?"
+    bonneReponse: "l'eau gèle"
+    distracteurs: ["le glaçon fond", "rien ne change"]
+    indice: "Compare le congélateur et une journée d'été."
+  # sonde 18 la glace fond sans glace decrite
+  - enonce: "Un verre d'eau est posé au congélateur. Que se passe-t-il ?"
+    bonneReponse: "l'eau gèle"
+    distracteurs: ["la glace fond", "rien ne change"]
+    indice: "Compare le congélateur et une journée d'été."
+  # sonde 19 il reste de la glace sans glace decrite
+  - enonce: "Un verre d'eau est posé au congélateur. Que se passe-t-il ?"
+    bonneReponse: "l'eau gèle"
+    distracteurs: ["il reste de la glace", "rien ne change"]
+    indice: "Compare le congélateur et une journée d'été."
+  # sonde 20 solide et liquide en propositions
+  - enonce: "Dans quel état se trouve le glaçon ?"
+    bonneReponse: "solide"
+    distracteurs: ["liquide", "de l'eau liquide"]
+    indice: "Compare un glaçon et une flaque."
+  # sonde 21 solide ou liquide dans l'enonce
+  - enonce: "La glace, est-ce solide ou liquide ?"
+    bonneReponse: "de la glace"
+    distracteurs: ["de l'eau liquide", "de la vapeur d'eau"]
+    indice: "Compare un glaçon et une flaque."
+  # sonde 22 Comment appelle-t-on le passage
+  - enonce: "Comment appelle-t-on le passage de la glace à l'eau liquide ?"
+    bonneReponse: "la fonte"
+    distracteurs: ["le gel", "la glace"]
+    indice: "Compare un glaçon et une flaque."
+  # sonde 23 Comment s'appelle l'eau qu'on ne voit pas
+  - enonce: "Comment s'appelle l'eau qu'on ne voit pas ?"
+    bonneReponse: "la vapeur d'eau"
+    distracteurs: ["la buée", "l'eau liquide"]
+    indice: "Compare une flaque et le sol sec."
+  # sonde 24 la buee presentee comme de la vapeur d'eau dans l'enonce
+  - enonce: "La buée sur la vitre, c'est de la vapeur d'eau. De quoi est faite la buée ?"
+    bonneReponse: "de l'eau liquide"
+    distracteurs: ["de la vapeur d'eau", "du brouillard"]
+    indice: "Compare une vitre sèche et une vitre embuée."
+  # sonde 25 le nuage presente comme de la vapeur d'eau dans l'indice
+  - enonce: "Un nuage blanc passe dans le ciel. De quoi est fait le nuage ?"
+    bonneReponse: "de l'eau liquide"
+    distracteurs: ["de la vapeur d'eau", "de la fumée"]
+    indice: "Le nuage, c'est de la vapeur d'eau."
+  # sonde 26 le brouillard presente comme de la vapeur d'eau dans la bonne reponse
+  - enonce: "Que voit-on au ras du sol ce matin ?"
+    bonneReponse: "le brouillard, c'est de la vapeur d'eau"
+    distracteurs: ["de la fumée", "de la glace"]
+    indice: "Compare une matinée de brouillard et une matinée claire."
+  # sonde 27 la fumee blanche d'une casserole presentee comme de la vapeur d'eau dans l'indice
+  - enonce: "L'eau bout dans la casserole. Que devient l'eau qui manque ?"
+    bonneReponse: "de la vapeur d'eau"
+    distracteurs: ["elle disparaît", "elle devient du brouillard"]
+    indice: "La fumée blanche de la casserole, c'est de la vapeur d'eau."
+  # sonde 28 la bonne reponse de la buee est la vapeur d'eau
+  - enonce: "De quoi est faite la buée ?"
+    bonneReponse: "de la vapeur d'eau"
+    distracteurs: ["de l'eau liquide", "de la fumée"]
+    indice: "Compare un miroir sec et un miroir couvert de buée."
+  # sonde 29 passe : la negation de la buee comme vapeur n'est pas refusee
+  - enonce: "De quoi est faite la buée ?"
+    bonneReponse: "de l'eau liquide"
+    distracteurs: ["de la vapeur d'eau", "du brouillard"]
+    indice: "La buée n'est pas de la vapeur d'eau."
+  # sonde 30 passe : la buee en toutes petites gouttes
+  - enonce: "De quoi est faite la buée ?"
+    bonneReponse: "de l'eau liquide"
+    distracteurs: ["de la vapeur d'eau", "du brouillard"]
+    indice: "La buée, ce sont de toutes petites gouttes d'eau."
+  # sonde 31 passe : la buee en distracteur a cote de la vapeur d'eau
+  - enonce: "Du linge mouillé sèche au soleil. Que devient l'eau du linge ?"
+    bonneReponse: "de la vapeur d'eau"
+    distracteurs: ["l'eau a disparu", "de la buée"]
+    indice: "Compare le linge mouillé et le linge sec."
+  # sonde 32 on voit la vapeur d'eau
+  - enonce: "On voit la vapeur d'eau sortir de la casserole. Que devient l'eau qui manque ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle disparaît", "elle devient du brouillard"]
+    indice: "Compare le niveau de l'eau avant et après."
+  # sonde 33 passe : une situation, pas un indice
+  - enonce: "On ne voit plus la flaque. Que devient l'eau de la flaque ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle disparaît", "elle devient de la buée"]
+    indice: "Compare la flaque du matin et celle du soir."
+  # sonde 34 la vapeur d'eau seulement quand l'eau bout
+  - enonce: "Le linge sèche au soleil. Que devient l'eau du linge ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle disparaît", "elle devient de la buée"]
+    indice: "L'eau ne devient de la vapeur que quand elle bout."
+  # sonde 35 passe : l'eau qui bout devient de la vapeur d'eau
+  - enonce: "Le linge sèche au soleil. Que devient l'eau du linge ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle disparaît", "elle devient de la buée"]
+    indice: "L'eau qui bout dans la casserole devient de la vapeur d'eau."
+  # sonde 36 passe : au bout de quelques heures, le mot bout n'est pas bouillir
+  - enonce: "Au bout de quelques heures, le linge est sec. Que devient l'eau du linge ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle disparaît", "elle devient de la buée"]
+    indice: "Compare le linge mouillé et le linge sec."
+  # sonde 37 100 degres
+  - enonce: "L'eau chauffe à 100 degrés. Que devient l'eau qui manque ?"
+    bonneReponse: "de la vapeur d'eau"
+    distracteurs: ["elle disparaît", "elle devient de la buée"]
+    indice: "Compare le niveau de l'eau avant et après."
+  # sonde 38 cent degres
+  - enonce: "L'eau chauffe à cent degrés. Que devient l'eau qui manque ?"
+    bonneReponse: "de la vapeur d'eau"
+    distracteurs: ["elle disparaît", "elle devient de la buée"]
+    indice: "Compare le niveau de l'eau avant et après."
+  # sonde 39 10 degres
+  - enonce: "L'eau chauffe à 10 degrés. Que devient l'eau qui manque ?"
+    bonneReponse: "de la vapeur d'eau"
+    distracteurs: ["elle disparaît", "elle devient de la buée"]
+    indice: "Compare le niveau de l'eau avant et après."
+  # sonde 40 moins 5 degres
+  - enonce: "Il fait moins 5 degrés. Que devient l'eau de la mare ?"
+    bonneReponse: "l'eau gèle"
+    distracteurs: ["la glace fond", "rien ne change"]
+    indice: "Compare une mare en hiver et une mare en été."
+  # sonde 41 passe : 0 degre
+  - enonce: "La mare est gelée en surface. Il fait 0 degré. Que se passe-t-il ?"
+    bonneReponse: "la glace fond"
+    distracteurs: ["l'eau gèle", "rien ne change"]
+    indice: "Compare une mare en hiver et une mare en été."
+  # sonde 42 passe : zero degre
+  - enonce: "La mare est gelée en surface. Il fait zéro degré. Que se passe-t-il ?"
+    bonneReponse: "la glace fond"
+    distracteurs: ["l'eau gèle", "rien ne change"]
+    indice: "Compare une mare en hiver et une mare en été."
+  # sonde 43 passe : sous 0 degre
+  - enonce: "La mare est gelée en surface. Il fait sous 0 degré. Que se passe-t-il ?"
+    bonneReponse: "la glace fond"
+    distracteurs: ["l'eau gèle", "rien ne change"]
+    indice: "Compare une mare en hiver et une mare en été."
+  # sonde 44 passe : au-dessus de 0 degre
+  - enonce: "La mare est gelée en surface. Il fait au-dessus de 0 degré. Que se passe-t-il ?"
+    bonneReponse: "la glace fond"
+    distracteurs: ["l'eau gèle", "rien ne change"]
+    indice: "Compare une mare en hiver et une mare en été."
+  # sonde 45 passe : deux glacons, un nombre qui n'est pas une temperature
+  - enonce: "Deux glaçons flottent dans un verre d'eau. On met le verre au congélateur. Que se passe-t-il ?"
+    bonneReponse: "l'eau gèle"
+    distracteurs: ["le glaçon fond", "rien ne change"]
+    indice: "Compare le congélateur et une journée d'été."
+  # sonde 46 0 degre dans un item dont la bonne reponse est la vapeur d'eau
+  - enonce: "À 0 degré, que devient l'eau qui bout ?"
+    bonneReponse: "de la vapeur d'eau"
+    distracteurs: ["de la glace", "de la buée"]
+    indice: "Compare le niveau de l'eau avant et après."
+  # sonde 47 0 degre dans un item de la tache vapeur dont la bonne reponse est de l'eau liquide
+  - enonce: "La buée se forme sous 0 degré. De quoi est faite la buée ?"
+    bonneReponse: "de l'eau liquide"
+    distracteurs: ["de la vapeur d'eau", "du brouillard"]
+    indice: "Compare un miroir sec et un miroir couvert de buée."
+  # sonde 48 la tache vapeur dont les deux distracteurs sont de la famille de la buee
+  - enonce: "Du linge mouillé sèche au soleil. Que devient l'eau du linge ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle devient de la buée", "elle devient du brouillard"]
+    indice: "Compare le linge mouillé et le linge sec."
+  # sonde 49 passe : un seul distracteur de la famille de la buee
+  - enonce: "Du linge mouillé sèche au soleil. Que devient l'eau du linge ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle disparaît", "elle devient de la buée"]
+    indice: "Compare le linge mouillé et le linge sec."
+  # sonde 50 en vapeur, un indice qui dit invisible
+  - enonce: "Du linge mouillé sèche au soleil. Que devient l'eau du linge ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle disparaît", "elle devient de la buée"]
+    indice: "La vapeur d'eau est invisible."
+  # sonde 51 en vapeur, un indice qui dit ne se voit pas
+  - enonce: "Du linge mouillé sèche au soleil. Que devient l'eau du linge ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle disparaît", "elle devient de la buée"]
+    indice: "La vapeur d'eau ne se voit pas."
+  # sonde 52 en temperature, un indice qui enonce le sens de la temperature
+  - enonce: "Un glaçon flotte dans un verre d'eau. On met le verre au congélateur. Que se passe-t-il ?"
+    bonneReponse: "l'eau gèle"
+    distracteurs: ["le glaçon fond", "rien ne change"]
+    indice: "Le froid fait geler l'eau."
+  # sonde 53 passe : la meme phrase dans un item de vapeur, que la regle 5 ne vise pas
+  - enonce: "Du linge mouillé sèche au soleil. Que devient l'eau du linge ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle disparaît", "elle devient de la buée"]
+    indice: "Le froid fait geler l'eau."
