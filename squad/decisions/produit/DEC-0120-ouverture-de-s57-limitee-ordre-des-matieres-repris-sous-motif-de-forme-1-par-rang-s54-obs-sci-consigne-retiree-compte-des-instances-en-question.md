@@ -4558,8 +4558,8 @@ Ses mots : *"On force l'audit de l'horloge et le quatrieme rejeu"*. La consigne 
 - 22,20 plus 0,50 (a) = **22,70** [calcul].
 - 22,70 plus 0,50 (b, marge deja consommee, le cas le plus haut) = **23,20** [calcul]. Verification par un autre chemin : 17,70 plus 9 fois 0,50 plus 2 fois 0,50 = 17,70 plus 5,50 = 23,20 [calcul].
 - Si (b) se produit dans le seul cas de Q3 d'A.271, il ajoute 0,00 : le cas haut est 22,70 [calcul].
-- **Reserve : 0,00 a 23,20**, comme a 22,20 (`squad/lessons.md`, s57 : *"Une projection qui tombe pile sur le plafond n'est pas une reserve"*). Une troisieme lecture d'un lot (0,50, A.272 regle point 3) n'est pas couverte par la levee, qui ne nomme que deux gestes : 23,70 [calcul : 23,20 plus 0,50].
-- Ligne hors marge de l'instance neuve, si les deux gestes ont lieu : 4,50 plus 0,50 plus 0,50 = **5,50** [calcul]. (a) est celle de l'horloge, instance B (`lea-dev`), et `Q-273-1` (ii) ne dit pas sur quelle ligne elle s'inscrit : **je ne tranche pas la ligne**, le 5,50 est une borne. Depassement de l'engage borne : 23,20 moins 13,50 = **9,70** [calcul], contre 8,70.
+- **Reserve : 0,00 a 23,20**, comme a 22,20 (`squad/lessons.md`, s57 : *"Une projection qui tombe pile sur le plafond n'est pas une reserve"*). Une troisieme lecture d'un lot (0,50, A.272 regle point 3) n'est pas couverte par la levee, qui ne nomme que deux gestes : 23,70 [calcul : 23,20 plus 0,50]. **[corrige par A.281 : la reserve de 0,00 a 23,20 ne tient pas ; deux troisiemes lectures sont classees (`-03`, `-08`), le cas haut est 24,20, soit 1,00 au-dessus de 23,20 ; texte d'origine conserve]**
+- Ligne hors marge de l'instance neuve, si les deux gestes ont lieu : 4,50 plus 0,50 plus 0,50 = **5,50** [calcul]. (a) est celle de l'horloge, instance B (`lea-dev`), et `Q-273-1` (ii) ne dit pas sur quelle ligne elle s'inscrit : **je ne tranche pas la ligne**, le 5,50 est une borne. Depassement de l'engage borne : 23,20 moins 13,50 = **9,70** [calcul], contre 8,70. **[corrige par A.281 : 6,50 avec les deux gestes et 5,50 sans eux ; depassement de l'engage borne a 10,70 ; texte d'origine conserve]**
 
 **Le plafond propose, sans le decider : 23,20.** C'est le cas haut des deux gestes, reserve nulle, et c'est un chiffre que l'utilisatrice n'a pas donne. **Question `Q-280-1`** (repere local, aucun identifiant alloue), a elle par `sofia-sm` : le plafond de `PAR-8` du palier 9 devient-il 23,20, ou reste-t-il 22,20 avec ces deux gestes inscrits au registre comme levee nommee ? **Tant qu'elle n'a pas repondu, le plafond ecrit reste 22,20** (je ne le releve pas ; A.273 (b) : un cout au-dela s'inscrit au registre sans bloquer le Done de personne) et la levee est ecrite sous la forme de ce tableau. **[corrige par le point 6 : elle a repondu, le plafond est 23,20 ; texte d'origine conserve]** Aucun des deux gestes n'existe a ce jour.
 
@@ -4577,11 +4577,11 @@ Ses mots : *"On force l'audit de l'horloge et le quatrieme rejeu"*. La consigne 
 
 **Ses mots, reportes.** Reponse de l'utilisatrice du 2026-10-27, relayee par l'agent lanceur (forme 2, `DEC-0062` G), citee mot pour mot et rien d'autre : *"on augmente le plafond"*. Elle ne donne pas de chiffre : la valeur retenue est celle que le point 3 proposait, **23,20** [calcul : 17,70 plus 5,50, soit 22,20 plus 0,50 de seconde lecture de l'horloge plus 0,50 de quatrieme rejeu hors marge]. Si elle voulait une autre valeur, sa phrase l'emporte.
 
-**Chiffres avant / apres, en toutes lettres.** Plafond : vingt-deux virgule vingt avant, vingt-trois virgule vingt apres. Engage : treize virgule cinquante, inchange. Marge : un virgule cinq, inchangee. Cas haut : vingt-trois virgule vingt, inchange par rapport au point 3. Reserve : zero virgule zero zero, plafond atteint et non depasse. Ligne hors marge : quatre virgule cinquante, inchangee (aucun des deux gestes n'existe). Depassement de l'engage borne : neuf virgule soixante-dix [calcul : 23,20 moins 13,50].
+**Chiffres avant / apres, en toutes lettres.** Plafond : vingt-deux virgule vingt avant, vingt-trois virgule vingt apres. Engage : treize virgule cinquante, inchange. Marge : un virgule cinq, inchangee. Cas haut : vingt-trois virgule vingt, inchange par rapport au point 3. Reserve : zero virgule zero zero, plafond atteint et non depasse. Ligne hors marge : quatre virgule cinquante, inchangee (aucun des deux gestes n'existe). Depassement de l'engage borne : neuf virgule soixante-dix [calcul : 23,20 moins 13,50]. **[corrige par A.281 : cas haut 24,20, plafond depasse de 1,00 ; ligne hors marge 5,50 sans les deux gestes ; depassement de l'engage borne a 10,70 ; texte d'origine conserve]**
 
 **Ce que le plafond couvre, exactement.** (a) la seconde lecture de l'horloge `MAT-CE1-11`, 0,50 ; (b) le quatrieme rejeu, 0,50 hors marge au cas haut.
 
-**Ce qu'il ne couvre pas, a nommer quand cela existe.** Hors plafond, **non chiffres** : une troisieme lecture d'un lot (A.272 regle point 3, que le 23,20 ne contient pas : 23,70 [calcul]), la lecture par `nadia-prof` du quatrieme rejeu, l'audit a l'ecran de l'horloge, les `mvn verify` par lot. Je ne devine aucun de ces montants. La regle d'A.273 point 1 (b) vaut au-dela de 23,20 : un cout au-dela s'inscrit au registre (A.247), sans etre une condition de Done.
+**Ce qu'il ne couvre pas, a nommer quand cela existe.** Hors plafond, **non chiffres** : une troisieme lecture d'un lot (A.272 regle point 3, que le 23,20 ne contient pas : 23,70 [calcul] **[corrige par A.281 : deux troisiemes lectures sont classees, non une, soit 24,20 ; texte d'origine conserve]**), la lecture par `nadia-prof` du quatrieme rejeu, l'audit a l'ecran de l'horloge, les `mvn verify` par lot. Je ne devine aucun de ces montants. La regle d'A.273 point 1 (b) vaut au-dela de 23,20 : un cout au-dela s'inscrit au registre (A.247), sans etre une condition de Done.
 
 **Ce que cela ne change pas.** `P3`, le calendrier de Q3 d'A.271, `Q-273-1` (i) et (ii) (ouvertes, huitieme mention), le Done pedagogique, qui reste a `nadia-prof` seule. `sofia-sm` inscrit le plafond de 23,20 dans `planning.md` (non modifie ici) ; `Q-280-1` est fermee.
 
@@ -4595,3 +4595,95 @@ Ses mots : *"On force l'audit de l'horloge et le quatrieme rejeu"*. La consigne 
 | `theo-archi` | rien |
 
 **Matrice** : aucun statut ne change, `MATRICE-couverture.md` n'est pas modifiee. **Report** : `Q-273-1`, huitieme mention ; Q3 d'A.271, son prix est leve, son calendrier est inchange ; pas d'autre report. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne remplit aucun bloc de validation, ne releve aucun plafond **[corrige par le point 6 : le point 6 inscrit le releve decide par l'utilisatrice, pas par moi]**, ne change ni l'engage ni la marge, ne reecrit pas `P3`, ne decide pas que le quatrieme rejeu est du, n'amende ni `planning.md`, ni `backlog.md`, ni `CLAUDE.md`, ni `squad/README.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue (`Q-280-1` est un repere local).
+
+## Amendement du 2026-10-27, cinquante-neuvieme (`camille-po`, palier 5 : classement de la correction C1 a C4 de `-03` et de `-08` en troisieme lecture ; le cas haut passe a 24,20 et depasse le plafond de 23,20)
+
+Annotation datee. **Chiffres avant / apres, en toutes lettres : plafond de `PAR-8` du palier 9 vingt-trois virgule vingt avant, vingt-trois virgule vingt apres (non modifie, voir `Q-281-1`) ; engage treize virgule cinquante, inchange ; marge de l'instance neuve un virgule cinq, inchangee ; cout de `-03` un virgule cinq avant, deux virgule zero apres ; cout de `-08` un virgule cinq avant, deux virgule zero apres ; cas haut (neuf secondes lectures et les deux gestes d'A.280) vingt-trois virgule vingt avant, vingt-quatre virgule vingt apres, soit un virgule zero zero AU-DESSUS du plafond ; ligne hors marge, avec les deux gestes, cinq virgule cinquante avant, six virgule cinquante apres (quatre virgule cinquante, puis cinq virgule cinquante, sans eux) ; depassement de l'engage borne neuf virgule soixante-dix avant, dix virgule soixante-dix apres.** **Statut de `DEC-0120` : `Acceptee`, inchange.** **Quatre passages d'A.280 sont marques *[corrige par A.281]*, texte d'origine conserve.** Arbre : base `round-two` a `d3ef0cf2`, branche `s57-p5-camille-281`. Sources lues au disque : `correction-nadia-amorces-ce1-qlm-03-et-08.md` (en entier) ; `DEC-0120` A.267 a A.280 ; `squad/lessons.md` ; `ADR-0086` (amendement du 2026-09-08, clause 3, sections 1 et 3) ; `lecture-nadia-premier-jet-ce1-qlm-besoins-de-la-plante.md` (ligne de l'item 6) ; `PaquetCe1QlmBesoinsDeLaPlanteTest.java` (table `EFFETS_CONTRAIRES`, lignes 95 a 103) ; `FICHE-ce1-qlm-03.md`. Les chiffres sont des calculs, marques **[calcul]**. Aucune mesure n'a ete lancee.
+
+### A.281 La correction C1 a C4 de `-03` et de `-08` est une troisieme lecture pour chacun des deux lots : 1,00 hors marge, le cas haut depasse le plafond
+
+**1. Ses mots, reportes.** Reponses de l'utilisatrice du 2026-10-27, relayees par l'agent lanceur (forme 2, `DEC-0062` G), citees mot pour mot et rien d'autre : *"on applique d'abord, le classement se tranche apres"*, puis *"Classement de la correction de -03 et -08 en 3eme lecture"*. Le second est le classement ; le premier ne dit que l'ordre des gestes. La correction a ete appliquee par `marc-dev`, branche fusionnee, `mvn verify` complet vert, 3618 tests : **faits tels que l'agent lanceur me les a transmis**, que je n'ai pas relances.
+
+**2. Ce que le classement acte.** Pour **chacun** des deux lots, la correction C1 a C4 de `nadia-prof` (`correction-nadia-amorces-ce1-qlm-03-et-08.md`, section 3), ecrite apres la seconde lecture du lot, est **une troisieme lecture** au sens d'A.279 point 5 (*"seconde correction suivie d'une relecture, troisieme lecture (A.272 fait 3)"*). Le fichier de `nadia-prof` disait qu'aucun texte ne nomme son cas : ni arbitrage avant premier jet (A.276), ni reouverture a la premiere lecture (A.277), ni rejeu apres refus (`P3`) (section 6, quatrieme puce). **La phrase de l'utilisatrice comble cette lacune pour `-03` et `-08`, et pour eux seuls.** Je n'en tire aucune regle generale : A.279 point 5 a dit que la regle generale pour des lots futurs n'est pas arbitree par elle, et ses mots ici nomment deux lots.
+
+**3. Chiffrage, par les regles ecrites seulement [calcul].**
+
+| Ligne | Regle qui la donne | `-03` | `-08` | Total |
+|---|---|---|---|---|
+| seconde lecture, deja comptee | A.272 regle point 1 ; A.278 | 0,50 | 0,50 | 1,00, deja dans le 22,20 |
+| troisieme lecture, hors marge | A.272 regle point 3 : *"coute 0,5 de plus [calcul], hors marge"* ; section 6 de `nadia-prof` : *"0,50 hors marge par lot"* | **0,50** | **0,50** | **1,00** |
+| cout du lot | A.272 fait 3 : *"2,0 pour `-03`"* (1,5 plus 0,5) ; meme calcul pour `-08` (1,5 en A.278) | **2,0** | **2,0** | |
+
+Methode d'A.270 point 3, reprise par A.272, A.273, A.277, A.278 et A.280 : chaque lecture s'ajoute en entier au cas haut mesure de 17,70 (A.267) ; je ne retranche pas les 0,42 ; c'est une borne haute, pas une consommation. **Le prix est par lot et non par ligne** (A.272 regle point 1, *"que les lignes soient une ou quinze"*, repris pour la troisieme lecture par le point 3) : quatre lignes (C1 a C4) ou six (avec l'item 6, point 5) coutent la meme chose. **Non chiffre, parce qu'aucune regle ne le chiffre** : l'ecriture de C1 a C4 par `nadia-prof`. Le 0,50 est celui de la relecture (point 4).
+
+**Cas haut recalcule** [calcul] :
+
+- Cas haut d'A.280 point 6 : 23,20 (17,70 plus 9 fois 0,50 plus 0,50 de seconde lecture de l'horloge plus 0,50 de quatrieme rejeu hors marge). **Plus 2 fois 0,50 = 24,20.** Verification par un autre chemin : 17,70 plus 11 fois 0,50 (neuf secondes et deux troisiemes lectures) plus 2 fois 0,50 (les deux gestes) = 17,70 plus 6,50 = 24,20.
+- **Ecart au plafond de 23,20 : 24,20 moins 23,20 = 1,00. C'est un depassement du plafond de 1,00 au cas haut.** Le plafond de 23,20 a ete releve (A.280 point 6) a reserve nulle ; la lecon de `squad/lessons.md` (*"Une projection qui tombe pile sur le plafond n'est pas une reserve"*) se verifie ici.
+- **Ce qui est consomme sans les deux gestes d'A.280** (aucun n'existe a ce jour) : 22,20 plus 1,00 = **23,20**, soit le plafond, atteint et non depasse. **Le depassement existe des qu'un geste a lieu** : un seul, 23,70, soit 0,50 au-dessus ; les deux, 24,20, soit 1,00 au-dessus. Le quatrieme rejeu pris dans la marge de 1,5 ne coute rien de plus (A.280 point 3, cas de Q3 d'A.271) : seconde lecture de l'horloge et ce rejeu, 23,70.
+- Ligne hors marge de l'instance neuve : 4,50 plus 1,00 = **5,50** sans les gestes, **6,50** avec les deux (borne : la ligne qui porte la seconde lecture de l'horloge n'est pas tranchee, A.280 point 3). Depassement de l'engage au registre, borne : 24,20 moins 13,50 = **10,70**.
+- **Ce que dit la regle ecrite sur le depassement.** A.273 point 1 (b), reprise par A.280 point 6 : un cout au-dela du plafond s'inscrit au registre (A.247) et ne bloque le Done d'aucun lot ; `nadia-prof` reste seule a le prononcer. Rien n'est bloque tant que `Q-281-1` n'a pas de reponse ; **le plafond ecrit reste 23,20, je ne le releve pas**.
+
+**Question `Q-281-1`** (premiere inscription, repere local, aucun identifiant alloue), a l'utilisatrice par `sofia-sm`. Le classement qu'elle a tranche porte le cas haut a 24,20, 1,00 au-dessus de 23,20. Que veut-elle faire du plafond de `PAR-8` du palier 9 ?
+
+| Option | Effet |
+|---|---|
+| O1 | **le relever, a la valeur qu'elle donne.** Je ne propose aucun chiffre : 24,20 est le cas haut calcule, pas une valeur choisie, et une reserve pour ce qu'A.280 point 6 laisse hors plafond (`verify` par lot, audit de l'horloge, lecture du quatrieme rejeu, non chiffres) est a sa main |
+| O2 | **le laisser a 23,20** et inscrire le 1,00 au registre comme cout nomme (A.273 point 1 (b)) : aucun Done ne depend du chiffre |
+| O3 | autre chose, dite par elle |
+
+**4. `nadia-prof` doit-elle relire C1 a C4 appliques dans les YAML ? Oui, selon les textes ; elle n'est pas lancee.** A.272 regle point 3 et A.279 point 5 definissent la troisieme lecture comme *"seconde correction suivie d'une relecture"* : la relecture est ce que le 0,50 paie. Elle n'a pas eu lieu : le fichier de `nadia-prof` juge les quatre propositions *avant* application ; ce qui reste a lire est la transcription dans les deux YAML (section 6, premiere puce : *"la transcription de quatre lignes (six avec l'item 6), et le verdict de `mvn verify`"*). **Forme** (A.272, section *Le fichier de relecture*, et la pratique des six relectures d'A.278) : un ecrit de sa main dans `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/` qui dit, par lot, les lignes relues (`-03` : `:73` et `:153` ; `-08` : `:71` et `:92`), si un verdict d'item est rouvert, si une transcription de `marc-dev` est rejetee ou reformulee, et si elle a relu le paquet entier (condition d d'A.277 ; sa section 6 dit qu'elle n'a lu que les items 2, 6, 9, 12, 14 de `-03` et 2, 5, 8, 9 de `-08`). Le nom du fichier, un par lot ou un seul pour les deux, est le sien. **Cout** : 0,50 par lot, deja compte au point 3, y compris si les deux relectures tiennent dans un seul fichier ; aucun seuil (A.272) ; la duree qu'elle mesure n'est convertie en aucun bareme (A.276). **Ce que les textes ne disent pas et que je ne devine pas** : le prix d'une relecture qui rejetterait une transcription et demanderait une reprise (une quatrieme lecture : A.272 regle point 3 ne prevoit que la troisieme).
+
+**5. Item 6 de `-03` : *"elle devient plus solide"* devient *"elle pousse tres bien"*. Aucune regle ecrite ne le tranche ; question `Q-281-2`.**
+
+*Sa raison, citee* (`correction-nadia-amorces-ce1-qlm-03-et-08.md`, section 5, hors du rouge) : apres C1 et C2, l'item 6 reste *"le seul item dont la bonne reponse est le seul bouton sans *plus*"* ; *"un seul item ne suffit pas a apprendre le signe, et la clause 3 elle-meme s'arreterait sous son seuil de 2 items"* ; *"sans ce remplacement, je suis seule a garder cette propriete sur l'item 6, et je la regarderai a l'ecran a l'audit"*. Sa recommandation vise `:105`, 2e distracteur : famille b inchangee, *"contraire de *pousse mal*, faux dans le noir"*, et `elle devient plus _` tombe a 2.
+
+*Ce que les regles ecrites donnent, et pourquoi aucune ne tranche* :
+
+- **Le prix ne depend pas de la reponse** : par lot et non par ligne (point 3). Quatre lignes ou six, 0,50.
+- **Le garde-fou ne depend pas de la reponse** : l'item 6 est seul sous le seuil de 2 items de la clause 3 d'`ADR-0086` (*"un item isole ou la bonne reponse est la seule a ne pas restreindre ... c'est la repetition qui apprend"*), et `nadia-prof` ecrit que le moule le plus partage de `-03` est a 3 apres C1 a C4, sous le seuil de 4. `mvn verify` est vert dans les deux cas.
+- **Le verdict d'item** : l'item 6 est *juste* a sa lecture du premier jet. Remplacer une proposition d'un item juste n'est ni une correction du rouge ni un defaut de la liste d'A.273 point 2 (a, b, c) ; A.277 condition b (*"un item juste rouvert fait lire plus que les lignes prescrites"*) classe ce cas en troisieme lecture, deja comptee.
+- **Ce qui est une decision de produit, pas une regle** : etendre ou non la correction au-dela des quatre lignes que l'utilisatrice a classees. Ses mots (*"la correction de -03 et -08"*) designent C1 a C4 ; l'item 6 serait une cinquieme ligne de `-03`.
+
+**Question `Q-281-2`** (premiere inscription, repere local), a l'utilisatrice par `sofia-sm`, **a trancher avant que `nadia-prof` relise** : l'item 6 entre-t-il dans la correction ?
+
+| Option | Effet |
+|---|---|
+| O1 | **oui** : `marc-dev` applique une ligne de plus (`:105`) ; la relecture de `-03` porte six lignes ; le cout reste 0,50 ; la propriete de la clause 3 est tenue sur deux items par le texte, et non par `nadia-prof` seule a l'ecran |
+| O2 | **non** : rien n'est applique ; `nadia-prof` garde la propriete sur l'item 6 a l'audit a l'ecran, comme elle l'ecrit ; aucun cout |
+
+**Le calendrier compte** : decidee apres la relecture, O1 rouvrirait une correction suivie d'une relecture, c'est-a-dire une quatrieme lecture, que **aucun texte ne chiffre** et que je ne chiffre pas. Je ne decide ni O1 ni O2 : aucune regle ecrite ne le fait (verifie ci-dessus), et le jugement de la propriete est a `nadia-prof`.
+
+**6. Ce qu'A.281 rend caduc dans A.280, marque dans A.280, texte d'origine conserve** :
+
+| Passage d'A.280 | Pourquoi marque |
+|---|---|
+| point 3, puce *"Reserve : 0,00 a 23,20 ... 23,70"* | la troisieme lecture existe, deux fois : 24,20 |
+| point 3, puce *"Ligne hors marge ... 5,50"* et *"Depassement de l'engage borne : ... 9,70"* | 6,50 avec les deux gestes, 10,70 |
+| point 6, *"Reserve : ... plafond atteint et non depasse"*, *"Ligne hors marge : quatre virgule cinquante, inchangee (aucun des deux gestes n'existe)"* et *"Depassement de l'engage borne : neuf virgule soixante-dix"* | le plafond est depasse de 1,00 au cas haut ; la ligne hors marge est 5,50 sans les gestes ; 10,70 |
+| point 6, *"une troisieme lecture d'un lot ... : 23,70"* | deux troisiemes lectures sont classees, non une : 24,20 |
+
+**7. Ce qui reste ouvert, sans le trancher, et a qui.**
+
+| # | Sujet | A qui | Etat et report |
+|---|---|---|---|
+| 1 | `Q-281-1` : plafond | l'utilisatrice, par `sofia-sm` | Premiere inscription. Ne bloque aucun Done (A.273 point 1 (b)) |
+| 2 | `Q-281-2` : item 6 de `-03` | l'utilisatrice, par `sofia-sm`, avant la relecture | Premiere inscription |
+| 3 | Relecture de C1 a C4 appliques, `-03` et `-08` | `nadia-prof`, par `sofia-sm` | Non lancee par cet amendement. Le 1,00 est une borne haute tant qu'elle n'existe pas |
+| 4 | Les anciennes amorces *elle grandit plus vite* et *elle pousse plus vite* sont conservees dans `EFFETS_CONTRAIRES` (lignes 100 et 101 du test au commit `d3ef0cf2`, a cote de *elle reste bien droite* et *elle continue de pousser*, ligne 103) | `theo-archi`, avec `marc-dev` (section 4 de `nadia-prof` : *"garder ou retirer ... lui revient, avec `theo-archi`"*) | Premiere inscription chez moi ; je ne tranche aucune question de code |
+| 5 | `planning.md` : inscrire le plafond de 23,20 (A.280 point 6 ; le fichier ne le porte qu'en projection) et ce classement (cas haut 24,20, ligne hors marge 5,50 ou 6,50, depassement de l'engage 10,70, les deux questions) | `sofia-sm` | A.280 l'avait routee pour 23,20 ; **cette inscription n'est pas faite** |
+| 6 | `FICHE-ce1-qlm-03.md` et `-08` : la ligne *"Premier `verify` complet du lot : a faire"* est perimee (verify complet vert, 3618 tests, d'apres l'agent lanceur) | qui a lance le verify, jobs nommes (A.280 point 2) ; `sofia-sm` designe | Je n'y touche pas : hors de ma livraison |
+| 7 | `Q-273-1` (i) et (ii) | `nadia-prof`, l'utilisatrice | **Neuvieme mention** (huitieme en A.280), non traitee ici ; (ii) compte maintenant dans un cas haut depasse |
+| 8 | Q3 d'A.271 (quatrieme rejeu) | `camille-po`, a la fermeture des dix audits | Inchange |
+
+### Routage
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | porter `Q-281-1` et `Q-281-2` a l'utilisatrice ; inscrire dans `planning.md` la ligne 5 du tableau du point 7 ; router a `nadia-prof` la relecture (ligne 3) une fois `Q-281-2` repondue ; router a `theo-archi` la ligne 4 ; designer pour la ligne 6 |
+| `nadia-prof` | la relecture du point 4, quand `sofia-sm` la lance ; contredire par ecrit le classement ou le chiffrage si elle les lit autrement (son texte l'emporte) |
+| `marc-dev` | rien de neuf, sauf `Q-281-2` O1 (une ligne de plus) et la ligne 6 |
+| `theo-archi` | ligne 4 du tableau du point 7 |
+| `yanis-qa` | rien |
+
+**Matrice** : aucun statut ne change, `MATRICE-couverture.md` n'est pas modifiee. **Report** : `Q-273-1`, neuvieme mention ; Q3 d'A.271 inchange ; `Q-281-1` et `Q-281-2` sont des premieres inscriptions. **Changement de code decide, avec proprietaire** : aucun (la correction C1 a C4 est deja appliquee ; l'item 6 et `EFFETS_CONTRAIRES` attendent une reponse ou un proprietaire). **Ne fait pas** : ne prononce aucun Done, ne juge aucune formulation ni aucun distracteur, ne releve aucun plafond, ne decide aucun chiffre a la place de l'utilisatrice, ne change ni l'engage ni la marge, ne reecrit pas `P3`, ne pose aucun seuil, ne lance pas `nadia-prof`, n'amende ni `planning.md`, ni `backlog.md`, ni `CLAUDE.md`, ni `squad/lessons.md`, ni les fiches, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue (`Q-281-1` et `Q-281-2` sont des reperes locaux).
