@@ -1,0 +1,61 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif de G12-1 : un moment de la journee, ou autrefois, par item et par champ."
+lignesDeReferentiel: ["QLM-CE1-12"]
+#
+# Jeu fautif de PaquetCe1QlmGenerationsTest, garde G12-1 : douze items, un par forme refusee (les dix
+# moments de cp-frise-de-la-journee, plus reveil et autrefois), chacun dans un champ different.
+items:
+  - enonce: "Quelle suite va du premier au dernier moment, le réveil, le déjeuner, le coucher ?"
+    bonneReponse: "naissance"
+    distracteurs: ["entrée à l'école", "premier emploi"]
+    indice: "Pense au sens des liens."
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "le lever"
+    distracteurs: ["l'entrée au collège", "le premier emploi"]
+    indice: "Pense au sens des liens."
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["l'entrée au collège", "le premier emploi"]
+    indice: "Pense au petit-déjeuner."
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["l'entrée au collège", "le déjeuner"]
+    indice: "Pense au sens des liens."
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["l'entrée au collège", "le premier emploi"]
+    indice: "Pense à l'école du matin."
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["l'école de l'après-midi", "le premier emploi"]
+    indice: "Pense au sens des liens."
+  - enonce: "Dans la vie de Sara, quel moment vient juste après le goûter ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["l'entrée au collège", "le premier emploi"]
+    indice: "Pense au sens des liens."
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["l'entrée au collège", "le dîner"]
+    indice: "Pense au sens des liens."
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["l'entrée au collège", "le premier emploi"]
+    indice: "Pense au coucher."
+  - enonce: "Dans la vie de Sara, quel moment vient juste après son pyjama ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["l'entrée au collège", "le premier emploi"]
+    indice: "Pense au sens des liens."
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["se brosser les dents", "le premier emploi"]
+    indice: "Pense au sens des liens."
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["l'entrée au collège", "le premier emploi"]
+    indice: "Autrefois, c'était pareil."

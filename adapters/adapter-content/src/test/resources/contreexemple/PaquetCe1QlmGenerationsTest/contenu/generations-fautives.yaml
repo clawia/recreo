@@ -1,0 +1,350 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif du test du paquet des generations et des evenements d'une vie."
+lignesDeReferentiel: ["QLM-CE1-12"]
+#
+# Jeu fautif de PaquetCe1QlmGenerationsTest : chaque item porte en commentaire le marqueur de la sonde
+# qu'il met a l'epreuve. Une sonde dite "passe" est un item que la garde nommee doit laisser passer.
+# Les sondes 05 a 15 sont celles de G12-2, 16 a 29 de G12-3, 30 a 44 de G12-4, 45 a 49 de G12-5, 50 a
+# 58 de G12-6, 59 a 67 de R12-7 (verificateur de l'indice de G12-6) ; 01 a 04 sont celles de G12-1.
+items:
+  # sonde 01
+  - enonce: "Dans la vie de Jade, quelle suite va du premier au dernier moment ?"
+    bonneReponse: "réveil, déjeuner, coucher"
+    distracteurs: ["déjeuner, réveil, coucher", "coucher, réveil, déjeuner"]
+    indice: "Pense au sens des liens."
+  # sonde 02
+  - enonce: "Autrefois, que faisaient les grands-parents de Lina ?"
+    bonneReponse: "celle des grands-parents"
+    distracteurs: ["celle des parents", "celle des arrière-grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 03
+  - enonce: "Dans la vie de Jade, quelle suite va du premier au dernier moment ?"
+    bonneReponse: "naissance, entrée à l'école, premier emploi"
+    distracteurs: ["entrée à l'école, naissance, premier emploi", "premier emploi, naissance, entrée à l'école"]
+    indice: "Pense au sens des liens."
+  # sonde 04
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["l'entrée au collège", "le premier emploi"]
+    indice: "Pense au sens des liens."
+  # sonde 05
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["l'entrée au collège", "le mariage"]
+    indice: "Pense au sens des liens."
+  # sonde 06
+  - enonce: "Sara est la maman de Lina. Ali est le papa de Sara. Pour Lina, de quelle génération est Ali ?"
+    bonneReponse: "celle des grands-parents"
+    distracteurs: ["celle des enfants", "l'entrée à l'école"]
+    indice: "Pense au sens des liens."
+  # sonde 07
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["sa naissance", "l'entrée au collège"]
+    indice: "Pense au sens des liens."
+  # sonde 08
+  - enonce: "Sara est la maman de Lina. Ali est le papa de Sara. Pour Lina, de quelle génération est Ali ?"
+    bonneReponse: "celle des grands-parents"
+    distracteurs: ["celle des parents", "la grand-mère"]
+    indice: "Pense au sens des liens."
+  # sonde 09
+  - enonce: "Sara est la maman de Lina. Ali est le papa de Sara. Pour Lina, de quelle génération est Ali ?"
+    bonneReponse: "Ali"
+    distracteurs: ["Sara", "Lina"]
+    indice: "Pense au sens des liens."
+  # sonde 10
+  - enonce: "Dans la vie de Lina, quel moment vient juste après l'entrée à l'école ?"
+    bonneReponse: "l'entrée au collège"
+    distracteurs: ["sa naissance", "la naissance d'un enfant"]
+    indice: "Pense au sens des liens."
+  # sonde 11
+  - enonce: "Qui est de la génération des grands-parents de Lina ?"
+    bonneReponse: "Ali"
+    distracteurs: ["Sara", "Lina"]
+    indice: "Pense au sens des liens."
+  # sonde 12
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "grands-parents, parents, naissance"
+    distracteurs: ["parents, grands-parents, naissance", "parents, naissance, grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 13
+  - enonce: "Sara est la maman de Lina. Ali est le papa de Sara. Pour Lina, de quelle génération est Ali ?"
+    bonneReponse: "celle des grands-parents"
+    distracteurs: ["celle des parents", "celle des arrière-grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 14
+  - enonce: "Omar a une fille, Julie. Julie a un fils, Noé. Quelle suite va du plus âgé au plus jeune ?"
+    bonneReponse: "Omar, Julie, Noé"
+    distracteurs: ["Julie, Omar, Noé", "Noé, Omar, Julie"]
+    indice: "Pense au sens des liens."
+  # sonde 15
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "grands-parents, parents"
+    distracteurs: ["parents, grands-parents", "enfants, parents"]
+    indice: "Pense au sens des liens."
+  # sonde 16
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "grands-parents, parents, enfants"
+    distracteurs: ["enfants, parents, grands-parents", "parents, grands-parents, enfants"]
+    indice: "Pense au sens des liens."
+  # sonde 17
+  - enonce: "Range ces générations dans l'ordre."
+    bonneReponse: "grands-parents, parents, enfants"
+    distracteurs: ["parents, grands-parents, enfants", "parents, enfants, grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 18
+  - enonce: "Omar a une fille, Julie. Julie a un fils, Noé. Quelle suite va du plus âgé au plus jeune ?"
+    bonneReponse: "Omar, Julie, Noé"
+    distracteurs: ["Noé, Julie, Omar", "Julie, Omar, Noé"]
+    indice: "Pense au sens des liens."
+  # sonde 19
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "grands-parents, parents, enfants"
+    distracteurs: ["parents, grands-parents, enfants", "grands-parents, enfants, parents"]
+    indice: "Pense au sens des liens."
+  # sonde 20
+  - enonce: "Omar a une fille, Julie. Julie a un fils, Noé. Quelle suite va du plus âgé au plus jeune ?"
+    bonneReponse: "Omar, Julie, Noé"
+    distracteurs: ["Julie, Omar, Noé", "Omar, Noé, Julie"]
+    indice: "Pense au sens des liens."
+  # sonde 21
+  - enonce: "Dans la vie de Jade, quelle suite va du premier au dernier moment ?"
+    bonneReponse: "naissance, entrée à l'école, premier emploi"
+    distracteurs: ["entrée à l'école, naissance, premier emploi", "naissance, premier emploi, entrée à l'école"]
+    indice: "Pense au sens des liens."
+  # sonde 22
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "grands-parents, parents, enfants"
+    distracteurs: ["parents, grands-parents, enfants", "parents, enfants, grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 23
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "grands-parents, parents, enfants"
+    distracteurs: ["parents, enfants, grands-parents", "enfants, grands-parents, parents"]
+    indice: "Pense au sens des liens."
+  # sonde 24
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "grands-parents, parents, enfants"
+    distracteurs: ["grands-parents, enfants, parents", "enfants, grands-parents, parents"]
+    indice: "Pense au sens des liens."
+  # sonde 25
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "parents, grands-parents, enfants"
+    distracteurs: ["grands-parents, parents, enfants", "grands-parents, enfants, parents"]
+    indice: "Pense au sens des liens."
+  # sonde 26
+  - enonce: "Dans la vie de Jade, quelle suite va du plus âgé au plus jeune ?"
+    bonneReponse: "naissance, entrée à l'école, premier emploi"
+    distracteurs: ["entrée à l'école, naissance, premier emploi", "premier emploi, naissance, entrée à l'école"]
+    indice: "Pense au sens des liens."
+  # sonde 27
+  - enonce: "Dans la vie de Jade, quelle suite va du premier au dernier moment ?"
+    bonneReponse: "naissance, entrée à l'école, entrée au collège"
+    distracteurs: ["entrée à l'école, naissance, entrée au collège", "entrée au collège, naissance, entrée à l'école"]
+    indice: "Pense au sens des liens."
+  # sonde 28
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "grands-parents, parents, enfants"
+    distracteurs: ["parents, grands-parents, arrière-grands-parents", "parents, enfants, grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 29
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "parents, parents, enfants"
+    distracteurs: ["parents, enfants, parents", "enfants, parents, parents"]
+    indice: "Pense au sens des liens."
+  # sonde 30
+  - enonce: "Dans la vie de Sara, quel moment vient juste après le premier emploi ?"
+    bonneReponse: "la naissance de son enfant"
+    distracteurs: ["l'entrée au collège", "sa naissance"]
+    indice: "Pense au sens des liens."
+  # sonde 31
+  - enonce: "Dans la vie de Sara, quel moment vient juste avant la naissance de son enfant ?"
+    bonneReponse: "le premier emploi"
+    distracteurs: ["l'entrée au collège", "sa naissance"]
+    indice: "Pense au sens des liens."
+  # sonde 32
+  - enonce: "Dans la vie de Sara, quel moment vient juste après l'entrée au collège ?"
+    bonneReponse: "le premier emploi"
+    distracteurs: ["sa naissance", "l'entrée à l'école"]
+    indice: "Pense au sens des liens."
+  # sonde 33
+  - enonce: "Dans la vie de Sara, quel moment vient juste après l'entrée à l'école ?"
+    bonneReponse: "le premier emploi"
+    distracteurs: ["sa naissance", "la naissance de son enfant"]
+    indice: "Pense au sens des liens."
+  # sonde 34
+  - enonce: "Dans la vie de Jade, quelle suite va du premier au dernier moment ?"
+    bonneReponse: "naissance, premier emploi, naissance de son enfant"
+    distracteurs: ["premier emploi, naissance, naissance de son enfant", "naissance de son enfant, naissance, premier emploi"]
+    indice: "Pense au sens des liens."
+  # sonde 35
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["le premier emploi", "la naissance de son enfant"]
+    indice: "Pense au sens des liens."
+  # sonde 36
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée au collège"
+    distracteurs: ["l'entrée à l'école", "le premier emploi"]
+    indice: "Pense au sens des liens."
+  # sonde 37
+  - enonce: "Dans la vie de Sara, quel moment vient juste avant l'entrée à l'école ?"
+    bonneReponse: "sa naissance"
+    distracteurs: ["l'entrée au collège", "l'entrée à l'école"]
+    indice: "Pense au sens des liens."
+  # sonde 38
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["l'entrée au collège", "le premier emploi"]
+    indice: "Pense au sens des liens."
+  # sonde 39
+  - enonce: "Dans la vie de Sara, quel moment vient juste avant l'entrée à l'école ?"
+    bonneReponse: "sa naissance"
+    distracteurs: ["l'entrée au collège", "la naissance de son enfant"]
+    indice: "Pense au sens des liens."
+  # sonde 40
+  - enonce: "Dans la vie de Sara, quel moment vient juste après l'entrée à l'école ?"
+    bonneReponse: "l'entrée au collège"
+    distracteurs: ["sa naissance", "le premier emploi"]
+    indice: "Pense au sens des liens."
+  # sonde 41
+  - enonce: "Dans la vie de Sara, quel moment vient juste avant l'entrée au collège ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["sa naissance", "la naissance de son enfant"]
+    indice: "Pense au sens des liens."
+  # sonde 42
+  - enonce: "Dans la vie de Sara, quel moment vient juste avant l'entrée à l'école ?"
+    bonneReponse: "sa naissance"
+    distracteurs: ["le premier emploi", "la naissance de son enfant"]
+    indice: "Pense au sens des liens."
+  # sonde 43
+  - enonce: "Dans la vie de Sara, quel moment vient juste après l'entrée à l'école ?"
+    bonneReponse: "l'entrée au collège"
+    distracteurs: ["le premier emploi", "la naissance de son enfant"]
+    indice: "Pense au sens des liens."
+  # sonde 44
+  - enonce: "Dans la vie de Sara, quel moment vient juste avant l'entrée au collège ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["le premier emploi", "la naissance de son enfant"]
+    indice: "Pense au sens des liens."
+  # sonde 45
+  - enonce: "Lina a 7 ans. Sara est la maman de Lina. Pour Lina, de quelle génération est Sara ?"
+    bonneReponse: "celle des parents"
+    distracteurs: ["celle des grands-parents", "celle des arrière-grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 46
+  - enonce: "Lina a sept ans. Sara est la maman de Lina. Pour Lina, de quelle génération est Sara ?"
+    bonneReponse: "celle des parents"
+    distracteurs: ["celle des grands-parents", "celle des arrière-grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 47
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "grands-parents, parents, enfants"
+    distracteurs: ["parents, grands-parents, enfants", "parents, enfants, grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 48
+  - enonce: "Sara est la maman de Lina. Pour Lina, de quelle génération est Sara ?"
+    bonneReponse: "celle des parents"
+    distracteurs: ["celle des 2 grands-parents", "celle des arrière-grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 49
+  - enonce: "Sara est la maman de Lina. Pour Lina, de quelle génération est Sara ?"
+    bonneReponse: "celle des parents"
+    distracteurs: ["celle des grands-parents", "celle des arrière-grands-parents"]
+    indice: "Compte 2 liens."
+  # sonde 50
+  - enonce: "Qui vit avec Lina ?"
+    bonneReponse: "celle des parents"
+    distracteurs: ["celle des grands-parents", "celle des arrière-grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 51
+  - enonce: "Les parents de Lina vivent avec qui ?"
+    bonneReponse: "celle des parents"
+    distracteurs: ["celle des grands-parents", "celle des arrière-grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 52
+  - enonce: "Qui vit avec toi à la maison ?"
+    bonneReponse: "celle des parents"
+    distracteurs: ["celle des grands-parents", "celle des arrière-grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 53
+  - enonce: "Sara est la maman de Lina. Ali est le papa de Sara. Pour Lina, de quelle génération est Ali ?"
+    bonneReponse: "celle des grands-parents"
+    distracteurs: ["celle des parents", "celle des arrière-grands-parents"]
+    indice: "Pense à tes grands-parents."
+  # sonde 54
+  - enonce: "Sara est la maman de Lina. Ali est le papa de Sara. Pour Lina, de quelle génération est Ali ?"
+    bonneReponse: "celle des grands-parents"
+    distracteurs: ["celle des parents", "celle des arrière-grands-parents"]
+    indice: "Pense à ta propre maman."
+  # sonde 55
+  - enonce: "Pour Lina, de quelle génération est Ali ?"
+    bonneReponse: "celle des grands-parents"
+    distracteurs: ["celle des parents", "celle des arrière-grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 56
+  - enonce: "Sara est la maman de Lina. Ali est le papa de Sara. Pour Lina, de quelle génération est Ali ?"
+    bonneReponse: "celle des grands-parents"
+    distracteurs: ["celle des parents", "celle des arrière-grands-parents"]
+    indice: "Compte dans ta tête les générations."
+  # sonde 57
+  - enonce: "Sara est la maman de Lina. Ali est le papa de Sara. Pour Lina, de quelle génération est Ali ?"
+    bonneReponse: "celle des grands-parents"
+    distracteurs: ["celle des parents", "celle des arrière-grands-parents"]
+    indice: "Tu pars de Lina."
+  # sonde 58
+  - enonce: "Sara est la maman de Lina. Ali est le papa de Sara. Pour Lina, de quelle génération est Ali ?"
+    bonneReponse: "celle des grands-parents"
+    distracteurs: ["celle des parents", "celle des arrière-grands-parents"]
+    indice: "Demande-toi qui est né avant."
+  # sonde 59
+  - enonce: "Sara est la maman de Lina. Ali est le papa de Sara. Pour Lina, de quelle génération est Ali ?"
+    bonneReponse: "celle des grands-parents"
+    distracteurs: ["celle des parents", "celle des arrière-grands-parents"]
+    indice: "Pense aux grands-parents de Lina."
+  # sonde 60
+  - enonce: "Sara est la maman de Lina. Pour Lina, de quelle génération est Sara ?"
+    bonneReponse: "celle des parents"
+    distracteurs: ["celle des grands-parents", "celle des arrière-grands-parents"]
+    indice: "Compte depuis Lina, sans aller jusqu'aux grands-parents."
+  # sonde 61
+  - enonce: "Dans la vie de Jade, quelle suite va du premier au dernier moment ?"
+    bonneReponse: "naissance, entrée à l'école, premier emploi"
+    distracteurs: ["entrée à l'école, naissance, premier emploi", "premier emploi, naissance, entrée à l'école"]
+    indice: "Commence par la naissance."
+  # sonde 62
+  - enonce: "Dans la vie de Jade, quelle suite va du premier au dernier moment ?"
+    bonneReponse: "naissance, entrée à l'école, premier emploi"
+    distracteurs: ["entrée à l'école, naissance, premier emploi", "premier emploi, naissance, entrée à l'école"]
+    indice: "La naissance de son enfant n'est pas dans la suite."
+  # sonde 63
+  - enonce: "Tom est le fils de Nora. Mia est la fille de Nora. Pour Mia, de quelle génération est Tom ?"
+    bonneReponse: "celle des enfants"
+    distracteurs: ["celle des parents", "celle des grands-parents"]
+    indice: "Lina n'a pas encore de petits-enfants."
+  # sonde 64
+  - enonce: "Omar a une fille, Julie. Julie a un fils, Noé. Quelle suite va du plus âgé au plus jeune ?"
+    bonneReponse: "Omar, Julie, Noé"
+    distracteurs: ["Julie, Omar, Noé", "Noé, Omar, Julie"]
+    indice: "Commence par Omar."
+  # sonde 65
+  - enonce: "Dans la vie de Sara, quel moment vient juste après sa naissance ?"
+    bonneReponse: "l'entrée à l'école"
+    distracteurs: ["l'entrée au collège", "le premier emploi"]
+    indice: "Pense à l'entrée à l'école."
+  # sonde 66
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "grands-parents, parents, enfants"
+    distracteurs: ["parents, grands-parents, enfants", "parents, enfants, grands-parents"]
+    indice: "Commence par les grands-parents."
+  # sonde 67
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "grands-parents, parents, enfants"
+    distracteurs: ["parents, grands-parents, enfants", "parents, enfants, grands-parents"]
+    indice: "Pense aux parents puis aux enfants."
