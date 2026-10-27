@@ -2859,11 +2859,11 @@ Source : `DEC-0120` A.276 point 3 et ligne `sofia-sm` du routage. **Etape, pas u
 
 ## Amendement du 2026-10-27 15:40 (UTC+01:00), palier des neuf lots de questionner le monde CE1 : etat des neuf lots lu sur disque, neuf secondes lectures (A.278), decision de l'utilisatrice sur la condition c d'A.277, remesure, points ouverts, etapes restantes
 
-Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit de la branche `s57-p5-sofia-p5` (base `round-two` a `f007d698`, lu par `git rev-parse` ; `round-two` porte depuis `c93199d0`, que j'ai lu par `git show round-two:`). Il execute la ligne `sofia-sm` d'A.278 (`DEC-0120`, `camille-po`, **fusionne** dans `round-two` : `c93199d0`) et d'A.277 (fusionne : `ae2c3fd3`), que je ne modifie pas. **A.279 n'est pas citee comme fusionnee** : la branche `s57-p5-camille-279` n'a pas de commit propre et `DEC-0120` de `round-two` ne contient aucun `A.279` (`grep`). Il ne modifie ni `DEC-0120`, ni le backlog, ni le code, n'ouvre aucun palier, ne fixe aucun prix et ne prononce aucun Done. Les sommes sont des calculs, marques **[calcul]**. Aucune mesure n'a ete lancee. **Ordre reel des amendements sur le disque** (`grep "^## Amendement"`) : celui du **2026-10-26 16:25** (plafond 22,20, autocontrole) precede celui du **2026-10-27 08:19**, puis celui-ci. La consigne de travail et A.278 ecrivent "2026-10-27 16:25" : la date portee par le fichier est le 26.
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit de la branche `s57-p5-sofia-p5` (base `round-two` a `f007d698`, lu par `git rev-parse` ; `round-two` porte depuis `c93199d0`, que j'ai lu par `git show round-two:`). Il execute la ligne `sofia-sm` d'A.278 (`DEC-0120`, `camille-po`, **fusionne** dans `round-two` : `c93199d0`) et d'A.277 (fusionne : `ae2c3fd3`), que je ne modifie pas. **A.279 n'est pas citee comme fusionnee** : la branche `s57-p5-camille-279` n'a pas de commit propre et `DEC-0120` de `round-two` ne contient aucun `A.279` (`grep`). **[corrige par l'amendement du 2026-10-27 20:46 : A.279 est fusionnee, fusion `609a79c2` du commit `0a411023`, ancetres de `round-two` ; texte d'origine conserve]** Il ne modifie ni `DEC-0120`, ni le backlog, ni le code, n'ouvre aucun palier, ne fixe aucun prix et ne prononce aucun Done. Les sommes sont des calculs, marques **[calcul]**. Aucune mesure n'a ete lancee. **Ordre reel des amendements sur le disque** (`grep "^## Amendement"`) : celui du **2026-10-26 16:25** (plafond 22,20, autocontrole) precede celui du **2026-10-27 08:19**, puis celui-ci. La consigne de travail et A.278 ecrivent "2026-10-27 16:25" : la date portee par le fichier est le 26.
 
 ### 1. Etat des neuf lots, lu sur disque (`git log round-two`, `git rev-parse ^2` de chaque fusion)
 
-**Aucun Done n'est prononce, par personne : `nadia-prof` n'a prononce aucun Done pedagogique sur aucun des neuf lots, aucun des neuf n'est au catalogue (`QC3` : aucune entree `ce1-qlm-*` a inscrire avant un Done), et aucun `mvn verify` complet n'a ete lance (fait donne par l'agent lanceur, non verifie par moi ; les relectures lues ecrivent "aucun autre job de `ci.yml` lance" et ne lancent que le test du paquet et le garde-fou des identifiants). Les neuf lots sont des contenus lus et corriges, rien de plus.**
+**Aucun Done n'est prononce, par personne : `nadia-prof` n'a prononce aucun Done pedagogique sur aucun des neuf lots, aucun des neuf n'est au catalogue (`QC3` : aucune entree `ce1-qlm-*` a inscrire avant un Done), et aucun `mvn verify` complet n'a ete lance (fait donne par l'agent lanceur, non verifie par moi ; les relectures lues ecrivent "aucun autre job de `ci.yml` lance" et ne lancent que le test du paquet et le garde-fou des identifiants). Les neuf lots sont des contenus lus et corriges, rien de plus.** **[corrige par l'amendement du 2026-10-27 20:46 : ce passage decrit l'etat du 15:40 ; un `mvn verify` complet de la racine a ete lance depuis, voir la section 3 de cet amendement ; le reste (aucun Done, aucun lot au catalogue) tient ; texte d'origine conserve]**
 
 Paquet de chaque lot, sous `adapters/adapter-content/src/main/resources/contenu/` : `ce1-qlm-etapes-de-developpement.yaml` (`-01`), `ce1-qlm-ce-que-mangent-les-animaux.yaml` (`-02`), `ce1-qlm-besoins-de-la-plante.yaml` (`-03`), `ce1-qlm-familles-d-aliments.yaml` (`-04`), `ce1-qlm-eau-trois-etats.yaml` (`-05`), `ce1-qlm-aimant.yaml` (`-06`), `ce1-qlm-dangers-electricite.yaml` (`-08`), `ce1-qlm-paysages.yaml` (`-10`), `ce1-qlm-generations.yaml` (`-12`).
 
@@ -2911,9 +2911,9 @@ Source : `DEC-0120` A.272 (regle, point 1 : *"0,5, hors marge, pour chaque lot d
 
 - **Prix : 0,50 par seconde lecture, hors marge, d'apres A.272 (regle, point 1)** ; A.278 classe les six relectures comme secondes lectures. Cout de chacun des neuf lots : 1,5 [calcul : 1,0 plus 0,50].
 - **Cas haut.** Regle d'A.270 point 3, reprise par A.272 (section Cout) et A.273 point 1 (a) : chaque seconde lecture s'ajoute **en entier** au cas haut mesure de 17,70 (A.267) ; A.276 n'ajoute aucun arbitrage (0,00). **17,70 plus 9 fois 0,50 = 17,70 plus 4,50 = 22,20** [calcul]. Verification : 19,20 (08:19, trois lectures) plus 6 fois 0,50 = 22,20 [calcul]. C'est une **borne haute, pas une consommation** (A.278, point 4) : on ne retranche pas ce que chaque lot compte deja dans les 0,42.
-- **Ecart au plafond de 22,20 : 0,00** [calcul : 22,20 moins 22,20]. **Reserve : 0,00.** Le plafond est atteint, non depasse.
+- **Ecart au plafond de 22,20 : 0,00** [calcul : 22,20 moins 22,20]. **Reserve : 0,00.** Le plafond est atteint, non depasse. **[corrige par l'amendement du 2026-10-27 20:46 : le plafond en vigueur est 23,20 (A.280 point 6) et le cas haut 24,20 le depasse de 1,00 (A.281) ; texte d'origine conserve]**
 - **Depassement de l'engage au registre, borne a 8,70** [calcul : 22,20 moins 13,50 ; verification 4,20 plus 4,50]. Il etait de 5,70 au 08:19.
-- **Ce que le total ne compte pas** : une troisieme lecture d'un lot (0,50, A.272 regle point 3), la seconde lecture de l'horloge `MAT-CE1-11` si elle compte hors marge (`Q-273-1` (ii) : **22,70**, soit 0,50 au-dessus [calcul]), les deux ensemble : **23,20** [calcul : 22,20 plus 1,00]. Aucune n'existe a ce jour. Un cout au-dela de 22,20 va au registre (A.247), sans etre une condition de Done (A.273 (b), A.268).
+- **Ce que le total ne compte pas** : une troisieme lecture d'un lot (0,50, A.272 regle point 3), la seconde lecture de l'horloge `MAT-CE1-11` si elle compte hors marge (`Q-273-1` (ii) : **22,70**, soit 0,50 au-dessus [calcul]), les deux ensemble : **23,20** [calcul : 22,20 plus 1,00]. Aucune n'existe a ce jour. **[corrige par l'amendement du 2026-10-27 20:46 : deux troisiemes lectures sont classees, `-03` et `-08` (A.281) ; texte d'origine conserve]** Un cout au-dela de 22,20 va au registre (A.247), sans etre une condition de Done (A.273 (b), A.268).
 - **Reserve de projection levee.** Les amendements du 16:25 et du 08:19 ecrivaient "projection" ou un cas haut conditionnel : A.278 est fusionne, les neuf secondes lectures sont sur le disque, le chiffre de 22,20 est le cas haut des neuf secondes lectures existantes. Marqueurs *[corrige ...]* poses en section 7.
 
 ### 3. Decision de l'utilisatrice : `-04` reste une seconde lecture
@@ -2921,7 +2921,7 @@ Source : `DEC-0120` A.272 (regle, point 1 : *"0,5, hors marge, pour chaque lot d
 Source : message de l'agent lanceur du 2026-10-27 (forme 2 de `DEC-0062` G : relaye, non lu de sa main). Mots de l'utilisatrice, cites et rien d'autre : *"O1 garder la lecture de camille-po, où -04 reste une seconde lecture à 22,20"*. Contexte : la condition c d'A.277 (*"`marc-dev` applique les corrections telles qu'ecrites"*) lue sur sa consequence et non a la lettre ; le risque ne portait que sur `-04` (A.278, point 2 : a la lettre, `-04` serait une troisieme lecture, 22,70).
 
 - **Ce que cette decision fait au registre** : `-04` compte 0,50, seconde lecture ; total **22,20** ; aucune troisieme lecture ; la ligne hors marge de la section 2 ne change pas. Le chiffre 22,70 ne s'applique pas a `-04`.
-- **A.279** de `camille-po` l'ecrit ; **elle n'est pas fusionnee**, je ne la cite pas comme en vigueur et je ne lis pas son contenu. Cette section inscrit la decision de l'utilisatrice, pas l'amendement. Je ne decide rien d'autre.
+- **A.279** de `camille-po` l'ecrit ; **elle n'est pas fusionnee**, je ne la cite pas comme en vigueur et je ne lis pas son contenu. **[corrige par l'amendement du 2026-10-27 20:46 : A.279 est fusionnee et en vigueur, `609a79c2` ; texte d'origine conserve]** Cette section inscrit la decision de l'utilisatrice, pas l'amendement. Je ne decide rien d'autre.
 
 ### 4. Remesure de fin de palier (A.276 point 3) : releve intermediaire, sans conclusion
 
@@ -2961,9 +2961,9 @@ Source : `DEC-0120` A.276 point 3 et sa ligne `sofia-sm` ; durees ecrites par `n
 
 | Ref | Etape | Texte qui la dit | Ce que le texte ne dit pas |
 |---|---|---|---|
-| E1 | **Porte technique** : CI verte = tous les jobs de `.github/workflows/ci.yml`, soit quatre : `prefixes`, `chemins`, `outils`, `build` (`build` seul porte `mvn -B verify`, puis `mvn -B -pl bootstrap -am package`) | `CLAUDE.md`, "Double Done" ; `squad/README.md`, section 7 ; backlog `QC8` ; `ci.yml` (identifiants lus : lignes 9, 68, 84, 139). Un agent qui l'annonce nomme les jobs lances (`CLAUDE.md`) ; total de tests etabli par moi sur l'arbre fusionne, lignee par `outils/verifier-lignee.sh` (amendement du 2026-10-26, section 3, point 3) | qui lance le `verify` complet de chaque lot ; si le Done technique se juge par lot ou une fois a la cloture du palier (C1) |
+| E1 | **Porte technique** : CI verte = tous les jobs de `.github/workflows/ci.yml`, soit quatre : `prefixes`, `chemins`, `outils`, `build` (`build` seul porte `mvn -B verify`, puis `mvn -B -pl bootstrap -am package`) | `CLAUDE.md`, "Double Done" ; `squad/README.md`, section 7 ; backlog `QC8` ; `ci.yml` (identifiants lus : lignes 9, 68, 84, 139). Un agent qui l'annonce nomme les jobs lances (`CLAUDE.md`) ; total de tests etabli par moi sur l'arbre fusionne, lignee par `outils/verifier-lignee.sh` (amendement du 2026-10-26, section 3, point 3) | qui lance le `verify` complet de chaque lot ; si le Done technique se juge par lot ou une fois a la cloture du palier (C1) **[corrige par l'amendement du 2026-10-27 20:46 : le Done technique se juge par lot puis a la cloture, A.280 point 2 ; qui lance le `verify` de chaque lot reste ouvert ; texte d'origine conserve]** |
 | E2 | **Jeu a l'ecran par `nadia-prof`** (audit `P2`) : audits joues, jar servi, commit joue nomme, dans l'ordre `-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12`, chaque lot apres son `verify` | `DEC-0120` A.260, `P2` ; `arbitrage-nadia-palier-5-qlm-9-lots.md`, section 5.3 ; `CLAUDE.md` ("apres avoir joue l'increment") | qui sert le jar |
-| E3 | **Done pedagogique** : `nadia-prof` seule, `VALIDE`, `VALIDE SOUS RESERVE` ou `REFUSE`, motif ecrit dans `squad/conformite/FICHE-<jeu>.md` | `CLAUDE.md`, "Double Done" ; `squad/README.md`, section 7 | le nom du fichier de fiche d'un lot `ce1-qlm-*` : aucun texte lu ne le donne, et aucune fiche `ce1-qlm` n'existe a ce jour (C3) |
+| E3 | **Done pedagogique** : `nadia-prof` seule, `VALIDE`, `VALIDE SOUS RESERVE` ou `REFUSE`, motif ecrit dans `squad/conformite/FICHE-<jeu>.md` | `CLAUDE.md`, "Double Done" ; `squad/README.md`, section 7 | le nom du fichier de fiche d'un lot `ce1-qlm-*` : aucun texte lu ne le donne, et aucune fiche `ce1-qlm` n'existe a ce jour (C3) **[corrige par l'amendement du 2026-10-27 20:46 : le nom est `FICHE-ce1-qlm-<lot>.md` et neuf fiches existent, A.280 point 5 ; texte d'origine conserve]** |
 | E4 | **Entree au catalogue** (`QC3`) : `paquet: <P>` dans `catalogue.yaml` seulement apres un Done, ou un refus leve ; un paquet refuse n'est pas servi | backlog `QC3` ; `DEC-0120` A.260, `P2` ; `avis-theo-palier-5-neuf-lots-qlm-ce1.md` (ligne `catalogue.yaml` : *"branchement, apres le Done (`QC3`)"*) | qui ecrit l'entree et dans quel commit, avec des fusions serialisees ; amendement du 2026-10-26, section 3, point 5 : *"non tranche"*, toujours le cas (C2) |
 | E5 | **Horloge `MAT-CE1-11`** (`ce1-calendrier-dates`, instance B, `lea-dev`) : auditee apres les neuf premiers audits et avant tout rejeu | `DEC-0120` A.263 (Q2, option b), A.265 (`P3` de `nadia-prof`), A.267 ; amendement du 2026-10-26 (ordre des audits) | son etat au palier 5 : je ne l'ai pas lu ; seule la ligne du palier 4 (refus puis rejeu, ce fichier) est dans ce que j'ai lu |
 | E6 | **Rejeux** : trois au plus, un par lot au plus, aucun avant le premier audit des dix lots, attribues aux premiers lots refuses dans l'ordre de `P2` ; la marge de 1,5 les paie | `DEC-0120` A.265 (`P3`), A.266, A.267, A.270 | un quatrieme rejeu : Q3 d'A.271 (P2), et `Q-273-1` (i) (P1) |
@@ -2971,11 +2971,11 @@ Source : `DEC-0120` A.276 point 3 et sa ligne `sofia-sm` ; durees ecrites par `n
 
 Contradictions et manques, signales et non combles :
 
-- **C1.** `CLAUDE.md` et `squad/README.md` definissent le Done technique par la CI entiere (quatre jobs) ; `P2` et `QC7` parlent du `verify` de chaque lot, qui est le seul job `build`. Aucun texte lu ne dit comment les deux se composent lot par lot.
+- **C1.** `CLAUDE.md` et `squad/README.md` definissent le Done technique par la CI entiere (quatre jobs) ; `P2` et `QC7` parlent du `verify` de chaque lot, qui est le seul job `build`. Aucun texte lu ne dit comment les deux se composent lot par lot. **[corrige par l'amendement du 2026-10-27 20:46 : fermee par A.280 point 2, `O1` ; texte d'origine conserve]**
 - **C2.** `QC3` (aucune entree au catalogue avant un Done) et les fusions serialisees d'un fichier a ajouts en fin de liste : ouverts depuis le 2026-10-26.
-- **C3.** Le nom de la fiche de conformite d'un lot `ce1-qlm-*` n'est dans aucun texte lu.
+- **C3.** Le nom de la fiche de conformite d'un lot `ce1-qlm-*` n'est dans aucun texte lu. **[corrige par l'amendement du 2026-10-27 20:46 : fermee par A.280 point 5 ; texte d'origine conserve]**
 - **C4.** L'ordre `P1` (lecture d'une paire avant les premiers jets de la suivante) n'a pas ete suivi (section 1, fait 4) ; aucun texte lu ne l'a leve. Ce n'est pas a moi de le declarer valide ou fautif.
-- **C5.** Des relectures de `nadia-prof` citent `verifier-chemins.sh < /dev/null` comme verification : la sortie est celle d'une liste vide (P7). La forme de la CI est `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' | bash .github/scripts/verifier-chemins.sh`.
+- **C5.** Des relectures de `nadia-prof` citent `verifier-chemins.sh < /dev/null` comme verification : la sortie est celle d'une liste vide (P7). La forme de la CI est `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' | bash .github/scripts/verifier-chemins.sh`. **[corrige par l'amendement du 2026-10-27 20:46 : fermee par A.280 point 2, forme CI sans `< /dev/null` ; texte d'origine conserve]**
 
 ### 7. Passages des amendements precedents marques *[corrige ...]*
 
@@ -2983,4 +2983,129 @@ Texte d'origine conserve dans chacun. Quatre passages de l'amendement du 2026-10
 
 ### Decisions prises
 
-**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il inscrit : l'etat des neuf lots lu sur disque, neuf secondes lectures a 0,50 hors marge (execution d'A.272, regle, et d'A.278), la ligne hors marge a 4,50, le cas haut 22,20 sans reserve, le depassement de l'engage borne a 8,70, la decision de l'utilisatrice sur `-04` (A.279 non fusionnee), le releve de remesure, dix points ouverts routes et sept etapes restantes avec leur texte. **Aucun Done n'est prononce, aucun lot n'est au catalogue, aucun `mvn verify` complet n'a ete lance.**
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il inscrit : l'etat des neuf lots lu sur disque, neuf secondes lectures a 0,50 hors marge (execution d'A.272, regle, et d'A.278), la ligne hors marge a 4,50, le cas haut 22,20 sans reserve, le depassement de l'engage borne a 8,70, la decision de l'utilisatrice sur `-04` (A.279 non fusionnee), le releve de remesure, dix points ouverts routes et sept etapes restantes avec leur texte. **Aucun Done n'est prononce, aucun lot n'est au catalogue, aucun `mvn verify` complet n'a ete lance.** **[corrige par l'amendement du 2026-10-27 20:46 : A.279 est fusionnee et un `mvn verify` complet a ete lance depuis, voir les sections 3 et 6 de cet amendement ; texte d'origine conserve]**
+
+## Amendement du 2026-10-27 20:46 (UTC+01:00), palier des neuf lots de questionner le monde CE1 : plafond de PAR-8 a 23,20 (A.280 point 6), classement d'A.281 et cas haut a 24,20, etat reel de la porte technique, routage de la ligne perimee des fiches, points ouverts, etapes jusqu'a la cloture
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit de la branche `s57-p5-sofia-p6` (base `round-two` a `5428189e`, lu par `git rev-parse`). Il execute les lignes `sofia-sm` d'A.280 (`DEC-0120`, `camille-po`, fusionne : `99c89958`) et d'A.281 (fusionne : `5428189e`), que je ne modifie pas, et il corrige ma phrase du 15:40 sur A.279. Il ne modifie ni `DEC-0120`, ni les fiches, ni le backlog, ni le code, ne decide rien, n'ouvre aucun palier, ne fixe aucun prix, ne releve aucun plafond et ne prononce aucun Done. Les sommes sont des calculs, marques **[calcul]**. Ce qui est **relaye** par l'agent lanceur (forme 2 de `DEC-0062` G) est dit tel, et distingue de ce que j'ai lu ou lance moi-meme.
+
+### 1. Plafond de `PAR-8` du palier 9 : 23,20, et `Q-281-1` ouverte
+
+- **Plafond en vigueur : 23,20.** Source : `DEC-0120` A.280 point 6 (commit `7df5f1fe`, fusionne par `99c89958`, les deux lus par `git log`). Mots de l'utilisatrice, cites tels que A.280 les reporte, relayes et non lus de ma main : *"on augmente le plafond"*. Elle ne donne pas de chiffre : 23,20 est la valeur que `camille-po` retient, celle que le point 3 d'A.280 proposait [calcul : 17,70 plus 5,50]. Si l'utilisatrice voulait une autre valeur, sa phrase l'emporte (A.280 point 6).
+- **Ce que 23,20 couvre** (A.280 point 6) : la seconde lecture de l'horloge `MAT-CE1-11` (0,50) et le quatrieme rejeu, hors marge au cas haut (0,50). **Ce qu'il ne couvre pas, non chiffre** : une troisieme lecture d'un lot, la lecture par `nadia-prof` du quatrieme rejeu, l'audit a l'ecran de l'horloge, les `mvn verify` par lot.
+- **`Q-281-1` : OUVERTE, a l'utilisatrice, par `sofia-sm`.** Source : `DEC-0120` A.281 point 3. Le classement qu'elle a tranche (section 2) porte le cas haut a 24,20, soit 1,00 au-dessus de 23,20. Options ecrites par `camille-po` :
+
+| Option | Effet (A.281 point 3) |
+|---|---|
+| O1 | relever le plafond a la valeur qu'elle donne ; `camille-po` ne propose aucun chiffre |
+| O2 | le laisser a 23,20 et inscrire le 1,00 au registre comme cout nomme (A.273 point 1 (b)) |
+| O3 | autre chose, dite par elle |
+
+**Je n'ai choisi aucune valeur et je n'en propose aucune.** Tant qu'elle n'a pas repondu, le plafond ecrit reste 23,20 (A.281 point 3). La question ne bloque le Done d'aucun lot (A.273 point 1 (b), reprise par A.281). Elle est a lui poser par l'agent lanceur : je n'ai aucun moyen de la poser moi-meme, et ce fichier ne vaut pas reponse.
+
+### 2. Classement d'A.281 : la correction C1 a C4 de `-03` et de `-08` est une troisieme lecture
+
+Source : `DEC-0120` A.281 points 1 a 5. Mots de l'utilisatrice, cites tels qu'A.281 les reporte, relayes : *"on applique d'abord, le classement se tranche apres"*, puis *"Classement de la correction de -03 et -08 en 3eme lecture"*.
+
+- **Classement.** Pour chacun des deux lots, la correction C1 a C4 de `nadia-prof` (`correction-nadia-amorces-ce1-qlm-03-et-08.md`, dans le dossier du sprint) est une **troisieme lecture** au sens d'A.279 point 5, **pour `-03` et `-08` seulement** : A.281 n'en tire aucune regle generale.
+- **Prix.** 0,50 hors marge **par lot** (A.272 regle point 3), donc **`-03` a 2,0 et `-08` a 2,0** (1,5 plus 0,50 chacun). Quatre lignes ou six coutent la meme chose (A.281 point 3).
+
+| Grandeur | Avant (A.280 point 6) | Apres (A.281) | Source |
+|---|---|---|---|
+| Plafond de `PAR-8` du palier 9 | 23,20 | 23,20, non modifie | A.281 point 3 |
+| Cas haut, neuf secondes lectures et les deux gestes | 23,20 | **24,20** | A.281 point 3 [calcul : 23,20 plus 2 fois 0,50 ; verification 17,70 plus 6,50] |
+| Ecart au plafond | 0,00 | **1,00 au-dessus** | [calcul : 24,20 moins 23,20] |
+| Consomme sans les deux gestes d'A.280 | 22,20 | 23,20, le plafond, atteint | [calcul : 22,20 plus 1,00] |
+| Ligne hors marge de l'instance neuve | 4,50 | 5,50 sans les gestes, **6,50** avec les deux | [calcul : 4,50 plus 1,00, puis plus 1,00] |
+| Depassement de l'engage au registre, borne | 9,70 | **10,70** | [calcul : 24,20 moins 13,50] |
+| Engage, marge de 1,5 | 13,50 et 1,5 | inchanges | A.281 |
+
+Le depassement existe des qu'un geste a lieu : un seul, 23,70 ; les deux, 24,20 (A.281 point 3). C'est une borne haute, pas une consommation.
+
+- **Relecture de `nadia-prof` sur C1 a C4 appliques : non encore faite.** Dans le dossier du sprint, seul `correction-nadia-amorces-ce1-qlm-03-et-08.md` existe ; aucun fichier de relecture ne porte sur la transcription (`ls` du dossier : les deux `relecture-nadia-corrections-ce1-qlm-*` de `-03` et de `-08` sont les secondes lectures, anterieures). A.281 point 4 : forme et lignes (`-03` : `:73` et `:153` ; `-08` : `:71` et `:92`), nom de fichier a sa main, cout 0,50 par lot deja compte. Le prix d'une relecture qui rejetterait une transcription (quatrieme lecture) n'est ecrit nulle part : je ne le devine pas.
+- **`Q-281-2` : OUVERTE, a l'utilisatrice, par `sofia-sm`, a repondre avant la relecture.** Source : A.281 point 5. Question : l'item 6 de `-03` (*"elle devient plus solide"*, remplace par *"elle pousse tres bien"*, `:105`) entre-t-il dans la correction ? O1, oui : `marc-dev` applique une ligne de plus, la relecture de `-03` porte six lignes, cout inchange. O2, non : rien n'est applique, `nadia-prof` garde la propriete a l'audit a l'ecran, aucun cout. A.281 note que decidee apres la relecture, O1 rouvrirait une quatrieme lecture, non chiffree. **Je ne choisis ni O1 ni O2** ; la relecture de `nadia-prof` ne m'est pas a lancer tant que la reponse manque.
+
+### 3. Etat reel de la porte technique
+
+**Ce que j'ai lu dans le depot** (`git cat-file -t`, `git log`, `git merge-base --is-ancestor` vers `d3ef0cf2`) : les quatre correctifs et `d3ef0cf2` sont des commits, et les quatre correctifs sont ancetres de `d3ef0cf2`. Chaque fusion de la derniere colonne a le correctif pour second parent (`git rev-parse <fusion>^2`).
+
+| SHA | Auteur (prefixe) | Objet (sujet du commit) | Fusion dans `round-two` |
+|---|---|---|---|
+| `01c86349` | `[THEO]` | ADR-0087, barres verticales echappees dans 15 lignes de tableau, forme seule | `3289d7d8` |
+| `fe34a485` | `[MARC]` | `ce1-qlm-eau-trois-etats`, le test execute son jeu fautif en exigeant le rouge (ADR-0013) | `eec6a2a4` |
+| `09344f1e` | `[NAD]` | correction des amorces de `-03` et `-08` (ADR-0086 clause 2), quatre distracteurs, item 6 de `-03` recommande | `f377c97e` |
+| `3166dd40` | `[MARC]` | amorces de `ce1-qlm-03` et `-08`, C1 a C4 de `nadia-prof` (ADR-0086 clause 2) | `d3ef0cf2` |
+
+La fusion `d3ef0cf2` est le commit nomme par la consigne ; elle est la derniere des quatre. Le diff entre `d3ef0cf2` et `5428189e` (`git diff --stat`) ne porte que sur `DEC-0120` et `DEC-index.md`, **aucun fichier de code ni de contenu** : l'arbre que j'ai mesure est le meme pour le code que celui de `d3ef0cf2`.
+
+**Ce que j'ai lance moi-meme, casquette Scrum Master, dans le worktree de cette branche** : `bash outils/mvn-jdk21.sh -B clean verify`, reacteur complet, sur l'arbre de `5428189e` avant toute modification de ce fichier. **Resultat : `BUILD SUCCESS`, sortie 0, 4 min 05 s, 0 echec, 0 erreur, 0 test ignore.** Tests par module (lignes `Tests run` du journal) : `domain` 120, `application` 31, `adapter-web` 523, `adapter-content` 2563, `bootstrap` 381 ; total **3618** [calcul : 120 plus 31 plus 523 plus 2563 plus 381]. Le reacteur a en plus passe 6 tests d'integration dans `bootstrap` (phase `integration-test`, `failsafe` : `CatalogueChargeableIT` 1, `PropositionsAccentueesJouablesIT` 1, `JarRecreoIT` 1, `LeLivrableNeSertQueLesRessourcesDeSesModulesIT` 3) : 6 [lu : ligne `Tests run: 6`], soit **3624** tests au total [calcul : 3618 plus 6]. Le 3618 de l'agent lanceur est donc le total des tests unitaires ; son 6 d'un second lot est la phase d'integration. Ce qui concorde avec la consigne, je le dis concorde ; ce qui ne l'est pas, c'est que 3618 n'est pas le total du verify (3624). Journal conserve hors du depot.
+
+**Ce que je relaie sans l'avoir vu** : l'agent lanceur me dit qu'un `verify` rouge, avant `d3ef0cf2`, avait revele **quatre echecs dans `bootstrap`** (ADR-0087 sur les tableaux ; ADR-0086 sur les amorces de `-03` et de `-08` ; ADR-0013 sur le jeu fautif de `-05`), corriges par `theo-archi` (`01c86349`), `marc-dev` (`fe34a485`, `3166dd40`) et `nadia-prof` (`09344f1e`). Je n'ai pas vu ce rouge ; je lis les cinq correctifs ci-dessus, dont les objets correspondent a ces quatre familles, et rien de plus. Il dit aussi que le vert a `d3ef0cf2` est de 3618 tests (domain 120, application 31, adapter-web 523, adapter-content 2563, bootstrap 381, plus 6 d'un second lot) : ce chiffre est relaye, la mesure que j'ai lancee est celle ci-dessus.
+
+**Ecart de perimetre, dit.** Les mesures precedentes de l'agent lanceur, annoncees "vertes", portaient sur `adapter-content` seul, **sans `bootstrap`** : c'est un module, pas le depot (`squad/README.md`, section 4 ; `CLAUDE.md`, "Prerequis de build"). Elles n'ont pas vu les quatre echecs de `bootstrap`. C'est l'ecart muet que `CLAUDE.md` decrit : une commande reussie sur un perimetre plus etroit que celui qu'on croit mesurer. Le fait est donne par l'agent lanceur ; je ne le revendique pas.
+
+**Jobs de `.github/workflows/ci.yml`, nommes.** Quatre jobs : `prefixes`, `chemins`, `outils`, `build`.
+
+| Job | Etat |
+|---|---|
+| `build` | `mvn -B clean verify` lance par moi (ci-dessus) ; **non lance** : l'etape suivante du job, `mvn -B -pl bootstrap -am package` |
+| `prefixes` | je n'ai lance que la commande de prefixes, en forme CI, sur les 30 derniers commits jusqu'a `5428189e` : voir le point suivant ; **non lances** : les tests du garde-fou de prefixes, du garde-fou de plage et du garde-fou de l'accent, et le controle du proprietaire |
+| `chemins` | je n'ai lance que la commande des chemins, en forme CI : voir le point suivant ; **non lances** : les autres etapes du job |
+| `outils` | **non lance** |
+
+**La porte technique complete n'est pas annoncee.** Seul le job `build` a ete lance (son etape `verify`), et il n'a pas ete relance apres les fusions de `5428189e` pour ce qui est du code, qui ne change pas. `prefixes`, `chemins` et `outils` n'ont pas ete lances en entier apres les dernieres fusions ; je ne deduis pas leur etat de celui de `build`. Le job `chemins` est reste rouge un sprint entier pour cette raison (`CLAUDE.md`, "Double Done").
+
+**Garde-fous en forme CI, avec une vraie entree standard** (jamais `< /dev/null` : A.280 point 2) :
+
+- `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' | bash .github/scripts/verifier-chemins.sh` sur 3263 chemins : *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, sortie 0.
+- `git log --no-merges --format=%s 5428189e~30..5428189e | bash .github/scripts/verifier-prefixes.sh` sur 31 sujets : *"Tous les commits portent un prefixe d'agent connu."*, sortie 0. La plage est celle que j'ai choisie, pas la plage d'un `push` reel (la CI prend `BASE..SHA`, `ci.yml`, lignes 30 a 45). Les deux sont rejoues sur le commit de cette branche, voir la fin de cette section.
+
+**Rejeu sur l'arbre de cette branche, avant le commit** (chemins sur 3263 fichiers, prefixes sur les 30 derniers sujets plus le sujet de ce commit, 32 sujets) : `verifier-chemins.sh` rend *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, sortie 0 ; `verifier-prefixes.sh` rend *"Tous les commits portent un prefixe d'agent connu."*, sortie 0. Le test `AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest` (`bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest -Dsurefire.failIfNoSpecifiedTests=false`, perimetre : `bootstrap` avec ses modules amont, pas le depot) : `Tests run: 5, Failures: 0, Errors: 0, Skipped: 0`, `BUILD SUCCESS`, lance sur ce fichier ecrit.
+
+### 4. Fiches `FICHE-ce1-qlm-03.md` et `-08` : la ligne "Premier verify complet du lot" est perimee, routage propose
+
+- **Fait lu.** Ligne 61 de chacune des deux fiches : *"Premier `verify` complet du lot : **a faire**, resultat a inscrire ici par qui le lance, avec les jobs nommes."* Elle est perimee pour ces deux lots d'apres A.281 point 7 (ligne 6). Neuf fiches portent la meme ligne a `a faire` (`grep`, sept autres : `-01`, `-02`, `-04`, `-05`, `-06`, `-10`, `-12`) ; le `verify` de la section 3 est un reacteur complet sur un arbre qui contient les neuf paquets, mais **A.281 ne parle que de `-03` et `-08`** et A.280 point 2 dit que le `verify` se juge **par lot**, avant l'audit de ce lot : je ne dis pas si les sept autres lignes sont perimees.
+- **Designation, proposee, pas decidee.** A.281 me demande de designer qui l'inscrit. Je **propose** `camille-po`, qui ouvre les fiches (A.280 point 5) et en a ecrit la ligne, a partir des faits de la section 3 de cet amendement (commande, perimetre, commit, total mesure, jobs nommes, ce qui n'a pas ete lance). `nadia-prof` ne l'inscrit pas : elle ne remplit que le bloc de validation, et le Done technique n'est pas le sien. C'est un routage ; si `camille-po` ou l'utilisatrice la veut ailleurs, leur texte l'emporte. **Je n'ai pas modifie les fiches** : la ligne n'est pas la mienne.
+- **Reste ouvert, non designe** (A.280, routage) : qui lance le `verify` complet de chaque lot, et qui sert le jar a l'audit. Aucun texte lu ne le dit ; je ne le decide pas dans cet amendement.
+
+### 5. Points ouverts et etapes jusqu'a la cloture
+
+**Ferme depuis le 15:40, par A.280** : `C1` (le `verify` par lot, puis la CI entiere a la cloture : A.280 point 2, `O1`), `C3` (fiche `FICHE-ce1-qlm-<lot>.md` : A.280 point 5), `C5` (forme CI de `verifier-chemins.sh` : A.280 point 2) ; la moitie de `E1` et la moitie de `E3`. La liste de l'agent lanceur nomme `C1` et `C3` ; A.280 ferme aussi `C5` dans son texte, je l'inscris. **Toujours ouverts** : `C2` et `C4`.
+
+| Ref | Sujet | A qui | Etat |
+|---|---|---|---|
+| `Q-281-1` | plafond face au cas haut de 24,20 | l'utilisatrice, par moi | **ouverte**, section 1 |
+| `Q-281-2` | item 6 de `-03` | l'utilisatrice, par moi, avant la relecture | **ouverte**, section 2 |
+| `R-C1C4` | relecture de `nadia-prof` sur C1 a C4 de `-03` et `-08` | `nadia-prof`, par moi, apres reponse a `Q-281-2` | non faite, non lancee |
+| `C2` | `QC3` et fusions serialisees d'un fichier a ajouts en fin de liste | non designe | ouverte |
+| `C4` | ordre `P1` (lecture d'une paire avant les premiers jets de la suivante) non suivi | non designe | ouverte |
+| `P1`, `P3` | `Q-273-1` (i) et (ii) | `nadia-prof`, l'utilisatrice | sans reponse ; neuvieme mention a A.281 point 7 (ligne 7), je n'en ajoute pas de decompte ; (ii) compte maintenant dans un cas haut depasse |
+| `P2` | Q3 d'A.271, quatrieme rejeu | `camille-po`, a la fermeture des dix audits, par moi | inchangee ; son prix est leve par A.280, son calendrier non |
+| `P4` | intrus : tache B de `-02`, la bonne reponse est l'intrus des trois propositions ; pendant pour la tache B de `-10` | `nadia-prof` a l'audit `P2` ; `camille-po` | ouverte, sans ecrit de cloture |
+| `P5` | accord de *du plus age au plus jeune* en `-12` (items 3 et 8, formule de `R12-2`) | `relecteur-pedagogique` | ouverte ; aucun releve du palier 5 dans le dossier du sprint |
+| `P6` | commande du garde-fou des identifiants : le drapeau `-Dsurefire.failIfNoSpecifiedTests=false` absent de `CLAUDE.md`, de `squad/README.md` et de `.claude/agents/nadia-prof.md` (`grep -c` : 0 dans les trois) | `yanis-qa` ; `theo-archi` si c'est une regle d'architecture | ouverte ; je ne choisis pas |
+| `P7` | documenter la forme de lancement de `verifier-chemins.sh` et `verifier-prefixes.sh` la ou un agent la lira | `sofia-sm` (A.280, routage) | **non fait** : la forme est ecrite dans A.280 point 2 et en section 3 ci-dessus ; `CLAUDE.md` et `squad/README.md` ne la portent pas (`grep`). Les amender est une decision de documentation hors de ce commit, que je ne prends pas ici |
+| `P8` | distracteur *le mulot* de `cm1-sciences-chaine-alimentaire.yaml` (CM1) | `nadia-prof`, puis `camille-po` | ouverte |
+| `P9` | ordre de fusion de `-03` avant `-02` et faits (3) et (4) de la section 1 du 15:40 | `theo-archi` ; `nadia-prof` et `camille-po` pour `P1` | ouverte |
+| `P10` | faits du rapport de `marc-dev` absents du depot (`-04`, `-12`) | `marc-dev`, par moi | ouverte, non citee par la liste de l'agent lanceur : reportee, non close |
+| `T1` | anciennes amorces *elle grandit plus vite* et *elle pousse plus vite* gardees dans `EFFETS_CONTRAIRES` de `PaquetCe1QlmBesoinsDeLaPlanteTest` (lignes 100 et 101, a cote de celles de la ligne 103) | `theo-archi`, avec `marc-dev` | ouverte, A.281 point 7 (ligne 4) ; relue sur disque a `5428189e`, je ne tranche aucune question de code |
+| `A276` | remesure de fin de palier (A.276 point 3) | `sofia-sm` | a refaire a la cloture : la relecture de `R-C1C4` ajoutera des durees ; releve intermediaire du 15:40 inchange |
+| `FICHE` | ligne perimee des fiches `-03` et `-08` | `camille-po` (proposition) | section 4 |
+| `JAR` | qui lance le `verify` de chaque lot, qui sert le jar a l'audit | non designe | ouverte |
+
+**Ordre des etapes jusqu'a la cloture** (sources : A.260 `P2` et `P3`, A.265, A.267, A.280, A.281, `squad/README.md`) :
+
+1. Reponse de l'utilisatrice a `Q-281-2` (et a `Q-281-1`, qui ne bloque aucun Done).
+2. Relecture de `nadia-prof` sur C1 a C4 de `-03` et de `-08`, routee par moi apres la reponse a `Q-281-2`.
+3. Audit a l'ecran par `nadia-prof`, dans l'ordre `P2` : `-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12`, chaque lot apres son `verify` (A.280 point 2) ; Done pedagogique par elle seule dans `FICHE-ce1-qlm-<lot>.md`, entree au catalogue seulement apres un Done (`QC3`).
+4. Audit de l'horloge `MAT-CE1-11`, apres les neuf premiers audits et avant tout rejeu.
+5. Rejeux, trois au plus, un par lot au plus, dans l'ordre de `P2` ; le quatrieme, selon Q3 d'A.271.
+6. `cloture-palier-5.md`, ecrit une seule fois par moi, apres un passage complet des quatre jobs de `ci.yml` (A.280 point 2) ; obstacles du palier dans ce fichier puis dans `review.md`. `cloture-palier-5.md` n'existe pas.
+
+### 6. Passages des amendements precedents marques *[corrige ...]*
+
+Texte d'origine conserve dans chacun, marqueur pose juste apres le passage, dans l'amendement du 2026-10-27 15:40 : A.279 *"non fusionnee"* (introduction et section 3), *"aucun `mvn verify` complet n'a ete lance"* (section 1 et "Decisions prises"), *"Aucune n'existe a ce jour"* des troisiemes lectures et *"Le plafond est atteint, non depasse"* (section 2), la ligne `E1` (qui juge le Done technique), la ligne `E3` (nom de la fiche) et les contradictions `C1`, `C3` et `C5` (section 6).
+
+### Decisions prises
+
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il inscrit : le plafond de `PAR-8` a 23,20 (A.280 point 6) et `Q-281-1` ouverte ; le classement d'A.281 (troisieme lecture de `-03` et `-08`, cas haut 24,20, ligne hors marge 6,50, depassement de l'engage 10,70) et `Q-281-2` ouverte ; l'etat de la porte technique (job `build` seul, `verify` complet lance par moi, jobs `prefixes`, `chemins`, `outils` non lances en entier, porte complete non annoncee) ; la proposition de routage de la ligne perimee des fiches ; la liste des points ouverts et l'ordre des etapes. **Aucun Done n'est prononce. A.279 est fusionnee.**
