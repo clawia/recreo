@@ -1,0 +1,149 @@
+schema: 1
+id: ce1-qlm-aimant
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Le vivant, la matière et les objets"
+  competence: "Reconnaître les objets qu'un aimant attire et ceux qu'il n'attire pas."
+lignesDeReferentiel: ["QLM-CE1-06"]
+#
+# S57-BR-QLM-CE1-06 (s57, palier 5, lot des neuf lots de questionner le monde CE1). PREMIER JET,
+# ecrit par marc-dev, commite seul avant la lecture de nadia-prof : rien n'est joue, aucun Done
+# n'est prononce, le paquet n'est pas au catalogue (QC3). Competence : QLM-CE1-06
+# (squad/programme/questionner-le-monde/competences-ce1.md), libelle recopie a l'identique.
+# Conditions : AIM-CE1-1 et AIM-CE1-2 (ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-
+# et-emc-ce1.md, 3.6), critere 10 de la story arbitre par nadia-prof (squad/sprints/s57-version-
+# cp-ce1-cm1-trois-instances/arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md, section 1.6, corrige
+# par arbitrage-nadia-contradictions-ce1-qlm-06-08.md, par arbitrage-nadia-dernier-lot-ce1-qlm-04-
+# a-12.md, section 6.3, et par arbitrage-nadia-trois-points-ce1-qlm-04-06-10.md, section 5.1),
+# conditions transverses de la meme instruction (section 2).
+#
+# Deux taches (FER-3). Le test les lit sur l'enonce de chaque item, jamais sur une declaration, et
+# relit les deux comptes ci-dessous contre les items.
+#   objet : lequel de trois objets l'aimant attire, ou n'attire pas, une seule proposition est a part (8 items)
+#   groupe : dans quel groupe de trois objets l'aimant attire les trois, tous les objets sont en metal (4 items)
+#
+# Tache objet : l'enonce est l'une des deux questions fermees, avec ou sans une premisse (Ces trois
+# objets sont en metal. / Tous ces objets sont en metal.), qui n'est ecrite que si les trois objets
+# des propositions sont en metal. Chaque proposition est un objet de la liste avec son article. Une
+# seule proposition est attiree, ou une seule ne l'est pas, selon la question. Les deux distracteurs
+# n'ont en commun aucun mot de leur nom que la bonne reponse n'a pas.
+# Tache groupe : l'enonce est la seule forme fermee. Chaque proposition est un groupe de trois objets
+# de la liste, sans article, separes par des virgules, six mots au plus. Le bon groupe est trois
+# objets en fer ; chaque groupe distracteur porte deux objets en fer et un objet en aluminium ou en
+# cuivre. Les trois groupes de chaque item ont deux a deux un objet en commun, un seul. Le bon groupe
+# n'est le seul plus court des trois en mots (PaquetLu.mots) que dans la moitie des items de ce
+# groupe au plus ; dans les autres, il porte fil de fer et un groupe distracteur a autant de mots que
+# lui ou moins.
+#
+# AIM-CE1-2 : tout item de groupe compte pour le quart (tous les objets en metal, l'enonce le dit,
+# un objet en aluminium ou en cuivre au moins dans les distracteurs), et au moins un item d'objet
+# aussi, par sa premisse. Aucun enonce, aucun indice ne dit que l'aimant attire les metaux.
+#
+# Liste fermee des objets : seize, un par ligne avec sa classe et sa source (QMT-CE1-2), qu'aucun
+# item ne depasse. Classes : attire (en fer), metal non attire (en aluminium ou en cuivre), sans
+# metal. Source de chaque classe et des cinq objets qu'elle nomme : AIM-CE1-1 (squad/conformite/
+# ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md, 3.6), qui nomme le clou,
+# le trombone, l'epingle, l'aiguille et le papier d'aluminium. Source des autres objets, que
+# nadia-prof tient pour exacts au CE1 : arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md, section 1.6,
+# regle 6 (squad/sprints/s57-version-cp-ce1-cm1-trois-instances/). Aucun objet en or, aucun objet exclu
+# par AIM-CE1-1, le mot acier n'est pas ecrit.
+#   classe clou : attire ; source : AIM-CE1-1, 3.6, objet nomme
+#   classe trombone : attire ; source : AIM-CE1-1, 3.6, objet nomme
+#   classe epingle : attire ; source : AIM-CE1-1, 3.6, objet nomme
+#   classe aiguille : attire ; source : AIM-CE1-1, 3.6, objet nomme
+#   classe agrafe : attire ; source : AIM-CE1-1, 3.6, classe des objets en fer ; arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md, 1.6, regle 6
+#   classe fil de fer : attire ; source : AIM-CE1-1, 3.6, classe des objets en fer ; arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md, 1.6, regle 6
+#   classe papier d'aluminium : metal non attire ; source : AIM-CE1-1, 3.6, objet nomme
+#   classe barquette en aluminium : metal non attire ; source : AIM-CE1-1, 3.6, classe des objets en aluminium ; arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md, 1.6, regle 6
+#   classe fil de cuivre : metal non attire ; source : AIM-CE1-1, 3.6, classe des objets en cuivre ; arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md, 1.6, regle 6
+#   classe gomme : sans metal ; source : AIM-CE1-1, 3.6, classe des objets non metalliques ; arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md, 1.6, regle 6
+#   classe bouchon en liege : sans metal ; source : AIM-CE1-1, 3.6, classe des objets non metalliques ; arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md, 1.6, regle 6
+#   classe regle en plastique : sans metal ; source : AIM-CE1-1, 3.6, classe des objets non metalliques ; arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md, 1.6, regle 6
+#   classe bille en verre : sans metal ; source : AIM-CE1-1, 3.6, classe des objets non metalliques ; arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md, 1.6, regle 6
+#   classe feuille de papier : sans metal ; source : AIM-CE1-1, 3.6, classe des objets non metalliques ; arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md, 1.6, regle 6
+#   classe elastique : sans metal ; source : AIM-CE1-1, 3.6, classe des objets non metalliques ; arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md, 1.6, regle 6
+#   classe pate a modeler : sans metal ; source : AIM-CE1-1, 3.6, classe des objets non metalliques ; arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md, 1.6, regle 6
+#
+# AIM-CE1-1, objets exclus : aucune piece de monnaie, canette, cle, couvert, casserole, bijou, et
+# aucun des mots pieces, monnaie, bague, collier, bracelet, or, acier, n'est ecrit dans un champ.
+# L'indice est une methode que l'enfant applique a chaque objet, jamais la matiere de la bonne
+# reponse, jamais l'objet different des autres.
+#
+# Familles de distracteurs (liste fermee) :
+#   famille a : tache objet, un objet sans metal
+#   famille b : tache objet, un objet en aluminium ou en cuivre
+#   famille c : tache objet, un objet en fer, la bonne reponse n'est pas attiree
+#   famille d : tache groupe, un groupe de deux objets en fer et d'un objet en aluminium ou en cuivre
+#
+# CYC-1 : aucun paquet de CP ne parle d'aimant ; cp-qlm-matiere dit le clou en metal, ce que ce
+# paquet ne contredit pas ; cm1-sciences-melanges fait attirer des morceaux de fer par l'aimant.
+# NRC-CE1-1 : aucun enonce ni jeu de trois propositions n'est celui d'un item de CP (garde
+# transverse) ; le sujet reste a la lecture de nadia-prof.
+# QMT-CE1-1 : aucun des quinze mots exclus n'est ecrit ; aimant est admis.
+# TRV-CE1-1, -5, -6, LON-CE1-1, -2, -5 : niveau CE1, aucun texteSupport ni voix, un indice par item
+# (douze mots au plus, indices tous distincts), aucun prenom, aucun objet possede par l'enfant.
+# TYP-1 (ADR-0067) : l'espace qui precede "?" est insecable. FER-2 : plus d'items que de dix
+# manches (plancher de onze, DEC-0120 A.258).
+items:
+  # TRV-CE1-2 : b, b
+  - enonce: "Ces trois objets sont en métal. Lequel l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["le papier d'aluminium", "le fil de cuivre"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # TRV-CE1-2 : d, d
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "fil de fer, clou, agrafe"
+    distracteurs: ["fil de fer, épingle, papier d'aluminium", "clou, épingle, fil de cuivre"]
+    indice: "Vérifie un groupe à la fois, objet par objet."
+  # TRV-CE1-2 : c, c
+  - enonce: "Tous ces objets sont en métal. Lequel l'aimant n'attire-t-il pas ?"
+    bonneReponse: "le fil de cuivre"
+    distracteurs: ["le fil de fer", "l'agrafe"]
+    indice: "Imagine l'aimant tout près de chaque objet, l'un après l'autre."
+  # TRV-CE1-2 : b, a
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le trombone"
+    distracteurs: ["le papier d'aluminium", "la gomme"]
+    indice: "Pense à ce qui se passe quand l'aimant touche chaque objet."
+  # TRV-CE1-2 : d, d
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "fil de fer, trombone, aiguille"
+    distracteurs: ["trombone, épingle, papier d'aluminium", "aiguille, clou, papier d'aluminium"]
+    indice: "Imagine l'aimant près de chaque objet du groupe."
+  # TRV-CE1-2 : c, c
+  - enonce: "Ces trois objets sont en métal. Lequel l'aimant n'attire-t-il pas ?"
+    bonneReponse: "le papier d'aluminium"
+    distracteurs: ["le clou", "le trombone"]
+    indice: "Teste chaque objet avec l'aimant, en pensée, un par un."
+  # TRV-CE1-2 : b, b
+  - enonce: "Tous ces objets sont en métal. Lequel l'aimant attire-t-il ?"
+    bonneReponse: "le fil de fer"
+    distracteurs: ["la barquette en aluminium", "le fil de cuivre"]
+    indice: "Approche l'aimant de chaque objet, en pensée."
+  # TRV-CE1-2 : c, c
+  - enonce: "Lequel de ces objets l'aimant n'attire-t-il pas ?"
+    bonneReponse: "la gomme"
+    distracteurs: ["le clou", "l'agrafe"]
+    indice: "Regarde chaque objet et pense à l'aimant qui s'approche."
+  # TRV-CE1-2 : d, d
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "épingle, agrafe, trombone"
+    distracteurs: ["épingle, clou, barquette en aluminium", "trombone, clou, fil de cuivre"]
+    indice: "Passe en revue les trois objets de chaque groupe."
+  # TRV-CE1-2 : a, a
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "l'épingle"
+    distracteurs: ["la règle en plastique", "la bille en verre"]
+    indice: "Passe les objets un par un, avec l'aimant tout près."
+  # TRV-CE1-2 : c, c
+  - enonce: "Lequel de ces objets l'aimant n'attire-t-il pas ?"
+    bonneReponse: "l'élastique"
+    distracteurs: ["l'aiguille", "le trombone"]
+    indice: "Imagine l'aimant au-dessus de chaque objet, un par un."
+  # TRV-CE1-2 : d, d
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "aiguille, agrafe, épingle"
+    distracteurs: ["aiguille, fil de fer, papier d'aluminium", "agrafe, trombone, papier d'aluminium"]
+    indice: "Essaie chaque objet avec l'aimant, groupe par groupe."

@@ -1,0 +1,283 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif du test du paquet de l'aimant."
+lignesDeReferentiel: ["QLM-CE1-06"]
+#
+# Jeu fautif de PaquetCe1QlmAimantTest : chaque item porte en commentaire le marqueur de la sonde qu'il
+# met a l'epreuve, dans l'ordre ou les gardes sont ecrites. Les sondes dites 'passe' sont des clauses :
+# elles doivent passer. Les sondes tirees d'un texte de nadia-prof ou de theo-archi le disent, avec
+# leur source. Aucun item n'est un contenu servi, et chaque item ne vise que la garde qu'il nomme.
+items:
+  # sonde 01 g1, un objet hors de la liste fermee en A
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "la vis"
+    distracteurs: ["le papier d'aluminium", "la gomme"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 02 g1, un objet hors de la liste fermee dans un groupe de B
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "clou, vis, aiguille"
+    distracteurs: ["clou, épingle, papier d'aluminium", "trombone, épingle, fil de cuivre"]
+    indice: "Vérifie un groupe à la fois, objet par objet."
+  # sonde 03 g1, un objet de la liste sans son article en A
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "clou"
+    distracteurs: ["la gomme", "le papier d'aluminium"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 04 g1, un groupe de B ecrit avec des articles et un et : deux segments, aucun n'est un objet
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "le clou, le trombone et l'aiguille"
+    distracteurs: ["clou, épingle, papier d'aluminium", "trombone, épingle, fil de cuivre"]
+    indice: "Vérifie un groupe à la fois, objet par objet."
+  # sonde 05 g1, passe : une apostrophe typographique dans une proposition de A
+  - enonce: "Lequel de ces objets l'aimant n'attire-t-il pas ?"
+    bonneReponse: "la gomme"
+    distracteurs: ["l’épingle", "le clou"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 06 g1 g7 g4, passe : les trois groupes de la regle de B (garde 7 de theo-archi), compte pour le quart
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "clou, trombone, aiguille"
+    distracteurs: ["agrafe, fil de cuivre, épingle", "clou, papier d'aluminium, aiguille"]
+    indice: "Vérifie un groupe à la fois, objet par objet."
+  # sonde 07 g2, un objet exclu dans l'enonce (la sonde de nadia-prof, garde 2)
+  - enonce: "La cuillère est en métal. L'aimant l'attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la gomme", "la bille en verre"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 08 g2, une piece de monnaie en distracteur
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la pièce de monnaie", "la gomme"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 09 g2, un objet exclu dans l'indice
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la gomme", "la bille en verre"]
+    indice: "Pense aux clés."
+  # sonde 10 g2, un bijou en distracteur
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la bague en or", "la gomme"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 11 g2, le mot or seul, sans bijou ni piece
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la boucle en or", "la gomme"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 12 g2, le mot acier
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou en acier"
+    distracteurs: ["la gomme", "la bille en verre"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 13 g2, passe : des mots qui portent ces lettres sans etre le mot
+  - enonce: "Il y a encore une orange sous le couvercle."
+    bonneReponse: "la baguette"
+    distracteurs: ["le couvercle", "l'orange"]
+    indice: "Regarde encore une fois."
+  # sonde 14 g3, deux objets attires en A positif
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["le trombone", "la gomme"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 15 g3, deux objets non attires en A negatif
+  - enonce: "Lequel de ces objets l'aimant n'attire-t-il pas ?"
+    bonneReponse: "la gomme"
+    distracteurs: ["la bille en verre", "le clou"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 16 g3, la bonne reponse de A positif n'est pas l'objet attire
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "la gomme"
+    distracteurs: ["le clou", "la bille en verre"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 17 g3, la bonne reponse de A negatif est un objet attire
+  - enonce: "Lequel de ces objets l'aimant n'attire-t-il pas ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la gomme", "l'agrafe"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 18 g3 g4, passe : la sonde 12 de theo-archi, l'item de camille-po (ne compte pas pour le quart)
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le trombone"
+    distracteurs: ["le papier d'aluminium", "la gomme"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 19 g3, passe : la polarite negative, une seule proposition non attiree
+  - enonce: "Lequel de ces objets l'aimant n'attire-t-il pas ?"
+    bonneReponse: "la gomme"
+    distracteurs: ["le clou", "l'agrafe"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 20 g4, sonde de theo-archi (Q3) : tous en metal, un en cuivre, l'enonce ne le dit pas, ne compte pas
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["le fil de cuivre", "le papier d'aluminium"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 21 g4, un item de A sans premisse et sans metal, ne compte pas : le remplissage des paquets de sonde
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la gomme", "la bille en verre"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 22 g4 g9, passe : l'exemple de 1.2 de nadia-prof, la bonne reponse est le fer, compte pour le quart
+  - enonce: "Ces trois objets sont en métal. Lequel l'aimant attire-t-il ?"
+    bonneReponse: "le fil de fer"
+    distracteurs: ["le fil de cuivre", "le papier d'aluminium"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 23 g4, l'item au negatif de nadia-prof (garde 4), compte pour le quart
+  - enonce: "Ces trois objets sont en métal. Lequel l'aimant n'attire-t-il pas ?"
+    bonneReponse: "le fil de cuivre"
+    distracteurs: ["le fil de fer", "l'agrafe"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 24 g6, une tache ecartee par nadia-prof (l'usage de l'aimant), ni A ni B
+  - enonce: "Que prend-on pour ramasser des épingles ?"
+    bonneReponse: "un aimant"
+    distracteurs: ["un balai", "une éponge"]
+    indice: "Pense à ce qui tire les épingles."
+  # sonde 25 g7, un groupe distracteur qui porte la gomme
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "clou, trombone, aiguille"
+    distracteurs: ["clou, gomme, aiguille", "trombone, épingle, fil de cuivre"]
+    indice: "Vérifie un groupe à la fois, objet par objet."
+  # sonde 26 g7, un bon groupe qui porte le fil de cuivre
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "clou, fil de cuivre, aiguille"
+    distracteurs: ["clou, épingle, papier d'aluminium", "trombone, épingle, fil de cuivre"]
+    indice: "Vérifie un groupe à la fois, objet par objet."
+  # sonde 27 g7, un groupe distracteur a deux objets non attires
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "clou, trombone, aiguille"
+    distracteurs: ["clou, fil de cuivre, papier d'aluminium", "trombone, épingle, papier d'aluminium"]
+    indice: "Vérifie un groupe à la fois, objet par objet."
+  # sonde 28 g8, la sonde de nadia-prof : la matiere de la bonne reponse dans l'indice
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le fil de fer"
+    distracteurs: ["la gomme", "la bille en verre"]
+    indice: "Cherche l'objet en fer."
+  # sonde 29 g8, la sonde de nadia-prof : l'intrus
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la gomme", "la bille en verre"]
+    indice: "Cherche l'intrus."
+  # sonde 30 g8, la sonde de nadia-prof : l'objet different des autres
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la gomme", "la bille en verre"]
+    indice: "Trouve l'objet différent des deux autres."
+  # sonde 31 g8, passe : la methode de nadia-prof
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la gomme", "la bille en verre"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 32 g8, passe : la matiere des distracteurs n'est pas lue (mesure de theo-archi)
+  - enonce: "Lequel de ces objets l'aimant n'attire-t-il pas ?"
+    bonneReponse: "la gomme"
+    distracteurs: ["le clou", "l'agrafe"]
+    indice: "Pense au fer."
+  # sonde 33 g8, la matiere des trois objets de la bonne reponse de B
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "clou, trombone, aiguille"
+    distracteurs: ["clou, épingle, papier d'aluminium", "trombone, épingle, fil de cuivre"]
+    indice: "Cherche le groupe tout en fer."
+  # sonde 34 g8, la matiere d'une bonne reponse en aluminium
+  - enonce: "Lequel de ces objets l'aimant n'attire-t-il pas ?"
+    bonneReponse: "le papier d'aluminium"
+    distracteurs: ["le clou", "le trombone"]
+    indice: "Cherche l'objet en aluminium."
+  # sonde 35 g8, la matiere d'une bonne reponse en cuivre
+  - enonce: "Lequel de ces objets l'aimant n'attire-t-il pas ?"
+    bonneReponse: "le fil de cuivre"
+    distracteurs: ["le clou", "l'agrafe"]
+    indice: "Cherche l'objet en cuivre."
+  # sonde 36 g9, la sonde de nadia-prof : le mot aluminium en commun
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le trombone"
+    distracteurs: ["le papier d'aluminium", "la barquette en aluminium"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 37 g9, la sonde de theo-archi (Q2, confirmee par nadia-prof) : le mot papier en commun
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["le papier d'aluminium", "la feuille de papier"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 38 g11, T1-r1 de nadia-prof : la premisse devant la gomme
+  - enonce: "Ces trois objets sont en métal. Lequel l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la gomme", "le fil de cuivre"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 39 g11, T1-r2 de theo-archi : la bonne reponse est sans metal, au negatif
+  - enonce: "Ces trois objets sont en métal. Lequel l'aimant n'attire-t-il pas ?"
+    bonneReponse: "la gomme"
+    distracteurs: ["le clou", "l’agrafe"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 40 g11, T1-r3 de theo-archi : la seconde premisse, un distracteur sans metal
+  - enonce: "Tous ces objets sont en métal. Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le trombone"
+    distracteurs: ["la bille en verre", "le papier d'aluminium"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 41 trv1, une cle explication : l'ensemble ferme de cles la refuse
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la gomme", "la bille en verre"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+    explication: "Le clou est en fer."
+  # sonde 42 trv1, un texteSupport (sonde de QC6, reponse de nadia-prof a Q7)
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la gomme", "la bille en verre"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+    texteSupport: "Un texte que l'enfant lit."
+  # sonde 43 trv1, un texteAVoixHaute (sonde de QC6, reponse de nadia-prof a Q7)
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la gomme", "la bille en verre"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+    texteAVoixHaute: "Un texte que l'adulte lit."
+  # sonde 44 g11 g4, passe : T1-p de nadia-prof, la premisse est vraie et l'item compte pour le quart
+  - enonce: "Ces trois objets sont en métal. Lequel l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["le papier d'aluminium", "le fil de cuivre"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 45 g10, l'item E de nadia-prof (6.3) : cinq, six et cinq mots, le bon groupe n'est pas le seul plus court
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "fil de fer, clou, agrafe"
+    distracteurs: ["fil de fer, épingle, papier d'aluminium", "clou, épingle, fil de cuivre"]
+    indice: "Vérifie un groupe à la fois, objet par objet."
+  # sonde 46 g10, l'item X de theo-archi : trois, quatre et cinq mots, le bon groupe est le seul plus court
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "clou, trombone, aiguille"
+    distracteurs: ["clou, épingle, papier d'aluminium", "trombone, épingle, fil de cuivre"]
+    indice: "Vérifie un groupe à la fois, objet par objet."
+  # sonde 47 g10, l'item X2 de theo-archi : trois, cinq et quatre mots, le bon groupe est le seul plus court
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "épingle, agrafe, trombone"
+    distracteurs: ["épingle, clou, barquette en aluminium", "agrafe, clou, papier d'aluminium"]
+    indice: "Vérifie un groupe à la fois, objet par objet."
+  # sonde 48 g10, l'item Y de theo-archi : cinq, quatre et cinq mots, le bon groupe n'est pas le seul plus court
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "fil de fer, trombone, aiguille"
+    distracteurs: ["trombone, épingle, papier d'aluminium", "aiguille, épingle, fil de cuivre"]
+    indice: "Vérifie un groupe à la fois, objet par objet."
+  # sonde 49 g1, un groupe de B qui ne porte que deux objets de la liste
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "clou, trombone"
+    distracteurs: ["clou, épingle, papier d'aluminium", "trombone, épingle, fil de cuivre"]
+    indice: "Vérifie un groupe à la fois, objet par objet."
+  # sonde 50 g4, la premisse, trois objets en fer et aucun en aluminium ni en cuivre : ne compte pas
+  - enonce: "Ces trois objets sont en métal. Lequel l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["le trombone", "l'agrafe"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 51 g9, passe : les deux distracteurs ne partagent que le mot de, qui n'est pas un mot de leur nom
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["le fil de cuivre", "la feuille de papier"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 52 g9, passe : les deux distracteurs ne partagent que le mot en
+  - enonce: "Lequel de ces objets l'aimant attire-t-il ?"
+    bonneReponse: "le clou"
+    distracteurs: ["la barquette en aluminium", "la bille en verre"]
+    indice: "Imagine l'aimant qu'on approche de chaque objet, un par un."
+  # sonde 53 g7, un groupe distracteur qui porte un seul objet en fer, un en cuivre et la gomme
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "clou, trombone, aiguille"
+    distracteurs: ["clou, fil de cuivre, gomme", "trombone, épingle, papier d'aluminium"]
+    indice: "Vérifie un groupe à la fois, objet par objet."
