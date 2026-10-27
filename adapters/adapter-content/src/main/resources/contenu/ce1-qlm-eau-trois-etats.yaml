@@ -1,0 +1,143 @@
+schema: 1
+id: ce1-qlm-eau-trois-etats
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Le vivant, la matière et les objets"
+  competence: "Reconnaître l'eau sous ses trois états (glace, eau liquide, vapeur d'eau) et relier la fonte et le gel à la température."
+lignesDeReferentiel: ["QLM-CE1-05"]
+#
+# S57-BR-QLM-CE1-05 (s57, palier 5, lot des neuf lots de questionner le monde CE1). PREMIER JET,
+# ecrit par marc-dev, commite seul avant la lecture de nadia-prof : rien n'est joue, aucun Done
+# n'est prononce, le paquet n'est pas au catalogue (QC3). Competence : QLM-CE1-05
+# (squad/programme/questionner-le-monde/competences-ce1.md), libelle recopie a l'identique.
+# Conditions : ETE-CE1-1 et ETE-CE1-2 (ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-
+# et-emc-ce1.md, 3.5), critere 12 de la story arbitre par nadia-prof (squad/sprints/s57-version-
+# cp-ce1-cm1-trois-instances/arbitrage-nadia-premiers-jets-ce1-qlm-04-05.md, section 5.2, corrige
+# par arbitrage-nadia-contradictions-ce1-qlm-04-05-et-02.md et par arbitrage-nadia-dernier-lot-
+# ce1-qlm-04-a-12.md, section 6.2), conditions transverses de la meme instruction (section 2).
+#
+# Deux taches (FER-3). Le test les recompte sur la bonne reponse de chaque item (et sur l'enonce pour
+# de l'eau liquide) : la vapeur d'eau, ou de l'eau liquide quand l'enonce nomme la buee, le nuage, le
+# brouillard ou la fumee, pose la tache vapeur ; la fonte, le gel, la glace, de l'eau liquide avec une
+# temperature dans l'enonce, ou rien ne change, posent la tache temperature ; tout autre item est
+# refuse. Il relit les deux comptes ci-dessous contre les items. La vapeur d'eau est la bonne reponse de
+# 4 items sur 12 : le tiers de ETE-CE1-1 (A.258, 11 a 20 items).
+#   vapeur : ce que devient l'eau qu'on ne voit plus, et de quoi est faite la buee (6 items)
+#   temperature : ce que la temperature fait a l'eau, la fonte, le gel, la glace, l'eau liquide, ou rien ne change (6 items)
+#
+# Tache vapeur : la bonne reponse est la vapeur d'eau ; ou l'enonce nomme la buee ou le brouillard et la
+# bonne reponse est de l'eau liquide (de toutes petites gouttes). Les distracteurs sont la conception a
+# deplacer (l'eau disparait) ou un element de la famille de la buee, un seul par item, jamais celui que
+# la situation produit (ni la fumee blanche pour une casserole qui bout, ni la buee pour le miroir de
+# la douche) et jamais un etat que la temperature de la situation rend impossible. Trois items sur
+# quatre a la vapeur d'eau ne sont pas des situations ou l'eau bout (le linge, la flaque et le sol
+# sechent sans bouillir). Aucun indice ne dit que la vapeur ne se voit pas ou est invisible.
+# Tache temperature : l'enonce donne une temperature ou un changement de temperature, et ce qu'il decrit
+# contient de la glace et de l'eau liquide ensemble, ou cite 0 degre. Aucune proposition n'est le
+# changement d'une matiere que l'enonce ne decrit pas ; le changement que la temperature empeche est
+# le distracteur attendu. Rien ne change est la bonne reponse d'un seul item, de la glace seule sous
+# 0 degre sans le mot eau, ecrit a l'identique ; il n'est propose en distracteur que parce qu'un item
+# l'a pour bonne reponse. Aucun indice n'enonce le sens de la temperature : un indice compare deux
+# situations. Le seul nombre ecrit est 0 degre, et il ne figure que dans la tache temperature.
+#
+# Familles de distracteurs (liste fermee) :
+#   famille a : tache vapeur, la conception a deplacer (l'eau disparait, n'existe plus)
+#   famille b : tache vapeur, un element de la famille de la buee (buee, brouillard, nuage, fumee), un seul par item
+#   famille c : tache vapeur, la vapeur d'eau, proposee quand l'enonce nomme la buee ou le brouillard
+#   famille d : tache temperature, le changement que la temperature de l'enonce empeche (l'eau gele au soleil, le glacon fond sous 0 degre)
+#   famille e : tache temperature, rien ne change (propose parce qu'un item du paquet l'a pour bonne reponse)
+#   famille f : tache temperature, la conception a deplacer ou l'etat contraire (disparait, seulement de l'eau liquide, de la glace et de l'eau)
+#
+# Source unique pour les faits qui se discutent (QMT-CE1-2) : l'instruction ARBITRAGE-PREALABLE-s57-
+# instruction-questionner-le-monde-et-emc-ce1.md, 3.5 (ETE-CE1-1, ETE-CE1-2), ecrite hors de ce paquet
+# et de son test, et cm1-sciences-etats-matiere pour CYC-1. Les faits sont : la buee, le nuage et le
+# brouillard sont de toutes petites gouttes d'eau liquide ; la vapeur d'eau ne se voit pas ; l'eau
+# devient vapeur sans bouillir (le linge seche) ; l'eau gele quand il fait tres froid et la glace fond
+# quand on la chauffe, 0 degre en etant le seuil. Le redacteur n'a consulte aucune autre source :
+# nadia-prof confronte chaque fait a la sienne (QC9).
+#
+# CYC-1 : aucun item ne contredit cm1-sciences-etats-matiere (le glacon qui devient une flaque, l'eau
+# liquide qui gele au congelateur, l'eau qui s'en va devient un gaz, la vapeur d'eau, la buee comme
+# gouttes d'eau) ni cp-qlm-etats-eau (fondre, geler, sans vapeur ni evaporation).
+# NRC-CE1-1 : aucun item ne demande solide ou liquide ni le nom du passage d'un etat a l'autre ; chaque
+# item de temperature met la glace et l'eau liquide ensemble ou cite 0 degre, pour que la temperature
+# decide (le test refuse les formes du CP ; le sujet reste a la lecture de nadia-prof).
+# QMT-CE1-1 : aucun des quinze mots exclus n'est ecrit. TRV-CE1-1, -5, -6, LON-CE1-1, -2, -5 : niveau
+# CE1, aucun texteSupport ni voix, un indice par item (une methode, douze mots au plus, indices tous
+# distincts), aucun prenom, rien qui suppose un foyer. TYP-1 (ADR-0067) : l'espace qui precede "?" est
+# insecable. FER-2 : plus d'items que de dix manches (plancher de onze, DEC-0120 A.258).
+items:
+  # QMT-CE1-2 : instruction 3.5 (ETE-CE1-2) ; cm1-sciences-etats-matiere (l'eau qui s'evapore devient un gaz, la vapeur d'eau)
+  # TRV-CE1-2 : a, b
+  - enonce: "Du linge mouillé sèche au soleil. Que devient l'eau du linge ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle disparaît", "elle devient de la buée"]
+    indice: "Compare le linge mouillé et le linge sec."
+  # QMT-CE1-2 : instruction 3.5 (ETE-CE1-1, ETE-CE1-2) : l'eau gele quand il fait tres froid, la glace fond quand on la chauffe, 0 degre
+  # TRV-CE1-2 : d, e
+  - enonce: "Un glaçon flotte dans un verre d'eau. On met le verre au congélateur. Que se passe-t-il ?"
+    bonneReponse: "l'eau gèle"
+    distracteurs: ["le glaçon fond", "rien ne change"]
+    indice: "Compare le congélateur et une journée d'été."
+  # QMT-CE1-2 : instruction 3.5 (ETE-CE1-2) : la buee, le brouillard sont de toutes petites gouttes d'eau liquide
+  # TRV-CE1-2 : c, b
+  - enonce: "Après la douche, le miroir se couvre de buée. De quoi est faite la buée ?"
+    bonneReponse: "de l'eau liquide"
+    distracteurs: ["de la vapeur d'eau", "du brouillard"]
+    indice: "Compare un miroir sec et un miroir couvert de buée."
+  # QMT-CE1-2 : instruction 3.5 (ETE-CE1-2) ; cm1-sciences-etats-matiere (l'eau qui s'evapore devient un gaz, la vapeur d'eau)
+  # TRV-CE1-2 : a, b
+  - enonce: "Une flaque est dehors. Le soleil brille toute la journée. Que devient l'eau de la flaque ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle n'existe plus", "elle devient du brouillard"]
+    indice: "Compare la flaque du matin et celle du soir."
+  # QMT-CE1-2 : instruction 3.5 (ETE-CE1-1, ETE-CE1-2) : l'eau gele quand il fait tres froid, la glace fond quand on la chauffe, 0 degre
+  # TRV-CE1-2 : d, e
+  - enonce: "La mare est gelée en surface. Le soleil la réchauffe au-dessus de 0 degré. Que se passe-t-il ?"
+    bonneReponse: "la glace fond"
+    distracteurs: ["l'eau gèle", "rien ne change"]
+    indice: "Compare une mare en hiver et une mare en été."
+  # QMT-CE1-2 : instruction 3.5 (ETE-CE1-2) ; cm1-sciences-etats-matiere (l'eau qui s'evapore devient un gaz, la vapeur d'eau)
+  # TRV-CE1-2 : a, b
+  - enonce: "Après la pluie, le sol de la cour est mouillé. Le lendemain, il est sec. Que devient l'eau ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle a disparu", "elle devient de la buée"]
+    indice: "Compare le sol juste après la pluie et le lendemain."
+  # QMT-CE1-2 : instruction 3.5 (ETE-CE1-1, ETE-CE1-2) : l'eau gele quand il fait tres froid, la glace fond quand on la chauffe, 0 degre
+  # TRV-CE1-2 : f, f
+  - enonce: "Un verre d'eau et de glace reste dehors. Il fait sous 0 degré toute la journée. Que trouve-t-on dedans ?"
+    bonneReponse: "seulement de la glace"
+    distracteurs: ["seulement de l'eau liquide", "de la glace et de l'eau"]
+    indice: "Compare un verre dehors en hiver et en été."
+  # QMT-CE1-2 : instruction 3.5 (ETE-CE1-2) ; cm1-sciences-etats-matiere (l'eau qui s'evapore devient un gaz, la vapeur d'eau)
+  # TRV-CE1-2 : a, b
+  - enonce: "L'eau bout dans une casserole. Le niveau de l'eau baisse. Que devient l'eau qui manque ?"
+    bonneReponse: "elle devient de la vapeur d'eau"
+    distracteurs: ["elle n'existe plus", "elle devient un nuage"]
+    indice: "Compare le niveau de l'eau avant et après."
+  # QMT-CE1-2 : instruction 3.5 (ETE-CE1-1, ETE-CE1-2) : l'eau gele quand il fait tres froid, la glace fond quand on la chauffe, 0 degre
+  # TRV-CE1-2 : f, f
+  - enonce: "Un verre contient de l'eau et de la glace. Il reste au soleil toute la journée. Que trouve-t-on dedans ?"
+    bonneReponse: "seulement de l'eau liquide"
+    distracteurs: ["seulement de la glace", "de la glace et de l'eau"]
+    indice: "Compare un verre au soleil et un verre au congélateur."
+  # QMT-CE1-2 : instruction 3.5 (ETE-CE1-2) : la buee, le brouillard sont de toutes petites gouttes d'eau liquide
+  # TRV-CE1-2 : c, b
+  - enonce: "Un brouillard blanc couvre la route ce matin. De quoi est fait le brouillard ?"
+    bonneReponse: "de l'eau liquide"
+    distracteurs: ["de la vapeur d'eau", "de la fumée"]
+    indice: "Compare une matinée de brouillard et une matinée claire."
+  # QMT-CE1-2 : instruction 3.5 (ETE-CE1-1, ETE-CE1-2) : l'eau gele quand il fait tres froid, la glace fond quand on la chauffe, 0 degre
+  # TRV-CE1-2 : d, f
+  - enonce: "Un glaçon est posé dehors. Toute la journée, il fait sous 0 degré. Que se passe-t-il ?"
+    bonneReponse: "rien ne change"
+    distracteurs: ["le glaçon fond", "le glaçon disparaît"]
+    indice: "Compare le glaçon dehors un jour d'été et un jour d'hiver."
+  # QMT-CE1-2 : instruction 3.5 (ETE-CE1-1, ETE-CE1-2) : l'eau gele quand il fait tres froid, la glace fond quand on la chauffe, 0 degre
+  # TRV-CE1-2 : d, f
+  - enonce: "Des glaçons flottent dans un pichet d'eau. Le pichet reste au soleil. Que se passe-t-il ?"
+    bonneReponse: "les glaçons fondent"
+    distracteurs: ["l'eau gèle", "les glaçons disparaissent"]
+    indice: "Compare le pichet au soleil et le pichet au congélateur."
