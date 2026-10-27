@@ -195,3 +195,15 @@ items:
     bonneReponse: "produits laitiers"
     distracteurs: ["féculents", "fruits et légumes"]
     indice: "Compare-le avec le fromage."
+  # sonde 31 mot de famille feculente
+  # FAL-CE1-1 aliment : puree
+  - enonce: "Dans quelle famille d'aliments range-t-on la purée féculente ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense au riz."
+  # sonde 32 mot de famille produit
+  # FAL-CE1-1 aliment : produit
+  - enonce: "Dans quelle famille d'aliments range-t-on ce produit ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits laitiers", "fruits et légumes"]
+    indice: "Pense au riz."

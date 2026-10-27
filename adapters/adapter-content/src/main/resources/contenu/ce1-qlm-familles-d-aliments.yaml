@@ -24,7 +24,7 @@ lignesDeReferentiel: ["QLM-CE1-04"]
 # menus (au moins deux aliments separes par des virgules) posent le menu, tout autre item est refuse.
 # Il relit les deux comptes ci-dessous contre les items.
 #   classement : quelle famille range un aliment, la bonne reponse est une des cinq familles (8 items)
-#   menu : quel menu a strictement le plus de familles parmi trois menus de la cantine (4 items)
+#   menu : quel menu a strictement le plus de familles parmi trois menus de la cantine ou du centre de loisirs (4 items)
 #
 # Classement : l'enonce nomme un aliment de la liste, qui ne porte aucun mot d'un nom de famille ;
 # les trois propositions sont trois familles ecrites sans article, jamais un aliment. Aucun enonce ne
@@ -43,23 +43,23 @@ lignesDeReferentiel: ["QLM-CE1-04"]
 # d'aliment d'un enonce ou d'un menu y figure ; aucun des treize exclus de FAL-CE1-1 (legumes secs,
 # mais, petits pois, avocat, olives, fruits a coque, beurre, creme, jus de fruits, pizza, sandwich,
 # gratin) n'y figure ni n'apparait dans un champ de l'item. Source unique, hors du depot : page
-# "Les groupes alimentaires" de l'Alimentarium (fondation, Vevey, Suisse), lue par le redacteur le
-# 2026-10-27. Elle nomme sept groupes, dont les cinq de la ligne : fruits et legumes ; cereales et
-# feculents (les produits cerealiers, les legumineuses et "les pommes de terre") ; produits laitiers
-# (le lait, les laitages, les fromages) ; viandes (les viandes, les poissons et les oeufs) ;
-# sucreries (le sucre, la confiture, le chocolat, les gateaux). Chaque ligne dit si l'aliment est
-# nomme par la page ou range par le redacteur dans un groupe qu'elle nomme : pates, riz, pain,
-# poulet, saumon, poisson, pomme, banane, poire, carottes, courgettes et yaourt ne sont pas nommes
-# un a un, le redacteur les range dans le groupe de leur categorie (nadia-prof les confronte, QC9).
+# "Les groupes alimentaires" de l'Alimentarium (fondation, Vevey, Suisse,
+# https://www.alimentarium.org/fr/node/5477), lue par le redacteur le 2026-10-27. Elle nomme sept
+# groupes : boissons, sucreries, produits laitiers, fruits et legumes, matieres grasses, cereales et
+# feculents, viandes. Les cinq familles de la ligne en sont cinq, lues par le redacteur : sucreries
+# pour produits sucres, viandes pour viande, poisson et oeufs. Des aliments de la liste, la page
+# nomme les pommes de terre, les poissons, les oeufs, le lait, les fromages, les gateaux, la confiture
+# et le chocolat ; chaque autre aliment est range par le redacteur dans le groupe de sa categorie, et
+# sa ligne le dit (nadia-prof les confronte, QC9).
 #   aliment pomme de terre : feculents ; source : Alimentarium, Les groupes alimentaires, groupe des cereales et feculents (les pommes de terre, nommees)
-#   aliment pates : feculents ; source : Alimentarium, Les groupes alimentaires, groupe des cereales et feculents (produits cerealiers, range par le redacteur)
-#   aliment riz : feculents ; source : Alimentarium, Les groupes alimentaires, groupe des cereales et feculents (produits cerealiers, range par le redacteur)
-#   aliment pain : feculents ; source : Alimentarium, Les groupes alimentaires, groupe des cereales et feculents (produits cerealiers, range par le redacteur)
-#   aliment yaourt : produits laitiers ; source : Alimentarium, Les groupes alimentaires, groupe des produits laitiers (les laitages, range par le redacteur)
+#   aliment pates : feculents ; source : Alimentarium, Les groupes alimentaires, groupe des cereales et feculents (range par le redacteur)
+#   aliment riz : feculents ; source : Alimentarium, Les groupes alimentaires, groupe des cereales et feculents (range par le redacteur)
+#   aliment pain : feculents ; source : Alimentarium, Les groupes alimentaires, groupe des cereales et feculents (range par le redacteur)
+#   aliment yaourt : produits laitiers ; source : Alimentarium, Les groupes alimentaires, groupe des produits laitiers (range par le redacteur)
 #   aliment fromage : produits laitiers ; source : Alimentarium, Les groupes alimentaires, groupe des produits laitiers (les fromages, nommes)
 #   aliment lait : produits laitiers ; source : Alimentarium, Les groupes alimentaires, groupe des produits laitiers (le lait, nomme)
-#   aliment poulet : viande, poisson et oeufs ; source : Alimentarium, Les groupes alimentaires, groupe des viandes (les viandes, range par le redacteur)
-#   aliment saumon : viande, poisson et oeufs ; source : Alimentarium, Les groupes alimentaires, groupe des viandes (les poissons, range par le redacteur)
+#   aliment poulet : viande, poisson et oeufs ; source : Alimentarium, Les groupes alimentaires, groupe des viandes (range par le redacteur)
+#   aliment saumon : viande, poisson et oeufs ; source : Alimentarium, Les groupes alimentaires, groupe des viandes (range par le redacteur)
 #   aliment poisson : viande, poisson et oeufs ; source : Alimentarium, Les groupes alimentaires, groupe des viandes (les poissons, nommes)
 #   aliment oeufs : viande, poisson et oeufs ; source : Alimentarium, Les groupes alimentaires, groupe des viandes (les oeufs, nommes)
 #   aliment pomme : fruits et legumes ; source : Alimentarium, Les groupes alimentaires, groupe des fruits et legumes (range par le redacteur)
@@ -132,7 +132,7 @@ items:
   # TRV-CE1-2 : b, b
   - enonce: "Ce jeudi, la cantine propose trois menus. Lequel est le plus varié ?"
     bonneReponse: "pain, poulet, œufs, poire"
-    distracteurs: ["lait, yaourt, fromage, banane", "riz, pâtes, saumon, poisson"]
+    distracteurs: ["lait, yaourt, fromage, banane", "riz, pâtes, saumon, œufs"]
     indice: "Range chaque aliment dans sa famille, puis compare."
   # FAL-CE1-1 aliment : poulet
   # TRV-CE1-2 : a, a
@@ -148,7 +148,7 @@ items:
     indice: "Pense au yaourt."
   # TRV-CE1-2 : b, b
   - enonce: "Sacha regarde trois menus à la cantine. Lequel est le plus varié ?"
-    bonneReponse: "riz, fromage, confiture"
+    bonneReponse: "poulet, pâtes, yaourt"
     distracteurs: ["pâtes, pain, chocolat", "lait, poulet, œufs"]
     indice: "Pour chaque menu, compte les familles différentes."
   # FAL-CE1-1 aliment : saumon
