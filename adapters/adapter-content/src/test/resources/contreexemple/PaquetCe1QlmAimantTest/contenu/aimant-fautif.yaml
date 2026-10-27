@@ -281,3 +281,23 @@ items:
     bonneReponse: "clou, trombone, aiguille"
     distracteurs: ["clou, fil de cuivre, gomme", "trombone, épingle, papier d'aluminium"]
     indice: "Vérifie un groupe à la fois, objet par objet."
+  # sonde 54 g12, le premier jet de l'item 5 : les deux groupes distracteurs portent le papier d'aluminium
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "fil de fer, trombone, aiguille"
+    distracteurs: ["trombone, épingle, papier d'aluminium", "aiguille, clou, papier d'aluminium"]
+    indice: "Imagine l'aimant près de chaque objet du groupe."
+  # sonde 55 g12, le premier jet de l'item 6 : au negatif, la bonne reponse est le papier d'aluminium
+  - enonce: "Ces trois objets sont en métal. Lequel l'aimant n'attire-t-il pas ?"
+    bonneReponse: "le papier d'aluminium"
+    distracteurs: ["le clou", "le trombone"]
+    indice: "Teste chaque objet avec l'aimant, en pensée, un par un."
+  # sonde 56 g12, le premier jet de l'item 12 : les deux groupes distracteurs portent le papier d'aluminium
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "aiguille, agrafe, épingle"
+    distracteurs: ["aiguille, fil de fer, papier d'aluminium", "agrafe, trombone, papier d'aluminium"]
+    indice: "Essaie chaque objet avec l'aimant, groupe par groupe."
+  # sonde 57 g12, passe : le premier jet de l'item 2, un seul groupe distracteur porte le papier d'aluminium
+  - enonce: "Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"
+    bonneReponse: "fil de fer, clou, agrafe"
+    distracteurs: ["fil de fer, épingle, papier d'aluminium", "clou, épingle, fil de cuivre"]
+    indice: "Vérifie un groupe à la fois, objet par objet."
