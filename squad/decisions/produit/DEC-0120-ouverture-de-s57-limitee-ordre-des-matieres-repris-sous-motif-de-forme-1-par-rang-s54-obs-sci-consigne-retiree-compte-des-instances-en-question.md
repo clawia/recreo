@@ -4366,3 +4366,57 @@ Annotation datee. **Chiffres avant / apres, en toutes lettres : projection d'A.2
 | `theo-archi`, `yanis-qa` | rien |
 
 **Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; la remesure est une premiere inscription. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne pose aucun seuil ni objectif chiffre, ne releve aucun plafond, ne change ni l'engage ni la marge, n'amende ni `planning.md`, ni `backlog.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue.
+
+## Amendement du 2026-10-27, cinquante-cinquieme (`camille-po`, palier 5 : une formulation rouverte a la premiere lecture de `-10` et de `-12` est comprise dans le 1,0 du lot ; secondes lectures comptees a ce stade)
+
+Annotation datee. **Chiffres avant / apres, en toutes lettres : plafond de `PAR-8` du palier 9 22,20 avant, 22,20 apres (inchange) ; engage 13,50 avant, 13,50 apres (inchange) ; marge de l'instance neuve 1,5 avant, 1,5 apres (inchangee) ; projection d'A.273 22,20 avant, 22,20 apres (inchangee). Cas haut mesure : 19,20 dans `planning.md` (amendement du 2026-10-27 08:19, trois secondes lectures), 19,70 apres le comptage ci-dessous (quatre).** **Statut de `DEC-0120` : `Acceptee`, inchange.** **Aucun passage n'est corrige** : A.272 (regle, point 2) classe un arbitrage de formulation *apres* une seconde lecture ; il ne dit rien d'une reouverture *a la premiere lecture*, et A.277 comble ce silence sans reecrire A.272. Arbre : base `round-two` a `a516d40b`, branche `s57-p5-camille-277`. Sources lues au disque : `DEC-0120` A.268, A.270, A.272, A.273, A.275, A.276 ; `planning.md` (amendements du 2026-10-26 16:09 et 16:25, du 2026-10-27 08:19) ; `lecture-nadia-premier-jet-ce1-qlm-paysages.md` (sections 5, 7, 8) ; `lecture-nadia-premier-jet-ce1-qlm-generations.md` (sections 4, 7, 8) ; `lecture-nadia-premier-jet-ce1-qlm-aimant.md` (sections 6, 7) ; `relecture-nadia-corrections-ce1-qlm-familles-d-aliments.md` (section 6). Les chiffres sont des calculs, marques **[calcul]**. Aucune mesure n'a ete lancee.
+
+### A.277 La reouverture d'une formulation a la premiere lecture est dans le 1,0 du lot ; quatre secondes lectures comptees, cas haut 19,70
+
+**La question.** `nadia-prof`, en lisant le premier jet de `-10`, rouvre deux phrases de ses regles (`R10-2` ; `R10-4`, tache B) ; en lisant celui de `-12`, une (`R12-2`, B). A.272 (regle, point 2) classe un arbitrage de formulation **apres** la seconde lecture, lot par lot, avec les conditions C1 a C3 d'A.268. Ici la reouverture a lieu **a la premiere lecture, avant toute correction**. Son cout est-il dans le 1,0 du lot, comme les corrections d'items ?
+
+**Decision de produit.** **Oui : dans le 1,0 du lot, 0,00 de plus, hors ligne hors marge.** C'est le geste que le bareme nomme deja : *"lecture avant `verify` et correction qui la suit comprises"* (A.268 point 3 ; A.272, table de `-03`, ligne *"lecture du premier jet et correction qui la suit"*). La phrase rouverte est ecrite dans le fichier de lecture du premier jet (section 7 de chacun), par le meme geste que les verdicts d'items ; elle n'est pas un geste separe. A.276 avait classe dans le 1,0 l'arbitrage avant premier jet au motif qu'il remplace la correction qu'on aurait faite apres ; le motif vaut ici a plus forte raison : pour `-10`, la phrase de `R10-2` est la cause des corrections `L1` et `L2` (items 3 et 6) et `L5` (en-tete), que `nadia-prof` prescrit deja dans ses corrections. **Ce que ce classement ne change pas** : une seconde lecture des lignes corrigees reste 0,50 hors marge (A.272 point 1), pour `-10` comme pour `-12`. Leur cout au bareme est 1,5, comme `nadia-prof` l'ecrit (`-10`, section 8 ; `-12`, section 8).
+
+**Conditions qui rendraient ce classement faux** (reprises des mots de `nadia-prof` et des textes ; aucun seuil neuf) :
+
+| # (repere local) | Condition | Si elle est fausse |
+|---|---|---|
+| a | La phrase rouverte est ecrite **dans le fichier de lecture du premier jet**, avant toute correction de `marc-dev`. | Un arbitrage ecrit **apres** la seconde lecture est reclasse par moi, lot par lot, C1 a C3 refaites (A.272 point 2). Un arbitrage ecrit dans un fichier a part entre les deux, qu'aucun texte ne nomme, est une lacune au sens d'A.275 : je ne le classe pas d'avance. |
+| b | La reouverture **ne change aucun verdict d'item** hors des items que le fichier de lecture prescrit deja de corriger. `-10` : items 3, 6, 7, 9 (la phrase de `R10-2` touche 3 et 6) ; `-12` : items 6, 9, 12, et `nadia-prof` ecrit qu'*"aucun item actuel n'en est touche"* (section 7). | Un item *juste* rouvert fait lire plus que les lignes prescrites : la relecture n'est plus une seconde lecture des lignes corrigees, c'est une troisieme lecture (0,50 de plus, hors marge, A.272 point 3), que je classe quand elle existe. |
+| c | `marc-dev` applique les corrections telles qu'ecrites et `nadia-prof` ne rejette ni ne reformule aucune. | Seconde correction suivie d'une relecture : troisieme lecture, 2,0 pour le lot (A.272, section *Le fichier de relecture*, fait (3)). |
+| d | `nadia-prof` n'ecrit pas dans sa relecture qu'elle a relu le paquet entier, et ne contredit pas ce classement par ecrit. | Troisieme lecture dans le premier cas ; son texte l'emporte dans le second (A.268, A.272). |
+
+Je ne dis rien de la qualite des trois phrases (`nadia-prof` arbitre) ni de la forme de leur garde (`theo-archi`). Je ne pose aucun seuil pour `-10` ni pour `-12`.
+
+**Secondes lectures comptees a ce stade** [calcul, a partir des fichiers au disque].
+
+| Lot | Etat | Seconde lecture | Cout |
+|---|---|---|---|
+| `-01` | corrigee et relue | comptee, 0,50 | 1,5 |
+| `-02` | corrigee et relue | comptee, 0,50 | 1,5 |
+| `-03` | corrigee et relue | comptee, 0,50 | 1,5 |
+| `-04` | corrigee et relue (`relecture-nadia-corrections-ce1-qlm-familles-d-aliments.md`, `5a9ded0f`) | comptee, 0,50 : `nadia-prof` ecrit qu'elle ne relit aucun item hors des items 8 et 11, ne pose aucune correction et n'ouvre aucun tour, soit A.272 point 1 ; la lecture de la page de la source n'est pas une relecture du paquet (ses mots, section 6) | 1,5 |
+| `-06` | premier jet lu, 4 items a corriger | **non faite** (prescrite) | 1,0 en cours |
+| `-10` | premier jet lu, 4 items a corriger | **non faite** (prescrite) | 1,0 en cours |
+| `-12` | premier jet lu, 3 items a corriger | **non faite** (prescrite) | 1,0 en cours |
+| `-05`, `-08` | lecture du premier jet en cours | aucune | 1,0 en cours |
+
+**Quatre secondes lectures comptees** (`-01`, `-02`, `-03`, `-04`) ; trois prescrites et non faites ; deux lots sans lecture rendue. `planning.md` (08:19) en inscrit trois : **la seconde lecture de `-04` n'y est pas encore**.
+
+**Cas haut recalcule.** Methode d'A.270 point 3, reprise par A.272 et A.273 point 1 (a) : chaque seconde lecture s'ajoute en entier au cas haut mesure de 17,70 (A.267) ; je ne retranche pas ce que le lot compte deja dans les 0,42. A.276 n'y ajoute aucun arbitrage (0,00).
+
+- 17,70 plus 4 fois 0,50 = **19,70** [calcul]. Ecart a 22,20 : **2,50** [calcul : 22,20 moins 19,70], soit cinq secondes lectures a 0,50 encore possibles [calcul : 2,50 divise par 0,50], le nombre exact des cinq lots restants (`-05`, `-06`, `-08`, `-10`, `-12`).
+- Ligne hors marge de l'instance neuve : 2,00 [calcul : 4 fois 0,50], marge de 1,5 entiere, trois rejeux.
+- Depassement de l'engage au registre, borne a **6,20** [calcul : 19,70 moins 13,50 ; 5,70 apres `-02`].
+- **Le total ne depasse pas 22,20, et ne le depasse pas non plus au cas le plus haut de la projection** : 19,70 plus 5 fois 0,50 = **22,20** [calcul], soit **0,00 de depassement, 0,00 de reserve** ; c'est la projection d'A.273, inchangee. Le total depasserait 22,20, chaque fois de **0,50** [calcul], par une troisieme lecture d'un lot (A.272 regle point 3, conditions b, c, d ci-dessus) ou par la seconde lecture de l'horloge `MAT-CE1-11` si elle compte hors marge (`Q-273-1` (ii), 22,70, ouverte). Je ne compte ni l'une ni l'autre : aucune n'existe a ce jour. Je ne releve aucun plafond ; la regle de depassement au registre est celle d'A.273 point 1 (b).
+
+### Routage
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | inscrire par amendement date, **sans modifier ce que j'ecris ici** : la seconde lecture de `-04` (0,50, ligne hors marge a 2,00, cas haut 19,70, depassement de l'engage borne a 6,20) ; noter la condition a a la lecture des relectures de `-06`, `-10`, `-12`, et me router toute troisieme lecture ; `planning.md` n'est pas modifie par cet amendement |
+| `nadia-prof` | rien de neuf ; elle peut contredire par ecrit le classement ou une condition (son texte l'emporte) |
+| `marc-dev` | rien de neuf : appliquer ses corrections telles qu'ecrites (condition c) |
+| `theo-archi`, `yanis-qa` | rien |
+
+**Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; la question est une premiere inscription ; `Q-273-1` (ii), Q3 d'A.271 et la remesure d'A.276 restent inchangees. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne juge aucune formulation, ne pose aucun seuil de lot, ne releve aucun plafond, ne change ni l'engage ni la marge, ne reecrit pas A.272, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue (a a d sont des reperes locaux). Les reports dans `docs/backlog/backlog.md` (trois points de `nadia-prof`, lectures de `-10` et `-12`) sont dans la meme livraison, annotation du 2026-10-27, onzieme.
