@@ -1,0 +1,159 @@
+schema: 1
+id: ce1-qlm-familles-d-aliments
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Le vivant, la matière et les objets"
+  competence: "Classer des aliments courants dans leur famille (fruits et légumes, féculents, produits laitiers, viande, poisson et œufs, produits sucrés) et reconnaître un repas varié."
+lignesDeReferentiel: ["QLM-CE1-04"]
+#
+# S57-BR-QLM-CE1-04 (s57, palier 5, lot des neuf lots de questionner le monde CE1). PREMIER JET,
+# ecrit par marc-dev, commite seul avant la lecture de nadia-prof : rien n'est joue, aucun Done
+# n'est prononce, le paquet n'est pas au catalogue (QC3). Competence : QLM-CE1-04
+# (squad/programme/questionner-le-monde/competences-ce1.md), libelle recopie a l'identique.
+# Conditions : FAL-CE1-1, FAL-CE1-2 et BIA-4 (ARBITRAGE-PREALABLE-s57-instruction-questionner-le-
+# monde-et-emc-ce1.md, 3.4), critere 11 de la story arbitre par nadia-prof (squad/sprints/s57-
+# version-cp-ce1-cm1-trois-instances/arbitrage-nadia-premiers-jets-ce1-qlm-04-05.md, section 5.1,
+# corrige par arbitrage-nadia-contradictions-ce1-qlm-04-05-et-02.md et par arbitrage-nadia-dernier-
+# lot-ce1-qlm-04-a-12.md, section 6.1), conditions transverses de la meme instruction (section 2).
+#
+# Cinq familles, pas six : viande, poisson et oeufs est une seule famille (arbitrage du 2026-10-26,
+# 1.5). Deux taches (FER-3). Le test les recompte sur les propositions de chaque item, jamais sur une
+# declaration : trois familles pour une bonne reponse et deux distracteurs pose le classement, trois
+# menus (au moins deux aliments separes par des virgules) posent le menu, tout autre item est refuse.
+# Il relit les deux comptes ci-dessous contre les items.
+#   classement : quelle famille range un aliment, la bonne reponse est une des cinq familles (8 items)
+#   menu : quel menu a strictement le plus de familles parmi trois menus de la cantine (4 items)
+#
+# Classement : l'enonce nomme un aliment de la liste, qui ne porte aucun mot d'un nom de famille ;
+# les trois propositions sont trois familles ecrites sans article, jamais un aliment. Aucun enonce ne
+# met ensemble produits laitiers et produits sucres dans les propositions, et feculents est dans les
+# trois propositions de chaque item : aucune proposition ne se detache des deux autres par sa forme
+# (une seule famille d'un mot, une seule en "produits ...", une seule en liste ou en "et"). La pomme
+# de terre est rangee avec les feculents (item 1), avec fruits et legumes en distracteur : c'est le
+# piege de la ligne. L'indice donne d'autres aliments de la liste, ou une comparaison, jamais
+# l'aliment de l'enonce ni un mot de la famille attendue.
+# Menu : l'enonce dit a qui sont les trois menus et demande le plus varie ; l'indice donne la methode
+# (compter les familles). Les trois menus d'un item ont le meme nombre d'aliments, tous differents,
+# aucun n'est fait seulement de produits sucres, chaque famille du menu attendu est dans au moins un
+# des deux autres, aucune famille n'est dans les deux autres sans etre dans le menu attendu.
+#
+# Liste des aliments : fermee, un par ligne avec sa famille et sa source (QMT-CE1-2). Tout nom
+# d'aliment d'un enonce ou d'un menu y figure ; aucun des treize exclus de FAL-CE1-1 (legumes secs,
+# mais, petits pois, avocat, olives, fruits a coque, beurre, creme, jus de fruits, pizza, sandwich,
+# gratin) n'y figure ni n'apparait dans un champ de l'item. Source unique, hors du depot : page
+# "Les groupes alimentaires" de l'Alimentarium (fondation, Vevey, Suisse), lue par le redacteur le
+# 2026-10-27. Elle nomme sept groupes, dont les cinq de la ligne : fruits et legumes ; cereales et
+# feculents (les produits cerealiers, les legumineuses et "les pommes de terre") ; produits laitiers
+# (le lait, les laitages, les fromages) ; viandes (les viandes, les poissons et les oeufs) ;
+# sucreries (le sucre, la confiture, le chocolat, les gateaux). Chaque ligne dit si l'aliment est
+# nomme par la page ou range par le redacteur dans un groupe qu'elle nomme : pates, riz, pain,
+# poulet, saumon, poisson, pomme, banane, poire, carottes, courgettes et yaourt ne sont pas nommes
+# un a un, le redacteur les range dans le groupe de leur categorie (nadia-prof les confronte, QC9).
+#   aliment pomme de terre : feculents ; source : Alimentarium, Les groupes alimentaires, groupe des cereales et feculents (les pommes de terre, nommees)
+#   aliment pates : feculents ; source : Alimentarium, Les groupes alimentaires, groupe des cereales et feculents (produits cerealiers, range par le redacteur)
+#   aliment riz : feculents ; source : Alimentarium, Les groupes alimentaires, groupe des cereales et feculents (produits cerealiers, range par le redacteur)
+#   aliment pain : feculents ; source : Alimentarium, Les groupes alimentaires, groupe des cereales et feculents (produits cerealiers, range par le redacteur)
+#   aliment yaourt : produits laitiers ; source : Alimentarium, Les groupes alimentaires, groupe des produits laitiers (les laitages, range par le redacteur)
+#   aliment fromage : produits laitiers ; source : Alimentarium, Les groupes alimentaires, groupe des produits laitiers (les fromages, nommes)
+#   aliment lait : produits laitiers ; source : Alimentarium, Les groupes alimentaires, groupe des produits laitiers (le lait, nomme)
+#   aliment poulet : viande, poisson et oeufs ; source : Alimentarium, Les groupes alimentaires, groupe des viandes (les viandes, range par le redacteur)
+#   aliment saumon : viande, poisson et oeufs ; source : Alimentarium, Les groupes alimentaires, groupe des viandes (les poissons, range par le redacteur)
+#   aliment poisson : viande, poisson et oeufs ; source : Alimentarium, Les groupes alimentaires, groupe des viandes (les poissons, nommes)
+#   aliment oeufs : viande, poisson et oeufs ; source : Alimentarium, Les groupes alimentaires, groupe des viandes (les oeufs, nommes)
+#   aliment pomme : fruits et legumes ; source : Alimentarium, Les groupes alimentaires, groupe des fruits et legumes (range par le redacteur)
+#   aliment banane : fruits et legumes ; source : Alimentarium, Les groupes alimentaires, groupe des fruits et legumes (range par le redacteur)
+#   aliment poire : fruits et legumes ; source : Alimentarium, Les groupes alimentaires, groupe des fruits et legumes (range par le redacteur)
+#   aliment carottes : fruits et legumes ; source : Alimentarium, Les groupes alimentaires, groupe des fruits et legumes (range par le redacteur)
+#   aliment courgettes : fruits et legumes ; source : Alimentarium, Les groupes alimentaires, groupe des fruits et legumes (range par le redacteur)
+#   aliment gateau : produits sucres ; source : Alimentarium, Les groupes alimentaires, groupe des sucreries (les gateaux, nommes)
+#   aliment confiture : produits sucres ; source : Alimentarium, Les groupes alimentaires, groupe des sucreries (la confiture, nommee)
+#   aliment chocolat : produits sucres ; source : Alimentarium, Les groupes alimentaires, groupe des sucreries (le chocolat, nomme)
+#
+# Familles de distracteurs (liste fermee) :
+#   famille a : tache classement, les deux autres familles de la triplette, feculents toujours presente
+#   famille b : tache menu, un menu de meme taille qui a moins de familles que le menu attendu
+#
+# CYC-1 : aucun item ne contredit cm1-sciences-corps (le lait et le fromage pour le calcium, les
+# fruits, les legumes et les cereales pour les fibres, des aliments varies) ; cp-qlm-hygiene dit
+# "manger des aliments varies" sans jamais nommer une famille, cp-qlm-matiere classe des objets.
+# NRC-CE1-1 : aucun enonce ni jeu de trois propositions n'est celui d'un item de CP (garde
+# transverse) ; le sujet reste a la lecture de nadia-prof.
+# BIA-4, FAL-CE1-2 : aucun item ne demande a l'enfant ce qu'il mange, aucun menu n'est qualifie de
+# mauvais, aucun menu ne suppose un foyer (aucun "a la maison", aucun "chez lui").
+# QMT-CE1-1 : aucun des quinze mots exclus n'est ecrit ; feculents et produits laitiers sont admis,
+# l'indice de plusieurs items les explique par des aliments, jamais par une definition.
+# TRV-CE1-1, -5, -6, LON-CE1-1, -2, -5 : niveau CE1, aucun texteSupport ni voix, un indice par item
+# (une methode, douze mots au plus, indices tous distincts), un seul prenom, aucun lieu de vie.
+# TYP-1 (ADR-0067) : l'espace qui precede "?" est insecable. FER-2 : plus d'items que de dix
+# manches (plancher de onze, DEC-0120 A.258).
+items:
+  # FAL-CE1-1 aliment : pomme de terre
+  # TRV-CE1-2 : a, a
+  - enonce: "Dans quelle famille d'aliments se range la pomme de terre ?"
+    bonneReponse: "féculents"
+    distracteurs: ["fruits et légumes", "produits laitiers"]
+    indice: "Pense aux pâtes et au riz."
+  # TRV-CE1-2 : b, b
+  - enonce: "La cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, poisson, carottes, yaourt"
+    distracteurs: ["pâtes, pain, poulet, pomme", "fromage, banane, chocolat, confiture"]
+    indice: "Compte les familles de chaque menu."
+  # FAL-CE1-1 aliment : yaourt
+  # TRV-CE1-2 : a, a
+  - enonce: "Dans quelle famille d'aliments se range le yaourt ?"
+    bonneReponse: "produits laitiers"
+    distracteurs: ["féculents", "fruits et légumes"]
+    indice: "Compare-le avec le fromage."
+  # FAL-CE1-1 aliment : carottes
+  # TRV-CE1-2 : a, a
+  - enonce: "Dans quelle famille d'aliments se rangent les carottes ?"
+    bonneReponse: "fruits et légumes"
+    distracteurs: ["féculents", "produits laitiers"]
+    indice: "Pense aux courgettes et à la poire."
+  # TRV-CE1-2 : b, b
+  - enonce: "Le centre de loisirs propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "riz, pain, fromage, pomme"
+    distracteurs: ["pâtes, courgettes, banane, poire", "yaourt, lait, poulet, saumon"]
+    indice: "Dans chaque menu, cherche les familles différentes."
+  # FAL-CE1-1 aliment : gateau
+  # TRV-CE1-2 : a, a
+  - enonce: "Dans quelle famille d'aliments se range le gâteau ?"
+    bonneReponse: "produits sucrés"
+    distracteurs: ["féculents", "fruits et légumes"]
+    indice: "Pense à la confiture et au chocolat."
+  # FAL-CE1-1 aliment : riz
+  # TRV-CE1-2 : a, a
+  - enonce: "À quelle famille d'aliments appartient le riz ?"
+    bonneReponse: "féculents"
+    distracteurs: ["produits sucrés", "fruits et légumes"]
+    indice: "Compare-le avec les pâtes et le pain."
+  # TRV-CE1-2 : b, b
+  - enonce: "Ce jeudi, la cantine propose trois menus. Lequel est le plus varié ?"
+    bonneReponse: "pain, poulet, œufs, poire"
+    distracteurs: ["lait, yaourt, fromage, banane", "riz, pâtes, saumon, poisson"]
+    indice: "Range chaque aliment dans sa famille, puis compare."
+  # FAL-CE1-1 aliment : poulet
+  # TRV-CE1-2 : a, a
+  - enonce: "Dans quelle famille d'aliments se range le poulet ?"
+    bonneReponse: "viande, poisson et œufs"
+    distracteurs: ["féculents", "produits laitiers"]
+    indice: "Compare-le avec le saumon."
+  # FAL-CE1-1 aliment : fromage
+  # TRV-CE1-2 : a, a
+  - enonce: "À quelle famille d'aliments appartient le fromage ?"
+    bonneReponse: "produits laitiers"
+    distracteurs: ["féculents", "viande, poisson et œufs"]
+    indice: "Pense au yaourt."
+  # TRV-CE1-2 : b, b
+  - enonce: "Sacha regarde trois menus à la cantine. Lequel est le plus varié ?"
+    bonneReponse: "riz, fromage, confiture"
+    distracteurs: ["pâtes, pain, chocolat", "lait, poulet, œufs"]
+    indice: "Pour chaque menu, compte les familles différentes."
+  # FAL-CE1-1 aliment : saumon
+  # TRV-CE1-2 : a, a
+  - enonce: "À quelle famille d'aliments appartient le saumon ?"
+    bonneReponse: "viande, poisson et œufs"
+    distracteurs: ["féculents", "produits sucrés"]
+    indice: "Pense au poulet."
