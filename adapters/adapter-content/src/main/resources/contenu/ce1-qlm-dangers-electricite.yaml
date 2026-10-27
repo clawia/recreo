@@ -1,0 +1,142 @@
+schema: 1
+id: ce1-qlm-dangers-electricite
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Le vivant, la matière et les objets"
+  competence: "Connaître les dangers de l'électricité de la maison (prise, appareil près de l'eau, fil abîmé) et les gestes qui les évitent."
+lignesDeReferentiel: ["QLM-CE1-08"]
+#
+# S57-BR-QLM-CE1-08 (s57, palier 5, lot des neuf lots de questionner le monde CE1). PREMIER JET,
+# ecrit par marc-dev, commite seul avant la lecture de nadia-prof : rien n'est joue, aucun Done
+# n'est prononce, le paquet n'est pas au catalogue (QC3). Competence : QLM-CE1-08
+# (squad/programme/questionner-le-monde/competences-ce1.md), libelle recopie a l'identique.
+# Conditions : DEL-CE1-1 et DEL-CE1-2 (squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-
+# questionner-le-monde-et-emc-ce1.md, 3.8), conditions transverses de la meme instruction
+# (section 2), regles de contenu du critere 9 de la story S57-BR-QLM-CE1-08 et arbitrages de
+# nadia-prof des 2026-10-26 et 2026-10-27 (squad/sprints/s57-version-cp-ce1-cm1-trois-instances/).
+#
+# Deux taches (FER-3), declarees item par item (DEL-CE1-1 tache : ...) :
+#   danger : quelle situation de la maison est dangereuse, parmi trois (4 items)
+#   geste : ce que le personnage doit faire devant une situation donnee (8 items)
+# Chaque item declare aussi sa situation (DEL-CE1-1 situation : prise, eau ou fil). Une situation
+# est le danger de la bonne reponse en tache danger, et celle de l'enonce en tache geste.
+#
+# Les trois situations de DEL-CE1-1 (FER-1), chacune servie dans les deux taches :
+#   prise : une prise abimee ou cassee
+#   eau : un appareil branche pres de l'eau (ou les mains mouillees devant un appareil)
+#   fil : un fil electrique abime
+# Les trois gestes de DEL-CE1-1 sont chacun la bonne reponse d'au moins un item de geste : ne pas
+# toucher (fil, prise, appareil), ne pas approcher de l'eau, ne pas brancher avec les mains
+# mouillees (attendre d'avoir les mains seches, se secher d'abord les mains). Les formes ecrites
+# des gestes sont les neuf formes admises par nadia-prof, six mots au plus (LON-CE1-5). Aucune
+# alerte a un adulte n'est une proposition (NRC-CE1-1) : l'adulte n'apparait que dans un refus de
+# signaler, en distracteur. Aucune pile, aucun mot d'accident (DEL-CE1-2).
+#
+# Source (QMT-CE1-2) : les trois situations et les trois gestes sont ceux de DEL-CE1-1, qui les
+# affirme (squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-
+# ce1.md, 3.8). Les etats sans danger des distracteurs de la tache danger (un appareil debranche,
+# un appareil branche loin de l'eau, une prise bien fixee, un fil range) sont la negation d'une
+# situation de DEL-CE1-1 : ils n'ont pas d'autre source, et le commentaire le dit. Aucun autre
+# fait discutable n'est ecrit.
+#
+# Familles de distracteurs (TRV-CE1-2, la declaration "TRV-CE1-2 : x, y" nomme celle de chaque
+# distracteur, dans l'ordre du fichier) :
+#   famille a : un geste de reparation ou de manipulation qu'un enfant pourrait faire
+#   famille b : un geste d'imprudence qu'un enfant pourrait faire
+#   famille c : un refus de signaler le danger, sans mot de jugement (ne rien dire, ne pas en parler)
+#   famille d : une chose electrique de la maison dans un etat sans danger (tache danger)
+#
+# CYC-1 : aucun paquet de CP ne sert l'electricite de la maison (cp-eps-regles-de-securite n'a
+# aucun item electrique). NRC-CE1-1 : aucun enonce ni jeu de trois propositions n'est celui d'un
+# item de CP (garde transverse). QMT-CE1-1 : aucun des quinze mots exclus n'est ecrit.
+# TRV-CE1-1, -5, -6, LON-CE1-1, -2, -5 : niveau CE1, aucun texteSupport ni voix, un indice par item
+# (une methode, douze mots au plus, indices tous distincts), prenoms varies, aucune maison de
+# l'enfant, aucun objet qui lui appartienne. TYP-1 (ADR-0067) : l'espace qui precede "?" est
+# insecable. FER-2 : plus d'items que de dix manches (plancher de onze, DEC-0120 A.258).
+items:
+  # DEL-CE1-1 tache : danger
+  # DEL-CE1-1 situation : prise
+  # TRV-CE1-2 : d, d
+  - enonce: "Dans la maison de Jade, quelle situation est dangereuse ?"
+    bonneReponse: "une prise cassée"
+    distracteurs: ["une prise bien fixée", "une lampe allumée"]
+    indice: "Pense à ce qu'on vérifie avant d'utiliser quelque chose."
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  # TRV-CE1-2 : a, c
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde le plastique qui entoure le fil."
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : prise
+  # TRV-CE1-2 : a, c
+  - enonce: "La prise du salon est cassée. Que doit faire Sami ?"
+    bonneReponse: "ne pas toucher la prise"
+    distracteurs: ["la réparer avec un tournevis", "ne pas déranger un adulte"]
+    indice: "Regarde l'endroit où il manque un morceau."
+  # DEL-CE1-1 tache : danger
+  # DEL-CE1-1 situation : fil
+  # TRV-CE1-2 : d, d
+  - enonce: "Laquelle de ces situations est dangereuse dans la cuisine de Mehdi ?"
+    bonneReponse: "un fil électrique abîmé"
+    distracteurs: ["un fil électrique bien rangé", "une lampe éteinte"]
+    indice: "Regarde de près chaque chose, une par une."
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  # TRV-CE1-2 : a, c
+  - enonce: "Le grille-pain est branché au bord de l'évier. Que doit faire Léa ?"
+    bonneReponse: "ne pas toucher l'appareil"
+    distracteurs: ["le débrancher en tirant le fil", "ne rien dire à un adulte"]
+    indice: "Regarde ce qui se trouve à côté du grille-pain."
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  # TRV-CE1-2 : b, a
+  - enonce: "Zoé a les mains mouillées et veut brancher la lampe. Que doit-elle faire ?"
+    bonneReponse: "attendre d'avoir les mains sèches"
+    distracteurs: ["brancher la lampe tout de suite", "changer l'ampoule de la lampe"]
+    indice: "Regarde bien l'état de ses mains."
+  # DEL-CE1-1 tache : danger
+  # DEL-CE1-1 situation : eau
+  # TRV-CE1-2 : d, d
+  - enonce: "Dans la cuisine de Maya, laquelle de ces situations est dangereuse ?"
+    bonneReponse: "une lampe branchée près de l'évier"
+    distracteurs: ["une lampe branchée loin de l'évier", "une lampe débranchée loin de l'évier"]
+    indice: "Compare les trois lampes, une par une."
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  # TRV-CE1-2 : b, c
+  - enonce: "Un fil électrique est abîmé derrière le meuble. Que doit faire Inès ?"
+    bonneReponse: "laisser le fil sans le toucher"
+    distracteurs: ["toucher le fil pour voir", "ne rien dire à un adulte"]
+    indice: "Imagine ce qu'il y a à l'intérieur du fil."
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  # TRV-CE1-2 : b, c
+  - enonce: "Hugo veut poser la radio au bord de l'évier. Un adulte lave la vaisselle. Que doit-il faire ?"
+    bonneReponse: "ne pas l'approcher de l'eau"
+    distracteurs: ["la poser près du robinet ouvert", "ne pas déranger un adulte"]
+    indice: "Pense à ce qui coule près de la radio."
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : prise
+  # TRV-CE1-2 : a, c
+  - enonce: "Noé joue près d'une prise abîmée dans le couloir. Que doit-il faire ?"
+    bonneReponse: "ne rien mettre dans la prise"
+    distracteurs: ["la nettoyer avec un chiffon", "ne pas en parler"]
+    indice: "Pense à ce qui se trouve à l'intérieur de la prise."
+  # DEL-CE1-1 tache : danger
+  # DEL-CE1-1 situation : eau
+  # TRV-CE1-2 : d, d
+  - enonce: "Chez Adam, quelle situation est dangereuse ?"
+    bonneReponse: "un sèche-cheveux branché près du lavabo"
+    distracteurs: ["un sèche-cheveux débranché près du lavabo", "un sèche-cheveux débranché loin du lavabo"]
+    indice: "Imagine ce qui se trouve autour de chaque appareil."
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  # TRV-CE1-2 : b, a
+  - enonce: "Nina a les mains mouillées et veut utiliser le mixeur. Que doit-elle faire ?"
+    bonneReponse: "se sécher d'abord les mains"
+    distracteurs: ["l'utiliser sans plus attendre", "tirer sur le fil du mixeur"]
+    indice: "Pense à ce que Nina vient de faire."
