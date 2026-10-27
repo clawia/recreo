@@ -24178,7 +24178,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
         (compter les familles de chaque menu), l'enonce ne la donne pas. Aucun menu n'est dans l'enonce, aucun `texteSupport`.
      3. **Les trois menus d'un item de B** ont le meme nombre d'aliments ; aucun n'est fait seulement de produits sucres ; chaque
         famille du menu attendu est aussi dans au moins un des deux autres ; aucune famille n'est dans les deux autres et absente du
-        menu attendu.
+        menu attendu. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-04-05-et-02.md`, section 6.2 ; regle 3 : le refus *aucun n'est fait seulement de produits sucres* vaut aussi quand le menu attendu contient des produits sucres ; texte d'origine conserve]**
      4. **Le menu d'un personnage** ne suppose ni foyer ni logement (`TRV-CE1-6`) : jamais *"a la maison"*, *"chez lui"*.
      5. **Liste des aliments** : fermee, dans le commentaire du paquet, chaque aliment avec sa famille et sa source (`QMT-CE1-2`) ;
         tout aliment d'un enonce, d'un menu ou d'un indice y figure ; aucun des treize exclus de `FAL-CE1-1` n'y figure ni n'apparait
@@ -24186,7 +24186,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
         paquet, jamais un fichier de `nadia-prof` qui demande une source. Si le developpeur n'en trouve pas, il l'ecrit en toutes
         lettres.
      6. **L'aliment de l'enonce de A** ne porte aucun mot d'un nom de famille (*poisson*, *oeuf*, *viande*, *lait*, *fruit*,
-        *legume*, *sucre*).
+        *legume*, *sucre*). **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-04-05-et-02.md`, section 6.2 ; regle 6 : la liste des mots est fermee, *la pomme* et *la carotte* sont admises en enonce de A ; mon 1.6 les rangeait a tort parmi les aliments qui portent un mot d'une famille ; texte d'origine conserve]**
      7. **L'indice de A** ne contient ni le nom de la famille attendue, ni un mot de la meme famille de mots (*lait* pour *produits
         laitiers*, *sucre* pour *produits sucres*), ni une definition de la famille ; il donne d'autres aliments de la liste en
         exemple, ou une comparaison (`QMT-CE1-1`, `TRV-CE1-5`).
@@ -24195,6 +24195,15 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
         moins 5 items, B au moins 3. Le commentaire dit les comptes, le test les relit. Aujourd'hui 0 et 0, **rouge**.
 
      **Voisins, ajoute** : `cm1-sciences-corps` (`CYC-1`).
+
+     **Corrections de `nadia-prof` du 2026-10-27, reportees telles quelles** [ajoute le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-04-05-et-02.md`, section 6.2 ; texte copie par script depuis ce fichier, non retape (consignes et textes) ; il remplace ou complete les regles nommees du critere 11 ci-dessus, dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu] :
+
+
+     **Regle 6, phrase ajoutee.** La liste des mots est fermee. Un aliment dont le nom ne porte aucun de ces mots (*la pomme*, *la
+     carotte*) est admis en enonce de A, meme s'il est un fruit ou un legume.
+
+     **Regle 3, inchangee** : le refus *"aucun n'est fait seulement de produits sucres"* vaut aussi quand le menu attendu contient des
+     produits sucres.
 - **Voisins que `nadia-prof` relit** : `cp-qlm-hygiene`, `cp-qlm-matiere` **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-04-05.md` ; critere 11, dernier point, et 1.4 (`N04-4`) : `cm1-sciences-corps` est ajoute ; `cm1-sciences-nutrition` ne l'est pas, ses items ne portent que sur des organes ; texte d'origine conserve]**. **Ordre** : apres `-01`, avec `-05` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### `S57-BR-QLM-CE1-05` - L'eau sous ses trois etats, la fonte et le gel relies a la temperature (`QLM-CE1-05`) - NON ENGAGEE, sans palier
@@ -24208,7 +24217,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
   3. **`ETE-CE1-1`, ce que le CP a deja servi.** Entree : un item *"La glace est-elle solide ou liquide ?"* ; un item *"Comment s'appelle le passage de la glace a l'eau ?"* (sondes proposees). Sortie : refuses. Aujourd'hui : **rouge**.
   4. **`ETE-CE1-2`, la buee n'est pas de la vapeur.** Entree : pour chacun de *la buee*, *le nuage*, *le brouillard*, *la fumee blanche d'une casserole*, un enonce, un indice ou une bonne reponse qui le presente comme de la vapeur d'eau (par exemple l'indice *"La buee sur la vitre, c'est de la vapeur d'eau."*). Sortie : refuse, quatre sondes. Aujourd'hui : **rouge**. **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-04-05.md` ; critere 12, derniere clause : *la buee* en distracteur a cote de la bonne reponse *la vapeur d'eau*, et l'item qui demande de quoi est faite la buee (bonne reponse *de l'eau liquide*), passent ; texte d'origine conserve]**
   5. **`ETE-CE1-2`, bouillir.** Entree : un item ou un indice *"L'eau ne devient de la vapeur que quand elle bout."* (sonde proposee). Sortie : refuse. Aujourd'hui : **rouge**.
-  6. **`ETE-CE1-2`, le seul nombre admis.** Entree : un item qui cite *100 degres*. Sortie : refuse ; un item qui cite *0 degre* n'est pas refuse (clause, verte aujourd'hui). Aujourd'hui : **rouge** pour la premiere sonde. **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-04-05.md` ; critere 12, `Critere 6, precise` : toute temperature chiffree autre que 0 degre est refusee, en chiffres ou en lettres, et 0 degre ne figure que dans un item de fonte ou de gel ; j'abandonne "un item qui cite 0 degre n'est pas refuse" sans condition, et "100 degres" comme seule sonde ; texte d'origine conserve]**
+  6. **`ETE-CE1-2`, le seul nombre admis.** Entree : un item qui cite *100 degres*. Sortie : refuse ; un item qui cite *0 degre* n'est pas refuse (clause, verte aujourd'hui). Aujourd'hui : **rouge** pour la premiere sonde. **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-04-05.md` ; critere 12, `Critere 6, precise` : toute temperature chiffree autre que 0 degre est refusee, en chiffres ou en lettres, et 0 degre ne figure que dans un item de fonte ou de gel ; j'abandonne "un item qui cite 0 degre n'est pas refuse" sans condition, et "100 degres" comme seule sonde ; texte d'origine conserve]** **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-04-05-et-02.md`, section 6.1, critere 6 ; 0 degre ne figure que dans un item de la tache B ; texte d'origine conserve]**
   7. **Les mots du CM1** (*evaporation*, *condensation*, *fusion*, *solidification*, *vaporisation*) : cinq des quinze sondes de `QC6`.
   8. **`QC1` a `QC10`** [corrige le 2026-10-26 (UTC+01:00), annotation du 2026-10-26, septieme ; texte d'origine conserve] : la ligne de criteres ci-dessus dit `QC1` a `QC9`. `QC5` vaut entre 11 et 20 items (`DEC-0120` A.258 et A.271 ; `FER-2` reste a dix, condition de `nadia-prof`). `QC10` s'applique : l'entree du paquet dans `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` est dans le commit du premier jet, avec les totaux exacts de son motif.
   9. **`ETE-CE1-1`, *"au moins un tiers"*, de 11 a 20 items** [corrige le 2026-10-26 (UTC+01:00), annotation du 2026-10-26, septieme ; texte d'origine conserve] : la story ne donne que 10 et 20. Le nombre d'items dont la bonne reponse est la vapeur d'eau est le plus petit entier dont le triple atteint le nombre d'items du paquet **[calcul]** : 4 pour 11 et 12 items, 5 pour 13 a 15, 6 pour 16 a 18, 7 pour 19 et 20. Le critere 1 (4 sur 10, 7 sur 20) est inchange.
@@ -24222,24 +24231,43 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      2. **Tache B, temperature** : l'enonce donne une temperature ou un changement de temperature ; la bonne reponse est la fonte ou
         le gel (nom ou verbe : *la glace fond*, *l'eau gele*), ou l'etat que la temperature produit (*la glace*, *l'eau liquide*).
         Ce que l'enonce decrit contient de la glace et de l'eau liquide ensemble (un glacon dans un verre d'eau, une mare gelee en
-        surface), ou cite 0 degre. Aucune proposition n'est un changement que l'etat decrit rend impossible.
+        surface), ou cite 0 degre. Aucune proposition n'est un changement que l'etat decrit rend impossible. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-04-05-et-02.md`, section 6.1, regle 2 ; *rien ne change* est une bonne reponse admise de B, dans un item de glace seule sous 0 degre ; texte d'origine conserve]**
      3. **Distracteurs de A** : la conception a deplacer (*l'eau a disparu*) ou un element de la famille de la buee, **un seul par
         item** ; jamais un element que la situation de l'enonce produit (la fumee blanche pour une casserole qui bout, la buee pour un
         miroir apres la douche) ; jamais un etat que la temperature de la situation rend impossible (la glace au soleil).
-     4. **Rien ne change** n'est propose en B que si au moins un item du paquet l'a pour bonne reponse.
+     4. **Rien ne change** n'est propose en B que si au moins un item du paquet l'a pour bonne reponse. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-04-05-et-02.md`, section 6.1, regle 4 ; inchangee, precisee : ecrit a l'identique, aucune autre formulation n'en tient lieu ; texte d'origine conserve]**
      5. **Indices** : en A, aucun indice ne dit que la vapeur d'eau ne se voit pas ou est invisible ; en B, aucun indice n'enonce le
         sens de la temperature (*le froid fait geler*, *la chaleur fait fondre*). Un indice compare deux situations.
      6. **Les items dont la bonne reponse est la vapeur d'eau** ne sont pas tous des situations ou l'eau bout (`ETE-CE1-2`).
      7. **Source** (`QMT-CE1-2`) : l'instruction de `nadia-prof`, 3.5 (`ETE-CE1-2`), et `cm1-sciences-etats-matiere` pour `CYC-1`.
      8. **Recompte sur les items** : bonne reponse *la vapeur d'eau*, A ; bonne reponse *de l'eau liquide* avec un des quatre elements
         de la buee nomme dans l'enonce, A ; bonne reponse de la fonte, du gel, de la glace ou de l'eau liquide, B ; tout autre item
-        est refuse. La moins servie porte au moins 3 items. Aujourd'hui 0 et 0, **rouge**.
+        est refuse. La moins servie porte au moins 3 items. Aujourd'hui 0 et 0, **rouge**. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-04-05-et-02.md`, section 6.1, regle 8 ; regle 8 remplacee, *rien ne change* ajoute aux bonnes reponses de B ; texte d'origine conserve]**
 
      **Critere 6, precise** : toute temperature chiffree autre que 0 degre est refusee, en chiffres ou en lettres ; 0 degre ne
-     figure que dans un item de fonte ou de gel ; un nombre qui n'est pas une temperature n'est pas vise.
+     figure que dans un item de fonte ou de gel ; un nombre qui n'est pas une temperature n'est pas vise. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-04-05-et-02.md`, section 6.1, critere 6 ; 0 degre ne figure que dans un item de la tache B ; texte d'origine conserve]**
 
      **Critere 4, clause ajoutee** : *la buee* en distracteur a cote de la bonne reponse *la vapeur d'eau*, et l'item qui demande de
      quoi est faite la buee (bonne reponse *de l'eau liquide*), **passent**.
+
+     **Corrections de `nadia-prof` du 2026-10-27, reportees telles quelles** [ajoute le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-04-05-et-02.md`, section 6.1 ; texte copie par script depuis ce fichier, non retape (consignes et textes) ; il remplace ou complete les regles nommees du critere 12 ci-dessus, dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu] :
+
+
+     **Regle 2, phrase ajoutee a la fin.** La bonne reponse de B peut aussi etre *rien ne change*, ecrit a l'identique, dans un item
+     dont l'enonce decrit de la glace seule, sans eau liquide, et dit qu'il fait sous 0 degre pendant toute la duree decrite (*"Un
+     glacon est pose dehors. Toute la journee, il fait sous 0 degre. Que se passe-t-il ?"* ; *rien ne change* ; *le glacon fond*, *le
+     glacon disparait*). Aucun item n'a *rien ne change* pour bonne reponse si l'enonce decrit de l'eau liquide : laissee a l'air, elle
+     s'evapore (`ETE-CE1-2`).
+
+     **Regle 4, inchangee, precisee.** *Rien ne change* n'est propose en distracteur de B que si au moins un item du paquet a *rien ne
+     change* pour bonne reponse, ecrit a l'identique ; aucune autre formulation (*il reste de la glace*) n'en tient lieu.
+
+     **Regle 8, remplacee.** Bonne reponse *la vapeur d'eau*, A ; bonne reponse *de l'eau liquide* avec un des quatre elements de la
+     buee nomme dans l'enonce, A ; bonne reponse de la fonte, du gel, de la glace, de l'eau liquide, ou *rien ne change*, B ; tout autre
+     item est refuse. La moins servie porte au moins 3 items.
+
+     **Critere 6, phrase remplacee.** *"0 degre ne figure que dans un item de fonte ou de gel"* devient : 0 degre ne figure que dans un
+     item de la tache B.
 - **Voisins que `nadia-prof` relit** : `cp-qlm-etats-eau`, `cm1-sciences-etats-matiere`. **Ordre** : apres `-01`, avec `-04` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### `S57-BR-QLM-CE1-06` - Reconnaitre ce qu'un aimant attire et n'attire pas (`QLM-CE1-06`) - NON ENGAGEE, sans palier
@@ -24277,7 +24305,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      1. **Le quart d'`AIM-CE1-2`** (criteres 1 et 7, remplace le mot *cible*). Un item compte pour le quart quand tous les objets de
         ses propositions sont en metal, que l'enonce le dit dans une phrase sans le verbe *attirer* (*"Ces trois objets sont en
         métal."*, *"Tous ces objets sont en métal."*), et qu'au moins un objet est en aluminium ou en cuivre. Un objet en aluminium
-        ou en cuivre present seulement a cote d'un objet sans metal ne fait pas compter l'item.
+        ou en cuivre present seulement a cote d'un objet sans metal ne fait pas compter l'item. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 1.2 ; regle 1 completee : la premisse n'est ecrite que si tous les objets sont en metal ; texte d'origine conserve]**
      2. **Deux taches (`FER-3`, critere 8).**
         - **A, l'objet** : *"Lequel de ces objets l'aimant attire-t-il ?"* ou *"... n'attire-t-il pas ?"* ; trois objets de la liste,
           avec leur article ; une seule proposition attiree (ou non attiree, selon la question). Les deux polarites sont la meme
@@ -24286,12 +24314,12 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
         - **B, le groupe** : *"Tous ces objets sont en métal. Dans quel groupe l'aimant attire-t-il les trois objets ?"* ; trois
           propositions, chacune trois objets de la liste en metal, sans article, separes par des virgules, six mots au plus
           (`LON-CE1-5`) ; la bonne reponse est trois objets en fer ; chaque groupe distracteur porte exactement deux objets en fer et
-          un objet en aluminium ou en cuivre. Aucun item de B ne demande le groupe *"qui n'est pas attire"*.
+          un objet en aluminium ou en cuivre. Aucun item de B ne demande le groupe *"qui n'est pas attire"*. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 1.6 ; regle 2, tache B completee : un groupe porte au plus six mots ; texte d'origine conserve]**
         - Le commentaire nomme les deux taches et leur compte ; la moins servie porte au moins 3 items, recomptes sur les items.
      3. **Les distracteurs ne se reconnaissent pas sans la competence.** Dans un item de A, les deux distracteurs n'ont pas en
         commun un nom de matiere, une forme, une taille ou un usage que la bonne reponse n'a pas (refuse : *le trombone* parmi *le
         papier d'aluminium* et *la barquette en aluminium*). Dans un item de B, le bon groupe ne se reconnait pas a ce qu'il partage
-        le plus d'objets avec les deux autres.
+        le plus d'objets avec les deux autres. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 1.1 ; regle 3 remplacee : *un nom de matiere* devient *un mot de leur nom*, polarite *n'attire pas* traitee ; texte d'origine conserve]**
      4. **Indices (`TRV-CE1-5`).** Un indice ne nomme pas la matiere (*fer*, *aluminium*, *cuivre*) d'un objet de la bonne reponse,
         et ne dit pas de chercher l'objet ou le groupe *different des autres* (*intrus*). Il donne une methode que l'enfant applique a
         chaque objet (*"Imagine l'aimant qu'on approche de chaque objet, un par un."*).
@@ -24299,7 +24327,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
         couteau), casseroles et bijoux (bague, collier, bracelet) ne sont nommes nulle part : ni dans l'enonce, ni dans l'indice, ni
         dans l'explication, ni dans aucune proposition. Aucun objet en or : les objets en or qu'un enfant connait sont des bijoux ou
         des pieces, et un objet dore n'est pas en or. Le mot *acier* n'est pas employe dans ce que l'enfant lit : un acier
-        inoxydable peut ne pas etre attire, et l'enfant ne les distingue pas ; il lit *fer*.
+        inoxydable peut ne pas etre attire, et l'enfant ne les distingue pas ; il lit *fer*. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 1.5 ; regle 5 completee : liste de mots etendue, *doré* non employe ; texte d'origine conserve]**
      6. **Liste fermee des objets, ecrite dans le commentaire avec sa classe et sa source** (`QMT-CE1-2`). Aucun autre objet sans
         l'accord ecrit de `nadia-prof` avant le premier jet.
         - **Attires, en fer** : le clou, le trombone, l'épingle, l'aiguille, l'agrafe, le fil de fer.
@@ -24313,6 +24341,39 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
 
      **Lu par `nadia-prof`, aucun test** (`QC9`) : l'exactitude de chaque objet contre sa classe ; la forme, la taille et l'usage de
      la regle 3 ; le partage d'objets des groupes de B ; qu'un indice soit une methode ; les paraphrases d'`AIM-CE1-2` (1.7).
+
+     **Corrections de `nadia-prof` du 2026-10-27, reportees telles quelles** [ajoute le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, sections 1.1, 1.2, 1.5 et 1.6 ; texte copie par script depuis ce fichier, non retape (consignes et textes) ; il remplace ou complete les regles nommees du critere 10 ci-dessus, dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu] :
+
+     Consigne de `nadia-prof`, copiee : Remplacer la regle 3 par :
+
+     3. **Les distracteurs ne se reconnaissent pas sans la competence** [corrige le 2026-10-27, `nadia-prof`,
+        `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 1.1]. Dans un item de A, les deux distracteurs n'ont en
+        commun aucun mot de leur nom que la bonne reponse n'a pas (refuse : *le trombone* parmi *le papier d'aluminium* et
+        *la barquette en aluminium* ; *le clou* parmi *le papier d'aluminium* et *la feuille de papier*), ni une forme, une
+        taille ou un usage que la bonne reponse n'a pas (refuse : *la gomme* parmi *l'aiguille* et *l'épingle*, deux objets
+        pointus de couture). Ce que les deux distracteurs ont en commun parce que la question le demande n'est pas un trait
+        partage : au negatif (*"... n'attire-t-il pas ?"*), les deux distracteurs sont deux objets en fer, et c'est admis.
+        Dans un item de B, le bon groupe ne se reconnait pas a ce qu'il partage le plus d'objets avec les deux autres.
+
+     Consigne de `nadia-prof`, copiee : Ajouter a la fin de la regle 1 :
+
+     La premisse (*"Ces trois objets sont en métal."*, *"Tous ces objets sont en métal."*) n'est ecrite que si tous les
+     objets des propositions sont en metal : devant *la gomme* ou tout objet sans metal, elle est une erreur de contenu,
+     refusee [ajoute le 2026-10-27, `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 1.2]. Un
+     enonce hors des formes de la regle 2 est refuse jusqu'a l'accord ecrit de `nadia-prof`.
+
+     Consigne de `nadia-prof`, copiee : Ajouter a la fin de la regle 5 :
+
+     Les mots *pièce*, *monnaie*, *canette*, *clé*, *couvert*, *cuillère*, *fourchette*, *couteau*, *casserole*, *bijou*,
+     *bague*, *collier*, *bracelet* et *or* ne sont employes dans aucun sens, meme quand ils ne designent pas l'objet exclu
+     (*la pièce* d'une maison). *Doré* n'est employe nulle part [ajoute le 2026-10-27, `nadia-prof`,
+     `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 1.5].
+
+     Consigne de `nadia-prof`, copiee : Ajouter a la fin de la regle 2, tache B :
+
+     Un groupe porte au plus six mots (`LON-CE1-5`, compte de `PaquetLu.mots`) : *"fil de fer, fil de cuivre, clou"* (7)
+     est refuse, *"fil de fer, papier d'aluminium, clou"* (6) passe [ajoute le 2026-10-27, `nadia-prof`,
+     `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 1.6].
 - **Voisins que `nadia-prof` relit** : `cp-qlm-matiere`, `cm1-sciences-melanges`. **Ordre** : apres `-01`, avec `-08` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### `S57-BR-QLM-CE1-08` - Connaitre les dangers de l'electricite de la maison et les gestes qui les evitent (`QLM-CE1-08`) - NON ENGAGEE, sans palier
@@ -24321,14 +24382,14 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
 - **Competence programme visee** : questionner le monde, CE1, `QLM-CE1-08` (`squad/programme/questionner-le-monde/competences-ce1.md`) : *"Connaitre les dangers de l'electricite de la maison (prise, appareil pres de l'eau, fil abime) et les gestes qui les evitent."* Ligne `non couvert`, plafond `couvert-valide`. Paquet propose `ce1-qlm-dangers-electricite` ; mecanique : bloc commun.
 - **Conditions de `nadia-prof`, ses mots** (instruction 3.8) : `DEL-CE1-1` : *"La bonne reponse est ne pas toucher, ne pas approcher de l'eau, ne pas brancher avec les mains mouillees, ou prevenir un adulte. Jamais un geste de reparation ou de manipulation par l'enfant (reparer un fil, debrancher un appareil qui fume). Les trois situations de la parenthese en bonne reponse (`FER-1`). Aucune pile dans cette ligne : la pile de poche est sans danger electrique et sert `-07`, et la pile bouton a un autre danger, l'avaler, que cette ligne ne sert pas."* `DEL-CE1-2` : *"Aucun item ne decrit une electrocution, une brulure ou une mort, et aucun personnage nomme n'est blesse : comme `EMC-3`, l'item enseigne le geste sans mettre en scene l'accident."*
 - **Criteres d'acceptation** (`QC1` a `QC9` s'y ajoutent) :
-  1. **`FER-1`, les trois situations** : *une prise*, *un appareil pres de l'eau*, *un fil abime*, chacune dans un item dont c'est la situation et dont la bonne reponse est un geste admis. Aujourd'hui : **0 sur 3**. **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md` ; critere 9, regle 1 : le critere se lit en deux taches ; en A la situation est la bonne reponse, en B elle est dans l'enonce et la bonne reponse est un des quatre gestes, chaque situation servant dans les deux ; j'abandonne la lecture ou toute bonne reponse est un geste ; texte d'origine conserve]**
+  1. **`FER-1`, les trois situations** : *une prise*, *un appareil pres de l'eau*, *un fil abime*, chacune dans un item dont c'est la situation et dont la bonne reponse est un geste admis. Aujourd'hui : **0 sur 3**. **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md` ; critere 9, regle 1 : le critere se lit en deux taches ; en A la situation est la bonne reponse, en B elle est dans l'enonce et la bonne reponse est un des quatre gestes, chaque situation servant dans les deux ; j'abandonne la lecture ou toute bonne reponse est un geste ; texte d'origine conserve]** **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 2.1 ; la bonne reponse de B est une forme de la regle 2, non plus un des quatre gestes ; l'alerte a un adulte sort des propositions (`NRC-CE1-1`) ; texte d'origine conserve]**
   2. **`DEL-CE1-1`, jamais un geste de reparation.** Entree : un item dont la bonne reponse est *"reparer le fil"* ; un autre, *"debrancher l'appareil qui fume"* (les deux exemples de `nadia-prof`). Sortie : refuse. Aujourd'hui : **rouge**.
   3. **`DEL-CE1-1`, aucune pile.** Entree : un item dont l'enonce, l'indice ou une proposition porte *pile*. Sortie : refuse. Aujourd'hui : **rouge**. *pile* est un mot admis par `QMT-CE1-1` pour la ligne `-07`, pas pour celle-ci ; la forme qui evite de refuser un mot qui contient ces lettres est a `theo-archi`. **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md` ; critere 9, regle 6 : le mot *pile* n'est employe dans aucun sens, *pile ou face* compris ; ma phrase sur la forme qui evite de refuser un mot qui contient ces lettres reste a `theo-archi` ; texte d'origine conserve]**
   4. **`DEL-CE1-2`, aucune blessure.** Entree : un item qui decrit une electrocution, une brulure ou une mort ; un item ou un personnage nomme est blesse (par exemple *"Lina s'est electrocutee en touchant la prise."*, sonde proposee). Sortie : refuse si la forme le permet (`theo-archi`), sinon *"non garde : `DEL-CE1-2`"* et lu par `nadia-prof`. Aujourd'hui : **rouge**. **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md` ; critere 9, regle 5 : les familles *electrocution*, *brulure* et *mort* ne sont employees dans aucun champ, meme au preventif (reponse a `N08-4`) ; j'abandonne la lecture ou une mention preventive passerait ; texte d'origine conserve]**
   5. **`FER-3`** : au moins deux taches, la moins servie portant au moins 3 items (`QC5`) ; les taches sont celles que le developpeur nomme dans le commentaire. **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md` ; critere 9, regle 1 : les deux taches sont A, le danger, et B, le geste, arbitrees avant le premier jet ; j'abandonne "les taches sont celles que le developpeur nomme" ; texte d'origine conserve]**
   6. **`QC1` a `QC10`** [corrige le 2026-10-26 (UTC+01:00), annotation du 2026-10-26, septieme ; texte d'origine conserve] : la ligne de criteres ci-dessus dit `QC1` a `QC9`. `QC5` vaut entre 11 et 20 items (`DEC-0120` A.258 et A.271 ; `FER-2` reste a dix, condition de `nadia-prof`). `QC10` s'applique : l'entree du paquet dans `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` est dans le commit du premier jet, avec les totaux exacts de son motif.
   7. **`FER-3`, les taches *"que le developpeur nomme"*** [corrige le 2026-10-26 (UTC+01:00), annotation du 2026-10-26, septieme ; texte d'origine conserve] : le critere 5 laisse au developpeur le choix des deux taches. Sur `-02` ce choix a ete arbitre par `nadia-prof` avant le premier jet (`avis-nadia-seconde-tache-ce1-qlm-02.md`), et `DEL-CE1-1` ne nomme aucune tache. Le critere 5 n'est pas modifie ; `nadia-prof` dit si elle arbitre avant le premier jet ou lit les taches choisies a sa lecture (`N08-1`). Le recompte porte sur les items, pas sur le commentaire ; forme a `theo-archi` (`T08-1`). **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md` ; critere 9, regle 1 : `nadia-prof` arbitre avant le premier jet (`N08-1`) et le critere 5 est remplace ; texte d'origine conserve]**
-  8. **Longueur et formes** [corrige le 2026-10-26 (UTC+01:00), annotation du 2026-10-26, septieme ; texte d'origine conserve] : le geste que `DEL-CE1-1` ecrit, *"ne pas brancher avec les mains mouillees"*, compte 7 mots (`PaquetLu.mots`, segments separes par un blanc) ; `LON-CE1-5` borne une proposition a 6 mots (`N08-3`). Les criteres 1, 2, 3 et 4 n'ont pas de forme decidee ; le critere 3 (`pile`) et le critere 4 (`DEL-CE1-2`) sont deja routes a `theo-archi` par la story et restent ouverts (`T08-1` a `T08-4`). Une garde que `theo-archi` ne juge pas possible s'ecrit *"non garde : <identifiant>"* et est lue par `nadia-prof` ; les conditions transverses (`TRV-CE1-1`, `-2`, `-5`, `LON-CE1-1`, `-2`, `-5`, `QMT-CE1-1`, `NRC-CE1-1` partie textuelle) sont deja executees pour tout paquet du lot par `ChaquePaquetDeQuestionnerLeMondeDeCe1TientLesConditionsTransversesTest`, sans modification. **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md` ; critere 9, regle 2 : les gestes sont une liste fermee de quatre, a formes admises de six mots au plus, et les mains mouillees vont dans l'enonce ; *ne pas brancher avec les mains mouillees* (7 mots) n'est plus une proposition ; texte d'origine conserve]**
+  8. **Longueur et formes** [corrige le 2026-10-26 (UTC+01:00), annotation du 2026-10-26, septieme ; texte d'origine conserve] : le geste que `DEL-CE1-1` ecrit, *"ne pas brancher avec les mains mouillees"*, compte 7 mots (`PaquetLu.mots`, segments separes par un blanc) ; `LON-CE1-5` borne une proposition a 6 mots (`N08-3`). Les criteres 1, 2, 3 et 4 n'ont pas de forme decidee ; le critere 3 (`pile`) et le critere 4 (`DEL-CE1-2`) sont deja routes a `theo-archi` par la story et restent ouverts (`T08-1` a `T08-4`). Une garde que `theo-archi` ne juge pas possible s'ecrit *"non garde : <identifiant>"* et est lue par `nadia-prof` ; les conditions transverses (`TRV-CE1-1`, `-2`, `-5`, `LON-CE1-1`, `-2`, `-5`, `QMT-CE1-1`, `NRC-CE1-1` partie textuelle) sont deja executees pour tout paquet du lot par `ChaquePaquetDeQuestionnerLeMondeDeCe1TientLesConditionsTransversesTest`, sans modification. **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md` ; critere 9, regle 2 : les gestes sont une liste fermee de quatre, a formes admises de six mots au plus, et les mains mouillees vont dans l'enonce ; *ne pas brancher avec les mains mouillees* (7 mots) n'est plus une proposition ; texte d'origine conserve]** **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, sections 2.1 et 2.2 ; les gestes sont une liste fermee de formes, sans alerte a un adulte ; *garder l'appareil loin de l'eau* est retire, *ne pas toucher l'appareil* est admis ; texte d'origine conserve]**
   9. **Regles de contenu de `nadia-prof`, reportees telles quelles** [ajoute le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-06-08.md`, section 2.6 ; texte copie par script depuis ce fichier, non retape ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu] :
 
      **Regles de contenu de `nadia-prof` avant le premier jet** [arbitre le 2026-10-26,
@@ -24341,7 +24402,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
           cassee, un appareil branche pres de l'eau, ou un fil electrique abime ; les deux distracteurs sont des choses electriques de
           la maison dans un etat sans danger. Chaque situation est la bonne reponse d'au moins un item de A (`FER-1`).
         - **B, le geste** : l'enonce nomme un personnage et une des trois situations et demande ce qu'il doit faire ; la bonne
-          reponse est un des quatre gestes de `DEL-CE1-1` ; chaque situation est celle d'au moins un item de B (critere 1).
+          reponse est un des quatre gestes de `DEL-CE1-1` ; chaque situation est celle d'au moins un item de B (critere 1). **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 2.1 ; regle 1, B : *un des quatre gestes* devient *une forme de la regle 2* ; texte d'origine conserve]**
         - Chaque item declare sa tache et sa situation a cote de lui ; le commentaire nomme les deux taches et leur compte ; la moins
           servie porte au moins 3 items, recomptes sur les items.
      2. **Les quatre gestes, liste fermee ; formulation libre a trois conditions** : un seul geste, applique a l'objet de la
@@ -24351,19 +24412,19 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
         d'abord les mains"*, *"ne pas brancher la lampe"* (quand l'enonce dit les mains mouillees) ; *"prévenir un adulte"*,
         *"appeler un adulte"*, *"le dire à un adulte"*. Une autre forme se soumet a `nadia-prof` avant le premier jet. Les mains
         mouillees vont dans l'enonce ; *"ne pas brancher les mains mouillées"* et *"ne pas brancher"* sans mains mouillees dans
-        l'enonce sont refuses.
+        l'enonce sont refuses. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, sections 2.1 a 2.3 ; regle 2 remplacee : trois formes d'alerte retirees, une forme retiree, une admise ; texte d'origine conserve]**
      3. **Distracteurs (`TRV-CE1-2`).** Jamais deux des quatre gestes dans un meme item. Jamais une abstention en distracteur
         (*s'eloigner*, *attendre*, *continuer a jouer ailleurs*) : elle serait une seconde reponse. Les distracteurs de B sont des
         gestes de reparation, de manipulation ou d'imprudence qu'un enfant pourrait faire. La bonne reponse n'est jamais la seule des
         trois propositions a commencer par *ne pas*, *ne rien* ou *ne jamais*. En A, les deux distracteurs n'ont pas en commun un mot
-        ou un trait que la bonne reponse n'a pas.
+        ou un trait que la bonne reponse n'a pas. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 2.4 ; regle 3 remplacee : abstention definie, distracteur negatif nomme avec ses limites ; texte d'origine conserve]**
      4. **Indices (`TRV-CE1-5`).** L'indice de B ne nomme ni le geste ni son verbe (*toucher*, *approcher*, *brancher*, *sécher*,
         *prévenir*, *adulte*) ; il montre ou est le danger dans la situation. L'indice de A ne nomme pas l'etat de la bonne reponse
         (*abîmé*, *cassé*, *eau*).
      5. **`DEL-CE1-2`, les mots.** Les familles *électrocution* (*électrocuter*), *brûlure* (*brûler*) et *mort* (*mourir*, *tuer*)
         ne sont employees dans aucun champ, meme au preventif (*"pour ne pas se brûler"* est refuse). Le danger se dit en termes
         generaux (*"c'est dangereux"*, *"pour ne pas se faire mal"*, *"pour ne pas se blesser"*). Aucun personnage nomme n'est
-        blesse.
+        blesse. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 2.6 ; regle 5 completee : *blessé* et *se blesser* au present pour un personnage nomme ; texte d'origine conserve]**
      6. **`DEL-CE1-1`, aucune pile.** Le mot *pile* n'est employe dans aucun sens, *pile ou face* compris : rien dans cette ligne n'en
         a besoin.
      7. **`TRV-CE1-6`.** La situation est vecue par un personnage nomme, dans *une maison* ou *la cuisine*, jamais *chez toi*, *ta
@@ -24376,6 +24437,57 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      **Lu par `nadia-prof`, aucun test** (`QC9`) : qu'une situation de A soit vraiment dangereuse et ses distracteurs vraiment sans
      danger ; qu'un distracteur de B soit plausible et faux ; qu'un indice soit une methode ; le sens de `DEL-CE1-2` au-dela des mots
      de la regle 5 ; les traits partages de la regle 3 au-dela de la grammaire.
+
+     **Corrections de `nadia-prof` du 2026-10-27, reportees telles quelles** [ajoute le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, sections 2.1 a 2.6 ; texte copie par script depuis ce fichier, non retape (consignes et textes) ; il remplace ou complete les regles nommees du critere 9 ci-dessus, dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu] :
+
+     Consigne de `nadia-prof`, copiee : Dans la regle 1, tache B, remplacer *"la bonne reponse est un des quatre gestes de `DEL-CE1-1`"* par *"la bonne reponse
+     est une forme de la regle 2"*, et ajouter :
+
+     Un item des mains mouillees declare la situation `eau`. Un enonce porte une seule situation. Au moins un item de B de
+     situation `eau` ne parle pas de mains mouillees [ajoute le 2026-10-27, `nadia-prof`,
+     `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 2.3].
+
+     Consigne de `nadia-prof`, copiee : Remplacer la regle 2 par :
+
+     2. **Les gestes, liste fermee de formes** [corrige le 2026-10-27, `nadia-prof`,
+        `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, sections 2.1 a 2.3]. La bonne reponse de B est une de ces formes,
+        et aucune autre :
+        - situation `fil` : *"ne pas toucher le fil"*, *"laisser le fil sans le toucher"* ;
+        - situation `prise` : *"ne pas toucher la prise"*, *"ne rien mettre dans la prise"* ;
+        - situation `eau`, l'appareil est deja branche pres de l'eau : *"ne pas toucher l'appareil"* ;
+        - situation `eau`, le personnage veut poser ou utiliser un appareil pres de l'eau : *"ne pas l'approcher de l'eau"* ;
+        - situation `eau`, l'enonce dit que le personnage a les mains mouillees : *"attendre d'avoir les mains sèches"*,
+          *"se sécher d'abord les mains"*, et *"ne pas brancher la lampe"* quand l'enonce nomme la lampe.
+
+        Une forme qui nomme un objet nomme celui de l'enonce. Aucune forme ne demande a l'enfant d'agir sur l'objet
+        electrique ou sur l'installation (ni reparer, ni debrancher, ni brancher, ni deplacer, ni ouvrir) : c'est une
+        abstention ou un soin de ses propres mains. Les mains mouillees vont dans l'enonce ; *"ne pas brancher les mains
+        mouillées"* est refuse. *Attendre* seul, *s'éloigner*, *ne rien faire* ne sont pas des formes. Une autre forme se
+        soumet a `nadia-prof` avant le premier jet.
+
+        **Aucune alerte a un adulte n'est une proposition** (*"prévenir un adulte"*, *"appeler un adulte"*, *"le dire à un
+        adulte"* et toute autre forme), ni en bonne reponse ni en distracteur : `cp-emc-alerte` a cette bonne reponse a la
+        meme tache, et l'item servirait la ligne de CP (`NRC-CE1-1`). L'alerte niee en distracteur reste admise (regle 3).
+
+     Consigne de `nadia-prof`, copiee : Remplacer la regle 3 par :
+
+     3. **Distracteurs (`TRV-CE1-2`)** [corrige le 2026-10-27, `nadia-prof`,
+        `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 2.4]. Jamais deux formes de la regle 2 dans un meme item.
+        **Aucune abstention en distracteur** : une proposition qui laisse l'enfant hors du danger sans rien faire de risque
+        (*s'éloigner*, *attendre*, *ne rien toucher*, *ne pas s'approcher*, *continuer à jouer ailleurs*) serait une seconde
+        reponse. **Un distracteur negatif est admis quand ce qu'il refuse est une precaution** : il laisse le danger en place
+        ou le cache (*"ne rien dire à un adulte"*, *"ne pas déranger un adulte"*) ; il ne nie jamais la bonne reponse du
+        meme item ni une autre forme de la meme precaution. Les autres distracteurs de B sont des gestes de reparation, de
+        manipulation ou d'imprudence qu'un enfant pourrait faire. La bonne reponse n'est jamais la seule des trois
+        propositions a commencer par *ne pas*, *ne rien* ou *ne jamais*. En A, les deux distracteurs n'ont pas en commun un
+        mot ou un trait que la bonne reponse n'a pas.
+
+     Consigne de `nadia-prof`, copiee : Ajouter a la fin de la regle 5 :
+
+     *Blessé*, *blessée*, *blessés*, *blessées* ne sont employes pour personne, nomme ou non. Un personnage nomme ne *se
+     blesse* ni ne *se fait mal*, a aucun temps (*"Lina se blesse avec le fil."* est refuse). Le present generique (*"on se
+     blesse"*, *"on peut se faire mal"*) et l'infinitif (*"pour ne pas se blesser"*) passent [ajoute le 2026-10-27,
+     `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-06-08.md`, section 2.6].
 - **Voisin que `nadia-prof` relit** : `cp-eps-regles-de-securite` ; la frontiere avec `-07` (aucune pile). **Ordre** : apres `-01`, avec `-06` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### `S57-BR-QLM-CE1-10` - Identifier un paysage par ses elements (`QLM-CE1-10`) - NON ENGAGEE, sans palier
@@ -24407,7 +24519,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      **`R10-2` - tache A, identifier le paysage a partir de ses elements.** L'enonce nomme au moins deux elements de `R10-1`, dont au moins
      un element propre du paysage attendu, et **aucun element propre d'un autre paysage**. Les propositions sont trois des quatre paysages
      (*le littoral*, *la montagne*, *la campagne*, *la ville*). Quand l'enonce nomme un element partage, au moins un distracteur est un
-     paysage de cet element (*"On voit un sommet et une forêt. Quel est ce paysage ?"* : *la montagne* ; *la campagne*, *la ville*).
+     paysage de cet element (*"On voit un sommet et une forêt. Quel est ce paysage ?"* : *la montagne* ; *la campagne*, *la ville*). **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-10-12.md`, lecture de `G10-2` ; `R10-2` : *chaque* element partage nomme a un de ses paysages en distracteur ; texte d'origine conserve]**
 
      **`R10-3` - tache B, l'element qui n'appartient pas a un paysage nomme.** L'enonce nomme un seul paysage, sans autre element
      (*"Lequel ne voit-on pas à la montagne ?"*). La bonne reponse est un element propre d'un autre paysage, **dans un couple de cette table
@@ -24429,12 +24541,12 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      **`R10-4` - les indices.** Un indice est une methode (`TRV-CE1-5`) : il ne contient ni le paysage de la bonne reponse, ni un element
      propre de ce paysage (tache A), ni aucune des trois propositions (tache B). *Littoral* s'explique par des exemples (`QMT-CE1-1`)
      **seulement dans un item ou *le littoral* n'est pas la bonne reponse**, et ces exemples ne sont pas des propositions de l'item.
-     Exemple de methode : *"Cherche le mot qui ne va qu'avec un seul paysage."* (10 mots).
+     Exemple de methode : *"Cherche le mot qui ne va qu'avec un seul paysage."* (10 mots). **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-10-12.md`, `Q8-5` ; `R10-4` : derogation limitee a `QMT-CE1-1`, *littoral* s'explique dans les seuls items B *sur le littoral* ; texte d'origine conserve]**
 
      **`R10-5` - aucune hierarchie, ses mots elargis** (`PAY-CE1-2`, `N10-3`). Les quatre qualificatifs sont des exemples. Aucun enonce,
      indice ou proposition ne porte un jugement de valeur sur un paysage ou sur ceux qui y vivent (*beau*, *joli*, *laid*, *calme*,
      *tranquille*, *bruyant*, *dur*, *facile*, *pauvre*, *riche*, *triste*, *sale*, *dangereux*, *ennuyeux*, *mieux*, *meilleur*,
-     *pire*, et toute autre). Une taille n'en est pas un (*une grande ville*).
+     *pire*, et toute autre). Une taille n'en est pas un (*une grande ville*). **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-10-12.md`, `C4` ; `R10-5` : aucun adjectif sur un element ou un paysage ; texte d'origine conserve]**
 
      **`R10-6` - ni lieu reel, ni vecu suppose.** Aucun lieu reel n'est nomme (ni *les Alpes*, ni *la Bretagne*, ni une ville). Aucun item
      ne demande ou vit l'enfant (`EMC-6`), ni ou il est alle ou va en vacances, et aucun ne s'adresse a lui avec *tu*, *toi*, *ton*, *ta*,
@@ -24450,6 +24562,28 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      story, ni un texte qui demande une source.
 
      **Voisins que `nadia-prof` relit** : `cm1-histoire-geographie-nommer-en-geographie`, `cp-qlm-modes-de-vie` (ajoute, `N10-9`).
+
+     **Corrections de `nadia-prof` du 2026-10-27, reportees telles quelles** [ajoute le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-10-12.md`, section 1.1 ; texte copie par script depuis ce fichier, non retape (consignes et textes) ; il remplace ou complete les regles nommees du critere 9 ci-dessus, dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu] :
+
+
+     **`R10-2` [corrige le 2026-10-27 par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-10-12.md`, lecture de `G10-2` ; texte
+     d'origine : *"Quand l'enonce nomme un element partage, au moins un distracteur est un paysage de cet element"*].** Pour **chaque**
+     element partage que l'enonce nomme, au moins un distracteur est un paysage de cet element.
+
+     **`R10-4` [corrige le 2026-10-27 par `nadia-prof`, meme fichier, `Q8-5` ; texte d'origine : *"Un indice est une methode
+     (`TRV-CE1-5`) : il ne contient ni le paysage de la bonne reponse, ni un element propre de ce paysage (tache A), ni aucune des trois
+     propositions (tache B). Littoral s'explique par des exemples (`QMT-CE1-1`) seulement dans un item ou le littoral n'est pas la bonne
+     reponse, et ces exemples ne sont pas des propositions de l'item."*].** Un indice est une methode (`TRV-CE1-5`). En tache A, il ne
+     contient aucun des quatre paysages ni un element propre du paysage de la bonne reponse ; il n'explique pas *littoral*. En tache B, il
+     ne contient aucune des trois propositions. **Derogation a `QMT-CE1-1`, limitee** : *littoral* s'explique par des exemples dans les
+     items B *"Lequel ne voit-on pas sur le littoral ?"*, et dans eux seuls. Le paquet en porte au moins un. Dans chacun, l'indice nomme
+     *le littoral* et, apres *par exemple*, un ou deux elements propres du littoral qui ne sont pas des propositions de l'item
+     (*"Sur le littoral, il y a par exemple la mer."*, 10 mots, quand *la plage* est le distracteur). Jamais une definition (*"le bord de
+     la mer"*).
+
+     **`R10-5`, derniere phrase [corrige le 2026-10-27 par `nadia-prof`, meme fichier, `C4` ; texte d'origine : *"Une taille n'en est pas
+     un (une grande ville)."*].** Une taille n'est pas un jugement, mais elle n'est pas admise pour autant : **aucun adjectif** n'accompagne
+     un element ou un paysage dans un enonce ou une proposition (ni *un grand champ*, ni *une grande ville*, ni *un haut sommet*).
 - **Voisin que `nadia-prof` relit** : `cm1-histoire-geographie-nommer-en-geographie` **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-10-12.md` ; critere 9, dernier point, `N10-9` et `N10-4` : `cp-qlm-modes-de-vie` est ajoute ; `cm1-histoire-geographie-carte-et-planisphere` n'est pas ajoute (ecarte, aucun lieu reel nomme) ; texte d'origine conserve]**. **Ordre** : apres `-01`, avec `-12` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### `S57-BR-QLM-CE1-12` - Situer les generations d'une famille et les evenements d'une vie (`QLM-CE1-12`) - NON ENGAGEE, sans palier
@@ -24472,7 +24606,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      commentaire du paquet les ecrit. **Generations** : *enfants*, *parents*, *grands-parents*, *arrière-grands-parents*, toujours vues
      depuis le personnage nomme, qui est de la generation des enfants. **Evenements d'une vie** : *naissance*, *entrée à l'école*, *entrée
      au collège* (admise, pas demandee), *premier emploi*, *naissance de son enfant*. Aucun autre evenement sans `nadia-prof` : ni mariage,
-     ni deces, ni demenagement. Les deux naissances ne s'ecrivent jamais toutes deux *la naissance* dans un meme item.
+     ni deces, ni demenagement. Les deux naissances ne s'ecrivent jamais toutes deux *la naissance* dans un meme item. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-10-12.md`, `Q8-6`, `C6` ; `R12-1` : le college est dans chaque item A d'evenements, *la naissance de son enfant* seule ecriture ; texte d'origine conserve]**
 
      **`R12-2` - deux taches** (critere 7 ; reponse a `N12-1`). Les moities ne sont pas les taches.
      - **A, *voisin*** : la bonne reponse est une seule generation ou un seul evenement. L'enonce dit *juste avant*, *juste après* ou *de
@@ -24480,12 +24614,12 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
        (19 mots) : *celle des grands-parents*.
      - **B, *ordre*** : la bonne reponse est une suite de trois elements, sans article, au plus 6 mots (`LON-CE1-5`). L'enonce ecrit le
        sens, *du plus âgé au plus jeune* (generations) ou *du premier au dernier* (une vie). **L'ordre inverse de la bonne reponse n'est
-       jamais un distracteur.** Seule suite d'evenements admise : *naissance, entrée à l'école, premier emploi* (6 mots).
+       jamais un distracteur.** Seule suite d'evenements admise : *naissance, entrée à l'école, premier emploi* (6 mots). **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-10-12.md`, `C1`, `C2` ; `R12-2` : echanges de voisins et rotations seulement, jamais les deux echanges de voisins ensemble, prenoms de l'enonce admis en B ; texte d'origine conserve]**
      - **Recompte sur les items** : bonne reponse qui est une suite, tache B ; sinon, tache A. La moins servie porte au moins 3 items.
 
      **`R12-3` - `FER-1`** (critere 1, reponse a `N12-4`). Compte seulement un item A dont la bonne reponse est *les enfants*, *les
      parents*, *les grands-parents* (ou *celle des ...*), et au moins un item A dont la bonne reponse est un evenement. Une suite de trois,
-     un prenom ou un mot de parente ne compte pas. Le plancher d'evenements reste 1.
+     un prenom ou un mot de parente ne compte pas. Le plancher d'evenements reste 1. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-10-12.md`, `C3` ; `R12-3` : un prenom et un mot de parente ne sont jamais une proposition de A ; texte d'origine conserve]**
 
      **`R12-4` - aucun nombre.** Aucun age, aucune annee, aucun chiffre dans un enonce, un indice ou une proposition. L'ordre se trouve par
      la generation ou par le moment de la vie.
@@ -24494,7 +24628,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      Aucune n'est l'element de reference de l'enonce. Quand il existe, un distracteur est **du meme cote** que la bonne reponse, sans etre
      juste avant ou juste apres. Exemple, *"juste avant l'entrée au collège"* : *l'entrée à l'école* ; *sa naissance* (du meme cote, pas
      juste avant), *le premier emploi* (de l'autre cote). Quand rien n'existe de l'autre cote (*"juste après sa naissance"*), les deux
-     distracteurs sont du meme cote.
+     distracteurs sont du meme cote. **[corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-10-12.md`, `Q8-6` ; `R12-5` : table fermee des propositions des quatre questions d'evenements ; texte d'origine conserve]**
 
      **`R12-6` - l'ordre que la vie ne fixe pas** (`N12-8`). Aucun item ne repond grace a l'ordre du premier emploi et de la naissance de
      son enfant. Questions *voisin* admises sur les evenements, et elles seules : *juste après sa naissance* (*l'entrée à l'école*) ;
@@ -24513,6 +24647,40 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
 
      **Exception de rang** (critere 6) : sans objet sous `R12-4` ; le paquet a son entree dans
      `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`, sauf avis contraire de `theo-archi` sur les suites.
+
+     **Corrections de `nadia-prof` du 2026-10-27, reportees telles quelles** [ajoute le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-10-12.md`, section 2.1 ; texte copie par script depuis ce fichier, non retape (consignes et textes) ; il remplace ou complete les regles nommees du critere 9 ci-dessus, dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu] :
+
+
+     **`R12-1`, evenements [corrige le 2026-10-27 par `nadia-prof`, `arbitrage-nadia-contradictions-ce1-qlm-10-12.md`, `Q8-6`, `C6` ;
+     texte d'origine : *"entree au college (admise, pas demandee)"*].** *Entree au college* n'est pas nommee par `GEN-CE1-1` ; elle est
+     admise, et elle est dans chaque item A d'evenements (table de `R12-5`). Elle n'entre dans aucune suite de B. L'evenement de
+     `GEN-CE1-1` *"naissance d'un enfant"* s'ecrit toujours *la naissance de son enfant*, jamais *la naissance d'un enfant*.
+
+     **`R12-2`, B [precise le 2026-10-27 par `nadia-prof`, meme fichier, `C1`, `C2`].** Les distracteurs sont les trois memes elements
+     dans un autre ordre : un echange de deux voisins ou une rotation, **jamais l'echange du premier et du dernier**, qui est l'ordre
+     inverse. Les deux distracteurs ne sont jamais les deux echanges de voisins ensemble. Exemple, bonne reponse *grands-parents, parents,
+     enfants* : *parents, grands-parents, enfants* et *parents, enfants, grands-parents*. Une suite est trois generations, la suite
+     d'evenements admise, ou **trois prenoms de l'enonce, chacun d'une generation differente**, dans le sens *du plus âgé au plus jeune*.
+
+     **`R12-3` [corrige le 2026-10-27 par `nadia-prof`, meme fichier, `C3` ; texte d'origine : *"Une suite de trois, un prenom ou un mot
+     de parente ne compte pas."*].** Une suite de trois ne compte pas. Un prenom n'est jamais une proposition de A. Un mot de parente
+     (*la grand-mère*, *le papa*) n'est jamais une proposition : il vit dans l'enonce.
+
+     **`R12-5`, evenements [corrige le 2026-10-27 par `nadia-prof`, meme fichier, `Q8-6` ; texte d'origine : *"Exemple, juste avant
+     l'entree au college : l'entree a l'ecole ; sa naissance (du meme cote, pas juste avant), le premier emploi (de l'autre cote). Quand
+     rien n'existe de l'autre cote (juste apres sa naissance), les deux distracteurs sont du meme cote."*].** Pour les generations, la
+     regle du meme cote est inchangee. Pour les evenements, les propositions des quatre questions de `R12-6` sont fixees par cette table,
+     et par elle seule :
+
+     | Enonce | Bonne reponse | Distracteurs |
+     |---|---|---|
+     | *juste après sa naissance* | *l'entrée à l'école* | *l'entrée au collège* ; *le premier emploi* ou *la naissance de son enfant* |
+     | *juste avant l'entrée à l'école* | *sa naissance* | *l'entrée au collège* ; *le premier emploi* ou *la naissance de son enfant* |
+     | *juste après l'entrée à l'école* | *l'entrée au collège* | *sa naissance* ; *le premier emploi* ou *la naissance de son enfant* |
+     | *juste avant l'entrée au collège* | *l'entrée à l'école* | *sa naissance* ; *le premier emploi* ou *la naissance de son enfant* |
+
+     Motif : la bonne reponse est toujours un moment d'enfance ; avec deux moments d'adulte en distracteurs, elle serait le seul moment
+     d'enfance, et l'enfant la trouverait sans savoir ce qui vient juste avant ou juste apres.
 - **Voisins que `nadia-prof` relit** : `cp-frise-de-la-journee`, `cp-qlm-autrefois-aujourdhui`. **Ordre** : apres `-01`, avec `-10`, en dernier (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### Ce que ces neuf stories ne font pas
@@ -24648,3 +24816,32 @@ Arbre : branche `s57-p5-camille-stories2`, base `round-two`. **Rien au-dessus n'
 - `Q8-7` (`-04`) : `N04-5` (1.6 de son fichier) cite *la pomme* face a *fruits* comme aliment d'enonce qui donne la reponse ; la regle 6 ne liste que *poisson*, *oeuf*, *viande*, *lait*, *fruit*, *legume*, *sucre*. *La pomme* est-elle admise en enonce de A ?
 
 **Restrictions de conditions existantes, a savoir (pas des contradictions)** : `AIM-CE1-1` admettait l'or et l'acier ordinaire, `-06` les ecarte (regle 5) ; `DEL-CE1-2` n'interdisait que de decrire l'accident, `-08` interdit les mots meme au preventif (regle 5) ; `PAY-CE1-1` nommait *falaise*, *ferme*, *rue* comme propres, `R10-1` les classe partages ; `ETE-CE1-1` nomme *l'eau gele quand il fait tres froid*, la tache B de `-05` demande la glace et l'eau liquide ensemble ou 0 degre (le motif est `NRC-CE1-1`, 2.2 de son fichier). Aucun lot ne contredit `A.258` (11 a 20 items) : les planchers par tache de chaque lot se tiennent dans 11 **[calcul]**.
+
+## Annotation du 2026-10-27, neuvieme : corrections de `nadia-prof` reportees dans `-04`, `-05`, `-06`, `-08`, `-10`, `-12`, et verification des planchers (`camille-po`)
+
+Arbre : branche `s57-p5-camille-stories3`, base `round-two` a `db9c8aaa`. **Rien au-dessus n'est reecrit** : le texte de `nadia-prof` est copie par script depuis `arbitrage-nadia-contradictions-ce1-qlm-04-05-et-02.md` (section 6), `arbitrage-nadia-contradictions-ce1-qlm-06-08.md` (section 4) et `arbitrage-nadia-contradictions-ce1-qlm-10-12.md` (sections 1.1 et 2.1) dans un bloc *"Corrections de `nadia-prof` du 2026-10-27"* a la fin du critere de regles de contenu de chaque story (`-04` critere 11, `-05` critere 12, `-06` critere 10, `-08` critere 9, `-10` critere 9, `-12` critere 9). Chaque regle ou critere remplace ou complete porte un marqueur *[corrige le 2026-10-27 ... : arbitre par `nadia-prof`, <fichier>]* ; son texte d'origine est conserve. Relecture : les 110 lignes citees des trois fichiers (16, 53, 41) sont retrouvees a l'identique dans le fichier. Pour le contenu, ce texte l'emporte sur tout critere de ma main qui le contredit. Aucune ligne de matrice ne change, `DEC-0120` et le planning ne sont pas touches.
+
+**`-08`, ce que le retrait des alertes laisse (constat, rien n'est comble).** `DEL-CE1-1` liste quatre gestes ; *prevenir un adulte* est le quatrieme. Restent trois gestes : *ne pas toucher*, *ne pas approcher de l'eau*, *ne pas brancher avec les mains mouillees*. Par situation : `fil` un geste (deux formes), `prise` un geste (deux formes), `eau` trois gestes (cinq formes) ; avant le retrait, `fil` et `prise` avaient deux gestes et cinq formes chacune. `DEL-CE1-1` enumere par *"ou"* et `FER-1` porte sur les trois situations : lettre tenue, les trois situations restent servables en A et en B, et au moins un item de B `eau` hors mains mouillees se sert par *ne pas toucher l'appareil* ou *ne pas l'approcher de l'eau*. Planchers : A au moins 3 (une situation chacune), B au moins 3 (idem), `FER-3` tenu a 3 et 3, 11 a 20 items (A.258) tenu. Verifie sur le disque : 8 items sur 11 de `cp-emc-alerte.yaml` ont une alerte a un adulte pour bonne reponse (lignes `bonneReponse` 73 a 101) ; aucun `cp-*.yaml` n'a *toucher*, *approcher*, *brancher* ou *seches* dans une bonne reponse.
+
+**Planchers par lot apres les corrections, calcul a la main.** Items imposes par les regles du lot, puis plancher effectif (`FER-2` a 10, `DEC-0120` A.258 a 11) :
+
+| Lot | Items imposes par les regles du lot | Effectif | Calcul |
+|---|---|---|---|
+| `-04` | 8 | 11 | A au moins 5 (cinq familles), B au moins 3 |
+| `-05` | 8 (9 si *rien ne change* est employe) | 11 | vapeur d'eau 4 (tiers de 11) + fonte, gel, glace, eau liquide ; B au moins 3 |
+| `-06` | 6 | 11 | A au moins 3, B au moins 3 ; le quart (3 a 11) est tenu par les 3 items de B seuls |
+| `-08` | 6 | 11 | A au moins 3, B au moins 3 (trois situations chacun) |
+| `-10` | 7 | 11 | A au moins 4 (quatre paysages), B au moins 3 dont un *sur le littoral* |
+| `-12` | 7 | 11 | A au moins 4 (trois generations, un evenement), B au moins 3 |
+
+Aucun lot n'impose plus de 11 items, aucun ne depasse 20.
+
+**Questions routees a `nadia-prof`, non tranchees** (aucune ne bloque un plancher) :
+
+- `Q9-1` (`-08`) : aucun item n'est exige pour *ne pas approcher de l'eau* ni pour *ne pas brancher avec les mains mouillees* ; un B servi par *ne pas toucher* seul tient les trois situations et le plancher de B `eau`. Un item par geste restant est-il exige, ou la lecture de `DEL-CE1-1` par *"ou"* suffit-elle ?
+- `Q9-2` (`-08`) : six des neuf formes commencent par *ne pas* ou *ne rien*, et la regle 3 veut un second *ne ...* dans l'item ; les distracteurs negatifs nommes sont deux refus d'alerte (*"ne rien dire a un adulte"*, *"ne pas deranger un adulte"*). Un distracteur negatif qui refuse une precaution sans nommer d'adulte est-il admis (par exemple *"ne pas faire attention"*) ?
+- `Q9-3` (`-05`) : la regle 2 de B refuse *"un changement que l'etat decrit rend impossible"* ; son exemple (glacon sous 0 degre) a pour distracteur *le glacon fond*, que cet etat rend impossible a la lettre. Lecture voulue : *impossible* vise le changement sans objet (*l'eau gele* sans eau liquide), pas la fonte erronee ?
+- `Q9-4` (`-06`) : par la regle 1 corrigee, les items de B (tous objets en metal, premisse dite, un objet en aluminium ou en cuivre dans chaque groupe distracteur) comptent pour le quart. Le quart peut donc etre tenu sans aucun item de A, bien que leur bonne reponse (trois objets en fer) ne soit pas l'objet metallique non attire d'`AIM-CE1-2`. Voulu ?
+- `Q9-5` (`-06`) : dans B, chaque groupe distracteur porte un objet de trois mots (*papier d'aluminium*, *barquette en aluminium*, *fil de cuivre*) et `LON-CE1-5` (6 mots) interdit *fil de fer* dans un distracteur : la bonne reponse est le groupe le plus court en mots dans tout item dont le bon groupe n'a pas *fil de fer*. La regle 3 de B ne lit que le partage d'objets, `TRV-CE1-2` que la proposition la plus longue. Ce trait de longueur est-il a lire par elle ?
+
+**Dit pour memoire, sans question** : `-12`, une suite de trois prenoms en B tient a 20 mots exactement (*"Ali est le papa de Sara. Sara est la maman de Lina. Quel ordre, du plus age au plus jeune ?"* : 6 + 6 + 8), sans marge sous `LON-CE1-1` ; `-05`, un item *rien ne change* cite 0 degre sans fonte ni gel, ce que `ETE-CE1-2` (*"0 degre pour la fonte et le gel"*) ne dit pas a la lettre et que `nadia-prof` lit comme admis (1.3 de son fichier) ; `-10`, la derogation a `QMT-CE1-1` est la sienne, limitee aux items B *sur le littoral*.
