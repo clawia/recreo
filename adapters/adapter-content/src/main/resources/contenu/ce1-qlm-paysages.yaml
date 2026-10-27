@@ -43,6 +43,9 @@ lignesDeReferentiel: ["QLM-CE1-10"]
 # attendu et aucun element propre d'un autre paysage ; pour chaque element partage nomme, au moins un
 # distracteur est un paysage de cet element. Les propositions sont trois des quatre paysages. Chaque
 # paysage est la bonne reponse de deux items (FER-1).
+# En tache A, le littoral et la ville ne sont jamais proposes ensemble : une ville au bord de la
+# mer a une plage, un port et des immeubles, et les deux reponses y sont justes. Le port, qui
+# n'est que du littoral et de la ville, n'entre donc dans aucun enonce de A.
 # Tache element : l'enonce nomme un seul paysage, sans autre element ("Lequel ne voit-on pas a la
 # montagne ?"). La bonne reponse est un element propre d'un autre paysage, dans un couple de la table
 # de R10-3 ; les deux distracteurs sont un element propre du paysage nomme et un element partage entre
@@ -88,9 +91,9 @@ items:
     distracteurs: ["le sommet", "la forêt"]
     indice: "Lis les trois choix, puis pense au paysage de l'énoncé."
   # TRV-CE1-2 : a, b
-  - enonce: "On voit une plage et un port. Quel est ce paysage ?"
+  - enonce: "On voit une plage et une falaise. Quel est ce paysage ?"
     bonneReponse: "le littoral"
-    distracteurs: ["la ville", "la montagne"]
+    distracteurs: ["la montagne", "la campagne"]
     indice: "Pour chaque paysage, regarde si on y voit tous les mots."
   # TRV-CE1-2 : a, a
   - enonce: "On voit un champ et une rivière. Quel est ce paysage ?"
@@ -102,16 +105,16 @@ items:
     bonneReponse: "les pistes de ski"
     distracteurs: ["la plage", "la forêt"]
     indice: "Sur le littoral, il y a par exemple la mer."
-  # TRV-CE1-2 : a, b
-  - enonce: "On voit des immeubles et un port. Quel est ce paysage ?"
+  # TRV-CE1-2 : a, a
+  - enonce: "On voit des immeubles et une rivière. Dans quel paysage est-on ?"
     bonneReponse: "la ville"
-    distracteurs: ["le littoral", "la campagne"]
+    distracteurs: ["la montagne", "la campagne"]
     indice: "Écarte les paysages où l'on ne voit pas tous les mots."
   # TRV-CE1-2 : a, a
   - enonce: "On voit la mer et un village. Dans quel paysage est-on ?"
     bonneReponse: "le littoral"
     distracteurs: ["la montagne", "la campagne"]
-    indice: "Pense d'abord au mot qu'un seul paysage possède."
+    indice: "Pense d'abord au mot qui ne va qu'avec un seul paysage."
   # TRV-CE1-2 : c, d
   - enonce: "Lequel ne voit-on pas à la campagne ?"
     bonneReponse: "le phare"
@@ -121,7 +124,7 @@ items:
   - enonce: "On voit des pistes de ski et une ferme. Dans quel paysage est-on ?"
     bonneReponse: "la montagne"
     distracteurs: ["la campagne", "le littoral"]
-    indice: "Cherche d'abord un mot qui ne se trouve pas partout."
+    indice: "Un des mots ne va qu'avec un seul paysage : trouve-le."
   # TRV-CE1-2 : c, d
   - enonce: "Lequel ne voit-on pas en ville ?"
     bonneReponse: "le sommet"

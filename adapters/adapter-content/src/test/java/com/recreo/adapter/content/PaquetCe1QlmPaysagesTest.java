@@ -56,8 +56,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * compte de l'en-tete sont relues contre le calcul.
  *
  * <p><b>Ce que ce test ne garde pas</b> : que chaque element et chaque paysage soit exact au CE1
- * ({@code R10-1}, {@code QC9}) ; que le paysage de la bonne reponse porte chaque element partage que
- * l'enonce nomme ; un jugement hors des 48 formes de {@code G10-5} ; un lieu reel ; qu'un indice soit une
+ * ({@code R10-1}, {@code QC9}) ; un jugement hors des 48 formes de {@code G10-5} ; un lieu reel ; qu'un indice soit une
  * methode et non une periphrase par un mot hors des listes ; qu'un adjectif hors de l'exemple d'un indice
  * de B sur le littoral soit absent ({@code PAY-CE1-2}, {@code G13}) ; que l'explication de {@code littoral}
  * soit faite d'exemples et non d'une definition ; que l'en-tete ecrive les listes de {@code R10-1} ; que
@@ -91,9 +90,11 @@ class PaquetCe1QlmPaysagesTest {
     /** FORME_PAYSAGE : chaque forme ecrite, sans accent, vers son paysage. */
     private static final Map<String, String> FORME_PAYSAGE = Map.of(
             "littoral", LITTORAL,
+            "littoraux", LITTORAL,
             "montagne", MONTAGNE,
             "montagnes", MONTAGNE,
             "campagne", CAMPAGNE,
+            "campagnes", CAMPAGNE,
             "ville", VILLE,
             "villes", VILLE);
 
@@ -198,7 +199,11 @@ class PaquetCe1QlmPaysagesTest {
 
     private static final Pattern PAYSAGE_DANS_UN_INDICE = motifBorne(FORME_PAYSAGE.keySet());
 
-    private static final Pattern ELEMENT_DANS_UN_INDICE = motifBorne(FORME_ELEMENT.keySet());
+    /** G11, G10-4 B : formes cherchees dans un indice seulement, jamais admises dans un enonce ni une proposition. */
+    private static final List<String> FORMES_DE_L_INDICE_SEULEMENT = List.of("piste", "pistes", "ski");
+
+    private static final Pattern ELEMENT_DANS_UN_INDICE = motifBorne(java.util.stream.Stream.concat(
+            FORME_ELEMENT.keySet().stream(), FORMES_DE_L_INDICE_SEULEMENT.stream()).toList());
 
     /** G10-5 : les dix-sept mots de R10-5, en quarante-huit formes enumerees, sur le texte garde accentue. */
     private static final List<String> JUGEMENT = List.of(
@@ -396,12 +401,21 @@ class PaquetCe1QlmPaysagesTest {
             }
             for (String element : elements) {
                 if (PARTAGE.containsKey(element)) {
+                    assertThat(PARTAGE.get(element))
+                            .as("G10-2 : '%s' nomme l'élément partagé %s, que le paysage de la bonne réponse (%s) "
+                                    + "n'a pas", item.enonce(), element, bonne)
+                            .contains(bonne);
                     assertThat(distracteurs.stream().anyMatch(PARTAGE.get(element)::contains))
                             .as("G10-2 : '%s' nomme l'élément partagé %s, et aucun distracteur n'est un paysage de "
                                     + "cet élément", item.enonce(), element)
                             .isTrue();
                 }
             }
+            Set<String> proposes = new TreeSet<>();
+            item.propositions().forEach(proposition -> paysage(proposition).ifPresent(proposes::add));
+            assertThat(proposes.containsAll(List.of(LITTORAL, VILLE)))
+                    .as("G10-2 (R10-2) : '%s' propose le littoral et la ville ensemble", item.enonce())
+                    .isFalse();
         }
     }
 
@@ -490,8 +504,37 @@ class PaquetCe1QlmPaysagesTest {
                                     item.indice())
                             .isFalse();
                 }
+                if (lieu.isPresent()) {
+                    String horsExemple = lieu.get().equals(LITTORAL) ? sansLExemple(indice) : indice;
+                    Matcher autre = ELEMENT_DANS_UN_INDICE.matcher(horsExemple);
+                    boolean nommeAutre = autre.find();
+                    assertThat(nommeAutre)
+                            .as("G10-4 (R10-4 B) : l'indice « %s » (tâche élément) nomme un élément de R10-1 hors de "
+                                    + "l'exemple : %s", item.indice(), nommeAutre ? autre.group() : "")
+                            .isFalse();
+                }
             }
         }
+    }
+
+    /** Le rang du premier ., ! ou ? de la suite, ou sa longueur s'il n'y en a pas. */
+    private static int finDeLaZone(String suite) {
+        int fin = suite.length();
+        for (char ponctuation : new char[] {'.', '!', '?'}) {
+            int rang = suite.indexOf(ponctuation);
+            fin = rang >= 0 ? Math.min(fin, rang) : fin;
+        }
+        return fin;
+    }
+
+    /** L'indice prive de la zone qui va de "par exemple" au premier point, la meme que lit G13. */
+    private static String sansLExemple(String indice) {
+        Matcher parExemple = PAR_EXEMPLE.matcher(indice);
+        if (!parExemple.find()) {
+            return indice;
+        }
+        String suite = indice.substring(parExemple.end());
+        return indice.substring(0, parExemple.start()) + suite.substring(finDeLaZone(suite));
     }
 
     private static void verifierLIndiceSurLeLittoral(Item item, String indice) {
@@ -504,11 +547,7 @@ class PaquetCe1QlmPaysagesTest {
                         item.indice())
                 .isTrue();
         String suite = indice.substring(parExemple.end()).strip();
-        int fin = suite.length();
-        for (char ponctuation : new char[] {'.', '!', '?'}) {
-            int rang = suite.indexOf(ponctuation);
-            fin = rang >= 0 ? Math.min(fin, rang) : fin;
-        }
+        int fin = finDeLaZone(suite);
         List<String> exemples = Arrays.stream(SEGMENTS.split(suite.substring(0, fin).strip()))
                 .map(String::strip).filter(exemple -> !exemple.isBlank()).toList();
         assertThat(exemples.size())
@@ -772,6 +811,22 @@ class PaquetCe1QlmPaysagesTest {
         passee(fautif("paysages-fautifs.yaml"), 14, PaquetCe1QlmPaysagesTest::verifierLesItemsDeLaTachePaysage);
     }
 
+    @Test
+    void g102UnElementPartageNommeQueLePaysageDeLaBonneReponseNAPasEstRefuse() {
+        refusee(fautif("paysages-fautifs.yaml"), 70, PaquetCe1QlmPaysagesTest::verifierLesItemsDeLaTachePaysage,
+                "G10-2", "élément partagé port", "que le paysage de la bonne réponse");
+    }
+
+    @Test
+    void g102LeLittoralEtLaVilleProposesEnsembleSontRefuses() {
+        Paquet fautif = fautif("paysages-fautifs.yaml");
+
+        refusee(fautif, 71, PaquetCe1QlmPaysagesTest::verifierLesItemsDeLaTachePaysage, "G10-2",
+                "propose le littoral et la ville ensemble");
+        refusee(fautif, 72, PaquetCe1QlmPaysagesTest::verifierLesItemsDeLaTachePaysage, "G10-2",
+                "propose le littoral et la ville ensemble");
+    }
+
     // ----- G10-3
 
     @Test
@@ -847,6 +902,25 @@ class PaquetCe1QlmPaysagesTest {
     }
 
     @Test
+    void g104UnPlurielDeCampagneOuDeLittoralDansUnIndiceDeAEstRefuse() {
+        Paquet fautif = fautif("paysages-fautifs.yaml");
+
+        refusee(fautif, 76, PaquetCe1QlmPaysagesTest::verifierLesIndices, "G10-4", "nomme un des quatre paysages",
+                "campagnes");
+        refusee(fautif, 77, PaquetCe1QlmPaysagesTest::verifierLesIndices, "G10-4", "nomme un des quatre paysages",
+                "littoraux");
+    }
+
+    @Test
+    void g11PisteEtSkiSontCherchesDansUnIndiceSeulementEtPasAdmisDansUnEnonce() {
+        Paquet fautif = fautif("paysages-fautifs.yaml");
+
+        refusee(fautif, 78, PaquetCe1QlmPaysagesTest::verifierLesIndices, "G11", "pistes");
+        refusee(fautif, 79, PaquetCe1QlmPaysagesTest::verifierLesIndices, "G11", "ski");
+        refusee(fautif, 80, PaquetCe1QlmPaysagesTest::verifierLesElementsEtLesPaysages, "G10-1", "pistes");
+    }
+
+    @Test
     void g104LaMethodeDeNadiaProfPasseEtLaRechercheEstBornee() {
         Paquet fautif = fautif("paysages-fautifs.yaml");
 
@@ -866,6 +940,15 @@ class PaquetCe1QlmPaysagesTest {
                 "sommet");
         refusee(fautif, 50, PaquetCe1QlmPaysagesTest::verifierLesIndices, "G10-4", "nomme une proposition", "plage");
         passee(fautif, 43, PaquetCe1QlmPaysagesTest::verifierLesIndices);
+    }
+
+    @Test
+    void g104UnIndiceDeBQuiNommeUnElementHorsDeLExempleEstRefuse() {
+        Paquet fautif = fautif("paysages-fautifs.yaml");
+
+        refusee(fautif, 73, PaquetCe1QlmPaysagesTest::verifierLesIndices, "G10-4", "hors de l'exemple", "neige");
+        refusee(fautif, 74, PaquetCe1QlmPaysagesTest::verifierLesIndices, "G10-4", "hors de l'exemple", "neige");
+        refusee(fautif, 75, PaquetCe1QlmPaysagesTest::verifierLesIndices, "G10-4", "hors de l'exemple", "pistes");
     }
 
     @Test
