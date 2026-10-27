@@ -24211,6 +24211,14 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      cinq noms de famille, avec leurs formes de genre et de nombre (*feculent*, *laitier*, *laitière*, *sucrée*, *poisson*, *œuf*...) ;
      la parenthese en donne des exemples. La regle ne porte que sur les mots, jamais sur le sens : un aliment dont le nom ne porte
      aucun de ces mots (*la pomme*, *la carotte*) est admis en enonce de A, meme s'il est un fruit ou un legume.
+
+     **Trois points de `nadia-prof` du 2026-10-27, reportes tels quels** [corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-trois-points-ce1-qlm-04-06-10.md`, section 5.2 ; texte copie par script depuis ce fichier, non retape ; il remplace la phrase nommee du bloc "Dernier lot de `nadia-prof` du 2026-10-27" ci-dessus (regle 6), dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu ; texte d'origine conserve] :
+
+     **Regle 6, phrase du dernier lot, remplacee.** *"Les mots refuses sont ceux des cinq noms de famille, avec leurs formes de genre
+     et de nombre (feculent, laitier, laitière, sucrée, poisson, œuf...)"* devient : Les mots refuses sont ceux des cinq noms de
+     famille, avec leurs formes de genre et de nombre (*feculent*, *laitier*, *laitière*, *sucrée*, *poisson*, *œuf*...), et les deux
+     noms d'aliments sur lesquels un nom de famille est fait : *le lait* (*produits laitiers*) et *le sucre* (*produits sucrés*). La
+     suite de la phrase (*"La regle ne porte que sur les mots, jamais sur le sens..."*) ne change pas.
 - **Voisins que `nadia-prof` relit** : `cp-qlm-hygiene`, `cp-qlm-matiere` **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-04-05.md` ; critere 11, dernier point, et 1.4 (`N04-4`) : `cm1-sciences-corps` est ajoute ; `cm1-sciences-nutrition` ne l'est pas, ses items ne portent que sur des organes ; texte d'origine conserve]**. **Ordre** : apres `-01`, avec `-05` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### `S57-BR-QLM-CE1-05` - L'eau sous ses trois etats, la fonte et le gel relies a la temperature (`QLM-CE1-05`) - NON ENGAGEE, sans palier
@@ -24402,6 +24410,16 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      moitie des items de B au plus. Dans les autres, il porte *fil de fer* et un groupe distracteur a autant de mots que lui ou
      moins (bonne reponse *"fil de fer, clou, agrafe"* ; distracteurs *"fil de fer, épingle, papier d'aluminium"*, *"clou, épingle,
      fil de cuivre"*). Le developpeur signale dans son rapport, pour chaque item de B, le nombre de groupes qui portent *fil de fer*.
+
+     **Trois points de `nadia-prof` du 2026-10-27, reportes tels quels** [corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-trois-points-ce1-qlm-04-06-10.md`, section 5.1 ; texte copie par script depuis ce fichier, non retape ; il remplace la phrase nommee de la regle 2 du critere 10, dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu ; texte d'origine conserve] :
+
+     **Regle 2, tache A, premiere phrase, remplacee.** *"Lequel de ces objets l'aimant attire-t-il ?"* ou *"... n'attire-t-il pas
+     ?"* devient : *"Lequel de ces objets l'aimant attire-t-il ?"* ou *"Lequel de ces objets l'aimant n'attire-t-il pas ?"*, *"de
+     ces objets"* facultatif. La question peut etre precedee d'une premisse, *"Ces trois objets sont en métal."* ou *"Tous ces
+     objets sont en métal."*, et d'aucune autre phrase ; la premisse n'est ecrite que si les trois objets des propositions sont en
+     metal (regle 1). Exemples : *"Ces trois objets sont en métal. Lequel l'aimant attire-t-il ?"* (*le clou* ; *le papier
+     d'aluminium*, *le fil de cuivre*) ; *"Tous ces objets sont en métal. Lequel l'aimant n'attire-t-il pas ?"* (*le fil de
+     cuivre* ; *le fil de fer*, *l'agrafe*). Le reste de la tache A ne change pas.
 - **Voisins que `nadia-prof` relit** : `cp-qlm-matiere`, `cm1-sciences-melanges`. **Ordre** : apres `-01`, avec `-08` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### `S57-BR-QLM-CE1-08` - Connaitre les dangers de l'electricite de la maison et les gestes qui les evitent (`QLM-CE1-08`) - NON ENGAGEE, sans palier
@@ -24643,6 +24661,22 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
 
      **`R10-5`, derniere phrase, completee.** Aucun adjectif n'accompagne un element ou un paysage, dans l'enonce, une proposition
      ou l'indice (ni *"par exemple la grande mer"*).
+
+     **Trois points de `nadia-prof` du 2026-10-27, reportes tels quels** [corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-trois-points-ce1-qlm-04-06-10.md`, section 5.3 ; texte copie par script depuis ce fichier, non retape ; il remplace la phrase nommee du bloc "Dernier lot de `nadia-prof` du 2026-10-27" ci-dessus (`R10-4`, tache A), dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu ; texte d'origine conserve] :
+
+     **`R10-4`, tache A, phrase du dernier lot, remplacee.** *"L'indice de A ne nomme aucun element propre d'un des trois paysages
+     proposes"* devient : L'indice de A ne nomme aucun element de `R10-1`, propre ou partage, a aucun article ni nombre : un element
+     propre d'un paysage propose l'ecarte ou le designe ; un element partage ecarte le paysage propose qui ne le porte pas, ou
+     repete l'enonce. L'indice de A est une methode (*"Cherche le mot qui ne va qu'avec un seul paysage."*).
+
+     **Lecture du premier jet de `-10` par `nadia-prof`, reportee telle quelle** [corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `lecture-nadia-premier-jet-ce1-qlm-paysages.md`, section 7 ; texte copie par script depuis ce fichier, non retape ; il complete `R10-2` et `R10-4` (tache B) du critere 9, dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu ; texte d'origine conserve] :
+
+     **`R10-2`, phrase ajoutee.** En tache A, *le littoral* et *la ville* ne sont jamais proposes ensemble : une ville au bord de la mer a
+     une plage, un port et des immeubles, et les deux reponses y sont justes. *Le port*, qui n'est que du littoral et de la ville,
+     n'entre donc dans aucun enonce de A.
+
+     **`R10-4`, tache B, phrase ajoutee.** L'indice d'un item B ne nomme aucun element de `R10-1`, sauf, dans un item *sur le littoral*,
+     le ou les exemples qui suivent *par exemple*.
 - **Voisin que `nadia-prof` relit** : `cm1-histoire-geographie-nommer-en-geographie` **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-10-12.md` ; critere 9, dernier point, `N10-9` et `N10-4` : `cp-qlm-modes-de-vie` est ajoute ; `cm1-histoire-geographie-carte-et-planisphere` n'est pas ajoute (ecarte, aucun lieu reel nomme) ; texte d'origine conserve]**. **Ordre** : apres `-01`, avec `-12` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### `S57-BR-QLM-CE1-12` - Situer les generations d'une famille et les evenements d'une vie (`QLM-CE1-12`) - NON ENGAGEE, sans palier
@@ -24740,6 +24774,12 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
 
      Motif : la bonne reponse est toujours un moment d'enfance ; avec deux moments d'adulte en distracteurs, elle serait le seul moment
      d'enfance, et l'enfant la trouverait sans savoir ce qui vient juste avant ou juste apres.
+
+     **Lecture du premier jet de `-12` par `nadia-prof`, reportee telle quelle** [corrige le 2026-10-27 (UTC+01:00) : arbitre par `nadia-prof`, `lecture-nadia-premier-jet-ce1-qlm-generations.md`, section 7 ; texte copie par script depuis ce fichier, non retape ; il complete `R12-2` (tache B) du critere 9, dont le texte d'origine est conserve ; si un critere ci-dessus le contredit, ce texte l'emporte pour le contenu ; texte d'origine conserve] :
+
+     **`R12-2`, B, phrase ajoutee.** Dans la suite d'evenements, *"entrée à l'école, premier emploi, naissance"* n'est jamais un
+     distracteur : *naissance*, sans possessif et juste apres le premier emploi, se lit comme la naissance de son enfant, et la suite
+     devient juste.
 - **Voisins que `nadia-prof` relit** : `cp-frise-de-la-journee`, `cp-qlm-autrefois-aujourdhui`. **Ordre** : apres `-01`, avec `-10`, en dernier (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
 ### Ce que ces neuf stories ne font pas
@@ -24929,3 +24969,27 @@ Arbre : branche `s57-p5-camille-stories4`, base `round-two`. Les textes de la se
 - `R3` (`-06`, neuvieme annotation) : le tableau des planchers y disait que le quart de `-06` est tenu par les 3 items de B seuls ; la section 4.1 de `nadia-prof` ajoute un item de A. Ligne non reecrite, remplacee par le tableau ci-dessus.
 - `R4` (`-04`, regle 6) : la parenthese d'origine nomme *lait* parmi les mots refuses ; le texte reporte donne *laitier* et *laitière* comme exemples et dit que la parenthese en donne. Le mot *lait* seul, en enonce de A, est-il refuse ?
 - `R5` (`-10`, `R10-4`) : l'indice de A ne nomme aucun element propre d'un des trois paysages proposes. Un element partage par la bonne reponse et un distracteur (`R10-2`) n'est pas dit propre ou non.
+
+## Annotation du 2026-10-27, onzieme : trois points de `nadia-prof` et lectures de `-10` et `-12` reportes dans `-04`, `-06`, `-10`, `-12` (`camille-po`, `DEC-0120` A.277)
+
+Arbre : base `round-two` a `a516d40b`, branche `s57-p5-camille-277`. **Aucun texte d'origine n'est reecrit** ; chaque report est un bloc de 5 espaces sous le dernier bloc de la story, copie par script depuis le fichier de `nadia-prof`, avec le marqueur *[corrige le 2026-10-27 ... texte d'origine conserve]*.
+
+| Story | Critere | Source | Texte reporte |
+|---|---|---|---|
+| `-04` | 11, regle 6 | `arbitrage-nadia-trois-points-ce1-qlm-04-06-10.md`, 5.2 | phrase du dernier lot remplacee : *le lait* et *le sucre* refuses dans l'enonce de A |
+| `-06` | 10, regle 2 | meme fichier, 5.1 | forme de l'enonce de A, premisse facultative |
+| `-10` | 9 | meme fichier, 5.3 | `R10-4`, tache A : l'indice de A ne nomme aucun element de `R10-1`, propre ou partage |
+| `-10` | 9 | `lecture-nadia-premier-jet-ce1-qlm-paysages.md`, section 7 | `R10-2` (littoral et ville jamais ensemble en A, *le port* sans emploi) ; `R10-4`, tache B (l'indice de B ne nomme aucun element de `R10-1`, sauf les exemples de l'item sur le littoral) |
+| `-12` | 9 | `lecture-nadia-premier-jet-ce1-qlm-generations.md`, section 7 | `R12-2`, B : *"entree a l'ecole, premier emploi, naissance"* n'est jamais un distracteur |
+
+**Ce qui manquait.** Les trois textes 5.1, 5.2 et 5.3 des trois points n'etaient pas dans le backlog : `grep -n "trois-points-ce1-qlm-04-06-10" docs/backlog/backlog.md` ne rendait rien avant ce commit, et aucune des phrases n'y figurait. L'ecart est a `camille-po` : l'arbitrage (10:04) est posterieur a la dixieme annotation, et le report n'a pas suivi. `marc-dev` et `theo-archi` avaient travaille depuis le fichier de `nadia-prof`. **Report** : premiere inscription, aucun report anterieur.
+
+**Questions residuelles de la dixieme annotation.** `R1` (`-06`) est repondue par 5.1 ; `R4` (`-04`, *lait*) par 5.2 ; `R5` (`-10`) par 5.3. `R2` et `R3` (information) ne changent pas.
+
+**`-12`, `K5` non reporte.** `K5` corrige une phrase du commentaire du paquet (*"admise, pas demandee"*), pas un texte de la story. Le texte en vigueur de `R12-1` dans la story est celui que `C6` a deja corrige : le college *"est dans chaque item A d'evenements"* et *"n'entre dans aucune suite de B"* (bloc des corrections du 2026-10-27, `R12-1`). La phrase d'origine reste, marquee, comme texte d'origine.
+
+**`-06`, rien a reporter pour la story** (`lecture-nadia-premier-jet-ce1-qlm-aimant.md`, section 6). **Reserve notee, non transformee en regle** : en caracteres, le bon groupe est strictement le plus court dans les 4 items de B (et la bonne reponse dans 7 items sur 12). `nadia-prof` l'ecrit *"reserve neuve, datee du 2026-10-27, pas un durcissement de `G10`"* et ne releve pas sa barre : elle regardera a l'ecran si un enfant prend le plus court, et traitera par la liste, pas par un item. Aucun critere de `-06` n'est modifie.
+
+**Classement du cout** : `DEC-0120` A.277.
+
+Aucune ligne de matrice ne change. Aucun statut de story ne change.
