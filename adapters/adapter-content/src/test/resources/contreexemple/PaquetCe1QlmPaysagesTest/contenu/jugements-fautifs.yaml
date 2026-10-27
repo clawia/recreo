@@ -1,0 +1,290 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif du test du paquet des paysages."
+lignesDeReferentiel: ["QLM-CE1-10"]
+#
+# Jeu fautif de PaquetCe1QlmPaysagesTest : chaque item porte en commentaire le marqueur de la sonde
+# qu'il met a l'epreuve, suivi de ce que la sonde doit rendre. Les sondes dites 'passe' sont des
+# clauses : elles doivent passer. Chaque verificateur est appele seul sur sa sonde. Aucun item n'est
+# un contenu servi. Les 48 premieres sondes sont les 48 formes enumerees de G10-5, une par item, dans l'indice : la forme est le dernier mot de l'indice.
+items:
+  # sonde 01 (G10-5 refusee : beau)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot beau."
+  # sonde 02 (G10-5 refusee : bel)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot bel."
+  # sonde 03 (G10-5 refusee : belle)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot belle."
+  # sonde 04 (G10-5 refusee : beaux)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot beaux."
+  # sonde 05 (G10-5 refusee : belles)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot belles."
+  # sonde 06 (G10-5 refusee : joli)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot joli."
+  # sonde 07 (G10-5 refusee : jolie)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot jolie."
+  # sonde 08 (G10-5 refusee : jolis)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot jolis."
+  # sonde 09 (G10-5 refusee : jolies)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot jolies."
+  # sonde 10 (G10-5 refusee : laid)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot laid."
+  # sonde 11 (G10-5 refusee : laide)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot laide."
+  # sonde 12 (G10-5 refusee : laids)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot laids."
+  # sonde 13 (G10-5 refusee : laides)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot laides."
+  # sonde 14 (G10-5 refusee : calme)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot calme."
+  # sonde 15 (G10-5 refusee : calmes)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot calmes."
+  # sonde 16 (G10-5 refusee : tranquille)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot tranquille."
+  # sonde 17 (G10-5 refusee : tranquilles)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot tranquilles."
+  # sonde 18 (G10-5 refusee : bruyant)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot bruyant."
+  # sonde 19 (G10-5 refusee : bruyante)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot bruyante."
+  # sonde 20 (G10-5 refusee : bruyants)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot bruyants."
+  # sonde 21 (G10-5 refusee : bruyantes)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot bruyantes."
+  # sonde 22 (G10-5 refusee : dur)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot dur."
+  # sonde 23 (G10-5 refusee : dure)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot dure."
+  # sonde 24 (G10-5 refusee : durs)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot durs."
+  # sonde 25 (G10-5 refusee : dures)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot dures."
+  # sonde 26 (G10-5 refusee : facile)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot facile."
+  # sonde 27 (G10-5 refusee : faciles)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot faciles."
+  # sonde 28 (G10-5 refusee : pauvre)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot pauvre."
+  # sonde 29 (G10-5 refusee : pauvres)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot pauvres."
+  # sonde 30 (G10-5 refusee : riche)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot riche."
+  # sonde 31 (G10-5 refusee : riches)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot riches."
+  # sonde 32 (G10-5 refusee : triste)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot triste."
+  # sonde 33 (G10-5 refusee : tristes)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot tristes."
+  # sonde 34 (G10-5 refusee : sale)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot sale."
+  # sonde 35 (G10-5 refusee : sales)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot sales."
+  # sonde 36 (G10-5 refusee : dangereux)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot dangereux."
+  # sonde 37 (G10-5 refusee : dangereuse)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot dangereuse."
+  # sonde 38 (G10-5 refusee : dangereuses)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot dangereuses."
+  # sonde 39 (G10-5 refusee : ennuyeux)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot ennuyeux."
+  # sonde 40 (G10-5 refusee : ennuyeuse)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot ennuyeuse."
+  # sonde 41 (G10-5 refusee : ennuyeuses)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot ennuyeuses."
+  # sonde 42 (G10-5 refusee : mieux)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot mieux."
+  # sonde 43 (G10-5 refusee : meilleur)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot meilleur."
+  # sonde 44 (G10-5 refusee : meilleure)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot meilleure."
+  # sonde 45 (G10-5 refusee : meilleurs)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot meilleurs."
+  # sonde 46 (G10-5 refusee : meilleures)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot meilleures."
+  # sonde 47 (G10-5 refusee : pire)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot pire."
+  # sonde 48 (G10-5 refusee : pires)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot pires."
+  # sonde 49 (G10-5 refusee : un jugement dans l'enonce)
+  - enonce: "On voit un beau sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 50 (G10-5 refusee : un jugement dans une proposition)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville tranquille"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 51 (G10-5 refusee : plus joli)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le paysage plus joli."
+  # sonde 52 (G10-5 refusee : le calme, un nom, vise par et toute autre)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le calme."
+  # sonde 53 (G10-5 passe : beaucoup contient beau)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Il y en a beaucoup."
+  # sonde 54 (G10-5 passe : durent contient dur)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Les mots durent peu."
+  # sonde 55 (G10-5 passe : a duré garde son accent)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "La neige a duré tout l'hiver."

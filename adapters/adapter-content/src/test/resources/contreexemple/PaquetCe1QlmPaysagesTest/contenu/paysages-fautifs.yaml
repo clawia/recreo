@@ -1,0 +1,330 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif du test du paquet des paysages."
+lignesDeReferentiel: ["QLM-CE1-10"]
+#
+# Jeu fautif de PaquetCe1QlmPaysagesTest : chaque item porte en commentaire le marqueur de la sonde
+# qu'il met a l'epreuve, suivi de ce que la sonde doit rendre. Les sondes dites 'passe' sont des
+# clauses : elles doivent passer. Chaque verificateur est appele seul sur sa sonde. Aucun item n'est
+# un contenu servi. Les sondes de jugement (G10-5) vivent dans jugements-fautifs.yaml.
+items:
+  # sonde 01 (G10-1 refusee : cascade n'est pas un element)
+  - enonce: "On voit une cascade et un sommet. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 02 (G10-1 refusee : le desert n'est ni un paysage ni un element)
+  - enonce: "On voit un sommet et une forêt. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "le désert"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 03 (G10-1 passe : une foret, des champs)
+  - enonce: "On voit une forêt et des champs. Quel est ce paysage ?"
+    bonneReponse: "la campagne"
+    distracteurs: ["la montagne", "la ville"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 04 (G10-1 refusee, G10-5 passe : un grand champ)
+  - enonce: "On voit un grand champ et une rivière. Quel est ce paysage ?"
+    bonneReponse: "la campagne"
+    distracteurs: ["la montagne", "la ville"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 05 (G10-1 refusee, G10-5 passe : une grande ville en proposition)
+  - enonce: "On voit un champ et une rivière. Quel est ce paysage ?"
+    bonneReponse: "la campagne"
+    distracteurs: ["une grande ville", "la montagne"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 06 (G10-1 refusee : au bord de la mer n'est pas un lieu admis)
+  - enonce: "Lequel ne voit-on pas au bord de la mer ?"
+    bonneReponse: "les pistes de ski"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 07 (G10-1 refusee : la cascade en bonne reponse de B)
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la cascade"
+    distracteurs: ["le sommet", "la forêt"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 08 (G10-1 refusee : enonce hors des deux formes)
+  - enonce: "Quel paysage est-ce ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 09 (G10-1 refusee : bonne reponse un paysage sous la forme de B)
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la ville"
+    distracteurs: ["la campagne", "le littoral"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 10 (G10-2 refusee : un seul element)
+  - enonce: "On voit un sommet. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 11 (G10-2 refusee : deux elements partages, aucun propre)
+  - enonce: "On voit une forêt et une rivière. Quel est ce paysage ?"
+    bonneReponse: "la campagne"
+    distracteurs: ["la montagne", "la ville"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 12 (G10-2 refusee : un propre d'un autre paysage)
+  - enonce: "On voit une plage et des immeubles. Quel est ce paysage ?"
+    bonneReponse: "le littoral"
+    distracteurs: ["la ville", "la campagne"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 13 (G10-2 refusee : falaise, aucun distracteur n'est un paysage de falaise)
+  - enonce: "On voit un sommet et une falaise. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 14 (G10-2 passe : l'exemple de nadia-prof)
+  - enonce: "On voit un sommet et une forêt. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 15 (G10-2 refusee : foret est servie par la campagne, falaise ne l'est pas (chacun))
+  - enonce: "On voit un sommet, une forêt et une falaise. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 16 (G10-2 refusee : une proposition n'est pas un paysage)
+  - enonce: "On voit un sommet et une forêt. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la mer"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 17 (G10-2 passe : chaque element partage est servi par un distracteur)
+  - enonce: "On voit un sommet, une forêt et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 18 (G10-2 refusee : deux distracteurs identiques)
+  - enonce: "On voit un sommet et une forêt. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la campagne"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 19 (G10-2 refusee : le meme element deux fois)
+  - enonce: "On voit un sommet et des sommets. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 20 (G10-3 refusee : la ferme n'est pas dans la table)
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la ferme"
+    distracteurs: ["le sommet", "la forêt"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 21 (G10-3 refusee : la plage en ville)
+  - enonce: "Lequel ne voit-on pas en ville ?"
+    bonneReponse: "la plage"
+    distracteurs: ["les immeubles", "la neige"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 22 (G10-3 refusee : la riviere n'est pas au littoral)
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la mer"
+    distracteurs: ["le sommet", "la rivière"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 23 (G10-3 refusee : aucun element partage)
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la mer"
+    distracteurs: ["le sommet", "les pistes de ski"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 24 (G10-3 passe : l'exemple de nadia-prof)
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la mer"
+    distracteurs: ["le sommet", "la forêt"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 25 (G10-3 refusee : deux partages, aucun propre du paysage nomme)
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la mer"
+    distracteurs: ["la forêt", "le village"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 26 (G10-3 refusee : le propre est celui d'un autre paysage)
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la mer"
+    distracteurs: ["le champ", "la forêt"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 27 (G10-3 refusee : le sommet sur le littoral)
+  - enonce: "Lequel ne voit-on pas sur le littoral ?"
+    bonneReponse: "le sommet"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 28 (G10-3 refusee : la mer en ville)
+  - enonce: "Lequel ne voit-on pas en ville ?"
+    bonneReponse: "la mer"
+    distracteurs: ["les immeubles", "la neige"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 29 (G10-3 refusee : un distracteur est un paysage)
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la mer"
+    distracteurs: ["le sommet", "la campagne"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 30 (G11 refusee : la mer, element propre du paysage attendu)
+  - enonce: "On voit une plage et un port. Quel est ce paysage ?"
+    bonneReponse: "le littoral"
+    distracteurs: ["la ville", "la montagne"]
+    indice: "Pense à la mer et au sable."
+  # sonde 31 (G11 refusee : la mer, propre d'un paysage non propose)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Ce n'est pas au bord de la mer."
+  # sonde 32 (G11 refusee : des immeubles, propre d'un paysage propose)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Il n'y a pas d'immeubles."
+  # sonde 33 (G11 refusee : le sommet, propre du paysage attendu)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Pense au sommet."
+  # sonde 34 (G11 refusee : la foret, element partage (arbitrage trois points, 5.3))
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Regarde la forêt."
+  # sonde 35 (G11 refusee : une plage, propre du paysage non propose)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Regarde s'il y a une plage."
+  # sonde 36 (G10-4 A passe : la methode de nadia-prof)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 37 (G10-4 refusee : le littoral nomme dans l'indice de A)
+  - enonce: "On voit un champ et une rivière. Quel est ce paysage ?"
+    bonneReponse: "la campagne"
+    distracteurs: ["la montagne", "la ville"]
+    indice: "Ce n'est pas le littoral."
+  # sonde 38 (G10-4 refusee : le littoral explique dans un item A ou il est propose)
+  - enonce: "On voit un champ et une rivière. Quel est ce paysage ?"
+    bonneReponse: "la campagne"
+    distracteurs: ["le littoral", "la ville"]
+    indice: "Sur le littoral, il y a par exemple la mer."
+  # sonde 39 (G11 refusee : le pluriel forets)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Cherche les forêts."
+  # sonde 40 (G11 passe : port est dans support, la recherche est bornee)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Regarde le support de chaque mot."
+  # sonde 41 (G10-4 B refusee : le pluriel forets, la foret est proposee)
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la mer"
+    distracteurs: ["le sommet", "la forêt"]
+    indice: "Pense aux forêts."
+  # sonde 42 (G10-4 B refusee : le sommet est propose)
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la mer"
+    distracteurs: ["le sommet", "la forêt"]
+    indice: "Pense au sommet."
+  # sonde 43 (G10-4 B passe : une methode)
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la mer"
+    distracteurs: ["le sommet", "la forêt"]
+    indice: "Compare chaque choix avec le paysage de l'énoncé."
+  # sonde 44 (G12 refusee : littoral dans un item B a la montagne)
+  - enonce: "Lequel ne voit-on pas à la montagne ?"
+    bonneReponse: "la mer"
+    distracteurs: ["le sommet", "la forêt"]
+    indice: "Pense au littoral."
+  # sonde 45 (G10-4 B littoral passe : l'exemple de nadia-prof)
+  - enonce: "Lequel ne voit-on pas sur le littoral ?"
+    bonneReponse: "les pistes de ski"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Sur le littoral, il y a par exemple la mer."
+  # sonde 46 (G10-4 B littoral passe : deux exemples)
+  - enonce: "Lequel ne voit-on pas sur le littoral ?"
+    bonneReponse: "les pistes de ski"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Sur le littoral, il y a par exemple la mer et le phare."
+  # sonde 47 (G10-4 B littoral refusee : l'indice n'ecrit pas littoral)
+  - enonce: "Lequel ne voit-on pas sur le littoral ?"
+    bonneReponse: "les pistes de ski"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Cherche ce qui va avec la neige."
+  # sonde 48 (G10-4 B littoral refusee : une definition, sans par exemple)
+  - enonce: "Lequel ne voit-on pas sur le littoral ?"
+    bonneReponse: "les pistes de ski"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Le littoral, c'est le bord de la mer."
+  # sonde 49 (G13 refusee : le port n'est pas un propre du littoral)
+  - enonce: "Lequel ne voit-on pas sur le littoral ?"
+    bonneReponse: "les pistes de ski"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Sur le littoral, il y a par exemple le port."
+  # sonde 50 (G10-4 B refusee : l'exemple est la plage, qui est proposee)
+  - enonce: "Lequel ne voit-on pas sur le littoral ?"
+    bonneReponse: "les pistes de ski"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Sur le littoral, il y a par exemple la plage."
+  # sonde 51 (G10-4 B littoral passe : une definition suivie d'un exemple bien forme, non gardee (lue par nadia-prof))
+  - enonce: "Lequel ne voit-on pas sur le littoral ?"
+    bonneReponse: "les pistes de ski"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Le littoral, c'est le bord de l'eau, par exemple la mer."
+  # sonde 52 (G13 refusee : un adjectif sur l'exemple)
+  - enonce: "Lequel ne voit-on pas sur le littoral ?"
+    bonneReponse: "les pistes de ski"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Sur le littoral, il y a par exemple la grande mer."
+  # sonde 53 (G13 passe : un adjectif hors de l'exemple, non garde (lu par nadia-prof, PAY-CE1-2))
+  - enonce: "Lequel ne voit-on pas sur le littoral ?"
+    bonneReponse: "les pistes de ski"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Sur le grand littoral, il y a par exemple la mer."
+  # sonde 54 (G13 refusee : le second exemple n'est pas un propre du littoral)
+  - enonce: "Lequel ne voit-on pas sur le littoral ?"
+    bonneReponse: "les pistes de ski"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Sur le littoral, il y a par exemple la mer et la neige."
+  # sonde 55 (G10-4 B littoral refusee : par exemple sans aucun exemple)
+  - enonce: "Lequel ne voit-on pas sur le littoral ?"
+    bonneReponse: "les pistes de ski"
+    distracteurs: ["la plage", "la forêt"]
+    indice: "Sur le littoral, par exemple."
+  # sonde 60 (G10-6 refusee : habites-tu)
+  - enonce: "Dans quel paysage habites-tu ?"
+    bonneReponse: "la ville"
+    distracteurs: ["la campagne", "la montagne"]
+    indice: "Cherche le mot qui ne va qu'avec un seul paysage."
+  # sonde 61 (G10-6 refusee : tes et vacances)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Pense à tes vacances."
+  # sonde 62 (G10-6 refusee : vacances)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Pendant les vacances, regarde."
+  # sonde 63 (G10-6 refusee : toi)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Regarde pour toi."
+  # sonde 64 (G10-6 refusee : ton)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Regarde ton paysage."
+  # sonde 65 (G10-6 refusee : tu)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Tu cherches le mot."
+  # sonde 66 (G10-6 refusee : ta)
+  - enonce: "On voit un sommet et de la neige. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "la ville"]
+    indice: "Regarde ta région."
+  # sonde 67 (G10-6 passe : un imperatif sans pronom ; la montagne et les pistes de ski portent ta et tes en sous-chaine)
+  - enonce: "On voit des pistes de ski et une forêt. Quel est ce paysage ?"
+    bonneReponse: "la montagne"
+    distracteurs: ["la campagne", "le littoral"]
+    indice: "Cherche et regarde."
