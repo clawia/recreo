@@ -1,0 +1,555 @@
+schema: 1
+id: fautif
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CE1"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif du test du paquet des dangers de l'électricité."
+lignesDeReferentiel: ["QLM-CE1-08"]
+#
+# Jeu fautif de PaquetCe1QlmDangersElectriciteTest : chaque item porte en commentaire le marqueur de
+# la sonde qu'il met a l'epreuve, avec sa provenance (nadia-prof, theo-archi ou marc-dev) quand elle
+# est connue. Les sondes dites 'passe' sont des clauses : elles doivent passer. Aucun item n'est un
+# contenu servi. Les gardes de paquet (FER-3, FER-1, les trois gestes) se mordent sur le paquet reel
+# prive de ses items, dans le test, et n'ont pas d'item ici.
+items:
+  # sonde 01 (marc-dev) un champ que le test ne lit pas : explication
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+    explication: "Un fil abîmé laisse voir ce qu'il protège."
+  # sonde 02 (marc-dev) situation declaree fil, enonce qui ne nomme que la prise
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "La prise du salon est cassée. Que doit faire Sami ?"
+    bonneReponse: "ne pas toucher la prise"
+    distracteurs: ["ne rien dire à personne", "la réparer avec un tournevis"]
+    indice: "Regarde bien la scène."
+  # sonde 03 (marc-dev) tache danger dont la bonne reponse est un geste
+  # DEL-CE1-1 tache : danger
+  # DEL-CE1-1 situation : prise
+  - enonce: "Dans la maison de Jade, quelle situation est dangereuse ?"
+    bonneReponse: "ne pas toucher la prise"
+    distracteurs: ["une lampe allumée", "une prise bien fixée"]
+    indice: "Regarde bien la scène."
+  # sonde 04 (marc-dev) aucune tache declaree
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 05 (marc-dev) tache danger, situation declaree fil, bonne reponse qui nomme la prise
+  # DEL-CE1-1 tache : danger
+  # DEL-CE1-1 situation : fil
+  - enonce: "Dans la maison de Jade, quelle situation est dangereuse ?"
+    bonneReponse: "une prise cassée"
+    distracteurs: ["une lampe allumée", "une prise bien fixée"]
+    indice: "Regarde bien la scène."
+  # sonde 06 (nadia-prof) bonne reponse : reparer le fil
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "réparer le fil"
+    distracteurs: ["toucher le fil pour voir", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 07 (nadia-prof) bonne reponse : debrancher l'appareil qui fume
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Le grille-pain fume près de l'évier. Que doit faire Léa ?"
+    bonneReponse: "débrancher l'appareil qui fume"
+    distracteurs: ["le recouvrir d'un torchon", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 08 (nadia-prof) ne pas brancher les mains mouillees
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Inès a les mains mouillées et veut brancher la lampe. Que doit-elle faire ?"
+    bonneReponse: "ne pas brancher les mains mouillées"
+    distracteurs: ["brancher la lampe tout de suite", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 09 (nadia-prof) ne pas brancher la lampe sans mains mouillees dans l'enonce
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Inès veut brancher la lampe. Que doit-elle faire ?"
+    bonneReponse: "ne pas brancher la lampe"
+    distracteurs: ["brancher la lampe tout de suite", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 10 (nadia-prof) ne pas toucher le fil sous une situation prise
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : prise
+  - enonce: "La prise du salon est cassée. Que doit faire Sami ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["la réparer avec un tournevis", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 11 (theo-archi T2-r1) garder l'appareil loin de l'eau, retire
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Le sèche-cheveux est branché au bord du lavabo. Que doit faire Lina ?"
+    bonneReponse: "garder l'appareil loin de l'eau"
+    distracteurs: ["le débrancher en tirant sur le fil", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 12 (theo-archi T4-r2) mains mouillees et fil : deux situations
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Lina a les mains mouillées et voit un fil abîmé. Que doit-elle faire ?"
+    bonneReponse: "attendre d'avoir les mains sèches"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 13 (theo-archi T4-r1) mains mouillees et prise : deux situations
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : prise
+  - enonce: "Inès a les mains mouillées et veut brancher le chargeur dans la prise. Que doit-elle faire ?"
+    bonneReponse: "se sécher d'abord les mains"
+    distracteurs: ["brancher le chargeur tout de suite", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 14 (theo-archi T2-r2) une alerte en bonne reponse, casse et point
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "Prévenir un adulte."
+    distracteurs: ["réparer le fil avec du scotch", "toucher le fil pour voir"]
+    indice: "Regarde bien la scène."
+  # sonde 15 (nadia-prof T4-p) passe : se secher les mains sous des mains mouillees
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Inès a les mains mouillées et veut brancher la lampe. Que doit-elle faire ?"
+    bonneReponse: "se sécher d'abord les mains"
+    distracteurs: ["brancher la lampe tout de suite", "changer l'ampoule de la lampe"]
+    indice: "Regarde bien la scène."
+  # sonde 16 (theo-archi T4-p2) passe : ne pas brancher la lampe sous des mains mouillees
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Inès a les mains mouillées et veut brancher la lampe. Que doit-elle faire ?"
+    bonneReponse: "ne pas brancher la lampe"
+    distracteurs: ["brancher la lampe tout de suite", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 17 (theo-archi) passe : casse et point final
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : prise
+  - enonce: "La prise du salon est cassée. Que doit faire Sami ?"
+    bonneReponse: "Ne pas toucher la prise."
+    distracteurs: ["la réparer avec un tournevis", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 18 (marc-dev) passe : apostrophe typographique, approcher de l'eau
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Lina veut poser la radio au bord de l'évier. Que doit-elle faire ?"
+    bonneReponse: "ne pas l’approcher de l’eau"
+    distracteurs: ["la poser près du robinet ouvert", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 19 (theo-archi) passe : l'appareil au bord du lavabo, apostrophe typographique
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Le sèche-cheveux est branché au bord du lavabo. Que doit faire Lina ?"
+    bonneReponse: "ne pas toucher l’appareil"
+    distracteurs: ["le débrancher en tirant le fil", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 20 (theo-archi T3) deux formes dans un meme item, garde g3 seule
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "laisser le fil sans le toucher"
+    distracteurs: ["ne pas toucher le fil", "réparer le fil avec du scotch"]
+    indice: "Regarde bien la scène."
+  # sonde 21 (marc-dev) deux formes dans un item de la tache danger
+  # DEL-CE1-1 tache : danger
+  # DEL-CE1-1 situation : prise
+  - enonce: "Dans la maison de Jade, quelle situation est dangereuse ?"
+    bonneReponse: "une prise cassée"
+    distracteurs: ["ne pas toucher la prise", "ne rien mettre dans la prise"]
+    indice: "Regarde bien la scène."
+  # sonde 22 (nadia-prof) bonne reponse en ne pas, seule proposition en ne
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "toucher le fil pour voir"]
+    indice: "Regarde bien la scène."
+  # sonde 23 (nadia-prof) passe : meme item, bonne reponse sans ne
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "laisser le fil sans le toucher"
+    distracteurs: ["réparer le fil avec du scotch", "toucher le fil pour voir"]
+    indice: "Regarde bien la scène."
+  # sonde 24 (theo-archi) passe : distracteur negatif ne rien dire a un adulte
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : prise
+  - enonce: "La prise du salon est cassée. Que doit faire Sami ?"
+    bonneReponse: "ne pas toucher la prise"
+    distracteurs: ["ne rien dire à un adulte", "toucher la prise pour voir"]
+    indice: "Regarde bien la scène."
+  # sonde 25 (marc-dev) pile dans l'enonce
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom change la pile d'une lampe. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 26 (marc-dev) piles dans un distracteur
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["jeter les piles", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 27 (nadia-prof) pile ou face dans la bonne reponse
+  # DEL-CE1-1 tache : danger
+  # DEL-CE1-1 situation : prise
+  - enonce: "Dans la maison de Jade, quelle situation est dangereuse ?"
+    bonneReponse: "jouer à pile ou face"
+    distracteurs: ["une lampe allumée", "une prise bien fixée"]
+    indice: "Regarde bien la scène."
+  # sonde 28 (theo-archi) PILE en majuscules dans l'indice
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "PILE ou face."
+  # sonde 29 (theo-archi) pile-poil dans un distracteur
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["arriver pile-poil", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 30 (theo-archi) passe : empiler, pilote, pilier
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom veut empiler les cartons. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["demander au pilote", "ne rien dire à personne"]
+    indice: "Regarde le pilier."
+  # sonde 31 (nadia-prof) electrocution dans l'enonce
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : prise
+  - enonce: "Lina s'est électrocutée en touchant la prise. Que doit-elle faire ?"
+    bonneReponse: "ne pas toucher la prise"
+    distracteurs: ["la réparer avec un tournevis", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 32 (nadia-prof) bruler au preventif dans l'indice
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Pour ne pas se brûler."
+  # sonde 33 (nadia-prof) tuer dans l'enonce
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Un fil abîmé peut tuer. Que doit faire Tom ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 34 (nadia-prof) mourir dans un distracteur
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["On peut mourir en touchant un fil abîmé.", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 35 (nadia-prof) blesse accentue : un personnage nomme est blesse
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Sami s'est blessé à la main. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 36 (nadia-prof) present conjugue : Lina se blesse
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Lina se blesse avec le fil. Que doit-elle faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 37 (nadia-prof) present conjugue : Sami se fait mal
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Sami se fait mal. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 38 (theo-archi) futur : Lina se blessera
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Lina se blessera. Que doit-elle faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 39 (theo-archi) imparfait : Sami se faisait mal
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Sami se faisait mal. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 40 (theo-archi) pluriel : Tom et Lina se blessent
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom et Lina se blessent. Que doivent-ils faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 41 (nadia-prof) une personne de la scene : Un eleve se blesse
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Un élève se blesse pendant la récréation. Que doit faire Tom ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 42 (theo-archi) une personne de la scene : Une personne se blesse
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Une personne se blesse. Que doit faire Tom ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 43 (marc-dev) s'est fait mal
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Sami s'est fait mal. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 44 (nadia-prof) passe : le present generique avec on
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["On se blesse avec un fil abîmé.", "On peut se faire mal."]
+    indice: "Regarde le plastique."
+  # sonde 45 (theo-archi) passe : on ne et l'on
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["On ne se blesse pas si on ne touche pas le fil.", "Si l'on se blesse, on le dit."]
+    indice: "Regarde le plastique."
+  # sonde 46 (nadia-prof) passe : personne ne
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["pour que personne ne se blesse", "Personne ne se fait mal."]
+    indice: "Personne ne se blessera."
+  # sonde 47 (nadia-prof) passe : l'infinitif
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["pour ne pas se blesser", "pour ne pas se faire mal"]
+    indice: "Regarde bien la scène."
+  # sonde 48 (nadia-prof) passe : le danger en termes generaux
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "C'est dangereux. Que doit faire Tom ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "L'électricité peut faire très mal."
+  # sonde 49 (nadia-prof) TRV-CE1-6 : ta chambre
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : prise
+  - enonce: "Dans ta chambre, une prise est cassée. Que doit faire Sami ?"
+    bonneReponse: "ne pas toucher la prise"
+    distracteurs: ["la réparer avec un tournevis", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 50 (nadia-prof) TRV-CE1-6 : chez toi
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil chez toi", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 51 (nadia-prof) TRV-CE1-6 : la baignoire
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Le sèche-cheveux est branché près de la baignoire. Que doit faire Lina ?"
+    bonneReponse: "ne pas toucher l'appareil"
+    distracteurs: ["le débrancher en tirant le fil", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 52 (marc-dev) TRV-CE1-6 : ta maison
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Pense à ta maison."
+  # sonde 53 (nadia-prof) passe : la cuisine
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Dans la cuisine, un fil est abîmé. Que doit faire Tom ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["réparer le fil avec du scotch", "ne rien dire à personne"]
+    indice: "Regarde bien la scène."
+  # sonde 54 (theo-archi T2-r3) alerte en distracteur : appeler un adulte
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["appeler un adulte", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 55 (theo-archi T2-r4) alerte en distracteur : Le dire a un adulte.
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : prise
+  - enonce: "La prise du salon est cassée. Que doit faire Sami ?"
+    bonneReponse: "ne pas toucher la prise"
+    distracteurs: ["Le dire à un adulte.", "ne pas déranger un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 56 (theo-archi T2-r5) alerte suivie d'un complement
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "laisser le fil sans le toucher"
+    distracteurs: ["prévenir un adulte tout de suite", "réparer le fil avec du scotch"]
+    indice: "Regarde bien la scène."
+  # sonde 57 (theo-archi T2-p1) passe : le refus de signaler, apostrophe typographique
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Le sèche-cheveux est branché au bord du lavabo. Que doit faire Lina ?"
+    bonneReponse: "ne pas toucher l’appareil"
+    distracteurs: ["le débrancher en tirant sur le fil", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 58 (theo-archi T2-p3) passe : l'alerte niee ne pas prevenir un adulte
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : prise
+  - enonce: "La prise du salon est cassée. Que doit faire Sami ?"
+    bonneReponse: "ne pas toucher la prise"
+    distracteurs: ["ne pas prévenir un adulte", "toucher la prise pour voir"]
+    indice: "Regarde bien la scène."
+  # sonde 59 (nadia-prof) deux situations : la prise et le lavabo
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Le sèche-cheveux est branché à la prise près du lavabo. Que doit faire Lina ?"
+    bonneReponse: "ne pas toucher l'appareil"
+    distracteurs: ["le débrancher en tirant le fil", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 60 (theo-archi) passe : lavabo et eau sont une seule situation
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Le sèche-cheveux est branché au bord du lavabo, à côté de l'eau. Que doit faire Lina ?"
+    bonneReponse: "ne pas toucher l'appareil"
+    distracteurs: ["le débrancher en tirant le fil", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
+  # sonde 61 (marc-dev) passe : un enonce de la tache danger n'est pas lu par la garde
+  # DEL-CE1-1 tache : danger
+  # DEL-CE1-1 situation : eau
+  - enonce: "La prise est près de l'eau. Quelle situation est dangereuse ?"
+    bonneReponse: "une lampe branchée près de l'évier"
+    distracteurs: ["une lampe branchée loin de l'évier", "une lampe débranchée loin de l'évier"]
+    indice: "Regarde bien la scène."
+  # sonde 62 (theo-archi) abstention en distracteur : ne rien toucher
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["ne rien toucher", "réparer le fil avec du scotch"]
+    indice: "Regarde bien la scène."
+  # sonde 63 (theo-archi) abstention : s’éloigner du fil, apostrophe typographique
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "laisser le fil sans le toucher"
+    distracteurs: ["s’éloigner du fil", "réparer le fil avec du scotch"]
+    indice: "Regarde bien la scène."
+  # sonde 64 (theo-archi) abstention : S'éloigner.
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "laisser le fil sans le toucher"
+    distracteurs: ["S'éloigner.", "toucher le fil pour voir"]
+    indice: "Regarde bien la scène."
+  # sonde 65 (theo-archi) abstention : attendre
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "laisser le fil sans le toucher"
+    distracteurs: ["attendre", "toucher le fil pour voir"]
+    indice: "Regarde bien la scène."
+  # sonde 66 (theo-archi) abstention : ne pas s'approcher
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "laisser le fil sans le toucher"
+    distracteurs: ["ne pas s'approcher", "toucher le fil pour voir"]
+    indice: "Regarde bien la scène."
+  # sonde 67 (theo-archi) abstention : continuer a jouer ailleurs
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "laisser le fil sans le toucher"
+    distracteurs: ["continuer à jouer ailleurs", "toucher le fil pour voir"]
+    indice: "Regarde bien la scène."
+  # sonde 68 (theo-archi) passe : les deux refus de signaler admis
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["ne rien dire à personne", "ne pas en parler"]
+    indice: "Regarde bien la scène."
+  # sonde 69 (theo-archi) passe : l'abstention n'est pas au debut
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "laisser le fil sans le toucher"
+    distracteurs: ["réparer le fil et attendre", "toucher le fil pour voir"]
+    indice: "Regarde bien la scène."
+  # sonde 70 (theo-archi) passe : attendrir n'est pas attendre
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "laisser le fil sans le toucher"
+    distracteurs: ["attendrir le fil", "toucher le fil pour voir"]
+    indice: "Regarde bien la scène."
+  # sonde 71 (marc-dev) passe : attendre suivi d'un refus de signaler (attendre en egalite)
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "laisser le fil sans le toucher"
+    distracteurs: ["attendre sans rien dire", "toucher le fil pour voir"]
+    indice: "Regarde bien la scène."
+  # sonde 72 (theo-archi) precaution niee : ne pas attendre d'avoir les mains seches
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Inès a les mains mouillées et veut brancher la lampe. Que doit-elle faire ?"
+    bonneReponse: "se sécher d'abord les mains"
+    distracteurs: ["ne pas attendre d'avoir les mains sèches", "brancher la lampe tout de suite"]
+    indice: "Regarde bien la scène."
+  # sonde 73 (theo-archi) precaution niee d'une autre situation, sous un item fil
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["ne pas attendre d'avoir les mains sèches", "réparer le fil avec du scotch"]
+    indice: "Regarde bien la scène."
+  # sonde 74 (theo-archi) precaution niee par ne jamais, point final
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Inès a les mains mouillées et veut brancher la lampe. Que doit-elle faire ?"
+    bonneReponse: "attendre d'avoir les mains sèches"
+    distracteurs: ["ne jamais se sécher d'abord les mains.", "brancher la lampe tout de suite"]
+    indice: "Regarde bien la scène."
+  # sonde 75 (theo-archi) passe : ne pas en parler
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "ne pas toucher le fil"
+    distracteurs: ["ne pas en parler", "toucher le fil pour voir"]
+    indice: "Regarde bien la scène."
+  # sonde 76 (theo-archi) passe : ne pas laisser le fil n'est pas ne pas suivi d'une forme
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : fil
+  - enonce: "Tom voit un fil électrique abîmé dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "laisser le fil sans le toucher"
+    distracteurs: ["ne pas laisser le fil", "toucher le fil pour voir"]
+    indice: "Regarde bien la scène."
+  # sonde 77 (theo-archi T4-r3) ne pas brancher la lampe sous un enonce qui ne nomme pas la lampe
+  # DEL-CE1-1 tache : geste
+  # DEL-CE1-1 situation : eau
+  - enonce: "Inès a les mains mouillées et veut brancher le grille-pain. Que doit-elle faire ?"
+    bonneReponse: "ne pas brancher la lampe"
+    distracteurs: ["brancher le grille-pain tout de suite", "ne rien dire à un adulte"]
+    indice: "Regarde bien la scène."
