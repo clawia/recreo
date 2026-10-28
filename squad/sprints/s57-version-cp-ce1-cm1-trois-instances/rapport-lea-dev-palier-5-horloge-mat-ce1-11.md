@@ -1,8 +1,8 @@
 # s57, palier 5, instance B : l'horloge `MAT-CE1-11`, premier jet de `lea-dev`
 
 - **Auteure** : `lea-dev`. Developpeuse, aucune casquette de decision : ni produit, ni architecture, ni pedagogie, ni Done.
-- **Date** : 2026-10-28, 11:40 a environ 12:45 (UTC+01:00), lue par `date`. **Duree brute : environ 65 minutes**, de la premiere lecture au dernier
-  commit, attentes de `mvn` et rendu d'ecran compris. Debut lu a 11:40:58, mesure de milieu de travail a 12:31:19 (50 min 21 s).
+- **Date** : 2026-10-28 (UTC+01:00), `date` lue a 11:40:58 au debut et a 12:42:46 apres le premier commit `a5d5026b`. **Duree brute : 61 min 48 s** jusqu'a ce premier commit, attentes de `mvn`
+  et rendu d'ecran compris ; le commit de ce correctif de rapport est posterieur et non chronometre.
 - **Base** : `round-two` a `802d0227`, branche `s57-p5-lea-horloge`. Mon worktree etait ouvert a `aa2b3560` sur une autre branche ; j'ai cree la branche
   de travail depuis `802d0227` avec `git switch -c s57-p5-lea-horloge 802d0227`, aucun reset, aucun rebase.
 - **Version sur laquelle j'ai mesure** : JDK **21.0.10**, celui que la machine virtuelle des tests rapporte (`Detected Java version 21.0.10`, journal d'ArchUnit) et que
@@ -167,13 +167,13 @@ Les fichiers etaient indexes (`git add -A`) avant les controles qui lisent `git 
 | Garde des identifiants | meme commande | 0 | `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` 10 tests, 0 echec ; aucun identifiant alloue, `REGISTRE-identifiants.md` non touche |
 | Renvois de decision (lance en plus) | meme commande | 0 | `ToutesLesReferencesDeDecisionResolventTest` 3 tests, 0 echec |
 | Chemins, forme CI | `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh'` redirige vers un fichier (le garde de l'agent refuse un `git` compose), puis la liste est lue sur l'entree de `bash .github/scripts/verifier-chemins.sh` (un `cat` en tube) | 0 | 3282 fichiers lus, dont les miens ; *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."* |
-| Prefixes | le sujet du commit est lu sur l'entree de `bash .github/scripts/verifier-prefixes.sh` (un `echo` en tube) | 0 | *"Tous les commits portent un prefixe d'agent connu."* ; **sur le sujet seulement, la plage `802d0227..HEAD` n'est pas relue apres le commit** |
+| Prefixes | le sujet du commit est lu sur l'entree de `bash .github/scripts/verifier-prefixes.sh` (un `echo` en tube) | 0 | *"Tous les commits portent un prefixe d'agent connu."* ; puis, apres le commit `a5d5026b`, la plage `802d0227..HEAD` (`git log --no-merges --format=%s`, sujets ecrits dans un fichier lu sur l'entree du script) : code 0, un sujet |
 
 Le test de tableaux et le garde des identifiants ont ete relances une seconde fois sur le rapport et l'en-tete du YAML tels qu'ils etaient avant l'ajout de cette seule phrase (meme commande sans le test de renvois de decision) : code 0, 5 et 10 tests.
 
-Ces deux derniers controles ne sont pas la forme exacte de la CI : celle-ci lit `git log --no-merges --format=%s <base>..<sha>` sur le commit pousse.
+Ces deux derniers controles ne sont la forme de la CI que pour le contenu lu : la CI les lance sur le commit pousse, par `git log --no-merges --format=%s <base>..<sha>` en tube, et sa base est celle de la poussee, pas `802d0227`.
 
-**Non lances** : `mvn -B verify` (geste a part, apres la lecture de `nadia-prof`) ; le job `build` de `ci.yml` ; les jobs `outils`, `prefixes` (forme CI sur la plage) et `chemins` (tests des garde-fous : `verifier-chemins-test.sh`, `verifier-prefixes-test.sh`) ;
+**Non lances** : `mvn -B verify` (geste a part, apres la lecture de `nadia-prof`) ; le job `build` de `ci.yml` ; les jobs `outils`, `prefixes` et `chemins` en entier (leurs etapes de test des garde-fous : `verifier-chemins-test.sh`, `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, ne sont pas lancees) ;
 les tests de `bootstrap` hors `com.recreo.archi` ; le garde-fou de l'accent. **Je ne declare pas la porte technique** : je n'ai lance aucun des jobs de la CI en entier.
 
 **Etat de l'arbre** : `git status -s` avant l'indexation listait trois fichiers modifies (les trois tests de populations et de cliquets) et les fichiers neufs ci-dessus ; `catalogue.yaml` n'y figurait pas.
