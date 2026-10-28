@@ -4772,3 +4772,123 @@ Aucun de ces postes n'est affecte aux 0,80 : ils n'ont pas de prix (les quatre p
 | `yanis-qa` | rien |
 
 **Matrice** : aucun statut ne change, `MATRICE-couverture.md` n'est pas modifiee. **Report** : `Q-273-1`, dixieme mention ; Q3 d'A.271 inchange ; `Q-281-1` et `Q-281-2` ferment ; l'inscription du plafond de 25,00 dans `planning.md` est une premiere inscription. **Changement de code decide, avec proprietaire** : une ligne de contenu YAML (item 6 de `-03`), `marc-dev`, avant la relecture ; aucun autre. **Ne fait pas** : ne prononce aucun Done, ne juge aucune formulation, ne chiffre aucun poste que les regles ne chiffrent pas, n'affecte pas les 0,80 a un poste, ne change ni l'engage ni la marge, ne reecrit pas `P3`, ne pose aucun seuil, ne lance pas `nadia-prof`, n'applique pas l'item 6, n'amende ni `planning.md`, ni `backlog.md`, ni `CLAUDE.md`, ni `squad/lessons.md`, ni les fiches, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue.
+
+## Amendement du 2026-10-28, soixante et unieme (`camille-po`, palier 5 : les neuf lots de questionner le monde CE1 ont leur Done pedagogique ; classement des reserves, ce que les regles ecrites chiffrent, ce que la matrice peut dire)
+
+Annotation datee. **Chiffres avant / apres, en toutes lettres : plafond de `PAR-8` du palier 9 vingt-cinq virgule zero zero avant, vingt-cinq virgule zero zero apres ; cas haut vingt-quatre virgule vingt, inchange ; reserve de plafond zero virgule quatre-vingts, inchangee ; engage treize virgule cinquante, inchange ; marge de l'instance neuve un virgule cinq, inchangee ; ligne hors marge six virgule cinquante avec les deux gestes d'A.280, inchangee ; lignes de matrice `couvert-valide` cent cinquante-six sur un denominateur atteignable de deux cent deux, inchange.** **Statut de `DEC-0120` : `Acceptee`, inchange.** Arbre : base `round-two` a `1a810b79`, branche `s57-p5-camille-283`. Sources lues au disque : les neuf `FICHE-ce1-qlm-<lot>.md` (blocs de validation de `nadia-prof`, non modifies), `DEC-0120` A.267 a A.282, `docs/backlog/backlog.md`, `MATRICE-couverture.md`, `planning.md` (amendement du 2026-10-27 21:34), `.github/workflows/ci.yml`, les neuf paquets `ce1-qlm-*.yaml`. Les chiffres calcules sont marques **[calcul]**, les chiffres comptes sur un fichier **[mesure]**.
+
+### A.283 Neuf Done pedagogiques, onze reserves ecrites, aucun refus ; chaque reserve devient une story non engagee ; aucune ligne de matrice ne bouge
+
+**1. Ses mots, reportes.** Reponses de l'utilisatrice du 2026-10-28, relayees par l'agent lanceur (forme 2, `DEC-0062` G), citees mot pour mot et rien d'autre :
+
+- sur la reserve du mot *plus* dans la tache privation de `-03` : *"on ne corrige pas"* ;
+- sur l'ordre des gestes : *"01 et 02 en // puis 03"*.
+
+Le texte des options 01, 02 et 03 ne m'a pas ete transmis. Ce que l'agent lanceur m'en donne : `sofia-sm` met `planning.md` a jour (01) pendant que j'ecris les fiches et les stories (02), puis l'horloge `MAT-CE1-11` est auditee avec `nadia-prof` (03). Je retiens cette lecture ; si les options disaient autre chose, sa phrase l'emporte.
+
+**2. Les neuf verdicts, lus aux fiches [mesure].** Tous prononces par `nadia-prof` seule, le 2026-10-27, sur `round-two` a `d6f2e007`. Aucun refus : 0 lot sur 9.
+
+| Lot | Ligne | Paquet | Items | Verdict | Fusion | Reserves ecrites |
+|---|---|---|---|---|---|---|
+| `-01` | `QLM-CE1-01` | `ce1-qlm-etapes-de-developpement` | 15 | VALIDE | `d2adbb4e` | 0 |
+| `-02` | `QLM-CE1-02` | `ce1-qlm-ce-que-mangent-les-animaux` | 12 | VALIDE SOUS RESERVE | `9a7ad21f` | 1 : `RAL-CE1-R1` |
+| `-03` | `QLM-CE1-03` | `ce1-qlm-besoins-de-la-plante` | 14 | VALIDE SOUS RESERVE | `740bbc34` | 2 : le mot *plus*, la liste des non-besoins |
+| `-04` | `QLM-CE1-04` | `ce1-qlm-familles-d-aliments` | 12 | VALIDE | `ca957d50` | 0 |
+| `-05` | `QLM-CE1-05` | `ce1-qlm-eau-trois-etats` | 12 | VALIDE SOUS RESERVE | `1a810b79` | 3 : `ETE-CE1-R1`, `-R2`, `-R3` |
+| `-06` | `QLM-CE1-06` | `ce1-qlm-aimant` | 12 | VALIDE SOUS RESERVE | `898b6b61` | 2 : la liste d'objets, l'entree de catalogue |
+| `-08` | `QLM-CE1-08` | `ce1-qlm-dangers-electricite` | 12 | VALIDE SOUS RESERVE | `62757537` | 1 : `DEL-CE1-R1` |
+| `-10` | `QLM-CE1-10` | `ce1-qlm-paysages` | 13 | VALIDE SOUS RESERVE | `52eb9c47` | 1 : l'ordre des mots des items A |
+| `-12` | `QLM-CE1-12` | `ce1-qlm-generations` | 12 | VALIDE SOUS RESERVE | `08f7a2ab` | 1 : `V1` |
+
+Onze reserves ecrites [calcul : 0 plus 1 plus 2 plus 0 plus 3 plus 2 plus 1 plus 1 plus 1], toutes dites non bloquantes par `nadia-prof`. Aucune ne retient un Done.
+
+**3. Classement. Ce que chaque point est, ce que sa levee demande (ses mots), a qui il va, la story qui le porte.** Reperes locaux `RS1` a `RS15`, aucun identifiant de condition alloue. Les criteres de levee sont **ses mots, reportes sans traduction** (consigne de l'organisation et du backlog : un critere issu d'un refus reprend les mots du refus). Chaque story a ete verifiee contre l'existant avant d'etre ecrite : la valeur d'aujourd'hui est dans le backlog, annotation du 2026-10-28, douzieme.
+
+| Repere | Lot | Nature | Levee, ses mots | Premier acteur | Story |
+|---|---|---|---|---|---|
+| `RS1` | `-02` | contenu, regle de `nadia-prof` | *"dans chaque item de la tache aliment, un des deux distracteurs est un aliment de la meme categorie que la bonne reponse, que l'animal ne mange pas a ce lieu"* | `nadia-prof` relit le choix des aliments, `marc-dev` | `S57-RAL-CE1-R1` |
+| `RS2` | `-03` | regle de `nadia-prof` | *"il faut d'abord que je revise `BPL-CE1-1` par ecrit, pour un sprint suivant"* | `nadia-prof` | `S57-BPL-CE1-1-REVISION` |
+| `RS3` | `-03` | le mot *plus* | *"on ne corrige pas"* (utilisatrice) | aucun | aucune story, voir D2 |
+| `RS4` | `-08` | regle de `nadia-prof` | *"au plus un item ou la bonne reponse est la seule proposition commencant par ne, ne pas, ne rien ou ne jamais qui n'est pas un refus de signaler"* ; ses regles 2 et 3 d'abord, *"avant toute correction du paquet"* | `nadia-prof` | `S57-DEL-CE1-R1` |
+| `RS5` | `-10` | contenu | *"dans au moins trois des huit items A, l'element partage est nomme en premier"* | `marc-dev` | `S57-QLM-CE1-10-ORDRE-DES-MOTS` |
+| `RS6` | `-06` | contenu, liste d'objets | *"le bon groupe n'est strictement le plus court en caracteres que dans la moitie des items de B au plus"* | `marc-dev` | `S57-QLM-CE1-06-LISTE-D-OBJETS` |
+| `RS7` | `-05` | pli, `ETE-CE1-R1` | *"a 744 x 551, apres une erreur, le bas du bloc `.indice` est au-dessus de y = 551 sur les 12 items"* | `ines-design` mesure, `theo-archi` cause | `S57-ETE-CE1-R1` |
+| `RS8` | `-05` | cesure, `ETE-CE1-R2` | *"a 744 x 551, aucun mot qui porte un trait d'union n'est coupe entre deux lignes dans les 12 enonces"* | `ines-design` mesure, `theo-archi` cause | `S57-ETE-CE1-R2` |
+| `RS9` | `-05` | contenu, `ETE-CE1-R3` | *"l'indice compare la situation de l'enonce a une situation ou l'eau ne peut pas s'en aller dans l'air, en restant dans la regle 5"* | `camille-po` et `marc-dev`, puis `nadia-prof` | `S57-ETE-CE1-R3` |
+| `RS10` | `-12` | mesure, `V1` | *"a 744 x 551 et a 360 de large, aucune proposition coupee a l'interieur de arrière-grands-parents ou de grands-parents, et aucune reponse attendue sous le pli a la revelation"* | `ines-design` | `S57-QLM-CE1-12-V1-MESURE` |
+| `RS11` | `-12` | redaction, signal `P5` | *"L'accord n'est pas de mon ressort"* ; releve du `relecteur-pedagogique` | `relecteur-pedagogique` | `S57-QLM-CE1-12-ACCORD` |
+| `RS12` | `-01` | mesure, *"pas reserve de lot"* | a 360 x 640, la premiere proposition des items *ordre* est coupee, les deux autres sous le pli | `ines-design` | `S57-QLM-CE1-01-DEFILEMENT-360` |
+| `RS13` | commun | mecanique `bandit-manchot` | *"Bravo, c'est juste !"* au-dessus de *"Tu as trouvé, tout seul : 0"* ; elle ne le juge pas | `nadia-prof` dit si c'est un defaut, puis `theo-archi` | `S57-MECA-FIN-DE-PARTIE-BRAVO-ZERO` |
+| `RS14` | commun | mecanique `bandit-manchot` | *"Bravo !"* sans point au dernier choix restant ; elle ne le juge pas | `nadia-prof`, puis `theo-archi` | `S57-MECA-BRAVO-SANS-POINT` |
+| `RS15` | neuf lots | entree de catalogue (`QC3`) | titre et consigne lus par `nadia-prof` avant la fusion, dits par les neuf verdicts | `nadia-prof` | `S57-QLM-CE1-ENTREES-CATALOGUE` |
+
+`RS13` et `RS14` sont ecrits dans les fiches de `-01`, `-03`, `-04` et `-12` comme *comportement de la mecanique, hors du lot et non rouvert*. Je n'en fais pas un defaut : le texte servi a l'enfant est sous sa porte, et la phrase *"Bravo, c'est juste !"* a deja ete arbitree par elle pour la derniere manche reussie (commentaire `REV-2` de `fragments/retour.html`, lu). Les deux stories commencent donc par sa reponse ecrite, pas par un code.
+
+**4. Ce que les regles ecrites disent du cout. Rien n'est devine : *non chiffre* quand aucune regle ne chiffre.**
+
+| Poste | Ce que la regle ecrite dit | Source |
+|---|---|---|
+| lecture du premier jet et correction qui la suit | 1,0 par lot | A.272, table de cout |
+| seconde lecture (relecture des lignes que `nadia-prof` a prescrites, avant `verify`) | 0,5 hors marge, par lot de l'instance neuve, *"que les lignes soient une ou quinze"* | A.270 point 4, A.272 regle point 1 |
+| troisieme lecture (seconde correction suivie d'une relecture, ou relecture du paquet entier) | 0,5 de plus, hors marge | A.272 regle point 3 ; classee pour `-03` et `-08` en A.281 |
+| quatrieme lecture d'un lot | **non chiffre** : A.272 regle point 3 *"ne prevoit que la troisieme"* | A.281 point 4, A.282 point 2 |
+| rejeu | 0,5, *"autant que la marge en paie"*, attribues aux lots **refuses** ; aucun avant les dix premiers audits | A.267 point 3, `P3` d'A.265. Lots refuses aujourd'hui : 0 sur 9 |
+| audit a l'ecran d'un lot | **non chiffre** : durees a l'horloge *"donnee brute"*, *"aucune conversion en bareme"* ; pour l'horloge, *"aucune regle ne chiffre un audit a l'ecran en plus"* | les fiches, qui citent A.276 (remesure) ; A.280 point 6 ; A.282 point 2 |
+| `mvn verify` par lot | **non chiffre** : *"Aucun cout n'est ecrit pour ces `verify`"* | A.280 point 2, A.282 point 2 |
+| une reserve non bloquante, ou la story qui la porte | **aucune regle ne lui donne un prix** ; ni les neuf verdicts, qui ecrivent des durees brutes, ni A.267 a A.282 n'en chiffrent | lu, absence |
+| plafond de `PAR-8` du palier 9, cas haut, reserve | 25,00 ; 24,20 ; 0,80 ; une troisieme lecture de plus tient (24,70), deux ne tiennent pas (25,20) ; au-dela de 25,00, le cout s'inscrit au registre (A.247) et *"ne bloque le Done d'aucun lot"* | A.282 points 2 et 4, A.273 point 1 (b) |
+
+**Les neuf verdicts ne changent aucun chiffre** : l'audit a l'ecran n'est chiffre par aucun texte (ligne ci-dessus), et les neuf secondes lectures et les deux troisiemes lectures sont deja inscrites. Le cas haut reste 24,20, la reserve de plafond 0,80.
+
+**5. Si une reserve devient une correction, elle coute une lecture : c'est une decision de l'utilisatrice, pas la mienne. Ce que les textes disent de chaque cas, calcule.**
+
+- `-02`, `-05` (`ETE-CE1-R3`), `-06`, `-10` : la correction touche un texte servi a l'enfant que `nadia-prof` garde seule (`QC9`) et que ses verdicts disent relire (`-02` : *"repasse par ma lecture avant `verify`"* ; `-05` : *"puis a ma lecture"* ; `-06` : l'exactitude de chaque objet ; `-10` : la place de l'element propre). Chacun de ces quatre lots a deja une seconde lecture et aucune troisieme : une relecture de la correction serait une troisieme lecture, 0,50 hors marge chacune (A.272 regle point 3) [calcul : 4 fois 0,50 = 2,00]. **A.272 regle point 3 ne dit pas si elle vaut apres un Done pedagogique, la ou elle est ecrite pour une lecture *avant `verify`* ; je ne tranche pas.** Si elle vaut : cas haut 26,20 [calcul : 24,20 plus 2,00], soit 1,20 au-dessus de 25,00 [calcul] ; la reserve de 0,80 ne couvre qu'une seule de ces quatre lectures (A.282 point 2).
+- `-03` (`RS2`) et `-08` (`RS4`) : chacun porte deja deux lectures de plus que le premier jet (seconde et troisieme). Une relecture apres correction serait une **quatrieme lecture : non chiffree** (A.282 point 2). De plus `nadia-prof` ecrit sa revision avant toute correction (`RS2`, `RS4`) : ce geste n'est chiffre par aucune regle.
+- `-05` `ETE-CE1-R1` et `-R2`, `-12` `V1`, `-01` : des mesures de `ines-design`, qui ne sont pas une lecture de `nadia-prof` ; aucune regle ne les chiffre, la convention de mes stories de reserves du palier 4 (*"prix 0, hors `PAR`"* quand le levier est le gabarit) est la mienne, pas une regle de `DEC`. Si la cause est le contenu, une lecture s'ajoute : non chiffree.
+- `RS13` et `RS14` : un changement de mecanique, hors des neuf lots ; le prix du code est a `theo-archi` et `sofia-sm`, celui de la lecture du texte a `nadia-prof`. Non chiffres.
+
+**Question `Q-283-1`** (premiere inscription, repere local, aucun identifiant alloue), a l'utilisatrice par `sofia-sm` : **les reserves de contenu des six lots `-02`, `-03` (liste des non-besoins), `-05` (`ETE-CE1-R3`), `-06`, `-08` et `-10` deviennent-elles des corrections dans s57, chacune suivie d'une relecture de `nadia-prof` ?**
+
+| Option | Ce que ca fait, selon les textes |
+|---|---|
+| `O1` oui, les six | quatre lots a 0,50 : 2,00 hors marge si A.272 regle point 3 vaut apres un Done ; cas haut 26,20, 1,20 au-dessus de 25,00 ; registre (A.247), aucun Done bloque ; **plus** deux quatriemes lectures (`-03`, `-08`), non chiffrees |
+| `O2` non, elles restent des stories non engagees | aucun cout ; les reserves restent ecrites dans les fiches ; elles sont recopiees dans les cellules de matrice quand les lignes bougent (precedent d'A.171 a A.179) |
+| `O3` par lot | elle nomme les lots ; je recalcule avec les memes textes |
+
+Je ne recommande aucune option : le choix est celui de ce que le produit accepte de payer pour des reserves que `nadia-prof` a dites non bloquantes. **Tant qu'elle n'a pas repondu, aucune de ces stories n'est engagee** : c'est l'etat `NON ENGAGEE, sans palier` ecrit dans le backlog, pas une decision de ne pas corriger.
+
+**6. Ce que cet amendement decide, et ce qu'il ne decide pas.**
+
+- **D1.** Chaque reserve ecrite, sauf `RS3`, est une story du backlog (quatorze stories, annotation du 2026-10-28, douzieme), avec sa competence, ses criteres testables, son premier acteur. Aucune n'est engagee ; `sofia-sm` engage.
+- **D2.** `RS3` : *"on ne corrige pas"*. Aucune story, aucune correction, aucun cout. `nadia-prof` garde sa reserve dans son bloc (*"je la garde, je ne demande rien"*) ; je la recopie dans la cellule de matrice de `QLM-CE1-03` quand la ligne bougera. Je ne la rouvre pas.
+- **D3.** Le branchement de `-12` attend le releve du `relecteur-pedagogique` sur l'accord de *du plus age au plus jeune* (items 3, 8 et 11 ; `RS11`). `nadia-prof` ecrit que cette attente *"est a `camille-po`"*. Motif : `DEC-0002`, amendement du 2026-08-04, un texte lu par un enfant en cours d'apprentissage de la lecture est integralement accentue, orthographe et accords irreprochables ; une phrase dont l'accord n'a pas ete releve ne se branche pas. Les huit autres entrees ne l'attendent pas. Le cout du releve est hors de toute lecture de `P0` (A.272 regle point 4) ; je ne le chiffre pas.
+- **D4.** Les neuf entrees de catalogue forment **une** story, `S57-QLM-CE1-ENTREES-CATALOGUE`, neuf lignes independantes. Motif : `M1` (une ligne, un paquet, un lot) porte sur les verdicts, qui sont neuf ; les entrees sont neuf lignes d'un meme fichier, avec une consigne commune et une seule relecture de titres par `nadia-prof` ; chaque ligne a son propre critere et chaque ligne de matrice bouge seule. `QC3` reste dans chacune des neuf stories ; la story ajoute ce que `QC3` ne dit pas : le titre et la consigne passent devant `nadia-prof` avant la fusion, ce que les neuf verdicts demandent tous.
+- **D5.** Ordre des gestes : celui de l'utilisatrice (point 1).
+- **D6.** Matrice : voir point 7.
+
+**7. La matrice : aucune des neuf lignes ne passe a `couvert-valide`. Pourquoi, lu au depot.** `couvert-valide` demande un Done pedagogique de `nadia-prof` **et** un Done technique complet **et** l'entree de catalogue (`QC3`, et la cellule *"Jeu(x) couvrant"* nomme un jeu). Le premier est acquis pour les neuf lignes ; les deux autres ne le sont pour aucune.
+
+- **`QC3`** [mesure] : `grep -c "ce1-qlm" adapters/adapter-content/src/main/resources/catalogue.yaml` rend **0** ; `ls adapters/adapter-content/src/main/resources/contenu` compte 9 fichiers `ce1-qlm-*`. Aucun jeu n'est servi a un enfant, la cellule n'a aucun jeu a nommer. Les neuf verdicts nomment l'entree de catalogue comme une etape distincte que le verdict n'ecrit pas (`QC3`).
+- **Done technique** (`QC8`, A.280 point 2) : les quatre jobs de `ci.yml` (`prefixes`, `chemins`, `outils`, `build`, lus a `.github/workflows/ci.yml`). Seul `build` a ete lance : `mvn -B clean verify`, reacteur complet, `90c421a7`, 3618 tests unitaires et 6 d'integration, 0 echec, mesure par `sofia-sm` (`planning.md`, section 3 de l'amendement du 2026-10-27 21:34). **Pour `1a810b79` : un `verify` complet vert (3 624 tests, `build` seul) est annonce par l'agent lanceur ; je ne le trouve dans aucun fichier du depot.** `git diff --name-only 90c421a7 1a810b79` ne liste que douze fichiers `.md` [mesure]. `prefixes` et `chemins` n'ont ete lances qu'en commande de garde-fou, forme CI, sur `90c421a7` ; `outils` n'a pas ete lance (`planning.md`, meme section). *"La porte technique complete n'est pas annoncee"* : le passage CI complet est a la cloture du palier (A.280 point 2). `nadia-prof` ecrit la meme chose pour `-10` : *"La ligne `QLM-CE1-10` ne passe a `couvert-valide` qu'avec le Done technique acquis"*.
+- **Ce que cela ne dit pas** : que la ligne est refusee. Les neuf Done pedagogiques tiennent. Les lignes bougent quand l'entree est fusionnee **et** que la CI complete est verte, sans nouveau verdict pour `-01` et `-04`, avec les reserves non bloquantes recopiees dans la cellule pour les sept autres (precedent d'A.171 a A.179).
+- **Une note datee est ecrite en tete de `MATRICE-couverture.md`** : elle dit l'etat des neuf lignes (le jugement de faisabilite des cellules, *"aucun paquet n'existe"*, est perime) sans changer aucune cellule ni aucun statut. Commande de la "Methode du compte", lancee le 2026-10-28 : `couvert-valide` 156, `en cours` 7, `non couvert` 39, `non couvrable en l'etat` 75, total 277, denominateur atteignable 202, **156 / 202 = 77,23 %**, identique a la note du 2026-10-23.
+
+**8. Reports comptes.**
+
+- **`Q-273-1`** (i) et (ii) : **onzieme mention** (dixieme en A.282), non traitee ici. **(ii) devient due** : l'horloge `MAT-CE1-11` est le geste suivant (point 1), et la question est de savoir si la seconde lecture de son premier jet vaut 0,50 hors marge. Elle est a `nadia-prof` ; pour (i), voir A.273.
+- **Q3 d'A.271** (quatrieme rejeu) : **dixieme inscription** (releve par recherche du texte exact *"Q3 d'A.271"* : A.271, A.272, A.274, A.276, A.277, A.278, A.280, A.281, A.282, puis celle-ci), toujours au sprint s57, premiere en A.271. **Fait nouveau, observe et non tranche** : sur les neuf audits, **0 lot refuse** ; la question supposait trois lots refuses et la marge entiere. Elle se rouvre a la fermeture des dix audits (l'horloge est le dixieme) ; je ne la ferme pas avant.
+- **Un report deja a l'oeuvre depuis A.280** : `JAR` (qui lance le `verify` de chaque lot et qui sert le jar a l'audit), non designe dans `planning.md` ; je ne le designe pas.
+
+### Routage
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | `planning.md` (01) ; porter `Q-283-1` a l'utilisatrice ; router chaque story du backlog a son premier acteur (point 3), sans l'engager avant la reponse ; designer qui lance le `verify` de chaque lot et la CI complete a la cloture ; la ligne `JAR` ; `RS13` et `RS14` a `theo-archi` quand `nadia-prof` aura ecrit |
+| `nadia-prof` | l'horloge `MAT-CE1-11` (03), `Q-273-1` (ii) avant la seconde lecture ; reviser `BPL-CE1-1` (`RS2`, *"pour un sprint suivant"*) et rouvrir ses regles 2 et 3 de `-08` (`RS4`, *"avant toute correction du paquet"*) quand l'utilisatrice aura repondu a `Q-283-1` pour ces deux lots ; dire si `RS13` et `RS14` sont un defaut ; lire titre et consigne de chaque entree avant la fusion ; contredire par ecrit ma lecture de ses mots si elle les lit autrement (son texte l'emporte) |
+| `ines-design` | `RS7`, `RS8` (mesure), `RS10` et `RS12` |
+| `relecteur-pedagogique` | `RS11` |
+| `theo-archi` | forme des gardes (categorie par aliment, ordre des mots, longueur du bon groupe), cause de `RS7` et `RS8`, forme de `RS13` et `RS14` ; je ne decide aucune de ces formes |
+| `marc-dev` | rien avant la reponse a `Q-283-1` et les revisions de `nadia-prof` |
+| `yanis-qa` | rien |
+
+**Matrice** : aucun statut ne change ; une note datee est ajoutee a `MATRICE-couverture.md`, aucune cellule modifiee. **Report** : `Q-273-1` onzieme mention ; Q3 d'A.271 dixieme inscription ; `Q-283-1` premiere inscription. **Changement de code decide, avec proprietaire** : aucun ; les stories sont non engagees, leur premier acteur est nomme, aucune ne decide un changement. **Ne fait pas** : ne prononce aucun Done, ne juge aucune formulation, ne chiffre aucun poste que les regles ne chiffrent pas, ne tranche pas `Q-283-1`, ne modifie ni un YAML, ni un test, ni le catalogue, ni `planning.md`, ni le bloc de validation d'une fiche, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
