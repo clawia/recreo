@@ -9,18 +9,18 @@
   `grep -c "paquet: ce1-lire-l-heure" adapters/adapter-content/src/main/resources/catalogue.yaml` rend 0 le 2026-10-28.
 - **Ligne déclarée** : `MAT-CE1-11`, moitié *lire l'heure sur une horloge* (la moitié *calendrier* est `ce1-calendrier-dates`,
   `FICHE-bandit-manchot-calendrier-dates-ce1.md`). **Story** : `S57-BR-MAT-CE1-11-HORLOGE` (`docs/backlog/backlog.md`, annotation du
-  2026-10-28, treizième). **Décision** : `DEC-0120` A.263, A.265, A.267, A.280, A.282 à A.284.
+  2026-10-28, treizième). **Décision** : `DEC-0120` A.263, A.265, A.267, A.280, A.282 à A.285.
 - **Compétence programme visée** : `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-11`, *"Lire l'heure sur une horloge
   (heures, demi-heures, quarts d'heure) et se repérer dans le calendrier (mois, date)."*
 - **Conditions opposables** : celles de la story `S57-BR-MAT-CE1-11-HORLOGE`, qui reprend les mots de `nadia-prof` (3.5 de
   `arbitrage-nadia-palier-5-lp7-d5.md` et sa lecture du premier jet), **non recopiées ici** : la story fait foi. Plafond de la
   ligne : `couvert-valide`.
-- **Statut global** : **premier jet lu, en attente de la correction et de l'audit à l'écran**. Fiche ouverte par `camille-po` le
+- **Statut global** : **premier jet lu, correction faite, seconde lecture faite (exigences tenues, aucune troisième lecture exigée), en attente du `verify` complet et de l'audit à l'écran**. Fiche ouverte par `camille-po` le
   2026-10-28. Aucun verdict. La ligne `MAT-CE1-11` reste `en cours` dans la matrice, qui ne bouge qu'au verdict de `nadia-prof`, à
   l'entrée de catalogue fusionnée et à la CI complète.
 - **Poids** : le relèvement du cliquet des illustrations de 69 203 à 96 873 octets est accordé par l'utilisatrice
   (*"Q1 O1 on l'accorde"*, 2026-10-28, `DEC-0120` A.284) ; douze cadrans, 27 670 octets.
-- **Dernière mise à jour** : 2026-10-28 (`camille-po`, `DEC-0120` A.284).
+- **Dernière mise à jour** : 2026-10-28 (`camille-po`, `DEC-0120` A.285).
 
 ---
 
@@ -38,7 +38,7 @@ mesure ici.
 
 - [ ] Critères de la story `S57-BR-MAT-CE1-11-HORLOGE`, numérotés de 1 à 12 dans le backlog.
 - [ ] Conditions de `nadia-prof` sur l'horloge : 3.5 de `arbitrage-nadia-palier-5-lp7-d5.md` (`HOR-1` à `HOR-3`, `HOR-5`
-  transposée, `HOR-6` transposée, `CON-5`) et exigences 1 et 2 de sa lecture du premier jet.
+  transposée, `HOR-6` transposée, `CON-5`) et exigences 1 et 2 de sa lecture du premier jet **telles que son arbitrage `arbitrage-nadia-horloge-strategie-de-paire-et-pli.md` les remplace** (quatre stratégies `S1` à `S4`, chacune au plus 6 items sur 12 ; pli à 744 x 551), voir le critère 5 de la story. **[corrige le 2026-10-28 par A.285, texte d'origine conserve]** Texte d'origine de cette fin de ligne : *"exigences 1 et 2 de sa lecture du premier jet."*
 - [ ] Texte servi à l'enfant intégralement accentué, orthographe et ponctuation irréprochables (`DEC-0002`).
 
 ## Parcours du lot, faits lus au dépôt
@@ -52,9 +52,10 @@ Source : `git log` de `round-two` ; chaque SHA est un commit de `round-two` (exi
 | premier jet (paquet, 12 dessins, garde M, test de paquet, cliquets) | `lea-dev` | `a5d5026b` | `ce1-lire-l-heure.yaml`, `horloge-a.svg` à `horloge-l.svg` |
 | rapport du premier jet | `lea-dev` | `d242fe5b` | `rapport-lea-dev-palier-5-horloge-mat-ce1-11.md` |
 | lecture du premier jet | `nadia-prof` | `844c524f` | `lecture-nadia-premier-jet-horloge-mat-ce1-11.md` |
-| correction (exigence 1) | `lea-dev` | à venir | `ce1-lire-l-heure.yaml` |
-| glyphes et relevé (exigence 2) | `ines-design` | à venir | à écrire |
-| seconde lecture | `nadia-prof` | à venir | à écrire |
+| arbitrage de la stratégie de paire et du pli | `nadia-prof` | `a3a72a65` | `arbitrage-nadia-horloge-strategie-de-paire-et-pli.md` |
+| correction (exigence 1, garde de paire) | `lea-dev` | `f33d03b1`, rapport `2022d8fc` | `ce1-lire-l-heure.yaml` |
+| glyphes et relevé (exigence 2) | `ines-design` | `9da040eb` | `avis-ines-palier-5-horloge-mat-ce1-11.md` |
+| seconde lecture | `nadia-prof` | `af73a862` | `relecture-nadia-seconde-lecture-horloge-mat-ce1-11.md` |
 
 Cette fiche n'en reprend aucun verdict : la lecture du premier jet est un geste avant `verify`, pas le Done pédagogique.
 
