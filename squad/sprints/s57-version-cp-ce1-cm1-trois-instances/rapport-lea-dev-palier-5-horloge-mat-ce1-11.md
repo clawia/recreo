@@ -177,3 +177,57 @@ Ces deux derniers controles ne sont la forme de la CI que pour le contenu lu : l
 les tests de `bootstrap` hors `com.recreo.archi` ; le garde-fou de l'accent. **Je ne declare pas la porte technique** : je n'ai lance aucun des jobs de la CI en entier.
 
 **Etat de l'arbre** : `git status -s` avant l'indexation listait trois fichiers modifies (les trois tests de populations et de cliquets) et les fichiers neufs ci-dessus ; `catalogue.yaml` n'y figurait pas.
+
+## Corrections apres la lecture (lea-dev, 2026-10-28)
+
+- **Base de mesure** : `round-two` a `e23f3770` (fusion de `s57-p5-nadia-tranche-horloge`), branche `s57-p5-lea-horloge-corr`. JDK 21.0.10, tel que `outils/mvn-jdk21.sh` l'a rapporte.
+- **Specification** : `arbitrage-nadia-horloge-strategie-de-paire-et-pli.md`, sections 1.3, 1.4 et 4.1.
+
+### Distracteurs de voisinage, item par item
+
+Aucun SVG, glyphe, indice, texte alternatif, bonne reponse ni distracteur d'aiguilles inversees ne change. Aucun octet de dessin : le cliquet de 96 873 n'est pas touche.
+
+| Item | Bonne reponse | Voisin du premier jet | Voisin servi | Sens |
+|---|---|---|---|---|
+| `horloge-a` | 3 h | 4 h | 2 h | precedente |
+| `horloge-b` | 6 h | 7 h | 5 h | precedente |
+| `horloge-c` | 9 h | 10 h | 10 h | suivante, inchange |
+| `horloge-d` | 3 h 30 | 4 h 30 | 4 h 30 | suivante, inchange |
+| `horloge-e` | 8 h 30 | 9 h 30 | 9 h 30 | suivante, inchange |
+| `horloge-f` | 12 h 30 | 1 h 30 | 11 h 30 | precedente (forcee) |
+| `horloge-g` | 12 h 15 | 1 h 15 | 11 h 15 | precedente (forcee) |
+| `horloge-h` | 4 h 15 | 5 h 15 | 3 h 15 | precedente |
+| `horloge-i` | 10 h 15 | 11 h 15 | 9 h 15 | precedente |
+| `horloge-j` | 2 h 45 | 3 h 45 | 3 h 45 | suivante, inchange |
+| `horloge-k` | 9 h 45 | 10 h 45 | 10 h 45 | suivante, inchange |
+| `horloge-l` | 11 h 45 | 12 h 45 | 12 h 45 | suivante, inchange |
+
+Six precedentes, six suivantes. Choix conforme a 1.4 : precedente sur `-f` et `-g` (forcee), `-a`, `-b`, `-h`, `-i` (l'exemple de `nadia-prof`, repris tel quel) ; suivante sur les demies `-d`, `-e` et les quarts a 9.
+
+### Les quatre comptes, recopies de la sortie du garde
+
+`aucuneStrategieDePaireNeGagnePlusDeLaMoitieDesItems`, sur le paquet servi : `S1 = 6, S2 = 6, S3 = 6, S4 = 6 sur 12 items`.
+
+Sur le premier jet fige (`lePremierJetDeLHorlogeFigeEstRefuse`, execute avec `assertThatThrownBy`) : `S1 = 10, S2 = 2, S3 = 12, S4 = 0 sur 12 items`.
+
+### Ce qui est livre
+
+- Garde de paire : `LesCadransMontrentCeQueLeursItemsAffirmentTest`, definition de 1.3 (groupes par minutes, `S1`/`S2` sur les heures ecrites, `S3`/`S4` sur `(b - a) mod 12`, ecart de 6 ou item sans paire perdu, denominateur = nombre total d'items, population au moins 1 par strategie).
+- Premier jet fige : `bootstrap/src/test/resources/contreexemple/LesCadransMontrentCeQueLeursItemsAffirmentTest/premier-jet-horloge/contenu/ce1-lire-l-heure.yaml`, blob `42eeeced` identique a celui de `a5d5026b`.
+- Trou `F4` de `theo-archi` ferme dans le meme diff, sans toucher un dessin : un dessin dont le nombre de `<line` n'est pas 2 est refuse (les `<path>` des graduations et des glyphes sont legitimes, je ne les compte pas). Morsure : `unTraitEnPlusHorsDeLaFormeDesAiguillesFaitEchouerLeGardeFou`.
+- Javadoc du cliquet : la phrase "n'est pas couvert par un accord" est remplacee par l'accord du 2026-10-28 (`DEC-0120`, A.284). Constante 96 873 inchangee.
+- Le garde imprime ses quatre comptes sur la sortie standard a chaque run (une ligne `strategies de paire : ...`).
+
+### Mesures (delta sur `e23f3770`, `-am`, perimetre nomme)
+
+- `LesCadransMontrentCeQueLeursItemsAffirmentTest`, module `bootstrap` avec `-am` : 14 tests, +4 sur la base (10 a `e23f3770`) : garde de paire sur le paquet servi, premier jet refuse, trait en plus, strategie sans application.
+- `com.recreo.archi.*Test`, `PaquetCe1LireLHeureTest`, cliquet de poids, rang : reacteur `-pl bootstrap -am`, adapter-web 17, adapter-content 34, bootstrap 276, 0 echec. Ces totaux sont des mesures partielles de ce lot, pas le total du depot.
+- Chemins en forme CI (`verifier-chemins.sh` sur `git ls-files`) : vert. Prefixe du sujet (`verifier-prefixes.sh`) : vert.
+
+### Ce que je n'ai pas lance
+
+`mvn verify` complet, les autres jobs de la CI (hors `chemins` et `prefixes` sur ce diff), le jar, l'ecran. Je n'ai donc pas regarde `11 h 30` et `11 h 15` rendus : leur plausibilite est a `nadia-prof`. Le garde d'accent du depot n'est pas lance (aucune ligne accentuee du YAML n'a ete reecrite, seuls six distracteurs ASCII et le commentaire d'en-tete changent).
+
+### Questions
+
+- `Q1` : aucune. Aucun changement de poids, aucune regle d'architecture decidee.

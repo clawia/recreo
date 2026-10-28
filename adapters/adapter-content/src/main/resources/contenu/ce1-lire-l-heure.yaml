@@ -16,9 +16,12 @@
 # "moins le quart", et ne les ajoute pas volontairement.
 #
 # Distracteurs (HOR-5 transposee) : une heure pleine a pour fautes les aiguilles inversees (la petite
-# aiguille lue comme minutes, la grande comme heure : 12 h 15, 12 h 30, 12 h 45) et l'heure suivante ;
-# les autres formes, la grande aiguille lue comme heure ("6 h", "3 h", "9 h") et l'heure suivante, lue
-# sur le nombre que la petite aiguille approche, minutes justes. Chaque forme de reponse du paquet est
+# aiguille lue comme minutes, la grande comme heure : 12 h 15, 12 h 30, 12 h 45) et l'heure voisine ;
+# les autres formes, la grande aiguille lue comme heure ("6 h", "3 h", "9 h") et l'heure voisine,
+# minutes justes. L'heure voisine est l'heure suivante ou l'heure precedente, dans les proportions que
+# le garde de paire de LesCadransMontrentCeQueLeursItemsAffirmentTest admet (arbitrage de nadia-prof
+# du 2026-10-28, section 1) : aucune des quatre strategies sans cadran ne gagne plus de six items sur
+# douze. Chaque forme de reponse du paquet est
 # aussi une bonne reponse ailleurs dans le paquet (ADR-0086 clause 2).
 # CON-5 : le texte alternatif ne dit ni l'heure ni la place d'une aiguille.
 # HOR-7 : l'indice dit quelle aiguille regarder, huit mots au plus, jamais l'heure.
@@ -39,13 +42,13 @@ items:
     illustration: "horloge-a"
     illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
     bonneReponse: "3 h"
-    distracteurs: ["12 h 15", "4 h"]
+    distracteurs: ["12 h 15", "2 h"]
     indice: "La petite aiguille montre l'heure."
   - enonce: "Quelle heure est-il ?"
     illustration: "horloge-b"
     illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
     bonneReponse: "6 h"
-    distracteurs: ["12 h 30", "7 h"]
+    distracteurs: ["12 h 30", "5 h"]
     indice: "La petite aiguille montre l'heure."
   - enonce: "Quelle heure est-il ?"
     illustration: "horloge-c"
@@ -70,26 +73,26 @@ items:
     illustration: "horloge-f"
     illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
     bonneReponse: "12 h 30"
-    distracteurs: ["6 h", "1 h 30"]
+    distracteurs: ["6 h", "11 h 30"]
     indice: "La petite aiguille a passé quel nombre ?"
   # Quarts d'heure, la grande aiguille sur 3
   - enonce: "Quelle heure est-il ?"
     illustration: "horloge-g"
     illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
     bonneReponse: "12 h 15"
-    distracteurs: ["3 h", "1 h 15"]
+    distracteurs: ["3 h", "11 h 15"]
     indice: "La petite aiguille a passé quel nombre ?"
   - enonce: "Quelle heure est-il ?"
     illustration: "horloge-h"
     illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
     bonneReponse: "4 h 15"
-    distracteurs: ["3 h", "5 h 15"]
+    distracteurs: ["3 h", "3 h 15"]
     indice: "La petite aiguille a passé quel nombre ?"
   - enonce: "Quelle heure est-il ?"
     illustration: "horloge-i"
     illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
     bonneReponse: "10 h 15"
-    distracteurs: ["3 h", "11 h 15"]
+    distracteurs: ["3 h", "9 h 15"]
     indice: "La petite aiguille a passé quel nombre ?"
   # Quarts d'heure, la grande aiguille sur 9
   - enonce: "Quelle heure est-il ?"
