@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MAT-CE1-11, cadran : douze nombres traces (HOR-2), aucun element de texte (ADR-0073
+     clause 4), aiguilles de longueurs differentes (HOR-3), angles en degres depuis midi. -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 176 176" width="176" height="176" role="img" fill="none"
+     stroke="#1c2733" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <path id="g0" d="M20 2 A18 22 0 0 1 20 58 A18 22 0 0 1 20 2 Z"/>
+    <path id="g1" d="M8 14 L20 2 L20 58"/>
+    <path id="g2" d="M4 16 A16 15 0 1 1 20 32 L4 58 L36 58"/>
+    <path id="g3" d="M6 12 A14 12 0 1 1 20 28 A17 17 0 1 1 4 48"/>
+    <path id="g4" d="M28 58 L28 2 L4 40 L38 40"/>
+    <path id="g5" d="M34 2 L10 2 L7 26 A16 16 0 1 1 5 47"/>
+    <path id="g6" d="M30 4 Q6 22 6 42 A14 15 0 0 0 34 42 A14 15 0 0 0 6 42"/>
+    <path id="g7" d="M5 4 L35 4 L15 58"/>
+    <path id="g8" d="M8 17 A12 13 0 0 0 32 17 A12 13 0 0 0 8 17 M5 43 A15 15 0 0 0 35 43 A15 15 0 0 0 5 43"/>
+    <path id="g9" d="M10 56 Q34 38 34 18 A14 15 0 0 0 6 18 A14 15 0 0 0 34 18"/>
+  </defs>
+  <circle cx="88" cy="88" r="84" stroke-width="3"/>
+  <path stroke-width="3" d="M88 12 L88 6 M126 22.2 L129 17 M153.8 50 L159 47 M164 88 L170 88 M153.8 126 L159 129 M126 153.8 L129 159 M88 164 L88 170 M50 153.8 L47 159 M22.2 126 L17 129 M12 88 L6 88 M22.2 50 L17 47 M50 22.2 L47 17"/>
+  <g transform="scale(.3)">
+    <use xlink:href="#g1" x="378" y="93"/>
+    <use xlink:href="#g2" x="444" y="165"/>
+    <use xlink:href="#g3" x="470" y="263"/>
+    <use xlink:href="#g4" x="443" y="362"/>
+    <use xlink:href="#g5" x="372" y="434"/>
+    <use xlink:href="#g6" x="273" y="460"/>
+    <use xlink:href="#g7" x="175" y="434"/>
+    <use xlink:href="#g8" x="103" y="362"/>
+    <use xlink:href="#g9" x="77" y="263"/>
+    <use xlink:href="#g1" x="84" y="165"/>
+    <use xlink:href="#g0" x="116" y="165"/>
+    <use xlink:href="#g1" x="168" y="93"/>
+    <use xlink:href="#g1" x="194" y="93"/>
+    <use xlink:href="#g1" x="256" y="67"/>
+    <use xlink:href="#g2" x="286" y="67"/>
+  </g>
+  <line x1="88" y1="88" x2="88" y2="60" stroke-width="7" transform="rotate(180 88 88)"/>
+  <line x1="88" y1="88" x2="88" y2="46" stroke-width="4" transform="rotate(0 88 88)"/>
+</svg>

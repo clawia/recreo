@@ -1,0 +1,20 @@
+# Jeu fautif de LesCadransMontrentCeQueLeursItemsAffirmentTest. Ce paquet n'est servi par rien : il vit
+# sous contreexemple/ et le recensement de production ne le voit pas. Quatre fautes : l'item affirme
+# 3 h 30, le dessin montre 3 h pile (petite aiguille a 90 degres, grande a 0) ; le dessin ne trace
+# qu'un nombre sur douze ; deux propositions lisent la meme position (3 h 30 et 15 h 30).
+schema: 1
+id: ce1-cadran-fautif
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Grandeurs et mesures"
+  competence: "Lire l'heure sur une horloge (heures, demi-heures, quarts d'heure)"
+lignesDeReferentiel: ["MAT-CE1-11"]
+items:
+  - enonce: "Quelle heure est-il ?"
+    illustration: "cadran-fautif"
+    illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
+    bonneReponse: "3 h 30"
+    distracteurs: ["15 h 30", "6 h"]
+    indice: "La petite aiguille a passé quel nombre ?"

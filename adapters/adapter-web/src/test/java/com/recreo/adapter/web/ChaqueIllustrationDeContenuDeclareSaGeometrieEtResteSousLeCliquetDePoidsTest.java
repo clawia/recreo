@@ -350,9 +350,15 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      *       normalisees en LF, mesure exacte sur l'arbre du lot. Aucun ne devient le plus gros dessin
      *       du repertoire : {@code frise-journee-ecole.svg} le reste (voir
      *       {@link #POIDS_D_UN_DESSIN_MAXIMUM}, inchange).</li>
+     *   <li><b>69 203 vers 96 873</b>, lea-dev, s57 palier 5, MAT-CE1-11 : douze cadrans neufs sous
+     *       {@code horloge-*.svg}, 2 303 a 2 308 octets chacun, soit 27 670
+     *       octets fins de ligne normalisees en LF, mesure exacte sur l'arbre du lot, premier jet.
+     *       Aucun ne devient le plus gros dessin du repertoire : {@code frise-journee-ecole.svg} le
+     *       reste (voir {@link #POIDS_D_UN_DESSIN_MAXIMUM}, inchange). Le poids de ce lot n'est pas
+     *       couvert par un accord de l'utilisatrice (backlog, annotation du 2026-10-25).</li>
      * </ol>
      */
-    private static final int POIDS_TOTAL_MAXIMUM = 69203;
+    private static final int POIDS_TOTAL_MAXIMUM = 96873;
 
     /**
      * Les deux teintes d'ines-design, employees ici <b>comme materiau de mutation</b> et pour
