@@ -2610,7 +2610,7 @@ Source de l'ordre et de la paire : `DEC-0120` A.260 (`P1`) et l'amendement `s57-
 
 ### 5. Question laissee ouverte par `nadia-prof` (Q3 de sa relecture)
 
-*Horloge rejouee sur la marge de `B`, puis trois lots de l'instance neuve refuses : un quatrieme rejeu sur la marge de 1,5 restee entiere, ou non.* **Ouverte, non tranchee par moi.** Elle est a `camille-po` (relecture de `nadia-prof`, amendement A.270, tableau final), puis a l'utilisatrice si `camille-po` la lui porte. Elle ne mord qu'apres les dix premiers audits et seulement si l'horloge et trois lots hors horloge sont refuses : aucun rejeu n'a lieu avant (`P3`), donc ni `P1`, ni `P2` n'en dependent. Je la remets a la fermeture des dix premiers audits, avec le verdict de l'horloge, et je route a `camille-po` a ce moment si le cas est reel. Elle n'est close que par une `DEC` presente sur le disque.
+*Horloge rejouee sur la marge de `B`, puis trois lots de l'instance neuve refuses : un quatrieme rejeu sur la marge de 1,5 restee entiere, ou non.* **Ouverte, non tranchee par moi.** Elle est a `camille-po` (relecture de `nadia-prof`, amendement A.270, tableau final), puis a l'utilisatrice si `camille-po` la lui porte. Elle ne mord qu'apres les dix premiers audits et seulement si l'horloge et trois lots hors horloge sont refuses : aucun rejeu n'a lieu avant (`P3`), donc ni `P1`, ni `P2` n'en dependent. Je la remets a la fermeture des dix premiers audits, avec le verdict de l'horloge, et je route a `camille-po` a ce moment si le cas est reel. Elle n'est close que par une `DEC` presente sur le disque. **[corrige par l'amendement du 2026-10-29 00:03 : Q3 d'A.271 est close le 2026-10-28 par `DEC-0120` A.286, le quatrieme rejeu tombe (reponse de l'utilisatrice relayee) ; texte d'origine conserve]**
 
 ### Decisions prises
 
@@ -2652,7 +2652,7 @@ Sources : `DEC-0120` A.270 points 1 a 4 et 7, A.272 (cout et regle) ; `relecture
 - Depassement de l'engage au registre, borne a **5,20** [calcul : 4,20 plus 0,50 plus 0,50], cite d'A.272.
 - **`-02`, faits seuls.** Premier jet fusionne (`ebc274b1`), lecture faite (`388cb638`), corrections en cours (section 1). **Rien n'est impute a `-02` sur la ligne hors marge** : l'ecrit de `nadia-prof` conditionne la seconde lecture a l'application de ses corrections (*"si `marc-dev` les applique telles qu'ecrites"*, section 8), elle n'existe pas encore. Je l'inscris a la lecture du fichier de relecture des corrections, par amendement date. [corrige le 2026-10-27 08:19, amendement du 2026-10-27 08:19 en fin de fichier : la relecture des corrections de `-02` existe (`e0d2ba08`), 0,50 est impute hors marge, la ligne passe a 1,50 ; texte d'origine conserve]
 - **Regle d'A.272 pour `-02` et `-04` a `-12`** : toute relecture par `nadia-prof`, apres correction, des lignes qu'elle a prescrites vaut 0,5 hors marge. Un arbitrage apres seconde lecture est classe par `camille-po` lot par lot ; une troisieme lecture coute 0,5 de plus et est reclassee par elle.
-- **Q3 d'A.271** (quatrieme rejeu) : differee, a rouvrir a la fermeture des dix premiers audits, proprietaire `camille-po` via `sofia-sm`. Je la remets a ce moment.
+- **Q3 d'A.271** (quatrieme rejeu) : differee, a rouvrir a la fermeture des dix premiers audits, proprietaire `camille-po` via `sofia-sm`. Je la remets a ce moment. **[corrige par l'amendement du 2026-10-29 00:03 : Q3 d'A.271 est close le 2026-10-28 par `DEC-0120` A.286, le quatrieme rejeu tombe (reponse de l'utilisatrice relayee) ; texte d'origine conserve]**
 
 ### 3. Etat des lots
 
@@ -2746,7 +2746,7 @@ Source : `DEC-0120` A.273, point 1 (c). **Routee, non tranchee par moi.**
 
 - **(i)** Un rejeu au-dela des trois de la marge de 1,5 compte-t-il contre le plafond de 22,20 du palier 9, ou contre celui d'un palier 10 ? Part chiffre du registre : `nadia-prof`. Si sa reponse est que le plafond couvre aussi le palier 10, c'est a l'utilisatrice de dire si 22,20 vaut pour les deux, par `sofia-sm`.
 - **(ii)** La seconde lecture du premier jet de l'horloge `MAT-CE1-11` est-elle 0,50 hors marge, comme celle d'un lot de l'instance neuve ? **Si elle compte, la projection passe de 22,20 a 22,70, soit 0,50 au-dessus de 22,20** [calcul : 22,20 plus 0,50].
-- **Rien ne la bloque avant la fermeture des dix premiers audits** (`P3`) : aucun rejeu n'est du. Elle reste ouverte tant qu'un ecrit de `nadia-prof` n'est pas sur le disque ; le fichier de reponse n'existe pas a la date de cet amendement. Q3 d'A.271 (quatrieme rejeu) reste differee a la meme echeance, proprietaire `camille-po` via `sofia-sm`.
+- **Rien ne la bloque avant la fermeture des dix premiers audits** (`P3`) : aucun rejeu n'est du. Elle reste ouverte tant qu'un ecrit de `nadia-prof` n'est pas sur le disque ; le fichier de reponse n'existe pas a la date de cet amendement. Q3 d'A.271 (quatrieme rejeu) reste differee a la meme echeance, proprietaire `camille-po` via `sofia-sm`. **[corrige par l'amendement du 2026-10-29 00:03 : Q3 d'A.271 est close le 2026-10-28 par `DEC-0120` A.286, le quatrieme rejeu tombe (reponse de l'utilisatrice relayee) ; texte d'origine conserve]**
 
 ### 4. Ecart d'ordre de fusion, connu
 
@@ -2766,7 +2766,7 @@ L'ecart deja constate dans l'amendement du 16:09 (section 4) est inscrit comme *
 
 ### Decisions prises
 
-**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il inscrit l'execution d'A.273 : plafond a 22,20, regle d'autocontrole, routage de `Q-273-1`, ecart d'ordre de fusion, etat des lots. Restent ouverts : `Q-273-1` (`nadia-prof`, et l'utilisatrice si le plafond couvre un palier 10), Q3 d'A.271 (fermeture des dix premiers audits), le constat de l'intrus de `-02` (`camille-po`), l'ecart d'ordre de fusion (`theo-archi`). Aucun Done n'est prononce.
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il inscrit l'execution d'A.273 : plafond a 22,20, regle d'autocontrole, routage de `Q-273-1`, ecart d'ordre de fusion, etat des lots. Restent ouverts : `Q-273-1` (`nadia-prof`, et l'utilisatrice si le plafond couvre un palier 10), Q3 d'A.271 (fermeture des dix premiers audits), le constat de l'intrus de `-02` (`camille-po`), l'ecart d'ordre de fusion (`theo-archi`). Aucun Done n'est prononce. **[corrige par l'amendement du 2026-10-29 00:03 : Q3 d'A.271 est close le 2026-10-28 par `DEC-0120` A.286, le quatrieme rejeu tombe (reponse de l'utilisatrice relayee) ; texte d'origine conserve]**
 
 ## Amendement du 2026-10-27 08:19 (UTC+01:00), palier des neuf lots de questionner le monde CE1 : A.276 (arbitrages avant premier jet a 0,00, non chiffre), relecture des corrections de -02 (ligne hors marge a 1,50), remesure de fin de palier, etat des lots
 
@@ -2821,7 +2821,7 @@ Source : `DEC-0120` A.276 point 2 et point 3.
 | `Q-275-1` (utilisatrice, meme objet) | **fermee**, repondue le 2026-10-27 | A.276 point 2 |
 | `Q-274-2` (utilisatrice, plafond, conditionnelle) | **ne se pose pas** | A.276 point 2 : sa condition (prix superieur a zero et projection recalculee au-dessus de 22,20) n'est pas remplie, le prix est 0,00 et la projection 22,20 |
 | `Q-273-1` (i) et (ii) (`nadia-prof`) | **ouverte** | (i) un rejeu au-dela des trois compte-t-il contre le plafond de 22,20 ou contre un palier 10 ; (ii) la seconde lecture de l'horloge est-elle 0,50 hors marge (22,70 si oui). Aucun ecrit de `nadia-prof` sur le disque ; rien ne la bloque avant la fermeture des dix premiers audits (`P3`) |
-| Q3 d'A.271 (quatrieme rejeu) | **ouverte, differee** | a rouvrir apres les dix premiers audits, proprietaire `camille-po` via `sofia-sm` |
+| Q3 d'A.271 (quatrieme rejeu) | **ouverte, differee** | a rouvrir apres les dix premiers audits, proprietaire `camille-po` via `sofia-sm` **[corrige par l'amendement du 2026-10-29 00:03 : Q3 d'A.271 est close le 2026-10-28 par `DEC-0120` A.286, le quatrieme rejeu tombe (reponse de l'utilisatrice relayee) ; texte d'origine conserve]** |
 | second membre de `Q-274-1` (iv) (le 1,00 des lots du registre du palier 4 absorbait-il des gestes de cette famille) | sans reponse, **non rouverte sauf demande** | A.276 point 3 : aucun chiffre n'en depend |
 
 Restent en outre ouverts, inchanges : le constat de l'intrus de `-02` (`camille-po`, amendement du 16:09, section 6 ; `grep -c intrus` sur `DEC-0120` : 0 a la date de cet amendement) et l'ecart d'ordre de fusion (`theo-archi`, section 5 ci-dessous).
@@ -2855,7 +2855,7 @@ Source : `DEC-0120` A.276 point 3 et ligne `sofia-sm` du routage. **Etape, pas u
 
 ### Decisions prises
 
-**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il inscrit l'execution d'A.276 : arbitrages avant premier jet a 0.00, non chiffre, dans le 1,0 du lot ; ligne hors marge a 1,50 (relecture des corrections de `-02`, A.272) ; cas haut 19,20 ; remesure de fin de palier ; fermeture de `Q-274-1` et `Q-275-1`, `Q-274-2` sans objet. Restent ouverts : `Q-273-1` (`nadia-prof`, et l'utilisatrice si le plafond couvre un palier 10), Q3 d'A.271 (fermeture des dix premiers audits), le constat de l'intrus de `-02` (`camille-po`), l'ecart d'ordre de fusion (`theo-archi`), les deux faits de la section 6 (non routes). Aucun Done n'est prononce.
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il inscrit l'execution d'A.276 : arbitrages avant premier jet a 0.00, non chiffre, dans le 1,0 du lot ; ligne hors marge a 1,50 (relecture des corrections de `-02`, A.272) ; cas haut 19,20 ; remesure de fin de palier ; fermeture de `Q-274-1` et `Q-275-1`, `Q-274-2` sans objet. Restent ouverts : `Q-273-1` (`nadia-prof`, et l'utilisatrice si le plafond couvre un palier 10), Q3 d'A.271 (fermeture des dix premiers audits), le constat de l'intrus de `-02` (`camille-po`), l'ecart d'ordre de fusion (`theo-archi`), les deux faits de la section 6 (non routes). Aucun Done n'est prononce. **[corrige par l'amendement du 2026-10-29 00:03 : Q3 d'A.271 est close le 2026-10-28 par `DEC-0120` A.286, le quatrieme rejeu tombe (reponse de l'utilisatrice relayee) ; texte d'origine conserve]**
 
 ## Amendement du 2026-10-27 15:40 (UTC+01:00), palier des neuf lots de questionner le monde CE1 : etat des neuf lots lu sur disque, neuf secondes lectures (A.278), decision de l'utilisatrice sur la condition c d'A.277, remesure, points ouverts, etapes restantes
 
@@ -2947,7 +2947,7 @@ Source : `DEC-0120` A.276 point 3 et sa ligne `sofia-sm` ; durees ecrites par `n
 | Ref | Sujet | A qui | Fait lu |
 |---|---|---|---|
 | P1 | `Q-273-1` (i) un rejeu au-dela des trois compte-t-il contre 22,20 ou contre un palier 10 ; (ii) la seconde lecture de l'horloge est-elle 0,50 hors marge | `nadia-prof` ; l'utilisatrice, par moi, si le plafond couvre un palier 10 | aucun ecrit de `nadia-prof` ne la mentionne (`grep -l "Q-273-1" squad docs` : `DEC-0120`, `DEC-index.md`, `squad/lessons.md`, `planning.md`). A.278 (point 5, ligne 1) : la reserve etant 0,00, (ii) doit etre repondue avant que la seconde lecture de l'horloge soit ecrite |
-| P2 | Q3 d'A.271 : un quatrieme rejeu | `camille-po`, a la fermeture des dix premiers audits, par moi | differee, inchangee (A.271 point 4) |
+| P2 | Q3 d'A.271 : un quatrieme rejeu | `camille-po`, a la fermeture des dix premiers audits, par moi | differee, inchangee (A.271 point 4) **[corrige par l'amendement du 2026-10-29 00:03 : Q3 d'A.271 est close le 2026-10-28 par `DEC-0120` A.286, le quatrieme rejeu tombe (reponse de l'utilisatrice relayee) ; texte d'origine conserve]** |
 | P3 | Seconde lecture de l'horloge a 22,70 | `nadia-prof` (partie de P1 (ii)) | 22,20 plus 0,50 [calcul] ; 23,20 avec une troisieme lecture |
 | P4 | Constat de l'intrus : dans la tache B de `-02`, la bonne reponse est l'intrus des trois propositions | `nadia-prof` le regarde a l'audit `P2` (sa lecture de `-02`, sections 4 et 10) ; `camille-po` pour dire ce que l'audit regardera | routee au 16:09 (section 6) a `camille-po` ; `grep -c intrus` sur `DEC-0120` de `round-two` : 1, dans A.278 (tableau du point 5, ligne 4), qui l'inscrit sans ecrit de cloture |
 | P5 | Accord de *du plus age au plus jeune* (items 3 et 8 de `-12`, formule de `R12-2`) | `relecteur-pedagogique` | signal de `nadia-prof` (lecture de `-12`, section 5), elle ne le corrige pas ; aucun `releve-relecteur` du palier 5 n'existe dans le dossier du sprint (seulement paliers 1 a 3) |
@@ -3080,7 +3080,7 @@ La fusion `d3ef0cf2` est le commit nomme par la consigne ; elle est la derniere 
 | `C2` | `QC3` et fusions serialisees d'un fichier a ajouts en fin de liste | non designe | ouverte |
 | `C4` | ordre `P1` (lecture d'une paire avant les premiers jets de la suivante) non suivi | non designe | ouverte |
 | `P1`, `P3` | `Q-273-1` (i) et (ii) | `nadia-prof`, l'utilisatrice | sans reponse ; neuvieme mention a A.281 point 7 (ligne 7), je n'en ajoute pas de decompte ; (ii) compte maintenant dans un cas haut depasse **[corrige par l'amendement du 2026-10-27 21:34 : dixieme mention a A.282 point 4, ligne 5 ; texte d'origine conserve]** |
-| `P2` | Q3 d'A.271, quatrieme rejeu | `camille-po`, a la fermeture des dix audits, par moi | inchangee ; son prix est leve par A.280, son calendrier non |
+| `P2` | Q3 d'A.271, quatrieme rejeu | `camille-po`, a la fermeture des dix audits, par moi | inchangee ; son prix est leve par A.280, son calendrier non **[corrige par l'amendement du 2026-10-29 00:03 : Q3 d'A.271 est close le 2026-10-28 par `DEC-0120` A.286, le quatrieme rejeu tombe (reponse de l'utilisatrice relayee) ; texte d'origine conserve]** |
 | `P4` | intrus : tache B de `-02`, la bonne reponse est l'intrus des trois propositions ; pendant pour la tache B de `-10` | `nadia-prof` a l'audit `P2` ; `camille-po` | ouverte, sans ecrit de cloture |
 | `P5` | accord de *du plus age au plus jeune* en `-12` (items 3 et 8, formule de `R12-2`) | `relecteur-pedagogique` | ouverte ; aucun releve du palier 5 dans le dossier du sprint |
 | `P6` | commande du garde-fou des identifiants : le drapeau `-Dsurefire.failIfNoSpecifiedTests=false` absent de `CLAUDE.md`, de `squad/README.md` et de `.claude/agents/nadia-prof.md` (`grep -c` : 0 dans les trois) | `yanis-qa` ; `theo-archi` si c'est une regle d'architecture | ouverte ; je ne choisis pas |
@@ -3099,7 +3099,7 @@ La fusion `d3ef0cf2` est le commit nomme par la consigne ; elle est la derniere 
 2. Relecture de `nadia-prof` sur C1 a C4 de `-03` et de `-08`, routee par moi apres la reponse a `Q-281-2`. **[corrige par l'amendement du 2026-10-27 21:34 : lancee, rapport non recu ; elle porte aussi l'item 6 ; texte d'origine conserve]**
 3. Audit a l'ecran par `nadia-prof`, dans l'ordre `P2` : `-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12`, chaque lot apres son `verify` (A.280 point 2) ; Done pedagogique par elle seule dans `FICHE-ce1-qlm-<lot>.md`, entree au catalogue seulement apres un Done (`QC3`).
 4. Audit de l'horloge `MAT-CE1-11`, apres les neuf premiers audits et avant tout rejeu.
-5. Rejeux, trois au plus, un par lot au plus, dans l'ordre de `P2` ; le quatrieme, selon Q3 d'A.271.
+5. Rejeux, trois au plus, un par lot au plus, dans l'ordre de `P2` ; le quatrieme, selon Q3 d'A.271. **[corrige par l'amendement du 2026-10-29 00:03 : Q3 d'A.271 est close le 2026-10-28 par `DEC-0120` A.286, le quatrieme rejeu tombe (reponse de l'utilisatrice relayee) ; texte d'origine conserve]**
 6. `cloture-palier-5.md`, ecrit une seule fois par moi, apres un passage complet des quatre jobs de `ci.yml` (A.280 point 2) ; obstacles du palier dans ce fichier puis dans `review.md`. `cloture-palier-5.md` n'existe pas.
 
 ### 6. Passages des amendements precedents marques *[corrige ...]*
@@ -3189,7 +3189,7 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit de la branche `s57-
 | `R-C1C4` | relecture de `nadia-prof` sur C1 a C4 de `-03` et `-08` et sur l'item 6 | `nadia-prof` | **lancee, rapport non recu** (section 5) **[corrige par l'amendement du 2026-10-28 09:56 : rapport recu et fusionne (`abd30678`, `d4058264`), aucune transcription rejetee ; texte d'origine conserve]** |
 | `T1` | `EFFETS_CONTRAIRES` : anciennes amorces *elle grandit plus vite* et *elle pousse plus vite* gardees (lignes 100 et 101 du test), et *elle devient plus solide*, ancien texte de l'item 6, ligne 100, une ligne de plus a regarder (A.282 point 4, ligne 4) | `theo-archi`, avec `marc-dev` | ouverte ; **routee ici a `theo-archi`**, l'invocation reste a l'agent lanceur ; je ne tranche aucune question de code |
 | `P1`, `P3` | `Q-273-1` (i) et (ii) | `nadia-prof`, l'utilisatrice | sans reponse ; **dixieme mention** (A.282 point 4, ligne 5), je n'en ajoute pas de decompte |
-| `P2` | Q3 d'A.271, quatrieme rejeu | `camille-po`, a la fermeture des dix audits | inchangee |
+| `P2` | Q3 d'A.271, quatrieme rejeu | `camille-po`, a la fermeture des dix audits | inchangee **[corrige par l'amendement du 2026-10-29 00:03 : Q3 d'A.271 est close le 2026-10-28 par `DEC-0120` A.286, le quatrieme rejeu tombe (reponse de l'utilisatrice relayee) ; texte d'origine conserve]** |
 | `A276` | remesure de fin de palier (A.276 point 3) | `sofia-sm` | a refaire a la cloture : la relecture `R-C1C4` ajoutera des durees ; le releve intermediaire du 15:40 est inchange **[corrige par l'amendement du 2026-10-28 09:56 : la relecture est faite, ses durees sont dans son fichier, section 5 (1 min 14 s, 1 min 24 s, 2 min 25 s), et celles des neuf audits sont en section 2 de cet amendement ; la remesure reste a faire a la cloture ; texte d'origine conserve]** |
 | `P7` | documenter la forme de lancement de `verifier-chemins.sh` et `verifier-prefixes.sh` la ou un agent la lira | `sofia-sm` (A.280, routage) | **non fait** : la forme est ecrite dans A.280 point 2 et en section 3 de cet amendement ; `CLAUDE.md` et `squad/README.md` ne la portent pas ; les amender est une decision de documentation hors de ce commit |
 | `P10` | faits du rapport de `marc-dev` absents du depot (`-04`, `-12`) | `marc-dev`, par moi | ouverte, reportee, non close |
@@ -3207,9 +3207,9 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit de la branche `s57-
 1. Rapport de relecture de `nadia-prof` (`R-C1C4`), a lire a sa reception ; si elle rejette une transcription, c'est une quatrieme lecture non chiffree, a router a `camille-po`. **[corrige par l'amendement du 2026-10-28 09:56 : le rapport est recu, aucune transcription rejetee, donc pas de quatrieme lecture a router ; texte d'origine conserve]**
 2. Invocation de `theo-archi` sur `T1`.
 3. Designation de qui lance le `verify` de chaque lot et de qui sert le jar (`JAR`), puis inscription par `camille-po` de la ligne des fiches, avant l'audit de chaque lot (A.280 point 2).
-4. Audit a l'ecran par `nadia-prof`, dans l'ordre `P2` : `-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12` ; Done pedagogique par elle seule dans `FICHE-ce1-qlm-<lot>.md`, entree au catalogue seulement apres un Done (`QC3`). **[corrige par l'amendement du 2026-10-28 09:56 : les neuf audits sont faits et fusionnes (section 1 de cet amendement) ; l'entree au catalogue (`QC3`) n'est faite pour aucun lot ; texte d'origine conserve]**
+4. Audit a l'ecran par `nadia-prof`, dans l'ordre `P2` : `-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12` ; Done pedagogique par elle seule dans `FICHE-ce1-qlm-<lot>.md`, entree au catalogue seulement apres un Done (`QC3`). **[corrige par l'amendement du 2026-10-28 09:56 : les neuf audits sont faits et fusionnes (section 1 de cet amendement) ; l'entree au catalogue (`QC3`) n'est faite pour aucun lot ; texte d'origine conserve]** **[corrige par l'amendement du 2026-10-29 00:03 : entrees de catalogue fusionnees pour huit lots et l'horloge (`eaa3ef65`), pas pour `-12` ; texte d'origine conserve]**
 5. Audit de l'horloge `MAT-CE1-11`, apres les neuf premiers audits et avant tout rejeu.
-6. Rejeux, trois au plus, un par lot au plus, dans l'ordre de `P2` ; le quatrieme selon Q3 d'A.271.
+6. Rejeux, trois au plus, un par lot au plus, dans l'ordre de `P2` ; le quatrieme selon Q3 d'A.271. **[corrige par l'amendement du 2026-10-29 00:03 : Q3 d'A.271 est close le 2026-10-28 par `DEC-0120` A.286, le quatrieme rejeu tombe (reponse de l'utilisatrice relayee) ; texte d'origine conserve]**
 7. Remesure `A276`, puis `cloture-palier-5.md`, ecrit une seule fois par moi apres un passage complet des quatre jobs de `ci.yml` (A.280 point 2) ; obstacles du palier dans ce fichier puis dans `review.md`. `cloture-palier-5.md` n'existe pas.
 
 ### Decisions prises
@@ -3249,7 +3249,7 @@ Source : le bloc de validation de `nadia-prof` dans chacune des neuf `squad/conf
 - **A.271 point 4 (`Q3`)** : le quatrieme rejeu est pose pour le cas de **trois lots refuses**, a rouvrir a la fermeture des dix audits. **A.281 point 3** et **A.282** ne lui donnent que son prix. Aucun lot n'est refuse : le cas de `Q3` n'est pas celui observe.
 - **Ce que je ne trouve pas** dans A.265, A.270, A.271, A.280, A.281 et A.282 (relus pour cet amendement, les autres amendements non relus) : si *valide sous reserve* compte comme un refus pour `P3` ; si un rejeu peut porter sur un lot valide, avec ou sans reserve ; ce que devient la marge de 1,5 si aucun rejeu n'a lieu.
 - **Les fiches** : aucune ne demande de rejeu. Le seul emploi du mot dans les neuf blocs est dans `-12` : *"si la mesure ne montre rien, la reserve est levee sans rejeu ; si elle montre une coupure, `camille-po` en fait une story"*.
-- **Conclusion de lecture, sans decision** : ces textes n'imposent aucun rejeu en l'absence de lot refuse, et ne disent pas s'il en est permis un. La question est ouverte, a `camille-po` (proprietaire de `Q3`, A.271 point 4) et a `nadia-prof` (`P3` est son texte). Elle reste dans `P2` du second tableau de la section 7.
+- **Conclusion de lecture, sans decision** : ces textes n'imposent aucun rejeu en l'absence de lot refuse, et ne disent pas s'il en est permis un. La question est ouverte, a `camille-po` (proprietaire de `Q3`, A.271 point 4) et a `nadia-prof` (`P3` est son texte). Elle reste dans `P2` du second tableau de la section 7. **[corrige par l'amendement du 2026-10-29 00:03 : aucun lot refuse sur dix et aucun rejeu du (fiche de l'horloge) ; Q3 d'A.271 close par A.286 ; texte d'origine conserve]**
 
 ### 2. Durees brutes d'audit (remesure A.276)
 
@@ -3300,7 +3300,7 @@ Donnees brutes, horloge du poste lue par `date` par `nadia-prof` (UTC+01:00), te
 | `chemins` | je n'ai lance que la commande des chemins, en forme CI ; **non lances** : les autres etapes du job |
 | `outils` | **non lance** |
 
-**La porte technique complete n'est pas annoncee.** Seul le job `build` a ete lance, et seulement son etape `verify` ; je ne deduis pas l'etat de `prefixes`, `chemins` et `outils` de celui de `build`. **La ligne *"Premier `verify` complet du lot : a faire"* est toujours dans les neuf fiches** (`grep` : neuf sur neuf) ; `nadia-prof` ecrit dans `-01` qu'elle est perimee, dans `-08` que ce n'est plus vrai, dans `-02` qu'elle reste a inscrire par qui `sofia-sm` designe ; elle ne la reecrit dans aucune. Qui l'inscrit reste la proposition du 21:34 (section 4), a `camille-po`, non decidee.
+**La porte technique complete n'est pas annoncee.** Seul le job `build` a ete lance, et seulement son etape `verify` ; je ne deduis pas l'etat de `prefixes`, `chemins` et `outils` de celui de `build`. **La ligne *"Premier `verify` complet du lot : a faire"* est toujours dans les neuf fiches** (`grep` : neuf sur neuf) ; `nadia-prof` ecrit dans `-01` qu'elle est perimee, dans `-08` que ce n'est plus vrai, dans `-02` qu'elle reste a inscrire par qui `sofia-sm` designe ; elle ne la reecrit dans aucune. Qui l'inscrit reste la proposition du 21:34 (section 4), a `camille-po`, non decidee. **[corrige par l'amendement du 2026-10-29 00:03 : un passage des quatre jobs est mesure en local a `eaa3ef65` et relu sur `HEAD`, voir `cloture-palier-5.md` section 10 ; ce n'est pas la CI GitHub et la porte n'est pas annoncee verte au sens de `CLAUDE.md` ; la ligne *Premier verify complet du lot* est mise a jour par `camille-po` (A.283) ; texte d'origine conserve]**
 
 ### 5. Decisions de l'utilisatrice, citees et relayees
 
@@ -3346,7 +3346,7 @@ Les reperes `RS1` a `RS12` sont des reperes locaux de ce tableau, aucun identifi
 | `RS9` | `-10` | l'element propre du paysage est toujours nomme en premier dans les 8 items A (27 sur 27) | la fiche demande que trois des huit items nomment l'element partage en premier ; elle ne nomme pas l'agent de la story ; **`theo-archi`** : symptome sans garde, *"je ne demande pas qu'il en ecrive une"* | ouvert, sans identifiant |
 | `RS10` | `-12` | `V1` : rendu visuel non mesure (mots a trait d'union dans les propositions longues, a 744 x 551 et a 360) | **mesure a `ines-design`** ; si elle ne montre rien, la reserve est levee sans rejeu ; si elle montre une coupure, `camille-po` en fait une story | ouvert |
 | `RS11` | `-12` | accord de *du plus age au plus jeune* (items 3, 8 et 11) : *"L'accord n'est pas de mon ressort"* | **`relecteur-pedagogique`** ; si la formule de `R12-2` change, `theo-archi` (`G12-3` la lit a la lettre) ; que le branchement attende ce releve est a `camille-po` | ouvert (`P5`), aucun releve du palier 5 a ce jour |
-| `RS12` | les neuf lots | entree de catalogue (`QC3`) : titre, consigne, nombre de manches, inexistants ; ceux joues sont ceux de `nadia-prof` | **`nadia-prof` les lit avant la fusion de l'entree** (chaque fiche) ; `camille-po` ecrit l'entree et fait passer la ligne a `couvert-valide`. Pour `-10`, `couvert-valide` attend en plus le Done technique, CI complete a la cloture | ouvert, aucune entree ecrite |
+| `RS12` | les neuf lots | entree de catalogue (`QC3`) : titre, consigne, nombre de manches, inexistants ; ceux joues sont ceux de `nadia-prof` | **`nadia-prof` les lit avant la fusion de l'entree** (chaque fiche) ; `camille-po` ecrit l'entree et fait passer la ligne a `couvert-valide`. Pour `-10`, `couvert-valide` attend en plus le Done technique, CI complete a la cloture | ouvert, aucune entree ecrite **[corrige par l'amendement du 2026-10-29 00:03 : huit entrees et l'horloge fusionnees (`eaa3ef65`), `-12` sans entree ; texte d'origine conserve]** |
 
 **Points deja ouverts apres A.282 (amendement du 21:34), etat au 2026-10-28.**
 
@@ -3354,8 +3354,8 @@ Les reperes `RS1` a `RS12` sont des reperes locaux de ce tableau, aucun identifi
 |---|---|---|---|
 | `T1` | `EFFETS_CONTRAIRES` : anciennes amorces gardees dans le test de `-03` | `theo-archi`, avec `marc-dev` | ouverte, inchangee ; aucune invocation lue |
 | `P1`, `P3` | `Q-273-1` (i) et (ii) | `nadia-prof`, l'utilisatrice | sans reponse ; je n'ajoute pas de decompte de mention |
-| `P2` | `Q3` d'A.271 (quatrieme rejeu) et la question de la section 1 (rejeu sans lot refuse) | `camille-po`, a la fermeture des dix audits | ouverte ; le cas de `Q3` (trois lots refuses) n'est pas celui observe |
-| `A276` | remesure de fin de palier | `sofia-sm` | donnees des neuf audits en section 2 ; remesure a faire a la cloture |
+| `P2` | `Q3` d'A.271 (quatrieme rejeu) et la question de la section 1 (rejeu sans lot refuse) | `camille-po`, a la fermeture des dix audits | ouverte ; le cas de `Q3` (trois lots refuses) n'est pas celui observe **[corrige par l'amendement du 2026-10-29 00:03 : Q3 d'A.271 est close le 2026-10-28 par `DEC-0120` A.286, le quatrieme rejeu tombe (reponse de l'utilisatrice relayee) ; texte d'origine conserve]** |
+| `A276` | remesure de fin de palier | `sofia-sm` | donnees des neuf audits en section 2 ; remesure a faire a la cloture **[corrige par l'amendement du 2026-10-29 00:03 : remesure faite dans `cloture-palier-5.md` section 9, donnees brutes sans seuil ; texte d'origine conserve]** |
 | `P7` | forme de lancement de `verifier-chemins.sh` et `verifier-prefixes.sh` documentee la ou un agent la lit | `sofia-sm` (A.280) | non fait ; hors de ce commit |
 | `P10` | faits du rapport de `marc-dev` absents du depot (`-04`, `-12`) | `marc-dev`, par moi | ouverte, reportee, non close |
 | `JAR` | qui lance le `verify` de chaque lot, qui sert le jar | non designe | ouverte ; fait lu : les fiches ecrivent que le jar a ete fourni par l'agent lanceur et que le `verify` lu est celui de `sofia-sm` a `90c421a7` ; aucune designation ecrite |
@@ -3369,10 +3369,10 @@ Les reperes `RS1` a `RS12` sont des reperes locaux de ce tableau, aucun identifi
 
 Sources : A.260 `P2` et `P3`, A.265, A.267, A.280, A.282, `squad/README.md`, et la phrase de l'utilisatrice relayee en section 5.
 
-1. **Fiches et stories, par `camille-po`, en parallele de cet amendement** (*"01 et 02 en //"*, relaye) : les stories des reserves de la section 7 qu'elle retient, l'inscription de la ligne *"Premier `verify` complet du lot"* des neuf fiches (proposition du 21:34, non decidee), la matrice a `couvert-valide` selon chaque verdict.
+1. **Fiches et stories, par `camille-po`, en parallele de cet amendement** (*"01 et 02 en //"*, relaye) : les stories des reserves de la section 7 qu'elle retient, l'inscription de la ligne *"Premier `verify` complet du lot"* des neuf fiches (proposition du 21:34, non decidee), la matrice a `couvert-valide` selon chaque verdict. **[corrige par l'amendement du 2026-10-29 00:03 : l'utilisatrice a repondu O2 a `Q-283-1` (A.286), les quatorze stories de reserves restent non engagees ; la ligne des fiches est mise a jour par `camille-po` (A.283) ; la matrice est a `couvert-valide` pour neuf lignes (A.288) ; texte d'origine conserve]**
 2. **Horloge `MAT-CE1-11`, avec `nadia-prof`** (*"puis 03"*, relaye) : audit a l'ecran apres les neuf premiers audits et avant tout rejeu (`P3`, A.265). Son prix est non chiffre (A.282 point 2).
 3. **`QC3`** : l'entree de catalogue de chaque lot, lue par `nadia-prof` avant fusion (`RS12`).
-4. **Rejeux** : trois au plus, un par lot au plus, apres l'horloge (`P3`) ; l'existence meme d'un rejeu sans lot refuse est la question de la section 1, ouverte. Le quatrieme selon `Q3` d'A.271.
+4. **Rejeux** : trois au plus, un par lot au plus, apres l'horloge (`P3`) ; l'existence meme d'un rejeu sans lot refuse est la question de la section 1, ouverte. Le quatrieme selon `Q3` d'A.271. **[corrige par l'amendement du 2026-10-29 00:03 : Q3 d'A.271 est close le 2026-10-28 par `DEC-0120` A.286, le quatrieme rejeu tombe (reponse de l'utilisatrice relayee) ; texte d'origine conserve]**
 5. **Remesure `A276`**, puis **`cloture-palier-5.md`**, ecrit une seule fois par moi apres un passage complet des quatre jobs de `ci.yml` (A.280 point 2) ; condition de `-03` (section 1) : si cette CI rougit sur ce lot, son verdict est rouvert ; obstacles du palier dans ce fichier puis dans `review.md`. **`cloture-palier-5.md` n'existe pas** (`ls`).
 
 ### 9. Marqueurs poses sur l'amendement du 21:34
@@ -3382,3 +3382,54 @@ Les passages suivants de l'amendement du 2026-10-27 21:34 portent un marqueur *[
 ### Decisions prises
 
 **Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il inscrit : l'etat des neuf audits a l'ecran lu dans les fiches (sept lots avec reserves, deux sans, aucun refus), les durees brutes de la remesure `A276` sans conclusion, le compte du registre (1004 identifiants, 179 prefixes), la porte technique (job `build`, etape `verify`, vert a `1a810b79`, mesure par moi ; `prefixes`, `chemins` et `outils` non lances en entier, porte complete non annoncee), les deux phrases de l'utilisatrice relayees, ce que les regles ecrites chiffrent ou non pour les neuf audits, la liste des reserves et leur routage, l'ordre jusqu'a la cloture. **Aucun Done n'est prononce par moi** : les neuf verdicts sont ceux de `nadia-prof`, lus.
+
+## Amendement du 2026-10-29 00:03 (UTC+01:00), palier 5 : état final après les dix audits, les entrées de catalogue et la matrice, marqueurs sur les lignes périmées, renvoi à `cloture-palier-5.md`
+
+Écrit par `sofia-sm`, casquette Scrum Master, dans le commit de la branche `s57-p5-sofia-p9` (base `round-two` à `fa137660`, lu par `git rev-parse HEAD`), qui porte aussi `cloture-palier-5.md`. Il ne modifie ni `DEC-0120`, ni les fiches, ni la matrice, ni le backlog, ni le code, ne décide rien, ne prononce aucun Done, ne fixe aucun prix. Il ne modifie les amendements précédents que par des marqueurs *[corrige ...]*, texte d'origine conservé. Vocabulaire : **lu** = lu par moi dans le dépôt ; **mesuré** = lancé par moi ; **relayé** = dit par l'agent lanceur (forme 2 de `DEC-0062` G), non vérifiable de ma main ; **[calcul]** = somme que j'ai faite.
+
+### 1. État final du palier 5, lu
+
+| Sujet | État | Source |
+|---|---|---|
+| Dix verdicts de `nadia-prof` (neuf lots `QLM-CE1`, horloge `MAT-CE1-11`) | 2 VALIDE (`-01`, `-04`), 8 VALIDE SOUS RÉSERVE, **aucun refus** | `grep` du titre *"Verdict du ..."* dans les dix fiches |
+| Horloge | premier jet `025e613b`, correction `cd74dc79`, seconde lecture `d398add4`, verdict `07961bf3` | `git log --merges` |
+| Entrées de catalogue | 9 entrées fusionnées (`eaa3ef65`), catalogue de 163 à 172 ; `-12` hors périmètre, sans entrée | `grep -c "paquet: <nom>$"` : 1 pour neuf paquets, 0 pour `ce1-qlm-generations` |
+| Titres et consignes des entrées | lus par `nadia-prof` (`2f2977fb`), orthographe relue (`cf7c6acf`, aucune correction) | fusions `d6933bda`, `f64eba26` |
+| Matrice | 165 sur 202 = 81,68 % (156 avant) | commande de la "Méthode du compte", lancée par moi |
+| Registre des identifiants | 1004 identifiants, 179 préfixes | `REGISTRE-identifiants.md`, ligne *Compte courant* |
+| Tests | 3644 à `eaa3ef65` (relayé, et lu dans la fiche de l'horloge à `371425e4`), 3618 `@Test` par les sources plus 26 | `cloture-palier-5.md` section 2 |
+| Porte technique | quatre jobs de `ci.yml` mesurés **en local**, verts ; **pas la CI GitHub**, rien n'est poussé | `cloture-palier-5.md` section 10 |
+
+- **Le code de `HEAD` est celui de `eaa3ef65`** : `git diff --name-status eaa3ef65 HEAD` ne nomme que `backlog.md`, `DEC-0120`, `DEC-index.md` et `MATRICE-couverture.md`.
+- **Coût** : plafond de `PAR-8` 25,00, engagé 13,50, marge 1,5, cas haut 23,70, réserve de plafond 1,30 (A.282, A.286). [calcul] 25,00 - 23,70 = 1,30. Le coût réel n'est pas mesuré. Aucun prix n'est écrit pour l'audit à l'écran, le `verify` par lot, la lecture des titres, la quatrième lecture : non chiffrés par les textes.
+
+### 2. Décisions de l'utilisatrice du palier, relayées
+
+Citées par `camille-po` dans `DEC-0120`, non lues de sa main.
+
+- **A.284** : accord de poids du cliquet à 96 873 octets pour l'horloge (*"Q1 O1 on l'accorde"*).
+- **A.286** : `Q-283-1` répondue `O2`, les quatorze stories de réserves restent non engagées ; Q3 d'A.271 close (*"O1 il tombe"*), le quatrième rejeu tombe.
+- **A.287** : entrées de catalogue engagées avant la clôture (*"O2"*).
+
+`Q-283-1` n'apparaît dans aucune ligne de ce fichier avant cet amendement (`grep` : 0). Le passage voisin est la ligne des stories de réserves du point 1 de l'ordre jusqu'à la clôture (amendement du 2026-10-28 09:56, section 8), marquée.
+
+### 3. Marqueurs posés
+
+Chaque ligne ci-dessous porte un marqueur *[corrige par l'amendement du 2026-10-29 ...]*, texte d'origine conservé, fin de ligne ou fin de la dernière cellule.
+
+- **Q3 d'A.271 dite différée, ouverte ou à rouvrir** : treize lignes, numéros du fichier avant cet amendement (les marqueurs n'ajoutent aucune ligne) : 2613, 2655, 2749, 2769, 2824, 2858, 2950, 3083, 3102, 3192, 3212, 3357, 3375. Les quatre que `DEC-0120` A.286 nomme (2613, 2655, 2824, 2950) en font partie.
+- **Rejeu sans lot refusé** : ligne 3252 (amendement du 09:56, section 1, conclusion de lecture).
+- **Stories de réserves** : ligne 3372 (amendement du 09:56, section 8, point 1).
+- **Entrée de catalogue** : ligne `RS12` (09:56, section 7, ligne 3349) et point 4 de l'ordre des étapes de l'amendement du 21:34 (section 6, ligne 3210).
+- **Porte technique** : ligne 3303, *"La porte technique complète n'est pas annoncée"* (09:56, section 4).
+- **Remesure `A276`** : ligne 3358, second tableau de la section 7 du 09:56.
+
+### 4. Ce que `cloture-palier-5.md` porte
+
+La clôture porte : les fusions de lot avec leur compte de catalogue, le total de tests, la matrice, les dix verdicts, le compte des reports, les questions à l'utilisatrice, les décisions, le coût, les durées brutes, la porte technique, l'ArchUnit absent, les obstacles et les travers. **Elle n'existait pas à la date de l'amendement du 2026-10-28 09:56** (*"cloture-palier-5.md n'existe pas"*, vrai alors) ; elle est ajoutée par le même commit que cet amendement.
+
+**Questions ouvertes, non tranchées par moi** : une exécution de la CI GitHub est-elle attendue avant la clôture (utilisatrice) ; engager ou non `S57-QLM-CE1-12-ACCORD` (`camille-po`, puis utilisatrice) ; `Q-273-1` (i), seizième mention (`nadia-prof`, utilisatrice). **Points routés, sans propriétaire qui ait répondu** : en-tête de `ce1-calendrier-dates.yaml` (développeur à désigner), levée de la réserve 2 de `-06` et de la réserve `d` de l'horloge (`nadia-prof` seule), réserve `c` de l'horloge (`camille-po`), clé de type de l'entrée de catalogue (`theo-archi`), `JAR`, `P6` (`yanis-qa`), `P7`, `P8`, `P9`, `P10`, `T1`, `C2`, `C4`, confirmation ArchUnit du palier (`theo-archi`). Le détail est dans la section 12 de `cloture-palier-5.md`.
+
+### Decisions prises
+
+**Aucune `ADR` ni aucune `DEC` n'est créée ou amendée par cet amendement.** Il inscrit : l'état final du palier 5 lu dans le dépôt (dix verdicts, aucun refus ; neuf entrées de catalogue ; 165 sur 202 ; 1004 identifiants), les trois décisions de l'utilisatrice relayées par `DEC-0120` (A.284, A.286, A.287), les marqueurs posés sur les lignes périmées, et le renvoi à `cloture-palier-5.md`. **Aucun Done n'est prononcé par moi** : les dix verdicts sont ceux de `nadia-prof`, lus.
