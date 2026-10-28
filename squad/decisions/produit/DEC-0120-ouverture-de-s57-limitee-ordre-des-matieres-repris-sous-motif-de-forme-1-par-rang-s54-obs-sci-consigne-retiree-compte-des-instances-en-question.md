@@ -5052,3 +5052,46 @@ Le 0,50 retiré est celui du cas le plus haut. Dans le cas propre de Q3 (marge d
 | `marc-dev`, `lea-dev`, `ines-design`, `theo-archi`, `yanis-qa`, `relecteur-pedagogique` | rien |
 
 **Matrice** : aucun statut ne change, aucune note. **Report** : Q3 d'A.271 quatorzième et dernière inscription, close ; `Q-273-1` (i) quatorzième mention ; `Q-283-1` première inscription en A.283, fermée ici. **Changement de code décidé, avec propriétaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne chiffre aucun poste que les règles ne chiffrent pas, n'affecte pas la réserve de 1,30, ne ferme pas `Q-273-1`, ne réécrit pas `P3`, n'engage aucune story, ne modifie ni `planning.md`, ni `backlog.md`, ni une fiche, ni un bloc de validation, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloué.
+
+## Amendement du 2026-10-28, soixante-cinquième (`camille-po`, palier 5 : l'utilisatrice répond *"O2"* : les entrées de catalogue sont engagées avant la clôture du palier)
+
+Arbre : base `round-two` à `fd324d01`, branche `s57-p5-camille-287`. **Statut de `DEC-0120` : `Acceptee`, inchangé.** Sources lues au disque : A.250 à A.255, A.283, A.286, `docs/backlog/backlog.md` (la story `S57-QLM-CE1-ENTREES-CATALOGUE`), `FICHE-ce1-lire-l-heure.md` (réserve *d*), `MATRICE-couverture.md`. A.287 n'existait pas avant cet amendement. Cet amendement ne touche aucun fichier sous `domain/`, `application/`, `adapters/` ni `bootstrap/`.
+
+### A.287 `S57-QLM-CE1-ENTREES-CATALOGUE` est engagée au palier 5 ; neuf entrées, dont l'horloge ; la couverture passerait de 77,23 % à 81,68 %
+
+**1. Ses mots, reportés.** La question posée à l'utilisatrice : avant de clore le palier 5, engager d'abord les entrées de catalogue (couverture de 77,23 % à environ 82,18 % une fois fusionnées et la CI verte), ou clore sans elles ? Sa réponse du 2026-10-28, relayée par l'agent lanceur (forme 2, `DEC-0062` G), citée mot pour mot : *"O2"*. L'option `O2` : une story, des lignes indépendantes, relues par `nadia-prof`, puis clôture. Le texte des options ne m'a été transmis que par cette description : si elle les lit autrement, sa phrase l'emporte.
+
+**2. Ce qui est engagé, et la correction de la formule *"neuf jeux"*.**
+
+- La story passe de *NON ENGAGEE, sans palier* à **ENGAGEE au palier 5**. Le titre et le texte d'origine sont conservés ; le marqueur *[corrige par A.287, texte d'origine conserve]* est dans le backlog, avec un paragraphe *Engagement*.
+- **Périmètre : neuf entrées.** Huit lignes `QLM-CE1-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08` et `-10`, plus l'entrée de l'horloge `MAT-CE1-11` : paquet `ce1-lire-l-heure`, titre *"L'heure sur l'horloge"*, consigne *"Regarde les deux aiguilles, puis choisis la bonne heure."*, mécanique `bandit-manchot`, 10 manches (réserve *d* de `nadia-prof`, dans `FICHE-ce1-lire-l-heure.md`, que je ne touche pas).
+- **La formule du texte d'origine, *"les neuf jeux de questionner le monde CE1"*, ne tient plus.** Ses neuf lignes comptent `QLM-CE1-12`, qui **reste hors périmètre** jusqu'au relevé de `S57-QLM-CE1-12-ACCORD` (A.283 D3 ; A.286 point 2 : *"je le signale, je ne l'engage pas"*). Huit lignes de questionner le monde, une entrée de mathématiques : neuf entrées. Je ne réécris pas le texte d'origine.
+- **Écart de chiffre avec la question posée.** *"Environ 82,18 %"* est 166 sur 202 [calcul], soit **dix** lignes : les neuf de questionner le monde avec `-12`, plus l'horloge. Sans `-12`, hors périmètre, c'est 165 sur 202 (point 3).
+- Premier acteur `marc-dev` ; lecture de titre et de consigne par `nadia-prof` avant la fusion ; orthographe par `relecteur-pedagogique`, comme la story l'écrit. Le critère 3 de la story (consigne *"Lis bien, puis choisis la bonne réponse."*) ne vaut pas pour l'horloge : sa consigne est celle de `nadia-prof` ci-dessus.
+
+**3. Calcul de la couverture, aucune ligne ne bouge ici.**
+
+| Grandeur | Valeur | Source |
+|---|---|---|
+| `couvert-valide` aujourd'hui | 156 sur 202 = 77,23 % | note du 2026-10-28 (A.283) de `MATRICE-couverture.md`, lue |
+| après les 8 lignes `QLM-CE1` et `MAT-CE1-11` à `couvert-valide` | 165 sur 202 = 81,68 % | [calcul] 156 + 8 + 1 = 165 ; 165 / 202 = 0,8168 |
+
+**Hypothèses vérifiées dans la matrice**, avant d'écrire le chiffre : (a) les huit lignes `QLM-CE1-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10` sont `non couvert` [mesure : une ligne de tableau par identifiant, cellule de statut `non couvert - ...`, 8 sur 8] ; (b) `MAT-CE1-11` est `en cours` [mesure : la ligne *Lire l'heure sur une horloge* porte `**en cours**`]. **Non vérifiée** : que chacune des huit lignes atteigne `couvert-valide` (plafond). Celui de `MAT-CE1-11` est écrit par `nadia-prof` (3.5 de `arbitrage-nadia-palier-5-lp7-d5.md`) ; ceux des huit lignes tiennent à leurs verdicts (A.283), que je n'ai pas relus ici. **Le chiffre est une hypothèse** : une ligne ne passe à `couvert-valide` qu'à la fusion de son entrée, la CI complète verte. Aucune ligne de la matrice n'est modifiée par cet amendement, et je n'y écris pas de note (critère 6 de la story : la ligne ne bouge qu'à la fusion).
+
+**4. Chiffres, inchangés.** Plafond de `PAR-8` **25,00** ; engagé **13,50** ; marge **1,5** ; cas haut **23,70** (A.286) ; réserve de plafond **1,30**, **non affectée**. **Le prix de la lecture des titres et des consignes par `nadia-prof` n'est chiffré dans aucun texte** (A.282 point 2) : je ne le chiffre pas et je ne l'impute à aucun poste. La réserve de 1,30 existe ; aucune règle ne dit qu'elle paie cette lecture.
+
+**5. Report compté.** La story est écrite *non engagée, sans palier* depuis A.254 (2026-10-25) et A.283 (2026-10-28), au sprint s57 chaque fois. Elle n'a jamais été reportée à un autre sprint : elle est engagée à la première réponse de l'utilisatrice qui porte sur elle. `Q-273-1` (i) : **quinzième mention**, non fermée (A.286 point 5).
+
+**6. Changement de code décidé, avec propriétaire.** Neuf entrées dans `adapters/adapter-content/src/main/resources/catalogue.yaml`. **Propriétaire : `marc-dev`**, que `sofia-sm` confirme ou remplace ; story `S57-QLM-CE1-ENTREES-CATALOGUE`, routée par le tableau ci-dessous dans le même geste. Tant que les entrées ne sont pas écrites, le catalogue est inchangé et aucun enfant ne peut jouer un paquet sans entrée ; aucun paquet refusé n'est servi (`QC3`, `DEC-0009`).
+
+### Routage
+
+| À qui | Quoi |
+|---|---|
+| `sofia-sm` | `planning.md` (non modifié ici) : inscrire l'engagement de la story au palier 5 et la réponse *"O2"* ; désigner `marc-dev` ou un autre développeur ; ordonnancer la lecture de `nadia-prof` avant la fusion et l'orthographe de `relecteur-pedagogique` ; la clôture du palier 5 suit la fusion des entrées ; engager ou non le relevé de l'accord de `-12` (A.283 D3) |
+| `marc-dev` | les neuf entrées de la story ; titres et consignes montrés à `nadia-prof` avant la fusion |
+| `nadia-prof` | lire titre et consigne de chaque entrée avant la fusion ; elle seule prononce le Done ; aucun bloc de validation n'est touché ici |
+| `relecteur-pedagogique` | l'orthographe des titres et consignes |
+| `yanis-qa`, `lea-dev`, `ines-design`, `theo-archi` | rien |
+
+**Matrice** : aucun statut ne change, aucune note. **Ne fait pas** : ne prononce aucun Done, ne chiffre aucun poste, n'affecte pas la réserve de 1,30, ne ferme pas `Q-273-1`, n'engage pas `S57-QLM-CE1-12-ACCORD`, ne modifie ni `planning.md`, ni une fiche, ni un bloc de validation, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloué.
