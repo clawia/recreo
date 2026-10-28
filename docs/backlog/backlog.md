@@ -24077,7 +24077,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
 
 **Question routee, non tranchee par moi** (`sofia-sm`, puis `theo-archi`) : le test `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` a exige une entree pour un paquet neuf sans proposition numerique (precedent `S57-BR-EMC-CE1-01`, amendement du 2026-10-20) ; si un paquet de questionner le monde CE1 est dans ce cas, le developpeur le constate a son premier `verify` et l'ecrit, sans assouplir aucune garde.
 
-### `S57-BR-QLM-CE1-01` - Ordonner les etapes du developpement d'un animal ou d'une plante (`QLM-CE1-01`) - NON ENGAGEE, sans palier
+### `S57-BR-QLM-CE1-01` - Ordonner les etapes du developpement d'un animal ou d'une plante (`QLM-CE1-01`) - NON ENGAGEE, sans palier **[statut au 2026-10-28, A.288 : la ligne `QLM-CE1-01` est `couvert-valide`, entree de catalogue fusionnee ; texte d'origine conserve]**
 
 - **Besoin** : en tant qu'eleve de CE1, je veux dire ce qui vient juste avant ou juste apres dans la vie d'une grenouille, d'un papillon, d'une poule ou d'une plante, afin de comprendre comment un animal ou une plante grandit.
 - **Competence programme visee** : questionner le monde, CE1, `QLM-CE1-01` (`squad/programme/questionner-le-monde/competences-ce1.md`) : *"Ordonner les etapes du developpement d'un animal ou d'une plante familiers, y compris une metamorphose (oeuf, tetard, grenouille) ou une germination (graine, jeune pousse, plante)."* Ligne `non couvert`, plafond `couvert-valide`. **Mecanique demandee** et paquet propose `ce1-qlm-etapes-de-developpement` : bloc commun.
@@ -24092,7 +24092,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
 - **Voisins que `nadia-prof` relit** (`NRC-CE1-1`, `CYC-1`) : `cp-qlm-cycle-de-vie`, `cm1-sciences-etapes-developpement`. **Ordre** : `-01` d'abord, seule (`M3`, `QC7`).
 - **Prix, instance, agent** : prix non fixe ici ; bareme de `nadia-prof` 1,0 par lot, le premier prix mesure sera celui de `-01` (`arbitrage-nadia-palier-5-qlm-v3.md` 7.1). Instance et developpeur : a designer par `sofia-sm`, distinct de `lea-dev` (C1, `RG2`). **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
-### `S57-BR-QLM-CE1-02` - Relier un animal familier a ce qu'il mange (`QLM-CE1-02`) - NON ENGAGEE, sans palier
+### `S57-BR-QLM-CE1-02` - Relier un animal familier a ce qu'il mange (`QLM-CE1-02`) - NON ENGAGEE, sans palier **[statut au 2026-10-28, A.288 : la ligne `QLM-CE1-02` est `couvert-valide`, entree de catalogue fusionnee ; texte d'origine conserve]**
 
 - **Besoin** : en tant qu'eleve de CE1, je veux dire si un animal que je connais mange des plantes, d'autres animaux, ou les deux, afin de savoir de quoi il se nourrit.
 - **Competence programme visee** : questionner le monde, CE1, `QLM-CE1-02` (`squad/programme/questionner-le-monde/competences-ce1.md`) : *"Relier quelques animaux familiers a ce qu'ils mangent (des vegetaux, d'autres animaux, ou les deux)."* Ligne `non couvert`, plafond `couvert-valide`. Paquet propose `ce1-qlm-ce-que-mangent-les-animaux` ; mecanique : bloc commun.
@@ -24134,7 +24134,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
        - **Ce que je ne tranche pas et que `nadia-prof` juge** : qu'un aliment nomme soit lisible et sans seconde reponse defendable au CE1 (une vache mange aussi du foin, une poule des graines et des vers : choix des animaux et des distracteurs), que la tache B soit une operation mentale distincte de la tache A (`QC9`), et que cette seconde tache soit la bonne plutot qu'une autre que sa condition `RAL-CE1-1` permettrait. Si elle en prefere une autre, cette proposition est remplacee et le critere 6 reecrit avant le premier jet.
 - **Voisin que `nadia-prof` relit** : `cm1-sciences-regimes-alimentaires`. **Ordre** : apres `-01`, avec `-03` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
-### `S57-BR-QLM-CE1-03` - Identifier ce dont une plante a besoin (`QLM-CE1-03`) - NON ENGAGEE, sans palier
+### `S57-BR-QLM-CE1-03` - Identifier ce dont une plante a besoin (`QLM-CE1-03`) - NON ENGAGEE, sans palier **[statut au 2026-10-28, A.288 : la ligne `QLM-CE1-03` est `couvert-valide`, entree de catalogue fusionnee ; texte d'origine conserve]**
 
 - **Besoin** : en tant qu'eleve de CE1, je veux dire ce dont une plante a besoin pour vivre et grandir, afin de savoir comment m'en occuper.
 - **Competence programme visee** : questionner le monde, CE1, `QLM-CE1-03` (`squad/programme/questionner-le-monde/competences-ce1.md`) : *"Identifier ce dont une plante a besoin pour vivre et grandir (eau, lumiere, chaleur)."* Ligne `non couvert`, plafond `couvert-valide`. Paquet propose `ce1-qlm-besoins-de-la-plante` ; mecanique : bloc commun.
@@ -24147,7 +24147,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
   5. **`BPL-CE1-1`, les distracteurs** (*du sucre*, *du lait*, *du bruit*, ce dont une plante n'a pas besoin) : lus par `nadia-prof` ; aucune sonde.
 - **Voisins que `nadia-prof` relit** : `cp-qlm-hygiene` ; le paquet de `-01` (germination, `BPL-CE1-2` et `DVP-CE1-2`). **Ordre** : apres `-01`, avec `-02` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
-### `S57-BR-QLM-CE1-04` - Classer un aliment dans sa famille, reconnaitre un repas varie (`QLM-CE1-04`) - NON ENGAGEE, sans palier
+### `S57-BR-QLM-CE1-04` - Classer un aliment dans sa famille, reconnaitre un repas varie (`QLM-CE1-04`) - NON ENGAGEE, sans palier **[statut au 2026-10-28, A.288 : la ligne `QLM-CE1-04` est `couvert-valide`, entree de catalogue fusionnee ; texte d'origine conserve]**
 
 - **Besoin** : en tant qu'eleve de CE1, je veux dire dans quelle famille se range un aliment et reconnaitre le repas qui contient le plus de familles differentes, afin de savoir ce qu'est un repas varie.
 - **Competence programme visee** : questionner le monde, CE1, `QLM-CE1-04` (`squad/programme/questionner-le-monde/competences-ce1.md`) : *"Classer des aliments courants dans leur famille (fruits et legumes, feculents, produits laitiers, viande, poisson et oeufs, produits sucres) et reconnaitre un repas varie."* Ligne `non couvert`, plafond `couvert-valide`. Paquet propose `ce1-qlm-familles-d-aliments` ; mecanique : bloc commun.
@@ -24221,7 +24221,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      suite de la phrase (*"La regle ne porte que sur les mots, jamais sur le sens..."*) ne change pas.
 - **Voisins que `nadia-prof` relit** : `cp-qlm-hygiene`, `cp-qlm-matiere` **[corrige le 2026-10-26 (UTC+01:00) : arbitre par `nadia-prof`, `arbitrage-nadia-premiers-jets-ce1-qlm-04-05.md` ; critere 11, dernier point, et 1.4 (`N04-4`) : `cm1-sciences-corps` est ajoute ; `cm1-sciences-nutrition` ne l'est pas, ses items ne portent que sur des organes ; texte d'origine conserve]**. **Ordre** : apres `-01`, avec `-05` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
-### `S57-BR-QLM-CE1-05` - L'eau sous ses trois etats, la fonte et le gel relies a la temperature (`QLM-CE1-05`) - NON ENGAGEE, sans palier
+### `S57-BR-QLM-CE1-05` - L'eau sous ses trois etats, la fonte et le gel relies a la temperature (`QLM-CE1-05`) - NON ENGAGEE, sans palier **[statut au 2026-10-28, A.288 : la ligne `QLM-CE1-05` est `couvert-valide`, entree de catalogue fusionnee ; texte d'origine conserve]**
 
 - **Besoin** : en tant qu'eleve de CE1, je veux reconnaitre la glace, l'eau liquide et la vapeur d'eau et savoir que l'eau gele quand il fait tres froid et que la glace fond quand on la chauffe, afin de comprendre ce qui arrive a l'eau.
 - **Competence programme visee** : questionner le monde, CE1, `QLM-CE1-05` (`squad/programme/questionner-le-monde/competences-ce1.md`) : *"Reconnaitre l'eau sous ses trois etats (glace, eau liquide, vapeur d'eau) et relier la fonte et le gel a la temperature."* Ligne `non couvert`, plafond `couvert-valide`. Paquet propose `ce1-qlm-eau-trois-etats` ; mecanique : bloc commun.
@@ -24296,7 +24296,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      *une bouteille d'eau gelée*).
 - **Voisins que `nadia-prof` relit** : `cp-qlm-etats-eau`, `cm1-sciences-etats-matiere`. **Ordre** : apres `-01`, avec `-04` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
-### `S57-BR-QLM-CE1-06` - Reconnaitre ce qu'un aimant attire et n'attire pas (`QLM-CE1-06`) - NON ENGAGEE, sans palier
+### `S57-BR-QLM-CE1-06` - Reconnaitre ce qu'un aimant attire et n'attire pas (`QLM-CE1-06`) - NON ENGAGEE, sans palier **[statut au 2026-10-28, A.288 : la ligne `QLM-CE1-06` est `couvert-valide`, entree de catalogue fusionnee ; texte d'origine conserve]**
 
 - **Besoin** : en tant qu'eleve de CE1, je veux dire si un aimant attire un objet, afin de savoir qu'il n'attire pas tous les objets en metal.
 - **Competence programme visee** : questionner le monde, CE1, `QLM-CE1-06` (`squad/programme/questionner-le-monde/competences-ce1.md`) : *"Reconnaitre les objets qu'un aimant attire et ceux qu'il n'attire pas."* Ligne `non couvert`, plafond `couvert-valide`. Paquet propose `ce1-qlm-aimant` ; mecanique : bloc commun.
@@ -24422,7 +24422,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      cuivre* ; *le fil de fer*, *l'agrafe*). Le reste de la tache A ne change pas.
 - **Voisins que `nadia-prof` relit** : `cp-qlm-matiere`, `cm1-sciences-melanges`. **Ordre** : apres `-01`, avec `-08` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
-### `S57-BR-QLM-CE1-08` - Connaitre les dangers de l'electricite de la maison et les gestes qui les evitent (`QLM-CE1-08`) - NON ENGAGEE, sans palier
+### `S57-BR-QLM-CE1-08` - Connaitre les dangers de l'electricite de la maison et les gestes qui les evitent (`QLM-CE1-08`) - NON ENGAGEE, sans palier **[statut au 2026-10-28, A.288 : la ligne `QLM-CE1-08` est `couvert-valide`, entree de catalogue fusionnee ; texte d'origine conserve]**
 
 - **Besoin** : en tant qu'eleve de CE1, je veux savoir quel geste me garde en securite devant une prise, un appareil pres de l'eau ou un fil abime, afin de ne pas me mettre en danger.
 - **Competence programme visee** : questionner le monde, CE1, `QLM-CE1-08` (`squad/programme/questionner-le-monde/competences-ce1.md`) : *"Connaitre les dangers de l'electricite de la maison (prise, appareil pres de l'eau, fil abime) et les gestes qui les evitent."* Ligne `non couvert`, plafond `couvert-valide`. Paquet propose `ce1-qlm-dangers-electricite` ; mecanique : bloc commun.
@@ -24557,7 +24557,7 @@ Arbre : base `f25e4775`, branche `s57-p5-camille-stories` ; la reponse de `nadia
      sujet qui designe une personne de la scene (*"Lina se blesse"*, *"Un élève se blesse"*) est refuse, a tout temps.
 - **Voisin que `nadia-prof` relit** : `cp-eps-regles-de-securite` ; la frontiere avec `-07` (aucune pile). **Ordre** : apres `-01`, avec `-06` (`QC7`). **Prix, instance, agent** : comme `-01`. **Lien** : `DEC-0120` A.227, A.237, A.250 a A.255.
 
-### `S57-BR-QLM-CE1-10` - Identifier un paysage par ses elements (`QLM-CE1-10`) - NON ENGAGEE, sans palier
+### `S57-BR-QLM-CE1-10` - Identifier un paysage par ses elements (`QLM-CE1-10`) - NON ENGAGEE, sans palier **[statut au 2026-10-28, A.288 : la ligne `QLM-CE1-10` est `couvert-valide`, entree de catalogue fusionnee ; texte d'origine conserve]**
 
 - **Besoin** : en tant qu'eleve de CE1, je veux dire de quel paysage on parle quand on m'en nomme les elements, la mer, la montagne, la campagne ou la ville, afin de reconnaitre un paysage.
 - **Competence programme visee** : questionner le monde, CE1, `QLM-CE1-10` (`squad/programme/questionner-le-monde/competences-ce1.md`) : *"Identifier quelques paysages (littoral, montagne, campagne, ville) a partir de leurs elements caracteristiques."* Ligne `non couvert`, plafond `couvert-valide`. Se joue par les elements nommes dans l'enonce, sans image. Paquet propose `ce1-qlm-paysages` ; mecanique : bloc commun.
@@ -25156,7 +25156,7 @@ Arbre : base `round-two` a `1a810b79`, branche `s57-p5-camille-283`. Les neuf lo
   4. **Aucun garde-fou assoupli** ; Done technique, quatre jobs de `ci.yml`.
 - **Premier acteur, route** : `nadia-prof`, puis `theo-archi` et `marc-dev` par `sofia-sm`. **Prix** : non chiffre. **Lien** : `DEC-0120` A.283 ; `FICHE-ce1-qlm-12.md`.
 
-### `S57-QLM-CE1-ENTREES-CATALOGUE` - les neuf jeux de questionner le monde CE1 entrent au catalogue avec un titre et une consigne que `nadia-prof` a lus (`QC3`, une story, neuf lignes) - NON ENGAGEE, sans palier **[corrige par A.287, texte d'origine conserve : ENGAGEE au palier 5, voir le paragraphe *Engagement* de la story]**
+### `S57-QLM-CE1-ENTREES-CATALOGUE` - les neuf jeux de questionner le monde CE1 entrent au catalogue avec un titre et une consigne que `nadia-prof` a lus (`QC3`, une story, neuf lignes) - NON ENGAGEE, sans palier **[corrige par A.287, texte d'origine conserve : ENGAGEE au palier 5, voir le paragraphe *Engagement* de la story]** **[statut au 2026-10-28, A.288 : FAIT sauf `QLM-CE1-12` (hors perimetre, accord en attente) ; huit lignes `QLM-CE1` et `MAT-CE1-11` a `couvert-valide` ; texte d'origine conserve]**
 
 - **Besoin** : en tant qu'eleve de CE1, je veux trouver sur la page de questionner le monde un jeu par competence, avec un titre et une consigne que je comprends, afin de savoir a quoi je joue.
 - **Mecanique demandee** : `bandit-manchot`, `type: question`, une entree par paquet dans `adapters/adapter-content/src/main/resources/catalogue.yaml`, aucune modification de mecanique. **Competence programme visee** : les neuf lignes `QLM-CE1-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12` du tableau ci-dessous (`squad/programme/questionner-le-monde/competences-ce1.md`), toutes `non couvert`, Done pedagogique prononce ; la story elle-meme est **transverse - pas de contenu pedagogique**.
@@ -25194,7 +25194,7 @@ Arbre : base `round-two` a `1a810b79`, branche `s57-p5-camille-283`. Les neuf lo
 
 Arbre : base `round-two` à `b37d476a`, branche `s57-p5-camille-284`. Sources lues au disque : `rapport-lea-dev-palier-5-horloge-mat-ce1-11.md`, `lecture-nadia-premier-jet-horloge-mat-ce1-11.md` (toutes deux dans `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/`), `arbitrage-nadia-palier-5-lp7-d5.md` (3, 3.5, 8), `DEC-0120` A.263, A.265, A.267, A.280 à A.283. **La story n'existait pas** : `grep -c "lire-l-heure" docs/backlog/backlog.md` rendait **0** avant cette annotation (`lea-dev` l'avait relevé, `nadia-prof` l'avait vérifié). Les conditions ci-dessous sont **ses mots**, repris sans traduction. Les valeurs *d'aujourd'hui* sont lues ou comptées le 2026-10-28 sur `b37d476a`. Les tests cités ont été lancés par moi : `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=LesCadransMontrentCeQueLeursItemsAffirmentTest,PaquetCe1LireLHeureTest,ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTest -Dsurefire.failIfNoSpecifiedTests=false` (perimetre : `domain`, `application`, `adapter-web`, `adapter-content`, `bootstrap`, ces trois classes seulement), code 0, 10, 6 et 17 tests, 0 échec. Ce n'est pas un `verify` et ce n'est pas la CI.
 
-### `S57-BR-MAT-CE1-11-HORLOGE` - Écrire et brancher le paquet de la lecture de l'heure (`MAT-CE1-11`, moitié horloge) - ENGAGÉE au palier 5
+### `S57-BR-MAT-CE1-11-HORLOGE` - Écrire et brancher le paquet de la lecture de l'heure (`MAT-CE1-11`, moitié horloge) - ENGAGÉE au palier 5 **[statut au 2026-10-28, A.288 : la ligne `MAT-CE1-11` est `couvert-valide` ; critere 11, en-tete du YAML du calendrier, encore ouvert ; texte d'origine conserve]**
 
 - **Besoin** : en tant qu'élève de CE1, je veux dire quelle heure montre une horloge à aiguilles, quand c'est une heure pile, une demie ou un quart, afin de savoir quelle heure il est quand je la regarde.
 - **Mécanique demandée** : `bandit-manchot`, `type: question`, sans texte support, **un dessin de cadran par item** (`.image-item`, 176 px), gabarit de manche existant. Aucune modification de mécanique, aucun cadran généré par le serveur (`arbitrage-nadia-palier-5-lp7-d5.md` 3.5). Le paquet et ses douze dessins existent déjà (premier jet de `lea-dev`).
@@ -25225,3 +25225,15 @@ Arbre : base `round-two` à `b37d476a`, branche `s57-p5-camille-284`. Sources lu
 - **Prix, instance, agent** : **le prix de `MAT-CE1-11` déjà écrit en `DEC-0120` A.265, compris dans l'engagé du palier ; je ne le rechiffre pas ici.** La seconde lecture, le relevé, le `verify` et l'audit à l'écran sont ce que A.267, A.280 point 6 et A.282 point 2 en disent, **non chiffrés ici** ; `nadia-prof` n'a fixé aucun prix et n'a pas fermé `Q-273-1`. **Instance** : B. **Développeur** : `lea-dev` (critère 5) ; `ines-design` (critères 6 et 7) ; `nadia-prof` (lecture, audit). **Compteur** : +1 si `couvert-valide`. **Report** : aucun report de cette story ; `Q-273-1` douzième mention (A.284). **Lien** : `DEC-0120` A.263, A.265, A.267, A.280, A.282, A.283, A.284, A.285 ; `D5` (annotation du 2026-10-24) ; `S57-BR-MAT-CE1-11` (la moitié calendrier) ; `FICHE-ce1-lire-l-heure.md`.
 
 **Report de l'annotation.** Première inscription de cette story, aucun report antérieur. Aucune ligne de matrice ne change. Aucune story existante n'est modifiée.
+
+## Annotation du 2026-10-28, quatorzième : les entrées de catalogue sont fusionnées, neuf lignes passent à `couvert-valide` (`camille-po`, `DEC-0120` A.288)
+
+Arbre : base `round-two` à `eaa3ef65`, branche `s57-p5-camille-288`. Aucune story nouvelle ; les statuts ci-dessus sont des marqueurs posés sur les titres, les textes d'origine sont conservés.
+
+- **`S57-QLM-CE1-ENTREES-CATALOGUE` : FAIT sauf `QLM-CE1-12`.** Critères lus à `eaa3ef65` : (1) `grep -c "paquet: P$" adapters/adapter-content/src/main/resources/catalogue.yaml` rend **1** pour les huit paquets `ce1-qlm-*` de la story et pour `ce1-lire-l-heure`, **0** pour `ce1-qlm-generations` (hors périmètre) ; (2) la lecture de `nadia-prof` (`2f2977fb`) est ancêtre du commit des entrées (`5000092b`), `git merge-base --is-ancestor` sort 0 ; (3) consigne et 10 manches : lus dans le YAML, neuf entrées sur neuf ; l'horloge porte la consigne de `nadia-prof` (critère 3 sans objet pour elle, dit en A.287) ; (4) orthographe relue par `relecteur-pedagogique` (`cf7c6acf`, aucune correction) ; (5) Done technique : mesure locale des quatre jobs de `ci.yml` à `eaa3ef65`, transmise par l'agent lanceur, **pas la CI GitHub** ; (6) les huit lignes et `MAT-CE1-11` passent à `couvert-valide` dans `MATRICE-couverture.md`, chacune seule, l'identifiant de l'entrée nommé et les réserves non bloquantes recopiées ; (7) aucun paquet refusé n'est servi, aucun des neuf n'est refusé.
+- **`S57-BR-QLM-CE1-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10`** : la ligne correspondante est `couvert-valide`. Leurs réserves restent des stories non engagées (A.283, A.286), non modifiées ici.
+- **`S57-BR-QLM-CE1-12`** : inchangée, `QLM-CE1-12` reste `non couvert`.
+- **`S57-BR-MAT-CE1-11-HORLOGE`** : critère 12 lu rempli (Done de `nadia-prof` du 2026-10-28, entrée `bandit-manchot-lire-l-heure-ce1` fusionnée, quatre jobs mesurés en local) ; `MAT-CE1-11` est `couvert-valide`, avec la mention de couverture de `nadia-prof` reprise mot pour mot dans la cellule (critère 11, second texte, fait). **Critère 11, premier texte, ouvert** : l'en-tête de `ce1-calendrier-dates.yaml` (ligne 1) dit toujours *"DEGRADE : la lecture de l'heure sur un cadran n'est pas servie, aucune horloge n'est rendue"* ; développeur à désigner par `sofia-sm`, formulation à lui.
+- **`S57-BR-MAT-CE1-11`** (moitié calendrier) : sa ligne est la même, `MAT-CE1-11`, `couvert-valide` ; sa réserve de pli (`S57-PLI-LP3-LP5-MESURE`) reste.
+
+**Report.** Aucun report de ces stories. Aucun poste n'est chiffré (A.282 point 2).
