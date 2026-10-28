@@ -189,8 +189,11 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      * <p><b>81 vers 87, lea-dev, s56, S55-ART-CP-10-PAQUET</b> : {@code cp-rapprocher-deux-oeuvres}
      * (ART-CP-10) declare six items, une reproduction de reference par item - les six items
      * s'ajoutent tous.</p>
+     *
+     * <p><b>87 vers 99, lea-dev, s57 palier 5, MAT-CE1-11</b> : {@code ce1-lire-l-heure} declare douze
+     * items de type {@code question}, un cadran par item - les douze items s'ajoutent tous.</p>
      */
-    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 87;
+    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 99;
 
     /**
      * <b>24 vers 26, lea-dev, s34, S33-PAL2-1</b> : les deux dessins du premier paquet de
@@ -207,8 +210,11 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      *
      * <p><b>45 vers 56, lea-dev, s52, S51-MAT-SYMETRIE</b> : les onze dessins {@code symetrie-*.svg}
      * (six figures, cinq quadrillages), un par item.</p>
+     *
+     * <p><b>56 vers 68, lea-dev, s57 palier 5, MAT-CE1-11</b> : les douze cadrans
+     * {@code horloge-*.svg}, un par item.</p>
      */
-    private static final int FICHIERS_D_ILLUSTRATION = 56;
+    private static final int FICHIERS_D_ILLUSTRATION = 68;
 
     private static String lire(Path fichier) {
         try {

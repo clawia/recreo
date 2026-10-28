@@ -201,6 +201,11 @@ class ChaquePaquetDeMathematiquesDeCe1DeclareSaSousPartieTest {
         HORLOGE_ET_CALENDRIER("MAT-CE1-11",
                 "Lire l'heure sur une horloge (heures, demi-heures, quarts d'heure) et se repérer"
                         + " dans le calendrier (mois, date)"),
+        // S57, palier 5 (lot horloge) : entree neuve, MAT-CE1-11, la moitie "lire l'heure" seule,
+        // libelle du referentiel (competences-ce1.md, ligne MAT-CE1-11) coupe avant "et se
+        // reperer". Le paquet de dates garde l'entree precedente.
+        LIRE_L_HEURE("MAT-CE1-11",
+                "Lire l'heure sur une horloge (heures, demi-heures, quarts d'heure)"),
         DEPLACEMENTS_SUR_QUADRILLAGE("MAT-CE1-14",
                 "Se repérer, se déplacer et coder un déplacement sur un quadrillage"),
         FIGURES_PLANES("MAT-CE1-15",

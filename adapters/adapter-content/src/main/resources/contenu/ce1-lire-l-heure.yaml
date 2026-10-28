@@ -1,0 +1,112 @@
+# MAT-CE1-11, moitie "lire l'heure sur une horloge" : premier jet de lea-dev, s57, palier 5, instance B.
+# Cahier des charges : arbitrage-nadia-palier-5-lp7-d5.md section 3.5
+# (squad/sprints/s57-version-cp-ce1-cm1-trois-instances/), HOR-1 a HOR-3 telles qu'ecrites pour le CP
+# (squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md,
+# section 2.1). Ce paquet ne declare aucune conformite pedagogique : le Done est a nadia-prof, et le
+# paquet n'est pas au catalogue.
+#
+# Douze items, un dessin par item, jamais deux fois le meme cadran : trois heures pleines, trois
+# demi-heures, trois quarts d'heure grande aiguille sur 3 ("et quart"), trois quarts d'heure grande
+# aiguille sur 9 ("moins le quart"). Aucune heure n'est lue plus de deux fois (HOR-6 transposee). La
+# grande aiguille est sur 12, 3, 6 ou 9 seulement ; la petite aiguille est a sa place exacte (30 x
+# heures + 0,5 x minutes), ce que verifie LesCadransMontrentCeQueLeursItemsAffirmentTest.
+#
+# Les reponses s'ecrivent "3 h", "3 h 30", "3 h 15", "2 h 45" : la lecture de valeur des paquets
+# (LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest, ADR-0102) ne connait pas "et quart" ni
+# "moins le quart", et ne les ajoute pas volontairement.
+#
+# Distracteurs (HOR-5 transposee) : une heure pleine a pour fautes les aiguilles inversees (la petite
+# aiguille lue comme minutes, la grande comme heure : 12 h 15, 12 h 30, 12 h 45) et l'heure suivante ;
+# les autres formes, la grande aiguille lue comme heure ("6 h", "3 h", "9 h") et l'heure suivante, lue
+# sur le nombre que la petite aiguille approche, minutes justes. Chaque forme de reponse du paquet est
+# aussi une bonne reponse ailleurs dans le paquet (ADR-0086 clause 2).
+# CON-5 : le texte alternatif ne dit ni l'heure ni la place d'une aiguille.
+# HOR-7 : l'indice dit quelle aiguille regarder, huit mots au plus, jamais l'heure.
+# LON-CE1-1 et LON-CE1-2 : 20 mots au plus, trois phrases au plus, la derniere est la question.
+# TYP-1 (ADR-0067) : l'espace qui precede "?" est insecable.
+schema: 1
+id: ce1-lire-l-heure
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Grandeurs et mesures"
+  competence: "Lire l'heure sur une horloge (heures, demi-heures, quarts d'heure)"
+lignesDeReferentiel: ["MAT-CE1-11"]
+items:
+  # Heures pleines
+  - enonce: "Quelle heure est-il ?"
+    illustration: "horloge-a"
+    illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
+    bonneReponse: "3 h"
+    distracteurs: ["12 h 15", "4 h"]
+    indice: "La petite aiguille montre l'heure."
+  - enonce: "Quelle heure est-il ?"
+    illustration: "horloge-b"
+    illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
+    bonneReponse: "6 h"
+    distracteurs: ["12 h 30", "7 h"]
+    indice: "La petite aiguille montre l'heure."
+  - enonce: "Quelle heure est-il ?"
+    illustration: "horloge-c"
+    illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
+    bonneReponse: "9 h"
+    distracteurs: ["12 h 45", "10 h"]
+    indice: "La petite aiguille montre l'heure."
+  # Demi-heures
+  - enonce: "Quelle heure est-il ?"
+    illustration: "horloge-d"
+    illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
+    bonneReponse: "3 h 30"
+    distracteurs: ["6 h", "4 h 30"]
+    indice: "La petite aiguille a passé quel nombre ?"
+  - enonce: "Quelle heure est-il ?"
+    illustration: "horloge-e"
+    illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
+    bonneReponse: "8 h 30"
+    distracteurs: ["6 h", "9 h 30"]
+    indice: "La petite aiguille a passé quel nombre ?"
+  - enonce: "Quelle heure est-il ?"
+    illustration: "horloge-f"
+    illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
+    bonneReponse: "12 h 30"
+    distracteurs: ["6 h", "1 h 30"]
+    indice: "La petite aiguille a passé quel nombre ?"
+  # Quarts d'heure, la grande aiguille sur 3
+  - enonce: "Quelle heure est-il ?"
+    illustration: "horloge-g"
+    illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
+    bonneReponse: "12 h 15"
+    distracteurs: ["3 h", "1 h 15"]
+    indice: "La petite aiguille a passé quel nombre ?"
+  - enonce: "Quelle heure est-il ?"
+    illustration: "horloge-h"
+    illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
+    bonneReponse: "4 h 15"
+    distracteurs: ["3 h", "5 h 15"]
+    indice: "La petite aiguille a passé quel nombre ?"
+  - enonce: "Quelle heure est-il ?"
+    illustration: "horloge-i"
+    illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
+    bonneReponse: "10 h 15"
+    distracteurs: ["3 h", "11 h 15"]
+    indice: "La petite aiguille a passé quel nombre ?"
+  # Quarts d'heure, la grande aiguille sur 9
+  - enonce: "Quelle heure est-il ?"
+    illustration: "horloge-j"
+    illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
+    bonneReponse: "2 h 45"
+    distracteurs: ["9 h", "3 h 45"]
+    indice: "La petite aiguille a passé quel nombre ?"
+  - enonce: "Quelle heure est-il ?"
+    illustration: "horloge-k"
+    illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
+    bonneReponse: "9 h 45"
+    distracteurs: ["9 h", "10 h 45"]
+    indice: "La petite aiguille a passé quel nombre ?"
+  - enonce: "Quelle heure est-il ?"
+    illustration: "horloge-l"
+    illustrationTexteAlternatif: "Une horloge ronde avec douze nombres et deux aiguilles, une courte et une longue."
+    bonneReponse: "11 h 45"
+    distracteurs: ["9 h", "12 h 45"]
+    indice: "La petite aiguille a passé quel nombre ?"
