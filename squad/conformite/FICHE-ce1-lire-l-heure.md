@@ -210,7 +210,9 @@ précédent, 0 échec), `verifier-chemins.sh` et `verifier-prefixes.sh` dans la 
 **Rejeu : aucun n'est dû.** Ce verdict n'est pas un refus ; `P3` (A.265) n'attribue de rejeu qu'à un lot refusé, et un rejeu au plus
 par lot. Les dix audits du palier sont faits, **aucun lot refusé sur dix**. La marge de 0,5 de B n'est consommée par aucun rejeu de
 l'horloge (A.267 point 2). Q3 d'A.271 (le quatrième rejeu) se rouvre à la fermeture des dix audits, qui est ce verdict ; elle est à
-`camille-po`, avec ce fait observé : zéro lot refusé. Je n'en décide pas.
+`camille-po`, avec ce fait observé : zéro lot refusé. **[corrige le 2026-10-28 par A.286, texte d'origine conserve]** La question
+ne se rouvre plus : l'utilisatrice a répondu le 2026-10-28 *"O1 il tombe"*, et `DEC-0120` A.286 point 3 la consigne close (dix
+audits, zéro lot refusé, aucun rejeu dû, pas de report au palier 10). Je n'en décide pas.
 
 **`Q-273-1` (ii)** : fermée dans ses faits, comme je l'ai écrit dans ma seconde lecture (section 5, `af73a862`) : la seconde lecture a
 eu lieu, elle est unique, elle est rangée au geste qu'A.272 et A.280 nomment. Rien de neuf ici, aucun prix. (i) n'est pas touchée.
