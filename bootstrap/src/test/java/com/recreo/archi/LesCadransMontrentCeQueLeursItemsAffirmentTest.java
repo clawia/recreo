@@ -39,6 +39,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * items par forme (heure pleine, demi-heure, quart d'heure a 3, quart d'heure a 9), aucune heure
  * plus de deux fois (HOR-6 transposee).</p>
  *
+ * <p><b>Strategie de paire</b> (arbitrage de nadia-prof du 2026-10-28, section 1.3) : dans chaque
+ * item, les propositions de meme champ de minutes forment la paire, la troisieme est l'intrus.
+ * Quatre strategies qui ignorent le cadran choisissent dans la paire : S1 la plus petite heure
+ * ecrite, S2 la plus grande, S3 celle qui precede dans l'ordre du cadran (12 precede 1), S4 celle
+ * qui suit. Aucune ne gagne plus de la moitie des items du paquet.</p>
+ *
  * <p><b>Perimetre derive</b> (ADR-0013 obligation 1) : un code de ligne du referentiel, jamais un
  * nom de paquet ni un prefixe de fichier (ADR-0077). Un paquet de la ligne qui ne declare aucune
  * illustration (le paquet de dates) n'entre pas dans le recensement.</p>
@@ -72,6 +78,8 @@ class LesCadransMontrentCeQueLeursItemsAffirmentTest {
     private static final Pattern AIGUILLE = Pattern.compile("<line x1=\"(\\d+)\" y1=\"(\\d+)\""
             + " x2=\"(\\d+)\" y2=\"(\\d+)\" stroke-width=\"[\\d.]+\""
             + " transform=\"rotate\\(([\\d.]+) (\\d+) (\\d+)\\)\"/>");
+
+    private static final List<String> STRATEGIES = List.of("S1", "S2", "S3", "S4");
 
     private static final Pattern NOMBRE_TRACE = Pattern.compile("<use xlink:href=\"#g(\\d)\"");
 
@@ -232,6 +240,12 @@ class LesCadransMontrentCeQueLeursItemsAffirmentTest {
                         + " <line> droit vers midi tourne autour de son pied (HOR-1)");
                 continue;
             }
+            int traits = source.split("<line", -1).length - 1;
+            if (traits != 2) {
+                defauts.add(ou + " : le dessin trace " + traits + " <line> pour deux aiguilles lues"
+                        + " (un trait hors de la forme des aiguilles passerait sans etre lu)");
+                continue;
+            }
             Aiguille petite = aiguilles[0];
             Aiguille grande = aiguilles[1];
             if (petite.longueur() == grande.longueur()) {
@@ -283,6 +297,97 @@ class LesCadransMontrentCeQueLeursItemsAffirmentTest {
         return defauts;
     }
 
+    /** Une proposition lue : l'heure ecrite (1 a 12) et son champ de minutes, "00" s'il est absent. */
+    private record Lecture(String texte, int heure, String minutes) {
+    }
+
+    private static Lecture lectureDe(String proposition) {
+        Matcher trouve = LECTURE.matcher(proposition);
+        if (!trouve.matches()) {
+            return null;
+        }
+        int heure = Integer.parseInt(trouve.group(1));
+        return heure < 1 || heure > 12 ? null
+                : new Lecture(proposition, heure, trouve.group(2) == null ? "00" : trouve.group(2));
+    }
+
+    /**
+     * Pour chaque strategie, {gains, items ou elle s'applique}. Un item sans paire (pas exactement
+     * deux groupes de minutes, de deux propositions et d'une) compte comme perdu pour les quatre ; un
+     * ecart de 6 heures entre les deux de la paire le compte pour S3 et S4. Les heures ecrites
+     * comparent les entiers de 1 a 12 : {@link #position(String)} ramene 12 a 0 et fausserait S1 et S2.
+     */
+    static Map<String, int[]> comptesDePaire(List<ItemDeCadran> items) {
+        Map<String, int[]> comptes = new LinkedHashMap<>();
+        STRATEGIES.forEach(nom -> comptes.put(nom, new int[2]));
+        for (ItemDeCadran item : items) {
+            Map<String, List<Lecture>> parMinutes = new TreeMap<>();
+            List<String> propositions = new ArrayList<>(List.of(item.bonneReponse()));
+            propositions.addAll(item.distracteurs());
+            for (String proposition : propositions) {
+                Lecture lecture = lectureDe(proposition);
+                if (lecture != null) {
+                    parMinutes.computeIfAbsent(lecture.minutes(), minutes -> new ArrayList<>()).add(lecture);
+                }
+            }
+            List<Lecture> paire = parMinutes.values().stream().filter(groupe -> groupe.size() == 2)
+                    .findFirst().orElse(null);
+            if (propositions.size() != 3 || parMinutes.size() != 2 || paire == null) {
+                continue;
+            }
+            Lecture a = paire.get(0);
+            Lecture b = paire.get(1);
+            if (a.heure() == b.heure()) {
+                continue;
+            }
+            Lecture plusPetite = a.heure() < b.heure() ? a : b;
+            Lecture plusGrande = plusPetite == a ? b : a;
+            compter(comptes.get("S1"), plusPetite, item);
+            compter(comptes.get("S2"), plusGrande, item);
+            int ecart = Math.floorMod(b.heure() - a.heure(), 12);
+            if (ecart != 6) {
+                Lecture precede = ecart < 6 ? a : b;
+                compter(comptes.get("S3"), precede, item);
+                compter(comptes.get("S4"), precede == a ? b : a, item);
+            }
+        }
+        return comptes;
+    }
+
+    private static void compter(int[] compte, Lecture choisie, ItemDeCadran item) {
+        compte[1]++;
+        if (choisie.texte().equals(item.bonneReponse())) {
+            compte[0]++;
+        }
+    }
+
+    static String comptesAffiches(List<ItemDeCadran> items, Map<String, int[]> comptes) {
+        StringBuilder texte = new StringBuilder();
+        comptes.forEach((nom, compte) -> texte.append(texte.length() == 0 ? "" : ", ").append(nom)
+                .append(" = ").append(compte[0]));
+        return texte + " sur " + items.size() + " items";
+    }
+
+    /**
+     * Le juge de paire, pur : aucune des quatre strategies ne gagne plus de la moitie des items, le
+     * denominateur etant le nombre total d'items, et chacune s'applique au moins une fois (ADR-0051).
+     */
+    static List<String> defautsDePaire(List<ItemDeCadran> items) {
+        List<String> defauts = new ArrayList<>();
+        Map<String, int[]> comptes = comptesDePaire(items);
+        String affiches = comptesAffiches(items, comptes);
+        comptes.forEach((nom, compte) -> {
+            if (compte[1] == 0) {
+                defauts.add("la strategie " + nom + " ne s'applique a aucun item, le garde ne juge rien ("
+                        + affiches + ")");
+            } else if (compte[0] * 2 > items.size()) {
+                defauts.add("la strategie " + nom + " gagne " + compte[0] + " items sur " + items.size()
+                        + ", au plus " + items.size() / 2 + " (" + affiches + ")");
+            }
+        });
+        return defauts;
+    }
+
     /** Aucune proposition ne lit deux fois la meme position, la bonne reponse comprise. */
     private static void lecturesDe(ItemDeCadran item, String ou, List<String> defauts) {
         List<String> propositions = new ArrayList<>();
@@ -313,6 +418,14 @@ class LesCadransMontrentCeQueLeursItemsAffirmentTest {
     }
 
     @Test
+    void aucuneStrategieDePaireNeGagnePlusDeLaMoitieDesItems() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        List<ItemDeCadran> items = recensement(racine);
+        System.out.println("strategies de paire : " + comptesAffiches(items, comptesDePaire(items)));
+        assertThat(defautsDePaire(items)).isEmpty();
+    }
+
+    @Test
     void leRecensementTrouveLesItemsIllustresDeLaLigne() {
         Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
         assertThat(recensement(racine))
@@ -329,6 +442,18 @@ class LesCadransMontrentCeQueLeursItemsAffirmentTest {
         dessins.put(nom, dessins.get(nom).replaceFirst("rotate\\(([\\d.]+) 88 88\\)", "rotate(1 88 88)"));
 
         assertThat(defauts(items, dessins)).anyMatch(defaut -> defaut.contains(nom));
+    }
+
+    @Test
+    void unTraitEnPlusHorsDeLaFormeDesAiguillesFaitEchouerLeGardeFou() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        List<ItemDeCadran> items = recensement(racine);
+        Map<String, String> dessins = new LinkedHashMap<>(dessinsDe(racine));
+        String nom = items.get(0).dessin();
+        dessins.put(nom, dessins.get(nom).replace("</svg>",
+                "<line x1=\"88\" y1=\"88\" x2=\"88\" y2=\"70\" class=\"contrepoids\"/></svg>"));
+
+        assertThat(defauts(items, dessins)).anyMatch(defaut -> defaut.contains("3 <line>"));
     }
 
     @Test
@@ -423,5 +548,32 @@ class LesCadransMontrentCeQueLeursItemsAffirmentTest {
                 .hasMessageContaining("la grande aiguille est a 0.0 degres")
                 .hasMessageContaining("meme position")
                 .hasMessageContaining("douze nombres");
+    }
+
+    /**
+     * ADR-0013 obligation 3 : le premier jet de l'horloge, fige octet pour octet depuis a5d5026b,
+     * est du materiau reel. Il traverse le meme balayage que le paquet servi, et le garde y nomme
+     * S1 a 10 et S3 a 12 : une correction qui ne jouerait que sur les paires 12 et 1 resterait rouge.
+     */
+    @Test
+    void lePremierJetDeLHorlogeFigeEstRefuse() {
+        Path premierJet = Path.of("src", "test", "resources", "contreexemple",
+                "LesCadransMontrentCeQueLeursItemsAffirmentTest", "premier-jet-horloge", "contenu");
+        List<ItemDeCadran> items = itemsDeCadran(List.of(premierJet));
+
+        assertThat(items).as("ADR-0051 : le recensement lit les douze items du premier jet").hasSize(12);
+        assertThatThrownBy(() -> assertThat(defautsDePaire(items)).isEmpty())
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("la strategie S1 gagne 10 items sur 12")
+                .hasMessageContaining("la strategie S3 gagne 12 items sur 12")
+                .hasMessageContaining("S1 = 10, S2 = 2, S3 = 12, S4 = 0 sur 12 items");
+    }
+
+    @Test
+    void uneStrategieQuiNeSAppliqueANulItemFaitEchouerLeGardeFou() {
+        List<ItemDeCadran> sansPaire = List.of(new ItemDeCadran("fictif.yaml", "Quelle heure est-il ?",
+                "cadran-fictif", "3 h", List.of("4 h", "5 h")));
+
+        assertThat(defautsDePaire(sansPaire)).anyMatch(defaut -> defaut.contains("ne s'applique a aucun item"));
     }
 }

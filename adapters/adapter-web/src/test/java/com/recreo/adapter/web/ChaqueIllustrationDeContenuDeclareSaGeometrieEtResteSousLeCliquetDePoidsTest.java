@@ -354,8 +354,9 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      *       {@code horloge-*.svg}, 2 303 a 2 308 octets chacun, soit 27 670
      *       octets fins de ligne normalisees en LF, mesure exacte sur l'arbre du lot, premier jet.
      *       Aucun ne devient le plus gros dessin du repertoire : {@code frise-journee-ecole.svg} le
-     *       reste (voir {@link #POIDS_D_UN_DESSIN_MAXIMUM}, inchange). Le poids de ce lot n'est pas
-     *       couvert par un accord de l'utilisatrice (backlog, annotation du 2026-10-25).</li>
+     *       reste (voir {@link #POIDS_D_UN_DESSIN_MAXIMUM}, inchange). Ce releve est couvert par
+     *       l'accord de l'utilisatrice du 2026-10-28 (DEC-0120, A.284) ; le code l'avait pose
+     *       avant cet accord.</li>
      * </ol>
      */
     private static final int POIDS_TOTAL_MAXIMUM = 96873;
