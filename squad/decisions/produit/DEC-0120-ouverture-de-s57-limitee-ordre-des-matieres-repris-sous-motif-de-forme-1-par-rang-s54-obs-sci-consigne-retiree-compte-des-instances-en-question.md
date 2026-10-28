@@ -5095,3 +5095,59 @@ Arbre : base `round-two` à `fd324d01`, branche `s57-p5-camille-287`. **Statut d
 | `yanis-qa`, `lea-dev`, `ines-design`, `theo-archi` | rien |
 
 **Matrice** : aucun statut ne change, aucune note. **Ne fait pas** : ne prononce aucun Done, ne chiffre aucun poste, n'affecte pas la réserve de 1,30, ne ferme pas `Q-273-1`, n'engage pas `S57-QLM-CE1-12-ACCORD`, ne modifie ni `planning.md`, ni une fiche, ni un bloc de validation, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloué.
+
+### A.288 Les entrées de catalogue sont fusionnées ; huit lignes `QLM-CE1` et `MAT-CE1-11` passent à `couvert-valide` ; la couverture passe de 77,23 % à 81,68 %
+
+**1. Faits lus à `eaa3ef65` [mesure].** Les conditions qu'A.287 et le critère 6 de `S57-QLM-CE1-ENTREES-CATALOGUE` avaient fixées sont lues une à une dans le dépôt :
+
+| Ligne | Identifiant de l'entrée | Titre servi | Done de `nadia-prof` | `grep -c "paquet: P$"` |
+|---|---|---|---|---|
+| `QLM-CE1-01` | `bandit-manchot-etapes-de-developpement-ce1` | Grandir chez les animaux et les plantes | VALIDE | 1 |
+| `QLM-CE1-02` | `bandit-manchot-ce-que-mangent-les-animaux-ce1` | Ce que mangent les animaux | VALIDE SOUS RESERVE | 1 |
+| `QLM-CE1-03` | `bandit-manchot-besoins-de-la-plante-ce1` | Ce qu'il faut à une plante | VALIDE SOUS RESERVE | 1 |
+| `QLM-CE1-04` | `bandit-manchot-familles-d-aliments-ce1` | Les familles d'aliments | VALIDE | 1 |
+| `QLM-CE1-05` | `bandit-manchot-eau-trois-etats-ce1` | Les trois états de l'eau | VALIDE SOUS RESERVE | 1 |
+| `QLM-CE1-06` | `bandit-manchot-aimant-ce1` | Ce que l'aimant attire ou non | VALIDE SOUS RESERVE | 1 |
+| `QLM-CE1-08` | `bandit-manchot-dangers-electricite-ce1` | Les dangers de l'électricité | VALIDE SOUS RESERVE | 1 |
+| `QLM-CE1-10` | `bandit-manchot-paysages-ce1` | Les paysages | VALIDE SOUS RESERVE | 1 |
+| `MAT-CE1-11` | `bandit-manchot-lire-l-heure-ce1` | L'heure sur l'horloge | VALIDE SOUS RESERVE | 1 |
+| `QLM-CE1-12` | aucune | - | VALIDE SOUS RESERVE | 0 (`ce1-qlm-generations`) |
+
+Les titres et consignes du `catalogue.yaml` sont ceux de la section 1 de `lecture-nadia-entrees-de-catalogue-ce1-qlm-et-horloge.md` (`2f2977fb`, ancêtre de `5000092b` : `git merge-base --is-ancestor` sort 0), consigne *"Lis bien, puis choisis la bonne réponse."* pour les huit lignes `QLM-CE1`, *"Regarde les deux aiguilles, puis choisis la bonne heure."* pour l'horloge, 10 manches, `bandit-manchot`, lus dans le fichier. L'orthographe est relue par `relecteur-pedagogique` (`cf7c6acf`, aucune correction). Les fiches portent toutes, ligne 14, *"Plafond de la ligne : `couvert-valide`"*.
+
+**2. Done technique : une mesure locale, pas la CI GitHub.** L'agent lanceur me transmet, à `eaa3ef65` : `mvn -B clean verify` complet (job `build`), `BUILD SUCCESS`, 3644 tests dont 6 d'intégration, 0 échec ; rejeu local des étapes des trois autres jobs de `ci.yml` : `prefixes` sur 159 commits, `chemins` sur 3290 fichiers suivis, `outils` 13 juges, tous de sortie 0. **Je ne relance pas ces quatre jobs en entier et je ne les ai pas lus dans une sortie : ce paragraphe rapporte la mesure de l'agent lanceur.** **Je n'écris pas "CI verte"** : aucune exécution de GitHub Actions n'est lue ici. Ce que j'ai lancé avant de commiter cet amendement est dans le message de commit, avec ce que je n'ai pas lancé (`DEC-0120` A.280 point 2 : un agent qui annonce la porte nomme les jobs lancés).
+
+**3. Décision sur la matrice (la mienne, `camille-po`).** Les huit lignes `QLM-CE1-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08` et `-10` passent de `non couvert` à `couvert-valide`, chacune seule, sans dépasser le plafond écrit par `nadia-prof` (`couvert-valide`). Pour chacune : Done pédagogique prononcé le 2026-10-27, entrée fusionnée, identifiant de l'entrée dans la cellule `Jeu(x) couvrant`, mention de couverture de `nadia-prof` recopiée (aucune mention de couverture partielle n'est écrite pour ces huit lignes : `-05` et `-08` le disent par les mots *"sans mention de couverture partielle"*, les autres par l'absence de toute mention), réserves non bloquantes recopiées dans la cellule telles que les fiches les formulent. Deux points que je n'ai pas tranchés à sa place : la réserve 2 de `-06` (l'entrée) est atteinte selon `nadia-prof` (*"La condition est atteinte ; la levee s'ecrira dans la fiche"*), mais sa levée n'est pas écrite à la fiche ; la cellule le dit. La réserve de `-10` ne retient pas le Done ; son verdict écrit *"La ligne `QLM-CE1-10` ne passe a `couvert-valide` qu'avec le Done technique acquis"*, lu au point 2. `QLM-CE1-12` ne bouge pas : l'entrée n'existe pas et l'accord de *du plus âgé au plus jeune* est en attente (A.283 D3).
+
+**4. L'horloge : ma lecture, et ce qui me fait trancher.** `nadia-prof` a prononcé le Done de la moitié horloge le 2026-10-28 (`FICHE-ce1-lire-l-heure.md`, VALIDE SOUS RÉSERVE). Ses mots : *"`camille-po` peut écrire l'entrée de catalogue (`QC3` [...]), corriger les deux textes du critère 11 de la story, puis passer `MAT-CE1-11` à `couvert-valide` quand les trois conditions du critère 12 sont réunies, avec la mention de couverture ci-dessous."* Les trois conditions du critère 12 : le Done (2026-10-28, lu), l'entrée fusionnée (`grep -c "paquet: ce1-lire-l-heure$"` rend 1), la CI complète (mesure locale, point 2). **Ce qui me fait trancher** : (i) son plafond, *"Le plafond de la ligne est `couvert-valide` (3.5 de `arbitrage-nadia-palier-5-lp7-d5.md`) : ce qui reste non couvert n'est pas demandé par la ligne du référentiel, qui dit *heures, demi-heures, quarts d'heure*"* ; (ii) la moitié calendrier est couverte par `ce1-calendrier-dates` (VALIDE SOUS RESERVE, rejeu du 2026-10-22), et sa mention dit que l'ordre des mois est servi par `QLM-CP-13` ; (iii) les deux jeux couvrants, qu'elle nomme : `bandit-manchot-calendrier-dates-ce1` et `bandit-manchot-lire-l-heure-ce1`. **Décision : `MAT-CE1-11` passe à `couvert-valide`** avec sa mention reprise mot pour mot, y compris sa liste *"restent non couverts"* (l'heure dite en mots, les minutes autres que 00, 15, 30 et 45, midi et minuit nommés, la lecture sur 24 heures, l'horloge à affichage numérique). Je ne juge pas si ces cinq points relèvent de la ligne : le plafond est le sien. **Corrige A.284**, qui disait la ligne sans Done ni entrée ; son texte reste. **Ouvert, hors de ma main** : le premier texte du critère 11, l'en-tête de `ce1-calendrier-dates.yaml`, dit encore *"DEGRADE : la lecture de l'heure sur un cadran n'est pas servie"* (point 7).
+
+**5. Chiffres, avant et après.** Commande de la "Méthode du compte" de `MATRICE-couverture.md`, lancée telle quelle, périmètre toutes les lignes de données :
+
+| Statut | Avant | Après |
+|---|---|---|
+| `couvert-valide` | 156 | 165 |
+| `en cours` | 7 | 6 |
+| `non couvert` | 39 | 31 |
+| `non couvrable en l'etat` | 75 | 75 |
+| Total | 277 | 277 |
+| Dénominateur atteignable | 202 | 202 |
+| Couverture | 156 / 202 = 77,23 % | 165 / 202 = 81,68 % [calcul : 165 / 202 = 0,8168] |
+
+L'hypothèse d'A.287, 165 sur 202, est confirmée sur la matrice. **Compteur de version (A.32)** : la part `couvert-valide` est lue, 165. Le compteur ajoute les lignes `en cours` dont le jeu remplit les cinq critères de `nadia-prof`, dont la CI sur l'arbre de la version ; **je ne les ai pas relus pour les six lignes `en cours` et je ne publie pas de compteur complet**. Borne haute [calcul] : 165 + 6 = 171 sur 202 = 84,65 %. Questionner le monde CE1 : 8 `couvert-valide`, 4 `non couvert` sur 12 (commande restreinte à `$2 ~ /questionner/ && $3 ~ /CE1/`).
+
+**6. Reports comptés.** `Q-273-1` (i) : **seizième mention** (quinzième en A.287), non fermée ; sa question n'a plus de cas nommé, elle est à `nadia-prof` pour le chiffre (A.286 point 5), je ne la ferme pas. Le passage des neuf lignes n'est le report d'aucun sujet : la story a été engagée à la première réponse de l'utilisatrice qui l'a visée (A.287 point 5).
+
+**7. Changement de code décidé, avec propriétaire.** Une ligne de commentaire de `adapters/adapter-content/src/main/resources/contenu/ce1-calendrier-dates.yaml` (en-tête, ligne 1) : elle dit que l'horloge n'est pas servie, ce que `nadia-prof` demande de corriger au Done (critère 11 de `S57-BR-MAT-CE1-11-HORLOGE`, *"au Done, l'en-tête `DEGRADE` de `ce1-calendrier-dates` et la mention de la cellule `MAT-CE1-11`"*). La cellule de la matrice est corrigée ici. **Propriétaire de l'en-tête : le développeur que `sofia-sm` désigne, sur sa formulation** ; story `S57-BR-MAT-CE1-11-HORLOGE`, critère 11. Tant qu'il n'est pas corrigé, le fichier de contenu contredit la matrice ; aucun enfant n'en est touché, c'est un commentaire.
+
+**8. Le reste de ce qui est dit, et non fait.** Les réserves des huit lignes restent des stories non engagées (A.283, A.286). La levée de la réserve 2 de `-06` et de la réserve *d* de l'horloge s'écrit dans les fiches, par `nadia-prof`. Aucun poste n'est chiffré (A.282 point 2) : ni la lecture des titres, ni les `verify`, ni les mesures locales.
+
+### Routage
+
+| À qui | Quoi |
+|---|---|
+| `sofia-sm` | `planning.md` (non modifié ici) : inscrire la fusion des entrées et le passage des neuf lignes ; désigner le développeur de l'en-tête de `ce1-calendrier-dates.yaml` (point 7) ; décider si une exécution de la CI GitHub est attendue avant la clôture du palier 5, la mesure du point 2 étant locale |
+| `nadia-prof` | lever, dans ses fiches, la réserve 2 de `-06` et la réserve *d* de l'horloge si elle le juge ; rien d'autre n'est demandé ici ; aucun bloc de validation n'est touché |
+| `marc-dev` ou le développeur désigné | l'en-tête du point 7 |
+| `relecteur-pedagogique`, `yanis-qa`, `lea-dev`, `ines-design`, `theo-archi` | rien |
+
+**Matrice** : neuf lignes bougent (note du 2026-10-28, troisième, en tête de `MATRICE-couverture.md`). **Ne fait pas** : ne prononce aucun Done, ne chiffre aucun poste, ne ferme pas `Q-273-1`, n'engage pas `S57-QLM-CE1-12-ACCORD`, ne modifie ni `planning.md`, ni une fiche, ni un bloc de validation, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloué.
