@@ -4941,3 +4941,36 @@ Vérification [calcul] : 96 873 moins 69 203 = 27 670. **Le cliquet est égal au
 | `yanis-qa` | rien |
 
 **Matrice** : aucun statut ne change ; une note datée est ajoutée en tête de `MATRICE-couverture.md`, aucune cellule modifiée. **Report** : `Q-273-1` douzième mention ; Q3 d'A.271 onzième inscription. **Changement de code décidé, avec propriétaire** : une phrase de Javadoc, `lea-dev`, par `sofia-sm` ; aucun autre. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, ne juge aucun dessin ni aucun distracteur, n'étend pas l'accord au-delà de ses mots, ne modifie ni un YAML, ni un test, ni le catalogue, ni `planning.md`, ni le bloc de validation d'une fiche, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloué.
+
+## Amendement du 2026-10-28, soixante-troisième (`camille-po`, palier 5 : la story de l'horloge `MAT-CE1-11` est alignée sur l'arbitrage et la seconde lecture de `nadia-prof`)
+
+Annotation datée. **Chiffres avant / après, en toutes lettres : plafond de `PAR-8` vingt-cinq virgule zéro zéro, inchangé ; engagé treize virgule cinquante, inchangé ; cliquet de poids des illustrations quatre-vingt-seize mille huit cent soixante-treize octets, inchangé ; lignes `couvert-valide` cent cinquante-six sur un dénominateur atteignable de deux cent deux, inchangées.** Aucun chiffre n'est recalculé. **Statut de `DEC-0120` : `Acceptee`, inchangé.** Arbre : base `round-two` à `d398add4`, branche `s57-p5-camille-285`. Sources lues au disque : `arbitrage-nadia-horloge-strategie-de-paire-et-pli.md`, `relecture-nadia-seconde-lecture-horloge-mat-ce1-11.md`, `avis-theo-palier-5-horloge-mat-ce1-11.md` (section 5), `avis-ines-palier-5-horloge-mat-ce1-11.md` (section 3), la story `S57-BR-MAT-CE1-11-HORLOGE` de `docs/backlog/backlog.md`, `FICHE-ce1-lire-l-heure.md`, `DEC-0120` A.272, A.280, A.282 et A.284.
+
+### A.285 La story de l'horloge est alignée ; aucune décision nouvelle
+
+**1. Ce qui est fait.** `nadia-prof` avait routé à `camille-po` les critères 5, 6 et 7 de la story (arbitrage, section 6 ; seconde lecture, section 3 point 4) et écrit qu'elle n'audite pas *"contre un critère que j'ai remplacé"*. Ils sont réécrits dans `docs/backlog/backlog.md`, avec ses mots, le texte d'origine conservé sous chacun et marqué *[corrige le 2026-10-28 par A.285, texte d'origine conserve]* :
+
+- **Critère 5** : les quatre stratégies `S1` à `S4`, chacune au plus 6 items sur 12, dénominateur égal au nombre total d'items ; valeur lue aujourd'hui **6, 6, 6, 6**, affichée par le garde et lue dans le rapport de `lea-dev` et par `nadia-prof` ; premier jet gelé **10, 2, 12, 0** (le critère y est rouge : il n'est pas vert par construction). L'exigence 1 du premier jet et sa convention *"12 h reste 12"* sont remplacées.
+- **Critère 6** : le relevé d'`ines-design` est dans son avis, et non dans un fichier `mesure-ines` ; les six ordres ne sont pas dans l'exigence de `nadia-prof`. Ceci n'était pas dans le brief de la tâche mais dans son routage à `camille-po` : sans cela, le critère aurait gardé un `ls | grep` rouge sur un fichier que personne ne doit écrire.
+- **Critère 7** : le bas de `.indice` à 530 sous 551 à 744 x 551, les 5 px du signal recevables, 360 px hors critère de ce paquet, réserve *b* levée.
+- **Réserves** : *a* maintenue ; *c* neuve (stratégie par forme des minutes, 10 items sur 12 selon son calcul à la main, minimum possible 8, aucun test ne la compte, `nadia-prof` seule garde). Son routage, dans ses mots : *"à garder pour un sprint suivant, sans story avant mon verdict"*, à `camille-po`. Elle ne nomme pas l'utilisatrice et rien ne lui est routé en son nom. **Aucune story n'est écrite pour la réserve *c*.**
+- **Fiche** `FICHE-ce1-lire-l-heure.md` : les lignes qui sont les miennes (conditions opposables, statut, tableau des gestes avec les SHA lus au dépôt, date). **Le bloc de validation n'est pas touché.**
+
+**2. Ce que cet amendement ne décide pas.** Aucun critère n'est déclaré passé ; ni le `verify` complet du lot (A.280 point 2) ni l'audit à l'écran n'ont eu lieu. Aucun Done, aucune entrée de catalogue (`QC3`), aucune ligne de matrice ne bouge ; `MATRICE-couverture.md` n'est pas modifiée. Aucun identifiant de condition alloué.
+
+**3. Coût : un fait lu, aucun prix.** La seconde lecture de l'horloge a eu lieu (`nadia-prof`, 2026-10-28, `af73a862`) ; elle est classée **0,50 hors marge** par A.272 (règle point 1) et A.280 (point 3, geste (a)), comme `nadia-prof` l'écrit (section 5) ; **le fait est lu dans sa relecture et le chiffre est celui de ces deux articles, pas le mien**. Elle n'est pas recalculée ici. **Question (ii) de `Q-273-1`** : dans ses faits, elle est fermée (la seconde lecture a eu lieu, elle est unique, rangée au geste que ces articles nomment), selon `nadia-prof` ; **sans prix** de sa part. La question (i) n'est pas touchée. **Postes non chiffrés, qui le restent** (A.282 point 2) : l'audit à l'écran de l'horloge, le `verify` du lot, le relevé d'`ines-design` (A.284 point 6), une troisième lecture (que `nadia-prof` n'exige pas). Je n'en écris aucun prix.
+
+**4. Reports comptés.**
+
+- **`Q-273-1`** (i) : **treizième mention** (douzième en A.284), non traitée ici. (ii) : fermée dans ses faits, point 3.
+- **Q3 d'A.271** (quatrième rejeu) : **douzième inscription** (onzième en A.284), toujours au sprint s57, première en A.271. L'audit de l'horloge n'a pas eu lieu.
+
+### Routage
+
+| À qui | Quoi |
+|---|---|
+| `sofia-sm` | `verify` complet du lot sur un SHA nommé, puis audit à l'écran de `nadia-prof`, selon les points 1 et 2 de la section 3 de sa seconde lecture (jar servi, entrée de catalogue locale non commitée) |
+| `nadia-prof` | rien de neuf |
+| `lea-dev`, `ines-design`, `theo-archi`, `yanis-qa` | rien dans cet amendement |
+
+**Matrice** : aucun statut ne change, aucune note. **Report** : `Q-273-1` treizième mention ; Q3 d'A.271 douzième inscription. **Changement de code décidé** : aucun. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, ne juge aucun distracteur ni aucun dessin, ne crée aucune story, ne modifie ni YAML, ni test, ni catalogue, ni le bloc de validation d'une fiche, ni `domain/`, `application/`, `adapters/`, `bootstrap/`.
