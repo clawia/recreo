@@ -4033,7 +4033,7 @@ Les deux voies tiennent sous 20,20 au cas haut mesure : 18,20 dans les deux cas,
 
 Statut `Acceptee` inchange. Aucun montant ne change : engage 13,50, plafond de `PAR-8` 20,20, marge de l'instance neuve 1,5.
 
-### A.271 Portee d'A.270 confirmee, `QC5` aligne sur A.258, quatrieme rejeu differe
+### A.271 Portee d'A.270 confirmee, `QC5` aligne sur A.258, quatrieme rejeu differe **[corrige par A.286, texte d'origine conserve]**
 
 **1. Ses mots, reportes.** Trois reponses de l'utilisatrice du 2026-10-26, relayees par l'agent lanceur (forme 2, `DEC-0062` G), citees et rien d'autre : *"Q2 toute seconde lecture"*, *"Amendement entre 10 et 20"*, *"Q3 a voir apres audit"*.
 
@@ -4050,13 +4050,13 @@ Occurrences corrigees dans `docs/backlog/backlog.md`, par marqueur *[corrige par
 
 La ligne 24257 (annotation suivante) porte deja *"entre 11 et 20"* et dit que le texte de `QC5` plus haut n'est pas reecrit : cet amendement le reecrit par marqueur. Autres occurrences vues et **non corrigees** : lignes 24171 et 24186 (*"4 sur 10"*, *"3 sur 10"*, comptes de `nadia-prof`, que l'A.258 laisse inchanges), et `planning.md` ligne 2597, qui dit deja 11 et que je ne modifie pas.
 
-**4. Q3 : differee, non tranchee.** Reponse : *"a voir apres audit"*. La question : si l'horloge `MAT-CE1-11` est rejouee sur la marge de 0,5 de B (A.267 : elle consomme d'abord celle-ci) et que **trois** lots de l'instance neuve sont refuses, faut-il un **quatrieme rejeu** ? Le cas precis : le rejeu de l'horloge compte parmi les trois rejeux (A.267, A.270 point 4), donc le troisieme lot refuse n'est pas rejoue, alors que la marge de 1,5 serait entiere (3 fois 0,50, la marge de B ayant paye l'horloge). Le cout le permettrait, la regle `P3` (A.265) ne le permet pas. **Aucune regle ne change, `P3` reste telle qu'ecrite.** A rouvrir **a la fermeture des dix premiers audits** de l'instance neuve (`P3` : aucun rejeu avant eux), avec le nombre de lots refuses observe. **Report : premier report de cette question ; `A.267` et `A.270` l'ont laissee sans la nommer.** Proprietaire de la reouverture : `camille-po`, a la fermeture des dix audits, via `sofia-sm`.
+**4. Q3 : differee, non tranchee.** **[corrige par A.286, texte d'origine conserve]** Reponse : *"a voir apres audit"*. La question : si l'horloge `MAT-CE1-11` est rejouee sur la marge de 0,5 de B (A.267 : elle consomme d'abord celle-ci) et que **trois** lots de l'instance neuve sont refuses, faut-il un **quatrieme rejeu** ? Le cas precis : le rejeu de l'horloge compte parmi les trois rejeux (A.267, A.270 point 4), donc le troisieme lot refuse n'est pas rejoue, alors que la marge de 1,5 serait entiere (3 fois 0,50, la marge de B ayant paye l'horloge). Le cout le permettrait, la regle `P3` (A.265) ne le permet pas. **Aucune regle ne change, `P3` reste telle qu'ecrite.** A rouvrir **a la fermeture des dix premiers audits** de l'instance neuve (`P3` : aucun rejeu avant eux), avec le nombre de lots refuses observe. **Report : premier report de cette question ; `A.267` et `A.270` l'ont laissee sans la nommer.** Proprietaire de la reouverture : `camille-po`, a la fermeture des dix audits, via `sofia-sm`.
 
 **5. Ce que cet amendement ne change pas.** `P3`, l'engage, le plafond, la marge, l'ordre neuf audits, horloge, puis rejeux.
 
 | A qui | Quoi |
 |---|---|
-| `sofia-sm` | rien de neuf ; la ligne de registre d'A.270 reste a porter dans `planning.md` ; noter la reouverture de Q3 a la fermeture des dix premiers audits |
+| `sofia-sm` | rien de neuf ; la ligne de registre d'A.270 reste a porter dans `planning.md` ; noter la reouverture de Q3 a la fermeture des dix premiers audits **[corrige par A.286, texte d'origine conserve]** |
 | `nadia-prof` | rien |
 
 **Matrice** : aucun statut ne change. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, n'amende ni `planning.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni le fichier du mulot de `cm1-sciences-chaine-alimentaire.yaml` (item deja note, a traiter a part).
@@ -4112,7 +4112,7 @@ C2 tombe : relire une proposition remplacee, c'est juger un item contre sa liste
 | `nadia-prof` | ecrire dans son fichier de relecture : lignes relues, verdicts rouverts ou non, correction rejetee ou non ; contredire par ecrit le classement s'il n'est pas le sien (son texte l'emporte) |
 | `sofia-sm` | a la lecture de ce fichier, inscrire 0,50 sur la ligne hors marge pour `-03` (1,00 cumule), par amendement date ; **cet amendement ne modifie pas `planning.md`** ; si une troisieme lecture est ecrite, me router le reclassement |
 
-**Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; la question Q3 d'A.271 (quatrieme rejeu) reste differee, inchangee. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne juge aucune formulation ni aucun distracteur, ne pose aucun seuil de lot, ne releve aucun plafond, ne change pas l'engage, ne reecrit pas `P3`, n'amende ni `planning.md`, ni le backlog, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue (C1 a C3 restent des reperes locaux).
+**Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; la question Q3 d'A.271 (quatrieme rejeu) reste differee, inchangee. **[corrige par A.286, texte d'origine conserve]** **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne juge aucune formulation ni aucun distracteur, ne pose aucun seuil de lot, ne releve aucun plafond, ne change pas l'engage, ne reecrit pas `P3`, n'amende ni `planning.md`, ni le backlog, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue (C1 a C3 restent des reperes locaux).
 
 ## Amendement du 2026-10-26, cinquante et unieme (`camille-po`, palier 5 : l'utilisatrice releve le plafond de `PAR-8` a 22,20 et demande des premiers jets plus propres)
 
@@ -4262,7 +4262,7 @@ Verification : 22,20 plus 6 fois 0,25 = 23,70 ; plus 6 fois 0,50 = 25,20 ; plus 
 | `theo-archi` | rien |
 | `yanis-qa` | rien |
 
-**Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; `Q-274-1` est une premiere inscription ; `Q-273-1` (ii) et Q3 d'A.271 restent differees, inchangees. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, ne releve aucun plafond, ne change ni l'engage ni la marge, ne reecrit pas `P3`, n'amende ni `planning.md`, ni `backlog.md`, ni `lessons.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue (`Q-274-1` et `Q-274-2` sont des reperes locaux).
+**Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; `Q-274-1` est une premiere inscription ; `Q-273-1` (ii) et Q3 d'A.271 **[corrige par A.286, texte d'origine conserve]** restent differees, inchangees. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, ne releve aucun plafond, ne change ni l'engage ni la marge, ne reecrit pas `P3`, n'amende ni `planning.md`, ni `backlog.md`, ni `lessons.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue (`Q-274-1` et `Q-274-2` sont des reperes locaux).
 
 ## Amendement du 2026-10-26, cinquante-troisieme (`camille-po`, palier 5 : classement des arbitrages de `nadia-prof` avant premier jet, apres sa reponse a `Q-274-1`)
 
@@ -4327,7 +4327,7 @@ Verification : 22,20 plus 6 fois 0,25 = 23,70 ; plus 6 fois 0,50 = 25,20 ; plus 
 | `nadia-prof` | rien de neuf ; elle peut contredire par ecrit la lecture du point 3 ou du point 2 si elle estime qu'un texte nomme ce geste |
 | `theo-archi`, `yanis-qa` | rien |
 
-**Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; `Q-275-1` est une premiere inscription ; `Q-273-1` (ii), Q3 d'A.271 et `Q-274-2` restent differees, inchangees. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix ni aucune unite, ne convertit aucune duree, ne releve aucun plafond, ne change ni l'engage ni la marge, ne reecrit pas `P3`, n'amende ni `planning.md`, ni `backlog.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue (`Q-275-1` est un repere local).
+**Matrice** : aucun statut ne change. **Report** : aucun report de sprint ; `Q-275-1` est une premiere inscription ; `Q-273-1` (ii), Q3 d'A.271 **[corrige par A.286, texte d'origine conserve]** et `Q-274-2` restent differees, inchangees. **Changement de code decide, avec proprietaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix ni aucune unite, ne convertit aucune duree, ne releve aucun plafond, ne change ni l'engage ni la marge, ne reecrit pas `P3`, n'amende ni `planning.md`, ni `backlog.md`, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni un fichier de `nadia-prof`. Aucun identifiant de condition alloue (`Q-275-1` est un repere local).
 
 ## Amendement du 2026-10-27, cinquante-quatrieme (`camille-po`, palier 5 : l'utilisatrice repond a `Q-275-1`, les arbitrages avant premier jet valent 0,00 non chiffre)
 
@@ -4471,7 +4471,7 @@ Methode : celle d'A.270 point 3, reprise par A.272, A.273 point 1 (a) et A.277 ;
 | # | Sujet | A qui | Etat et report |
 |---|---|---|---|
 | 1 | `Q-273-1` : (i) un rejeu au-dela de trois compte-t-il contre le plafond de 22,20 ; (ii) la seconde lecture de l'horloge est-elle 0,50 hors marge | `nadia-prof` pour (ii) et le chiffre de (i) ; l'utilisatrice, par `sofia-sm`, si le plafond couvre un palier 10 | **Inscrite en A.273 (s57, 2026-10-26), reprise inchangee et non traitee en A.274, A.275, A.276, A.277 et ici : sixieme mention.** Ce qui change : la reserve est 0,00, donc (ii) n'est plus theorique ; elle doit etre repondue avant que la seconde lecture de l'horloge soit ecrite. Aucun rejeu n'est du avant la fermeture des dix premiers audits |
-| 2 | Q3 d'A.271 : un quatrieme rejeu | `camille-po`, a rouvrir a la fermeture des dix premiers audits, par `sofia-sm` | Differee en A.271 (s57, 2026-10-26, premier report), inchangee depuis. Rien a faire avant les audits |
+| 2 | Q3 d'A.271 : un quatrieme rejeu | `camille-po`, a rouvrir a la fermeture des dix premiers audits, par `sofia-sm` | Differee en A.271 (s57, 2026-10-26, premier report), inchangee depuis. Rien a faire avant les audits **[corrige par A.286, texte d'origine conserve]** |
 | 3 | Remesure de fin de palier (A.276 point 3) | `nadia-prof` donne les durees reelles ; `sofia-sm` les inscrit | Premiere inscription. Fait deja connu : les six lots `-04` a `-12` ont chacun **une** seconde lecture et aucune troisieme, comme les trois premiers. Durees ecrites par `nadia-prof` pour ces relectures : `-04` 13 min 12 s, `-05` 6 min 47 s, `-06` 7 min 26 s, `-08` 10 min 2 s, `-10` 7 min 42 s, `-12` 7 min 41 s. Je n'en convertis aucune et ne pose aucun seuil (A.276) |
 | 4 | Constat de l'intrus : dans la tache B de `-02`, la bonne reponse est l'intrus des trois propositions ; son pendant pour la tache B de `-10` | **`camille-po`** : close par un ecrit de moi, qui n'existe pas | Routee par `planning.md` (2026-10-26 16:09, section 6), rappelee ouverte le 2026-10-27 08:19, **non traitee en A.273 a A.277 : cet amendement est la troisieme mention sans ecrit.** Je ne l'ecris pas ici : je n'ai lu ni les sections 4 et 10 de la lecture de `-02`, et je n'ai trouve aucune occurrence d'*intrus* dans la lecture du premier jet de `-10` (le plus proche est sa ligne `D5`, structure commune des B, que je ne rattache pas sans certitude). Prochain geste, a moi : lire les deux sources et ecrire ce que l'audit `P2` regardera ; ni story ni correction tant que `nadia-prof` ne refuse rien |
 | 5 | Accord de *du plus age au plus jeune* en `-12` | `relecteur-pedagogique`, par `sofia-sm` (sa lecture de `-12`, routage) | Texte de l'enfant, regle de `DEC-0002` ; je ne juge pas l'accord |
@@ -4565,7 +4565,7 @@ Ses mots : *"On force l'audit de l'horloge et le quatrieme rejeu"*. La consigne 
 
 **4. Ce que la levee ne change pas.**
 
-- **`P3`** (A.265, texte de `nadia-prof`) n'est pas reecrite : aucun rejeu avant les dix premiers audits, un par lot au plus, l'ordre neuf audits, horloge, rejeux. Les mots de l'utilisatrice ne datent aucun geste. **Q3 d'A.271** garde sa regle de reouverture (a la fermeture des dix audits, avec le nombre de lots refuses observe) ; ce qui est leve est son **prix**, pas son calendrier. Si l'utilisatrice voulait dire que le quatrieme rejeu est decide ou que l'audit de l'horloge passe avant les neuf, elle le dit, et ce sera un autre amendement.
+- **`P3`** (A.265, texte de `nadia-prof`) n'est pas reecrite : aucun rejeu avant les dix premiers audits, un par lot au plus, l'ordre neuf audits, horloge, rejeux. Les mots de l'utilisatrice ne datent aucun geste. **Q3 d'A.271** garde sa regle de reouverture (a la fermeture des dix audits, avec le nombre de lots refuses observe) **[corrige par A.286, texte d'origine conserve]** ; ce qui est leve est son **prix**, pas son calendrier. Si l'utilisatrice voulait dire que le quatrieme rejeu est decide ou que l'audit de l'horloge passe avant les neuf, elle le dit, et ce sera un autre amendement.
 - **`Q-273-1`** : **huitieme mention** (inscrite en A.273, septieme en A.279). (ii) n'a toujours pas de reponse de `nadia-prof` : la levee admet le cout, elle ne classe pas la seconde lecture de l'horloge. (i) reste ouverte, voir le tableau. Aucune des deux n'est fermee par cet amendement.
 - Le Done pedagogique reste a `nadia-prof` seule ; la levee du plafond n'est pas une condition de Done (A.268, A.273 (b)).
 
@@ -4583,7 +4583,7 @@ Ses mots : *"On force l'audit de l'horloge et le quatrieme rejeu"*. La consigne 
 
 **Ce qu'il ne couvre pas, a nommer quand cela existe.** Hors plafond, **non chiffres** : une troisieme lecture d'un lot (A.272 regle point 3, que le 23,20 ne contient pas : 23,70 [calcul] **[corrige par A.281 : deux troisiemes lectures sont classees, non une, soit 24,20 ; texte d'origine conserve]**), la lecture par `nadia-prof` du quatrieme rejeu, l'audit a l'ecran de l'horloge, les `mvn verify` par lot. Je ne devine aucun de ces montants. La regle d'A.273 point 1 (b) vaut au-dela de 23,20 **[corrige par A.282 : 25,00 ; texte d'origine conserve]** : un cout au-dela s'inscrit au registre (A.247), sans etre une condition de Done.
 
-**Ce que cela ne change pas.** `P3`, le calendrier de Q3 d'A.271, `Q-273-1` (i) et (ii) (ouvertes, huitieme mention), le Done pedagogique, qui reste a `nadia-prof` seule. `sofia-sm` inscrit le plafond de 23,20 **[corrige par A.282 : 25,00 ; texte d'origine conserve]** dans `planning.md` (non modifie ici) ; `Q-280-1` est fermee.
+**Ce que cela ne change pas.** `P3`, le calendrier de Q3 d'A.271 **[corrige par A.286, texte d'origine conserve]**, `Q-273-1` (i) et (ii) (ouvertes, huitieme mention), le Done pedagogique, qui reste a `nadia-prof` seule. `sofia-sm` inscrit le plafond de 23,20 **[corrige par A.282 : 25,00 ; texte d'origine conserve]** dans `planning.md` (non modifie ici) ; `Q-280-1` est fermee.
 
 ### Routage
 
@@ -4674,7 +4674,7 @@ Methode d'A.270 point 3, reprise par A.272, A.273, A.277, A.278 et A.280 : chaqu
 | 5 | `planning.md` : inscrire le plafond de 23,20 **[corrige par A.282 : 25,00 ; texte d'origine conserve]** (A.280 point 6 ; le fichier ne le porte qu'en projection) et ce classement (cas haut 24,20, ligne hors marge 5,50 ou 6,50, depassement de l'engage 10,70, les deux questions) | `sofia-sm` | A.280 l'avait routee pour 23,20 ; **cette inscription n'est pas faite** |
 | 6 | `FICHE-ce1-qlm-03.md` et `-08` : la ligne *"Premier `verify` complet du lot : a faire"* est perimee (verify complet vert, 3618 tests, d'apres l'agent lanceur) | qui a lance le verify, jobs nommes (A.280 point 2) ; `sofia-sm` designe | Je n'y touche pas : hors de ma livraison |
 | 7 | `Q-273-1` (i) et (ii) | `nadia-prof`, l'utilisatrice | **Neuvieme mention** (huitieme en A.280), non traitee ici ; (ii) compte maintenant dans un cas haut depasse |
-| 8 | Q3 d'A.271 (quatrieme rejeu) | `camille-po`, a la fermeture des dix audits | Inchange |
+| 8 | Q3 d'A.271 (quatrieme rejeu) | `camille-po`, a la fermeture des dix audits | Inchange **[corrige par A.286, texte d'origine conserve]** |
 
 ### Routage
 
@@ -4745,7 +4745,7 @@ Aucun de ces postes n'est affecte aux 0,80 : ils n'ont pas de prix (les quatre p
 | 3 | Relecture de C1 a C4 et de l'item 6 (point 3) | `nadia-prof`, par `sofia-sm` | Non lancee par cet amendement ; a lancer apres la transcription de l'item 6, jamais avant |
 | 4 | `EFFETS_CONTRAIRES` et les anciennes amorces *elle grandit plus vite* et *elle pousse plus vite* (ligne 4 d'A.281 point 7) | `theo-archi`, avec `marc-dev` | Inchange ; l'ancien texte de l'item 6, *elle devient plus solide*, est une ligne de plus qu'il peut avoir a regarder : je ne tranche aucune question de code |
 | 5 | `Q-273-1` (i) et (ii) | `nadia-prof`, l'utilisatrice | **Dixieme mention** (neuvieme en A.281), non traitee ici |
-| 6 | Q3 d'A.271 (quatrieme rejeu) | `camille-po`, a la fermeture des dix audits | Inchange |
+| 6 | Q3 d'A.271 (quatrieme rejeu) | `camille-po`, a la fermeture des dix audits | Inchange **[corrige par A.286, texte d'origine conserve]** |
 | 7 | `FICHE-ce1-qlm-03.md` et `-08` : ligne *"Premier `verify` complet du lot : a faire"* perimee (ligne 6 d'A.281 point 7) | qui a lance le `verify`, designe par `sofia-sm` | Inchange, je n'y touche pas |
 
 **5. Ce qu'A.282 rend caduc, marque dans A.280 et A.281, texte d'origine conserve.**
@@ -4876,7 +4876,7 @@ Je ne recommande aucune option : le choix est celui de ce que le produit accepte
 **8. Reports comptes.**
 
 - **`Q-273-1`** (i) et (ii) : **onzieme mention** (dixieme en A.282), non traitee ici. **(ii) devient due** : l'horloge `MAT-CE1-11` est le geste suivant (point 1), et la question est de savoir si la seconde lecture de son premier jet vaut 0,50 hors marge. Elle est a `nadia-prof` ; pour (i), voir A.273.
-- **Q3 d'A.271** (quatrieme rejeu) : **dixieme inscription** (releve par recherche du texte exact *"Q3 d'A.271"* : A.271, A.272, A.274, A.276, A.277, A.278, A.280, A.281, A.282, puis celle-ci), toujours au sprint s57, premiere en A.271. **Fait nouveau, observe et non tranche** : sur les neuf audits, **0 lot refuse** ; la question supposait trois lots refuses et la marge entiere. Elle se rouvre a la fermeture des dix audits (l'horloge est le dixieme) ; je ne la ferme pas avant.
+- **Q3 d'A.271** (quatrieme rejeu) : **dixieme inscription** (releve par recherche du texte exact *"Q3 d'A.271"* : A.271, A.272, A.274, A.276, A.277, A.278, A.280, A.281, A.282, puis celle-ci), toujours au sprint s57, premiere en A.271. **Fait nouveau, observe et non tranche** : sur les neuf audits, **0 lot refuse** ; la question supposait trois lots refuses et la marge entiere. Elle se rouvre a la fermeture des dix audits (l'horloge est le dixieme) ; je ne la ferme pas avant. **[corrige par A.286, texte d'origine conserve]**
 - **Un report deja a l'oeuvre depuis A.280** : `JAR` (qui lance le `verify` de chaque lot et qui sert le jar a l'audit), non designe dans `planning.md` ; je ne le designe pas.
 
 ### Routage
@@ -4927,7 +4927,7 @@ Vérification [calcul] : 96 873 moins 69 203 = 27 670. **Le cliquet est égal au
 **7. Reports comptés.**
 
 - **`Q-273-1`** (i) et (ii) : **douzième mention** (onzième en A.283), non traitée ici. (ii) est due avec l'horloge : `nadia-prof` écrit qu'une seconde lecture sera due après la correction et renvoie à A.272 et à A.280 point 3 pour son classement, sans fermer la question.
-- **Q3 d'A.271** (quatrième rejeu) : **onzième inscription** (dixième en A.283), toujours au sprint s57, première en A.271. Elle se rouvre à la fermeture des dix audits ; l'audit de l'horloge n'a pas eu lieu.
+- **Q3 d'A.271** (quatrième rejeu) : **onzième inscription** (dixième en A.283), toujours au sprint s57, première en A.271. Elle se rouvre à la fermeture des dix audits ; l'audit de l'horloge n'a pas eu lieu. **[corrige par A.286, texte d'origine conserve]**
 
 ### Routage
 
@@ -4974,3 +4974,81 @@ Annotation datée. **Chiffres avant / après, en toutes lettres : plafond de `PA
 | `lea-dev`, `ines-design`, `theo-archi`, `yanis-qa` | rien dans cet amendement |
 
 **Matrice** : aucun statut ne change, aucune note. **Report** : `Q-273-1` treizième mention ; Q3 d'A.271 douzième inscription. **Changement de code décidé** : aucun. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, ne juge aucun distracteur ni aucun dessin, ne crée aucune story, ne modifie ni YAML, ni test, ni catalogue, ni le bloc de validation d'une fiche, ni `domain/`, `application/`, `adapters/`, `bootstrap/`.
+
+## Amendement du 2026-10-28, soixante-quatrième (`camille-po`, palier 5 : l'utilisatrice répond non à `Q-283-1` et ferme Q3 d'A.271 : le quatrième rejeu tombe ; le cas haut passe de 24,20 à 23,70)
+
+Annotation datée. **Chiffres avant / après, en toutes lettres : plafond de `PAR-8` du palier 9 vingt-cinq virgule zéro zéro, inchangé ; engagé treize virgule cinquante, inchangé ; marge de l'instance neuve un virgule cinq, inchangée ; cas haut vingt-quatre virgule vingt avant, vingt-trois virgule soixante-dix après [calcul] ; réserve de plafond zéro virgule quatre-vingts avant, un virgule trente après [calcul] ; lignes `couvert-valide` cent cinquante-six sur un dénominateur atteignable de deux cent deux, inchangées.** **Statut de `DEC-0120` : `Acceptee`, inchangé.** Arbre : base `round-two` à `07961bf3`, branche `s57-p5-camille-286`. Sources lues au disque : `DEC-0120` A.271 à A.285, `docs/backlog/backlog.md` (annotations du 2026-10-28, douzième et treizième), les neuf `FICHE-ce1-qlm-<lot>.md` et `FICHE-ce1-lire-l-heure.md` (blocs de validation de `nadia-prof`, non modifiés), `planning.md` (sections sur les rejeux et sur le coût, non modifié). Les chiffres calculés sont marqués **[calcul]**, les chiffres comptés sur un fichier **[mesure]**.
+
+### A.286 `Q-283-1` : non, les réserves restent des stories non engagées ; Q3 d'A.271 : le quatrième rejeu tombe
+
+**1. Ses mots, reportés.** Deux réponses de l'utilisatrice du 2026-10-28, relayées par l'agent lanceur (forme 2, `DEC-0062` G), citées mot pour mot et rien d'autre : *"Q-283-1 02"* et *"O1 il tombe"*. Le texte des options de la question sur Q3 d'A.271 ne m'a pas été transmis : ce que `O1` recouvre est tel que l'agent lanceur me le donne, à savoir que le quatrième rejeu tombe, qu'il n'est pas reporté au palier 10 et que la question est close. Pour `Q-283-1`, `02` est l'option `O2` d'A.283 point 5, lue au disque : *non, elles restent des stories non engagées*. Si l'utilisatrice les lisait autrement, sa phrase l'emporte.
+
+**2. `Q-283-1` : fermée, option `O2`.** Ce qui en découle, écrit :
+
+- Les quatorze stories de réserves d'A.283 restent `NON ENGAGEE, sans palier` [mesure : `awk` sur l'annotation du 2026-10-28, douzième, 14 titres de story, 14 portent `NON ENGAGEE, sans palier`]. Aucune correction n'est engagée. Aucune relecture supplémentaire de `nadia-prof` n'est engagée. `sofia-sm` engage, et n'engage rien ici.
+- Le palier 5 se clôt avec les réserves écrites ouvertes. Elles restent écrites dans les blocs de validation des fiches et sont recopiées dans les cellules de matrice quand les lignes bougent (précédent d'A.171 à A.179, tel qu'A.283 point 5 le dit pour `O2`).
+- Coût : aucun. Les quatre troisièmes lectures à 0,50 hors marge (2,00) et les deux quatrièmes lectures non chiffrées que `O1` aurait demandées n'existent pas ; le cas haut de 26,20 d'A.283 point 5 ne se produit pas.
+- Ce que cela ne change pas : la réserve du mot *plus* de `-03` reste sans story (*"on ne corrige pas"*, A.283 D2). Le branchement de `-12` attend toujours le relevé du `relecteur-pedagogique` sur l'accord (A.283 D3), et la story qui le porte n'est pas engagée : **je le signale, je ne l'engage pas**, c'est à `sofia-sm`.
+
+**Vérifié dans le backlog et les fiches : rien ne dit le contraire. Ce qui parle encore de `Q-283-1` comme d'une question ouverte est listé, non réécrit.**
+
+| Lieu | Ce qui est écrit | Lecture après la réponse |
+|---|---|---|
+| `backlog.md`, annotation du 2026-10-28, douzième, ligne d'ouverture | *"aucune n'est engagée avant la réponse de l'utilisatrice à `Q-283-1`"* | vrai et inchangé : la réponse est non, les quatorze restent non engagées ; non réécrit |
+| `backlog.md`, ligne *Méthode des valeurs d'aujourd'hui* et champ *Prix* de `S57-RAL-CE1-R1`, `S57-QLM-CE1-10-ORDRE-DES-MOTS`, `S57-QLM-CE1-06-LISTE-D-OBJETS`, `S57-ETE-CE1-R3`, `S57-QLM-CE1-12-ACCORD` | le coût d'une lecture après correction est la question `Q-283-1`, *non tranché* | la question est fermée ; la lecture n'est pas engagée, son prix reste une hypothèse que personne ne paie ; non réécrit |
+| `DEC-0120` A.283 point 5 | *"Tant qu'elle n'a pas répondu, aucune de ces stories n'est engagée"* | elle a répondu ; non marqué |
+| `DEC-0120` A.283, routage, lignes `nadia-prof` et `marc-dev` | `nadia-prof` révise `BPL-CE1-1` et rouvre ses règles 2 et 3 de `-08` *quand l'utilisatrice aura répondu* ; `marc-dev` : rien avant la réponse | aucune révision n'est lancée par cet amendement ; `nadia-prof` l'écrit *avant toute correction*, et aucune correction n'est engagée ; non réécrit |
+| les neuf `FICHE-ce1-qlm-<lot>.md` | aucune occurrence de `Q-283-1` [mesure : recherche du texte exact, 0 fiche] ; les lignes *Stories du backlog pour ce lot* disent *Aucune n'est engagée* ou nomment les stories sans les engager | rien ne dit le contraire |
+| `planning.md` | aucune occurrence de `Q-283-1` [mesure : recherche du texte exact, 0 ligne] | à `sofia-sm`, routage ci-dessous |
+
+**3. Q3 d'A.271 : le quatrième rejeu tombe. La question est close.**
+
+- **Le cas, tel qu'A.271 point 4 le posait.** L'horloge `MAT-CE1-11` rejouée sur la marge de 0,5 de B (A.267), puis trois lots de l'instance neuve refusés : un quatrième rejeu, ou non. Réponse du 2026-10-26 : *"a voir apres audit"*, soit une réouverture à la fermeture des dix premiers audits, avec le nombre de lots refusés observé.
+- **Ce qui a été observé.** Les dix audits sont faits : neuf lots de questionner le monde (A.283 point 2 : 0 refusé sur 9) et l'horloge, **VALIDE SOUS RESERVE** par `nadia-prof` le 2026-10-28, qui écrit dans sa fiche *"aucun lot refusé sur dix"* et *"Rejeu : aucun n'est dû"*. Zéro lot refusé, aucun rejeu dû, la marge de 0,5 de B non consommée.
+- **Ses mots du 2026-10-27, relus.** *"On force l'audit de l'horloge et le quatrieme rejeu"* (A.280) : A.280 point 3 les lisait comme le coût admis, non comme le rejeu décidé, et le disait. *"O1 il tombe"* tranche : le quatrième rejeu n'est pas décidé, il n'est pas fait, il n'est pas reporté au palier 10. Sa phrase du 2026-10-28 est postérieure ; celle du 2026-10-27 n'est pas réécrite.
+- **Ce que la réponse ne touche pas.** `P3` (A.265) n'est pas réécrite : les trois rejeux garantis (A.270), un par lot au plus, l'ordre neuf audits, horloge, rejeux. Aucun n'est dû tant qu'aucun lot n'est refusé. La réponse porte sur le quatrième ; elle ne dit rien d'un rejeu au-delà, que ni A.272 ni A.273 ne nomment, et je ne l'étends pas.
+- **Report compté.** Q3 d'A.271 est inscrite dans cet amendement pour la **quatorzième** fois, toujours au sprint s57, la première en A.271 (2026-10-26) ; elle n'a jamais été reportée à un autre sprint et ne l'est pas. Méthode : recherche du texte exact *"Q3 d'A.271"* et de *quatrième rejeu* dans `DEC-0120`, section par section [mesure] : A.271, A.272, A.274, A.275, A.276, A.277, A.278, A.280, A.281, A.282, A.283, A.284, A.285, soit treize avant celle-ci. **Écart avec le compte courant** : A.285 écrit *douzième*, parce que la liste d'A.283 (*dixième inscription*) omet A.275, dont la ligne *Report* dit que la question reste différée. Le compte courant donnerait treizième ; le texte donne quatorzième. Je retiens le texte et je ne réécris pas les comptes d'A.283 à A.285.
+
+**Les endroits où la question est dite différée ou ouverte sont marqués [corrige par A.286, texte d'origine conserve]**, dans `DEC-0120` seulement ; `backlog.md` ne contient ni *Q3 d'A.271* ni *quatrième rejeu* [mesure : recherche du texte exact, 0 ligne], il n'y a rien à y marquer.
+
+| Passage | Ce qu'il disait | Pourquoi marqué |
+|---|---|---|
+| A.271, titre | *quatrieme rejeu differe* | close |
+| A.271 point 4, titre | *Q3 : differee, non tranchee* | close, tranchée |
+| A.271, routage, ligne `sofia-sm` | *noter la reouverture de Q3 a la fermeture des dix premiers audits* | il n'y a plus de réouverture |
+| A.272, ligne *Report* | *reste differee, inchangee* | close |
+| A.274, ligne *Report* | *restent differees, inchangees* | close |
+| A.275, ligne *Report* | *restent differees, inchangees* | close |
+| A.278, tableau des sujets ouverts, ligne 2, colonne *Etat et report* | *Rien a faire avant les audits* | audits faits, question close |
+| A.280 point 4, première puce | *garde sa regle de reouverture* | plus de réouverture |
+| A.280 point 6, *Ce que cela ne change pas* | *le calendrier de Q3 d'A.271* | plus de calendrier |
+| A.281, tableau des sujets ouverts, ligne 8 | *Inchange* | close |
+| A.282, tableau des sujets ouverts, ligne 6 | *Inchange* | close |
+| A.283 point 8, seconde puce | *Elle se rouvre a la fermeture des dix audits ... je ne la ferme pas avant* | l'audit de l'horloge a eu lieu, la question est fermée |
+| A.284 point 7, seconde puce | *Elle se rouvre à la fermeture des dix audits* | close |
+
+Non marqués, parce qu'ils ne disent pas l'état : les mentions d'A.276, A.277, A.280 (ligne *Report*), A.281 et A.282 (lignes *Report*) (*inchangée*, *inchangé*, *son calendrier est inchangé* sans le mot *différée* ni *ouverte*), le texte d'A.285 (il ne dit que le compte). Lus avec ce qui précède, ils sont rendus caducs par la même réponse.
+
+**4. Ce que cela change au cas haut, calculé, sans rien décider.**
+
+| Grandeur | Avant | Après | Calcul |
+|---|---|---|---|
+| cas haut (A.281 point 3, A.282 point 2) | 24,20 | 23,70 | [calcul] 24,20 moins 0,50, le quatrième rejeu hors marge du cas le plus haut d'A.280 point 3, ligne (b), marge de 1,5 déjà consommée |
+| même grandeur, autre chemin | 24,20 | 23,70 | [calcul] 17,70 plus 9 fois 0,50 (secondes lectures) plus 2 fois 0,50 (troisièmes lectures de `-03` et de `-08`) plus 0,50 (seconde lecture de l'horloge), soit 17,70 plus 4,50 plus 1,00 plus 0,50 |
+| réserve de plafond de 25,00 | 0,80 | 1,30 | [calcul] 25,00 moins 23,70 |
+
+Le 0,50 retiré est celui du cas le plus haut. Dans le cas propre de Q3 (marge de 1,5 entière), A.280 point 3 écrit que le rejeu ne coûtait rien de plus : pour lui, rien ne bouge. Le plafond reste 25,00, valeur de l'utilisatrice donnée *"pour avoir de la marge"* (A.282) : je ne l'abaisse pas et je n'affecte les 1,30 à aucun poste. Pour mémoire, selon la seule règle chiffrée (A.272 règle point 3, méthode d'A.282 point 2) : une troisième lecture de plus donnerait 24,20, une réserve restante de 0,80 ; deux, 24,70 et 0,30 ; trois, 25,20, soit 0,20 au-dessus [calcul]. Aucune n'est engagée (point 2).
+
+**Postes non chiffrés, qui le restent** (A.282 point 2) : la lecture par `nadia-prof` du quatrième rejeu, qui devient sans objet ; l'audit à l'écran de l'horloge, qui a eu lieu, dont la durée est dans la fiche de `nadia-prof` en donnée brute, non convertie ; les `mvn verify` par lot ; une quatrième lecture d'un lot. Je n'écris aucun prix.
+
+**5. `Q-273-1` (i) : non fermée.** Elle demande si un rejeu au-delà des trois compte contre le plafond de `PAR-8` du palier 9 ou contre un autre (A.273 point 1 (c)). Le seul cas que les textes nomment au-delà des trois est le quatrième rejeu d'A.271, qui tombe ; aucun autre n'est nommé. Je constate que la question n'a plus de cas nommé, **je ne la ferme pas** : elle est à `nadia-prof` pour le chiffre et, si le plafond couvrait un palier 10, à l'utilisatrice par `sofia-sm`. **Quatorzième mention** (treizième en A.285). (ii) est fermée dans ses faits (A.285 point 3).
+
+### Routage
+
+| À qui | Quoi |
+|---|---|
+| `sofia-sm` | `planning.md` (non modifié ici) : inscrire la réponse à `Q-283-1` (`O2`, quatorze stories non engagées, palier 5 clos avec les réserves ouvertes) et la fermeture de Q3 d'A.271 ; les lignes qui disent la question *ouverte* ou *différée* (sections sur les rejeux et le coût, lignes 2613, 2655, 2824 et 2950 à la base de cet amendement) sont à marquer à sa façon ; engager ou non le relevé de l'accord de `-12` (A.283 D3), dont le branchement l'attend |
+| `nadia-prof` | rien. Sa phrase dans `FICHE-ce1-lire-l-heure.md`, *Q3 d'A.271 se rouvre à la fermeture des dix audits*, est dans son bloc de validation, que je ne touche pas : la question est close par la réponse de l'utilisatrice |
+| `marc-dev`, `lea-dev`, `ines-design`, `theo-archi`, `yanis-qa`, `relecteur-pedagogique` | rien |
+
+**Matrice** : aucun statut ne change, aucune note. **Report** : Q3 d'A.271 quatorzième et dernière inscription, close ; `Q-273-1` (i) quatorzième mention ; `Q-283-1` première inscription en A.283, fermée ici. **Changement de code décidé, avec propriétaire** : aucun. **Ne fait pas** : ne prononce aucun Done, ne chiffre aucun poste que les règles ne chiffrent pas, n'affecte pas la réserve de 1,30, ne ferme pas `Q-273-1`, ne réécrit pas `P3`, n'engage aucune story, ne modifie ni `planning.md`, ni `backlog.md`, ni une fiche, ni un bloc de validation, ni la matrice, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloué.
