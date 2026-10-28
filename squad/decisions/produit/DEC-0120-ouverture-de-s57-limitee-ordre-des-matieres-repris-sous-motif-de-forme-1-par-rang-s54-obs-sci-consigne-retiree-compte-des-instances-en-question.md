@@ -4892,3 +4892,52 @@ Je ne recommande aucune option : le choix est celui de ce que le produit accepte
 | `yanis-qa` | rien |
 
 **Matrice** : aucun statut ne change ; une note datee est ajoutee a `MATRICE-couverture.md`, aucune cellule modifiee. **Report** : `Q-273-1` onzieme mention ; Q3 d'A.271 dixieme inscription ; `Q-283-1` premiere inscription. **Changement de code decide, avec proprietaire** : aucun ; les stories sont non engagees, leur premier acteur est nomme, aucune ne decide un changement. **Ne fait pas** : ne prononce aucun Done, ne juge aucune formulation, ne chiffre aucun poste que les regles ne chiffrent pas, ne tranche pas `Q-283-1`, ne modifie ni un YAML, ni un test, ni le catalogue, ni `planning.md`, ni le bloc de validation d'une fiche, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
+
+## Amendement du 2026-10-28, soixante-deuxième (`camille-po`, palier 5 : l'utilisatrice accorde le relèvement du cliquet de poids des illustrations pour l'horloge `MAT-CE1-11`)
+
+Annotation datée. **Chiffres avant / après, en toutes lettres : cliquet de poids total des illustrations (`POIDS_TOTAL_MAXIMUM`) soixante-neuf mille deux cent trois octets avant, quatre-vingt-seize mille huit cent soixante-treize octets après (valeur déjà écrite dans le code par `lea-dev`, voir point 3) ; douze cadrans, vingt-sept mille six cent soixante-dix octets ; plafond de `PAR-8` vingt-cinq virgule zéro zéro, inchangé ; engagé treize virgule cinquante, inchangé ; lignes `couvert-valide` cent cinquante-six sur un dénominateur atteignable de deux cent deux, inchangées.** **Statut de `DEC-0120` : `Acceptee`, inchangé.** Arbre : base `round-two` à `b37d476a`, branche `s57-p5-camille-284`. Sources lues au disque : `rapport-lea-dev-palier-5-horloge-mat-ce1-11.md` (sections 4 et 7), `lecture-nadia-premier-jet-horloge-mat-ce1-11.md` (section 4, ligne `camille-po`), `DEC-0120` A.263, A.265, A.267, A.280 à A.283, `docs/backlog/backlog.md` (annotation du 2026-10-25, `D5`), le test `ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTest` (lignes 353 à 361). Les chiffres calculés sont marqués **[calcul]**, les chiffres comptés sur un fichier **[mesure]**.
+
+### A.284 Le relèvement du cliquet de poids est accordé pour l'horloge ; le code l'avait posé avant l'accord
+
+**1. Ses mots, reportés.** Question posée à l'utilisatrice : *"Faut-il relever le cliquet de poids des illustrations pour l'horloge ?"* Réponse du 2026-10-28, relayée par l'agent lanceur (forme 2, `DEC-0062` G), citée mot pour mot et rien d'autre : *"Q1 O1 on l'accorde"*. Je n'ai pas lu le texte des options de `Q1` : ce que `O1` recouvre est tel que l'agent lanceur me le transmet, l'accord du relèvement. Si l'utilisatrice le lisait autrement, sa phrase l'emporte. Elle ne donne aucune borne chiffrée : les chiffres du point 2 sont ceux du code et de l'arbre, pas les siens.
+
+**2. Les chiffres du relèvement [mesure].**
+
+| Grandeur | Valeur | Lecture |
+|---|---|---|
+| cliquet avant | 69 203 octets | `POIDS_TOTAL_MAXIMUM` à `802d0227`, ligne 355 du test |
+| cliquet après | 96 873 octets | même constante à `b37d476a`, ligne 361 |
+| cadrans ajoutés | 12 | les fichiers `horloge-*.svg` du répertoire des illustrations, comptés : 12 |
+| poids des douze | 27 670 octets | `horloge-*.svg` mis bout à bout, fins de ligne normalisées en LF, comptés en octets |
+| poids du répertoire | 96 873 octets, 68 fichiers | même méthode sur les `*.svg` du répertoire |
+
+Vérification [calcul] : 96 873 moins 69 203 = 27 670. **Le cliquet est égal au poids mesuré du répertoire : aucun octet de marge.**
+
+**3. Ce que l'accord régularise.** `lea-dev` a posé le relèvement de 69 203 à 96 873 dans le premier jet de l'horloge (`a5d5026b`, fusionné dans `round-two` par `025e613b`), **avant** que l'utilisatrice réponde. Elle l'a dit : son rapport (section 4) écrit *"Aucun accord de poids de l'utilisatrice ne couvre ce lot"* et pose la question en Q8 ; l'historique du cliquet, dans le test, porte la même phrase. La règle ancienne (`D5`, backlog, annotation du 2026-10-25) disait que le poids des lots de `D5` se demande à l'ouverture de chaque lot, sauf si *"minimise"* valait accord (`PO1`, ouvert). **L'accord du 2026-10-28 régularise le relèvement tel qu'il est écrit : aucune valeur du code ne change.** `nadia-prof` avait routé cette demande avant son audit à l'écran (section 4 de sa lecture) *"pour que je n'audite pas un lot qu'un refus de poids changerait"* : sur le poids, elle n'a plus de raison d'attendre.
+
+**4. Portée de l'accord : ce que ses mots couvrent, ce qu'ils ne couvrent pas.**
+
+- **Couvre** : le relèvement du cliquet pour l'horloge `MAT-CE1-11`, les douze cadrans, le total de 96 873 octets.
+- **Ne couvre pas, et je ne l'étends pas** : les autres lots de `D5` (leur poids se demande à l'ouverture de chaque lot, annotation du 2026-10-25, inchangée) ; la borne de 161 863 octets de `LP9`, qui reste celle de son *oui* ; plus de douze cadrans ; **tout octet au-delà de 96 873**. L'exigence 2 de `nadia-prof` (relire ou remplacer les glyphes 3, 4, 6, 7, 8, 9 par `ines-design`) peut changer le poids des douze fichiers. Un total qui dépasserait 96 873 serait une nouvelle question à l'utilisatrice, avec le chiffre mesuré ; un total inférieur ou égal n'en demande aucune.
+
+**5. Changement de code, avec propriétaire.** Le test `ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTest` écrit, dans l'historique du cliquet (lignes 357 à 358), *"Le poids de ce lot n'est pas couvert par un accord de l'utilisatrice (backlog, annotation du 2026-10-25)"*. Depuis aujourd'hui cette phrase est fausse. **Propriétaire : `lea-dev`, auteure de la ligne, par `sofia-sm`** : une phrase de Javadoc à réécrire en citant l'accord du 2026-10-28 et `DEC-0120` A.284 ; aucune valeur, aucune assertion ne change. Je ne modifie pas ce fichier (`adapters/`). Son rapport, daté, n'est pas à corriger : il dit vrai à sa date.
+
+**6. Ce que cet amendement ne change pas.** L'ordre posé par `sofia-sm` (correction de `lea-dev`, relevé d'`ines-design`, seconde lecture de `nadia-prof`, `verify` complet du lot, audit à l'écran). Aucun Done, aucune entrée de catalogue (`QC3`). **Aucun prix n'est écrit ou recalculé ici** : la seconde lecture, le relevé, le `verify` et l'audit à l'écran de l'horloge restent ce que A.267, A.280 point 6 et A.282 point 2 en disent ; `nadia-prof` ne fixe aucun prix dans sa lecture et ne ferme pas `Q-273-1`.
+
+**7. Reports comptés.**
+
+- **`Q-273-1`** (i) et (ii) : **douzième mention** (onzième en A.283), non traitée ici. (ii) est due avec l'horloge : `nadia-prof` écrit qu'une seconde lecture sera due après la correction et renvoie à A.272 et à A.280 point 3 pour son classement, sans fermer la question.
+- **Q3 d'A.271** (quatrième rejeu) : **onzième inscription** (dixième en A.283), toujours au sprint s57, première en A.271. Elle se rouvre à la fermeture des dix audits ; l'audit de l'horloge n'a pas eu lieu.
+
+### Routage
+
+| À qui | Quoi |
+|---|---|
+| `sofia-sm` | router à `lea-dev` la phrase de Javadoc du point 5 ; engager la story `S57-BR-MAT-CE1-11-HORLOGE` (annotation du 2026-10-28, treizième) ; porter `Q-273-1` (ii) à `nadia-prof` |
+| `lea-dev` | la phrase de Javadoc (point 5) ; l'exigence 1 de `nadia-prof` avec le compte item par item |
+| `ines-design` | l'exigence 2 de `nadia-prof`, et la mesure de ce que le poids des glyphes redessinés fait au total (point 4) |
+| `nadia-prof` | rien de neuf : la demande d'accord de poids de sa lecture est satisfaite |
+| `theo-archi` | rien dans cet amendement |
+| `yanis-qa` | rien |
+
+**Matrice** : aucun statut ne change ; une note datée est ajoutée en tête de `MATRICE-couverture.md`, aucune cellule modifiée. **Report** : `Q-273-1` douzième mention ; Q3 d'A.271 onzième inscription. **Changement de code décidé, avec propriétaire** : une phrase de Javadoc, `lea-dev`, par `sofia-sm` ; aucun autre. **Ne fait pas** : ne prononce aucun Done, ne fixe aucun prix, ne juge aucun dessin ni aucun distracteur, n'étend pas l'accord au-delà de ses mots, ne modifie ni un YAML, ni un test, ni le catalogue, ni `planning.md`, ni le bloc de validation d'une fiche, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloué.
