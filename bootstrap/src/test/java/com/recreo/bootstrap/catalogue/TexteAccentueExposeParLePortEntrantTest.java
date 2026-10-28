@@ -493,6 +493,17 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-
             // et-emc-ce1.md, section 4.4).
             "bandit-manchot-interet-commun-ce1",
+            // S57-QLM-CE1-ENTREES-CATALOGUE (s57) : entrees neuves, QLM-CE1-01 a -06, -08 et -10, et
+            // l'horloge MAT-CE1-11 (la ligne -12 attend le releve de S57-QLM-CE1-12-ACCORD).
+            "bandit-manchot-etapes-de-developpement-ce1",
+            "bandit-manchot-ce-que-mangent-les-animaux-ce1",
+            "bandit-manchot-besoins-de-la-plante-ce1",
+            "bandit-manchot-familles-d-aliments-ce1",
+            "bandit-manchot-eau-trois-etats-ce1",
+            "bandit-manchot-aimant-ce1",
+            "bandit-manchot-dangers-electricite-ce1",
+            "bandit-manchot-paysages-ce1",
+            "bandit-manchot-lire-l-heure-ce1",
             // S57-BR-FRA-CE1-21 (s57) : entree neuve, FRA-CE1-21, ecrire un mot invariable (saisie).
             "saisie-mots-invariables-ce1",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
@@ -826,6 +837,17 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les droits et les devoirs",
             // S57-BR-EMC-CE1-04 (s57) : titre neuf, sans niveau (ADR-0078).
             "Pour un seul ou pour tous",
+            // S57-QLM-CE1-ENTREES-CATALOGUE (s57) : neuf titres neufs, sans niveau (ADR-0078), sans
+            // signe double. Propositions de marc-dev, lues par nadia-prof avant la fusion.
+            "Grandir chez les animaux et les plantes",
+            "Ce que mangent les animaux",
+            "Ce qu'il faut à une plante",
+            "Les familles d'aliments",
+            "Les trois états de l'eau",
+            "Ce que l'aimant attire ou non",
+            "Les dangers de l'électricité",
+            "Les paysages",
+            "L'heure sur l'horloge",
             // S57-BR-FRA-CE1-21 (s57) : titre neuf, sans niveau (ADR-0078), sans signe double.
             "Écris le petit mot",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
@@ -1165,6 +1187,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S57-BR-MAT-CE1-11 (s57) : consigne neuve, generique - elle ne nomme aucune forme
             // d'item, sans signe double.
             "Pense au calendrier, puis choisis la bonne réponse.",
+            // S57-BR-MAT-CE1-11-HORLOGE (s57) : consigne neuve, mot pour mot celle de la reserve d de
+            // nadia-prof ; elle ne nomme aucune heure d'aucun item, sans signe double.
+            "Regarde les deux aiguilles, puis choisis la bonne heure.",
             // S51-MAT-MULTIPLICATION (s52) : consigne neuve, generique - elle ne nomme aucun nombre
             // ni aucune forme d'item.
             "Lis bien ou regarde le dessin, puis choisis la bonne écriture.",
@@ -1852,6 +1877,26 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/enseignement-moral-et-civique/competences-ce1.md, ligne EMC-CE1-04).
             "Distinguer, dans une situation simple, ce qui sert l'intérêt d'une seule personne "
                     + "de ce qui sert l'intérêt de tous.",
+            // S57-QLM-CE1-ENTREES-CATALOGUE (s57) : competences neuves, QLM-CE1-01 a -06, -08 et -10,
+            // libelles du referentiel copies (squad/programme/questionner-le-monde/competences-ce1.md).
+            "Ordonner les étapes du développement d'un animal ou d'une plante familiers, y compris "
+                    + "une métamorphose (œuf, têtard, grenouille) ou une germination (graine, jeune "
+                    + "pousse, plante).",
+            "Relier quelques animaux familiers à ce qu'ils mangent (des végétaux, d'autres animaux, "
+                    + "ou les deux).",
+            "Identifier ce dont une plante a besoin pour vivre et grandir (eau, lumière, chaleur).",
+            "Classer des aliments courants dans leur famille (fruits et légumes, féculents, produits "
+                    + "laitiers, viande, poisson et œufs, produits sucrés) et reconnaître un repas varié.",
+            "Reconnaître l'eau sous ses trois états (glace, eau liquide, vapeur d'eau) et relier la "
+                    + "fonte et le gel à la température.",
+            "Reconnaître les objets qu'un aimant attire et ceux qu'il n'attire pas.",
+            "Connaître les dangers de l'électricité de la maison (prise, appareil près de l'eau, fil "
+                    + "abîmé) et les gestes qui les évitent.",
+            "Identifier quelques paysages (littoral, montagne, campagne, ville) à partir de leurs "
+                    + "éléments caractéristiques.",
+            // S57-BR-MAT-CE1-11-HORLOGE (s57) : competence du paquet de l'horloge, MAT-CE1-11, moitie
+            // "lire l'heure", sans point final (descripteur de ce1-lire-l-heure).
+            "Lire l'heure sur une horloge (heures, demi-heures, quarts d'heure)",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
             // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
             "Trouver un synonyme ou un contraire d'un mot fréquent.",
