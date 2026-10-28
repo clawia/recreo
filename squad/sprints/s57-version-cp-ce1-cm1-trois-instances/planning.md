@@ -3174,11 +3174,11 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit de la branche `s57-
 - **Les sept autres fiches portent aussi `a faire`** : `-01`, `-02`, `-04`, `-05`, `-06`, `-10`, `-12`. A.281 point 7 (ligne 6) et A.282 point 4 (ligne 7) ne nomment que `-03` et `-08` ; A.280 point 2 dit que le `verify` se juge par lot, avant l'audit de ce lot. Je ne dis pas si la ligne des sept autres est perimee : le reacteur complet de la section 3 contient les neuf paquets, mais qu'un seul `verify` tienne lieu de `verify` du lot pour chacun n'est ecrit nulle part.
 - **Reste ouvert, non designe** : qui lance le `verify` complet de chaque lot, et qui sert le jar a l'audit (A.280, E2). Aucun texte lu ne le dit ; je ne le decide pas.
 
-### 5. Relecture de `nadia-prof` sur la correction : lancee, rapport non recu
+### 5. Relecture de `nadia-prof` sur la correction : lancee, rapport non recu **[corrige par l'amendement du 2026-10-28 09:56 : le rapport est recu et fusionne, `relecture-nadia-troisieme-lecture-ce1-qlm-03-et-08.md`, commit `abd30678`, fusion `d4058264` ; texte d'origine conserve]**
 
-- **Etat.** Troisieme lecture de la correction de `-03` (C1, C2 et item 6, `:105`) et de `-08` (C3, C4), `0,50` par lot (A.281, A.282 point 3). **Lancee en parallele de cet amendement par l'agent lanceur (relaye : je ne l'ai pas lancee de ma main). Rapport non recu** a la date de cet amendement : le dossier du sprint ne porte aucun fichier de relecture de C1 a C4 (`ls`), seules les secondes lectures et `correction-nadia-amorces-ce1-qlm-03-et-08.md` y sont.
-- **Condition de calendrier d'A.282 point 3.** La relecture ne doit pas partir avant la transcription de l'item 6, sinon c'est une quatrieme lecture, non chiffree. La transcription est dans `round-two` (`e02dcd86`, date d'auteur 2026-10-27 21:00:33, lue par `git show -s --format=%ad`). **L'heure de lancement de la relecture ne m'est pas connue** : je ne dis pas que la condition est tenue.
-- **Cinq lignes, ecart cite sans etre tranche.** A.282 point 3 releve que la section 6 de `nadia-prof` et A.281 point 5 O1 parlent de *six* lignes (*"quatre lignes (six avec l'item 6)"*), alors que les lignes nommees font quatre (`-03` : `:73` et `:153` ; `-08` : `:71` et `:92`), puis **cinq** avec l'item 6 (`:105`). Elle dit ce qu'elle compte ; son ecrit dit, par lot, les lignes relues, si un verdict d'item est rouvert, si une transcription est rejetee ou reformulee, et si elle a lu le paquet entier (condition d d'A.277). Le prix d'une relecture qui rejetterait une transcription reste non chiffre (section 1).
+- **Etat.** Troisieme lecture de la correction de `-03` (C1, C2 et item 6, `:105`) et de `-08` (C3, C4), `0,50` par lot (A.281, A.282 point 3). **Lancee en parallele de cet amendement par l'agent lanceur (relaye : je ne l'ai pas lancee de ma main). Rapport non recu** a la date de cet amendement : le dossier du sprint ne porte aucun fichier de relecture de C1 a C4 (`ls`), seules les secondes lectures et `correction-nadia-amorces-ce1-qlm-03-et-08.md` y sont. **[corrige par l'amendement du 2026-10-28 09:56 : le rapport est recu (commit `abd30678`, 2026-10-27 21:42:58, fusionne par `d4058264`) ; le fichier de relecture existe dans le dossier du sprint ; texte d'origine conserve]**
+- **Condition de calendrier d'A.282 point 3.** La relecture ne doit pas partir avant la transcription de l'item 6, sinon c'est une quatrieme lecture, non chiffree. La transcription est dans `round-two` (`e02dcd86`, date d'auteur 2026-10-27 21:00:33, lue par `git show -s --format=%ad`). **L'heure de lancement de la relecture ne m'est pas connue** : je ne dis pas que la condition est tenue. **[corrige par l'amendement du 2026-10-28 09:56 : le fichier de `nadia-prof` ecrit que la lecture est posterieure a la transcription de l'item 6 (`e02dcd86`) et *"dans la forme d'A.282 point 3 et non une quatrieme lecture"* ; ce que j'en lis est son ecrit, je ne connais toujours pas l'heure de lancement ; texte d'origine conserve]**
+- **Cinq lignes, ecart cite sans etre tranche.** A.282 point 3 releve que la section 6 de `nadia-prof` et A.281 point 5 O1 parlent de *six* lignes (*"quatre lignes (six avec l'item 6)"*), alors que les lignes nommees font quatre (`-03` : `:73` et `:153` ; `-08` : `:71` et `:92`), puis **cinq** avec l'item 6 (`:105`). Elle dit ce qu'elle compte ; son ecrit dit, par lot, les lignes relues, si un verdict d'item est rouvert, si une transcription est rejetee ou reformulee, et si elle a lu le paquet entier (condition d d'A.277). Le prix d'une relecture qui rejetterait une transcription reste non chiffre (section 1). **[corrige par l'amendement du 2026-10-28 09:56 : son ecrit relit cinq lignes (`:73`, `:105`, `:153`, `:71`, `:92`), aucune transcription rejetee, aucun verdict d'item rouvert, paquet entier non relu au sens d'A.277 d ; l'ecart cinq ou six lignes reste non tranche par elle ; texte d'origine conserve]**
 
 ### 6. Points ouverts et etapes jusqu'a la cloture
 
@@ -3186,15 +3186,15 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit de la branche `s57-
 
 | Ref | Sujet | A qui | Etat |
 |---|---|---|---|
-| `R-C1C4` | relecture de `nadia-prof` sur C1 a C4 de `-03` et `-08` et sur l'item 6 | `nadia-prof` | **lancee, rapport non recu** (section 5) |
+| `R-C1C4` | relecture de `nadia-prof` sur C1 a C4 de `-03` et `-08` et sur l'item 6 | `nadia-prof` | **lancee, rapport non recu** (section 5) **[corrige par l'amendement du 2026-10-28 09:56 : rapport recu et fusionne (`abd30678`, `d4058264`), aucune transcription rejetee ; texte d'origine conserve]** |
 | `T1` | `EFFETS_CONTRAIRES` : anciennes amorces *elle grandit plus vite* et *elle pousse plus vite* gardees (lignes 100 et 101 du test), et *elle devient plus solide*, ancien texte de l'item 6, ligne 100, une ligne de plus a regarder (A.282 point 4, ligne 4) | `theo-archi`, avec `marc-dev` | ouverte ; **routee ici a `theo-archi`**, l'invocation reste a l'agent lanceur ; je ne tranche aucune question de code |
 | `P1`, `P3` | `Q-273-1` (i) et (ii) | `nadia-prof`, l'utilisatrice | sans reponse ; **dixieme mention** (A.282 point 4, ligne 5), je n'en ajoute pas de decompte |
 | `P2` | Q3 d'A.271, quatrieme rejeu | `camille-po`, a la fermeture des dix audits | inchangee |
-| `A276` | remesure de fin de palier (A.276 point 3) | `sofia-sm` | a refaire a la cloture : la relecture `R-C1C4` ajoutera des durees ; le releve intermediaire du 15:40 est inchange |
+| `A276` | remesure de fin de palier (A.276 point 3) | `sofia-sm` | a refaire a la cloture : la relecture `R-C1C4` ajoutera des durees ; le releve intermediaire du 15:40 est inchange **[corrige par l'amendement du 2026-10-28 09:56 : la relecture est faite, ses durees sont dans son fichier, section 5 (1 min 14 s, 1 min 24 s, 2 min 25 s), et celles des neuf audits sont en section 2 de cet amendement ; la remesure reste a faire a la cloture ; texte d'origine conserve]** |
 | `P7` | documenter la forme de lancement de `verifier-chemins.sh` et `verifier-prefixes.sh` la ou un agent la lira | `sofia-sm` (A.280, routage) | **non fait** : la forme est ecrite dans A.280 point 2 et en section 3 de cet amendement ; `CLAUDE.md` et `squad/README.md` ne la portent pas ; les amender est une decision de documentation hors de ce commit |
 | `P10` | faits du rapport de `marc-dev` absents du depot (`-04`, `-12`) | `marc-dev`, par moi | ouverte, reportee, non close |
 | `JAR` | qui lance le `verify` de chaque lot, qui sert le jar a l'audit | non designe | ouverte |
-| `P4` | intrus : tache B de `-02`, la bonne reponse est l'intrus des trois propositions ; pendant pour la tache B de `-10` | `nadia-prof` a l'audit `P2` ; `camille-po` | ouverte, sans ecrit de cloture |
+| `P4` | intrus : tache B de `-02`, la bonne reponse est l'intrus des trois propositions ; pendant pour la tache B de `-10` | `nadia-prof` a l'audit `P2` ; `camille-po` | ouverte, sans ecrit de cloture **[corrige par l'amendement du 2026-10-28 09:56 : l'audit de `-02` a mesure l'intrus et pose `RAL-CE1-R1` ; l'audit de `-10` ne le retrouve pas (3 bonnes reponses sur 13 manches B au premier essai) ; voir la ligne `P4` du second tableau de la section 7 ; texte d'origine conserve]** |
 | `P8` | distracteur *le mulot* de `cm1-sciences-chaine-alimentaire.yaml` (CM1) | `nadia-prof`, puis `camille-po` | ouverte |
 | `P5` | accord de *du plus age au plus jeune* en `-12` (items 3 et 8, formule de `R12-2`) | `relecteur-pedagogique` | ouverte ; aucun releve du palier 5 dans le dossier du sprint |
 | `P9` | ordre de fusion de `-03` avant `-02` et faits (3) et (4) de la section 1 du 15:40 | `theo-archi` ; `nadia-prof` et `camille-po` pour `P1` | ouverte |
@@ -3204,14 +3204,181 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit de la branche `s57-
 
 **Ordre des etapes jusqu'a la cloture** (sources : A.260 `P2` et `P3`, A.265, A.267, A.280, A.282, `squad/README.md`) :
 
-1. Rapport de relecture de `nadia-prof` (`R-C1C4`), a lire a sa reception ; si elle rejette une transcription, c'est une quatrieme lecture non chiffree, a router a `camille-po`.
+1. Rapport de relecture de `nadia-prof` (`R-C1C4`), a lire a sa reception ; si elle rejette une transcription, c'est une quatrieme lecture non chiffree, a router a `camille-po`. **[corrige par l'amendement du 2026-10-28 09:56 : le rapport est recu, aucune transcription rejetee, donc pas de quatrieme lecture a router ; texte d'origine conserve]**
 2. Invocation de `theo-archi` sur `T1`.
 3. Designation de qui lance le `verify` de chaque lot et de qui sert le jar (`JAR`), puis inscription par `camille-po` de la ligne des fiches, avant l'audit de chaque lot (A.280 point 2).
-4. Audit a l'ecran par `nadia-prof`, dans l'ordre `P2` : `-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12` ; Done pedagogique par elle seule dans `FICHE-ce1-qlm-<lot>.md`, entree au catalogue seulement apres un Done (`QC3`).
+4. Audit a l'ecran par `nadia-prof`, dans l'ordre `P2` : `-01`, `-02`, `-03`, `-04`, `-05`, `-06`, `-08`, `-10`, `-12` ; Done pedagogique par elle seule dans `FICHE-ce1-qlm-<lot>.md`, entree au catalogue seulement apres un Done (`QC3`). **[corrige par l'amendement du 2026-10-28 09:56 : les neuf audits sont faits et fusionnes (section 1 de cet amendement) ; l'entree au catalogue (`QC3`) n'est faite pour aucun lot ; texte d'origine conserve]**
 5. Audit de l'horloge `MAT-CE1-11`, apres les neuf premiers audits et avant tout rejeu.
 6. Rejeux, trois au plus, un par lot au plus, dans l'ordre de `P2` ; le quatrieme selon Q3 d'A.271.
 7. Remesure `A276`, puis `cloture-palier-5.md`, ecrit une seule fois par moi apres un passage complet des quatre jobs de `ci.yml` (A.280 point 2) ; obstacles du palier dans ce fichier puis dans `review.md`. `cloture-palier-5.md` n'existe pas.
 
 ### Decisions prises
 
-**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il inscrit : le plafond de `PAR-8` a 25,00 et la reserve de 0,80 (A.282), `Q-281-1` et `Q-281-2` fermees, l'item 6 de `-03` fusionne (`e02dcd86`) ; l'etat de la porte technique (job `build` seul, `verify` complet vert a `90c421a7`, `prefixes`, `chemins` et `outils` non lances en entier, porte complete non annoncee) ; la proposition de routage de la ligne des fiches pour les neuf lots ; la relecture de `nadia-prof` lancee, rapport non recu ; la liste des points ouverts et l'ordre des etapes. **Aucun Done n'est prononce.**
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il inscrit : le plafond de `PAR-8` a 25,00 et la reserve de 0,80 (A.282), `Q-281-1` et `Q-281-2` fermees, l'item 6 de `-03` fusionne (`e02dcd86`) ; l'etat de la porte technique (job `build` seul, `verify` complet vert a `90c421a7`, `prefixes`, `chemins` et `outils` non lances en entier, porte complete non annoncee) ; la proposition de routage de la ligne des fiches pour les neuf lots ; la relecture de `nadia-prof` lancee, rapport non recu ; la liste des points ouverts et l'ordre des etapes. **Aucun Done n'est prononce.** **[corrige par l'amendement du 2026-10-28 09:56 : la relecture de `nadia-prof` est recue et fusionnee, voir la section 1 de cet amendement ; texte d'origine conserve]**
+
+## Amendement du 2026-10-28 09:56 (UTC+01:00), palier des neuf lots de questionner le monde CE1 : etat des neuf audits a l'ecran lu dans les fiches, durees brutes, registre, porte technique, decisions de l'utilisatrice relayees, cout, reserves ouvertes et routage, ordre jusqu'a la cloture
+
+Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit de la branche `s57-p5-sofia-p8` (base `round-two` a `1a810b79`, lu par `git rev-parse HEAD`). Il ne modifie ni `DEC-0120`, ni les fiches, ni le registre, ni le backlog, ni le code, ne decide rien, ne prononce aucun Done, ne fixe aucun prix, ne releve aucun plafond et ne pose aucun seuil. Il ne modifie l'amendement du 2026-10-27 21:34 que par des marqueurs *[corrige ...]* poses apres les passages que l'etat des audits rend caducs, texte d'origine conserve. Vocabulaire : **lu** = lu par moi dans le depot ; **mesure** = lance par moi ; **relaye** = dit par l'agent lanceur (forme 2 de `DEC-0062` G), que je ne peux pas verifier de ma main ; **[calcul]** = somme ou difference que j'ai faite.
+
+### 1. Etat des neuf audits a l'ecran, lu dans les fiches
+
+Source : le bloc de validation de `nadia-prof` dans chacune des neuf `squad/conformite/FICHE-ce1-qlm-<lot>.md` de `round-two` a `1a810b79`. Les SHA sont lus : `git rev-parse <fusion>^2` rend la tete de la branche `s57-p5-nadia-audit-<lot>`, que `git rev-parse` sur le nom de la branche confirme. `git diff --name-only d6f2e007...<tete>` (base commune des neuf branches, `git merge-base`) ne rend que la fiche du lot, plus `REGISTRE-identifiants.md` pour `-02`, `-05` et `-08`. Le resume de l'agent lanceur est confirme lot par lot ; les precisions sont dans la colonne Reserve.
+
+| Lot | Rang | Verdict ecrit par `nadia-prof` | Reserve | Tete de la branche | Fusion |
+|---|---|---|---|---|---|
+| `-01` | 1 sur 9 | VALIDE | aucune | `6d6f5a3a` | `d2adbb4e` |
+| `-02` | 2 sur 9 | VALIDE SOUS RESERVE | `RAL-CE1-R1` | `6de10bb7` | `9a7ad21f` |
+| `-03` | 3 sur 9 | VALIDE SOUS RESERVE | deux, sans identifiant : le mot *plus* de la tache privation, et la liste des non-besoins reconnaissable sans lire l'enonce | `588cbaab` | `740bbc34` |
+| `-04` | 4 sur 9 | VALIDE | aucune | `ab40edfb` | `ca957d50` |
+| `-05` | 5 sur 9 | VALIDE SOUS RESERVE | `ETE-CE1-R1`, `ETE-CE1-R2`, `ETE-CE1-R3` | `73e99af3` | `1a810b79` |
+| `-06` | 6 sur 9 | VALIDE SOUS RESERVE | deux, sans identifiant : le plus court gagne en tache B, et l'entree de catalogue absente | `b52d8939` | `898b6b61` |
+| `-08` | 7 sur 9 | VALIDE SOUS RESERVE | `DEL-CE1-R1` | `f8ef2c75` | `62757537` |
+| `-10` | 8 sur 9 | VALIDE SOUS RESERVE | une, sans identifiant : la place de l'element propre dans l'enonce des items A | `11f20333` | `52eb9c47` |
+| `-12` | 9 sur 9 | VALIDE SOUS RESERVE | `V1`, repere de la fiche, non alloue au registre | `50f18b93` | `08f7a2ab` |
+
+- **Aucun verdict n'est REFUSE.** Les neuf blocs sont signes `nadia-prof`, 2026-10-27 ; les reserves y sont ecrites non bloquantes (`-03`, `-05`, `-06`, `-10` et `-12` le disent en toutes lettres ; `-02` et `-08` le disent par leurs motifs, sous les mots *"Pourquoi VALIDE SOUS RESERVE et non REFUSE"* et *"Pourquoi je ne refuse pas"*).
+- **Mots du verdict, sans les classer.** Sept blocs ecrivent *"Done pedagogique prononce"* (`-01`, `-03`, `-04`, `-05`, `-06`, `-08`, `-12`). `-02` et `-10` ecrivent le verdict `VALIDE SOUS RESERVE` sans cette formule ; le bloc de `-10` ajoute que *"La ligne `QLM-CE1-10` ne passe a `couvert-valide` qu'avec le Done technique acquis"*, CI complete a la cloture. Le Done est a `nadia-prof` seule ; je ne dis pas si cette difference de formule en est une.
+- **Condition ecrite dans `-03`.** *"Les jobs `prefixes`, `chemins` et `outils` sont dus a la cloture du palier : si cette CI rougit sur ce lot, ce verdict est rouvert."* Elle vaut a la cloture, voir section 8.
+- **Ordre de fusion lu** (`git log --merges`) : `-01`, `-03`, `-04`, `-06`, `-10`, `-12`, `-02`, `-08`, `-05`. `-03` est fusionne avant `-02` ; c'est le fait de `P9`, que je ne juge pas.
+- **Troisieme lecture de `-03` et `-08` : recue, fusionnee.** `relecture-nadia-troisieme-lecture-ce1-qlm-03-et-08.md`, commit `abd30678` (2026-10-27 21:42:58, lu par `git log`), fusionne par `d4058264` (`d4058264^2` rend `abd30678`), anterieur aux neuf audits. Son resume dit : transcription identique octet par octet aux cinq textes, cinq lignes changees (celles qui etaient prescrites), aucune transcription rejetee ou reformulee, aucun verdict d'item rouvert, paquet entier non relu au sens d'A.277 d, une reserve neuve sur *plus* dans `-03` (celle de la ligne `-03` du tableau). Elle ecrit que la lire apres la transcription de l'item 6 en fait une lecture *"dans la forme d'A.282 point 3 et non une quatrieme lecture"*. Elle rend caducs plusieurs passages de l'amendement du 21:34, marques plus bas.
+
+**Ce que le texte dit des rejeux quand aucun lot n'est refuse, sans trancher.**
+
+- **`P3`** (A.265, texte de `nadia-prof`, consigne tel quel) : rejeux *"autant que la marge en paie (trois a 1,5, au prix de 0,50 du rejeu, A.199), attribues aux premiers lots refuses dans l'ordre de `P2`"* ; *"un rejeu au plus par lot dans le palier 9"* ; *"aucun rejeu avant le premier audit de chacun des dix lots du palier"*. Les rejeux y sont attribues a des lots refuses ; le texte ne dit pas ce qui se passe quand aucun lot ne l'est.
+- **A.270** : *"trois rejeux garantis"*, que `camille-po` lit comme *"1,5 de marge disponible pour les rejeux"*, *"sans condition sur ce que la marge a deja consomme"* (point 1). C'est une disponibilite de marge ; le point 5 dit que `P3` ne change pas.
+- **A.271 point 4 (`Q3`)** : le quatrieme rejeu est pose pour le cas de **trois lots refuses**, a rouvrir a la fermeture des dix audits. **A.281 point 3** et **A.282** ne lui donnent que son prix. Aucun lot n'est refuse : le cas de `Q3` n'est pas celui observe.
+- **Ce que je ne trouve pas** dans A.265, A.270, A.271, A.280, A.281 et A.282 (relus pour cet amendement, les autres amendements non relus) : si *valide sous reserve* compte comme un refus pour `P3` ; si un rejeu peut porter sur un lot valide, avec ou sans reserve ; ce que devient la marge de 1,5 si aucun rejeu n'a lieu.
+- **Les fiches** : aucune ne demande de rejeu. Le seul emploi du mot dans les neuf blocs est dans `-12` : *"si la mesure ne montre rien, la reserve est levee sans rejeu ; si elle montre une coupure, `camille-po` en fait une story"*.
+- **Conclusion de lecture, sans decision** : ces textes n'imposent aucun rejeu en l'absence de lot refuse, et ne disent pas s'il en est permis un. La question est ouverte, a `camille-po` (proprietaire de `Q3`, A.271 point 4) et a `nadia-prof` (`P3` est son texte). Elle reste dans `P2` du second tableau de la section 7.
+
+### 2. Durees brutes d'audit (remesure A.276)
+
+Donnees brutes, horloge du poste lue par `date` par `nadia-prof` (UTC+01:00), telles qu'elle les ecrit dans les fiches. **Aucune conversion en bareme, aucune conclusion, aucun seuil** (A.276 point 3 : *"Aucun seuil et aucun objectif chiffre ne sont poses"*). Les calculs de ce tableau sont les miens et marques.
+
+| Lot | Duree rapportee | Ce que la fiche ecrit | Statut de la donnee |
+|---|---|---|---|
+| `-01` | 31 min 24 s | de 21:51:13 (lecture de la procedure) a 22:22:37 (fin de redaction, avant controles et commit) ; serveur en marche de 21:59:56 a 22:14:01 (14 min 05 s) | lue dans la fiche |
+| `-02` | 26 min 08 s | de 21:51:25 a 22:17:33, avant le commit, serveur, 18 parties, ecriture et verifications comprises | lue dans la fiche |
+| `-03` | 27 min 30 s | debut 21:51:32 ; serveur de 21:57:09 a 22:06:52 puis de 22:09:13 a 22:11:18 ; debut de redaction 22:12:35 ; la fiche n'ecrit ni l'heure de fin ni la duree totale | **fin 22:19:02 et 27 min 30 s : rapportees par l'agent principal, non lues dans le depot** ; 22:19:02 moins 21:51:32 fait 27 min 30 s [calcul] |
+| `-04` | 19 min 46 s | de 21:51:40 a 22:11:26, avant le commit ; `verifier-prefixes.sh` lance apres le commit, hors de la duree | lue dans la fiche |
+| `-05` | 36 min 40 s | de 21:52:01 a 22:28:41, avant le commit, lectures, jeu, rendu, ecriture et verifications comprises | lue dans la fiche |
+| `-06` | 29 min 20 s | de 21:52:08 a 22:21:28, verifications avant commit comprises | lue dans la fiche |
+| `-08` | 29 min 28 s | trois fenetres : 21:52:08 a 21:58:00 (5 min 52 s), 21:58:00 a 22:07:09 (9 min 9 s), puis redaction et verifications dont la fin n'est pas ecrite (*"voir le message de commit"*) ; les deux fenetres ecrites font 15 min 1 s [calcul] | **29 min 28 s : rapportee par l'agent principal, non lue dans le depot** |
+| `-10` | 29 min 39 s | de 21:52:14 a 22:21:53, lecture de la procedure, jeu, ecriture et verifications avant commit comprises | lue dans la fiche |
+| `-12` | 28 min 36 s jusqu'au commit, 31 min 04 s au total | debut 21:52:20 ; serveur arrete a 22:12:38 (20 min 18 s depuis le debut [calcul]) ; la fin est *"donnee dans le rapport de commit"* | **28 min 36 s et 31 min 04 s : rapportees par l'agent principal, non lues dans le depot** |
+
+- **Repartition donnee par les fiches** : `-01` (serveur 14 min 05 s sur 31 min 24 s), `-03` (deux fenetres de serveur de 9 min 43 s et 2 min 5 s [calcul : 22:06:52 moins 21:57:09, 22:11:18 moins 22:09:13]), `-08` (lecture de la procedure 5 min 52 s, jar et parties 9 min 9 s). Les six autres fiches ne donnent pas de repartition.
+- **Bornes lues** : les neuf debuts vont de 21:51:13 a 21:52:20 ; les fins ecrites, de 22:11:26 (`-04`) a 22:28:41 (`-05`).
+- **Troisieme lecture de `-03` et `-08`** (fichier `abd30678`, section 5) : trois fenetres, 1 min 14 s, 1 min 24 s et 2 min 25 s, soit 5 min 3 s [calcul] ; la lecture des textes et la redaction sont hors fenetres, non mesurees. Le releve intermediaire du 15:40 est inchange. La remesure `A276` n'est pas faite : elle se fait a la cloture.
+
+### 3. Registre des identifiants
+
+- **Compte lu** : `squad/decisions/REGISTRE-identifiants.md`, section 1 : *"Compte courant, verifie par la CI : `1004` identifiants alloues, `179` prefixes distincts."* Les chiffres sont ceux que le garde-fou `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` compare a la table ; je l'ai lance sur cet arbre (voir section 4).
+- **Cinq identifiants alloues par `nadia-prof`**, un par reserve ecrite dans une fiche, chacun avec sa ligne de la section 4 du registre : `RAL-CE1-R1` (`-02`), `DEL-CE1-R1` (`-08`), `ETE-CE1-R1`, `ETE-CE1-R2`, `ETE-CE1-R3` (`-05`). Les trois prefixes (`RAL-CE1`, `DEL-CE1`, `ETE-CE1`) etaient deja alloues : le compte de prefixes reste 179. 999 plus 1 plus 1 plus 3 font 1004 [calcul].
+- **Trois branches ecrivaient la meme ligne de compte** (`999` vers `1000` pour `-02` et `-08`, `999` vers `1002` pour `-05`, lu dans les notes du registre). Ecart avec le resume de l'agent lanceur, a nommer : les messages de fusion ne portent *"Conflicts: squad/decisions/REGISTRE-identifiants.md"* que pour **deux** des trois (`62757537` pour `-08`, `1a810b79` pour `-05`) ; la fusion de `-02` (`9a7ad21f`), la premiere des trois, est sans conflit ecrit. Le garde-fou et le compte de 1004 sont verifies sur l'arbre fusionne, pas sur chaque branche.
+- `-03`, `-06`, `-10` et `-12` ne portent aucun identifiant alloue : leurs reserves ont des reperes de fiche (*`V1`* pour `-12`) ou aucun repere.
+
+### 4. Porte technique
+
+**Ce que j'ai mesure moi-meme, casquette Scrum Master, dans le worktree de cette branche, arbre `1a810b79`** (`git status --short` vide, `git rev-parse HEAD` rend `1a810b797423e650b6569ea8ef8a322e1572de70`) :
+
+- `bash outils/mvn-jdk21.sh -B clean verify`, reacteur complet : **`BUILD SUCCESS`, sortie 0**, termine a 09:50:27 (UTC+01:00), 6 min 52 s. Tests par module (lignes `Tests run`, dans l'ordre du reacteur) : `domain` 120, `application` 31, `adapter-web` 523, `adapter-content` 2563, `bootstrap` 381 ; total unitaire **3618** [calcul]. Phase d'integration : `Tests run: 6, Failures: 0, Errors: 0, Skipped: 0`. Total **3624** [calcul], 0 echec, 0 erreur, 0 test ignore. Journal conserve hors du depot. C'est le job `build`, etape `verify` seule.
+- `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' \| bash .github/scripts/verifier-chemins.sh`, 3264 chemins : *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, sortie 0.
+- `git log --no-merges --format=%s 1a810b79~30..1a810b79 \| bash .github/scripts/verifier-prefixes.sh`, 31 sujets : *"Tous les commits portent un prefixe d'agent connu."*, sortie 0. La plage est celle que j'ai choisie, pas celle d'un `push` reel.
+- Les deux commandes de garde-fou ont recu une vraie entree standard, jamais `< /dev/null`. Les deux tests du registre et des tableaux sont lances avant le commit de cette branche ; leur verdict est dans mon rapport et non dans ce fichier, qui ne peut pas citer sa propre verification.
+
+**Ce que je relaie** : l'agent principal annonce le meme `mvn -B clean verify` (job `build` seul) vert sur `round-two` a `1a810b79` : `BUILD SUCCESS`, 3 624 tests (3 618 unitaires et 6 d'integration), 0 echec. Mon chiffre concorde sur le resultat, le total, la part d'integration et l'arbre ; le chiffre n'est donc plus relaye, je l'ai mesure. **Reste relaye** : qu'il l'ait lance lui-meme et sur la racine entiere.
+
+**Aucun code n'a change depuis `90c421a7`** : `git diff --name-only 90c421a7 1a810b79` ne rend que des fichiers `.md` (lu : la liste filtree sur `.md` est vide). Les neuf audits n'ont touche que des fiches et le registre. **Les neuf Done pedagogiques s'appuient sur le `verify` de `90c421a7`** (celui de l'amendement du 21:34, section 3), cite dans chacune des neuf fiches ; elles precisent toutes *"job `build` seul"* ou *"etape `verify` seule"*.
+
+**Jobs de `.github/workflows/ci.yml`, nommes.**
+
+| Job | Etat |
+|---|---|
+| `build` | `mvn -B clean verify` lance par moi (ci-dessus) ; **non lance** : l'etape `mvn -B -pl bootstrap -am package` |
+| `prefixes` | je n'ai lance que la commande de prefixes, en forme CI ; **non lances** : les tests du garde-fou de prefixes, du garde-fou de plage et du garde-fou de l'accent, et le controle du proprietaire |
+| `chemins` | je n'ai lance que la commande des chemins, en forme CI ; **non lances** : les autres etapes du job |
+| `outils` | **non lance** |
+
+**La porte technique complete n'est pas annoncee.** Seul le job `build` a ete lance, et seulement son etape `verify` ; je ne deduis pas l'etat de `prefixes`, `chemins` et `outils` de celui de `build`. **La ligne *"Premier `verify` complet du lot : a faire"* est toujours dans les neuf fiches** (`grep` : neuf sur neuf) ; `nadia-prof` ecrit dans `-01` qu'elle est perimee, dans `-08` que ce n'est plus vrai, dans `-02` qu'elle reste a inscrire par qui `sofia-sm` designe ; elle ne la reecrit dans aucune. Qui l'inscrit reste la proposition du 21:34 (section 4), a `camille-po`, non decidee.
+
+### 5. Decisions de l'utilisatrice, citees et relayees
+
+Relayees par l'agent lanceur (forme 2 de `DEC-0062` G), non lues dans un fichier de decision au moment ou j'ecris. Citees mot pour mot, rien d'autre.
+
+- **Sur la reserve du mot *plus* de la tache de privation de `-03`** : *"on ne corrige pas"*. La fiche `-03` ecrit deja, dans sa reserve 1, *"L'utilisatrice a decide qu'on ne la corrige pas : je la garde, je ne demande rien."* et la troisieme lecture ecrit qu'une correction toucherait cinq lignes, *"serait une quatrieme lecture, non chiffree, a decider par l'utilisatrice"*. Consequence ecrite par `nadia-prof`, que je ne decide pas : aucune correction demandee, donc aucune quatrieme lecture ouverte ; la propriete reste gardee par elle seule. Aucune `DEC` ne porte encore cette phrase ; `camille-po` l'inscrit si elle la retient.
+- **Sur l'ordre des etapes suivantes** : *"01 et 02 en // puis 03"*. Glose relayee par l'agent lanceur : 01 est cet amendement, 02 les stories et les fiches par `camille-po`, 03 l'horloge `MAT-CE1-11` avec `nadia-prof`. **La numerotation 01 a 03 est celle de l'agent lanceur ; je n'ai pas son texte d'origine** et je ne l'ai donc pas verifiee. Si l'utilisatrice la lisait autrement, sa phrase l'emporte. Je l'inscris dans l'ordre de la section 8.
+
+### 6. Cout : ce que les neuf audits ajoutent ou n'ajoutent pas, selon les regles ecrites
+
+Methode : je ne chiffre que ce qu'une regle lue chiffre ; sinon *non chiffre*. Rien ici ne change le plafond, l'engage ni la marge.
+
+| Poste | Ce que la regle ecrite dit | Effet des neuf audits |
+|---|---|---|
+| Etat de reference | cas haut **24,20** (A.281 point 3, inchange par A.282 point 2), plafond **25,00**, reserve **0,80**, reserve de 1,80 sans les deux gestes d'A.280 | aucune regle lue ne le modifie (lignes suivantes) |
+| Seconde lecture | A.272 regle point 1 (relie A.270 point 4) : 0,50 hors marge, pour la relecture par `nadia-prof`, apres correction de `marc-dev`, des lignes qu'elle a prescrites | **n'ajoute rien** : aucune des neuf branches ne touche un paquet ni un test (`git diff --name-only d6f2e007...<tete>`, section 1), aucune correction n'a ete appliquee a la suite d'un audit ; les neuf secondes lectures sont deja comptees (A.278) |
+| Troisieme lecture | A.272 regle point 3 et A.281 point 3 : 0,50 hors marge, par lot ; `-03` et `-08` deja comptees dans 24,20 | **n'ajoute rien** : la relecture de `-03` et `-08` a eu lieu avant les audits (`abd30678`), son prix est dans 24,20 ; aucune troisieme lecture supplementaire n'est ecrite dans les fiches |
+| Quatrieme lecture | A.272 regle point 3 ne prevoit que la troisieme ; A.281 point 4 : non chiffree | **n'ajoute rien** : la correction du mot *plus* de `-03`, qui en serait une selon `nadia-prof`, n'a pas lieu (section 5). Non chiffre si elle avait lieu |
+| Audit a l'ecran d'un lot | aucune regle de `DEC-0120` lue ne chiffre l'audit a l'ecran d'un lot en plus du 1,0 du lot (*"lecture avant `verify` et correction qui la suit comprises"*, A.273). La fiche `-05` ecrit *"Aucune seconde lecture : l'audit est dans le 1,0 du lot"* ; c'est un ecrit de `nadia-prof`, pas une regle lue dans une `DEC` | **non chiffre**, je n'adopte ni ne conteste la phrase de la fiche `-05` |
+| Rejeu | 0,50 chacun (A.199, A.267 point 3), sur la marge de 1,5 | **n'ajoute rien** : aucun lot refuse, aucun rejeu du ou decide (section 1) |
+| Durees | A.276 : durees reelles inscrites, aucun bareme | les durees de la section 2 sont des donnees, **non chiffrees** |
+| Stories des reserves | aucune regle lue ne chiffre une story de reserve (`RAL-CE1-R1`, `DEL-CE1-R1`, `ETE-CE1-R1` a `R3`, etc.) | **non chiffre** |
+| Les deux gestes d'A.280 | seconde lecture de l'horloge 0,50, quatrieme rejeu 0,50 hors marge (A.280 point 3) | **n'ont pas eu lieu**, aucun n'est ajoute ; le cas haut de 24,20 les suppose tous deux |
+| Hors reserve, non chiffres (A.282 point 2) | lecture du quatrieme rejeu, audit a l'ecran de l'horloge, `mvn verify` par lot, quatrieme lecture, deux troisiemes lectures supplementaires ou plus | inchange : aucun poste n'a recu de prix |
+
+- **Ce que cela donne** : selon les regles ecrites, les neuf audits n'ajoutent aucune ligne au registre (A.247) et ne modifient pas les 24,20 ni les 0,80 [calcul : 25,00 moins 24,20]. Le `mvn verify` que j'ai relance (section 4) n'a aucun prix ecrit : non chiffre.
+- **Ce que je ne dis pas** : que le palier a coute 24,20. C'est un cas haut, borne et non consommation (methode d'A.270 point 3). `Q-273-1` (i) et (ii) restent sans reponse.
+
+### 7. Reserves ouvertes et routage, d'apres les fiches
+
+Les reperes `RS1` a `RS12` sont des reperes locaux de ce tableau, aucun identifiant de condition n'est alloue. La colonne *A qui* dit ce que la fiche ecrit ; ce qui vient de l'agent lanceur ou de moi est marque.
+
+| Ref | Lot | Reserve ou point | A qui, selon la fiche | Etat |
+|---|---|---|---|---|
+| `RS1` | `-01` | pli a 360 de large des items *ordre* : chaque proposition sur 3 lignes, la premiere coupee a 360 x 640, les deux autres sous le pli | la fiche l'ecrit *"mesure, pas reserve de lot"* et la range dans ce dont `nadia-prof` reste seule garde ; elle ne nomme pas `ines-design`. **Routage a `ines-design` : relaye par l'agent lanceur, non ecrit dans la fiche** | ouvert |
+| `RS2` | `-01`, `-03`, `-04`, `-12` | mecanique commune : *"Bravo, c'est juste !"* au-dessus d'un *"tout seul"* a 0 ; *"Bravo !"* sans point apres deux erreurs | les quatre fiches l'ecrivent *hors du lot*, non jugee, non rouverte ; aucune ne la route. **Proposition de routage, de moi, non decidee** : `camille-po` pour le perimetre produit, `theo-archi` si c'est du code | ouvert, non route par les fiches |
+| `RS3` | `-02` | `RAL-CE1-R1` : la tache aliment se resout par l'intrus, 41 bonnes reponses sur 41 sans lire l'animal | `camille-po` : story, critere 6 de la story d'origine a reecrire, choix des aliments qui repasse par la lecture de `nadia-prof` avant `verify` ; `theo-archi` : symptome, la categorie dans le commentaire du paquet, sans qu'elle en decide la forme | ouvert, identifiant alloue |
+| `RS4` | `-03` | le mot *plus* de la tache privation | `nadia-prof` la garde, ne demande rien ; decision de l'utilisatrice relayee : on ne corrige pas (section 5) | gardee, aucune action |
+| `RS5` | `-03` | la liste des non-besoins se reconnait sans lire l'enonce (188 sur 188) | `nadia-prof` doit d'abord **reviser `BPL-CE1-1` par ecrit** ; une story ne vient qu'ensuite, pour un sprint suivant (`camille-po`) | ouvert, sans identifiant |
+| `RS6` | `-05` | `ETE-CE1-R1` : a 744 x 551, apres une erreur, l'indice de l'item 9 passe sous le pli. `ETE-CE1-R2` : un mot a trait d'union est coupe. `ETE-CE1-R3` : les indices de la tache vapeur n'aident pas un enfant bloque | R1 et R2 : cause a `theo-archi` et `ines-design`, le texte servi repassant par le `relecteur-pedagogique` s'il change (R2) ; R3 : texte a `camille-po` et au developpeur, puis a la lecture de `nadia-prof` | ouvertes, identifiants alloues |
+| `RS7` | `-06` | reserve 1 : en tache B le bon groupe est le plus court en caracteres, le plus court gagne dans 7 items sur 12 | la fiche demande une story de la reserve 1 ; le levier, la liste d'objets, *"est a l'equipe"*, chaque objet ajoute portant sa source ; la fiche ne nomme pas l'agent. **Story : `camille-po`, selon la fiche (*"camille-po peut ... faire une story de la reserve 1"*)** | ouvert, sans identifiant |
+| `RS8` | `-08` | `DEL-CE1-R1` : en tache B la forme *ne* designe la bonne reponse dans 5 items sur 8 | `nadia-prof` doit **rouvrir ses regles 2 et 3 par ecrit avant toute correction du paquet** ; ensuite `camille-po` fait une story | ouvert, identifiant alloue, rien a corriger avant l'arbitrage |
+| `RS9` | `-10` | l'element propre du paysage est toujours nomme en premier dans les 8 items A (27 sur 27) | la fiche demande que trois des huit items nomment l'element partage en premier ; elle ne nomme pas l'agent de la story ; **`theo-archi`** : symptome sans garde, *"je ne demande pas qu'il en ecrive une"* | ouvert, sans identifiant |
+| `RS10` | `-12` | `V1` : rendu visuel non mesure (mots a trait d'union dans les propositions longues, a 744 x 551 et a 360) | **mesure a `ines-design`** ; si elle ne montre rien, la reserve est levee sans rejeu ; si elle montre une coupure, `camille-po` en fait une story | ouvert |
+| `RS11` | `-12` | accord de *du plus age au plus jeune* (items 3, 8 et 11) : *"L'accord n'est pas de mon ressort"* | **`relecteur-pedagogique`** ; si la formule de `R12-2` change, `theo-archi` (`G12-3` la lit a la lettre) ; que le branchement attende ce releve est a `camille-po` | ouvert (`P5`), aucun releve du palier 5 a ce jour |
+| `RS12` | les neuf lots | entree de catalogue (`QC3`) : titre, consigne, nombre de manches, inexistants ; ceux joues sont ceux de `nadia-prof` | **`nadia-prof` les lit avant la fusion de l'entree** (chaque fiche) ; `camille-po` ecrit l'entree et fait passer la ligne a `couvert-valide`. Pour `-10`, `couvert-valide` attend en plus le Done technique, CI complete a la cloture | ouvert, aucune entree ecrite |
+
+**Points deja ouverts apres A.282 (amendement du 21:34), etat au 2026-10-28.**
+
+| Ref | Sujet | A qui | Etat |
+|---|---|---|---|
+| `T1` | `EFFETS_CONTRAIRES` : anciennes amorces gardees dans le test de `-03` | `theo-archi`, avec `marc-dev` | ouverte, inchangee ; aucune invocation lue |
+| `P1`, `P3` | `Q-273-1` (i) et (ii) | `nadia-prof`, l'utilisatrice | sans reponse ; je n'ajoute pas de decompte de mention |
+| `P2` | `Q3` d'A.271 (quatrieme rejeu) et la question de la section 1 (rejeu sans lot refuse) | `camille-po`, a la fermeture des dix audits | ouverte ; le cas de `Q3` (trois lots refuses) n'est pas celui observe |
+| `A276` | remesure de fin de palier | `sofia-sm` | donnees des neuf audits en section 2 ; remesure a faire a la cloture |
+| `P7` | forme de lancement de `verifier-chemins.sh` et `verifier-prefixes.sh` documentee la ou un agent la lit | `sofia-sm` (A.280) | non fait ; hors de ce commit |
+| `P10` | faits du rapport de `marc-dev` absents du depot (`-04`, `-12`) | `marc-dev`, par moi | ouverte, reportee, non close |
+| `JAR` | qui lance le `verify` de chaque lot, qui sert le jar | non designe | ouverte ; fait lu : les fiches ecrivent que le jar a ete fourni par l'agent lanceur et que le `verify` lu est celui de `sofia-sm` a `90c421a7` ; aucune designation ecrite |
+| `P8` | distracteur *le mulot* de `cm1-sciences-chaine-alimentaire.yaml` (CM1) | `nadia-prof`, puis `camille-po` | ouverte |
+| `P9` | ordre de fusion de `-03` avant `-02` | `theo-archi` ; `nadia-prof` et `camille-po` pour `P1` | fait lu : `-03` est fusionne avant `-02` (section 1) ; ouverte |
+| `P4` | intrus : tache B de `-02`, pendant pour la tache B de `-10` | `nadia-prof`, `camille-po` | **`-02` : mesure faite, reserve `RAL-CE1-R1` (`RS3`)** ; **`-10` : la fiche mesure 3 bonnes reponses sur 13 manches B au premier essai, moins que le hasard, et ne pose aucune reserve sur les B**, tout en ecrivant que ce constat ne ferme pas `P4` pour `-02` ; reste a `camille-po` |
+| `P6` | drapeau `-Dsurefire.failIfNoSpecifiedTests=false` absent de `CLAUDE.md`, de `squad/README.md`, de `.claude/agents/nadia-prof.md` | `yanis-qa` ; `theo-archi` si regle d'architecture | ouverte ; je ne choisis pas |
+| `C2`, `C4` | `QC3`, fusions serialisees d'un fichier a ajouts en fin de liste ; ordre `P1` non suivi | non designe | ouvertes ; fait lu : trois branches ont ecrit la ligne de compte du registre, section 3 |
+
+### 8. Ordre jusqu'a la cloture
+
+Sources : A.260 `P2` et `P3`, A.265, A.267, A.280, A.282, `squad/README.md`, et la phrase de l'utilisatrice relayee en section 5.
+
+1. **Fiches et stories, par `camille-po`, en parallele de cet amendement** (*"01 et 02 en //"*, relaye) : les stories des reserves de la section 7 qu'elle retient, l'inscription de la ligne *"Premier `verify` complet du lot"* des neuf fiches (proposition du 21:34, non decidee), la matrice a `couvert-valide` selon chaque verdict.
+2. **Horloge `MAT-CE1-11`, avec `nadia-prof`** (*"puis 03"*, relaye) : audit a l'ecran apres les neuf premiers audits et avant tout rejeu (`P3`, A.265). Son prix est non chiffre (A.282 point 2).
+3. **`QC3`** : l'entree de catalogue de chaque lot, lue par `nadia-prof` avant fusion (`RS12`).
+4. **Rejeux** : trois au plus, un par lot au plus, apres l'horloge (`P3`) ; l'existence meme d'un rejeu sans lot refuse est la question de la section 1, ouverte. Le quatrieme selon `Q3` d'A.271.
+5. **Remesure `A276`**, puis **`cloture-palier-5.md`**, ecrit une seule fois par moi apres un passage complet des quatre jobs de `ci.yml` (A.280 point 2) ; condition de `-03` (section 1) : si cette CI rougit sur ce lot, son verdict est rouvert ; obstacles du palier dans ce fichier puis dans `review.md`. **`cloture-palier-5.md` n'existe pas** (`ls`).
+
+### 9. Marqueurs poses sur l'amendement du 21:34
+
+Les passages suivants de l'amendement du 2026-10-27 21:34 portent un marqueur *[corrige par l'amendement du 2026-10-28 09:56 ...]*, texte d'origine conserve : section 5 (titre, ligne *Etat*, ligne *Condition de calendrier*, ligne *Cinq lignes*), ligne `R-C1C4` et ligne `A276` et ligne `P4` du tableau des points ouverts, point 1 et point 4 de l'ordre des etapes, et la section *Decisions prises*.
+
+### Decisions prises
+
+**Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il inscrit : l'etat des neuf audits a l'ecran lu dans les fiches (sept lots avec reserves, deux sans, aucun refus), les durees brutes de la remesure `A276` sans conclusion, le compte du registre (1004 identifiants, 179 prefixes), la porte technique (job `build`, etape `verify`, vert a `1a810b79`, mesure par moi ; `prefixes`, `chemins` et `outils` non lances en entier, porte complete non annoncee), les deux phrases de l'utilisatrice relayees, ce que les regles ecrites chiffrent ou non pour les neuf audits, la liste des reserves et leur routage, l'ordre jusqu'a la cloture. **Aucun Done n'est prononce par moi** : les neuf verdicts sont ceux de `nadia-prof`, lus.
