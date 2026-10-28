@@ -15,7 +15,10 @@
 - **Statut global** : **en attente d'audit a l'ecran**. Fiche ouverte par `camille-po` le 2026-10-27 (`DEC-0120` A.280, reponse
   de l'utilisatrice a `Q2` : nom `FICHE-ce1-qlm-<lot>.md`). Aucun verdict. La ligne `QLM-CE1-03` reste `non couvert` dans la
   matrice, qui ne bouge qu'au verdict de `nadia-prof`.
-- **Derniere mise a jour** : 2026-10-27.
+- **Statut global, mis a jour le 2026-10-28 par `camille-po` (`DEC-0120` A.283), l'ouverture ci-dessus etant perimee et conservee** : **VALIDE SOUS RESERVE** par `nadia-prof` le 2026-10-27 (s57, palier 5, rang 3 sur 9), sur le paquet tel qu'il est a `90c421a7` (item 6 compris), fusionne dans `round-two` par `740bbc34`. Deux reserves non bloquantes : le mot *plus* de la tache privation, que l'utilisatrice a decide de ne pas corriger, et la liste des non-besoins de la tache besoin. Voir le bloc de validation.
+- **Ligne de matrice, etat du 2026-10-28** : `QLM-CE1-03` reste `non couvert`. Motifs lus au depot : (1) `QC3`, aucune entree de catalogue (`grep -c "ce1-qlm" adapters/adapter-content/src/main/resources/catalogue.yaml` rend 0), donc aucun jeu a nommer dans la cellule "Jeu(x) couvrant" ; (2) Done technique complet, les quatre jobs de `.github/workflows/ci.yml` (`QC8`, A.280 point 2), dont seul `build` a ete lance. Aucun des deux n'est une decision de `nadia-prof`. La ligne bouge quand l'entree est fusionnee et que la CI complete est verte (`S57-QLM-CE1-ENTREES-CATALOGUE`) ; fusion du paquet dans `round-two` : `740bbc34`.
+- **Stories du backlog pour ce lot** (`docs/backlog/backlog.md`, annotation du 2026-10-28, douzieme, `DEC-0120` A.283) : `S57-BPL-CE1-1-REVISION` ; pas de story pour le mot *plus* (l'utilisatrice, 2026-10-28 : *"on ne corrige pas"*). Aucune n'est engagee.
+- **Derniere mise a jour** : 2026-10-27 ; 2026-10-28 (`camille-po`, `DEC-0120` A.283 : statut, ligne `verify`, etat de la ligne de matrice, stories).
 
 ---
 
@@ -58,7 +61,7 @@ verdict : la lecture et la relecture sont des gestes avant `verify`, pas le Done
 - **Regle en vigueur** (`DEC-0120` A.280, reponse de l'utilisatrice a `Q1`, option `O1`) : un `mvn verify` complet **avant** l'audit
   a l'ecran de `nadia-prof` de ce lot ; passage CI complet (`prefixes`, `chemins`, `outils`, `build`) a la cloture du palier ; toute
   annonce de porte nomme les jobs lances.
-- Premier `verify` complet du lot : **a faire**, resultat a inscrire ici par qui le lance, avec les jobs nommes.
+- Premier `verify` complet du lot : **fait au niveau du reacteur, pas par lot** (mis a jour le 2026-10-28 par `camille-po`, `DEC-0120` A.283 ; texte d'origine *"a faire"* perime, conserve ici). `bash outils/mvn-jdk21.sh -B clean verify`, reacteur complet, sur `90c421a7` : `BUILD SUCCESS`, 3618 tests unitaires et 6 d'integration, 0 echec, mesure par `sofia-sm` (`planning.md`, amendement du 2026-10-27 21:34, section 3), **job `build` seul**. `prefixes` et `chemins` n'ont ete lances qu'en commande de garde-fou, forme CI, `outils` n'a pas ete lance : la porte technique complete n'est pas annoncee (A.280 point 2). Sur `1a810b79`, base de cette mise a jour : un `verify` complet vert (3 624 tests, `build` seul) est **annonce par l'agent lanceur et n'est ecrit dans aucun fichier du depot que j'aie lu** ; `git diff --name-only 90c421a7 1a810b79` ne liste que des fichiers `.md`. Que ce `verify` unique tienne lieu de `verify` du lot n'est ecrit nulle part ; `nadia-prof` l'a lu ainsi dans son verdict. L'item 6 (`e02dcd86`) est ancetre de `90c421a7` (`planning.md`, section 2 de l'amendement du 2026-10-27 21:34), donc contenu dans ce `verify`.
 
 ## Ce dont `nadia-prof` reste la seule garde sur cette ligne
 
