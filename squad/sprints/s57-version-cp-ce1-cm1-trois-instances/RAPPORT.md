@@ -28,14 +28,14 @@ Méthode : `git diff --name-status 771b55de HEAD -- squad/decisions` (`771b55de`
 | `DEC-0121` | `nombreDeManches: 10` est une exigence de produit, les sept dérogations du catalogue sont nommées, deux dérogations orphelines sont ratifiées, et leur garde est routée | 2026-10-15 | Acceptée |
 | `DEC-0122` | Le périmètre de garantie d'une cote de mise en page est la pile de polices que la feuille sert, rendue sur le poste de mesure ; les polices imposées sont une sensibilité rapportée | 2026-10-16 | Acceptée |
 | `DEC-0123` | Six réponses de l'utilisatrice au palier 3 du CE1 (grille de `MAT-CE1-14`, dessins hors périmètre, prémisse de l'adulte étendue, arts plastiques, saisie CE1 suspendue) ; dix amendements, le dixième du 2026-10-25 | 2026-10-21 | Acceptée pour `Q-05`, `Q-06`, `Q-07`, `Q-08` et `Q-10` ; `Q-09` suspendue puis levée |
-| `DEC-0124` | `Q-09` : l'utilisatrice revient sur la correction automatique du clavier ; `DEC-0047` section 2 est amendée ; quatre amendements | 2026-10-21 | Acceptée pour le sens ; non appliquée au moment de l'écriture |
+| `DEC-0124` | `Q-09` : l'utilisatrice revient sur la correction automatique du clavier ; `DEC-0047` section 2 est amendée ; quatre amendements | 2026-10-21 | Acceptée pour le sens ; appliquée (amendement second du 2026-10-21) |
 | `DEC-0125` | Troisième non-entrée de `S57-TYP1-TEXTES-DE-GABARIT` et de `S57-MESSAGE-PARTIE-PERDUE` : les deux stories sont retirées du backlog actif ; un amendement | 2026-10-23 | Acceptée |
 
 ### 2.2 `DEC` amendées pendant le sprint
 
 | Numéro | Titre (abrégé) | Amendements du sprint | Statut |
 |---|---|---|---|
-| `DEC-0120` | Ouverture de s57, limitée : l'ordre des matières repris sous un motif de forme 1 par rang | **232 amendements numérotés, `A.63` à `A.294`**, sans trou (lus par `grep` des titres `### A.`) | Acceptée le 2026-10-14 (`A.77`), inchangé |
+| `DEC-0120` | Ouverture de s57, limitée : l'ordre des matières repris sous un motif de forme 1 par rang | **232 amendements numérotés, `A.63` à `A.294`**, sans trou (lus par `grep` des titres `### A.` : `A.280` porte deux titres, 232 numéros distincts) | Acceptée le 2026-10-14 (`A.77`), inchangé |
 | `DEC-0047` | Périmètre du sprint 20 : `NAT-5` en trois gestes, scope limité à `cp-nature-mot` | un amendement du 2026-10-21 (renvoi de `DEC-0124`) | Acceptée, inchangé |
 | `DEC-0062` | Convention d'attribution d'un énoncé reçu hors des neuf agents | amendements E, F et G du 2026-10-21 | Acceptée le 2026-08-31, inchangé |
 
@@ -76,10 +76,10 @@ Mesures locales que j'ai lancées, sur le worktree de cette branche, `python` po
 | `prefixes` | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-garde-fou-accent-test.sh` ; `commit-atteignable.sh 077fae0b` ; `git log --no-merges --format=%s 077fae0b..HEAD` (194 sujets) dans `verifier-prefixes.sh` ; `verifier-garde-fou-accent.sh "077fae0b..HEAD"` | `cae661ba` | six sorties 0 ; *"Tous les commits portent un préfixe d'agent connu."* ; *"0 commit(s) le touchent dans la plage, tous [THEO]."* ; `077fae0b` tient lieu de `github.event.before` |
 | `prefixes`, mes commits | `git log --no-merges --format=%s f33993b3..HEAD` dans `verifier-prefixes.sh` | `cae661ba` | sortie 0 |
 | `outils` | balayage de `ci.yml` rejoué à la main : `outils/*-test.sh` 6, `squad/outils/*/*-test.sh` 2, `outils/*-test.py` 5 | `cae661ba` | **13 juges, 0 rouge**, aucun motif vide |
-| `chemins` et gardes de documentation | relancés **sur l'arbre final, ce fichier indexé**, avant le commit | arbre final | résultat dans le compte rendu du commit de ce fichier, pas ici |
+| `chemins` et gardes de documentation | `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh'` dans `verifier-chemins.sh`, entrée standard réelle, ce fichier indexé ; `verifier-chemins-test.sh` ; gardes de documentation `-pl bootstrap -am` (19 tests) | arbre de `2c789417` | `chemins` : 3312 chemins, sortie 0, test du garde-fou 0 ; gardes : 0 échec, périmètre `bootstrap` et amonts |
 
 - **Le `verify` couvre le code de `f33993b3`.** Entre ce `verify` et le dernier commit de cette branche, seuls des fichiers de `squad/` et de `docs/` changent. Il couvre un fichier de contenu que ni l'agent lanceur (`d9313f9e`) ni `yanis-qa` (`a3e05f13`) n'avaient mesuré, `ce1-qlm-besoins-de-la-plante.yaml` (`29c11e3f`, item 11 de `-03`).
-- **Ce que ces mesures ne disent pas** : que la CI de GitHub est verte, que le job `build` est vert sur Linux avec Temurin 21 plutôt que sur ce JDK 21.0.10, ni qu'une des fiches qui conditionne son verdict à la CI (`-03`, `-10`) peut le garder. Les lignes `-10` et `-12` sont `couvert-valide` sur une mesure locale.
+- **Ce que ces mesures ne disent pas** : que la CI de GitHub est verte, que le job `build` est vert sur Linux avec Temurin 21 plutôt que sur ce JDK 21.0.10, ni que la fiche de `-03` (verdict rouvert si la CI rougit) ou celle de `-10` (ligne `couvert-valide` avec le Done technique acquis) peut le garder. Les lignes `-10` et `-12` sont `couvert-valide` sur une mesure locale.
 
 ### 3.2 Done pédagogique : celui de `nadia-prof` seule
 
@@ -140,7 +140,7 @@ Vingt-trois lignes dans `review.md`, section 10. Chacune a un propriétaire ; **
 - **Les corrections de `camille-po` aux défauts 6 à 18** de la relecture de clôture : citées par `A.293` point 9, non relues une à une.
 - **Le chiffre d'ouverture, 142 sur 200** (`DEC-0120` A.57) et les totaux de tests des paliers 1 à 4 : relayés de leurs sources, non rejoués. 2498 n'est pas confirmé comme total d'ouverture.
 - **Les ADR modifiées** : lues dans la confirmation de `theo-archi`, non relues une à une.
-- **`review.md`, `retro.md` et ce fichier n'ont pas été relus par le `relecteur-pedagogique`** : ils sont écrits et vérifiés par les gardes de documentation et par mon balayage des caractères interdits, pas par un second lecteur.
+- **`review.md`, `retro.md` et ce fichier** ont été relus par le `relecteur-pedagogique` après leur écriture (`relecture-ceremonies-cloture-s57.md`, 9 défauts, corrigés dans les commits `[SOF]` qui suivent `2c789417`).
 - **L'état des actions A-1 à A-10 de `retro-palier-3.md`** et des leçons de `retro-palier-2.md`.
 - **Le rendu à 360 de large hors de Segoe UI**, sur un vrai téléphone, avec un lecteur d'écran : non vérifié par `nadia-prof` non plus.
 
@@ -154,7 +154,7 @@ Aucune option par défaut n'est prise sans réponse.
 4. **Q4. Que deviennent les branches `s57-cl-marc-12nb` et `s57-cl-rel-12nb` ?** Elles portent la correction U+2011 de `-12` et la relecture, non fusionnées et conservées par `A.294`, et le seul exemplaire de la garde *trait d'union ordinaire interdit dans une proposition*. Reprise ou abandon, écrit en `DEC`.
 5. **Q5. Les amendements R-1 à R-4 de `squad/README.md` proposés dans `retro.md` sont-ils appliqués ?** Je ne les ai pas appliqués : la tâche ne les contenait pas et ce fichier est lu par tous les agents.
 6. **Q6. Peut-on supprimer `pid.txt` du checkout principal ?** Je ne le supprime ni ne le commite.
-7. **Q7. `Q-273-1` (i), vingt et unième mention.** Un rejeu au-delà des trois compte-t-il contre le plafond de `PAR-8` du palier 9 ou contre un autre ? À `nadia-prof` pour le chiffre  ; à l'utilisatrice seulement si le plafond couvre un palier 10. Aucun cas nommé ne la porte plus (A.286 point 5).
+7. **Q7. `Q-273-1` (i), vingt et unième mention.** Un rejeu au-delà des trois compte-t-il contre le plafond de `PAR-8` du palier 9 ou contre un autre ? À `nadia-prof` pour le chiffre ; à l'utilisatrice seulement si le plafond couvre un palier 10. Aucun cas nommé ne la porte plus (A.286 point 5).
 
 ## 8. Consommation de tokens
 

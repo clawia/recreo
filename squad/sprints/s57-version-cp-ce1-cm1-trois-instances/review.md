@@ -85,7 +85,7 @@ Ce que la relecture de clôture a trouvé qui m'est imputable : le 3292 de `clot
 | `verify` complet et jobs `prefixes`, `chemins`, `outils` | `sofia-sm` | `c72d15bf`, qui porte le code de `f33993b3` | voir `RAPPORT.md`, section 3 | voir `RAPPORT.md`, section 3 |
 
 - **Le code a changé depuis `d9313f9e`** : un fichier de contenu, `ce1-qlm-besoins-de-la-plante.yaml` (`29c11e3f`, item 11 de `-03`), est fusionné après les mesures de l'agent lanceur et de `yanis-qa`. Le résultat de ma propre mesure sur l'arbre qui le porte est dans `RAPPORT.md`.
-- **La CI GitHub** : déclenchée par les pushes (fait écrit par `yanis-qa` pour `a3e05f13`, relayé), **lue par personne**. Je ne l'ai pas lue et je ne sais pas quels SHA ont été poussés. Les fiches de `-03` et de `-10` conditionnent leur verdict à la CI complète à la clôture : *"si cette CI rougit sur ce lot, ce verdict est rouvert"*. La ligne `-10` et la ligne `-12` sont `couvert-valide` sur une mesure locale. Question à l'utilisatrice, `RAPPORT.md`, section 7.
+- **La CI GitHub** : déclenchée par les pushes (fait écrit par `yanis-qa` pour `a3e05f13`, relayé), **lue par personne**. Je ne l'ai pas lue et je ne sais pas quels SHA ont été poussés. La fiche de `-03` (`FICHE-ce1-qlm-03.md`, lignes 88 et 89) écrit : *"si cette CI rougit sur ce lot, ce verdict est rouvert"*. La fiche de `-10` (`FICHE-ce1-qlm-10.md`, lignes 156 et 157) écrit que la ligne *"ne passe à `couvert-valide` qu'avec le Done technique acquis"*, CI complète à la clôture. La ligne `-10` et la ligne `-12` sont `couvert-valide` sur une mesure locale. Question à l'utilisatrice, `RAPPORT.md`, section 7.
 
 ## 6. Done pédagogique
 
