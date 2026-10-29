@@ -2386,27 +2386,27 @@ Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusi
 
 Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-camille-p5-proposition` (1f76898e) dans `round-two` (RF11), troisieme et derniere des trois fusions sans poussee demandees par l'utilisatrice le 2026-10-23. Lignee verifiee dans le worktree de la branche (RF10) : `bash outils/verifier-lignee.sh` sort 0, arbre propre. `git diff --name-only round-two...s57-camille-p5-proposition` ne rend que six fichiers, tous sous `squad/` ou `docs/` : `proposition-camille-palier-5-ce1.md`, `DEC-0120` (amendement A.180 a A.197), `DEC-0123`, `DEC-0125`, `DEC-index.md` et `docs/backlog/backlog.md` (annotations). Aucun fichier sous adapters, domain, application, bootstrap, outils, .github, aucun paquet. Cette proposition n'est ni `composition-palier-5.md` ni l'arbitrage prealable de `nadia-prof` : aucun poste n'est engage par cette fusion, aucun Done n'est prononce, je ne fixe aucun prix et ne modifie pas la matrice. Je fusionne ce que `camille-po` a ecrit.
 
-## Amendement du 2026-10-25 (UTC+02:00), palier 5 : arbitrage de nadia-prof sur LP7 et D5 livre (RF11)
+## Amendement du 2026-10-25 (UTC+01:00), palier 5 : arbitrage de nadia-prof sur LP7 et D5 livre (RF11)
 
 Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-nadia-p5-a` (f78f554f) dans `round-two` (RF11), premiere des deux fusions sans poussee demandees par l'utilisatrice le 2026-10-25. Lignee verifiee dans le worktree de la branche (RF10) : `bash outils/verifier-lignee.sh` sort 0, arbre propre. `git diff --name-only round-two...s57-nadia-p5-a` ne rend qu'un fichier, `arbitrage-nadia-palier-5-lp7-d5.md` : aucun fichier sous adapters, domain, application, bootstrap, outils, .github, aucun paquet. La branche porte l'arbitrage de `nadia-prof` sur le second triangle rectangle de `LP7`, `PAR-13` et les cinq lignes de `D5`. Aucun palier 5 n'est compose par cette fusion, aucun Done n'est prononce, et je ne modifie ni la matrice ni un prix : je fusionne ce que `nadia-prof` a ecrit.
 
-## Amendement du 2026-10-25 (UTC+02:00), palier 5 : prix de nadia-prof pour le rejeu de LP6 livre (RF11)
+## Amendement du 2026-10-25 (UTC+01:00), palier 5 : prix de nadia-prof pour le rejeu de LP6 livre (RF11)
 
 Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-nadia-p5-b` (70998ce6) dans `round-two` (RF11), seconde et derniere des deux fusions sans poussee demandees par l'utilisatrice le 2026-10-25. Lignee verifiee dans le worktree de la branche (RF10) : `bash outils/verifier-lignee.sh` sort 0, arbre propre. `git diff --name-only round-two...s57-nadia-p5-b` ne rend qu'un fichier, `prix-nadia-rejeu-lp6.md` : aucun fichier sous adapters, domain, application, bootstrap, outils, .github, aucun paquet. La branche porte le prix du rejeu 2 de `LP6` que le registre du palier 4 laissait non chiffre. Aucun palier 5 n'est compose par cette fusion, aucun Done n'est prononce, et je ne modifie ni le registre, ni la matrice, ni une `DEC` : je fusionne ce que `nadia-prof` a ecrit.
 
-## Amendement du 2026-10-25 (UTC+02:00), palier 5 : consignation de camille-po livree (RF11)
+## Amendement du 2026-10-25 (UTC+01:00), palier 5 : consignation de camille-po livree (RF11)
 
 Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-camille-p5-consignation` (698aef59) dans `round-two` (RF11), fusion sans poussee demandee par l'utilisatrice le 2026-10-25. Lignee verifiee dans le worktree de la branche (RF10) : `bash outils/verifier-lignee.sh` sort 0, arbre propre, le sommet `2de8032a` de `round-two` est l'ancetre commun. `git diff --name-only round-two...s57-camille-p5-consignation` ne rend que six fichiers, tous sous `squad/` ou `docs/` : `registre-prix-palier-4.txt`, `DEC-0120` (amendement A.198 a A.209), `DEC-0123` (dixieme amendement), `DEC-index.md`, `proposition-camille-palier-5-ce1.md` et `docs/backlog/backlog.md`. Aucun fichier sous adapters, domain, application, bootstrap, outils, .github, aucun paquet. Aucun palier 5 n'est compose par cette fusion, aucun Done n'est prononce, je ne fixe aucun prix et ne modifie pas la matrice. Je fusionne ce que `camille-po` a ecrit.
 
-## Amendement du 2026-10-25 (UTC+02:00), palier 5 : consignation de V3 et dix paliers de camille-po livrees (RF11)
+## Amendement du 2026-10-25 (UTC+01:00), palier 5 : consignation de V3 et dix paliers de camille-po livrees (RF11)
 
 Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-camille-p5-dix-paliers` (4c127aa7, parents f2bd783e puis 4c127aa7) dans `round-two` (RF11), premiere des deux fusions sans poussee demandees par l'utilisatrice le 2026-10-25. Lignee verifiee dans le worktree de la branche (RF10) : `bash outils/verifier-lignee.sh` sort 0, `c5d07a4a` est l'ancetre commun. `git diff --name-only round-two...s57-camille-p5-dix-paliers` ne rend que quatre fichiers, tous sous `squad/` ou `docs/` : `DEC-0120` (amendement A.210 a A.228), `DEC-index.md`, `proposition-camille-palier-5-ce1.md` et `docs/backlog/backlog.md`. Aucun fichier sous adapters, domain, application, bootstrap, outils, .github, aucun paquet. La branche porte la consignation de V3 (le depassement ecrit de l'utilisatrice qui fait entrer questionner le monde CE1 dans s57), la trajectoire, le releve par scenario et les stories a ecrire. PO2 reste ouvert cote `camille-po` : `nadia-prof` est saisie, la reponse n'est pas dans cette branche. Aucun releve inscrit, aucune story ni paquet ecrit, aucun statut de matrice change. Aucun Done n'est prononce, je ne fixe aucun prix. Je fusionne ce que `camille-po` a ecrit.
 
-## Amendement du 2026-10-25 (UTC+02:00), palier 5 : reponse de nadia-prof sur V3 livree, condition de consignation non remplie (RF11)
+## Amendement du 2026-10-25 (UTC+01:00), palier 5 : reponse de nadia-prof sur V3 livree, condition de consignation non remplie (RF11)
 
 Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit qui precede la fusion de la branche `s57-nadia-p5-c` (3a22f063) dans `round-two` (RF11), seconde et derniere des deux fusions sans poussee demandees par l'utilisatrice le 2026-10-25. Lignee verifiee dans le worktree de la branche (RF10) : `bash outils/verifier-lignee.sh` sort 0, `c5d07a4a` est l'ancetre commun. `git diff --name-only round-two...s57-nadia-p5-c` ne rend qu'un fichier, `arbitrage-nadia-palier-5-qlm-v3.md` : aucun fichier sous adapters, domain, application, bootstrap, outils, .github, aucun paquet. La branche porte la reponse de `nadia-prof` sur V3 : depassement de sa regle admis, audit sous conditions. Sa condition : `camille-po` consigne le texte de V3 mot pour mot dans `DEC-0120` avant le premier lot. **Cette condition n'est pas remplie** : la branche precedente consigne V3, mais elle a ete ecrite avant la reponse de `nadia-prof` (PO2 ouvert), et je n'ai pas verifie qu'elle porte le texte mot pour mot. Je ne clos pas cette condition et je n'ouvre aucun lot de questionner le monde. Aucun Done n'est prononce, je ne modifie ni la matrice, ni une `DEC`, ni un prix. Je fusionne ce que `nadia-prof` a ecrit.
 
-## Amendement du 2026-10-26 (UTC+02:00), palier des neuf lots de questionner le monde CE1 : developpeur designe, declencheur de la lecture avant `verify`, fusions serialisees
+## Amendement du 2026-10-26 (UTC+01:00), palier des neuf lots de questionner le monde CE1 : developpeur designe, declencheur de la lecture avant `verify`, fusions serialisees
 
 Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit `s57-p5-sofia-planning`. Il execute les deux lignes que `DEC-0120` A.262 donne a `sofia-sm` (*"designer le developpeur distinct de `lea-dev` ; `planning.md` : le declencheur de `P0` et les fusions serialisees"*). **Il n'ouvre aucun palier et n'engage aucun lot** : l'ouverture reste soumise a `D2` (cloture du palier precedent, composition portee par un amendement date, table d'isolation). Les choix de l'utilisatrice du 2026-10-26 (`DEC-0120` A.261 : instance neuve, horloge `MAT-CE1-11` avec les neuf lots au palier 9, `K2` nommee, relevement de `PAR-8` a 19,20 en plafond, marge 1,5) [CORRIGE le 2026-10-26, amendement "plafond de PAR-8 a 20,20 et portee des rejeux" en fin de fichier : le plafond est 20,20, non 19,20 ; texte d'origine conserve] [corrige par A.273 : plafond de `PAR-8` du palier 9 releve a 22,20 le 2026-10-26 ; texte d'origine conserve] sont portes par `camille-po` (A.263) ; je ne les recopie pas et ne fixe aucun prix. `nadia-prof` reexamine sa condition `P3` et `theo-archi` ecrit l'exemption de garde d'`AIM-CE1-2` : je n'ai pas lu leurs fichiers en cours.
 
@@ -2455,7 +2455,7 @@ Source : `avis-theo-palier-5-neuf-lots-qlm-ce1.md` 3.3 et 3.4, repris par `DEC-0
 
 **Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** Il ecrit : la designation de `marc-dev` (execution de `DEC-0120` A.262, ligne `sofia-sm`), le declencheur de `P0` et la serialisation des fusions. Restent ouverts, non clos par cet amendement : l'amendement A.263 de `camille-po`, la condition `P3` de `nadia-prof` et l'exemption de garde d'`AIM-CE1-2` de `theo-archi`.
 
-## Amendement du 2026-10-26 (UTC+02:00), palier des neuf lots de questionner le monde CE1 : ordre des audits, engage de 13,50, lecture du cout reel de P0
+## Amendement du 2026-10-26 (UTC+01:00), palier des neuf lots de questionner le monde CE1 : ordre des audits, engage de 13,50, lecture du cout reel de P0
 
 Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit `s57-p5-sofia-ordre`. Il execute la ligne que `reponse-nadia-palier-5-qlm-marge-instance-neuve-horloge.md` (section 4, ligne `sofia-sm`) lui donne : *"dans `planning.md`, l'ordre de 1.3 et de 2 : neuf premiers audits, l'horloge, puis les rejeux"*. Il complete l'amendement du meme jour qui designe `marc-dev` ; il ne le modifie pas. **Il n'ouvre aucun palier et n'engage aucun lot** : l'ouverture reste soumise a `D2`. Il ne recalcule rien de ce que `camille-po` porte : `A.265` de `DEC-0120` est consigne en parallele par elle, dans ses fichiers.
 
@@ -2488,7 +2488,7 @@ Source : reponse de `nadia-prof`, section 3 (lignes 139 a 142).
 
 **Aucune `ADR` ni aucune `DEC` n'est creee ou amendee par cet amendement.** `DEC-0120` A.265 est ecrite par `camille-po` dans sa branche ; elle n'est pas close par cet amendement. Restent ouverts : la lecture des rejeux de l'horloge (section 1, point 3) et [CORRIGE le 2026-10-26, meme amendement : la lecture des rejeux de l'horloge n'est plus ouverte ; texte d'origine conserve] ; reste ouverte : l'exemption de garde d'`AIM-CE1-2` de `theo-archi`.
 
-## Amendement du 2026-10-26 (UTC+02:00), palier des neuf lots de questionner le monde CE1 : plafond de PAR-8 a 20,20 et portee des rejeux
+## Amendement du 2026-10-26 (UTC+01:00), palier des neuf lots de questionner le monde CE1 : plafond de PAR-8 a 20,20 et portee des rejeux
 
 Ecrit par `sofia-sm`, casquette Scrum Master, dans le commit `s57-p5-sofia-plafond`. Il inscrit deux reponses de l'utilisatrice du 2026-10-26 et corrige, par marqueur et sans effacer le texte d'origine, les passages de ce fichier qu'elles rendent inexacts. `camille-po` les consigne en `DEC-0120` A.266 dans ses fichiers, que cet amendement ne touche pas. **Il n'ouvre aucun palier, n'engage aucun lot, ne calcule aucun prix.**
 
@@ -3249,7 +3249,7 @@ Source : le bloc de validation de `nadia-prof` dans chacune des neuf `squad/conf
 - **A.271 point 4 (`Q3`)** : le quatrieme rejeu est pose pour le cas de **trois lots refuses**, a rouvrir a la fermeture des dix audits. **A.281 point 3** et **A.282** ne lui donnent que son prix. Aucun lot n'est refuse : le cas de `Q3` n'est pas celui observe.
 - **Ce que je ne trouve pas** dans A.265, A.270, A.271, A.280, A.281 et A.282 (relus pour cet amendement, les autres amendements non relus) : si *valide sous reserve* compte comme un refus pour `P3` ; si un rejeu peut porter sur un lot valide, avec ou sans reserve ; ce que devient la marge de 1,5 si aucun rejeu n'a lieu.
 - **Les fiches** : aucune ne demande de rejeu. Le seul emploi du mot dans les neuf blocs est dans `-12` : *"si la mesure ne montre rien, la reserve est levee sans rejeu ; si elle montre une coupure, `camille-po` en fait une story"*.
-- **Conclusion de lecture, sans decision** : ces textes n'imposent aucun rejeu en l'absence de lot refuse, et ne disent pas s'il en est permis un. La question est ouverte, a `camille-po` (proprietaire de `Q3`, A.271 point 4) et a `nadia-prof` (`P3` est son texte). Elle reste dans `P2` du second tableau de la section 7. **[corrige par l'amendement du 2026-10-29 00:03 : aucun lot refuse sur dix et aucun rejeu du (fiche de l'horloge) ; Q3 d'A.271 close par A.286 ; texte d'origine conserve]**
+- **Conclusion de lecture, sans decision** : ces textes n'imposent aucun rejeu en l'absence de lot refuse, et ne disent pas s'il en est permis un. La question est ouverte, a `camille-po` (proprietaire de `Q3`, A.271 point 4) et a `nadia-prof` (`P3` est son texte). Elle reste dans `P2` du second tableau de la section 7. **[corrige par l'amendement du 2026-10-29 00:03 : aucun lot refuse sur dix et aucun rejeu dû (fiche de l'horloge) ; Q3 d'A.271 close par A.286 ; texte d'origine conserve]**
 
 ### 2. Durees brutes d'audit (remesure A.276)
 
@@ -3315,19 +3315,19 @@ Methode : je ne chiffre que ce qu'une regle lue chiffre ; sinon *non chiffre*. R
 
 | Poste | Ce que la regle ecrite dit | Effet des neuf audits |
 |---|---|---|
-| Etat de reference | cas haut **24,20** (A.281 point 3, inchange par A.282 point 2), plafond **25,00**, reserve **0,80**, reserve de 1,80 sans les deux gestes d'A.280 | aucune regle lue ne le modifie (lignes suivantes) |
+| Etat de reference | cas haut **24,20** (A.281 point 3, inchange par A.282 point 2), plafond **25,00**, reserve **0,80**, reserve de 1,80 sans les deux gestes d'A.280 | aucune regle lue ne le modifie (lignes suivantes) **[corrige par l'amendement du 2026-10-29 (cloture du sprint) : `DEC-0120` A.293 point 1 : le cas haut en vigueur est 24,20 et la reserve 0,80 ; A.286 les avait ramenes a 23,70 et 1,30, avant la troisieme lecture de `-12` ; texte d'origine conserve]** |
 | Seconde lecture | A.272 regle point 1 (relie A.270 point 4) : 0,50 hors marge, pour la relecture par `nadia-prof`, apres correction de `marc-dev`, des lignes qu'elle a prescrites | **n'ajoute rien** : aucune des neuf branches ne touche un paquet ni un test (`git diff --name-only d6f2e007...<tete>`, section 1), aucune correction n'a ete appliquee a la suite d'un audit ; les neuf secondes lectures sont deja comptees (A.278) |
-| Troisieme lecture | A.272 regle point 3 et A.281 point 3 : 0,50 hors marge, par lot ; `-03` et `-08` deja comptees dans 24,20 | **n'ajoute rien** : la relecture de `-03` et `-08` a eu lieu avant les audits (`abd30678`), son prix est dans 24,20 ; aucune troisieme lecture supplementaire n'est ecrite dans les fiches |
+| Troisieme lecture | A.272 regle point 3 et A.281 point 3 : 0,50 hors marge, par lot ; `-03` et `-08` deja comptees dans 24,20 | **n'ajoute rien** : la relecture de `-03` et `-08` a eu lieu avant les audits (`abd30678`), son prix est dans 24,20 ; aucune troisieme lecture supplementaire n'est ecrite dans les fiches **[corrige par l'amendement du 2026-10-29 (cloture du sprint) : `DEC-0120` A.293 point 1 : le cas haut en vigueur est 24,20 et la reserve 0,80 ; A.286 les avait ramenes a 23,70 et 1,30, avant la troisieme lecture de `-12` ; texte d'origine conserve]** |
 | Quatrieme lecture | A.272 regle point 3 ne prevoit que la troisieme ; A.281 point 4 : non chiffree | **n'ajoute rien** : la correction du mot *plus* de `-03`, qui en serait une selon `nadia-prof`, n'a pas lieu (section 5). Non chiffre si elle avait lieu |
 | Audit a l'ecran d'un lot | aucune regle de `DEC-0120` lue ne chiffre l'audit a l'ecran d'un lot en plus du 1,0 du lot (*"lecture avant `verify` et correction qui la suit comprises"*, A.273). La fiche `-05` ecrit *"Aucune seconde lecture : l'audit est dans le 1,0 du lot"* ; c'est un ecrit de `nadia-prof`, pas une regle lue dans une `DEC` | **non chiffre**, je n'adopte ni ne conteste la phrase de la fiche `-05` |
-| Rejeu | 0,50 chacun (A.199, A.267 point 3), sur la marge de 1,5 | **n'ajoute rien** : aucun lot refuse, aucun rejeu du ou decide (section 1) |
+| Rejeu | 0,50 chacun (A.199, A.267 point 3), sur la marge de 1,5 | **n'ajoute rien** : aucun lot refuse, aucun rejeu dû ou decide (section 1) |
 | Durees | A.276 : durees reelles inscrites, aucun bareme | les durees de la section 2 sont des donnees, **non chiffrees** |
 | Stories des reserves | aucune regle lue ne chiffre une story de reserve (`RAL-CE1-R1`, `DEL-CE1-R1`, `ETE-CE1-R1` a `R3`, etc.) | **non chiffre** |
-| Les deux gestes d'A.280 | seconde lecture de l'horloge 0,50, quatrieme rejeu 0,50 hors marge (A.280 point 3) | **n'ont pas eu lieu**, aucun n'est ajoute ; le cas haut de 24,20 les suppose tous deux |
+| Les deux gestes d'A.280 | seconde lecture de l'horloge 0,50, quatrieme rejeu 0,50 hors marge (A.280 point 3) | **n'ont pas eu lieu**, aucun n'est ajoute ; le cas haut de 24,20 les suppose tous deux **[corrige par l'amendement du 2026-10-29 (cloture du sprint) : `DEC-0120` A.293 point 1 : le cas haut en vigueur est 24,20 et la reserve 0,80 ; A.286 les avait ramenes a 23,70 et 1,30, avant la troisieme lecture de `-12`. Le quatrieme rejeu n'a pas lieu (A.286) ; la composition de 24,20 est 17,70 plus 4,50 plus 1,00 plus 0,50 plus 0,50 de troisieme lecture de `-12` (A.293 point 1) ; texte d'origine conserve]** |
 | Hors reserve, non chiffres (A.282 point 2) | lecture du quatrieme rejeu, audit a l'ecran de l'horloge, `mvn verify` par lot, quatrieme lecture, deux troisiemes lectures supplementaires ou plus | inchange : aucun poste n'a recu de prix |
 
-- **Ce que cela donne** : selon les regles ecrites, les neuf audits n'ajoutent aucune ligne au registre (A.247) et ne modifient pas les 24,20 ni les 0,80 [calcul : 25,00 moins 24,20]. Le `mvn verify` que j'ai relance (section 4) n'a aucun prix ecrit : non chiffre.
-- **Ce que je ne dis pas** : que le palier a coute 24,20. C'est un cas haut, borne et non consommation (methode d'A.270 point 3). `Q-273-1` (i) et (ii) restent sans reponse.
+- **Ce que cela donne** : selon les regles ecrites, les neuf audits n'ajoutent aucune ligne au registre (A.247) et ne modifient pas les 24,20 ni les 0,80 [calcul : 25,00 moins 24,20]. Le `mvn verify` que j'ai relance (section 4) n'a aucun prix ecrit : non chiffre. **[corrige par l'amendement du 2026-10-29 (cloture du sprint) : `DEC-0120` A.293 point 1 : le cas haut en vigueur est 24,20 et la reserve 0,80 ; A.286 les avait ramenes a 23,70 et 1,30, avant la troisieme lecture de `-12` ; texte d'origine conserve]**
+- **Ce que je ne dis pas** : que le palier a coute 24,20. C'est un cas haut, borne et non consommation (methode d'A.270 point 3). `Q-273-1` (i) et (ii) restent sans reponse. **[corrige par l'amendement du 2026-10-29 (cloture du sprint) : `DEC-0120` A.293 point 1 : le cas haut en vigueur est 24,20 et la reserve 0,80 ; A.286 les avait ramenes a 23,70 et 1,30, avant la troisieme lecture de `-12` ; texte d'origine conserve]**
 
 ### 7. Reserves ouvertes et routage, d'apres les fiches
 
@@ -3393,15 +3393,15 @@ Les passages suivants de l'amendement du 2026-10-27 21:34 portent un marqueur *[
 |---|---|---|
 | Dix verdicts de `nadia-prof` (neuf lots `QLM-CE1`, horloge `MAT-CE1-11`) | 2 VALIDE (`-01`, `-04`), 8 VALIDE SOUS RÉSERVE, **aucun refus** | `grep` du titre *"Verdict du ..."* dans les dix fiches |
 | Horloge | premier jet `025e613b`, correction `cd74dc79`, seconde lecture `d398add4`, verdict `07961bf3` | `git log --merges` |
-| Entrées de catalogue | 9 entrées fusionnées (`eaa3ef65`), catalogue de 163 à 172 ; `-12` hors périmètre, sans entrée | `grep -c "paquet: <nom>$"` : 1 pour neuf paquets, 0 pour `ce1-qlm-generations` |
+| Entrées de catalogue | 9 entrées fusionnées (`eaa3ef65`), catalogue de 163 à 172 ; `-12` hors périmètre, sans entrée | `grep -c "paquet: <nom>$"` : 1 pour neuf paquets, 0 pour `ce1-qlm-generations` **[corrige par l'amendement du 2026-10-29 (cloture du sprint) : la ligne `-12` a son entree depuis `095b9cd4` : catalogue a 173 entrees, `-12` `couvert-valide` (`DEC-0120` A.291, A.292) ; texte d'origine conserve]** |
 | Titres et consignes des entrées | lus par `nadia-prof` (`2f2977fb`), orthographe relue (`cf7c6acf`, aucune correction) | fusions `d6933bda`, `f64eba26` |
-| Matrice | 165 sur 202 = 81,68 % (156 avant) | commande de la "Méthode du compte", lancée par moi |
+| Matrice | 165 sur 202 = 81,68 % (156 avant) | commande de la "Méthode du compte", lancée par moi **[corrige par l'amendement du 2026-10-29 (cloture du sprint) : 166 sur 202 = 82,18 % depuis `DEC-0120` A.292, relance par moi sur l'arbre du 2026-10-29 ; texte d'origine conserve]** |
 | Registre des identifiants | 1004 identifiants, 179 préfixes | `REGISTRE-identifiants.md`, ligne *Compte courant* |
 | Tests | 3644 à `eaa3ef65` (relayé, et lu dans la fiche de l'horloge à `371425e4`), 3618 `@Test` par les sources plus 26 | `cloture-palier-5.md` section 2 |
 | Porte technique | quatre jobs de `ci.yml` mesurés **en local**, verts ; **pas la CI GitHub**, rien n'est poussé | `cloture-palier-5.md` section 10 |
 
-- **Le code de `HEAD` est celui de `eaa3ef65`** : `git diff --name-status eaa3ef65 HEAD` ne nomme que `backlog.md`, `DEC-0120`, `DEC-index.md` et `MATRICE-couverture.md`.
-- **Coût** : plafond de `PAR-8` 25,00, engagé 13,50, marge 1,5, cas haut 23,70, réserve de plafond 1,30 (A.282, A.286). [calcul] 25,00 - 23,70 = 1,30. Le coût réel n'est pas mesuré. Aucun prix n'est écrit pour l'audit à l'écran, le `verify` par lot, la lecture des titres, la quatrième lecture : non chiffrés par les textes.
+- **Le code de `HEAD` est celui de `eaa3ef65`** : `git diff --name-status eaa3ef65 HEAD` ne nomme que `backlog.md`, `DEC-0120`, `DEC-index.md` et `MATRICE-couverture.md`. **[corrige par l'amendement du 2026-10-29 (cloture du sprint) : faux depuis `a3e05f13` : cinq fichiers de code ou de test differents de `eaa3ef65`, et `ce1-qlm-besoins-de-la-plante.yaml` en plus a `f33993b3` (voir le marqueur de la section 1 de `cloture-palier-5.md`) ; texte d'origine conserve]**
+- **Coût** : plafond de `PAR-8` 25,00, engagé 13,50, marge 1,5, cas haut 23,70, réserve de plafond 1,30 (A.282, A.286). [calcul] 25,00 - 23,70 = 1,30. Le coût réel n'est pas mesuré. Aucun prix n'est écrit pour l'audit à l'écran, le `verify` par lot, la lecture des titres, la quatrième lecture : non chiffrés par les textes. **[corrige par l'amendement du 2026-10-29 (cloture du sprint) : `DEC-0120` A.293 point 1 : le cas haut en vigueur est 24,20 et la reserve 0,80 ; A.286 les avait ramenes a 23,70 et 1,30, avant la troisieme lecture de `-12` ; texte d'origine conserve]**
 
 ### 2. Décisions de l'utilisatrice du palier, relayées
 
@@ -3428,8 +3428,48 @@ Chaque ligne ci-dessous porte un marqueur *[corrige par l'amendement du 2026-10-
 
 La clôture porte : les fusions de lot avec leur compte de catalogue, le total de tests, la matrice, les dix verdicts, le compte des reports, les questions à l'utilisatrice, les décisions, le coût, les durées brutes, la porte technique, l'ArchUnit absent, les obstacles et les travers. **Elle n'existait pas à la date de l'amendement du 2026-10-28 09:56** (*"cloture-palier-5.md n'existe pas"*, vrai alors) ; elle est ajoutée par le même commit que cet amendement.
 
-**Questions ouvertes, non tranchées par moi** : une exécution de la CI GitHub est-elle attendue avant la clôture (utilisatrice) ; engager ou non `S57-QLM-CE1-12-ACCORD` (`camille-po`, puis utilisatrice) ; `Q-273-1` (i), seizième mention (`nadia-prof`, utilisatrice). **Points routés, sans propriétaire qui ait répondu** : en-tête de `ce1-calendrier-dates.yaml` (développeur à désigner), levée de la réserve 2 de `-06` et de la réserve `d` de l'horloge (`nadia-prof` seule), réserve `c` de l'horloge (`camille-po`), clé de type de l'entrée de catalogue (`theo-archi`), `JAR`, `P6` (`yanis-qa`), `P7`, `P8`, `P9`, `P10`, `T1`, `C2`, `C4`, confirmation ArchUnit du palier (`theo-archi`). Le détail est dans la section 12 de `cloture-palier-5.md`.
+**Questions ouvertes, non tranchées par moi** : une exécution de la CI GitHub est-elle attendue avant la clôture (utilisatrice) ; engager ou non `S57-QLM-CE1-12-ACCORD` (`camille-po`, puis utilisatrice) ; `Q-273-1` (i), seizième mention (`nadia-prof`, utilisatrice). **Points routés, sans propriétaire qui ait répondu** : en-tête de `ce1-calendrier-dates.yaml` (développeur à désigner), levée de la réserve 2 de `-06` et de la réserve `d` de l'horloge (`nadia-prof` seule), réserve `c` de l'horloge (`camille-po`), clé de type de l'entrée de catalogue (`theo-archi`), `JAR`, `P6` (`yanis-qa`), `P7`, `P8`, `P9`, `P10`, `T1`, `C2`, `C4`, confirmation ArchUnit du palier (`theo-archi`). Le détail est dans la section 12 de `cloture-palier-5.md`. **[corrige par l'amendement du 2026-10-29 (cloture du sprint) : `S57-QLM-CE1-12-ACCORD` est engagee et faite (`DEC-0120` A.290 a A.292) ; `Q-273-1` (i) en est a sa vingt et unieme mention (A.294) ; texte d'origine conserve]**
 
 ### Decisions prises
 
 **Aucune `ADR` ni aucune `DEC` n'est créée ou amendée par cet amendement.** Il inscrit : l'état final du palier 5 lu dans le dépôt (dix verdicts, aucun refus ; neuf entrées de catalogue ; 165 sur 202 ; 1004 identifiants), les trois décisions de l'utilisatrice relayées par `DEC-0120` (A.284, A.286, A.287), les marqueurs posés sur les lignes périmées, et le renvoi à `cloture-palier-5.md`. **Aucun Done n'est prononcé par moi** : les dix verdicts sont ceux de `nadia-prof`, lus.
+
+## Amendement du 2026-10-29 16:56 (UTC+01:00), clôture du sprint : A.289 à A.294 inscrits, corrections de la relecture de clôture, renvoi à `review.md`
+
+Écrit par `sofia-sm`, casquette Scrum Master, branche `s57-cl-sofia-s57`, base `round-two` à `f33993b3` (lu par `git rev-parse`). Il ne modifie ni `DEC-0120`, ni les fiches, ni la matrice, ni le backlog, ni le code. Il ne décide rien et ne prononce aucun Done. Il répond aux défauts 21 et 22 de `relecture-cloture-s57.md` et à la route d'`A.293` et d'`A.294` vers `sofia-sm`. L'utilisatrice a décidé de clore s57 le 2026-10-29 (relayé par l'agent lanceur, forme 2 de `DEC-0062` G, non lu de sa main) : `D3` de ce fichier (*"quand l'utilisatrice l'arrête"*) est la règle appliquée.
+
+### 1. Faits inscrits, lus dans `DEC-0120`
+
+| Amendement | Fait inscrit | Statut de la décision |
+|---|---|---|
+| `A.289` | le compte de fichiers du job `chemins` à `eaa3ef65` est 3293 avec le test du garde-fou, non 3290 | `Acceptee`, inchangé |
+| `A.290` | `S57-QLM-CE1-12-ACCORD` est engagée, l'entrée de `-12` entre au périmètre de `S57-QLM-CE1-ENTREES-CATALOGUE` | `Acceptee`, inchangé |
+| `A.291` | l'accord est fautif à deux énoncés (3 et 8), corrigé, fusionné et lu ; le critère 3 est élargi aux lignes de commentaire d'en-tête ; l'entrée de `-12` est écrite ; une troisième lecture de `-12` a eu lieu | `Acceptee`, inchangé |
+| `A.292` | `QLM-CE1-12` passe à `couvert-valide` ; le Done technique est une **mesure locale à `d9313f9e`, pas la CI GitHub** ; 166 sur 202 | `Acceptee`, inchangé |
+| `A.293` | clôture décidée ; cas haut 24,20 et réserve 0,80 ; deux corrections de contenu engagées ; deux stories de pli non engagées | `Acceptee`, inchangé |
+| `A.294` | `O2` de l'utilisatrice : la correction U+2011 de `-12` n'est pas fusionnée ; `-03` item 11 tenue, à fusionner ; la story de `-12` redevient non engagée | `Acceptee`, inchangé |
+
+Les lignes de ce fichier et de `cloture-palier-5.md` que ces faits rendent périmées portent un marqueur *[corrige ...]*, texte d'origine conservé (section 3).
+
+### 2. Fusions de clôture, lignée relue
+
+Neuf fusions `[SOF]` de `7fccd281` à `f33993b3` (`git log --merges a3e05f13..HEAD`). Pour chacune, `git merge-base` des deux parents est un ancêtre du premier parent et `git rev-list --count` rend 1 commit apporté, sauf `604f9400` (8, les amendements `A.293` et `A.294` empilés) et `12bc666e` (2, la correction de `-03` et l'avis de `marc-dev`). **C'est ma relecture.** `bash outils/verifier-lignee.sh` lancé dans mon worktree : sortie 0.
+
+- **Fusionné** : `29c11e3f` (`-03`, item 11) et `90374887` (`avis-marc-12-item-8-v1.md`, qui ne touche aucun yaml).
+- **Non fusionné, non supprimé** : `180889a4` (`s57-cl-marc-12nb`) et `3e85dc33` (`s57-cl-rel-12nb`), par `A.294` point 3 et la décision `O2`. Ces deux branches portent le seul exemplaire de la garde *trait d'union ordinaire interdit dans une proposition*.
+
+### 3. Corrections posées par ce geste
+
+- **Titres d'amendement** : huit titres des 2026-10-25 et 2026-10-26 portaient `(UTC+02:00)`, le changement d'heure étant le 25 à 03:00 ; ils portent `(UTC+01:00)` (défaut 3). C'est une coquille de fuseau, corrigée dans le titre.
+- **Graphie** : *"rejeu du"* devient *"rejeu dû"* aux deux lignes du 09:56 qui la portaient (défauts 1 et 2).
+- **Cas haut** : cinq lignes de l'amendement du 09:56 et la ligne de coût de celui du 00:03 portent un marqueur renvoyant à `A.293` point 1 : **24,20 et 0,80 sont en vigueur** (défaut 19).
+- **État du 00:03 périmé** : quatre lignes (entrées de catalogue, matrice, code de `HEAD`, questions ouvertes) portent un marqueur (défaut 22).
+- **`cloture-palier-5.md`** : vingt-trois lignes corrigées ou marquées, dont le titre de la section 7 (coquille d'accent), la ligne 3 (*"n'est pas clos"*), les 166 sur 202, le code de `HEAD`, la parenthèse des durées, le marqueur du 3292 que la relecture jugeait inexact, l'accord de `-12` résolu (défauts 4, 5, 11, 13, 20, 23).
+
+### 4. Ce qui reste à d'autres
+
+`relecture-cloture-s57.md` : les défauts 6, 7, 8, 9, 10, 12, 14 à 18 sont à `camille-po` (faits dans `A.293`, point 9, sauf ce que ce point nomme comme non fait). Le défaut 2 bis (en-tête de `ce1-calendrier-dates.yaml`) reste ouvert : aucun développeur n'est désigné, je ne le désigne pas sans question à l'utilisatrice (`RAPPORT.md`, section 6). Le point à trancher 4 de la relecture (graphie *VALIDE SOUS RÉSERVE*) est à `nadia-prof` pour ses fiches et à `camille-po` pour la matrice.
+
+### Decisions prises
+
+**Aucune `ADR` ni aucune `DEC` n'est créée ou amendée par cet amendement.** Il inscrit les faits d'`A.289` à `A.294`, la lignée des neuf fusions de clôture, les corrections de la relecture de clôture adressées à `sofia-sm` et le renvoi à `review.md`, `retro.md` et `RAPPORT.md`. **Aucun Done n'est prononcé par moi.**
