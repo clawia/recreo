@@ -25273,7 +25273,7 @@ Arbre : base `round-two` a `d9313f9e`, branche `s57-p5-camille-292`. Aucune stor
 
 Base `round-two` à `1a31d632`, branche `s57-cl-camille-293`. Décisions de l'utilisatrice du 2026-10-29, relayées par l'agent lanceur (forme 2, `DEC-0062` G), mots reportés : *"Q1 02"* (corriger avant la clôture ce qui est sans ambiguïté), puis *"Q1 O1 et Q2 O1"* : `Q1 O1`, les constats de pli de `nadia-prof` (1, 4 et 5 de son avis) deviennent des stories **non engagées**, l'avis d'`ines-design` pour base ; `Q2 O1`, la coupure de *grands-parents* dans `-12` est corrigée côté contenu par un trait d'union insécable (U+2011) dans les propositions. Le sens de `Q1 O1` et de `Q2 O1` est celui que l'agent lanceur me donne ; si l'utilisatrice les lit autrement, sa phrase l'emporte. Sources : `avis-nadia-cloture-s57.md` (sections 4.2 et 4.3), `avis-ines-pli-revelation.md` (branche `s57-cl-ines-12`, **non fusionnée à cette base**), `avis-marc-12-item-8-v1.md` (branche `s57-cl-marc-corr`, non fusionnée). Cotes de pli : celles de `nadia-prof`, 744 x 551, **non remesurées par moi**. Aucune ligne de matrice ne change : 166 sur 202.
 
-### `S57-BPL-CE1-11-COUPURE-A-T-ELLE` - dans `ce1-qlm-besoins-de-la-plante`, l'item 11 se lit sans que *"a-t-elle"* soit coupé (constat 3 de `nadia-prof`) - ENGAGEE a la clôture de s57 (`Q1 02`), correction faite sur branche, non fusionnée, non lue
+### `S57-BPL-CE1-11-COUPURE-A-T-ELLE` - dans `ce1-qlm-besoins-de-la-plante`, l'item 11 se lit sans que *"a-t-elle"* soit coupé (constat 3 de `nadia-prof`) - ENGAGEE a la clôture de s57 (`Q1 02`), correction faite sur branche, non fusionnée, non lue **[mis à jour par A.294 (annotation du 2026-10-29, dix-neuvième) : FAITE sous réserve de la fusion de `s57-cl-marc-corr` et `s57-cl-rel-corr`, lue par `nadia-prof`, tenue ; aucun Done prononcé]**
 
 - **Besoin** : en tant qu'élève de CE1, je veux lire la question de l'item 11 sans qu'un mot soit coupé en deux lignes, afin de la déchiffrer d'un seul regard.
 - **Mécanique demandée** : aucune. **Compétence programme visée** : `QLM-CE1-03` (`squad/programme/questionner-le-monde/competences-ce1.md`, ligne `[QLM-CE1-03]`), `couvert-valide`, non rouverte ; le texte servi à l'enfant change, donc il repasse par `nadia-prof`.
@@ -25286,7 +25286,7 @@ Base `round-two` à `1a31d632`, branche `s57-cl-camille-293`. Décisions de l'ut
   5. **Done technique** : tous les jobs de `ci.yml`, nommés avec leur sortie.
 - **Premier acteur, route** : `marc-dev` (fait, `29c11e3f`), `relecteur-pedagogique` (fait, non fusionné), `nadia-prof` (lecture, **Done pédagogique prononcé par elle seule, non prononcé**), `sofia-sm` (fusion). **Prix** : non chiffré (`DEC-0120` A.293 point 2). **Lien** : `DEC-0120` A.293 ; `S57-ETE-CE1-R2`, `S57-BPL-CE1-1-REVISION`.
 
-### `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE` - dans `ce1-qlm-generations`, *"grands-parents"* et *"arrière-grands-parents"* ne sont plus coupés dans les propositions (constat 2 de `nadia-prof`, `Q2 O1`) - ENGAGEE a la clôture de s57, correction faite sur branche, non fusionnée, non lue, non mesurée
+### `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE` - dans `ce1-qlm-generations`, *"grands-parents"* et *"arrière-grands-parents"* ne sont plus coupés dans les propositions (constat 2 de `nadia-prof`, `Q2 O1`) - ENGAGEE a la clôture de s57, correction faite sur branche, non fusionnée, non lue, non mesurée **[corrigé par A.294 (annotation du 2026-10-29, dix-neuvième) : NON ENGAGEE (`O2` de l'utilisatrice), correction non fusionnée, conservée sur `s57-cl-marc-12nb` (`180889a4`) et `s57-cl-rel-12nb` (`3e85dc33`) ; texte d'origine conservé]**
 
 - **Besoin** : en tant qu'élève de CE1, je veux lire *grands-parents* d'un seul regard, sans que le mot soit coupé entre deux lignes, afin de reconnaître la bonne génération.
 - **Mécanique demandée** : aucune. **Compétence programme visée** : `QLM-CE1-12` (`squad/programme/questionner-le-monde/competences-ce1.md`, ligne `[QLM-CE1-12]`), `couvert-valide`, non rouverte ; le texte servi change (le caractère, pas le mot), donc il repasse par `nadia-prof`.
@@ -25300,7 +25300,7 @@ Base `round-two` à `1a31d632`, branche `s57-cl-camille-293`. Décisions de l'ut
 - **Ce que la story ne dit pas** : que la coupure disparaît à l'écran (**aucune mesure à l'écran n'a eu lieu après la correction** : la ligne peut couper aux virgules et aux espaces, le mot peut déborder à 360 px) ; que `V1` est levée (`S57-QLM-CE1-12-V1-MESURE`, ci-dessous) ; la couverture du glyphe U+2011 par la pile de polices et sa lecture par un lecteur d'écran, que l'avis d'`ines-design` nomme comme risques (R-a, R-b) et qu'aucune mesure n'a établis.
 - **Premier acteur, route** : `marc-dev` (fait, non fusionné), `relecteur-pedagogique`, `nadia-prof` (lecture, **Done non prononcé**), `sofia-sm` (fusion). **Prix** : non chiffré (`DEC-0120` A.293 point 2). **Lien** : `DEC-0120` A.293 ; `S57-QLM-CE1-12-V1-MESURE`.
 
-### `S57-QLM-CE1-12-V1-MESURE` : annotation, la story n'est pas réécrite
+### `S57-QLM-CE1-12-V1-MESURE` : annotation, la story n'est pas réécrite **[seconde annotation par A.294 : `V1` partiellement tenue sur l'arbre non fusionné]**
 
 La story reste **NON ENGAGEE**. Ce qui est fait et ce qui reste, séparément :
 
@@ -25351,3 +25351,49 @@ La story reste **NON ENGAGEE**. Ce qui est fait et ce qui reste, séparément :
 - **Done pédagogique** : `nadia-prof` seule, à l'écran. **Premier acteur, route** : `nadia-prof` (`Q-B1`, `Q-B2`), `theo-archi` (`Q-B3`, cause), `ines-design` (mesure). Engagement : `sofia-sm`. **Prix** : non chiffré. **Lien** : `DEC-0120` A.293 ; `S57-PLI-REVELATION-GABARIT-COMMUN` ; `S57-BR-MAT-CE1-11-HORLOGE`.
 
 **Report.** Première inscription de chacune de ces quatre stories ; aucune n'a été reportée avant cette annotation. `S57-QLM-CE1-12-V1-MESURE` : non engagée, inchangée, première annotation de mesure. Aucune ligne de matrice ne change.
+
+
+## Annotation du 2026-10-29, dix-neuvième : après la lecture des deux corrections par `nadia-prof`, `-03` item 11 faite sous réserve de fusion, la correction de `-12` non fusionnée, sa story non engagée (`camille-po`, `DEC-0120` A.294)
+
+Base `round-two` à `1a31d632`, branche `s57-cl-camille-294`. Décision de l'utilisatrice du 2026-10-29, relayée par l'agent lanceur (forme 2, `DEC-0062` G), mot reporté : *"O2"*, dont le sens, tel que l'agent lanceur me le donne, est : **ne pas fusionner la correction U+2011 de `-12`** ; `-12` garde ses propositions telles qu'au Done ; la correction rejoint les stories non engagées. Source : `avis-nadia-corrections-cloture-s57.md` (branche `s57-cl-nadia-corr`, commit `a2b6847b`, **non fusionnée**), mesure à `e75e3f7e`, non rejouée par moi. Les titres des stories ci-dessus portent un marqueur ; les textes d'origine sont conservés.
+
+### `S57-BPL-CE1-11-COUPURE-A-T-ELLE` : FAITE, sous réserve de la fusion de `s57-cl-marc-corr` et de `s57-cl-rel-corr`. Aucun Done prononcé.
+
+La story reste **engagée**. Critère par critère :
+
+1. **Levée, ses mots** : `nadia-prof` écrit que l'item 11 se lit *"Une graine a déjà de l'eau. Pour germer, elle a"* / *"aussi besoin de quoi ?"*, *"plus aucun mot coupé"*, à 744 x 551 ; elle a servi les 14 items et ne signale que l'item 11, levé. **Lu rempli** (la mesure est la sienne, non remesurée par moi).
+2. **Diff limité** : tenu à `29c11e3f` (une ligne, l'énoncé de l'item 11), inchangé.
+3. **Relecture** : `57a13d26`, *"Aucun defaut"*, non fusionnée ; **lecture de `nadia-prof` : écrite, tenue, constat 3 levé.**
+4. **Gardes** : non assouplies à `29c11e3f`, inchangé.
+5. **Done technique** : tous les jobs de `ci.yml` sur le SHA fusionné, **non lu** ; la mesure de `nadia-prof` (`adapter-content` seul, 2571 tests, 0 échec) n'est pas la CI.
+
+**Ce que cette mention ne dit pas** : qu'un Done est prononcé. Le Done pédagogique de `-03` est celui de `nadia-prof`, dans `FICHE-ce1-qlm-03.md`, qu'elle n'a pas touchée par ce geste. La ligne `QLM-CE1-03` est `couvert-valide` avant et après. **Reste** : fusion par `sofia-sm` des deux branches (qui apportent aussi `90374887`, `avis-marc-12-item-8-v1.md`, aucun yaml : `sofia-sm` dit si cet avis entre avec) ; jobs de `ci.yml` nommés sur le SHA fusionné.
+
+### `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE` : requalifiée, NON ENGAGEE (`O2`). L'engagement d'A.293 est annulé.
+
+- **Besoin, mécanique, compétence** : inchangés (voir la story ci-dessus). Compétence visée : `QLM-CE1-12`, `couvert-valide`, non rouverte, propositions telles qu'au Done.
+- **Où vit le code** : branche `s57-cl-marc-12nb`, commit `180889a4` (correction et garde, 2 fichiers) ; branche `s57-cl-rel-12nb`, commit `3e85dc33` (relecture, 1 défaut : le renvoi `DEC-0120, Q2 O1`). **Non fusionnées. À conserver tant que la story n'est pas tranchée (reprise ou abandon, écrit en `DEC`).** Le renvoi `DEC-0120, Q2 O1` résout à `DEC-0120` A.293 point 3 (texte de l'option, qui reste écrit) ; **`Q2 O1` a été écartée par `O2`** et reste le texte du renvoi (`DEC-0120` A.294 point 3).
+- **Ce que la correction fait, mesuré par `nadia-prof` à `e75e3f7e`** : supprime aux deux tailles la coupure à l'intérieur de *grands-parents* et d'*arrière-grands-parents* ; à 744 x 551, aucun texte hors bouton ; **à 360 de large, *arrière-grands-parents* déborde de son bouton** (items 1, 4, 9, une proposition chacun ; item 8, les trois), première lettre rognée à l'item 8 avec la barre de défilement classique. Verdict : *"tenue à 744 x 551, à refaire à 360 de large"*, non refusée.
+- **Condition de reprise (deux, et les deux sont nécessaires)** :
+  1. **La dépendance au gabarit commun** : `S57-PLI-REVELATION-GABARIT-COMMUN` (ses décisions préalables `P1` à `P4` prises), parce que le débordement relève de la mise en page des boutons du gabarit de manche, que *"la cause est à `theo-archi` et `ines-design`"*.
+  2. **Une règle de gabarit qui autorise de couper un mot trop long dans un bouton** (ou toute autre règle qui empêche un mot insécable de sortir de son bouton). Le levier (feuille, gabarit) est à `theo-archi` et `ines-design`, je ne le choisis pas. **Une telle règle va contre la lettre de l'exigence 1 de `V1`** (*"aucune proposition coupee a l'interieur de arrière-grands-parents ou de grands-parents"*) : `nadia-prof` dit, par `Q-C1` étendue, si elle l'accepte et sous quelle formule. Je n'écris pas le critère de remplacement.
+- **Critères d'acceptation à la reprise** (méthode de `avis-nadia-corrections-cloture-s57.md`, section 1 : page *Questionner le monde* du CE1, quatre parties par taille, chaque manche jusqu'à la révélation, `getBoundingClientRect()` sur le bouton et sur le texte de chaque proposition) :
+  1. **Contenu.** Entrée : les lignes `bonneReponse:` et `distracteurs:` des 12 items de `ce1-qlm-generations.yaml`. Sortie : le nombre d'occurrences d'un trait d'union ordinaire (U+002D) entre deux lettres. **Sur `round-two` à `1a31d632` : 22**, rouge ; **à `180889a4` : 0**. (Si la règle de gabarit de la condition 2 rend le trait insécable inutile, ce critère est à réécrire avec `nadia-prof`, pas à abandonner en silence.)
+  2. **Mesure à 360 de large, ses mots.** Entrée : les 12 items servis à 360 de large, une fois en émulation mobile (360 de mise en page) et une fois avec barre de défilement classique (345 de mise en page), chaque manche jusqu'à la révélation. Sortie : le nombre de propositions (et de réponses nommées) dont le texte dépasse son bouton, le nombre de lettres cachées sous le bord de l'écran, et la largeur de la page à la révélation. **Aujourd'hui, au commit `180889a4`** (mesure de `nadia-prof`) : **6 propositions sur 4 items** dépassent leur bouton [calcul : items 1, 4 et 9, une proposition chacun, plus les trois de l'item 8], la première lettre est cachée à l'item 8 avec la barre classique, la page mesure 361 pour 360 à la révélation : **rouge**. **Sur `round-two` à `1a31d632`** (propositions sans insécable) : le mot se coupe au lieu de déborder (`V1`, mesurée non tenue à 360 sur les items 1, 3, 4, 6, 8 et 9) : **rouge aussi, par un autre défaut**. Cible : 0, 0 et 360.
+  3. **Même mesure à 744 x 551** : 0 proposition qui dépasse son bouton. **Déjà 0 aujourd'hui à `180889a4`** (`nadia-prof`) : c'est une non-régression, non un correctif, et ce critère est vert avant d'avoir servi.
+  4. **`V1`, exigence 1, en ses mots**, aux deux tailles : tenue aujourd'hui à `180889a4`, **mais verte par construction même si le mot déborde** (`nadia-prof` ; voir `S57-QLM-CE1-12-V1-MESURE`) : ce critère ne se lit jamais sans le critère 2.
+  5. **Les gardes ne s'assouplissent pas** (`G12-1` à `G12-7`, `FER-1`, la garde du trait d'union ordinaire) ; le renvoi de la garde est réécrit vers l'amendement qui reprend la story.
+  6. **Le texte repasse par `nadia-prof` à l'écran avant le `verify`, et par le `relecteur-pedagogique`** (la relecture de `3e85dc33` ne vaut que pour le renvoi d'alors).
+  7. **Done technique** : tous les jobs de `ci.yml`, nommés avec leur sortie.
+- **Ce que la story ne dit pas** : que le glyphe U+2011 est couvert par la pile de polices hors Segoe UI (Android, iOS, macOS, Linux : non vu), ni sa lecture par un lecteur d'écran, ni la largeur du mot sous une autre police (**non vérifiés**, `nadia-prof`) ; que `V1` est levée ; qu'un Done est prononcé.
+- **Premier acteur, route** : engagement `sofia-sm` ; `ines-design` (mesure) ; `theo-archi` (cause) ; `nadia-prof` (`Q-C1`, lecture à l'écran, fiche, Done seule) ; `marc-dev` et `relecteur-pedagogique` à la reprise. **Prix** : non chiffré (`DEC-0120` A.293 point 2, A.294 point 5). **Lien** : `DEC-0120` A.293, A.294 ; `S57-PLI-REVELATION-GABARIT-COMMUN` ; `S57-QLM-CE1-12-V1-MESURE`.
+
+### `S57-QLM-CE1-12-V1-MESURE` : seconde annotation, la story n'est pas réécrite
+
+La story reste **NON ENGAGEE**. `V1` est **partiellement tenue** sur l'arbre mesuré (`e75e3f7e`, correction non fusionnée), `nadia-prof` ne déplaçant pas son poteau :
+
+- **Exigence 1 (aucune coupure à l'intérieur d'*arrière-grands-parents* ou de *grands-parents*)** : **tenue** à 744 x 551 et à 360, **sur le contenu corrigé** ; **non tenue sur le contenu servi** (`round-two`), puisque la correction n'est pas fusionnée (`O2`).
+- **Exigence 2 (aucune réponse attendue sous le pli à la révélation)** : **non tenue** à 744 x 551, quatre items (3, 8, 9 et 12) ; dans `S57-PLI-REVELATION-GABARIT-COMMUN`.
+- **Ce qui reste, en plus** : le débordement du bouton à 360 n'est pas dans la lettre de `V1` ; `nadia-prof` l'écrira dans la fiche comme réserve nouvelle et datée, **ce n'est pas un ajout de ma part** ; `Q-C1` (ce que l'exigence 1 devient si un mot ne peut plus se couper) reste à elle. Les deux lignes de fiche (mesure de `V1`, débordement) sont à écrire par elle ; **je n'y touche pas**. La réserve `V1` n'est pas levée.
+
+**Report.** `S57-BPL-CE1-11-COUPURE-A-T-ELLE` : aucun report. `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE` : engagée en A.293 puis non engagée ici, toutes deux dans s57 ; premier report d'un sprint à l'autre à écrire à l'ouverture suivante avec s57. `S57-QLM-CE1-12-V1-MESURE` : non engagée depuis A.283, seconde annotation. Aucune ligne de matrice ne change de statut : 166 sur 202. Coût : `DEC-0120` A.294 point 5, **non chiffré**.
