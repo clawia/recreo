@@ -3464,11 +3464,11 @@ Neuf fusions `[SOF]` de `7fccd281` à `f33993b3` (`git log --merges a3e05f13..HE
 - **Graphie** : *"rejeu du"* devient *"rejeu dû"* aux deux lignes du 09:56 qui la portaient (défauts 1 et 2).
 - **Cas haut** : cinq lignes de l'amendement du 09:56 et la ligne de coût de celui du 00:03 portent un marqueur renvoyant à `A.293` point 1 : **24,20 et 0,80 sont en vigueur** (défaut 19).
 - **État du 00:03 périmé** : quatre lignes (entrées de catalogue, matrice, code de `HEAD`, questions ouvertes) portent un marqueur (défaut 22).
-- **`cloture-palier-5.md`** : vingt-trois lignes corrigées ou marquées, dont le titre de la section 7 (coquille d'accent), la ligne 3 (*"n'est pas clos"*), les 166 sur 202, le code de `HEAD`, la parenthèse des durées, le marqueur du 3292 que la relecture jugeait inexact, l'accord de `-12` résolu (défauts 4, 5, 11, 13, 20, 23).
+- **`cloture-palier-5.md`** : vingt-cinq lignes corrigées ou marquées (vingt-trois par `c72d15bf`, deux de plus par le commit suivant : les quatorze stories de réserves), dont le titre de la section 7 (coquille d'accent), la ligne 3 (*"n'est pas clos"*), les 166 sur 202, le code de `HEAD`, la parenthèse des durées, le marqueur du 3292 que la relecture jugeait inexact, l'accord de `-12` résolu (défauts 4, 5, 11, 13, 20, 23).
 
 ### 4. Ce qui reste à d'autres
 
-`relecture-cloture-s57.md` : les défauts 6, 7, 8, 9, 10, 12, 14 à 18 sont à `camille-po` (faits dans `A.293`, point 9, sauf ce que ce point nomme comme non fait). Le défaut 2 bis (en-tête de `ce1-calendrier-dates.yaml`) reste ouvert : aucun développeur n'est désigné, je ne le désigne pas sans question à l'utilisatrice (`RAPPORT.md`, section 6). Le point à trancher 4 de la relecture (graphie *VALIDE SOUS RÉSERVE*) est à `nadia-prof` pour ses fiches et à `camille-po` pour la matrice.
+`relecture-cloture-s57.md` : les défauts 6, 7, 8, 9, 10, 12, 14 à 18 sont à `camille-po` (faits dans `A.293`, point 9, sauf ce que ce point nomme comme non fait). Le défaut 2 bis (en-tête de `ce1-calendrier-dates.yaml`) reste ouvert : aucun développeur n'est désigné, je ne le désigne pas sans question à l'utilisatrice (`RAPPORT.md`, sections 5 et 7). Le point à trancher 4 de la relecture (graphie *VALIDE SOUS RÉSERVE*) est à `nadia-prof` pour ses fiches et à `camille-po` pour la matrice.
 
 ### Decisions prises
 
