@@ -128,7 +128,9 @@ A l'ecran, les items 3 et 8 affichent *"quelle suite range les générations du 
 nom feminin ; l'item 11 affiche *"Quelle suite va du plus âgé au plus jeune ?"*, sans nom. Le sens est clair pour un enfant de
 CE1 et le vocabulaire est de son niveau : sur ce que je garde, rien a corriger. **L'accord n'est pas de mon ressort**
 (`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`) : il reste au `relecteur-pedagogique`, et aucun releve n'existe a ce jour
-(aucun commit `[REL]` depuis le 2026-10-26, aucun fichier de releve dans le dossier du sprint). **Ce Done ne couvre pas cet
+(aucun commit `[REL]` depuis le 2026-10-26, aucun fichier de releve dans le dossier du sprint)
+**[corrige le 2026-10-29, texte d'origine conserve : le releve existe depuis le 2026-10-29, `f1de3616`, voir l'ajout du
+2026-10-29 ci-dessous]**. **Ce Done ne couvre pas cet
 accord.** S'il est juge fautif, la correction touche la formule de `R12-2`, que `G12-3` lit a la lettre (`theo-archi`). Que le
 branchement attende ce releve ou non est a `camille-po`, je ne le decide pas.
 
@@ -160,3 +162,39 @@ citer sa propre verification). Donnee brute pour la remesure d'A.276 ; je n'en c
 paquet, ni test, ni catalogue, et je n'ai alloue aucun identifiant : `V1` est un repere de cette fiche.
 
 **Signe** : `nadia-prof`, s57, palier 5, 2026-10-27.
+
+### Ajout du 2026-10-29 (`nadia-prof`, s57, palier 5) : accord corrige, entree de catalogue ecrite, verdict inchange
+
+Cet ajout ne reecrit ni le verdict du 2026-10-27 ni sa reserve. Lu sur `round-two` a `bdbbac13`.
+
+1. **Le diff de l'accord.** Le commit `f7f9f443` de `marc-dev` (fusionne par `004cc7dc`) tient mes trois conditions :
+   seuls les enonces des items 3 et 8 changent, egaux au texte du releve avec l'insecable avant *?* ; l'item 11, les
+   propositions, les bonnes reponses et les indices sont inchanges ; hors du paquet ne changent que le test, son jeu fautif et
+   les trois lignes de commentaire d'en-tete que `theo-archi` demandait. Preuves : `lecture-nadia-diff-accord-et-titre-ce1-qlm-generations.md`,
+   section 1 (dossier du sprint, `9a1e3406`). A `bdbbac13`, les lignes 96 et 131 du paquet portent *de la plus âgée à la plus
+   jeune*.
+2. **L'entree de catalogue.** Le commit `095b9cd4` de `marc-dev` (fusionne par `bdbbac13`) ecrit l'entree
+   `bandit-manchot-generations-ce1`, paquet `ce1-qlm-generations`, 10 manches, titre *"Les générations et les moments de la
+   vie"*, consigne *"Lis bien, puis choisis la bonne réponse."*. Je les avais lus avant l'entree (meme fichier, section 3) ;
+   `git merge-base --is-ancestor 9a1e3406 095b9cd4` reussit, et les deux chaines de `catalogue.yaml` sont egales a celles de
+   ma lecture (comparaison sous Python). L'orthographe du titre et de la consigne est relue juste par le
+   `relecteur-pedagogique` (`relecture-orthographe-entree-ce1-qlm-generations.md`, commit `108618b2`, branche
+   `s57-p5-releco-12-titre`) : **cette branche n'est pas fusionnee dans `round-two` a `bdbbac13`**, et cette relecture a lu
+   mon ecrit, pas la chaine de `catalogue.yaml` (sa section 3, point 1). **Je n'ai pas joue l'entree reelle** sur un jar : mon
+   audit du 2026-10-27 a joue une entree de sonde.
+3. **Ce que cela change a la section 3.** Le releve du `relecteur-pedagogique` (`releve-relecteur-palier-5-ce1-qlm-generations.md`,
+   `f1de3616`) juge l'accord **fautif aux items 3 et 8** et juste a l'item 11 ; la correction est celle du point 1. La phrase
+   *"Ce Done ne couvre pas cet accord"* reste vraie : la grammaire n'est pas de mon ressort, et c'est le releve, pas mon Done,
+   qui la tient. **Mon Done reste VALIDE SOUS RESERVE**, reserve `V1` inchangee, aucun verdict d'item rouvert : la correction
+   ne change ni le sens, ni le vocabulaire, ni la lisibilite que j'ai juges (18 mots avec l'insecable, `lecture-nadia-accord-ce1-qlm-generations.md`,
+   `832e86b0`).
+4. **Mention de couverture.** Relue : le verdict ne porte aucune mention de couverture partielle (*"`camille-po` peut brancher
+   le paquet (`QC3`) et passer la ligne a `couvert-valide`"*), et la *"Limite de ce que le Done certifie"* (aucune frise
+   dessinee) dit elle-meme ne pas etre une reserve. **Elle est inchangee** : la correction ne touche que l'accord.
+5. **Plafond.** Selon moi, `couvert-valide`, avec `V1` recopiee comme reserve non bloquante. Je ne fais pas passer la ligne :
+   c'est a `camille-po`, apres la CI complete verte.
+
+**Ce dont je reste la seule garde** : inchange, section 5, plus ce que ma lecture du diff, section 2, garde a ma lecture
+(qu'un enonce n'ecrive qu'une forme de sens). Je n'ai alloue aucun identifiant.
+
+**Signe** : `nadia-prof`, s57, palier 5, 2026-10-29.
