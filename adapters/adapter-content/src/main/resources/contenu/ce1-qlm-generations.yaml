@@ -22,7 +22,7 @@ lignesDeReferentiel: ["QLM-CE1-12"]
 # l'ordre de leurs elements pour exacts au CE1 (arbitrage-nadia-premiers-jets-ce1-qlm-10-12.md,
 # section 2, R12-9, QMT-CE1-2). Le redacteur n'a consulte aucune source externe, et ce fichier ne
 # cite ni le test ni la story comme source.
-#   Generations, du plus age au plus jeune : arriere-grands-parents, grands-parents, parents,
+#   Generations, de la plus agee a la plus jeune : arriere-grands-parents, grands-parents, parents,
 #   enfants. Elles sont toujours vues depuis le personnage nomme, qui est de la generation des
 #   enfants. Un mot de parente (la grand-mere, le papa) vit dans l'enonce, jamais dans une
 #   proposition ; un prenom n'est jamais une proposition d'une tache voisin.
@@ -50,8 +50,8 @@ lignesDeReferentiel: ["QLM-CE1-12"]
 # d'evenements), l'autre est un moment d'adulte au choix. Aucun item ne repond grace a l'ordre du
 # premier emploi et de la naissance de son enfant, que la vie ne fixe pas (R12-6, GEN-CE1-2).
 #
-# Tache ordre. L'enonce dit le sens : "du plus age au plus jeune" (generations et prenoms), "du
-# premier au dernier" (une vie). Les distracteurs sont les trois memes elements dans un autre ordre :
+# Tache ordre. L'enonce dit le sens : "de la plus agee a la plus jeune" (generations), "du plus age au
+# plus jeune" (prenoms), "du premier au dernier" (une vie). Les distracteurs sont les trois memes elements dans un autre ordre :
 # un echange de deux voisins ou une rotation, jamais l'echange du premier et du dernier (l'ordre
 # inverse), jamais les deux echanges de voisins ensemble (la proposition la plus ressemblante aux deux
 # autres serait la bonne reponse). Seule suite d'evenements admise : naissance, entree a l'ecole,
@@ -93,7 +93,7 @@ items:
   # GEN-CE1-1 moitie : generations
   # GEN-CE1-1 tache : ordre
   # TRV-CE1-2 : d, e
-  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "grands-parents, parents, enfants"
     distracteurs: ["parents, grands-parents, enfants", "parents, enfants, grands-parents"]
     indice: "Compare deux générations à la fois, puis la troisième."
@@ -128,7 +128,7 @@ items:
   # GEN-CE1-1 moitie : generations
   # GEN-CE1-1 tache : ordre
   # TRV-CE1-2 : d, e
-  - enonce: "Dans la famille de Samir, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Samir, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "arrière-grands-parents, grands-parents, parents"
     distracteurs: ["arrière-grands-parents, parents, grands-parents", "parents, arrière-grands-parents, grands-parents"]
     indice: "Cherche qui est né avant qui dans la famille."
