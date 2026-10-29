@@ -5295,7 +5295,7 @@ Ce que mon critere 3 voulait empecher : qu'une ligne servie a l'enfant, une prop
 
 **4. Decision : `QLM-CE1-12` passe de `non couvert` a `couvert-valide`.** Colonne *Jeu(x) couvrant* : `bandit-manchot-generations-ce1` ; mecanique : `bandit manchot`. La cellule dit la mention de couverture (aucune, comme la fiche), recopie la reserve `V1` et son exigence en citant la fiche, nomme `S57-QLM-CE1-12-V1-MESURE` (non engagee), conserve l'ancienne cellule, et dit que la CI GitHub n'est pas lue. Ce n'est pas moi qui juge le contenu : le Done est celui de `nadia-prof`, prononce le 2026-10-27 et relu le 2026-10-29. **Commande de la *"Methode du compte"*, lancee telle quelle sur toutes les lignes de donnees** (`MATRICE-couverture.md`) : **avant** `couvert-valide` 165, `en cours` 6, `non couvert` 31, `non couvrable en l'etat` 75, total 277, denominateur atteignable 202, **165 / 202 = 81,68 %** ; **apres** `couvert-valide` 166, `en cours` 6, `non couvert` 30, `non couvrable en l'etat` 75, total 277, denominateur 202, **166 / 202 = 82,18 %** [calcul : 166 / 202 = 0,8218]. Questionner le monde CE1 : 9 `couvert-valide`, 3 `non couvert`, total 12 (filtre de la matrice). Aucun compteur de version complet n'est publie : les cinq criteres des six lignes `en cours` ne sont pas relus ici ; borne haute 172 sur 202 = 85,15 % [calcul].
 
-**5. Cout.** Plafond de `PAR-8` du palier 9 **25,00**, engage **13,50**, marge **1,5**, cas haut **23,70**, reserve de plafond **1,30** : **inchanges**. La troisieme lecture de `-12` (le diff, 0,50 hors marge, A.291 point 6) donne 24,20 et une reserve de 0,80 [calcul : 23,70 + 0,50 = 24,20 ; 25,00 - 24,20 = 0,80], **sans l'affecter**. Aucun poste non chiffre n'est chiffre ici (A.282 point 2) : ni la mesure locale, ni la relecture d'orthographe, ni la mesure `V1`.
+**5. Cout.** Plafond de `PAR-8` du palier 9 **25,00**, engage **13,50**, marge **1,5**, cas haut **23,70**, reserve de plafond **1,30** : **inchanges**. **[corrige par A.293, texte d'origine conserve : "inchanges" ne tient pas pour le cas haut ni pour la reserve ; la troisieme lecture de `-12` a eu lieu, le cas haut en vigueur est 24,20 et la reserve 0,80]** La troisieme lecture de `-12` (le diff, 0,50 hors marge, A.291 point 6) donne 24,20 et une reserve de 0,80 [calcul : 23,70 + 0,50 = 24,20 ; 25,00 - 24,20 = 0,80], **sans l'affecter**. Aucun poste non chiffre n'est chiffre ici (A.282 point 2) : ni la mesure locale, ni la relecture d'orthographe, ni la mesure `V1`.
 
 **6. Reports comptes.** `Q-273-1` (i) : **dix-neuvieme mention** (dix-huitieme en A.291 point 7, relu : verifie), **non fermee**, non traitee ici. `S57-QLM-CE1-12-V1-MESURE` : non engagee, inchangee, non bloquante selon la fiche. `S57-QLM-CE1-12-ACCORD` : criteres 1 a 3 faits (A.291), aucun report.
 
@@ -5314,3 +5314,32 @@ Ce que mon critere 3 voulait empecher : qu'une ligne servie a l'enfant, une prop
 | `nadia-prof`, `relecteur-pedagogique`, `marc-dev`, `theo-archi`, `lea-dev`, `yanis-qa` | rien |
 
 **Matrice** : une ligne bouge, `QLM-CE1-12` (note du 2026-10-29 en tete de `MATRICE-couverture.md`). **Ne fait pas** : ne prononce aucun Done, ne dit pas *"CI verte"*, ne chiffre aucun poste non chiffre, n'affecte pas la reserve, ne ferme pas `Q-273-1`, ne modifie ni `planning.md`, ni une fiche, ni un bloc de validation, ni `domain/`, `application/`, `adapters/`, `bootstrap/`. Aucun identifiant de condition alloue.
+
+## Amendement du 2026-10-29, soixante et onzième (`camille-po`, palier 5 : l'utilisatrice clôt s57 ; ses deux décisions du jour ; deux corrections de contenu engagées, non fusionnées, non lues ; trois stories non engagées ; le cas haut du coût est 24,20)
+
+### A.293 Clôture de s57 : le cas haut en vigueur est 24,20, les coûts de la correction du jour ne sont pas chiffrés par les règles ; décisions du jour, corrections sans Done, stories non engagées
+
+**Statut `Acceptee` inchangé.** Le 2026-10-29 (`camille-po`), base `round-two` à `1a31d632`, branche `s57-cl-camille-293`. Cet amendement ne touche aucun fichier sous `domain/`, `application/`, `adapters/` ni `bootstrap/`, ni `planning.md`, ni `cloture-palier-5.md`, ni un bloc de validation.
+
+**1. Le cas haut en vigueur est 24,20, non 23,70.** A.286 point 4 écrit 23,70 [calcul : 17,70 plus 9 fois 0,50 plus 2 fois 0,50 plus 0,50] et ne compte aucune troisième lecture de `-12`. A.291 point 6 constate que cette lecture a eu lieu et donne 24,20 ; A.292 point 5 écrit d'abord "inchangés" pour 23,70 et 1,30, puis 24,20 "sans l'affecter" : deux chiffres en vigueur dans le même point. La relecture de clôture (`relecture-cloture-s57.md`, point à trancher 1) le demande à `camille-po`. **Je tranche : 24,20.** Motif : la lecture du diff de l'accord est, de la main de `nadia-prof`, la *"troisieme lecture de `-12`"* (`lecture-nadia-diff-accord-et-titre-ce1-qlm-generations.md`, rubrique Rang) ; A.272 règle point 3 chiffre une troisième lecture à 0,50 hors marge ; elle a eu lieu, elle compte. Le "sans l'affecter" d'A.292 ne portait que sur la réserve (aucun poste ne reçoit les 0,80), non sur le cas haut.
+
+| Grandeur | A.286 | En vigueur | Calcul |
+|---|---|---|---|
+| plafond de `PAR-8` du palier 9 | 25,00 | 25,00 | valeur de l'utilisatrice (A.282), inchangée |
+| cas haut | 23,70 | **24,20** | [calcul] 17,70 plus 4,50 (secondes lectures de neuf lots) plus 1,00 (troisièmes lectures de `-03` et de `-08`) plus 0,50 (seconde lecture de l'horloge) plus 0,50 (troisième lecture de `-12`), soit 23,70 plus 0,50 |
+| réserve de plafond | 1,30 | **0,80** | [calcul] 25,00 moins 24,20 |
+
+La réserve de 0,80 n'est affectée à aucun poste (A.282, A.286). Les passages d'A.286 à A.292 qui écrivent 23,70 et 1,30 disent le chiffre de leur date et ne sont pas réécrits ; celui d'A.292 point 5, qui se contredit, porte le marqueur ci-dessus. `planning.md` (lignes 3318 à 3330 et amendement du 00:03) est à `sofia-sm`.
+
+**2. Les coûts de la correction du jour : ce que les règles chiffrent, rien d'autre.** Quatre gestes sont engagés ou lus aujourd'hui sur les deux corrections de contenu (point 4) : une relecture rédactionnelle, une lecture de `nadia-prof`, un `verify` local, la correction elle-même. Aucun n'ajoute un chiffre au cas haut.
+
+| Poste | Règle lue | Prix |
+|---|---|---|
+| relecture rédactionnelle de la correction par le `relecteur-pedagogique` | A.272 règle point 4 : hors de toute lecture de `P0` | non chiffré |
+| lecture par `nadia-prof` de la correction de `-03`, item 11 | `-03` a eu trois lectures (premier jet, seconde en A.272, troisième en A.281, comptée dans les 23,70) ; celle-ci serait la quatrième ; A.282 point 2 : une quatrième lecture n'est chiffrée par aucune règle, A.272 règle point 3 ne prévoit que la troisième | non chiffré |
+| lecture par `nadia-prof` de la correction de `-12`, trait d'union insécable | `-12` a eu trois lectures, la troisième comptée au point 1 ; `nadia-prof` écrit qu'un commit qui changerait encore une ligne servie à l'enfant *"rendrait due une quatrieme lecture"* ; même règle, A.282 point 2 | non chiffré |
+| `mvn verify` local | A.282 point 2 : les `mvn verify` par lot | non chiffré |
+| correction de contenu par `marc-dev` | aucune règle ne la chiffre | non chiffré |
+| avis de clôture de `nadia-prof`, rapport qualité, confirmation ArchUnit, avis d'`ines-design` et de `marc-dev` | `nadia-prof` (`avis-nadia-cloture-s57.md`, section 5) : aucune règle lue ne les chiffre ; elle donne une donnée brute, serveur ouvert de 11:39:39 à 12:09:52, sans conversion | non chiffré |
+
+Si `nadia-prof` lit les deux corrections en un seul geste, le nombre de lectures à compter est à elle. **Pour mémoire, sans le retenir** : si les deux quatrièmes lectures étaient chiffrées comme une troisième, 0,50 chacune, le cas haut serait 25,20 et la réserve négative de 0,20 [calcul : 24,20 plus 1,00 ; 25,00 moins 25,20] ; avec une seule, 24,70 et 0,30 [calcul]. Aucune règle ne les chiffre à 0,50 ; ce rapprochement est le mien, il n'est pas un prix. Au-delà de 25,00, la règle d'A.273 point 1 (b) vaut : le coût s'inscrit au registre (A.247) et ne bloque le Done d'aucun lot, `nadia-prof` restant seule à le prononcer. Fixer un prix à une quatrième lecture est à l'utilisatrice ou à `nadia-prof` pour le chiffre ; je n'écris aucun prix.
