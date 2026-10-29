@@ -11,7 +11,7 @@ lignesDeReferentiel: ["QLM-CE1-12"]
 # Jeu fautif de PaquetCe1QlmGenerationsTest : chaque item porte en commentaire le marqueur de la sonde
 # qu'il met a l'epreuve. Une sonde dite "passe" est un item que la garde nommee doit laisser passer.
 # Les sondes 05 a 15 sont celles de G12-2, 16 a 29 de G12-3, 30 a 44 de G12-4, 45 a 49 de G12-5, 50 a
-# 58 de G12-6, 59 a 67 de R12-7 (verificateur de l'indice de G12-6), 68 a 73 de G12-3 (X1, naissance en dernier) ; 01 a 04 sont celles de G12-1.
+# 58 de G12-6, 59 a 67 de R12-7 (verificateur de l'indice de G12-6), 68 a 73 de G12-3 (X1, naissance en dernier), 74 et 75 de G12-3 (sens lie au groupe) ; 01 a 04 sont celles de G12-1.
 items:
   # sonde 01
   - enonce: "Dans la vie de Jade, quelle suite va du premier au dernier moment ?"
@@ -69,7 +69,7 @@ items:
     distracteurs: ["Sara", "Lina"]
     indice: "Pense au sens des liens."
   # sonde 12
-  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "grands-parents, parents, naissance"
     distracteurs: ["parents, grands-parents, naissance", "parents, naissance, grands-parents"]
     indice: "Pense au sens des liens."
@@ -84,12 +84,12 @@ items:
     distracteurs: ["Julie, Omar, Noé", "Noé, Omar, Julie"]
     indice: "Pense au sens des liens."
   # sonde 15
-  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "grands-parents, parents"
     distracteurs: ["parents, grands-parents", "enfants, parents"]
     indice: "Pense au sens des liens."
   # sonde 16
-  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "grands-parents, parents, enfants"
     distracteurs: ["enfants, parents, grands-parents", "parents, grands-parents, enfants"]
     indice: "Pense au sens des liens."
@@ -104,7 +104,7 @@ items:
     distracteurs: ["Noé, Julie, Omar", "Julie, Omar, Noé"]
     indice: "Pense au sens des liens."
   # sonde 19
-  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "grands-parents, parents, enfants"
     distracteurs: ["parents, grands-parents, enfants", "grands-parents, enfants, parents"]
     indice: "Pense au sens des liens."
@@ -119,22 +119,22 @@ items:
     distracteurs: ["entrée à l'école, naissance, premier emploi", "naissance, premier emploi, entrée à l'école"]
     indice: "Pense au sens des liens."
   # sonde 22
-  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "grands-parents, parents, enfants"
     distracteurs: ["parents, grands-parents, enfants", "parents, enfants, grands-parents"]
     indice: "Pense au sens des liens."
   # sonde 23
-  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "grands-parents, parents, enfants"
     distracteurs: ["parents, enfants, grands-parents", "enfants, grands-parents, parents"]
     indice: "Pense au sens des liens."
   # sonde 24
-  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "grands-parents, parents, enfants"
     distracteurs: ["grands-parents, enfants, parents", "enfants, grands-parents, parents"]
     indice: "Pense au sens des liens."
   # sonde 25
-  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "parents, grands-parents, enfants"
     distracteurs: ["grands-parents, parents, enfants", "grands-parents, enfants, parents"]
     indice: "Pense au sens des liens."
@@ -149,12 +149,12 @@ items:
     distracteurs: ["entrée à l'école, naissance, entrée au collège", "entrée au collège, naissance, entrée à l'école"]
     indice: "Pense au sens des liens."
   # sonde 28
-  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "grands-parents, parents, enfants"
     distracteurs: ["parents, grands-parents, arrière-grands-parents", "parents, enfants, grands-parents"]
     indice: "Pense au sens des liens."
   # sonde 29
-  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "parents, parents, enfants"
     distracteurs: ["parents, enfants, parents", "enfants, parents, parents"]
     indice: "Pense au sens des liens."
@@ -244,7 +244,7 @@ items:
     distracteurs: ["celle des grands-parents", "celle des arrière-grands-parents"]
     indice: "Pense au sens des liens."
   # sonde 47
-  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "grands-parents, parents, enfants"
     distracteurs: ["parents, grands-parents, enfants", "parents, enfants, grands-parents"]
     indice: "Pense au sens des liens."
@@ -339,12 +339,12 @@ items:
     distracteurs: ["l'entrée au collège", "le premier emploi"]
     indice: "Pense à l'entrée à l'école."
   # sonde 66
-  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "grands-parents, parents, enfants"
     distracteurs: ["parents, grands-parents, enfants", "parents, enfants, grands-parents"]
     indice: "Commence par les grands-parents."
   # sonde 67
-  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+  - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
     bonneReponse: "grands-parents, parents, enfants"
     distracteurs: ["parents, grands-parents, enfants", "parents, enfants, grands-parents"]
     indice: "Pense aux parents puis aux enfants."
@@ -378,3 +378,13 @@ items:
     bonneReponse: "naissance, entrée à l'école, premier emploi"
     distracteurs: ["naissance, premier emploi, entrée à l'école", "premier emploi, naissance, entrée à l'école"]
     indice: "Compare deux moments à la fois, puis le troisième."
+  # sonde 74
+  - enonce: "Dans la famille de Lina, quelle suite range les générations du plus âgé au plus jeune ?"
+    bonneReponse: "grands-parents, parents, enfants"
+    distracteurs: ["parents, grands-parents, enfants", "parents, enfants, grands-parents"]
+    indice: "Pense au sens des liens."
+  # sonde 75
+  - enonce: "Omar a une fille, Julie. Julie a un fils, Noé. Quelle suite va de la plus âgée à la plus jeune ?"
+    bonneReponse: "Omar, Julie, Noé"
+    distracteurs: ["Julie, Omar, Noé", "Noé, Omar, Julie"]
+    indice: "Pense au sens des liens."

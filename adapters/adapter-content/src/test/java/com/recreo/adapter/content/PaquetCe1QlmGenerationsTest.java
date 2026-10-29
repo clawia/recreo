@@ -82,7 +82,7 @@ class PaquetCe1QlmGenerationsTest {
 
     private static final String PRE = "pre";
 
-    /** R12-1 : les generations, rang du plus age au plus jeune, ecrites sans accent et sans determinant. */
+    /** R12-1 : les generations, rang de la plus agee a la plus jeune, ecrites sans accent et sans determinant. */
     private static final Map<String, Integer> GENERATIONS = Map.of(
             "arriere-grands-parents", 0, "grands-parents", 1, "parents", 2, "enfants", 3);
 
@@ -131,9 +131,15 @@ class PaquetCe1QlmGenerationsTest {
 
     private static final Pattern JUSTE_AVANT_OU_APRES = Pattern.compile("juste (avant|apres) (.+?) ?\\?$");
 
-    private static final String SENS_DU_PLUS_AGE = "du plus age au plus jeune";
+    private static final String SENS_DES_GENERATIONS = "de la plus agee a la plus jeune";
+
+    private static final String SENS_DES_PRENOMS = "du plus age au plus jeune";
 
     private static final String SENS_DU_PREMIER = "du premier au dernier";
+
+    /** R12-2 (B) : une seule forme de sens par groupe de suite, liee au groupe. */
+    private static final Map<String, String> SENS_DU_GROUPE = Map.of(
+            GEN, SENS_DES_GENERATIONS, PRE, SENS_DES_PRENOMS, EVT, SENS_DU_PREMIER);
 
     /** T1 : les permutations lues sur les rangs de la bonne suite. */
     private static final List<Integer> ORDRE_INVERSE = List.of(2, 1, 0);
@@ -362,18 +368,15 @@ class PaquetCe1QlmGenerationsTest {
                 continue;
             }
             String plat = plat(item.enonce());
-            boolean sensDeLAge = plat.contains(SENS_DU_PLUS_AGE);
-            boolean sensDuPremier = plat.contains(SENS_DU_PREMIER);
-            assertThat(sensDeLAge || sensDuPremier)
-                    .as("G12-3 : l'énoncé « %s » n'écrit ni « du plus âgé au plus jeune » ni « du premier au "
-                            + "dernier »", item.enonce())
+            assertThat(SENS_DU_GROUPE.values().stream().anyMatch(plat::contains))
+                    .as("G12-3 : l'énoncé « %s » n'écrit aucun des trois sens", item.enonce())
                     .isTrue();
             String groupe = groupeDeLaSuite(parties(item.bonneReponse()), prenomsDe(item.enonce()));
             assertThat(groupe)
                     .as("G12-3 : la suite « %s » de '%s' n'est pas faite d'éléments d'un même groupe fermé",
                             item.bonneReponse(), item.enonce())
                     .isNotNull();
-            assertThat(groupe.equals(EVT) ? sensDuPremier : sensDeLAge)
+            assertThat(plat.contains(SENS_DU_GROUPE.get(groupe)))
                     .as("G12-3 : le sens que '%s' écrit n'est pas celui de son groupe (%s)", item.enonce(), groupe)
                     .isTrue();
             List<String> bonne = partiesNormalisees(item.bonneReponse());
@@ -382,7 +385,7 @@ class PaquetCe1QlmGenerationsTest {
                     .hasSize(3);
             if (groupe.equals(GEN)) {
                 assertThat(bonne.stream().map(GENERATIONS::get).toList())
-                        .as("G12-3 : la suite « %s » de '%s' n'est pas du plus âgé au plus jeune",
+                        .as("G12-3 : la suite « %s » de '%s' n'est pas de la plus âgée à la plus jeune",
                                 item.bonneReponse(), item.enonce())
                         .isSorted();
             }
@@ -775,7 +778,11 @@ class PaquetCe1QlmGenerationsTest {
 
         refuse(PaquetCe1QlmGenerationsTest::verifierLesSuites, fautif, "sonde 16", "G12-3", "ordre inverse");
         refuse(PaquetCe1QlmGenerationsTest::verifierLesSuites, fautif, "sonde 17", "G12-3",
-                "n'écrit ni « du plus âgé au plus jeune »");
+                "n'écrit aucun des trois sens");
+        refuse(PaquetCe1QlmGenerationsTest::verifierLesSuites, fautif, "sonde 74", "G12-3",
+                "pas celui de son groupe (gen)");
+        refuse(PaquetCe1QlmGenerationsTest::verifierLesSuites, fautif, "sonde 75", "G12-3",
+                "pas celui de son groupe (pre)");
         refuse(PaquetCe1QlmGenerationsTest::verifierLesSuites, fautif, "sonde 18", "G12-3", "ordre inverse");
     }
 
@@ -815,7 +822,7 @@ class PaquetCe1QlmGenerationsTest {
         Paquet fautif = fautif("generations-fautives.yaml");
 
         refuse(PaquetCe1QlmGenerationsTest::verifierLesSuites, fautif, "sonde 25", "G12-3",
-                "n'est pas du plus âgé au plus jeune");
+                "n'est pas de la plus âgée à la plus jeune");
         refuse(PaquetCe1QlmGenerationsTest::verifierLesSuites, fautif, "sonde 26", "G12-3",
                 "pas celui de son groupe");
         refuse(PaquetCe1QlmGenerationsTest::verifierLesSuites, fautif, "sonde 27", "G12-3",
