@@ -1038,3 +1038,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-lire-l-heure
     nombreDeManches: 10
+  - id: bandit-manchot-generations-ce1
+    titre: "Les générations et les moments de la vie"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-qlm-generations
+    nombreDeManches: 10
