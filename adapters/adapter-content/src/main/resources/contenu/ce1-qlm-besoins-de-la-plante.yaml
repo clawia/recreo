@@ -140,7 +140,7 @@ items:
   # BPL-CE1-1 tache : besoin
   # BPL-CE1-1 besoin : chaleur
   # TRV-CE1-2 : a, a
-  - enonce: "Une graine a déjà de l'eau. De quoi d'autre a-t-elle besoin pour germer ?"
+  - enonce: "Une graine a déjà de l'eau. Pour germer, elle a aussi besoin de quoi ?"
     bonneReponse: "de la chaleur"
     distracteurs: ["du bruit", "du sucre"]
     indice: "Pense à la température d'un endroit où une graine germe."
