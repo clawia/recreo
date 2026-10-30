@@ -25286,7 +25286,7 @@ Base `round-two` à `1a31d632`, branche `s57-cl-camille-293`. Décisions de l'ut
   5. **Done technique** : tous les jobs de `ci.yml`, nommés avec leur sortie.
 - **Premier acteur, route** : `marc-dev` (fait, `29c11e3f`), `relecteur-pedagogique` (fait, non fusionné), `nadia-prof` (lecture, **Done pédagogique prononcé par elle seule, non prononcé**), `sofia-sm` (fusion). **Prix** : non chiffré (`DEC-0120` A.293 point 2). **Lien** : `DEC-0120` A.293 ; `S57-ETE-CE1-R2`, `S57-BPL-CE1-1-REVISION`.
 
-### `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE` - dans `ce1-qlm-generations`, *"grands-parents"* et *"arrière-grands-parents"* ne sont plus coupés dans les propositions (constat 2 de `nadia-prof`, `Q2 O1`) - ENGAGEE a la clôture de s57, correction faite sur branche, non fusionnée, non lue, non mesurée **[corrigé par A.294 (annotation du 2026-10-29, dix-neuvième) : NON ENGAGEE (`O2` de l'utilisatrice), correction non fusionnée, conservée sur `s57-cl-marc-12nb` (`180889a4`) et `s57-cl-rel-12nb` (`3e85dc33`) ; texte d'origine conservé]**
+### `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE` - dans `ce1-qlm-generations`, *"grands-parents"* et *"arrière-grands-parents"* ne sont plus coupés dans les propositions (constat 2 de `nadia-prof`, `Q2 O1`) - ENGAGEE a la clôture de s57, correction faite sur branche, non fusionnée, non lue, non mesurée **[corrigé par A.294 (annotation du 2026-10-29, dix-neuvième) : NON ENGAGEE (`O2` de l'utilisatrice), correction non fusionnée, conservée sur `s57-cl-marc-12nb` (`180889a4`) et `s57-cl-rel-12nb` (`3e85dc33`) ; texte d'origine conservé]** **[mis à jour par A.295 (annotation du 2026-10-30, vingtième) : ENGAGEE, fusion décidée par l'utilisatrice (Q4), non faite à `9aa3c860` ; critère 2 (mesure à 360) ROUGE ; texte d'origine conservé]**
 
 - **Besoin** : en tant qu'élève de CE1, je veux lire *grands-parents* d'un seul regard, sans que le mot soit coupé entre deux lignes, afin de reconnaître la bonne génération.
 - **Mécanique demandée** : aucune. **Compétence programme visée** : `QLM-CE1-12` (`squad/programme/questionner-le-monde/competences-ce1.md`, ligne `[QLM-CE1-12]`), `couvert-valide`, non rouverte ; le texte servi change (le caractère, pas le mot), donc il repasse par `nadia-prof`.
@@ -25397,3 +25397,30 @@ La story reste **NON ENGAGEE**. `V1` est **partiellement tenue** sur l'arbre mes
 - **Ce qui reste, en plus** : le débordement du bouton à 360 n'est pas dans la lettre de `V1` ; `nadia-prof` l'écrira dans la fiche comme réserve nouvelle et datée, **ce n'est pas un ajout de ma part** ; `Q-C1` (ce que l'exigence 1 devient si un mot ne peut plus se couper) reste à elle. Les deux lignes de fiche (mesure de `V1`, débordement) sont à écrire par elle ; **je n'y touche pas**. La réserve `V1` n'est pas levée.
 
 **Report.** `S57-BPL-CE1-11-COUPURE-A-T-ELLE` : aucun report. `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE` : engagée en A.293 puis non engagée ici, toutes deux dans s57 ; premier report d'un sprint à l'autre à écrire à l'ouverture suivante avec s57. `S57-QLM-CE1-12-V1-MESURE` : non engagée depuis A.283, seconde annotation. Aucune ligne de matrice ne change de statut : 166 sur 202. Coût : `DEC-0120` A.294 point 5, **non chiffré**.
+
+## Annotation du 2026-10-30, vingtième : l'utilisatrice décide de fusionner la correction U+2011 de `-12`, `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE` est engagée, fusion décidée, non faite (`camille-po`, `DEC-0120` A.295)
+
+Base `round-two` à `9aa3c860`, branche `s57-fin-camille-295`. Mots de l'utilisatrice du 2026-10-30, relayés par l'agent lanceur (forme 2, `DEC-0062` G) : *"Q4 on fusionne et on integre au catalogue"*, réponse à la question 4 de la section 7 de `RAPPORT.md` de s57 (les branches `s57-cl-marc-12nb` et `s57-cl-rel-12nb`). **Cela renverse l'`O2` d'A.294.** Les stories ne sont pas réécrites ; leurs titres portent un marqueur.
+
+### `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE` : ENGAGEE, fusion décidée, non faite
+
+- **Statut.** Non engagée (A.294) devient **engagée, fusion décidée**. Je ne la dis pas *"fusionnée"* : `git merge-base --is-ancestor 180889a4 HEAD` sort 1 à `9aa3c860`. Fusion de `s57-cl-marc-12nb` et `s57-cl-rel-12nb` : `sofia-sm`.
+- **Critères, tels qu'écrits, lus à `180889a4`.** 1 (U+002D entre deux lettres) : 22 à `1a31d632`, **0** ; 3 (744 x 551, 0 proposition hors bouton) : **0, non-régression** ; **2 (mesure à 360 de large) : reste ROUGE** : 6 propositions sur 4 items hors de leur bouton, première lettre cachée à l'item 8 avec la barre classique, page à 361 pour 360 (mesure de `nadia-prof` à `e75e3f7e`, non rejouée par moi). La fusion remplace une coupure mesurée à 360 par un débordement mesuré à 360 : aucun des deux n'est vert.
+- **Dépendance conservée** : `S57-PLI-REVELATION-GABARIT-COMMUN` (décisions préalables `P1` à `P4`) et une règle de gabarit qui empêche un mot insécable de sortir de son bouton. Elle n'est plus la condition de la fusion ; elle est la condition de la **fermeture du critère 2**. Le levier est à `theo-archi` et `ines-design`, la formule de l'exigence 1 de `V1` à `nadia-prof` (`Q-C1`).
+- **Renvoi.** `DEC-0120, Q2 O1` (test et commit `180889a4`) résout à A.293 point 3 ; `marc-dev` n'a rien à réécrire.
+- **Ce que la story ne dit pas** : qu'un Done est prononcé ou rouvert (`nadia-prof` dit si la fusion rouvre le verdict de `-12`) ; que `V1` est levée ; que la réserve nouvelle sur le débordement est écrite (elle l'écrit dans `FICHE-ce1-qlm-12.md`, datée).
+- **Budget** : 24,20 / 0,80 / 25,00 inchangés (`DEC-0120` A.295 point 4) ; aucune lecture nouvelle demandée ; ce qui n'est pas chiffré par les règles ne l'est pas ici.
+- **Question à l'utilisatrice, non bloquante** : le débordement à 360 est-il accepté jusqu'à la story de gabarit, ou le critère 2 doit-il être fermé avant que le paquet serve de nouveau ?
+
+### `S57-QLM-CE1-12-V1-MESURE` : troisième annotation, la story n'est pas réécrite
+
+Toujours **NON ENGAGEE**. Si la fusion a lieu, `V1` est **partiellement tenue sur le contenu servi** : exigence 1 tenue aux deux tailles, exigence 2 non tenue à 744 (items 3, 8, 9 et 12). Non levée.
+
+### Autres décisions du 2026-10-30, sans story
+
+- **Q2** : `lea-dev` corrige l'en-tête de `ce1-calendrier-dates.yaml` (branche `s57-fin-lea-entete`, non fusionnée). Le paquet est déjà au catalogue ; *"on l'integre au catalogue"* : mon interprétation (le correctif rejoint `round-two`) n'est pas confirmée. Pas de story distincte.
+- **Q6** : `pid.txt` supprimé par l'utilisatrice, question fermée.
+- **Q7** : pas de palier 10 ; `Q-273-1` (i) fermée dans sa part qui dépendait de l'utilisatrice. Les stories ne portent aucun palier 10 : aucun statut ne change.
+- **Q1, Q3, Q5** : sans réponse ou en cours de détail, non fermées. `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE` sort de la liste de Q3 par la réponse à Q4 ; Q3 reste ouverte pour les autres stories.
+
+**Report.** `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE` : trois états dans s57 (A.293, A.294, A.295), aucun report d'un sprint à l'autre. Aucune ligne de matrice ne change de statut : 166 sur 202.
