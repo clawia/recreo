@@ -1,8 +1,5 @@
 package com.recreo.adapter.web;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * Un navigateur qui poste un formulaire dans un jeu de caracteres hors UTF-8 (windows-1252) remplace
  * tout caractere que ce jeu ne sait pas encoder par sa reference numerique decimale, "&amp;#NNNN;"
@@ -17,20 +14,47 @@ import java.util.regex.Pattern;
  */
 final class ReferencesNumeriquesDecimales {
 
-    private static final Pattern REFERENCE = Pattern.compile("&#([0-9]{1,7});");
+    /** Au plus sept chiffres : U+10FFFF s'ecrit en sept chiffres, au-dela la valeur est hors plage. */
+    private static final int CHIFFRES_MAX = 7;
 
     private ReferencesNumeriquesDecimales() {
     }
 
     static String decoder(String valeur) {
-        return REFERENCE.matcher(valeur).replaceAll(correspondance -> {
-            int pointDeCode = Integer.parseInt(correspondance.group(1));
-            boolean valide = pointDeCode > 0
-                    && Character.isValidCodePoint(pointDeCode)
-                    && !(pointDeCode >= Character.MIN_SURROGATE && pointDeCode <= Character.MAX_SURROGATE);
-            return Matcher.quoteReplacement(valide
-                    ? new String(Character.toChars(pointDeCode))
-                    : correspondance.group());
-        });
+        StringBuilder decodee = new StringBuilder(valeur.length());
+        int i = 0;
+        while (i < valeur.length()) {
+            int fin = finDeReference(valeur, i);
+            int pointDeCode = fin < 0 ? -1 : Integer.parseInt(valeur.substring(i + 2, fin));
+            if (estUnPointDeCodeValide(pointDeCode)) {
+                decodee.appendCodePoint(pointDeCode);
+                i = fin + 1;
+            } else {
+                decodee.append(valeur.charAt(i));
+                i++;
+            }
+        }
+        return decodee.toString();
+    }
+
+    /** Indice du ";" qui ferme une reference "&#" suivie de un a sept chiffres, ou -1 si ce n'en est pas une. */
+    private static int finDeReference(String valeur, int debut) {
+        if (!valeur.startsWith("&#", debut)) {
+            return -1;
+        }
+        int fin = debut + 2;
+        while (fin < valeur.length() && valeur.charAt(fin) >= '0' && valeur.charAt(fin) <= '9') {
+            fin++;
+        }
+        int chiffres = fin - (debut + 2);
+        return chiffres >= 1 && chiffres <= CHIFFRES_MAX && fin < valeur.length() && valeur.charAt(fin) == ';'
+                ? fin
+                : -1;
+    }
+
+    private static boolean estUnPointDeCodeValide(int pointDeCode) {
+        return pointDeCode > 0
+                && Character.isValidCodePoint(pointDeCode)
+                && !(pointDeCode >= Character.MIN_SURROGATE && pointDeCode <= Character.MAX_SURROGATE);
     }
 }
