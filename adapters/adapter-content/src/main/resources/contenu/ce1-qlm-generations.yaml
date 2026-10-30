@@ -80,8 +80,8 @@ items:
   # GEN-CE1-1 tache : voisin
   # TRV-CE1-2 : a, a
   - enonce: "Sara est la maman de Lina. Ali est le papa de Sara. Pour Lina, de quelle génération est Ali ?"
-    bonneReponse: "celle des grands-parents"
-    distracteurs: ["celle des parents", "celle des arrière-grands-parents"]
+    bonneReponse: "celle des grands\u2011parents"
+    distracteurs: ["celle des parents", "celle des arrière\u2011grands\u2011parents"]
     indice: "Pars de Lina et suis les liens un par un."
   # GEN-CE1-1 moitie : evenements
   # GEN-CE1-1 tache : voisin
@@ -94,15 +94,15 @@ items:
   # GEN-CE1-1 tache : ordre
   # TRV-CE1-2 : d, e
   - enonce: "Dans la famille de Lina, quelle suite range les générations de la plus âgée à la plus jeune ?"
-    bonneReponse: "grands-parents, parents, enfants"
-    distracteurs: ["parents, grands-parents, enfants", "parents, enfants, grands-parents"]
+    bonneReponse: "grands\u2011parents, parents, enfants"
+    distracteurs: ["parents, grands\u2011parents, enfants", "parents, enfants, grands\u2011parents"]
     indice: "Compare deux générations à la fois, puis la troisième."
   # GEN-CE1-1 moitie : generations
   # GEN-CE1-1 tache : voisin
   # TRV-CE1-2 : a, a
   - enonce: "Léo est le fils de Jade. Jade est la fille de Max. Pour Léo, de quelle génération est Jade ?"
     bonneReponse: "celle des parents"
-    distracteurs: ["celle des grands-parents", "celle des arrière-grands-parents"]
+    distracteurs: ["celle des grands\u2011parents", "celle des arrière\u2011grands\u2011parents"]
     indice: "Écris les noms en colonne, les plus âgés en haut."
   # GEN-CE1-1 moitie : evenements
   # GEN-CE1-1 tache : voisin
@@ -116,7 +116,7 @@ items:
   # TRV-CE1-2 : a, a
   - enonce: "Tom est le fils de Nora. Mia est la fille de Nora. Pour Mia, de quelle génération est Tom ?"
     bonneReponse: "celle des enfants"
-    distracteurs: ["celle des parents", "celle des grands-parents"]
+    distracteurs: ["celle des parents", "celle des grands\u2011parents"]
     indice: "Pars de Mia et suis les liens jusqu'à Tom."
   # GEN-CE1-1 moitie : evenements
   # GEN-CE1-1 tache : voisin
@@ -129,15 +129,15 @@ items:
   # GEN-CE1-1 tache : ordre
   # TRV-CE1-2 : d, e
   - enonce: "Dans la famille de Samir, quelle suite range les générations de la plus âgée à la plus jeune ?"
-    bonneReponse: "arrière-grands-parents, grands-parents, parents"
-    distracteurs: ["arrière-grands-parents, parents, grands-parents", "parents, arrière-grands-parents, grands-parents"]
+    bonneReponse: "arrière\u2011grands\u2011parents, grands\u2011parents, parents"
+    distracteurs: ["arrière\u2011grands\u2011parents, parents, grands\u2011parents", "parents, arrière\u2011grands\u2011parents, grands\u2011parents"]
     indice: "Cherche qui est né avant qui dans la famille."
   # GEN-CE1-1 moitie : generations
   # GEN-CE1-1 tache : voisin
   # TRV-CE1-2 : a, a
   - enonce: "Rose est la maman d'Hugo. Hugo est le papa d'Inès. Pour Inès, de quelle génération est Rose ?"
-    bonneReponse: "celle des grands-parents"
-    distracteurs: ["celle des arrière-grands-parents", "celle des parents"]
+    bonneReponse: "celle des grands\u2011parents"
+    distracteurs: ["celle des arrière\u2011grands\u2011parents", "celle des parents"]
     indice: "Pars d'Inès et remonte d'une génération à la fois."
   # GEN-CE1-1 moitie : evenements
   # GEN-CE1-1 tache : voisin

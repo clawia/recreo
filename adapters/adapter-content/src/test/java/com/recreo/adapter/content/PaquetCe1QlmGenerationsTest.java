@@ -210,10 +210,28 @@ class PaquetCe1QlmGenerationsTest {
 
     // ----- normalisation et lecture d'un item
 
-    /** Minuscule, sans accent, apostrophe droite, blancs (insecables compris) ramenes a une espace. */
+    /**
+     * Minuscule, sans accent, apostrophe droite, blancs (insecables compris) ramenes a une espace,
+     * trait d'union insecable (U+2011) ramene au trait d'union.
+     */
     static String plat(String texte) {
-        String sansAccent = PaquetLu.sansAccent(texte).replace('’', '\'');
+        String sansAccent = PaquetLu.sansAccent(texte).replace('’', '\'').replace('\u2011', '-');
         return BLANCS.matcher(sansAccent).replaceAll(" ").strip();
+    }
+
+    /**
+     * DEC-0120, Q2 O1 : un mot compose d'une proposition porte le trait d'union insecable (U+2011), jamais
+     * le trait d'union ordinaire, apres lequel le navigateur peut couper la ligne.
+     */
+    static void verifierQueAucunTraitDUnionOrdinaireNeCoupeUneProposition(List<Item> items) {
+        for (Item item : items) {
+            List<String> propositions = new ArrayList<>(item.distracteurs());
+            propositions.add(item.bonneReponse());
+            for (String proposition : propositions) {
+                assertThat(proposition).as("DEC-0120 Q2 O1 : trait d'union ordinaire dans la proposition")
+                        .doesNotContainPattern("\\p{L}-\\p{L}");
+            }
+        }
     }
 
     /** Une proposition ou une partie de suite : sans ponctuation finale, sans determinant de tete. */
@@ -946,6 +964,20 @@ class PaquetCe1QlmGenerationsTest {
         laisse(PaquetCe1QlmGenerationsTest::verifierQueLIndiceNeDonnePasLaReponse, fautif, "sonde 62");
         laisse(PaquetCe1QlmGenerationsTest::verifierQueLIndiceNeDonnePasLaReponse, fautif, "sonde 63");
         laisse(PaquetCe1QlmGenerationsTest::verifierQueLIndiceNeDonnePasLaReponse, fautif, "sonde 67");
+    }
+
+    @Test
+    void aucunePropositionDuPaquetNePorteDeTraitDUnionOrdinaire() {
+        verifierQueAucunTraitDUnionOrdinaireNeCoupeUneProposition(paquet().items());
+    }
+
+    @Test
+    void leJeuFautifEstRefuseQuandUnePropositionPorteUnTraitDUnionOrdinaire() {
+        List<Item> fautifs = fautif("generations-fautives.yaml").items();
+
+        assertThatThrownBy(() -> verifierQueAucunTraitDUnionOrdinaireNeCoupeUneProposition(fautifs))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("DEC-0120 Q2 O1");
     }
 
     @Test
