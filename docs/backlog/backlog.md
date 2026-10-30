@@ -25421,6 +25421,6 @@ Toujours **NON ENGAGEE**. Si la fusion a lieu, `V1` est **partiellement tenue su
 - **Q2** : `lea-dev` corrige l'en-tête de `ce1-calendrier-dates.yaml` (branche `s57-fin-lea-entete`, non fusionnée). Le paquet est déjà au catalogue ; *"on l'integre au catalogue"* : mon interprétation (le correctif rejoint `round-two`) n'est pas confirmée. Pas de story distincte.
 - **Q6** : `pid.txt` supprimé par l'utilisatrice, question fermée.
 - **Q7** : pas de palier 10 ; `Q-273-1` (i) fermée dans sa part qui dépendait de l'utilisatrice. Les stories ne portent aucun palier 10 : aucun statut ne change.
-- **Q1, Q3, Q5** : sans réponse ou en cours de détail, non fermées. `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE` sort de la liste de Q3 par la réponse à Q4 ; Q3 reste ouverte pour les autres stories.
+- **Q1, Q3, Q5** : sans réponse ou en cours de détail, non fermées. **[Q5 : mots *"Q5 O1"* reçus ensuite, le 2026-10-30, après cet amendement ; sens relayé par l'agent lanceur (`O1` : appliquer les quatre amendements R-1 à R-4 ; le texte des options n'est pas écrit au dépôt, ni transmis à `camille-po`) ; appliqués sur la branche `s57-fin-sofia-readme` (`00298fe4`, `df6020fc`), non fusionnée ; texte d'origine conservé]** `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE` sort de la liste de Q3 par la réponse à Q4 ; Q3 reste ouverte pour les autres stories.
 
 **Report.** `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE` : trois états dans s57 (A.293, A.294, A.295), aucun report d'un sprint à l'autre. Aucune ligne de matrice ne change de statut : 166 sur 202.
