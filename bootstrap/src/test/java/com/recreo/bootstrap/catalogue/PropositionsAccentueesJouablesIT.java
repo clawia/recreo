@@ -7,6 +7,8 @@ import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +28,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * ADR-0013 : le perimetre d'un test se derive du contenu reel, pas d'un exemple choisi a la main.
@@ -65,6 +68,23 @@ import static org.assertj.core.api.Assertions.assertThat;
  * (charset "windows-1252"), jamais une table recopiee ici. Un caractere absent de Windows-1252
  * leve toujours : aucun navigateur ne saurait le poster en un octet, et cette IT ne le
  * reproduit pas.</p>
+ *
+ * <p>s57 (decision de l'utilisatrice, Q4 puis O2 du 2026-10-30) : U+2011 (trait d'union insecable,
+ * ce1-qlm-generations.yaml) n'existe pas en Windows-1252. Un navigateur qui poste dans ce jeu de
+ * caracteres remplace alors le caractere par sa reference numerique decimale "&amp;#8209;"
+ * (Encoding Standard, section Encoders, mode d'erreur "html"), puis pourcent-encode le tout comme
+ * le reste du corps (URL Standard, ensemble de pourcent-encodage de
+ * application/x-www-form-urlencoded : "&amp;", "#" et ";" y sont encodes). Cette IT reproduit cette
+ * forme au lieu de lever, et le serveur la decode (ReferencesNumeriquesDecimales). Seul un
+ * caractere qui n'est pas une valeur scalaire Unicode (un substitut isole) leve encore : aucun
+ * encodeur ne le recoit, aucun navigateur ne le poste.</p>
+ *
+ * <p>Ce que le premier test ne prouve pas : il verifie qu'aucune manche ne plante, pas que le
+ * serveur a compris la proposition. Un octet haut de Windows-1252 n'est pas de l'UTF-8 valide, le
+ * serveur le lit en U+FFFD, et une proposition mixte (accent brut et U+2011 en reference) est donc
+ * toujours jugee fausse - ce n'est pas ce que fait un navigateur reel, dont la page est en UTF-8.
+ * Le second test ne rejoue que les propositions dont chaque caractere non ASCII passe par une
+ * reference, et verifie que le serveur les a reconnues.</p>
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PropositionsAccentueesJouablesIT {
@@ -79,6 +99,55 @@ class PropositionsAccentueesJouablesIT {
 
     @Autowired
     private PartieUseCase partie;
+
+    @Test
+    void uneReferenceNumeriqueDUnePropositionDuCatalogueEstReconnueParLeServeur() throws Exception {
+        Set<String> propositionsReconnues = new HashSet<>();
+
+        for (GameDefinition jeu : partie.jeuxDisponibles()) {
+            Set<String> eligibles = new LinkedHashSet<>();
+            for (String proposition : propositionsNonAscii(jeu.contenu())) {
+                if (neSePosteQuEnReferences(proposition)) {
+                    eligibles.add(proposition);
+                }
+            }
+            if (!eligibles.isEmpty()) {
+                propositionsReconnues.add(verifierReconnue(jeu.id(), eligibles));
+            }
+        }
+
+        assertThat(propositionsReconnues)
+                .as("s57 : le catalogue reel doit porter une proposition dont tous les caracteres non ASCII"
+                        + " sont hors Windows-1252 (ce1-qlm-generations.yaml, U+2011), sinon le decodage"
+                        + " des references numeriques n'est exerce par rien")
+                .isNotEmpty();
+    }
+
+    /**
+     * ADR-0013 : le critere "reconnue" est execute sur un coup que le serveur ne peut pas
+     * reconnaitre. Sans ce jeu fautif, un critere qui repondrait toujours vrai laisserait le
+     * test precedent vert sur un serveur qui ne decode rien.
+     */
+    @Test
+    void unePropositionInconnueDuJeuNEstPasReconnue() throws Exception {
+        GameDefinition jeu = partie.jeuxDisponibles().get(0);
+        HttpClient client = HttpClient.newBuilder().cookieHandler(new CookieManager()).build();
+        demarrer(client, jeu.id());
+
+        String html = poster(client, jeu.id(), "propositionChoisie=une+proposition+inconnue".getBytes(WINDOWS_1252));
+
+        assertThat(estReconnue(html, "une proposition inconnue")).isFalse();
+    }
+
+    /** Un substitut isole n'est la valeur d'aucun caractere : aucun navigateur ne le poste, l'IT le refuse. */
+    @Test
+    void unCaractereQueAucunNavigateurNePosteResteRefuse() {
+        String substitutIsole = "a" + (char) 0xD800 + "b";
+
+        assertThatThrownBy(() -> corpsFormulaireEncodeEnWindows1252(substitutIsole))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("pas une valeur scalaire");
+    }
 
     @Test
     void chaqueRepresentationAccentueeDuCatalogueEstJouableSansPlanterLaManche() throws Exception {
@@ -104,21 +173,86 @@ class PropositionsAccentueesJouablesIT {
                         "pour que les muscles et le cœur récupèrent");
     }
 
-    private void verifierJouable(String jeuId, String proposition) throws Exception {
-        HttpClient client = HttpClient.newBuilder().cookieHandler(new CookieManager()).build();
+    /** Nombre maximal de parties neuves tentees pour voir s'afficher une proposition eligible. */
+    private static final int BUDGET_DE_PARTIES = 100;
 
-        client.send(HttpRequest.newBuilder(URI.create(base() + "/parties/" + jeuId))
+    /**
+     * Ouvre des parties neuves jusqu'a ce que la manche affiche une proposition eligible (le tirage
+     * est aleatoire cote serveur), la poste en reference numerique et exige que le serveur la
+     * reconnaisse. Renvoie la proposition verifiee.
+     */
+    private String verifierReconnue(String jeuId, Set<String> eligibles) throws Exception {
+        for (int tentative = 0; tentative < BUDGET_DE_PARTIES; tentative++) {
+            HttpClient client = HttpClient.newBuilder().cookieHandler(new CookieManager()).build();
+            Optional<String> affichee = propositionsAffichees(demarrer(client, jeuId)).stream()
+                    .filter(eligibles::contains)
+                    .findFirst();
+            if (affichee.isPresent()) {
+                String proposition = affichee.get();
+                String html = poster(client, jeuId, corpsFormulaireEncodeEnWindows1252(proposition));
+                assertThat(estReconnue(html, proposition))
+                        .as("%s : la reference numerique de la proposition \"%s\" doit etre decodee par le"
+                                + " serveur avant la comparaison avec la bonne reponse", jeuId, proposition)
+                        .isTrue();
+                return proposition;
+            }
+        }
+        throw new AssertionError(jeuId + " : aucune proposition eligible affichee en " + BUDGET_DE_PARTIES
+                + " parties, parmi " + eligibles);
+    }
+
+    private String demarrer(HttpClient client, String jeuId) throws Exception {
+        return client.send(HttpRequest.newBuilder(URI.create(base() + "/parties/" + jeuId))
                         .POST(HttpRequest.BodyPublishers.noBody())
                         .build(),
-                HttpResponse.BodyHandlers.discarding());
+                HttpResponse.BodyHandlers.ofString()).body();
+    }
 
-        byte[] corps = corpsFormulaireEncodeEnWindows1252(proposition);
-        HttpResponse<String> coup = client.send(
+    private HttpResponse<String> envoyerCoup(HttpClient client, String jeuId, byte[] corps) throws Exception {
+        return client.send(
                 HttpRequest.newBuilder(URI.create(base() + "/parties/" + jeuId + "/coups"))
                         .header("Content-Type", "application/x-www-form-urlencoded")
                         .POST(HttpRequest.BodyPublishers.ofByteArray(corps))
                         .build(),
                 HttpResponse.BodyHandlers.ofString());
+    }
+
+    private String poster(HttpClient client, String jeuId, byte[] corps) throws Exception {
+        return envoyerCoup(client, jeuId, corps).body();
+    }
+
+    private static List<String> propositionsAffichees(String html) {
+        return Jsoup.parse(html).select("button.proposition").eachAttr("value");
+    }
+
+    /**
+     * Le serveur a compris la proposition si la manche la juge juste, ou la marque comme deja
+     * essayee. Une proposition qu'il ne reconnait pas est fausse sans etre marquee : aucun bouton
+     * ne porte sa valeur.
+     */
+    private static boolean estReconnue(String html, String proposition) {
+        Document manche = Jsoup.parse(html);
+        boolean juste = !manche.select(".signal.est-juste").isEmpty();
+        boolean marquee = manche.select("button.proposition.deja-essayee").stream()
+                .anyMatch(bouton -> proposition.equals(bouton.attr("value")));
+        return juste || marquee;
+    }
+
+    /** Vrai si chaque caractere non ASCII de la proposition est hors Windows-1252, donc poste en reference. */
+    private static boolean neSePosteQuEnReferences(String proposition) {
+        CharsetEncoder windows1252 = WINDOWS_1252.newEncoder();
+        return proposition.codePoints()
+                .filter(pointDeCode -> pointDeCode > 127)
+                .allMatch(pointDeCode -> !windows1252.canEncode(Character.toString(pointDeCode)));
+    }
+
+    private void verifierJouable(String jeuId, String proposition) throws Exception {
+        HttpClient client = HttpClient.newBuilder().cookieHandler(new CookieManager()).build();
+
+        demarrer(client, jeuId);
+
+        byte[] corps = corpsFormulaireEncodeEnWindows1252(proposition);
+        HttpResponse<String> coup = envoyerCoup(client, jeuId, corps);
 
         // ADR-0011 : GestionnaireDesErreurs force le statut 200 sur toute exception, precisement
         // pour que htmx substitue le fragment "Oups" dans la zone de jeu au lieu d'un swap qui
@@ -145,19 +279,26 @@ class PropositionsAccentueesJouablesIT {
      * unique octet, invalide en UTF-8, que le decodeur strict de Tomcat refuse. L'encodeur rapporte
      * un caractere non representable au lieu de le remplacer par "?" : sans cela, un caractere hors
      * Windows-1252 partirait en silence comme un autre texte que la proposition.
+     *
+     * <p>s57 : un caractere hors Windows-1252 n'est plus refuse, il est poste comme le fait un
+     * navigateur, en reference numerique decimale pourcent-encodee ("%26%238209%3B" pour U+2011).
+     * Seul un substitut isole, qui n'est la valeur d'aucun caractere, leve.</p>
      */
     private static byte[] corpsFormulaireEncodeEnWindows1252(String proposition) {
         CharsetEncoder windows1252 = WINDOWS_1252.newEncoder();
         StringBuilder corps = new StringBuilder("propositionChoisie=");
-        for (int i = 0; i < proposition.length(); i++) {
-            char caractere = proposition.charAt(i);
-            if (caractere < 128 && OCTETS_ASCII_A_ENCODER.indexOf(caractere) >= 0) {
-                corps.append('%').append(String.format("%02X", (int) caractere));
-            } else if (windows1252.canEncode(caractere)) {
-                corps.append(caractere);
-            } else {
+        for (int i = 0; i < proposition.length(); ) {
+            int pointDeCode = proposition.codePointAt(i);
+            i += Character.charCount(pointDeCode);
+            if (pointDeCode < 128 && OCTETS_ASCII_A_ENCODER.indexOf(pointDeCode) >= 0) {
+                corps.append('%').append(String.format("%02X", pointDeCode));
+            } else if (pointDeCode >= Character.MIN_SURROGATE && pointDeCode <= Character.MAX_SURROGATE) {
                 throw new IllegalStateException(
-                        "caractere hors Windows-1252, cette IT ne sait pas le reproduire : \"" + proposition + "\"");
+                        "substitut isole, pas une valeur scalaire que cette IT sache poster : \"" + proposition + "\"");
+            } else if (windows1252.canEncode(Character.toString(pointDeCode))) {
+                corps.appendCodePoint(pointDeCode);
+            } else {
+                corps.append("%26%23").append(pointDeCode).append("%3B");
             }
         }
         return corps.toString().getBytes(WINDOWS_1252);
