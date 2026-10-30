@@ -238,7 +238,9 @@ en page) et emulation de bureau (barre classique, 345 px).
 rendue, Segoe UI, sur un seul poste Windows ; la pile commence par `system-ui` : sous Android, iOS, macOS ou Linux, ni le glyphe
 U+2011 ni la largeur du mot ne sont verifies. (c) A 360, la page defile seule : mes cotes a cette largeur ne disent rien du pli,
 d'ou *"non mesuree"* dans la derniere colonne. (d) Lecture du U+2011 par un lecteur d'ecran non verifiee. (e) Technique,
-perimetre partiel : `mvn -pl adapters/adapter-content -am test` a `e75e3f7e`, module `adapter-content` seul ; ce n'est pas la CI.
+perimetre partiel : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test` a `e75e3f7e`, module `adapter-content`
+seul : `Tests run: 2571, Failures: 0`, `BUILD SUCCESS` (sortie relevee le 2026-10-29, `avis-nadia-corrections-cloture-s57.md`,
+section 1, non relancee ce jour) ; ce n'est pas la CI.
 
 **Hors de la lettre de `V1`, et non ajoute a elle** : a 744 x 551, item 8, apres une erreur, ni croix, ni message, ni indice a
 l'ecran (`avis-nadia-cloture-s57.md`, constat 1). Il est dans la story de gabarit ; je ne releve pas `V1` pour l'y mettre.
