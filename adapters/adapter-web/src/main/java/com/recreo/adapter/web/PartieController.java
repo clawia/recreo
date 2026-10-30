@@ -379,12 +379,13 @@ public class PartieController {
     @PostMapping("/parties/{jeuId}/coups")
     public String jouer(@PathVariable String jeuId, @RequestParam String propositionChoisie,
                          HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
+        String proposition = ReferencesNumeriquesDecimales.decoder(propositionChoisie);
         EtatDePartie etat = new EtatDePartieEnSession(requete).jouer(jeuId,
-                actuelle -> partie.jouer(jeuId, actuelle, new BanditManchotMove(propositionChoisie)));
+                actuelle -> partie.jouer(jeuId, actuelle, new BanditManchotMove(proposition)));
         synchroniserMarqueurDePartie(etat.session(), requete, reponse);
 
         return mancheModele(modele, jeuId, etat.consigne(), etat.consigneAdulte(), etat.session(),
-                PAR_UN_GESTE, propositionChoisie);
+                PAR_UN_GESTE, proposition);
     }
 
     /**

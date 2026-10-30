@@ -177,6 +177,36 @@ class PartieControllerTest {
         assertThat(fragment.select(".score").text()).isEqualTo("Score : 1");
     }
 
+    /** La bonne reponse de q1 est "1" : sa reference decimale "&#49;" est decodee avant la comparaison. */
+    @Test
+    void uneReferenceNumeriqueDecimaleEstDecodeeAvantLaComparaisonAvecLaBonneReponse() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+
+        String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                        .session(session).param("propositionChoisie", "&#49;"))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select(".signal.est-juste")).isNotEmpty();
+        assertThat(fragment.select(".score").text()).isEqualTo("Score : 1");
+    }
+
+    /** Le standard ne prevoit pas la forme hexadecimale : "&#x31;" n'est pas "1", la reponse est fausse. */
+    @Test
+    void uneReferenceNumeriqueHexadecimaleNEstPasDecodee() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+
+        String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_ID)
+                        .session(session).param("propositionChoisie", "&#x31;"))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select(".signal.est-faux")).isNotEmpty();
+        assertThat(fragment.select(".score").text()).isEqualTo("Score : 0");
+    }
+
     @Test
     void uneReponseIncorrecteAfficheLeSignalFauxEtDesigneLaBonneReponse() throws Exception {
         MockHttpSession session = new MockHttpSession();
