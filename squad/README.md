@@ -181,7 +181,7 @@ Trois produisent un fichier, une non.
 | Daily | **aucun** | Synchronisation de travail. Sofia collecte, classe et route ; elle n'ecrit pas de fichier |
 | Review | `review.md` | Horodatage de fin, duree, rapport qualite de Yanis, confirmation ArchUnit de Theo, corrections du relecteur, tableau des obstacles, avis de Nadia et Done pedagogique |
 | Retro | `retro.md` | Ce qui a marche, ce qui a coince, amendements a ce README |
-| Cloture de palier (sprint a paliers seulement) | `cloture-palier-N.md` | Horodatage de fin du palier, verdict ecrit de Nadia ou report ecrit pour chaque poste engage, CI verte avec les jobs nommes sur l'arbre fusionne, total de tests recompte sur cet arbre, comptage du catalogue a chaque fusion, glissements, obstacles du palier, section `## Decisions prises` |
+| Cloture de palier (sprint a paliers seulement) | `cloture-palier-N.md` | Horodatage de fin du palier, verdict ecrit de Nadia ou report ecrit pour chaque poste engage, CI verte avec les jobs nommes sur l'arbre fusionne, total de tests recompte sur cet arbre, comptage du catalogue a chaque fusion, arbre mesure et liste des faits mobiles (2026-10-30), glissements, obstacles du palier, section `## Decisions prises` |
 
 **Un sprint a paliers a une seule review et une seule retro, plus un fichier de cloture par palier**
 (amendement du 2026-10-14, `sofia-sm`, planning de s57, `Q-S1`). Un palier est la fenetre d'audit de
@@ -196,6 +196,16 @@ par sprint (section 6), sur la fenetre qui va de l'horodatage de `planning.md` a
 de ceremonie reecrit. Un sprint sans palier n'a pas ce fichier. Motif : sans lui, un sprint long perd la
 review et la retro entre deux fenetres d'audit, et la condition 3 de Nadia ne remplace que sa part de
 la cloture. Mots de l'utilisatrice, 2026-10-14, forme 2 (relayes, non lus de sa main) : `Q-S1` = ok.
+
+**Un fichier de cloture de palier ecrit l'arbre mesure et la liste de ses faits mobiles** (amendement du
+2026-10-30, `sofia-sm`, retro de s57, section "Ce qui a coute" point 8 et action `A-7`, meme instruction de
+l'utilisatrice, mots *"Q5 O1"*). Un fichier de cloture est un instantane : son en-tete ecrit le SHA et
+l'heure de l'arbre mesure, et liste les faits qu'un amendement attendu changerait (couverture, etat d'une
+ligne, cas haut, compte du catalogue). Tout fait change ensuite est marque dans le meme geste que la
+fusion qui le change, sans reecrire le texte d'origine. Fait mesure : `cloture-palier-5.md` est ecrite a
+`fa137660` ; a `a3e05f13`, un jour plus tard, elle disait 165 sur 202, `-12` sans entree, un code de `HEAD`
+egal a celui de `eaa3ef65` et un cas haut a 23,70, et vingt-quatre de ses lignes ont recu un marqueur le
+2026-10-29 (`squad/sprints/s57-version-cp-ce1-cm1-trois-instances/retro.md`, point 8).
 
 **Pourquoi le daily n'est pas journalise.** Sur la version precedente de `recreo`, le daily etait
 une ceremonie documentee dont **aucun fichier n'a jamais ete ecrit en 25 sprints**. Plutot que de
@@ -391,6 +401,32 @@ Mots de l'utilisatrice cites par `DEC-0117` section 11, recus par `camille-po` l
 nadia passe avant la fusion comme ca on peut re corrgier si besoin"*. Un `REFUSE` se corrige donc avant
 fusion, par une story corrective, et ne laisse rien en service. Le texte d'application est en section 9,
 etape 6. En cas d'ecart, `DEC-0117` section 11 fait foi.
+
+**Une mesure partielle citee porte ses lignes `Tests run` ; zero ligne n'est pas une mesure**
+(amendement du 2026-10-30, `sofia-sm`, retro de s57, section "Ce qui a coute" point 1 et action `A-1`,
+applique sur la reponse de l'utilisatrice du 2026-10-30, mots relayes par l'agent lanceur et non lus de sa
+main : *"Q5 O1"*). Etend l'amendement du 2026-10-12 ci-dessus (une mutation n'est lue que si le nombre de
+tests lances est superieur a zero) a **toute** mesure partielle, mutee ou non : la commande de mesure
+citee dans un fichier commite est accompagnee des lignes `Tests run` qu'elle a produites, et une commande
+qui n'en a produit aucune n'est pas citee comme mesure. Fait mesure : la commande transmise a `theo-archi`
+pour la confirmation ArchUnit de la cloture de s57 lance 0 test, rend `BUILD SUCCESS` et n'ecrit aucune
+ligne `Tests run` (`squad/sprints/s57-version-cp-ce1-cm1-trois-instances/confirmation-archunit-cloture-s57.md`,
+`M0` et `DA2`) - le meme vert qui ne dit rien, cette fois sans mutation. Cet amendement ne tranche pas le
+sort du drapeau `-Dsurefire.failIfNoSpecifiedTests=false` : la retro de s57 le laisse a `yanis-qa` et
+`theo-archi` (`A-1`, obstacle `P6`).
+
+**Tout chiffre repris dans un fichier de ceremonie porte son commit, sa commande et son perimetre, ou
+le mot "relaye"** (amendement du 2026-10-30, `sofia-sm`, retro de s57, section "Ce qui a coute" point 2
+et action `A-2`, meme instruction de l'utilisatrice, mots *"Q5 O1"*). Etend les amendements de s06 (un
+chiffre porte sa methode) et de s17 (un chiffre repris est verifie contre sa source primaire) au cas ou
+l'agent qui reprend ne verifie pas : il le dit. Un chiffre que l'auteur n'a pas mesure lui-meme sur
+l'arbre qu'il cite porte le mot **"relaye"** a cote, avec son origine ; un chiffre qu'il a mesure porte
+le commit de l'arbre, la commande et le perimetre. Un marqueur qui corrige un chiffre nomme les deux
+commits qu'il compare. Fait mesure : le compte de fichiers du job `chemins` annonce par l'agent lanceur,
+releve par `sofia-sm` comme ecart *"non explique"*, puis corrige par un marqueur qui nommait deux commits
+pour deux valeurs, jusqu'a la valeur que `DEC-0120` A.289 fixe et que A.293 point 9 corrige encore une
+fois (`squad/sprints/s57-version-cp-ce1-cm1-trois-instances/retro.md`, point 2). L'auteur du relai
+n'avait nomme ni le commit ni la commande de chaque cote de la comparaison.
 
 ## 5. La synthese de sprint - `RAPPORT.md`
 
@@ -777,6 +813,19 @@ charge pas, et c'est ainsi que la base de s53 est partie rouge. Une mesure parti
 `bootstrap` dans son perimetre, ne tient jamais lieu de cette commande. **Ce que rien n'execute** : aucun
 crochet de pre-push n'est installe par le depot, et la CI juge apres le push. Cette regle est une
 discipline ; le mecanisme automatique qui la rattrape est la CI elle-meme, apres coup.
+
+**Les juges `verifier-chemins.sh` et `verifier-prefixes.sh` se lancent avec leur entree reelle, jamais
+`< /dev/null`** (amendement du 2026-10-30, `sofia-sm`, retro de s57, obstacle `P7`, meme instruction de
+l'utilisatrice, mots *"Q5 O1"*). Precise la commande de l'amendement ci-dessus. Ces scripts jugent la liste
+qu'on leur donne sur l'entree standard (`.github/scripts/verifier-chemins.sh`, en-tete) ; une entree
+vide ne leur donne rien a juger, et ils sortent en 0. Mesure sur l'arbre de s57 :
+`bash .github/scripts/verifier-chemins.sh < /dev/null` rend *"Aucun chemin de poste de travail ni nom de
+compte dans les fichiers verifies."* avec le code 0, sans avoir lu un seul fichier. Les formes de la CI
+sont celles de `.github/workflows/ci.yml` : `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' | bash
+.github/scripts/verifier-chemins.sh` et `git log --no-merges --format=%s <plage> | bash
+.github/scripts/verifier-prefixes.sh`. Fait mesure : au palier 5 de s57, des avis et des lectures de
+plusieurs agents citent `verifier-chemins.sh < /dev/null` comme preuve que la porte `chemins` est verte
+(par exemple `avis-theo-palier-5-gardes-apres-lecture-ce1-qlm-05-08.md`, section des verifications).
 
 **3. Daily.** Sofia collecte et route. Pas de fichier.
 
