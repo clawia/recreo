@@ -1,4 +1,4 @@
-# DEGRADE : la lecture de l'heure sur un cadran n'est pas servie, aucune horloge n'est rendue, et l'ordre des mois est deja servi par QLM-CP-13 ; seul le reperage d'une date dans le calendrier l'est, par du texte.
+# DEGRADE : ce paquet ne sert que le reperage d'une date dans le calendrier, par du texte ; la lecture de l'heure sur un cadran est servie par ce1-lire-l-heure, et l'ordre des mois par QLM-CP-13.
 #
 # S53-G1-DATES (MAT-CE1-11). Paquet de contenu seul, hors sprint. Arbitrage prealable de nadia-prof,
 # conditions CAL-CE1-1 a CAL-CE1-5 (squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md,
