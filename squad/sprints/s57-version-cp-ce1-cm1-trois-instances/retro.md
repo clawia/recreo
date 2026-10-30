@@ -67,6 +67,8 @@ Le tableau complet est dans `review.md`, section 10. Il compte 8 lignes résolue
 | R-3 | Les scripts `verifier-chemins.sh` et `verifier-prefixes.sh` se lancent avec leur entrée réelle, jamais `< /dev/null` | `P7` |
 | R-4 | Un fichier de clôture de palier écrit l'arbre mesuré et la liste de ses faits mobiles | A-7 |
 
+[applique le 2026-10-30, texte d'origine conserve : R-1 a R-4 sont appliques dans `squad/README.md` sur instruction de l'utilisatrice, mots relayes par l'agent lanceur et non lus de sa main : "Q5 O1" (`git log -- squad/README.md`). La mention "proposes et non appliques" et "Aucun n'est applique par ce geste" decrit l'etat au 2026-10-29.]
+
 ## Decisions prises
 
 **Aucune `ADR` ni `DEC` n'est créée ou amendée par ce fichier.** Il ne tranche rien qui appartienne à un autre rôle : les actions A-1, A-5, A-6, A-9, A-11, A-12, A-13 et A-14 sont routées à leur propriétaire, A-10, A-15 et A-16 attendent la réponse de l'utilisatrice, et les amendements R-1 à R-4 de `squad/README.md` sont proposés et non appliqués. Les décisions du sprint sont listées dans `RAPPORT.md`, section 2.
