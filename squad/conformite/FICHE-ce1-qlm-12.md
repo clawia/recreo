@@ -198,3 +198,103 @@ Cet ajout ne reecrit ni le verdict du 2026-10-27 ni sa reserve. Lu sur `round-tw
 (qu'un enonce n'ecrive qu'une forme de sens). Je n'ai alloue aucun identifiant.
 
 **Signe** : `nadia-prof`, s57, palier 5, 2026-10-29.
+
+### Ajout du 2026-10-30 (`nadia-prof`, s57, cloture) : mesure de `V1`, reserve neuve `V2`, verdict maintenu
+
+Cet ajout ne reecrit ni le verdict du 2026-10-27, ni la lettre de `V1`, ni l'ajout du 2026-10-29. Ecrit sur `round-two` a
+`9aa3c860`.
+
+**Ce qui change dans le paquet, et sous quelle condition.** L'utilisatrice a decide le 2026-10-30 : *"Q4 on fusionne et on
+integre au catalogue"* (`RAPPORT.md` du sprint, section 7, `Q4` ; mots relayes par l'agent lanceur, non lus de ma main). La
+correction est `180889a4` (`s57-cl-marc-12nb`, trait d'union insecable U+2011 dans les propositions), relue par `3e85dc33`
+(`s57-cl-rel-12nb`). A `9aa3c860`, elle n'est pas fusionnee (`git merge-base --is-ancestor 180889a4 HEAD` echoue) et le paquet
+est l'objet `976b8b1e`, celui de mon Done. **Tout ce qui suit vaut une fois `s57-cl-marc-12nb` fusionnee**, et pour le paquet
+`116eb857` seulement : c'est l'objet de `180889a4` et celui de l'arbre que j'ai joue, `e75e3f7e` (`git rev-parse <commit>:<paquet>`).
+Si la fusion livre d'autres octets, ma mesure ne les couvre pas.
+
+#### 1. Mesure de `V1`, faite le 2026-10-29
+
+Rappel de la lettre, inchangee : a 744 x 551 et a 360 de large, (1) aucune proposition coupee a l'interieur de
+*arrière-grands-parents* ou de *grands-parents* ; (2) aucune reponse attendue sous le pli a la revelation.
+
+| Arbre | Clause 1, 744 x 551 | Clause 1, 360 de large | Clause 2, 744 x 551 | Clause 2, 360 de large |
+|---|---|---|---|---|
+| avant correction (entrees reelles, paquet `976b8b1e`) | **non tenue** : item 8, deux propositions coupees *"grands-"* / *"parents"* | **non tenue** : coupures sur les items 1, 3, 4, 6, 8, 9 | **non tenue** : reponse nommee sous le pli aux items 3, 8, 9, 12 (582 a 710) | non mesuree |
+| apres correction (`e75e3f7e`, paquet `116eb857`) | **tenue** : retours a la ligne apres une virgule ou une espace, item 8 *"arrière-grands-parents, grands-parents,"* / *"parents"* | **tenue** : aucune coupure dans le mot | **non tenue**, inchangee : items 3 (590), 8 (710), 9 (582), 12 (590) | non mesuree |
+
+**`V1` est partiellement tenue une fois la correction fusionnee, et reste ouverte** sur sa clause 2. Je ne la leve pas, je ne
+la modifie pas. La clause 2 est une question de gabarit de la revelation, pas du paquet : elle est dans
+`S57-PLI-REVELATION-GABARIT-COMMUN`.
+
+**Methode.** Avant correction : `avis-nadia-cloture-s57.md`, section 4 (jar du `verify` a `d9313f9e`, paquets egaux a ceux de
+`a3e05f13`). Apres correction : `avis-nadia-corrections-cloture-s57.md`, sections 1 et 3 (jar construit par moi a `e75e3f7e`,
+paquet du jar egal a celui de l'arbre). Dans les deux cas : `java -jar` sur un JDK 21, page *Questionner le monde* du CE1, tuile
+par son titre, Chrome sans tete pilote par un script, parties ou chaque manche va jusqu'a la revelation, **les 12 items servis**
+sur l'ensemble des parties ; coupures lues caractere par caractere, cotes par `getBoundingClientRect()`, police rendue par
+`CSS.getPlatformFontsForNode`, captures regardees. A 360 apres correction : emulation mobile (barre superposee, 360 px de mise
+en page) et emulation de bureau (barre classique, 345 px).
+
+**Limites, dites.** (a) Navigateur sans tete et clics de script : ni tablette, ni telephone, ni doigt. (b) Une seule police
+rendue, Segoe UI, sur un seul poste Windows ; la pile commence par `system-ui` : sous Android, iOS, macOS ou Linux, ni le glyphe
+U+2011 ni la largeur du mot ne sont verifies. (c) A 360, la page defile seule : mes cotes a cette largeur ne disent rien du pli,
+d'ou *"non mesuree"* dans la derniere colonne. (d) Lecture du U+2011 par un lecteur d'ecran non verifiee. (e) Technique,
+perimetre partiel : `mvn -pl adapters/adapter-content -am test` a `e75e3f7e`, module `adapter-content` seul ; ce n'est pas la CI.
+
+**Hors de la lettre de `V1`, et non ajoute a elle** : a 744 x 551, item 8, apres une erreur, ni croix, ni message, ni indice a
+l'ecran (`avis-nadia-cloture-s57.md`, constat 1). Il est dans la story de gabarit ; je ne releve pas `V1` pour l'y mettre.
+
+#### 2. Reserve neuve, datee du 2026-10-30 : `V2`, debordement du bouton a 360 de large
+
+`V2` est un repere de cette fiche, comme `V1`, pas un identifiant alloue. Elle n'existe qu'une fois `s57-cl-marc-12nb` fusionnee :
+c'est la correction qui la cree, en rendant *arrière-grands-parents* insecable.
+
+- **Ce que l'enfant voit**, a 360 de large : le mot entier, mais plus large que son bouton. La premiere et la derniere lettre
+  sortent du bouton clair et s'impriment sur le cadre sombre de la machine, texte sombre sur fond sombre. Items 1, 4, 9
+  (*"celle des arrière-grands-parents"*) : 10 px de chaque cote hors du bouton (emulation mobile), 18 px (barre classique).
+  Item 8, les trois propositions : 15 px (mobile) ; avec une barre classique, **le *a* initial passe sous le bord gauche de
+  l'ecran**, l'enfant lit *"rrière-grands-parents,"*, et la page devient plus large que l'ecran a la revelation (361 pour 360).
+  A la revelation, la bonne proposition reste non barree et lisible au centre, avec le meme debordement.
+- **Gravite** : non bloquante. A 744 x 551, la taille de mes audits, aucun texte ne depasse son bouton. Avant la correction, la
+  meme largeur coupait deja ces mots (clause 1 non tenue) : la correction remplace un defaut de 360 par un autre, elle n'en
+  cree pas a 744.
+- **Proprietaire** : la cause est de mise en page, pas de contenu : `theo-archi` (cause) et `ines-design` (mesure, levier de
+  gabarit) ; la story est a `camille-po` ; l'engagement a `sofia-sm`. Le texte du paquet n'a pas a changer pour cela.
+- **Condition de levee** : a 360 de large, en emulation mobile **et** avec une barre de defilement classique, sur les 12 items,
+  a l'arrivee de la manche et a la revelation : (1) chaque lettre de chaque proposition est dans son bouton, sur le fond clair ;
+  (2) aucune lettre n'est hors de l'ecran, et la page n'est pas plus large que l'ecran ; (3) la clause 1 de `V1` reste tenue.
+  Mesure a faire par `ines-design`, avec la methode de la section 1. Si elle montre les trois, `V2` est levee sans rejeu de ma
+  part ; si une taille de lettre est reduite pour y arriver, je lis la capture avant de lever.
+
+#### 3. Reponse a `Q-C1` de `camille-po` (backlog, annotation de `S57-QLM-CE1-12-TRAIT-D-UNION-INSECABLE`)
+
+*Question* : l'exigence 1 de `V1` tient-elle a 360, et que faut-il d'un mot qui ne peut plus se couper ; accepte-je une regle
+de gabarit qui coupe un mot trop long dans un bouton ?
+
+**Reponse : l'exigence 1 tient a 360, telle qu'ecrite. Je n'accepte pas une regle qui coupe *arrière-grands-parents* ou
+*grands-parents* dans un bouton, ni entre deux lettres, ni a un trait d'union.** Motif, et c'est celui qui fondait `V1` : dans
+ce paquet, un morceau de ces mots est lui-meme une reponse. *"celle des arrière-"* / *"grands-parents"* fait lire
+*grands-parents* a la seconde ligne, qui est une autre generation ; dans les suites de l'item 8, *"grands-"* / *"parents"* fait
+lire un terme de plus dans une liste de generations. Pour un enfant de CE1 qui lit ligne a ligne, la coupure change la
+reponse. Une coupure entre deux lettres (*"arrière-grands-pa"* / *"rents"*) est pire : elle casse le decodage. Ce n'est pas
+un relevement de ma barre : c'est la lettre de `V1` du 2026-10-27, que je maintiens.
+
+**Ce que j'attends d'un mot qui ne peut plus se couper : qu'il tienne entier dans son bouton** (condition de levee de `V2`).
+Le moyen n'est pas a moi ; ceux que j'accepte d'avance, sous reserve de lire la capture : une taille de lettre plus petite a
+cette largeur seulement, des marges de bouton ou de cadre plus etroites, un bouton plus large. Un changement du texte des
+propositions n'est pas le levier attendu ; s'il etait choisi, il repasserait par `marc-dev`, le `relecteur-pedagogique` et ma lecture.
+
+#### 4. La ligne `QLM-CE1-12` reste `couvert-valide`
+
+**Oui. Mon Done pedagogique reste VALIDE SOUS RESERVE, et il couvre le paquet `116eb857` une fois `s57-cl-marc-12nb`
+fusionnee** : je l'ai joue a l'ecran, les 12 items servis, a 744 x 551 et a 360 de large, et la correction ne change ni un enonce, ni une bonne
+reponse, ni un indice, ni le sens d'une proposition. Reserves ouvertes, toutes non bloquantes : `V1` (clause 2, pli a la
+revelation a 744 x 551) et `V2` (debordement a 360). `camille-po` n'a rien a faire bouger dans la matrice ; la cellule de la
+ligne recopie `V2` a cote de `V1`. Le Done technique sur le SHA fusionne reste la CI, que je ne lis pas ici.
+
+**Ce dont je reste la seule garde, en plus de la section 5** : la coupure et le debordement a l'ecran des propositions de `-12`.
+La garde de `180889a4` interdit le trait d'union ordinaire entre deux lettres dans une proposition ; elle ne mesure ni une
+coupure de ligne ni un debordement de bouton. **Aucun test ne tient `V1` ni `V2`.**
+
+Je n'ai alloue aucun identifiant : `V2` est un repere de cette fiche.
+
+**Signe** : `nadia-prof`, s57, cloture, 2026-10-30.
