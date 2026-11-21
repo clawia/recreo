@@ -22,6 +22,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -127,6 +128,21 @@ public class PartieController {
     private static boolean propositionsEnImage(List<String> propositions) {
         return !propositions.isEmpty()
                 && propositions.stream().allMatch(proposition -> proposition.startsWith(PREFIXE_DE_REPRODUCTION));
+    }
+
+    /**
+     * Safari 15 (iOS 15.8) poste le parametre du bouton presse deux fois ; {@code @RequestParam String}
+     * joint alors les deux valeurs par une virgule ("5,5") et la bonne reponse est jugee fausse. La
+     * premiere valeur est lue telle que recue : une proposition qui contient elle-meme une virgule
+     * n'est jamais coupee.
+     */
+    private static String premiereValeurDuParametre(HttpServletRequest requete, String nom)
+            throws MissingServletRequestParameterException {
+        String[] valeurs = requete.getParameterValues(nom);
+        if (valeurs == null || valeurs.length == 0) {
+            throw new MissingServletRequestParameterException(nom, "String");
+        }
+        return valeurs[0];
     }
 
     private final PartieUseCase partie;
@@ -377,8 +393,10 @@ public class PartieController {
     }
 
     @PostMapping("/parties/{jeuId}/coups")
-    public String jouer(@PathVariable String jeuId, @RequestParam String propositionChoisie,
-                         HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
+    public String jouer(@PathVariable String jeuId,
+                         HttpServletRequest requete, HttpServletResponse reponse, Model modele)
+            throws MissingServletRequestParameterException {
+        String propositionChoisie = premiereValeurDuParametre(requete, "propositionChoisie");
         String proposition = ReferencesNumeriquesDecimales.decoder(propositionChoisie);
         EtatDePartie etat = new EtatDePartieEnSession(requete).jouer(jeuId,
                 actuelle -> partie.jouer(jeuId, actuelle, new BanditManchotMove(proposition)));
@@ -412,8 +430,10 @@ public class PartieController {
      * garde-fou de tabulation, qui derive ses routes du registre de Spring.
      */
     @PostMapping("/parties/{jeuId}/designations")
-    public String designer(@PathVariable String jeuId, @RequestParam String zoneDesignee,
-                            HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
+    public String designer(@PathVariable String jeuId,
+                            HttpServletRequest requete, HttpServletResponse reponse, Model modele)
+            throws MissingServletRequestParameterException {
+        String zoneDesignee = premiereValeurDuParametre(requete, "zoneDesignee");
         EtatDePartie etat = new EtatDePartieEnSession(requete).jouer(jeuId,
                 actuelle -> partie.jouer(jeuId, actuelle, new DesignationMove(zoneDesignee)));
         synchroniserMarqueurDePartie(etat.session(), requete, reponse);
